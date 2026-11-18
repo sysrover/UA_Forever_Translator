@@ -11,7 +11,7 @@
 
 ## Description
 
-UA Forever Translator helps English- and Ukrainian-speaking players communicate in World of Warcraft: Forever. It translates supported English chat messages into Ukrainian while keeping the original visible.
+UA Forever Translator helps English- and Ukrainian-speaking players communicate in World of Warcraft: Forever. The UA chat tab shows Ukrainian translations. Standard chat tabs show the original messages. Use `/uaft tab` to open or select the UA tab.
 
 Use `/uaft en <Ukrainian text>` to prepare an English draft. You can review and edit it, choose the current chat target, and insert it into the game chat box. You send the message yourself.
 

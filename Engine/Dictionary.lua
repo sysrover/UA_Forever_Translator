@@ -60,7 +60,8 @@ function D.literal(tokens, first, direction, fragments)
         local term = node._id and ns.Data.terms[node._id]
         if literal then
             entry, last = literal, i
-        elseif term and term.category ~= "places" then
+        elseif term and (term.category ~= "places" or term.literalInChat)
+            and (direction ~= "en-uk" or not term.englishLookupOnly) then
             entry, last = term, i
         elseif node._morph then
             local derived = derivedTerm(node, direction)

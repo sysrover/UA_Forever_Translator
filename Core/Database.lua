@@ -14,10 +14,10 @@ for group, events in pairs(DB.events) do
 end
 function DB.load()
     local old = type(UA_Forever_TranslatorDB) == "table" and UA_Forever_TranslatorDB or {}
-    -- Rebuild only a whitelist. Chat history, drafts and senders are never persisted.
+    -- The account-wide database holds settings. The optional journal is per character.
     local channels = type(old.channels) == "table" and old.channels or {}
     local clean = { schema = 1, enabled = old.enabled ~= false, own = old.own == true,
-        display = old.display == "annotation" and "annotation" or "line", channels = {} }
+        logTranslations = old.logTranslations == true, channels = {} }
     for group in pairs(DB.events) do
         local value = channels[group]
         if type(value) ~= "boolean" then value = group ~= "say" and group ~= "channel" end

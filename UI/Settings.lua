@@ -39,8 +39,8 @@ local function populate(page)
     end
     addCheck(L.enabledLabel, function() return DB.settings.enabled end, function(v) DB.settings.enabled = v end)
     addCheck(L.own, function() return DB.settings.own end, function(v) DB.settings.own = v end)
-    addCheck(L.annotation, function() return DB.settings.display == "annotation" end,
-        function(v) DB.settings.display = v and "annotation" or "line" end)
+    addCheck(L.logTranslations, function() return DB.settings.logTranslations end,
+        function(v) DB.settings.logTranslations = v end)
     for _, id in ipairs({"whisper", "party", "raid", "guild", "say", "channel"}) do
         local group = id
         addCheck(L.channels[group], function() return DB.settings.channels[group] end,
@@ -51,7 +51,7 @@ local function populate(page)
     note:SetPoint("TOPLEFT", 25, y - 5)
     note:SetWidth(485)
     note:SetJustifyH("LEFT")
-    note:SetText(L.originalPreserved)
+    note:SetText(L.translationDestination)
 end
 
 local function show(page)

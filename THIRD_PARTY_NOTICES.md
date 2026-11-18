@@ -17,3 +17,12 @@ A separate distribution license has not been selected for the addon's original c
 [Data/GeneralEnUk.lua](Data/GeneralEnUk.lua) adapts the [KOReader Dicts English → Ukrainian StarDict dictionary](https://danielgregorini.github.io/koreader-dicts/ru/en-uk/) by Daniel Gregorini and contributors, built on 2026-09-21 from [English Wiktionary](https://en.wiktionary.org/) via [Kaikki / Wiktextract](https://kaikki.org/) and [Princeton University WordNet 3.0](https://wordnet.princeton.edu/).
 
 The adaptation is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). It selects a short Ukrainian gloss per English headword, drops ambiguously mapped aliases, and packs single-token keys and their inflected forms into a lookup index. The downloaded archive has SHA-256 `2e5dfd0b86e5d9a8dd3d5f6eff932285829a5d3ef8d2cc6e8c6558d7e06583e3`.
+
+## WoW chat abbreviations and slang
+
+The Ukrainian chat glosses were written for this addon. The `wow-community` references in the compiled dictionary identify sources for the English terms and their usage. Ukrainian client names and loot button labels follow UA Forever.
+
+- `forum` and `classic` — [WoW abbreviation guide](https://us.forums.blizzard.com/en/wow/t/wow-guide-acronyms-and-abbreviations/1387957) and [Classic glossary discussion](https://us.forums.blizzard.com/en/wow/t/what-is-ptr-and-how-about-a-glossary/97130).
+- `strategy` and `wiki` — [WoW strategy guide glossary](https://media.battle.net/documents/wow/WoW-BradyGAMES-enUS-Guide.pdf), [Warcraft Wiki abbreviation guide](https://warcraft.wiki.gg/wiki/Abbreviation_guide), and its linked terminology pages.
+- `loot`, `dkp`, and `loot-council` — [Classic raid loot abbreviations](https://us.forums.blizzard.com/en/wow/t/dst-hr-1-sr-per-raid/2325303), [DKP and GDKP](https://us.forums.blizzard.com/en/wow/t/what-is-gdkp-and-what-does-it-stand-for/921617), and [Vanilla loot terminology in use](https://us.forums.blizzard.com/en/wow/t/warmongers-are-recruiting/353453).
+- `craft` and `dungeons` — [Example crafting advertisement](https://us.forums.blizzard.com/en/wow/t/suspended-for-week-for-advertising/2281741?page=3) and [Classic dungeon abbreviations](https://us.forums.blizzard.com/en/wow/t/lfg-terms-explained/408615).

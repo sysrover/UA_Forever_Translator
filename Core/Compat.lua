@@ -29,15 +29,6 @@ end
 function C.frame(kind, parent, template)
     return CreateFrame(kind, nil, parent, template)
 end
-function C.addFilter(event, callback)
-    local fn = ChatFrameUtil and ChatFrameUtil.AddMessageEventFilter or ChatFrame_AddMessageEventFilter
-    if type(fn) ~= "function" then return false end
-    return pcall(fn, event, callback)
-end
-function C.removeFilter(event, callback)
-    local fn = ChatFrameUtil and ChatFrameUtil.RemoveMessageEventFilter or ChatFrame_RemoveMessageEventFilter
-    if type(fn) == "function" then pcall(fn, event, callback) end
-end
 function C.activeEdit()
     local fn = ChatFrameUtil and ChatFrameUtil.GetActiveWindow or ChatEdit_GetActiveWindow
     if type(fn) ~= "function" then return nil end

@@ -25,6 +25,7 @@ function Commands.dispatch(message)
     if command == "" then ns.UI.ComposeWindow.open()
     elseif command == "en" then ns.UI.ComposeWindow.open(rest)
     elseif command == "config" then ns.UI.Settings.open()
+    elseif command == "tab" then ns.Incoming.openTab()
     elseif command == "on" or command == "off" then
         ns.Database.settings.enabled = command == "on"; ns.Database.changed()
         ns.Compat.print(ns.L[command == "on" and "enabled" or "disabled"])

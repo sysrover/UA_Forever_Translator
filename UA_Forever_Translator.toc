@@ -5,6 +5,7 @@
 ## Author: UA Forever Translator contributors
 ## Version: 0.1.0
 ## SavedVariables: UA_Forever_TranslatorDB
+## SavedVariablesPerCharacter: UA_Forever_TranslatorTabID, UA_Forever_TranslatorLog
 
 Core\Namespace.lua
 Core\Compat.lua
@@ -21,6 +22,8 @@ Engine\Dictionary.lua
 Engine\Grammar.lua
 Engine\Parser.lua
 Engine\Translator.lua
+UI\ChatTab.lua
+Modules\ChatLog.lua
 Modules\Incoming.lua
 Modules\Composer.lua
 UI\ComposeWindow.lua
