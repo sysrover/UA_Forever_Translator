@@ -53,14 +53,31 @@ end
 local function agreesWithLexicon(document, first, term)
     local language = document.direction == "en-uk" and "uk" or "en"
     local gloss = ns.Engine.Normalize.word(term[language])
-    local analyses = ns.Engine.Lexicon.at(document, first)
-    if analyses.truncated or #analyses == 0 then return false end
+    if gloss:find(" / ", 1, true)
+        or ns.Engine.ClauseAnalysis.isAuxiliary(document.tokens[first].key) then return false end
+    local lexicon = ns.Engine.Lexicon
+    local analyses = lexicon.at(document, first)
+    if analyses.truncated then return false end
+    if #analyses == 0 then
+        return not lexicon.functional(document, "prepositions", first, first)
+    end
     local pos = analyses[1].lexeme.pos
     if pos ~= "noun" and pos ~= "verb" and pos ~= "adj" then return false end
+    local best, agrees, base, unanimous = nil, nil, nil, true
     for _, candidate in ipairs(analyses) do
-        if candidate.lexeme.pos ~= pos or ns.Engine.Normalize.word(candidate.lexeme[language]) ~= gloss then return false end
+        local lexeme = candidate.lexeme
+        if lexeme.pos ~= pos then return false end
+        local rank = lexeme.preference or 0
+        local matches = ns.Engine.Normalize.word(lexeme[language]) == gloss
+        local uninflected = candidate.form.mood == "base" or candidate.form.mood == "infinitive"
+        if not matches then unanimous = false end
+        if not best or rank < best then
+            best, agrees, base = rank, matches, uninflected
+        elseif rank == best then
+            agrees, base = agrees and matches, base or uninflected
+        end
     end
-    return true
+    return agrees and (pos ~= "verb" or unanimous or base)
 end
 
 function D.literal(document, first, fragments, contextual)

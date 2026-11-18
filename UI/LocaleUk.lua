@@ -38,6 +38,6 @@ ns.L = {
     logTranslations = "Записувати оригінали й переклади в локальний журнал",
     translationDestination = "Увімкни одне або обидва місця виводу. Команда /uaft tab відкриває вкладку UA.",
     channels = {whisper="Приватні повідомлення", party="Група та група підземелля", raid="Рейд", guild="Гільдія та офіцери", say="Сказати й крикнути", channel="Публічні канали (загальний, торгівля тощо)"},
-    chatSources = {whisper="Пошепки", party="Група", raid="Рейд", guild="Гільдія", say="Поруч", channel="Канал"},
+    chatSources = {whisper="Пошепки", party="Група", raid="Рейд", guild="Гільдія", channel="Канал"},
     unsupported = "Непідтримуваний формат тексту.", close = "Закрити",
 }

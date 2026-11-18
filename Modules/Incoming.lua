@@ -69,7 +69,8 @@ local function addTranslation(tab, main, event, group, text, author, ...)
         event=event, line=line, author=author, sender=sender, language=language, target=target })
     if not result or result.mode == "unchanged" then return end
 
-    local source = "[" .. ns.L.chatSources[group] .. "]"
+    local sourceName = ns.L.chatSources[group]
+    local source = sourceName and "[" .. sourceName .. "]" or ""
     local chatType = event:sub(10)
     local infoType = chatType
     if group == "channel" then
@@ -80,7 +81,8 @@ local function addTranslation(tab, main, event, group, text, author, ...)
         end
     end
     local info = ChatTypeInfo and ChatTypeInfo[infoType]
-    local message = source .. " " .. playerLink(author, chatType, channelIndex, line) .. ": " .. result.text
+    local player = playerLink(author, chatType, channelIndex, line)
+    local message = (source ~= "" and source .. " " or "") .. player .. ": " .. result.text
     local r, g, b, id
     local color = DB.settings.translationColor
     if color then r, g, b = color.r, color.g, color.b

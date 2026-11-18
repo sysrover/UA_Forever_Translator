@@ -3,6 +3,18 @@ local _, ns = ...
 ns.Data = {
     ["aliases"] = {
         ["en-uk"] = {
+            ["/"] = {
+                ["w"] = {
+                    ["me"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.whisper-me",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "напишіть мені пошепки",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
             ["1"] = {
                 ["sr"] = {
                     ["_id"] = "slang.loot.one-sr"
@@ -674,6 +686,17 @@ ns.Data = {
             ["brs"] = {
                 ["_id"] = "place.blackrock_spire"
             },
+            ["buff"] = {
+                ["_id"] = "game.buff"
+            },
+            ["buffs"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.game.buffs",
+                    ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" },
+                    ["text"] = "підсилення",
+                    ["weak"] = false
+                }
+            },
             ["but"] = {
                 ["_literal"] = {
                     ["id"] = "literal.but",
@@ -1138,6 +1161,18 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["experienced"] = {
+                ["raid"] = {
+                    ["leaders"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.experienced-raid-leaders",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "досвідчені керівники рейдів",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
             ["fetch"] = {
                 ["_literal"] = {
                     ["id"] = "literal.bring",
@@ -1245,6 +1280,16 @@ ns.Data = {
                         ["sourceRefs"] = { "project-authored:chat-0.1" },
                         ["text"] = "звідси",
                         ["weak"] = false
+                    }
+                },
+                ["the"] = {
+                    ["shadows"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.from-the-shadows",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "з тіней",
+                            ["weak"] = false
+                        }
                     }
                 }
             },
@@ -1910,6 +1955,16 @@ ns.Data = {
             ["lfw"] = {
                 ["_id"] = "slang.trade.lfw"
             },
+            ["light"] = {
+                ["rp"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.light-rp",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "ненав'язлива рольова гра",
+                        ["weak"] = false
+                    }
+                }
+            },
             ["line"] = {
                 ["of"] = {
                     ["sight"] = {
@@ -1965,6 +2020,30 @@ ns.Data = {
                     ["_morph"] = {
                         ["race.orc.diminutive.plural"] = {
                             ["nominative"] = true
+                        }
+                    }
+                }
+            },
+            ["long"] = {
+                ["-"] = {
+                    ["standing"] = {
+                        ["guild"] = {
+                            ["_literal"] = {
+                                ["id"] = "literal.long-standing-guild",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                                ["text"] = "давня гільдія",
+                                ["weak"] = false
+                            }
+                        }
+                    }
+                },
+                ["standing"] = {
+                    ["guild"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.long-standing-guild",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "давня гільдія",
+                            ["weak"] = false
                         }
                     }
                 }
@@ -2176,6 +2255,18 @@ ns.Data = {
             },
             ["mt"] = {
                 ["_id"] = "role.tank"
+            },
+            ["multiple"] = {
+                ["strike"] = {
+                    ["teams"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.multiple-strike-teams",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "кілька ударних загонів",
+                            ["weak"] = false
+                        }
+                    }
+                }
             },
             ["my"] = {
                 ["_literal"] = {
@@ -2807,6 +2898,14 @@ ns.Data = {
                 ["leader"] = {
                     ["_id"] = "slang.groups.rl"
                 },
+                ["leaders"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.raid-leaders",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "керівники рейдів",
+                        ["weak"] = false
+                    }
+                },
                 ["lockout"] = {
                     ["_id"] = "slang.groups.raid-lockout"
                 }
@@ -3016,6 +3115,14 @@ ns.Data = {
             },
             ["shaman"] = {
                 ["_id"] = "class.shaman"
+            },
+            ["shamans"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.class.shamans",
+                    ["sourceRefs"] = { "ua-forever:class.shaman" },
+                    ["text"] = "шамани",
+                    ["weak"] = false
+                }
             },
             ["shaper's"] = {
                 ["terrace"] = {
@@ -3239,6 +3346,16 @@ ns.Data = {
             ["strength"] = {
                 ["_byCategory"] = {
                     ["stats"] = "stat.strength"
+                }
+            },
+            ["strike"] = {
+                ["teams"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.strike-teams",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "ударні загони",
+                        ["weak"] = false
+                    }
                 }
             },
             ["summon"] = {
@@ -3734,6 +3851,14 @@ ns.Data = {
             },
             ["warlock"] = {
                 ["_id"] = "class.warlock"
+            },
+            ["warlocks"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.class.warlocks",
+                    ["sourceRefs"] = { "ua-forever:class.warlock" },
+                    ["text"] = "чорнокнижники",
+                    ["weak"] = false
+                }
             },
             ["warrior"] = {
                 ["_id"] = "class.warrior"
@@ -5478,6 +5603,16 @@ ns.Data = {
             ["гірництво"] = {
                 ["_id"] = "profession.mining"
             },
+            ["давня"] = {
+                ["гільдія"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.long-standing-guild",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "long-standing guild",
+                        ["weak"] = false
+                    }
+                }
+            },
             ["дай"] = {
                 ["_literal"] = {
                     ["id"] = "literal.give",
@@ -5882,6 +6017,18 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["досвідчені"] = {
+                ["керівники"] = {
+                    ["рейдів"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.experienced-raid-leaders",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "experienced raid leaders",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
             ["досі"] = {
                 ["_literal"] = {
                     ["id"] = "literal.still",
@@ -6006,6 +6153,14 @@ ns.Data = {
                         ["id"] = "literal.with_me",
                         ["sourceRefs"] = { "project-authored:chat-0.1" },
                         ["text"] = "with me",
+                        ["weak"] = false
+                    }
+                },
+                ["тіней"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.from-the-shadows",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "from the shadows",
                         ["weak"] = false
                     }
                 }
@@ -6543,6 +6698,16 @@ ns.Data = {
                     ["_id"] = "slang.groups.raid-lockout"
                 }
             },
+            ["керівники"] = {
+                ["рейдів"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.raid-leaders",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "raid leaders",
+                        ["weak"] = false
+                    }
+                }
+            },
             ["кидок"] = {
                 ["«"] = {
                     ["не"] = {
@@ -6719,6 +6884,18 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "buy",
                     ["weak"] = false
+                }
+            },
+            ["кілька"] = {
+                ["ударних"] = {
+                    ["загонів"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.multiple-strike-teams",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "multiple strike teams",
+                            ["weak"] = false
+                        }
+                    }
                 }
             },
             ["лети"] = {
@@ -7358,6 +7535,18 @@ ns.Data = {
                     ["_id"] = "slang.social.pst"
                 }
             },
+            ["напишіть"] = {
+                ["мені"] = {
+                    ["пошепки"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.whisper-me",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "/w me",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
             ["наручах"] = {
                 ["_byCategory"] = {
                     ["equipment"] = "equipment.bracers"
@@ -7794,6 +7983,18 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:place.scholomance" },
                     ["text"] = "Scholomance",
                     ["weak"] = false
+                }
+            },
+            ["ненав'язлива"] = {
+                ["рольова"] = {
+                    ["гра"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.light-rp",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "light RP",
+                            ["weak"] = false
+                        }
+                    }
                 }
             },
             ["нижня"] = {
@@ -9160,6 +9361,12 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["підсилення"] = {
+                ["_id"] = "game.buff"
+            },
+            ["підсилень"] = {
+                ["_id"] = "game.buff"
+            },
             ["підходь"] = {
                 ["_literal"] = {
                     ["id"] = "literal.come",
@@ -9924,6 +10131,16 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["ударні"] = {
+                ["загони"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.strike-teams",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "strike teams",
+                        ["weak"] = false
+                    }
+                }
+            },
             ["уже"] = {
                 ["_literal"] = {
                     ["id"] = "literal.already",
@@ -10196,6 +10413,14 @@ ns.Data = {
             ["чорнокнижника"] = {
                 ["_id"] = "class.warlock"
             },
+            ["чорнокнижники"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.class.warlocks",
+                    ["sourceRefs"] = { "ua-forever:class.warlock" },
+                    ["text"] = "warlocks",
+                    ["weak"] = false
+                }
+            },
             ["чорнокнижників"] = {
                 ["_id"] = "class.warlock"
             },
@@ -10226,6 +10451,14 @@ ns.Data = {
             },
             ["шамана"] = {
                 ["_id"] = "class.shaman"
+            },
+            ["шамани"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.class.shamans",
+                    ["sourceRefs"] = { "ua-forever:class.shaman" },
+                    ["text"] = "shamans",
+                    ["weak"] = false
+                }
             },
             ["шаманів"] = {
                 ["_id"] = "class.shaman"
@@ -13675,6 +13908,38 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.blackrock_spire",
                             ["sourceRefs"] = { "ua-forever:place.blackrock_spire" }
+                        }
+                    }
+                },
+                ["buff"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.buff",
+                            ["lemma"] = "buff",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.buff",
+                            ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["buffs"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "game.buff",
+                            ["lemma"] = "buff",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.buff",
+                            ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" }
                         }
                     }
                 },
@@ -27003,6 +27268,78 @@ ns.Data = {
                         }
                     }
                 },
+                ["підсилення"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.buff",
+                            ["lemma"] = "підсилення",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.buff",
+                            ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.buff",
+                            ["lemma"] = "підсилення",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.buff",
+                            ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "neuter",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "game.buff",
+                            ["lemma"] = "підсилення",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.buff",
+                            ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.buff",
+                            ["lemma"] = "підсилення",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.buff",
+                            ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["підсилень"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "neuter",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "game.buff",
+                            ["lemma"] = "підсилення",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.buff",
+                            ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["рада"] = {
                     ["з"] = {
                         ["розподілу"] = {
@@ -29231,6 +29568,19 @@ ns.Data = {
                     ["canonical"] = "Банк"
                 }
             },
+            ["game.buff"] = {
+                ["en"] = {
+                    ["canonical"] = "buff",
+                    ["plural"] = "buffs"
+                },
+                ["uk"] = {
+                    ["accusative"] = "підсилення",
+                    ["accusativePlural"] = "підсилення",
+                    ["canonical"] = "підсилення",
+                    ["genitivePlural"] = "підсилень",
+                    ["genitiveSingular"] = "підсилення"
+                }
+            },
             ["game.dungeon"] = {
                 ["en"] = {
                     ["canonical"] = "Dungeon"
@@ -31137,7 +31487,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 202,
+        ["concepts"] = 203,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 76,
@@ -31156,7 +31506,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "6473a03bff6b6806ec1cdf145d7f8710d26c6003f1c970637aa23c6d0249595e"
+        ["version"] = "61d0eb4611619359f5f9432b4635579e25aedb372631b7e16157200122a211d5"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -40247,6 +40597,31 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:game.bank" },
             ["status"] = "approved",
             ["uk"] = "Банк"
+        },
+        ["game.buff"] = {
+            ["category"] = "game",
+            ["en"] = "buff",
+            ["englishPlural"] = "buffs",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter",
+                ["number"] = "singular"
+            },
+            ["forms"] = {
+                ["accusative"] = "підсилення",
+                ["accusativePlural"] = "підсилення",
+                ["genitivePlural"] = "підсилень",
+                ["genitiveSingular"] = "підсилення"
+            },
+            ["id"] = "game.buff",
+            ["provenance"] = {
+                ["context"] = "beneficial game effect",
+                ["key"] = "buff",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "підсилення"
         },
         ["game.dungeon"] = {
             ["aliases"] = {

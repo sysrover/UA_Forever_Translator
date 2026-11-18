@@ -16,6 +16,7 @@ local function joinAt(tokens, index, joins)
     local current = tokens[index]
     local wordJoin = joins[current.key] or dashJoins[current.key]
     if wordJoin then return wordJoin end
+    if current.key == "!" or current.key == "?" then return sentenceJoins[current.key], true end
     -- A decimal separator is part of a number when followed without a gap.
     if tokens[index + 1].first <= current.last + 1 then return nil end
     if sentenceJoins[current.key] then return sentenceJoins[current.key], true end
@@ -163,7 +164,11 @@ function P.compose(text, tokens, direction, grammarFallback)
                 local sourceEnd = tokens[last + 1]
                 local hasEnd = sourceEnd and sentenceJoins[sourceEnd.key]
                 local replacement = match.text:gsub(hasEnd and "[.!?]+$" or "[.!]+$", "")
-                if start ~= 1 and not sentenceJoins[tokens[start - 1].key] then replacement = lowerStart(replacement) end
+                if start ~= 1 then
+                    local before = tokens[start - 1]
+                    if not sentenceJoins[before.key] then replacement = lowerStart(replacement)
+                    elseif before.last + 1 == tokens[start].first then replacement = " " .. replacement end
+                end
                 fragments[start] = {text = replacement, last = last, rule = match.rule, slots = match.slots}
                 accepted, nextSegment = accepted + 1, block + 1
                 break

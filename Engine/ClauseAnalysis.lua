@@ -29,6 +29,7 @@ local contracted = {
 local auxiliary = {
     can={modal="can"}, cannot={modal="can", negative=true}, ["can't"]={modal="can", negative=true},
     could={modal="could"}, ["couldn't"]={modal="could", negative=true},
+    might={modal="might"},
     must={modal="must"}, should={modal="should"}, ["shouldn't"]={modal="should", negative=true},
     will={tense="future", ellipsis=true}, ["won't"]={tense="future", negative=true, ellipsis=true},
     gonna={tense="future"},
@@ -385,9 +386,47 @@ end
 
 local needAgreement = {["потрібен"]="masculine", ["потрібна"]="feminine", ["потрібне"]="neuter", ["потрібні"]="plural"}
 
+local function politeRequest(document, first, limit, english)
+    local last = limit
+    if english then
+        if P.key(document, last, limit) ~= "please" then return nil end
+        last = last - 1
+    else
+        if P.key(document, last - 1, limit) ~= "будь" or P.key(document, last, limit) ~= "ласка" then return nil end
+        last = last - 2
+        if P.key(document, first, last) == "можна" then first = first + 1 end
+    end
+    if P.key(document, last, limit) == "," then last = last - 1 end
+    if last < first then return nil end
+    local opening = P.key(document, first, last)
+    local some = english and opening == "some" or not english and (opening == "кілька" or opening == "трохи")
+    local object, after = P.coordinated(document, first + (some and 1 or 0), last,
+        not english and some and "genitive" or "accusative")
+    if not object or after <= last then return nil end
+    local question = document.tokens[limit + 1] and document.tokens[limit + 1].key == "?"
+    return {kind="politeRequest", object=object, some=some, question=question}, limit + 1
+end
+
 simple = function(document, first, limit, previous, depth, indirect)
     local english = document.direction == "en-uk"
     local key = P.key(document, first, limit)
+    if not english and key == "можливо" and P.key(document, first + 1, limit) == "," and depth < 3 then
+        local start = first + 2
+        local tree, finish = simple(document, start, limit, previous, depth + 1, indirect)
+        if not tree and P.key(document, start, limit) == "це" then
+            local subject = personalSubject("it")
+            local negative = P.key(document, start + 1, limit) == "не"
+            tree = {kind="clause", subject=subject, copula=true, tense="present", negative=negative}
+            finish = predicate(document, tree, start + (negative and 2 or 1), limit)
+            if not tree.predicate then return nil end
+        end
+        if tree and finish and tree.kind == "clause" and tree.tense == "present" and tree.subject
+            and not tree.modal and not tree.imperative and not tree.where and not tree.why and not tree.aspect then
+            tree.modal = "might"
+            return tree, finish
+        end
+        return nil
+    end
     if english and key == "got" and document.tokens[limit + 1] and document.tokens[limit + 1].key == "?" then
         local object, finish = P.coordinated(document, first + 1, limit, "accusative")
         if object and finish > limit then
@@ -401,6 +440,8 @@ simple = function(document, first, limit, previous, depth, indirect)
     local special, after = duration(document, first, limit)
     if special then return special, after end
     special, after = wish(document, first, limit)
+    if special then return special, after end
+    special, after = politeRequest(document, first, limit, english)
     if special then return special, after end
     if not indirect then
         special, after = existentialQuestion(document, first, limit, depth)
@@ -528,6 +569,14 @@ simple = function(document, first, limit, previous, depth, indirect)
             return tree, index
         end
     end
+    if english and tree.modal == "might" then
+        if tree.where or tree.why then return nil end
+        if P.key(document, index, limit) == "be" then
+            tree.copula, index = true, index + 1
+        end
+    elseif not english and subject and P.key(document, index, limit) == "—" then
+        tree.copula, index = true, index + 1
+    end
     if tree.copula then
         if not subject and relativeSubject then
             subject, tree.subject, tree.inherited = relativeSubject, relativeSubject, true
@@ -554,6 +603,10 @@ simple = function(document, first, limit, previous, depth, indirect)
     if inverted and not subject then return nil end
     local afterVerb
     local contractedPredicate = contraction and contraction[3]
+    if (subject or inheritedSubject) and not contractedPredicate then
+        local adverb, following = adverbAt(document, index, limit)
+        if adverb then tree.leadingAdverb, index = adverb, following end
+    end
     tree.verb, afterVerb = verb(document, contractedPredicate and headIndex or index, limit,
         subject or inheritedSubject, aux ~= nil or sharedModal ~= nil, tree.imperative, nil, nil,
         contractedPredicate, inheritedSubject and previous)
@@ -669,13 +722,17 @@ function A.parse(document, first, limit)
     return {trees=trees, joins=joins, prefix=prefix}
 end
 
+function A.isAuxiliary(key)
+    return auxiliary[key] or copula[key] or negativeCopula[key] or contracted[key]
+end
+
 function A.hasClauseCue(document)
     local tokens = document.tokens
     if #tokens < 2 then return false end
     if document.direction == "en-uk" and tokens[1].key == "any" then return true end
     for index = 1, #tokens - 1 do
         local key = tokens[index].key
-        if contracted[key] or (index > 1 and (auxiliary[key] or copula[key] or negativeCopula[key])) then
+        if contracted[key] or (index > 1 and A.isAuxiliary(key)) then
             return true
         end
     end
