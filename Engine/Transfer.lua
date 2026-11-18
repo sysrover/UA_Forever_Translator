@@ -23,6 +23,33 @@ function T.render(tree, direction)
             if f.go then value = value .. (uk and ". І вирушаємо" or " and go") end
             return value .. (f.question and "?" or uk and "." or "")
         end
+        if f.classJoins then
+            local classes = {}
+            for index = 1, #f.classJoins + 1 do
+                local class = G.render(uk and "{class:genitiveSingular}" or "{class}",
+                    {class=s["class" .. index]}, direction)
+                if not class then return nil end
+                local join = f.classJoins[index - 1]
+                if join then
+                    classes[#classes + 1] = join == "comma" and ", "
+                        or uk and (join == "or" and " або " or " і ") or " " .. join .. " "
+                end
+                classes[#classes + 1] = uk and class or class:lower()
+            end
+            local amount = total or (s.count and s.count.raw)
+            if uk then output = amount and totalPlayers(amount) .. ": " or "Шукаємо "
+            else output = amount and "LF" .. amount .. "M " or "LFM " end
+            output = output .. table.concat(classes)
+            if s.role then
+                local role = render(uk and "{role:genitiveSingular}" or "{role}")
+                if not role then return nil end
+                output = output .. (uk and " на роль " or " ") .. role
+            end
+            output = appendLevel(output)
+            if s.place then output = output .. (uk and ". Місце: " or " for ") .. render("{place}") end
+            if f.lastSpot then output = output .. (uk and ". Залишилося одне місце" or ", last spot") end
+            return appendConditions(output)
+        end
         if f.roleJoins and #f.roleJoins > 0 then
             local roles = {}
             for n = 1, #f.roleJoins + 1 do

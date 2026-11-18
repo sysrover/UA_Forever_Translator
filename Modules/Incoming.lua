@@ -1,7 +1,7 @@
 local _, ns = ...
 local I = {}; ns.Incoming = I
 local C, DB = ns.Compat, ns.Database
-local listener, ready, triedToOpen
+local listener, ready, triedToOpen, wasShowingUA
 local registered = {}
 local function plain(value)
     return (value:gsub("|", "||"))
@@ -20,7 +20,17 @@ local function ownMessage(author, sender)
     end
     return false
 end
-local function addTranslation(tab, event, group, text, author, ...)
+local function mainDestination(settings)
+    local frame = settings.showInMain and DEFAULT_CHAT_FRAME
+    if frame and type(frame.AddMessage) == "function" then return frame end
+end
+
+local function display(frame, message, r, g, b, id)
+    if r then frame:AddMessage(message, r, g, b, id)
+    else frame:AddMessage(message) end
+end
+
+local function addTranslation(tab, main, event, group, text, author, ...)
     if not C.public(text, author, ...) then return end
     if type(text) ~= "string" or type(author) ~= "string" then return end
     if #text > ns.Limits.messageBytes then return end
@@ -47,11 +57,12 @@ local function addTranslation(tab, event, group, text, author, ...)
     end
     local info = ChatTypeInfo and ChatTypeInfo[chatType]
     local message = label .. "[" .. source .. "] [" .. plain(author) .. "]: " .. result.text
-    if info and C.public(info.r, info.g, info.b, info.id) then
-        tab:AddMessage(message, info.r, info.g, info.b, info.id)
-    else
-        tab:AddMessage(message)
-    end
+    local r, g, b, id
+    local color = DB.settings.translationColor
+    if color then r, g, b = color.r, color.g, color.b
+    elseif info and C.public(info.r, info.g, info.b, info.id) then r, g, b, id = info.r, info.g, info.b, info.id end
+    if tab then display(tab, message, r, g, b, id) end
+    if main and main ~= tab then display(main, message, r, g, b, id) end
     if DB.settings.logTranslations then
         ns.ChatLog.record(event, text, result, "en-uk")
     end
@@ -64,11 +75,12 @@ local function onEvent(_, event, ...)
         I.configure()
         return
     end
-    local tab = ns.UI.ChatTab.current()
     local settings = DB.settings
     local group = DB.eventGroups[event]
-    if tab and settings and settings.enabled and group and settings.channels[group] then
-        addTranslation(tab, event, group, ...)
+    if settings and settings.enabled and group and settings.channels[group] then
+        local tab = settings.showInUA and ns.UI.ChatTab.current()
+        local main = mainDestination(settings)
+        if tab or main then addTranslation(tab, main, event, group, ...) end
     end
 end
 
@@ -83,8 +95,10 @@ end
 function I.configure()
     if not ready or not DB.settings then return end
     local settings = DB.settings
-    local tab = ns.UI.ChatTab.current()
-    if not tab and settings.enabled and not triedToOpen then
+    if settings.showInUA and not wasShowingUA then triedToOpen = nil end
+    wasShowingUA = settings.showInUA
+    local tab = settings.showInUA and ns.UI.ChatTab.current()
+    if settings.showInUA and not tab and settings.enabled and not triedToOpen then
         if C.combat() then
             eventFrame():RegisterEvent("PLAYER_REGEN_ENABLED")
         else
@@ -93,8 +107,9 @@ function I.configure()
             triedToOpen = reason ~= "tabUnavailable"
         end
     end
+    local destination = tab or mainDestination(settings)
     for event, group in pairs(DB.eventGroups) do
-        local wanted = tab and settings.enabled and settings.channels[group]
+        local wanted = destination and settings.enabled and settings.channels[group]
         if wanted and not registered[event] then
             eventFrame():RegisterEvent(event)
             registered[event] = true

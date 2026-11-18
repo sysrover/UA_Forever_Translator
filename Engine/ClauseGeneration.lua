@@ -89,7 +89,7 @@ local function demonstrative(node, english, case, number)
     if case == "accusative" or case == "nominative" then return forms[number == "plural" and "plural" or node.gender] end
 end
 
-function G.noun(node, english, case, article)
+function G.noun(node, english, case, article, compoundModifier)
     if node.members then
         local values = {}
         for index, member in ipairs(node.members) do
@@ -106,7 +106,7 @@ function G.noun(node, english, case, article)
         local forms = english and node.pronoun.en or node.pronoun.uk
         return forms[case] or (english and forms.accusative)
     end
-    local number, requested = node.number, case
+    local number, requested = compoundModifier and "singular" or node.number, case
     if node.quantity then
         if english then
             number = tonumber(node.quantity) == 1 and "singular" or "plural"
@@ -142,6 +142,16 @@ function G.noun(node, english, case, article)
     end
     append(parts, value)
     value = table.concat(parts, " ")
+    if node.nominalObject then
+        local object = G.noun(node.nominalObject, english, node.nominalCase, false, english)
+        if not object then return nil end
+        value = english and (object .. " " .. value) or (value .. " " .. object)
+    end
+    if node.possessor then
+        local owner = adjective({entry=node.possessor}, english, requested, number, node.gender, node.animacy)
+        if not owner then return nil end
+        value = owner .. " " .. value
+    end
     if node.class then
         if english then
             value = ns.Engine.Normalize.word(node.class.term.en) .. " " .. value
@@ -167,7 +177,7 @@ function G.noun(node, english, case, article)
         return value
     end
     if node.quoted then return "\"" .. value .. "\"" end
-    if english then
+    if english and not node.possessor and not (node.nominalObject and node.nominalObject.possessor) then
         if node.article == "definite" then return "the " .. value end
         local proper = node.term and node.term.category == "places"
         local mass = node.entry and node.entry.head.mass
@@ -271,7 +281,7 @@ end
 local function subjectText(tree, english)
     if tree.inherited then return "" end
     if tree.subject then return G.noun(tree.subject, english, "nominative", false) end
-    if tree.imperative or tree.tense == "infinitive" or not english then return "" end
+    if tree.kind == "nounPhrase" or tree.imperative or tree.tense == "infinitive" or not english then return "" end
     local _, number, gender, key = agreement(tree)
     return inferredPronouns[key] or (number == "singular" and inferredPronouns[gender])
 end
@@ -329,9 +339,16 @@ end
 render = function(tree, english)
     if tree.kind == "duration" then return duration(tree, english) end
     if tree.kind == "wish" then
-        if tree.everyone then return english and "Good luck to everyone" or "Усім удачі" end
-        local recipient = G.noun(tree.recipient, english, "dative")
-        return recipient and (english and "Good luck to " or "Удачі ") .. recipient
+        local parts = {english and "Good luck" or tree.everyone and "Усім удачі" or "Удачі"}
+        if tree.everyone and english then append(parts, "to everyone") end
+        if tree.recipient then
+            local recipient = G.noun(tree.recipient, english, "dative")
+            if not recipient then return nil end
+            if english then append(parts, "to") end
+            append(parts, recipient)
+        end
+        if not addPrepositions(parts, tree, english) then return nil end
+        return table.concat(parts, " ")
     end
     local parts = {}
     local subject = subjectText(tree, english)

@@ -10355,6 +10355,8 @@ ns.Data = {
                 ["then"] = ", потім "
             },
             ["prefixes"] = {
+                ["ah right"] = "А, так, ",
+                ["oh right"] = "О, так, ",
                 ["ok"] = "Гаразд, ",
                 ["okay"] = "Гаразд, ",
                 ["right"] = "Так, ",
@@ -10373,6 +10375,7 @@ ns.Data = {
                 ["і"] = " and "
             },
             ["prefixes"] = {
+                ["а так"] = "Ah, right, ",
                 ["гаразд"] = "Okay, ",
                 ["добре"] = "Okay, ",
                 ["так"] = "Right, "
@@ -10705,6 +10708,11 @@ ns.Data = {
                 ["id"] = "drink",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Мені потрібно попити"
+            },
+            ["i see"] = {
+                ["id"] = "i_see_understanding",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зрозуміло"
             },
             ["i'm back"] = {
                 ["id"] = "back",
@@ -11418,6 +11426,11 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Let us take a break"
             },
+            ["зрозуміло"] = {
+                ["id"] = "i_see_understanding",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I see"
+            },
             ["зупиніться"] = {
                 ["id"] = "stop",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -11827,6 +11840,11 @@ ns.Data = {
                 ["id"] = "loot.need_this",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "I need this"
+            },
+            ["ясно"] = {
+                ["id"] = "i_see_understanding",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I see"
             },
             ["ідіть за мною"] = {
                 ["id"] = "follow",
@@ -30620,7 +30638,7 @@ ns.Data = {
         ["concepts"] = 198,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
-        ["phraseFamilies"] = 74,
+        ["phraseFamilies"] = 75,
         ["source"] = {
             ["approvalMeaning"] = "Editorially reviewed for this addon; not a claim of individual user approval.",
             ["catalogBuild"] = "1.60.1.70938",
@@ -30636,7 +30654,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "d7825f6cd425216e703e3e75d90b128f2af9e86562acccad5f07498e5504a36b"
+        ["version"] = "81594f216d8dd52ba8578d198d8799ff39dadb4b69e717739d874a40d767de2d"
     },
     ["rules"] = {
         ["en-uk"] = {

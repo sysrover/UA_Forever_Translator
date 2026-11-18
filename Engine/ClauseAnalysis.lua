@@ -211,21 +211,35 @@ local function wish(document, first, limit)
     local english = document.direction == "en-uk"
     local key = P.key(document, first, limit)
     local nextIndex = first + 1
+    local tree = {kind="wish"}
+    local requiresRecipient
     if english then
         if key == "good" and P.key(document, nextIndex, limit) == "luck" then
             nextIndex = nextIndex + 1
         elseif key ~= "goodluck" and key ~= "gl" then return end
         local separator = P.key(document, nextIndex, limit)
+        requiresRecipient = separator == "to"
         if separator == "to" or separator == "," then nextIndex = nextIndex + 1 end
     elseif (key == "усім" or key == "всім") and P.key(document, nextIndex, limit) == "удачі" then
-        return {kind="wish", everyone=true}, nextIndex + 1
+        tree.everyone, nextIndex = true, nextIndex + 1
     elseif key ~= "удачі" and key ~= "щасти" then return end
-    local recipient = P.key(document, nextIndex, limit)
-    local everyone = english and (recipient == "all" or recipient == "everyone" or recipient == "everybody")
-        or not english and (recipient == "усім" or recipient == "всім")
-    if everyone then return {kind="wish", everyone=true}, nextIndex + 1 end
-    local pronoun, after = P.noun(document, nextIndex, limit, "dative")
-    if pronoun and pronoun.pronoun then return {kind="wish", recipient=pronoun}, after end
+    if not tree.everyone then
+        local recipient = P.key(document, nextIndex, limit)
+        local everyone = english and (recipient == "all" or recipient == "everyone" or recipient == "everybody")
+            or not english and (recipient == "усім" or recipient == "всім")
+        if everyone then
+            tree.everyone, nextIndex = true, nextIndex + 1
+        else
+            local pronoun, after = P.noun(document, nextIndex, limit, "dative")
+            if pronoun and pronoun.pronoun then tree.recipient, nextIndex = pronoun, after end
+        end
+    end
+    if requiresRecipient and not (tree.everyone or tree.recipient) then return end
+    local target, after = P.preposition(document, nextIndex, limit)
+    if target and target.rule.id == "with" then
+        tree.prepositions, nextIndex = {target}, after
+    end
+    if tree.everyone or tree.recipient or tree.prepositions then return tree, nextIndex end
 end
 
 simple = function(document, first, limit, previous, depth)
@@ -403,9 +417,12 @@ function A.parse(document, first, limit)
             local noun, ending = P.noun(document, index, limit, "nominative")
             if noun then
                 local pp, finish = P.preposition(document, ending, limit)
-                if pp or (noun.adjectives and ending > limit) then
+                if pp or ((noun.adjectives or noun.possessor or noun.nominalObject) and ending > limit) then
                     tree, after = {kind="nounPhrase", subject=noun, prepositions=pp and {pp}}, finish or ending
                 end
+            else
+                local pp, finish = P.preposition(document, index, limit)
+                if pp and finish > limit then tree, after = {kind="nounPhrase", prepositions={pp}}, finish end
             end
         end
         if not tree or after <= index then break end
@@ -436,6 +453,7 @@ end
 function A.hasClauseCue(document)
     local tokens = document.tokens
     if #tokens < 2 then return false end
+    if document.direction == "en-uk" and tokens[1].key == "any" then return true end
     for index = 1, #tokens - 1 do
         local key = tokens[index].key
         if contracted[key] or (index > 1 and (auxiliary[key] or copula[key] or negativeCopula[key])) then

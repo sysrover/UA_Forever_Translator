@@ -34,10 +34,15 @@ function P.compose(text, tokens, direction, grammarFallback)
     local composition = ns.Data.composition and ns.Data.composition[direction]
     if not composition or #tokens == 0 or #tokens > 96 then return nil end
     local prefixes, joins = composition.prefixes, composition.joins
-    local first, prefix = 1, prefixes[tokens[1].key]
+    local first, prefixEnd, prefix = 1, 1, prefixes[tokens[1].key]
+    local second = tokens[2] and tokens[2].key == "," and 3 or 2
+    if tokens[second] and not tokens[second].protected then
+        local pair = prefixes[tokens[1].key .. " " .. tokens[second].key]
+        if pair then prefix, prefixEnd = pair, second end
+    end
     if prefix then
-        local separator = tokens[2] and tokens[2].key
-        first = (separator == "," or dashJoins[separator]) and 3 or 2
+        local separator = tokens[prefixEnd + 1] and tokens[prefixEnd + 1].key
+        first = prefixEnd + ((separator == "," or dashJoins[separator]) and 2 or 1)
         if first > #tokens then return nil end
     else
         local found

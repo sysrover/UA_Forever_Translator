@@ -50,6 +50,16 @@ local function curated(document, first, last, requiredCase, locationOnly)
     return selected
 end
 
+local function lexicalNoun(lexeme)
+    return {entry=lexeme, person=3, number=lexeme.form.number or lexeme.head.number or "singular",
+        gender=lexeme.form.gender or lexeme.head.gender, animacy=lexeme.head.animacy}
+end
+
+local function possessive(candidate)
+    local frame = candidate.lexeme.frame
+    return frame and frame.possessive
+end
+
 local function nounHead(document, first, limit, case, locationOnly)
     local key = P.key(document, first, limit)
     if not key then return nil end
@@ -91,13 +101,31 @@ local function nounHead(document, first, limit, case, locationOnly)
             or (reverseCase == "nominative" and candidate.form.case == nil)
     end)
     if lexeme then
-        return {entry=lexeme, person=3, number=lexeme.form.number or lexeme.head.number or "singular",
-            gender=lexeme.form.gender or lexeme.head.gender,
-            animacy=lexeme.head.animacy}, first + 1
+        local node = lexicalNoun(lexeme)
+        local frame = lexeme.lexeme.frame
+        if document.direction == "en-uk" and frame and frame.nominalModifier then
+            local head
+            local modifier = lexeme.lexeme.en
+            if first < limit then
+                head = L.choose(document, first + 1, "noun", nil, nil, function(candidate)
+                    local valency = candidate.lexeme.frame
+                    return valency and valency.nominalComplements and valency.nominalComplements[modifier]
+                end)
+            end
+            if head then
+                local compound = lexicalNoun(head)
+                local valency = head.lexeme.frame
+                node.number = valency.nominalComplements[modifier]
+                compound.nominalObject, compound.nominalCase = node, valency.nominalCase
+                return compound, first + 2
+            end
+            if frame.compoundAlias == key then return nil end
+        end
+        return node, first + 1
     end
 end
 
-function P.noun(document, first, limit, case, locationOnly, count)
+function P.noun(document, first, limit, case, locationOnly, count, simple)
     local index = first
     local key = P.key(document, index, limit)
     if key == "\"" then
@@ -116,12 +144,17 @@ function P.noun(document, first, limit, case, locationOnly, count)
     end
     local article = document.direction == "en-uk" and articles[key]
     local demonstrative = demonstratives[key]
+    local ownerIndex, owner = index
+    if not article and not demonstrative and not emphatic and not locationOnly and index <= limit then
+        owner = L.choose(document, index, "pron", nil, nil, possessive)
+    end
     if article or demonstrative then index = index + 1 end
+    if owner then index = index + 1 end
     local quantity = P.key(document, index, limit)
     if count ~= false and quantity and quantity:match("^%d+$") then
         index = index + 1
     else quantity = nil end
-    local adjectives, best, nextIndex = {}
+    local adjectives, best, nextIndex, headIndex = {}
     local degree = P.key(document, index, limit)
     local intensity
     if degree == "very" or degree == "дуже" or degree == "more" or degree == "більш" then
@@ -133,7 +166,7 @@ function P.noun(document, first, limit, case, locationOnly, count)
     for _ = 0, 2 do
         local head, after = nounHead(document, index, limit, case, locationOnly)
         if head and (not head.pronoun or index == first) and (not intensity or #adjectives > 0) then
-            best, nextIndex = head, after
+            best, nextIndex, headIndex = head, after, index
             if #adjectives > 0 then best.adjectives = {unpack(adjectives)} end
         end
         if index > limit then break end
@@ -145,9 +178,37 @@ function P.noun(document, first, limit, case, locationOnly, count)
         index = index + 1
     end
     if not best then return nil end
+    local en = document.direction == "en-uk"
+    if owner then
+        if best.raw or best.pronoun or quantity then return nil end
+        if best.term and not best.gender and best.number ~= "plural" then
+            local normalize = ns.Engine.Normalize.word
+            local enLemma, ukLemma = normalize(best.term.en), normalize(best.term.uk)
+            local matchingEntry = L.choose(document, headIndex, "noun", nil, nil, function(candidate)
+                return candidate.lexeme.en == enLemma and candidate.lexeme.uk == ukLemma
+            end)
+            if matchingEntry then
+                best.gender, best.animacy = matchingEntry.head.gender, best.animacy or matchingEntry.head.animacy
+            end
+        end
+        if not en then
+            owner = L.choose(document, ownerIndex, "pron", {case=case, number=best.number,
+                gender=best.number ~= "plural" and best.gender or nil}, nil, possessive)
+            if not owner then return nil end
+        end
+        if best.nominalObject then best.nominalObject.possessor = owner
+        else best.possessor = owner end
+    end
     best.article, best.quantity, best.demonstrative = article, quantity, demonstrative
     best.emphatic = emphatic
-    if document.direction == "en-uk" and best.term and best.term.category == "classes"
+    local frame = best.entry and best.entry.lexeme.frame
+    if not en and not simple and frame and frame.nominalComplements then
+        local object, after = P.noun(document, nextIndex, limit, frame.nominalCase, false, false, true)
+        if object and object.entry and frame.nominalComplements[object.entry.lexeme.en] then
+            best.nominalObject, best.nominalCase, nextIndex = object, frame.nominalCase, after
+        end
+    end
+    if en and best.term and best.term.category == "classes"
         and P.key(document, nextIndex, limit) == "trainer" then
         local head, after = nounHead(document, nextIndex, limit, case)
         if head and head.entry and head.entry.lexeme.sense == "project:trainer.person" then

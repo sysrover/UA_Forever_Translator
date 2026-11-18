@@ -37,15 +37,44 @@ local function installHooks()
     hooksInstalled = true
 end
 
-local function restoreWindow()
-    local id = UA_Forever_TranslatorTabID
+local function hasSavedSubscriptions(getter, id)
+    if type(getter) ~= "function" then return nil end
+    local ok, first = pcall(getter, id)
+    if not ok or C.secret(first) then return nil end
+    return first ~= nil and first ~= ""
+end
+
+local function reusableWindow(id)
     if C.secret(id) or type(id) ~= "number" or id < 1 or id > Constants.ChatFrameConstants.MaxChatWindows or id % 1 ~= 0
-        or FCF_IsChatWindowIndexReserved(id) or not FCF_IsChatWindowIndexActive(id) then return nil end
+        or FCF_IsChatWindowIndexReserved(id) then return nil end
     local frame = FCF_GetChatFrameByID(id)
-    if not frame or C.secret(frame.name) or frame.name ~= L.tabName or frame.customEventHandler then return nil end
-    -- A slot can be reused by the player between sessions.
-    if next(frame.messageTypeList) or next(frame.channelList) then return nil end
-    return frame, id
+    if not frame or C.secret(frame.name) or frame.customEventHandler or frame == DEFAULT_CHAT_FRAME then return nil end
+    local active = FCF_IsChatWindowIndexActive(id)
+    local name = frame.name
+    -- Docked tabs can still be hidden while WoW is restoring chat windows.
+    if type(GetChatWindowInfo) == "function" then
+        local ok, savedName, _, _, _, _, _, shown, _, docked = pcall(GetChatWindowInfo, id)
+        if ok and C.public(savedName, shown, docked) and type(savedName) == "string" and savedName ~= "" then
+            name = savedName
+            active = active or shown == true or docked == true or (type(docked) == "number" and docked > 0)
+        end
+    end
+    if not active or name ~= L.tabName then return nil end
+    local groups = hasSavedSubscriptions(GetChatWindowMessages, id)
+    local channels = hasSavedSubscriptions(GetChatWindowChannels, id)
+    if groups == nil then groups = type(frame.messageTypeList) ~= "table" or next(frame.messageTypeList) ~= nil end
+    if channels == nil then channels = type(frame.channelList) ~= "table" or next(frame.channelList) ~= nil end
+    if not groups and not channels then return frame end
+end
+
+local function restoreWindow()
+    local saved = UA_Forever_TranslatorTabID
+    local frame = reusableWindow(saved)
+    if frame then return frame, saved end
+    for id = 1, Constants.ChatFrameConstants.MaxChatWindows do
+        frame = reusableWindow(id)
+        if frame then return frame, id end
+    end
 end
 
 local function show(frame)
@@ -85,6 +114,7 @@ function T.open(selectWindow)
         ok, frame, id = pcall(FCF_OpenNewWindow, L.tabName, true)
         if not ok then return nil, "tabUnavailable" end
         if not frame then return nil, "tabFull" end
+        if type(id) ~= "number" then id = C.read(frame, "GetID") end
         if not selectWindow and previous then FCF_SelectDockFrame(previous) end
         if not C.secret(editBox) then ChatFrameUtil.SetLastActiveWindow(editBox) end
     elseif selectWindow then

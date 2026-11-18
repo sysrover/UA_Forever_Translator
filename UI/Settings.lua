@@ -1,6 +1,32 @@
 local _, ns = ...
 local S = {}; ns.UI.Settings = S
 local C, L, DB = ns.Compat, ns.L, ns.Database
+
+local function pickTranslationColor()
+    if C.combat() then C.print(L.combat); return end
+    local picker = ColorPickerFrame
+    if not picker or type(picker.SetupColorPickerAndShow) ~= "function" or type(picker.GetColorRGB) ~= "function" then
+        C.print(L.colorPickerUnavailable)
+        return
+    end
+    local previous = DB.settings.translationColor
+    local r, g, b = 1, 1, 1
+    if previous then r, g, b = previous.r, previous.g, previous.b end
+    picker:SetupColorPickerAndShow({
+        r=r, g=g, b=b, hasOpacity=false,
+        swatchFunc=function()
+            local red, green, blue = picker:GetColorRGB()
+            if not C.public(red, green, blue) then return end
+            if not previous and red == r and green == g and blue == b then DB.setTranslationColor()
+            else DB.setTranslationColor(red, green, blue) end
+        end,
+        cancelFunc=function()
+            if previous then DB.setTranslationColor(previous.r, previous.g, previous.b)
+            else DB.setTranslationColor() end
+        end,
+    })
+end
+
 local function refresh(page)
     if not page.controls or not DB.settings or not page:IsVisible() then return end
     for _, entry in ipairs(page.controls) do
@@ -9,6 +35,10 @@ local function refresh(page)
             entry.control:SetChecked(checked)
         end
     end
+    local color = DB.settings.translationColor
+    if color then page.colorSwatch:SetColorTexture(color.r, color.g, color.b)
+    else page.colorSwatch:SetColorTexture(1, 1, 1) end
+    page.colorReset:SetEnabled(color ~= nil)
 end
 
 local function populate(page)
@@ -38,6 +68,8 @@ local function populate(page)
         y = y - 30
     end
     addCheck(L.enabledLabel, function() return DB.settings.enabled end, function(v) DB.settings.enabled = v end)
+    addCheck(L.showInUA, function() return DB.settings.showInUA end, function(v) DB.settings.showInUA = v end)
+    addCheck(L.showInMain, function() return DB.settings.showInMain end, function(v) DB.settings.showInMain = v end)
     addCheck(L.own, function() return DB.settings.own end, function(v) DB.settings.own = v end)
     addCheck(L.logTranslations, function() return DB.settings.logTranslations end,
         function(v) DB.settings.logTranslations = v end)
@@ -46,6 +78,28 @@ local function populate(page)
         addCheck(L.channels[group], function() return DB.settings.channels[group] end,
             function(v) DB.settings.channels[group] = v end)
     end
+
+    local colorButton = C.frame("Button", page, "UIPanelButtonTemplate")
+    colorButton:SetPoint("TOPLEFT", 20, y)
+    colorButton:SetSize(164, 24)
+    colorButton:SetText(L.translationColor)
+    C.font(colorButton:GetFontString())
+    colorButton:SetScript("OnClick", pickTranslationColor)
+
+    local swatch = page:CreateTexture(nil, "ARTWORK")
+    swatch:SetSize(18, 18)
+    swatch:SetPoint("LEFT", colorButton, "RIGHT", 8, 0)
+    page.colorSwatch = swatch
+
+    local reset = C.frame("Button", page, "UIPanelButtonTemplate")
+    reset:SetPoint("LEFT", swatch, "RIGHT", 12, 0)
+    reset:SetSize(145, 24)
+    reset:SetText(L.channelColor)
+    C.font(reset:GetFontString())
+    reset:SetScript("OnClick", function() DB.setTranslationColor() end)
+    page.colorReset = reset
+
+    y = y - 36
     local note = page:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
     C.font(note)
     note:SetPoint("TOPLEFT", 25, y - 5)
@@ -99,7 +153,7 @@ function S.open()
     if not S.fallback then
         local page = C.frame("Frame", UIParent, "BackdropTemplate")
         page:Hide()
-        page:SetSize(540, 430)
+        page:SetSize(540, 510)
         page:SetPoint("CENTER")
         page:SetFrameStrata("DIALOG")
         page:EnableMouse(true)

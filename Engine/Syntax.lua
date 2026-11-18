@@ -135,6 +135,28 @@ local function recruitLevel(p, uk)
     return true
 end
 
+local function recruitClasses(p, uk)
+    local start = p.i
+    if not uk then p:any("a", "an") end
+    if not p:noun("class1", "classes") then p.i = start; return false end
+    local joins = {}
+    for index = 2, 4 do
+        local beforeJoin = p.i
+        local comma = p:word(",")
+        local join = p:any("or", "/", "або") and "or"
+            or p:any("and", "&", "та", "і", "й") and "and"
+            or comma and "comma"
+        if not join or not p:noun("class" .. index, "classes") then p.i = beforeJoin; break end
+        joins[#joins + 1] = join
+    end
+    local beforeRole = p.i
+    if not uk or p:phrase("на роль") then
+        if not p:noun("role", "roles") then p.i = beforeRole end
+    end
+    p.classJoins = joins
+    return true
+end
+
 local function recruit(p, direction)
     local uk = direction == "uk-en"
     local leadingPlace
@@ -172,6 +194,8 @@ local function recruit(p, direction)
                     break
                 end
             end
+        elseif not role and recruitClasses(p, uk) then
+            role = true
         elseif not p.slots.level and recruitLevel(p, uk) then
             -- The level belongs to the recruitment regardless of its position.
         elseif not place then
@@ -208,7 +232,8 @@ local function recruit(p, direction)
             if amount and tonumber(amount.raw) > 1 then return end
         end
     end
-    return p:finish("recruit", {lastSpot=lastSpot, go=go, roleJoins=roleJoins, run=run, summon=summon})
+    return p:finish("recruit", {lastSpot=lastSpot, go=go, roleJoins=roleJoins, classJoins=p.classJoins,
+        run=run, summon=summon})
 end
 
 local function enhancement(p, direction)
