@@ -42111,6 +42111,20 @@ ns.Linguistics = {
                             ["id"] = 4
                         }
                     },
+                    ["someone"] = {
+                        {
+                            ["case"] = "nominative",
+                            ["id"] = 8
+                        },
+                        {
+                            ["case"] = "accusative",
+                            ["id"] = 8
+                        },
+                        {
+                            ["case"] = "dative",
+                            ["id"] = 8
+                        }
+                    },
                     ["their"] = {
                         {
                             ["case"] = "possessive",
@@ -42271,6 +42285,32 @@ ns.Linguistics = {
                             ["id"] = 5
                         }
                     },
+                    ["кимось"] = {
+                        {
+                            ["case"] = "instrumental",
+                            ["id"] = 8
+                        }
+                    },
+                    ["когось"] = {
+                        {
+                            ["case"] = "genitive",
+                            ["id"] = 8
+                        },
+                        {
+                            ["case"] = "accusative",
+                            ["id"] = 8
+                        }
+                    },
+                    ["комусь"] = {
+                        {
+                            ["case"] = "dative",
+                            ["id"] = 8
+                        },
+                        {
+                            ["case"] = "locative",
+                            ["id"] = 8
+                        }
+                    },
                     ["мене"] = {
                         {
                             ["case"] = "genitive",
@@ -42403,6 +42443,12 @@ ns.Linguistics = {
                         {
                             ["case"] = "locative",
                             ["id"] = 2
+                        }
+                    },
+                    ["хтось"] = {
+                        {
+                            ["case"] = "nominative",
+                            ["id"] = 8
                         }
                     },
                     ["я"] = {
@@ -42674,6 +42720,24 @@ ns.Linguistics = {
                     ["instrumental"] = "ними",
                     ["locative"] = "них",
                     ["nominative"] = "вони"
+                }
+            },
+            {
+                ["en"] = {
+                    ["accusative"] = "someone",
+                    ["dative"] = "someone",
+                    ["nominative"] = "someone"
+                },
+                ["id"] = "someone",
+                ["number"] = "singular",
+                ["person"] = 3,
+                ["uk"] = {
+                    ["accusative"] = "когось",
+                    ["dative"] = "комусь",
+                    ["genitive"] = "когось",
+                    ["instrumental"] = "кимось",
+                    ["locative"] = "комусь",
+                    ["nominative"] = "хтось"
                 }
             }
         }
@@ -68356,7 +68420,7 @@ ns.Linguistics = {
         "name\tназва\tnoun\t10731\t48\tproject:name.identity\t-100\t"
     },
     ["manifest"] = {
-        ["authoredSha256"] = "f47fb7b5a4b271772461ee47e6ef42c97bbfc64ed311c46c277730c5bf3f8645",
+        ["authoredSha256"] = "bbfceea9f24924167721e7581ebf332b66587682301946fb9f0df19e19e86e01",
         ["englishDate"] = "2026.09.21",
         ["englishForms"] = 33290,
         ["englishSha256"] = "2e5dfd0b86e5d9a8dd3d5f6eff932285829a5d3ef8d2cc6e8c6558d7e06583e3",

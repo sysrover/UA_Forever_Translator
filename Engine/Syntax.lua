@@ -174,8 +174,14 @@ local function recruit(p, direction)
     local summon = p:any("can summon", "можемо прикликати", ". можемо прикликати")
     if p:any("and go", "then go", "і йдемо", "і вирушаємо", ". і вирушаємо") then go = true end
     if not role and not (place and (p.slots.count or p.slots.total)) then return end
-    local slotsNeeded = p.slots.total or p.slots.count
-    if lastSpot and slotsNeeded and tonumber(slotsNeeded.raw) > 1 then return end
+    if lastSpot then
+        local total = p.slots.total
+        if total and tonumber(total.raw) > 1 then return end
+        for n = 1, #roleJoins + 1 do
+            local amount = p.slots[n == 1 and "count" or "count" .. n]
+            if amount and tonumber(amount.raw) > 1 then return end
+        end
+    end
     return p:finish("recruit", {lastSpot=lastSpot, go=go, roleJoins=roleJoins, run=run, summon=summon})
 end
 

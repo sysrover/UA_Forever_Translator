@@ -29,6 +29,10 @@ local auxiliary = {
     ["можу"]={modal="can", person=1, number="singular"}, ["можеш"]={modal="can", person=2, number="singular"},
     ["може"]={modal="can", person=3, number="singular"}, ["можемо"]={modal="can", person=1, number="plural"},
     ["можете"]={modal="can", person=2, number="plural"}, ["можуть"]={modal="can", person=3, number="plural"},
+    ["міг"]={modal="could", number="singular", gender="masculine"},
+    ["могла"]={modal="could", number="singular", gender="feminine"},
+    ["могло"]={modal="could", number="singular", gender="neuter"},
+    ["могли"]={modal="could", number="plural"},
     ["буду"]={tense="future", ellipsis=true, person=1, number="singular"},
     ["будеш"]={tense="future", ellipsis=true, person=2, number="singular"},
     ["буде"]={tense="future", ellipsis=true, person=3, number="singular"},
@@ -284,7 +288,14 @@ simple = function(document, first, limit, previous, depth)
     if aux then
         tree.tense, tree.modal, tree.negative = aux.tense, aux.modal, tree.negative or aux.negative
         tree.inferred = aux.person and {person=aux.person, number=aux.number} or nil
-        if subject and aux.person and (aux.person ~= subject.person or aux.number ~= subject.number) then return nil end
+        local auxiliarySubject = subject or (previous and previous.subject)
+        if auxiliarySubject then
+            if (aux.person and aux.person ~= auxiliarySubject.person)
+                or (aux.number and aux.number ~= auxiliarySubject.number)
+                or (aux.gender and auxiliarySubject.gender and aux.gender ~= auxiliarySubject.gender) then return nil end
+        elseif not english and aux.modal == "could" then
+            return nil
+        end
         if aux.ellipsis and index > limit and (subject or tree.inferred) then
             tree.elliptic = true
             return tree, index
@@ -316,6 +327,25 @@ simple = function(document, first, limit, previous, depth)
     tree.tense = tree.tense or tree.verb.form.tense or "present"
     local finish = complements(document, tree, index + 1, limit, depth)
     if finish then return tree, finish end
+end
+
+local function explicitTime(tree)
+    if tree.leadingAdverb and tree.leadingAdverb.time then return tree.leadingAdverb.time end
+    for _, adverb in ipairs(tree.adverbs or {}) do
+        if adverb.time then return adverb.time end
+    end
+end
+
+local function chooseModalSense(tree, pastContext)
+    local time = explicitTime(tree)
+    local past = time == "past" or (time ~= "nonpast" and (pastContext or tree.tense == "past"))
+    if tree.modal == "could" and tree.verb and lexemeFrame(tree.verb).possibleOutcome
+        and tree.subject and not past and not tree.question and not tree.negative then
+        tree.modalSense = "possibility"
+    end
+    for _, embedded in ipairs(tree.content or {}) do
+        chooseModalSense(embedded, past)
+    end
 end
 
 function A.parse(document, first, limit)
@@ -360,6 +390,13 @@ function A.parse(document, first, limit)
         else break end
     end
     if #trees == 0 or #joins >= #trees or index <= limit then return nil end
+    if document.direction == "en-uk" then
+        local pastContext = false
+        for _, tree in ipairs(trees) do
+            if tree.tense == "past" or explicitTime(tree) == "past" then pastContext = true; break end
+        end
+        for _, tree in ipairs(trees) do chooseModalSense(tree, pastContext) end
+    end
     return {trees=trees, joins=joins, prefix=prefix}
 end
 

@@ -201,17 +201,17 @@ end
 local function ukrainianVerb(tree)
     local entry = tree.verb
     local person, number, gender, key = agreement(tree)
+    local frame = entry.lexeme.frame or {}
     local lemma = entry.lexeme.uk
     local form
     if tree.imperative then
         form = L.inflect(entry, {mood="imperative", person=2, number="singular"})
     elseif tree.modal or tree.tense == "infinitive" then
-        form = lemma
+        form = (tree.modal == "can" or tree.modalSense == "possibility") and frame.possibleOutcome or lemma
     elseif tree.tense == "past" then
         if number == "singular" and not gender then return nil end
         local features = {tense="past", mood="indicative", number=number, gender=number == "singular" and gender or nil}
-        local frame = entry.lexeme.frame
-        local completed = tree.aspect == "perfect" and frame and frame.completed
+        local completed = tree.aspect == "perfect" and frame.completed
         if completed then form = L.inflectLemma(completed, "verb", features)
         else form = L.inflect(entry, features) end
     elseif tree.tense == "future" and entry.head.aspect ~= "perfective" then
@@ -222,7 +222,7 @@ local function ukrainianVerb(tree)
     if not form then return nil end
     if tree.modal then
         local modal = ukrainianModals[tree.modal]
-        if tree.modal == "can" then modal = modal[key]
+        if tree.modal == "can" or tree.modalSense == "possibility" then modal = ukrainianModals.can[key]
         elseif tree.modal == "could" then modal = modal[number == "plural" and "plural" or gender]
         elseif tree.modal == "must" then
             modal = L.inflectLemma(modal, "verb", {tense="present", number=number, person=person, mood="indicative"})

@@ -43,14 +43,18 @@ function T.render(tree, direction)
             return appendConditions(output)
         end
         if uk then
-            if f.lastSpot and s.role and s.place and (not (s.count or s.total)
+            if f.lastSpot and s.role and s.place and not (s.count and s.total) and (not (s.count or s.total)
                 or (s.count or s.total).raw == "1") then
                 output = render("Шукаємо {role:genitiveSingular} — {place}. Залишилося одне місце.")
                 if output then return appendConditions((output:gsub("%.$", ""))) end
                 return nil
             end
             if s.role then
-                if total then
+                if total and s.count then
+                    local role = render("{count} {role:counted}")
+                    if not role then return end
+                    output = totalPlayers(total) .. ": " .. role .. "."
+                elseif total then
                     output = render("Набір у групу: ще {total}; роль: {role}.")
                 elseif s.count then
                     output = render("Шукаємо {count} {role:counted}.")
@@ -63,7 +67,9 @@ function T.render(tree, direction)
             if f.lastSpot then output = output .. " Залишилося одне місце." end
         else
             output = total and "LF" .. total .. "M" or s.count and render("LF{count}M") or "LFM"
-            if s.role then output = output .. " " .. render("{role}") end
+            if s.role then
+                output = output .. " " .. render(total and s.count and "{count} {role}" or "{role}")
+            end
             if s.place then output = output .. " for " .. render("{place}") end
             if f.lastSpot then output = output .. ", last spot" end
         end
