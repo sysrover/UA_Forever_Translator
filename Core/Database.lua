@@ -30,4 +30,5 @@ function DB.changed()
     DB.revision = DB.revision + 1
     if ns.Translator then ns.Translator.clearCache() end
     if ns.Incoming then ns.Incoming.configure() end
+    if ns.UI.Settings then ns.UI.Settings.refreshVisible() end
 end

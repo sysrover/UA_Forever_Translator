@@ -12,10 +12,11 @@ Core\Database.lua
 UI\LocaleUk.lua
 Data\Dictionary.lua
 Data\GeneralUkEn.lua
+Data\GeneralEnUk.lua
 Engine\Markup.lua
 Engine\Normalize.lua
 Engine\Tokenizer.lua
-Engine\GeneralUkEn.lua
+Engine\GeneralDictionary.lua
 Engine\Dictionary.lua
 Engine\Grammar.lua
 Engine\Parser.lua

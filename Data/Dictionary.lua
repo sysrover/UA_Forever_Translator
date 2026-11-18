@@ -159,6 +159,14 @@ ns.Data = {
                 ["_id"] = "place.temple_of_ahn_qiraj"
             },
             ["are"] = {
+                ["available"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.trade.are-available",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "доступні",
+                        ["weak"] = false
+                    }
+                },
                 ["you"] = {
                     ["coming"] = {
                         ["_literal"] = {
@@ -408,6 +416,42 @@ ns.Data = {
                         ["sourceRefs"] = { "project-authored:chat-0.1" },
                         ["text"] = "принеси нам",
                         ["weak"] = false
+                    }
+                },
+                ["your"] = {
+                    ["materials"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.trade.bring-materials",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "Приносьте свої матеріали",
+                            ["weak"] = false
+                        }
+                    },
+                    ["mats"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.trade.bring-materials",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "Приносьте свої матеріали",
+                            ["weak"] = false
+                        }
+                    },
+                    ["own"] = {
+                        ["materials"] = {
+                            ["_literal"] = {
+                                ["id"] = "literal.trade.bring-materials",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                                ["text"] = "Приносьте свої матеріали",
+                                ["weak"] = false
+                            }
+                        },
+                        ["mats"] = {
+                            ["_literal"] = {
+                                ["id"] = "literal.trade.bring-materials",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                                ["text"] = "Приносьте свої матеріали",
+                                ["weak"] = false
+                            }
+                        }
                     }
                 }
             },
@@ -680,8 +724,26 @@ ns.Data = {
                     }
                 }
             },
+            ["enchant"] = {
+                ["services"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.trade.enchanting-services",
+                        ["sourceRefs"] = { "ua-forever:profession.enchanting", "project-authored:chat-0.1" },
+                        ["text"] = "послуги із зачарування",
+                        ["weak"] = false
+                    }
+                }
+            },
             ["enchanting"] = {
-                ["_id"] = "profession.enchanting"
+                ["_id"] = "profession.enchanting",
+                ["services"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.trade.enchanting-services",
+                        ["sourceRefs"] = { "ua-forever:profession.enchanting", "project-authored:chat-0.1" },
+                        ["text"] = "послуги із зачарування",
+                        ["weak"] = false
+                    }
+                }
             },
             ["enemies"] = {
                 ["_literal"] = {
@@ -1016,6 +1078,29 @@ ns.Data = {
             ["hp"] = {
                 ["_id"] = "game.health"
             },
+            ["huge"] = {
+                ["list"] = {
+                    ["of"] = {
+                        ["enchants"] = {
+                            ["to"] = {
+                                ["choose"] = {
+                                    ["from"] = {
+                                        ["_literal"] = {
+                                            ["id"] = "literal.trade.enchant-selection",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:profession.enchanting",
+                                                "project-authored:chat-0.1"
+                                            },
+                                            ["text"] = "Великий вибір зачарувань",
+                                            ["weak"] = false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             ["hunter"] = {
                 ["_id"] = "class.hunter"
             },
@@ -1074,6 +1159,22 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "в",
                     ["weak"] = true
+                },
+                ["stormwind"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.place.in-stormwind",
+                        ["sourceRefs"] = { "ua-forever:place.stormwind" },
+                        ["text"] = "у Штормовії",
+                        ["weak"] = false
+                    }
+                },
+                ["sw"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.place.in-stormwind",
+                        ["sourceRefs"] = { "ua-forever:place.stormwind" },
+                        ["text"] = "у Штормовії",
+                        ["weak"] = false
+                    }
                 }
             },
             ["inn"] = {
@@ -1148,6 +1249,20 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "убий",
                     ["weak"] = false
+                }
+            },
+            ["large"] = {
+                ["selection"] = {
+                    ["of"] = {
+                        ["enchants"] = {
+                            ["_literal"] = {
+                                ["id"] = "literal.trade.enchant-selection",
+                                ["sourceRefs"] = { "ua-forever:profession.enchanting", "project-authored:chat-0.1" },
+                                ["text"] = "Великий вибір зачарувань",
+                                ["weak"] = false
+                            }
+                        }
+                    }
                 }
             },
             ["later"] = {
@@ -1853,6 +1968,14 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["services"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.trade.services",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "послуги",
+                    ["weak"] = false
+                }
+            },
             ["sfk"] = {
                 ["_id"] = "place.shadowfang_keep"
             },
@@ -2227,6 +2350,44 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["tips"] = {
+                ["appreciated"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.trade.tips-appreciated",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "Буду вдячний за чайові",
+                        ["weak"] = false
+                    }
+                },
+                ["are"] = {
+                    ["appreciated"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.trade.tips-appreciated",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "Буду вдячний за чайові",
+                            ["weak"] = false
+                        }
+                    },
+                    ["greatly"] = {
+                        ["appreciated"] = {
+                            ["_literal"] = {
+                                ["id"] = "literal.trade.tips-appreciated",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                                ["text"] = "Буду вдячний за чайові",
+                                ["weak"] = false
+                            }
+                        }
+                    }
+                },
+                ["welcome"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.trade.tips-appreciated",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "Буду вдячний за чайові",
+                        ["weak"] = false
+                    }
+                }
+            },
             ["to"] = {
                 ["_literal"] = {
                     ["id"] = "literal.to",
@@ -2487,6 +2648,20 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "чому",
                     ["weak"] = false
+                }
+            },
+            ["wide"] = {
+                ["selection"] = {
+                    ["of"] = {
+                        ["enchants"] = {
+                            ["_literal"] = {
+                                ["id"] = "literal.trade.enchant-selection",
+                                ["sourceRefs"] = { "ua-forever:profession.enchanting", "project-authored:chat-0.1" },
+                                ["text"] = "Великий вибір зачарувань",
+                                ["weak"] = false
+                            }
+                        }
+                    }
                 }
             },
             ["winterspring"] = {
@@ -9514,7 +9689,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 81,
-        ["version"] = "0a09725a44f676839acf041efb0695038ccd4efd1ac197cf757fe5353a17481c"
+        ["version"] = "d2b26b930b6270d208bd36db4b5b676d8b99a3f5ed0ad7281f393d0f6ac534e0"
     },
     ["rules"] = {
         ["en-uk"] = {

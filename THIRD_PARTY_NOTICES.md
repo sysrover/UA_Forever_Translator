@@ -11,3 +11,9 @@ World of Warcraft, client fonts, and game content belong to their respective rig
 The imported Lua data is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). This adaptation extracts brief English equivalents, filters explanatory prose, normalizes Ukrainian spelling keys, and packs entries and inflected aliases into a lookup index. The downloaded archive has SHA-256 `690c61e8bb7673e0bdeab6f0bd5c5884f648998373dfdd9b04b9c5d4e7bfb76d`.
 
 A separate distribution license has not been selected for the addon's original code.
+
+## General English–Ukrainian dictionary
+
+[Data/GeneralEnUk.lua](Data/GeneralEnUk.lua) adapts the [KOReader Dicts English → Ukrainian StarDict dictionary](https://danielgregorini.github.io/koreader-dicts/ru/en-uk/) by Daniel Gregorini and contributors, built on 2026-09-21 from [English Wiktionary](https://en.wiktionary.org/) via [Kaikki / Wiktextract](https://kaikki.org/) and [Princeton University WordNet 3.0](https://wordnet.princeton.edu/).
+
+The adaptation is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). It selects a short Ukrainian gloss per English headword, drops ambiguously mapped aliases, and packs single-token keys and their inflected forms into a lookup index. The downloaded archive has SHA-256 `2e5dfd0b86e5d9a8dd3d5f6eff932285829a5d3ef8d2cc6e8c6558d7e06583e3`.
