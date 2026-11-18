@@ -128,7 +128,9 @@ function P.compose(text, tokens, direction, grammarFallback)
             if match then
                 local last = finish
                 while last > start and tokens[last].key:match("^[.!?]$") do last = last - 1 end
-                local replacement = match.text:gsub(last < finish and "[.!?]+$" or "[.!]+$", "")
+                local sourceEnd = tokens[last + 1]
+                local hasEnd = sourceEnd and sentenceJoins[sourceEnd.key]
+                local replacement = match.text:gsub(hasEnd and "[.!?]+$" or "[.!]+$", "")
                 if start ~= 1 and not sentenceJoins[tokens[start - 1].key] then replacement = lowerStart(replacement) end
                 fragments[start] = {text = replacement, last = last, rule = match.rule, slots = match.slots}
                 accepted, nextSegment = accepted + 1, block + 1

@@ -112,12 +112,36 @@ local function state(document, limit)
     return setmetatable({document=document, tokens=document.tokens, i=1, limit=limit, slots={}}, State)
 end
 
+local function recruitLevel(p, uk)
+    local start = p.i
+    local token = p.i <= p.limit and p.tokens[p.i]
+    local compact = not uk and token and not token.protected and token.key:match("^l(%d%d?%d?)$")
+    if compact then
+        if tonumber(compact) == 0 then return false end
+        p.i = p.i + 1
+    else
+        local marker = uk and p:word("рівень") or not uk and p:any("level", "lvl", "l")
+        if not marker then return false end
+        if uk then p:word(":") end
+        if not p:count("level") then p.i = start; return false end
+    end
+    local raw = compact or p.slots.level.raw
+    local separator = p:word("/") and "/" or p:any("-", "–") and "-"
+    if separator then
+        if not p:count("level") then p.i, p.slots.level = start, nil; return false end
+        raw = raw .. separator .. p.slots.level.raw
+    end
+    p.slots.level = {raw=raw}
+    return true
+end
+
 local function recruit(p, direction)
     local uk = direction == "uk-en"
     local leadingPlace
     if uk then
         if not p:any("шукаємо", "потрібно", "потрібен", "потрібні") then return end
         p:word("ще")
+        p:word("гравців")
     elseif not p:any("lfm", "lf", "looking for", "need") then
         if not p:noun("place", "places") then return end
         p:word(",")
@@ -125,7 +149,7 @@ local function recruit(p, direction)
         leadingPlace = true
     end
     local count = p:count()
-    local compact = count and (p:word("m") or (uk and p:any("гравця :", "гравців :")))
+    local compact = count and (p:word("m") or (uk and p:any("гравця :", "гравців :", "гравця", "гравців")))
     if compact then p.slots.total, p.slots.count = p.slots.count, nil end
     local lastSpot = p:any("last spot", "last slot", "останнє місце")
     local role, place, go = nil, leadingPlace, nil
@@ -148,6 +172,8 @@ local function recruit(p, direction)
                     break
                 end
             end
+        elseif not p.slots.level and recruitLevel(p, uk) then
+            -- The level belongs to the recruitment regardless of its position.
         elseif not place then
             local start = p.i
             local introduced = p:any("for", "для", "у", "в", "місце :")
@@ -173,7 +199,7 @@ local function recruit(p, direction)
     p:word(",")
     local summon = p:any("can summon", "можемо прикликати", ". можемо прикликати")
     if p:any("and go", "then go", "і йдемо", "і вирушаємо", ". і вирушаємо") then go = true end
-    if not role and not (place and (p.slots.count or p.slots.total)) then return end
+    if not role and not (place and (p.slots.count or p.slots.total or p.slots.level)) then return end
     if lastSpot then
         local total = p.slots.total
         if total and tonumber(total.raw) > 1 then return end
@@ -246,6 +272,20 @@ local function reward(p, direction)
     return p:finish("reward")
 end
 
+local function questNeed(p, direction)
+    if direction == "en-uk" then
+        p:any("do", "does")
+        if not p:word("any") or not p:noun("class", "classes") or not p:any("need", "needs") then return end
+    else
+        if not p:any("комусь із", "комусь з")
+            or not p:noun("class", "classes") or not p:phrase("потрібне завдання") then return end
+    end
+    if not p:link("quest", "quest") then return end
+    if not p.slots.class.term.englishPlural then return end
+    p.slots.class.plural = true
+    return p:finish("questNeed", {question=true})
+end
+
 local function statement(p, direction)
     local negative, question, modal
     if direction == "en-uk" then
@@ -270,7 +310,7 @@ local function statement(p, direction)
     return p:finish("statement", {negative=negative, question=question, modal=modal, conjunction=conjunction})
 end
 
-local parsers = {recruit, enhancement, service, reward, statement}
+local parsers = {recruit, enhancement, service, reward, questNeed, statement}
 function S.parse(document, limit)
     for _, parse in ipairs(parsers) do
         local result = parse(state(document, limit or #document.tokens), document.direction)

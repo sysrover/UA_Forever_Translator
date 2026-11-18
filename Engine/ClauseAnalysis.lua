@@ -331,8 +331,10 @@ end
 
 local function explicitTime(tree)
     if tree.leadingAdverb and tree.leadingAdverb.time then return tree.leadingAdverb.time end
-    for _, adverb in ipairs(tree.adverbs or {}) do
-        if adverb.time then return adverb.time end
+    if tree.adverbs then
+        for _, adverb in ipairs(tree.adverbs) do
+            if adverb.time then return adverb.time end
+        end
     end
 end
 
@@ -343,8 +345,8 @@ local function chooseModalSense(tree, pastContext)
         and tree.subject and not past and not tree.question and not tree.negative then
         tree.modalSense = "possibility"
     end
-    for _, embedded in ipairs(tree.content or {}) do
-        chooseModalSense(embedded, past)
+    if tree.content then
+        for _, embedded in ipairs(tree.content) do chooseModalSense(embedded, past) end
     end
 end
 

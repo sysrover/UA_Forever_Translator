@@ -13832,6 +13832,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["druids"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "class.druid",
+                            ["lemma"] = "Druid",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.druid",
+                            ["sourceRefs"] = { "ua-forever:class.druid" }
+                        }
+                    }
+                },
                 ["dung"] = {
                     ["_analyses"] = {
                         {
@@ -14762,6 +14776,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["hunters"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "class.hunter",
+                            ["lemma"] = "Hunter",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.hunter",
+                            ["sourceRefs"] = { "ua-forever:class.hunter" }
+                        }
+                    }
+                },
                 ["if"] = {
                     ["_analyses"] = {
                         {
@@ -15305,6 +15333,20 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {},
+                            ["id"] = "class.mage",
+                            ["lemma"] = "Mage",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.mage",
+                            ["sourceRefs"] = { "ua-forever:class.mage" }
+                        }
+                    }
+                },
+                ["mages"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
                             ["id"] = "class.mage",
                             ["lemma"] = "Mage",
                             ["pos"] = "noun",
@@ -15893,6 +15935,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["paladins"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "class.paladin",
+                            ["lemma"] = "Paladin",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.paladin",
+                            ["sourceRefs"] = { "ua-forever:class.paladin" }
+                        }
+                    }
+                },
                 ["party"] = {
                     ["_analyses"] = {
                         {
@@ -16071,6 +16127,20 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {},
+                            ["id"] = "class.priest",
+                            ["lemma"] = "Priest",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.priest",
+                            ["sourceRefs"] = { "ua-forever:class.priest" }
+                        }
+                    }
+                },
+                ["priests"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
                             ["id"] = "class.priest",
                             ["lemma"] = "Priest",
                             ["pos"] = "noun",
@@ -16687,6 +16757,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["rogues"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "class.rogue",
+                            ["lemma"] = "Rogue",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.rogue",
+                            ["sourceRefs"] = { "ua-forever:class.rogue" }
+                        }
+                    }
+                },
                 ["roll"] = {
                     ["greed"] = {
                         ["_analyses"] = {
@@ -16797,6 +16881,20 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {},
+                            ["id"] = "class.shaman",
+                            ["lemma"] = "Shaman",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.shaman",
+                            ["sourceRefs"] = { "ua-forever:class.shaman" }
+                        }
+                    }
+                },
+                ["shamans"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
                             ["id"] = "class.shaman",
                             ["lemma"] = "Shaman",
                             ["pos"] = "noun",
@@ -17839,10 +17937,38 @@ ns.Data = {
                         }
                     }
                 },
+                ["warlocks"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "class.warlock",
+                            ["lemma"] = "Warlock",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warlock",
+                            ["sourceRefs"] = { "ua-forever:class.warlock" }
+                        }
+                    }
+                },
                 ["warrior"] = {
                     ["_analyses"] = {
                         {
                             ["features"] = {},
+                            ["id"] = "class.warrior",
+                            ["lemma"] = "Warrior",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warrior",
+                            ["sourceRefs"] = { "ua-forever:class.warrior" }
+                        }
+                    }
+                },
+                ["warriors"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
                             ["id"] = "class.warrior",
                             ["lemma"] = "Warrior",
                             ["pos"] = "noun",
@@ -28430,7 +28556,8 @@ ns.Data = {
             },
             ["class.druid"] = {
                 ["en"] = {
-                    ["canonical"] = "Druid"
+                    ["canonical"] = "Druid",
+                    ["plural"] = "druids"
                 },
                 ["uk"] = {
                     ["canonical"] = "Друїд",
@@ -28440,7 +28567,8 @@ ns.Data = {
             },
             ["class.hunter"] = {
                 ["en"] = {
-                    ["canonical"] = "Hunter"
+                    ["canonical"] = "Hunter",
+                    ["plural"] = "hunters"
                 },
                 ["uk"] = {
                     ["canonical"] = "Мисливець",
@@ -28450,7 +28578,8 @@ ns.Data = {
             },
             ["class.mage"] = {
                 ["en"] = {
-                    ["canonical"] = "Mage"
+                    ["canonical"] = "Mage",
+                    ["plural"] = "mages"
                 },
                 ["uk"] = {
                     ["canonical"] = "Маг",
@@ -28460,7 +28589,8 @@ ns.Data = {
             },
             ["class.paladin"] = {
                 ["en"] = {
-                    ["canonical"] = "Paladin"
+                    ["canonical"] = "Paladin",
+                    ["plural"] = "paladins"
                 },
                 ["uk"] = {
                     ["canonical"] = "Паладин",
@@ -28470,7 +28600,8 @@ ns.Data = {
             },
             ["class.priest"] = {
                 ["en"] = {
-                    ["canonical"] = "Priest"
+                    ["canonical"] = "Priest",
+                    ["plural"] = "priests"
                 },
                 ["uk"] = {
                     ["canonical"] = "Жрець",
@@ -28480,7 +28611,8 @@ ns.Data = {
             },
             ["class.rogue"] = {
                 ["en"] = {
-                    ["canonical"] = "Rogue"
+                    ["canonical"] = "Rogue",
+                    ["plural"] = "rogues"
                 },
                 ["uk"] = {
                     ["canonical"] = "Розбійник",
@@ -28490,7 +28622,8 @@ ns.Data = {
             },
             ["class.shaman"] = {
                 ["en"] = {
-                    ["canonical"] = "Shaman"
+                    ["canonical"] = "Shaman",
+                    ["plural"] = "shamans"
                 },
                 ["uk"] = {
                     ["canonical"] = "Шаман",
@@ -28500,7 +28633,8 @@ ns.Data = {
             },
             ["class.warlock"] = {
                 ["en"] = {
-                    ["canonical"] = "Warlock"
+                    ["canonical"] = "Warlock",
+                    ["plural"] = "warlocks"
                 },
                 ["uk"] = {
                     ["canonical"] = "Чорнокнижник",
@@ -28510,7 +28644,8 @@ ns.Data = {
             },
             ["class.warrior"] = {
                 ["en"] = {
-                    ["canonical"] = "Warrior"
+                    ["canonical"] = "Warrior",
+                    ["plural"] = "warriors"
                 },
                 ["uk"] = {
                     ["canonical"] = "Воїн",
@@ -30501,7 +30636,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "0a57939e485305052c8eec4f5ec75b657b825947b8c70e084ae7f7fc76bc32d8"
+        ["version"] = "d7825f6cd425216e703e3e75d90b128f2af9e86562acccad5f07498e5504a36b"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -39059,6 +39194,7 @@ ns.Data = {
             ["contexts"] = { "classes" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Druid",
+            ["englishPlural"] = "druids",
             ["forms"] = {
                 ["genitivePlural"] = "друїдів",
                 ["genitiveSingular"] = "друїда"
@@ -39088,6 +39224,7 @@ ns.Data = {
             ["contexts"] = { "classes" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Hunter",
+            ["englishPlural"] = "hunters",
             ["forms"] = {
                 ["genitivePlural"] = "мисливців",
                 ["genitiveSingular"] = "мисливця"
@@ -39117,6 +39254,7 @@ ns.Data = {
             ["contexts"] = { "classes" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Mage",
+            ["englishPlural"] = "mages",
             ["forms"] = {
                 ["genitivePlural"] = "магів",
                 ["genitiveSingular"] = "мага"
@@ -39146,6 +39284,7 @@ ns.Data = {
             ["contexts"] = { "classes" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Paladin",
+            ["englishPlural"] = "paladins",
             ["forms"] = {
                 ["genitivePlural"] = "паладинів",
                 ["genitiveSingular"] = "паладина"
@@ -39175,6 +39314,7 @@ ns.Data = {
             ["contexts"] = { "classes" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Priest",
+            ["englishPlural"] = "priests",
             ["forms"] = {
                 ["genitivePlural"] = "жерців",
                 ["genitiveSingular"] = "жреця"
@@ -39204,6 +39344,7 @@ ns.Data = {
             ["contexts"] = { "classes" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Rogue",
+            ["englishPlural"] = "rogues",
             ["forms"] = {
                 ["genitivePlural"] = "розбійників",
                 ["genitiveSingular"] = "розбійника"
@@ -39233,6 +39374,7 @@ ns.Data = {
             ["contexts"] = { "classes" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Shaman",
+            ["englishPlural"] = "shamans",
             ["forms"] = {
                 ["genitivePlural"] = "шаманів",
                 ["genitiveSingular"] = "шамана"
@@ -39262,6 +39404,7 @@ ns.Data = {
             ["contexts"] = { "classes" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Warlock",
+            ["englishPlural"] = "warlocks",
             ["forms"] = {
                 ["genitivePlural"] = "чорнокнижників",
                 ["genitiveSingular"] = "чорнокнижника"
@@ -39291,6 +39434,7 @@ ns.Data = {
             ["contexts"] = { "classes" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Warrior",
+            ["englishPlural"] = "warriors",
             ["forms"] = {
                 ["genitivePlural"] = "воїнів",
                 ["genitiveSingular"] = "воїна"

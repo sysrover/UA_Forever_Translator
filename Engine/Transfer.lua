@@ -12,6 +12,10 @@ function T.render(tree, direction)
             local form = G.numberForm(amount) == "genitiveSingular" and "гравця" or "гравців"
             return "Шукаємо ще " .. amount .. " " .. form
         end
+        local function appendLevel(value)
+            if not s.level then return value end
+            return value .. (uk and ". Рівень: " or " L") .. s.level.raw
+        end
         local function appendConditions(value)
             if f.run == "full" then value = value .. (uk and ". Повне проходження" or ", full run")
             elseif f.run == "fresh" then value = value .. (uk and ". Проходження з початку" or ", fresh run") end
@@ -37,13 +41,13 @@ function T.render(tree, direction)
             local prefix
             if uk then prefix = total and totalPlayers(total) .. ": " or "Шукаємо "
             else prefix = total and "LF" .. total .. "M " or "Looking for " end
-            output = prefix .. table.concat(roles, " ")
+            output = appendLevel(prefix .. table.concat(roles, " "))
             if s.place then output = output .. (uk and ". Місце: " or " for ") .. render("{place}") end
             if f.lastSpot then output = output .. (uk and ". Залишилося одне місце" or ", last spot") end
             return appendConditions(output)
         end
         if uk then
-            if f.lastSpot and s.role and s.place and not (s.count and s.total) and (not (s.count or s.total)
+            if f.lastSpot and s.role and s.place and not s.level and not (s.count and s.total) and (not (s.count or s.total)
                 or (s.count or s.total).raw == "1") then
                 output = render("Шукаємо {role:genitiveSingular} — {place}. Залишилося одне місце.")
                 if output then return appendConditions((output:gsub("%.$", ""))) end
@@ -59,10 +63,12 @@ function T.render(tree, direction)
                 elseif s.count then
                     output = render("Шукаємо {count} {role:counted}.")
                 else output = render("Шукаємо {role:genitiveSingular}.") end
-            else
+            elseif total or s.count then
                 output = totalPlayers(total or s.count.raw) .. "."
+            else output = "Шукаємо гравців."
             end
             if not output then return end
+            if s.level then output = appendLevel((output:gsub("%.$", ""))) .. "." end
             if s.place then output = output .. " " .. render("Місце: {place}.") end
             if f.lastSpot then output = output .. " Залишилося одне місце." end
         else
@@ -70,6 +76,7 @@ function T.render(tree, direction)
             if s.role then
                 output = output .. " " .. render(total and s.count and "{count} {role}" or "{role}")
             end
+            output = appendLevel(output)
             if s.place then output = output .. " for " .. render("{place}") end
             if f.lastSpot then output = output .. ", last spot" end
         end
@@ -94,6 +101,9 @@ function T.render(tree, direction)
     elseif tree.kind == "reward" then
         return render(uk and "Заплачу {price:money} тому, хто допоможе мені з {quest}."
             or "{price} for anyone who helps me with {quest}")
+    elseif tree.kind == "questNeed" then
+        return render(uk and "Комусь із {class:genitivePlural} потрібне завдання {quest}?"
+            or "Do any {class} need {quest}?")
     elseif tree.kind == "enhancement" then
         local output = render(uk and "+{count} до {stat:genitivePlural} на {equipment:locative}"
             or "+{count} {stat} on {equipment}")
