@@ -464,7 +464,7 @@ render = function(tree, english)
             local requested = english and "accusative" or frame.objectCase or "accusative"
             local value = G.noun(tree.object, english, requested, true)
             if not value then return nil end
-            if not english then append(parts, frame.objectPreposition) end
+            append(parts, english and frame.enObjectPreposition or not english and frame.objectPreposition)
             append(parts, value)
         end
         if tree.infinitive then

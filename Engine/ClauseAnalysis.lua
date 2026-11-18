@@ -7,6 +7,14 @@ local function lexemeFrame(entry)
     return entry.lexeme.frame or {}
 end
 
+local function personalSubject(id)
+    for _, pronoun in ipairs(ns.Linguistics.grammar.pronouns) do
+        if pronoun.id == id then
+            return {pronoun=pronoun, person=pronoun.person, number=pronoun.number, gender=pronoun.gender}
+        end
+    end
+end
+
 local copula = {am="present", is="present", are="present", was="past", were="past",
     ["є"]="present", ["був"]="past", ["була"]="past", ["було"]="past", ["були"]="past"}
 local negativeCopula = {["isn't"]="is", ["aren't"]="are", ["wasn't"]="was", ["weren't"]="were"}
@@ -145,8 +153,9 @@ local function complements(document, tree, index, limit, depth)
     depth = depth or 0
     local frame = lexemeFrame(tree.verb)
     local english = document.direction == "en-uk"
+    local objectPreposition = english and frame.enObjectPreposition or not english and frame.objectPreposition
     local preposition
-    if not english and frame.objectPreposition and P.key(document, index, limit) == frame.objectPreposition then
+    if objectPreposition and P.key(document, index, limit) == objectPreposition then
         preposition = true
         index = index + 1
     end
@@ -186,8 +195,7 @@ local function complements(document, tree, index, limit, depth)
             if object then tree.recipient, tree.object, index = recipient, object, last end
         end
     end
-    if not tree.object and not frame.motion and not frame.intransitive
-        and (english or not frame.objectPreposition or preposition) then
+    if not tree.object and not frame.motion and not frame.intransitive and (not objectPreposition or preposition) then
         local object, nextIndex = P.coordinated(document, index, limit, objectCase)
         if object then tree.object, index = object, nextIndex
         elseif preposition then return nil end
@@ -366,6 +374,16 @@ local needAgreement = {["потрібен"]="masculine", ["потрібна"]="f
 simple = function(document, first, limit, previous, depth, indirect)
     local english = document.direction == "en-uk"
     local key = P.key(document, first, limit)
+    if english and key == "got" and document.tokens[limit + 1] and document.tokens[limit + 1].key == "?" then
+        local object, finish = P.coordinated(document, first + 1, limit, "accusative")
+        if object and finish > limit then
+            local subject = personalSubject("you")
+            local haveVerb = verb(document, first, limit, subject, true, nil, nil, nil, "have")
+            if haveVerb then
+                return {kind="clause", subject=subject, verb=haveVerb, object=object, tense="present", question=true}, finish
+            end
+        end
+    end
     local special, after = duration(document, first, limit)
     if special then return special, after end
     special, after = wish(document, first, limit)
@@ -418,13 +436,7 @@ simple = function(document, first, limit, previous, depth, indirect)
     local subject, nextIndex
     local contraction = english and not inverted and contracted[head]
     if contraction then
-        for _, pronoun in ipairs(ns.Linguistics.grammar.pronouns) do
-            if pronoun.id == contraction[1] then
-                subject = {pronoun=pronoun, person=pronoun.person, number=pronoun.number, gender=pronoun.gender}
-                nextIndex = index + 1
-                break
-            end
-        end
+        subject, nextIndex = personalSubject(contraction[1]), index + 1
     elseif not relativeSubject then
         subject, nextIndex = P.coordinated(document, index, limit, "nominative")
     end
