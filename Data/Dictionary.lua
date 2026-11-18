@@ -847,6 +847,9 @@ ns.Data = {
             ["dd"] = {
                 ["_id"] = "role.damage"
             },
+            ["dds"] = {
+                ["_id"] = "role.damage"
+            },
             ["ding"] = {
                 ["_id"] = "slang.social.ding"
             },
@@ -1663,6 +1666,11 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "запроси",
                     ["weak"] = false
+                }
+            },
+            ["iron"] = {
+                ["forge"] = {
+                    ["_id"] = "place.ironforge"
                 }
             },
             ["ironforge"] = {
@@ -13644,6 +13652,23 @@ ns.Data = {
                         }
                     }
                 },
+                ["dds"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.damage",
+                            ["lemma"] = "DPS",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.damage",
+                            ["sourceRefs"] = { "ua-forever:role.damage" }
+                        }
+                    }
+                },
                 ["ding"] = {
                     ["_analyses"] = {
                         {
@@ -14820,6 +14845,23 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "slang.social.inv",
                                 ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["iron"] = {
+                    ["forge"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine"
+                                },
+                                ["id"] = "place.ironforge",
+                                ["lemma"] = "Ironforge",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ironforge",
+                                ["sourceRefs"] = { "ua-forever:place.ironforge" }
                             }
                         }
                     }
@@ -21624,6 +21666,19 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["gender"] = "masculine"
+                            },
+                            ["id"] = "place.ironforge",
+                            ["lemma"] = "Залізогарт",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.ironforge",
+                            ["sourceRefs"] = { "ua-forever:place.ironforge" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
                             },
                             ["id"] = "place.ironforge",
                             ["lemma"] = "Залізогарт",
@@ -28910,6 +28965,7 @@ ns.Data = {
                     ["canonical"] = "Ironforge"
                 },
                 ["uk"] = {
+                    ["accusative"] = "Залізогарт",
                     ["canonical"] = "Залізогарт",
                     ["genitiveSingular"] = "Залізогарта",
                     ["locative"] = "Залізогарті"
@@ -30445,7 +30501,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "f30db7eaed698e70dfaea99624f72fa8d419667d92b4d9eaad8ff6ac1698dfb0"
+        ["version"] = "0a57939e485305052c8eec4f5ec75b657b825947b8c70e084ae7f7fc76bc32d8"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -40617,7 +40673,7 @@ ns.Data = {
         },
         ["place.ironforge"] = {
             ["aliases"] = {
-                ["en"] = { "if" },
+                ["en"] = { "if", "Iron Forge" },
                 ["uk"] = { "айронфордж" }
             },
             ["category"] = "places",
@@ -40629,6 +40685,7 @@ ns.Data = {
                 ["gender"] = "masculine"
             },
             ["forms"] = {
+                ["accusative"] = "Залізогарт",
                 ["genitiveSingular"] = "Залізогарта",
                 ["locative"] = "Залізогарті"
             },
@@ -42925,7 +42982,7 @@ ns.Data = {
         },
         ["role.damage"] = {
             ["aliases"] = {
-                ["en"] = { "dd", "damage dealer", "DPS" },
+                ["en"] = { "dd", "dds", "damage dealer", "DPS" },
                 ["uk"] = { "дд", "дпс" }
             },
             ["category"] = "roles",

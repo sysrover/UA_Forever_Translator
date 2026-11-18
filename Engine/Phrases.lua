@@ -132,7 +132,7 @@ function P.noun(document, first, limit, case, locationOnly, count)
     -- wins, with a bounded number of modifiers.
     for _ = 0, 2 do
         local head, after = nounHead(document, index, limit, case, locationOnly)
-        if head and (not intensity or #adjectives > 0) then
+        if head and (not head.pronoun or index == first) and (not intensity or #adjectives > 0) then
             best, nextIndex = head, after
             if #adjectives > 0 then best.adjectives = {unpack(adjectives)} end
         end

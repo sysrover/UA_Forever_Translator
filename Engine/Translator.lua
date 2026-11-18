@@ -127,7 +127,7 @@ local function compute(text, direction)
     end
     local chunks, matched, unknown, refs, refSeen, i, cursor = {}, {}, {}, {}, {}, 1, 1
     local foundContent, hasMatch = false, false
-    local contextual = ns.Linguistics and #tokens >= 4
+    local contextual = ns.Linguistics and (#tokens >= 4 or ns.Engine.ClauseAnalysis.hasClauseCue(document))
     while i <= #tokens do
         local token = tokens[i]
         local fragment = fragments and fragments[i]

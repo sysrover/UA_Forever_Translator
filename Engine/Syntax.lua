@@ -37,12 +37,43 @@ function State:noun(name, category)
     self.i = candidate.last + 1
     return true
 end
-function State:count()
+function State:count(slot)
     local token = self.tokens[self.i]
     if self.i <= self.limit and token.key:match("^%d+$") and #token.key <= 3
         and tonumber(token.key) > 0 then
-        self.slots.count = {raw=token.key}; self.i = self.i + 1; return true
+        self.slots[slot or "count"] = {raw=token.key}; self.i = self.i + 1; return true
     end
+    return false
+end
+function State:role(name, countKey)
+    local start, count = self.i, self.slots[countKey]
+    local english = self.document.direction == "en-uk"
+    if not count then self:count(countKey) end
+    if english and not self.slots[countKey] then self:any("a", "an") end
+    if self:noun(name, "roles") then return true end
+    local token = self.i <= self.limit and self.tokens[self.i]
+    if english and token and not token.protected and not self.slots[countKey] then
+        local amount, alias = token.key:match("^(%d%d?%d?)([a-z]+)$")
+        local index = ns.Data.linguistics and ns.Data.linguistics.analysis["en-uk"]
+        local application = alias and index and index[alias]
+        if amount and tonumber(amount) > 0 and application then
+            local selected
+            for _, candidate in ipairs(application._analyses or {}) do
+                local term = ns.Data.terms[candidate.id]
+                if term.category == "roles" then
+                    if selected and selected ~= term then selected = nil; break end
+                    selected = term
+                end
+            end
+            if selected then
+                self.slots[name] = {term=selected}
+                self.slots[countKey] = {raw=amount}
+                self.i = self.i + 1
+                return true
+            end
+        end
+    end
+    self.i, self.slots[countKey] = start, count
     return false
 end
 function State:link(name, kind)
@@ -94,31 +125,32 @@ local function recruit(p, direction)
         leadingPlace = true
     end
     local count = p:count()
-    local compact = count and p:word("m")
+    local compact = count and (p:word("m") or (uk and p:any("гравця :", "гравців :")))
+    if compact then p.slots.total, p.slots.count = p.slots.count, nil end
     local lastSpot = p:any("last spot", "last slot", "останнє місце")
     local role, place, go = nil, leadingPlace, nil
     local roleJoins = {}
     for _ = 1, 4 do
-        p:word(",")
-        if not role and p:noun("role", "roles") then
+        local separator = p:any(",", ".")
+        if not role and place and separator then p:any("need", "потрібно", "потрібні") end
+        if not role and p:role("role", "count") then
             role = true
             for n = 2, 4 do
-                local start, originalCount = p.i, p.slots.count
-                local join = p:any("and", "та", "і", "й") and "and" or p:any("or", "або") and "or"
-                if not join then break end
-                local hasCount = p:count()
-                if p:noun("role" .. n, "roles") then
-                    roleJoins[#roleJoins + 1] = join
-                    if hasCount then p.slots["count" .. n] = p.slots.count end
+                local start = p.i
+                local join = p:any("and", "&", "та", "і", "й") and "and" or p:any("or", "/", "або") and "or"
+                if not join then p:word(",") end
+                local suffix = tostring(n)
+                if p:role("role" .. suffix, "count" .. suffix) and (join or p.slots["count" .. suffix]) then
+                    roleJoins[#roleJoins + 1] = join or "and"
                 else
                     p.i = start
+                    p.slots["role" .. suffix], p.slots["count" .. suffix] = nil, nil
+                    break
                 end
-                p.slots.count = originalCount
-                if p.i == start then break end
             end
         elseif not place then
             local start = p.i
-            local introduced = p:any("for", "для", "у", "в", ". місце :")
+            local introduced = p:any("for", "для", "у", "в", "місце :")
             if p:noun("place", "places") then place = true
             else
                 if introduced and p.limit == #p.tokens then
@@ -140,10 +172,11 @@ local function recruit(p, direction)
     elseif p:any("fresh run", "проходження з початку", ". проходження з початку") then run = "fresh" end
     p:word(",")
     local summon = p:any("can summon", "можемо прикликати", ". можемо прикликати")
-    if p:any("and go", "і йдемо", "і вирушаємо", ". і вирушаємо") then go = true end
-    if not role and not (place and count) then return end
-    if lastSpot and p.slots.count and tonumber(p.slots.count.raw) > 1 then return end
-    return p:finish("recruit", {compact=compact, lastSpot=lastSpot, go=go, roleJoins=roleJoins, run=run, summon=summon})
+    if p:any("and go", "then go", "і йдемо", "і вирушаємо", ". і вирушаємо") then go = true end
+    if not role and not (place and (p.slots.count or p.slots.total)) then return end
+    local slotsNeeded = p.slots.total or p.slots.count
+    if lastSpot and slotsNeeded and tonumber(slotsNeeded.raw) > 1 then return end
+    return p:finish("recruit", {lastSpot=lastSpot, go=go, roleJoins=roleJoins, run=run, summon=summon})
 end
 
 local function enhancement(p, direction)

@@ -9,24 +9,32 @@ end
 
 local copula = {am="present", is="present", are="present", was="past", were="past",
     ["є"]="present", ["був"]="past", ["була"]="past", ["було"]="past", ["були"]="past"}
+local negativeCopula = {["isn't"]="is", ["aren't"]="are", ["wasn't"]="was", ["weren't"]="were"}
 local have = {have=true, has=true, had=true}
 local contracted = {
     ["i'm"]={"i","am"}, ["you're"]={"you","are"}, ["we're"]={"we","are"}, ["they're"]={"they","are"},
     ["i've"]={"i","have"}, ["you've"]={"you","have"}, ["we've"]={"we","have"}, ["they've"]={"they","have"},
+    ["i'll"]={"i","will"}, ["you'll"]={"you","will"}, ["he'll"]={"he","will"}, ["she'll"]={"she","will"},
+    ["it'll"]={"it","will"}, ["we'll"]={"we","will"}, ["they'll"]={"they","will"},
 }
 local auxiliary = {
     can={modal="can"}, cannot={modal="can", negative=true}, ["can't"]={modal="can", negative=true},
     could={modal="could"}, ["couldn't"]={modal="could", negative=true},
     must={modal="must"}, should={modal="should"}, ["shouldn't"]={modal="should", negative=true},
-    will={tense="future"}, ["won't"]={tense="future", negative=true}, gonna={tense="future"},
+    will={tense="future", ellipsis=true}, ["won't"]={tense="future", negative=true, ellipsis=true},
+    gonna={tense="future"},
     do_={tense="present", support=true}, does={tense="present", support=true}, did={tense="past", support=true},
     ["don't"]={tense="present", negative=true, support=true}, ["doesn't"]={tense="present", negative=true, support=true},
     ["didn't"]={tense="past", negative=true, support=true},
     ["можу"]={modal="can", person=1, number="singular"}, ["можеш"]={modal="can", person=2, number="singular"},
     ["може"]={modal="can", person=3, number="singular"}, ["можемо"]={modal="can", person=1, number="plural"},
     ["можете"]={modal="can", person=2, number="plural"}, ["можуть"]={modal="can", person=3, number="plural"},
-    ["буду"]={tense="future", person=1, number="singular"}, ["буде"]={tense="future", person=3, number="singular"},
-    ["будемо"]={tense="future", person=1, number="plural"}, ["будуть"]={tense="future", person=3, number="plural"},
+    ["буду"]={tense="future", ellipsis=true, person=1, number="singular"},
+    ["будеш"]={tense="future", ellipsis=true, person=2, number="singular"},
+    ["буде"]={tense="future", ellipsis=true, person=3, number="singular"},
+    ["будемо"]={tense="future", ellipsis=true, person=1, number="plural"},
+    ["будете"]={tense="future", ellipsis=true, person=2, number="plural"},
+    ["будуть"]={tense="future", ellipsis=true, person=3, number="plural"},
 }
 auxiliary["do"] = auxiliary.do_
 
@@ -68,7 +76,9 @@ local function boundary(document, index, limit)
     return index > limit or key == "," or key == ";" or L.functional(document, "connectors", index, limit)
 end
 
-local function complements(document, tree, index, limit)
+local simple
+local function complements(document, tree, index, limit, depth)
+    depth = depth or 0
     local frame = lexemeFrame(tree.verb)
     local english = document.direction == "en-uk"
     local preposition
@@ -77,6 +87,30 @@ local function complements(document, tree, index, limit)
         index = index + 1
     end
     local objectCase = english and "accusative" or frame.objectCase or "accusative"
+    if frame.content and depth < 3 then
+        local marker = english and "that" or "що"
+        local start = index
+        if not english and P.key(document, start, limit) == "," then start = start + 1 end
+        if P.key(document, start, limit) == marker then
+            local embedded, finish = simple(document, start + 1, limit, nil, depth + 1)
+            if embedded and embedded.subject and not embedded.imperative and not embedded.question then
+                tree.content = {embedded}
+                index = finish
+                for _ = 1, 2 do
+                    local nextMarker = index
+                    if P.key(document, nextMarker, limit) == "," then nextMarker = nextMarker + 1 end
+                    local join = P.key(document, nextMarker, limit)
+                    local andJoin = join == "and" or join == "і" or join == "й" or join == "та"
+                    if not andJoin or P.key(document, nextMarker + 1, limit) ~= marker then break end
+                    embedded, finish = simple(document, nextMarker + 2, limit, nil, depth + 1)
+                    if not embedded or not embedded.subject or embedded.imperative or embedded.question then break end
+                    tree.content[#tree.content + 1] = embedded
+                    index = finish
+                end
+                return index
+            end
+        end
+    end
     local recipient, after
     if frame.recipientCase then
         recipient, after = P.noun(document, index, limit, english and "accusative" or frame.recipientCase)
@@ -90,14 +124,14 @@ local function complements(document, tree, index, limit)
         if object then tree.object, index = object, nextIndex
         elseif preposition then return nil end
     end
-    if not tree.object and frame.infinitive then
+    if not tree.object and frame.infinitive and depth < 3 then
         local marker = P.key(document, index, limit)
         if not english or marker == "to" then
             local verbIndex = english and index + 1 or index
             local embedded = verb(document, verbIndex, limit, nil, true)
             if embedded then
                 tree.infinitive = {verb=embedded, tense="infinitive"}
-                local finish = complements(document, tree.infinitive, verbIndex + 1, limit)
+                local finish = complements(document, tree.infinitive, verbIndex + 1, limit, depth + 1)
                 if not finish then return nil end
                 index = finish
             end
@@ -169,7 +203,7 @@ local function predicate(document, tree, index, limit)
     if adjective then tree.adjective = {entry=adjective, intensity=intensity}; return index + 1 end
 end
 
-local function simple(document, first, limit, previous)
+simple = function(document, first, limit, previous, depth)
     local english = document.direction == "en-uk"
     local key = P.key(document, first, limit)
     local special, after = duration(document, first, limit)
@@ -183,10 +217,13 @@ local function simple(document, first, limit, previous)
     local head = P.key(document, index, limit)
     local aux
     if english then aux = auxiliary[head] end
-    local inverted = english and (aux or copula[head])
+    local invertedCopula = negativeCopula[head] or head
+    local inverted = english and (aux or copula[invertedCopula])
     if inverted then
         tree.question = true
-        if not aux then tree.copula, tree.tense = true, copula[head] end
+        if not aux then
+            tree.copula, tree.tense, tree.negative = true, copula[invertedCopula], negativeCopula[head] ~= nil
+        end
         index = index + 1
     end
     local subject, nextIndex
@@ -194,7 +231,7 @@ local function simple(document, first, limit, previous)
     if contraction then
         for _, pronoun in ipairs(ns.Linguistics.grammar.pronouns) do
             if pronoun.id == contraction[1] then
-                subject = {pronoun=pronoun, person=pronoun.person, number=pronoun.number}
+                subject = {pronoun=pronoun, person=pronoun.person, number=pronoun.number, gender=pronoun.gender}
                 nextIndex = index + 1
                 break
             end
@@ -204,6 +241,8 @@ local function simple(document, first, limit, previous)
     end
     if subject then tree.subject, index = subject, nextIndex end
     local current = contraction and contraction[2] or P.key(document, index, limit)
+    local contractedNegative = negativeCopula[current]
+    if contractedNegative then current = contractedNegative end
     -- Auxiliary selection is licensed by a participle. A possessive "have"
     -- and an ordinary copula continue through the existing paths.
     if english and subject and (have[current] or copula[current]) then
@@ -215,21 +254,22 @@ local function simple(document, first, limit, previous)
         if adverb then nextVerb = afterAdverb end
         local candidate = verb(document, nextVerb, limit, subject, false, false, nil, aspect)
         if candidate then
-            tree.verb, tree.negative = candidate, negative
+            tree.verb, tree.negative = candidate, negative or contractedNegative ~= nil
             tree.tense = have[current] and "past" or copula[current]
             tree.aspect = have[current] and "perfect" or "continuous"
             if adverb then tree.leadingAdverb = adverb end
-            local finish = complements(document, tree, nextVerb + 1, limit)
+            local finish = complements(document, tree, nextVerb + 1, limit, depth)
             if finish then return tree, finish end
             return nil
         end
     end
     if not inverted then
         if copula[current] then
-            tree.copula, tree.tense = true, copula[current]
+            tree.copula, tree.tense, tree.negative = true, copula[current], contractedNegative ~= nil
             if not contraction then index = index + 1 end
         elseif auxiliary[current] then
-            aux, index = auxiliary[current], index + 1
+            aux = auxiliary[current]
+            if not contraction then index = index + 1 end
         end
     end
     local negative = P.key(document, index, limit)
@@ -242,6 +282,11 @@ local function simple(document, first, limit, previous)
     if aux then
         tree.tense, tree.modal, tree.negative = aux.tense, aux.modal, tree.negative or aux.negative
         tree.inferred = aux.person and {person=aux.person, number=aux.number} or nil
+        if subject and aux.person and (aux.person ~= subject.person or aux.number ~= subject.number) then return nil end
+        if aux.ellipsis and index > limit and (subject or tree.inferred) then
+            tree.elliptic = true
+            return tree, index
+        end
     end
     if tree.copula or (not english and tree.where and subject) then
         if not subject then return nil end
@@ -267,7 +312,7 @@ local function simple(document, first, limit, previous)
     tree.subject = subject or inheritedSubject
     tree.inherited = inheritedSubject ~= nil and inheritedSubject ~= false
     tree.tense = tree.tense or tree.verb.form.tense or "present"
-    local finish = complements(document, tree, index + 1, limit)
+    local finish = complements(document, tree, index + 1, limit, depth)
     if finish then return tree, finish end
 end
 
@@ -282,7 +327,13 @@ function A.parse(document, first, limit)
     end
     local index = prefix and prefixEnd + 1 or first
     for _ = 1, 4 do
-        local tree, after = simple(document, index, limit, trees[#trees])
+        local precedingJoin = joins[#joins]
+        local previous
+        if precedingJoin and precedingJoin.rule
+            and (precedingJoin.rule.id == "and" or precedingJoin.rule.id == "or" or precedingJoin.rule.id == "then") then
+            previous = trees[#trees]
+        end
+        local tree, after = simple(document, index, limit, previous, 0)
         if not tree and not prefix and #trees == 0 then
             local noun, ending = P.noun(document, index, limit, "nominative")
             if noun then
@@ -298,10 +349,27 @@ function A.parse(document, first, limit)
         if index > limit then break end
         local comma = P.key(document, index, limit) == ","
         local found, last = L.functional(document, "connectors", index + (comma and 1 or 0), limit)
-        if not found or last >= limit then break end
-        joins[#joins + 1] = {rule=ns.Linguistics.grammar.connectors[found[1]], comma=comma}
-        index = last + 1
+        if found and last < limit then
+            joins[#joins + 1] = {rule=ns.Linguistics.grammar.connectors[found[1]], comma=comma}
+            index = last + 1
+        elseif prefix and #trees == 1 and comma and index < limit then
+            joins[#joins + 1] = {comma=true}
+            index = index + 1
+        else break end
     end
     if #trees == 0 or #joins >= #trees or index <= limit then return nil end
     return {trees=trees, joins=joins, prefix=prefix}
+end
+
+function A.hasClauseCue(document)
+    local tokens = document.tokens
+    if #tokens < 2 then return false end
+    for index = 1, #tokens - 1 do
+        local key = tokens[index].key
+        if contracted[key] or (index > 1 and (auxiliary[key] or copula[key] or negativeCopula[key])) then
+            return true
+        end
+    end
+    local key = tokens[#tokens].key
+    return auxiliary[key] ~= nil or negativeCopula[key] ~= nil
 end

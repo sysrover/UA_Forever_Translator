@@ -324,6 +324,18 @@ render = function(tree, english)
     local subject = subjectText(tree, english)
     if subject == nil then return nil end
     if tree.kind == "nounPhrase" then append(parts, subject)
+    elseif tree.elliptic then
+        if english then
+            if tree.question then append(parts, "will"); append(parts, subject)
+            else append(parts, subject); append(parts, "will") end
+            if tree.negative then append(parts, "not") end
+        else
+            local _, _, _, key = agreement(tree)
+            if tree.question then append(parts, "чи") end
+            append(parts, subject)
+            if tree.negative then append(parts, "не") end
+            append(parts, future[key])
+        end
     elseif tree.copula then
         local person, number, gender = agreement(tree)
         if english then
@@ -386,6 +398,16 @@ render = function(tree, english)
             if english then append(parts, "to") end
             append(parts, value)
         end
+        if tree.content then
+            for index, embedded in ipairs(tree.content) do
+                local value = render(embedded, english)
+                if not value then return nil end
+                if index > 1 then append(parts, english and "and" or "і")
+                elseif not english then parts[#parts] = parts[#parts] .. "," end
+                append(parts, english and "that" or "що")
+                append(parts, value)
+            end
+        end
     end
     if not addPrepositions(parts, tree, english) then return nil end
     for _, adverb in ipairs(tree.adverbs or {}) do append(parts, (english and adverb.en or adverb.uk)[1]) end
@@ -414,10 +436,10 @@ function G.render(parse, direction, punctuation)
         if not value or value == "" then return nil end
         local join = parse.joins[i - 1]
         if join then
-            local id = join.rule.id
+            local id = join.rule and join.rule.id
             local comma = join.comma or id == "but" or id == "because" or id == "if" or id == "when" or id == "unless"
             if comma then parts[#parts] = parts[#parts] .. "," end
-            append(parts, (english and join.rule.en or join.rule.uk)[1])
+            if join.rule then append(parts, (english and join.rule.en or join.rule.uk)[1]) end
         end
         append(parts, value)
         last = tree

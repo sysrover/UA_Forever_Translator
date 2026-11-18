@@ -7,6 +7,11 @@ function T.render(tree, direction)
     local function render(template) return G.render(template, s, direction) end
     if tree.kind == "recruit" then
         local output
+        local total = s.total and s.total.raw
+        local function totalPlayers(amount)
+            local form = G.numberForm(amount) == "genitiveSingular" and "гравця" or "гравців"
+            return "Шукаємо ще " .. amount .. " " .. form
+        end
         local function appendConditions(value)
             if f.run == "full" then value = value .. (uk and ". Повне проходження" or ", full run")
             elseif f.run == "fresh" then value = value .. (uk and ". Проходження з початку" or ", fresh run") end
@@ -29,32 +34,35 @@ function T.render(tree, direction)
                 end
                 roles[#roles + 1] = value
             end
-            output = (uk and "Шукаємо " or "Looking for ") .. table.concat(roles, " ")
+            local prefix
+            if uk then prefix = total and totalPlayers(total) .. ": " or "Шукаємо "
+            else prefix = total and "LF" .. total .. "M " or "Looking for " end
+            output = prefix .. table.concat(roles, " ")
             if s.place then output = output .. (uk and ". Місце: " or " for ") .. render("{place}") end
             if f.lastSpot then output = output .. (uk and ". Залишилося одне місце" or ", last spot") end
             return appendConditions(output)
         end
         if uk then
-            if f.lastSpot and s.role and s.place and (not s.count or s.count.raw == "1") then
+            if f.lastSpot and s.role and s.place and (not (s.count or s.total)
+                or (s.count or s.total).raw == "1") then
                 output = render("Шукаємо {role:genitiveSingular} — {place}. Залишилося одне місце.")
                 if output then return appendConditions((output:gsub("%.$", ""))) end
                 return nil
             end
             if s.role then
-                if s.count and f.compact then
-                    output = render("Набір у групу: ще {count}; роль: {role}.")
+                if total then
+                    output = render("Набір у групу: ще {total}; роль: {role}.")
                 elseif s.count then
                     output = render("Шукаємо {count} {role:counted}.")
                 else output = render("Шукаємо {role:genitiveSingular}.") end
             else
-                local form = G.numberForm(s.count.raw) == "genitiveSingular" and "гравця" or "гравців"
-                output = render("Шукаємо ще {count} ") .. form .. "."
+                output = totalPlayers(total or s.count.raw) .. "."
             end
             if not output then return end
             if s.place then output = output .. " " .. render("Місце: {place}.") end
             if f.lastSpot then output = output .. " Залишилося одне місце." end
         else
-            output = s.count and render("LF{count}M") or "LFM"
+            output = total and "LF" .. total .. "M" or s.count and render("LF{count}M") or "LFM"
             if s.role then output = output .. " " .. render("{role}") end
             if s.place then output = output .. " for " .. render("{place}") end
             if f.lastSpot then output = output .. ", last spot" end
