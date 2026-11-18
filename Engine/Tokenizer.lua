@@ -43,7 +43,8 @@ function T.scan(text)
     local tokens = {}
     for _, segment in ipairs(ns.Engine.Markup.split(text)) do
         if segment.protected then
-            tokens[#tokens + 1] = { first = segment.first, last = segment.last, key = "<protected>", protected = true }
+            tokens[#tokens + 1] = { first = segment.first, last = segment.last, key = "<protected>", protected = true,
+                linkKind = ns.Engine.Markup.linkKind(text:sub(segment.first, segment.last)) }
             if #tokens > ns.Limits.tokens then return nil end
         else
             local i = segment.first
@@ -63,11 +64,11 @@ function T.scan(text)
                         end
                     end
                     local key = normalize.word(text:sub(first, last))
-                    local count = key:match("^lf(%d+)m$")
+                    local count, suffix = key:match("^lf(%d+)(m?)$")
                     if count and #count <= 3 then
                         tokens[#tokens + 1] = {first = first, last = first + 1, key = "lf"}
-                        tokens[#tokens + 1] = {first = first + 2, last = last - 1, key = count}
-                        tokens[#tokens + 1] = {first = last, last = last, key = "m"}
+                        tokens[#tokens + 1] = {first = first + 2, last = last - #suffix, key = count}
+                        if suffix == "m" then tokens[#tokens + 1] = {first = last, last = last, key = suffix} end
                     else
                         tokens[#tokens + 1] = {first = first, last = last, key = key}
                     end

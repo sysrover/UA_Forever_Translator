@@ -558,6 +558,11 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["bracers"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.bracers"
+                }
+            },
             ["brb"] = {
                 ["_literal"] = {
                     ["id"] = "literal.slang.brb",
@@ -735,6 +740,11 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "дешево",
                     ["weak"] = false
+                }
+            },
+            ["chest"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.chest"
                 }
             },
             ["city"] = {
@@ -1007,6 +1017,9 @@ ns.Data = {
                     }
                 }
             },
+            ["enchanter"] = {
+                ["_id"] = "profession.enchanting"
+            },
             ["enchanting"] = {
                 ["_id"] = "profession.enchanting",
                 ["services"] = {
@@ -1226,6 +1239,11 @@ ns.Data = {
                     ["_id"] = "slang.combat.gcd"
                 }
             },
+            ["gloves"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.gloves"
+                }
+            },
             ["gnome"] = {
                 ["_morph"] = {
                     ["race.gnome.base.singular"] = {
@@ -1276,6 +1294,13 @@ ns.Data = {
             },
             ["guild"] = {
                 ["_id"] = "game.guild"
+            },
+            ["hall"] = {
+                ["of"] = {
+                    ["thanes"] = {
+                        ["_id"] = "place.hall_of_thanes"
+                    }
+                }
             },
             ["hard"] = {
                 ["res"] = {
@@ -1425,6 +1450,9 @@ ns.Data = {
                 ["_id"] = "game.horde"
             },
             ["hot"] = {
+                ["_byCategory"] = {
+                    ["places"] = "place.hall_of_thanes"
+                },
                 ["_id"] = "slang.combat.hot"
             },
             ["hots"] = {
@@ -1660,6 +1688,16 @@ ns.Data = {
             },
             ["kiting"] = {
                 ["_id"] = "slang.combat.kite"
+            },
+            ["krol'dok"] = {
+                ["stronghold"] = {
+                    ["_id"] = "place.kroldok_stronghold"
+                }
+            },
+            ["ks"] = {
+                ["_byCategory"] = {
+                    ["places"] = "place.kroldok_stronghold"
+                }
             },
             ["large"] = {
                 ["selection"] = {
@@ -2460,6 +2498,7 @@ ns.Data = {
                 }
             },
             ["player"] = {
+                ["_id"] = "role.player",
                 ["_literal"] = {
                     ["id"] = "literal.player",
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -2468,6 +2507,7 @@ ns.Data = {
                 }
             },
             ["players"] = {
+                ["_id"] = "role.player",
                 ["_literal"] = {
                     ["id"] = "literal.players",
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -2984,6 +3024,11 @@ ns.Data = {
             ["st"] = {
                 ["_id"] = "place.the_temple_of_atal_hakkar"
             },
+            ["stamina"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.stamina"
+                }
+            },
             ["stand"] = {
                 ["around"] = {
                     ["_literal"] = {
@@ -2992,6 +3037,11 @@ ns.Data = {
                         ["text"] = "втикати",
                         ["weak"] = false
                     }
+                }
+            },
+            ["stats"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.all"
                 }
             },
             ["stay"] = {
@@ -3054,6 +3104,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:place.stratholme" },
                     ["text"] = "Стратгольм",
                     ["weak"] = false
+                }
+            },
+            ["strength"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.strength"
                 }
             },
             ["summon"] = {
@@ -3172,6 +3227,13 @@ ns.Data = {
                         ["sourceRefs"] = { "ua-forever:place.the_deadmines" },
                         ["text"] = "Мертві копальні",
                         ["weak"] = false
+                    }
+                },
+                ["hall"] = {
+                    ["of"] = {
+                        ["thanes"] = {
+                            ["_id"] = "place.hall_of_thanes"
+                        }
                     }
                 },
                 ["stockade"] = {
@@ -4458,6 +4520,16 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["витривалості"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.stamina"
+                }
+            },
+            ["витривалість"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.stamina"
+                }
+            },
             ["виходу"] = {
                 ["_literal"] = {
                     ["id"] = "literal.exit",
@@ -5118,6 +5190,7 @@ ns.Data = {
                 }
             },
             ["гравець"] = {
+                ["_id"] = "role.player",
                 ["_literal"] = {
                     ["id"] = "literal.player",
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -5131,6 +5204,7 @@ ns.Data = {
                 }
             },
             ["гравця"] = {
+                ["_id"] = "role.player",
                 ["_literal"] = {
                     ["id"] = "literal.player",
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -5139,6 +5213,7 @@ ns.Data = {
                 }
             },
             ["гравці"] = {
+                ["_id"] = "role.player",
                 ["_literal"] = {
                     ["id"] = "literal.players",
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -5147,6 +5222,7 @@ ns.Data = {
                 }
             },
             ["гравців"] = {
+                ["_id"] = "role.player",
                 ["_literal"] = {
                     ["id"] = "literal.players",
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -5768,12 +5844,27 @@ ns.Data = {
                     }
                 }
             },
+            ["зала"] = {
+                ["танів"] = {
+                    ["_id"] = "place.hall_of_thanes"
+                }
+            },
+            ["зали"] = {
+                ["танів"] = {
+                    ["_id"] = "place.hall_of_thanes"
+                }
+            },
             ["залишайся"] = {
                 ["_literal"] = {
                     ["id"] = "literal.stay",
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "stay",
                     ["weak"] = false
+                }
+            },
+            ["залі"] = {
+                ["танів"] = {
+                    ["_id"] = "place.hall_of_thanes"
                 }
             },
             ["залізогарт"] = {
@@ -6526,6 +6617,16 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["майстер"] = {
+                ["зачарування"] = {
+                    ["_id"] = "profession.enchanting"
+                }
+            },
+            ["майстра"] = {
+                ["зачарування"] = {
+                    ["_id"] = "profession.enchanting"
+                }
+            },
             ["мана"] = {
                 ["_id"] = "game.mana"
             },
@@ -6911,6 +7012,16 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["нагрудник"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.chest"
+                }
+            },
+            ["нагруднику"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.chest"
+                }
+            },
             ["надворі"] = {
                 ["_literal"] = {
                     ["id"] = "literal.outside",
@@ -6981,6 +7092,16 @@ ns.Data = {
                 },
                 ["пошепки"] = {
                     ["_id"] = "slang.social.pst"
+                }
+            },
+            ["наручах"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.bracers"
+                }
+            },
+            ["наручі"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.bracers"
                 }
             },
             ["нас"] = {
@@ -8924,6 +9045,16 @@ ns.Data = {
                     }
                 }
             },
+            ["рукавицях"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.gloves"
+                }
+            },
+            ["рукавиці"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.gloves"
+                }
+            },
             ["рухайся"] = {
                 ["_literal"] = {
                     ["id"] = "literal.move",
@@ -8941,6 +9072,16 @@ ns.Data = {
                         ["text"] = "Ruins of Ahn'Qiraj",
                         ["weak"] = false
                     }
+                }
+            },
+            ["сила"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.strength"
+                }
+            },
+            ["сили"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.strength"
                 }
             },
             ["скаржитися"] = {
@@ -9275,6 +9416,16 @@ ns.Data = {
             ["танків"] = {
                 ["_id"] = "role.tank"
             },
+            ["твердиня"] = {
+                ["крол'док"] = {
+                    ["_id"] = "place.kroldok_stronghold"
+                }
+            },
+            ["твердині"] = {
+                ["крол'док"] = {
+                    ["_id"] = "place.kroldok_stronghold"
+                }
+            },
             ["твої"] = {
                 ["матеріали"] = {
                     ["_id"] = "slang.trade.your-mats"
@@ -9522,6 +9673,16 @@ ns.Data = {
             },
             ["хант"] = {
                 ["_id"] = "class.hunter"
+            },
+            ["характеристик"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.all"
+                }
+            },
+            ["характеристики"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.all"
+                }
             },
             ["хард"] = {
                 ["рез"] = {
@@ -11566,9 +11727,18088 @@ ns.Data = {
             }
         }
     },
+    ["linguisticSources"] = {
+        {
+            ["externalDataBundled"] = false,
+            ["id"] = "project-authored:apertium-pipeline-1",
+            ["license"] = "Project license not assigned; no Apertium or VESUM data bundled",
+            ["origin"] = "project-authored morphology and structural transfer; architecture inspired by https://wiki.apertium.org/wiki/Pipeline",
+            ["version"] = "1"
+        },
+        {
+            ["id"] = "legacy-curated",
+            ["license"] = nil,
+            ["origin"] = "Pre-existing approved catalog records; see each originalSourceRefs",
+            ["unresolved"] = true,
+            ["version"] = nil
+        },
+        {
+            ["archiveSha256"] = "690c61e8bb7673e0bdeab6f0bd5c5884f648998373dfdd9b04b9c5d4e7bfb76d",
+            ["declaredLicense"] = "CC BY-SA 4.0",
+            ["id"] = "koreader-dicts:wikt-uk-en",
+            ["metadataEvidence"] = "addon/UA_Forever_Translator/Data/GeneralUkEn.lua:1",
+            ["origin"] = "English Wiktionary (Ukrainian entries), via Kaikki / Wiktextract; KOReader Dicts",
+            ["url"] = "https://danielgregorini.github.io/koreader-dicts/en/uk-en/",
+            ["usage"] = "Pre-existing literal fallback; no morphological tags imported",
+            ["version"] = "2026.09.21"
+        },
+        {
+            ["archiveSha256"] = "2e5dfd0b86e5d9a8dd3d5f6eff932285829a5d3ef8d2cc6e8c6558d7e06583e3",
+            ["declaredLicense"] = "CC BY-SA 4.0",
+            ["id"] = "koreader-dicts:wikt-en-uk",
+            ["metadataEvidence"] = "addon/UA_Forever_Translator/Data/GeneralEnUk.lua:1",
+            ["origin"] = "English Wiktionary via Kaikki / Wiktextract and Princeton WordNet 3.0; KOReader Dicts",
+            ["url"] = "https://danielgregorini.github.io/koreader-dicts/en/en-uk/",
+            ["usage"] = "Pre-existing literal fallback; no morphological tags imported",
+            ["version"] = "2026.09.21"
+        }
+    },
+    ["linguistics"] = {
+        ["analysis"] = {
+            ["en-uk"] = {
+                ["1"] = {
+                    ["sr"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.one-sr",
+                                ["lemma"] = "1SR",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.one-sr",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["1sr"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.one-sr",
+                            ["lemma"] = "1SR",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.one-sr",
+                            ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["1x"] = {
+                    ["sr"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.one-sr",
+                                ["lemma"] = "1SR",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.one-sr",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["2"] = {
+                    ["sr"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.two-sr",
+                                ["lemma"] = "2SR",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.two-sr",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["2sr"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.two-sr",
+                            ["lemma"] = "2SR",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.two-sr",
+                            ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["2x"] = {
+                    ["sr"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.two-sr",
+                                ["lemma"] = "2SR",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.two-sr",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["3"] = {
+                    ["sr"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.three-sr",
+                                ["lemma"] = "3SR",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.three-sr",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["3sr"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.three-sr",
+                            ["lemma"] = "3SR",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.three-sr",
+                            ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["3x"] = {
+                    ["sr"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.three-sr",
+                                ["lemma"] = "3SR",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.three-sr",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["a"] = {
+                    ["battleground"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "activity.battleground",
+                                ["lemma"] = "Battleground",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.battleground",
+                                ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                            }
+                        }
+                    },
+                    ["big"] = {
+                        ["gnome"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "augmentative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.gnome"
+                                    },
+                                    ["id"] = "race.gnome.augmentative.singular",
+                                    ["lemma"] = "big gnome",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.gnome.augmentative.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "augmentative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.gnome"
+                                    },
+                                    ["id"] = "race.gnome.augmentative.singular",
+                                    ["lemma"] = "big gnome",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.gnome.augmentative.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    },
+                    ["dungeon"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "game.dungeon",
+                                ["lemma"] = "Dungeon",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.dungeon",
+                                ["sourceRefs"] = { "ua-forever:game.dungeon" }
+                            }
+                        }
+                    },
+                    ["dwarf"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "base",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.dwarf"
+                                },
+                                ["id"] = "race.dwarf.base.singular",
+                                ["lemma"] = "dwarf",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.dwarf.base.singular",
+                                ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "base",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.dwarf"
+                                },
+                                ["id"] = "race.dwarf.base.singular",
+                                ["lemma"] = "dwarf",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.dwarf.base.singular",
+                                ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["gnome"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "base",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.base.singular",
+                                ["lemma"] = "gnome",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.base.singular",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "base",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.base.singular",
+                                ["lemma"] = "gnome",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.base.singular",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["health"] = {
+                        ["potion"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "goods.health_potion",
+                                    ["lemma"] = "health potion",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.health_potion",
+                                    ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                                }
+                            }
+                        }
+                    },
+                    ["little"] = {
+                        ["dwarf"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "diminutive",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.dwarf"
+                                    },
+                                    ["id"] = "race.dwarf.diminutive.singular",
+                                    ["lemma"] = "little dwarf",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.dwarf.diminutive.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "diminutive",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.dwarf"
+                                    },
+                                    ["id"] = "race.dwarf.diminutive.singular",
+                                    ["lemma"] = "little dwarf",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.dwarf.diminutive.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["gnome"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "diminutive",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.gnome"
+                                    },
+                                    ["id"] = "race.gnome.diminutive.singular",
+                                    ["lemma"] = "little gnome",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.gnome.diminutive.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "diminutive",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.gnome"
+                                    },
+                                    ["id"] = "race.gnome.diminutive.singular",
+                                    ["lemma"] = "little gnome",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.gnome.diminutive.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["orc"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "diminutive",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.orc"
+                                    },
+                                    ["id"] = "race.orc.diminutive.singular",
+                                    ["lemma"] = "little orc",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.orc.diminutive.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "diminutive",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.orc"
+                                    },
+                                    ["id"] = "race.orc.diminutive.singular",
+                                    ["lemma"] = "little orc",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.orc.diminutive.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    },
+                    ["proto"] = {
+                        ["-"] = {
+                            ["dwarf"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "animate",
+                                            ["derivation"] = "proto",
+                                            ["gender"] = "masculine",
+                                            ["number"] = "singular",
+                                            ["root"] = "race.dwarf"
+                                        },
+                                        ["id"] = "race.dwarf.proto.singular",
+                                        ["lemma"] = "proto-dwarf",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "race.dwarf.proto.singular",
+                                        ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "animate",
+                                            ["case"] = "nominative",
+                                            ["derivation"] = "proto",
+                                            ["gender"] = "masculine",
+                                            ["number"] = "singular",
+                                            ["root"] = "race.dwarf"
+                                        },
+                                        ["id"] = "race.dwarf.proto.singular",
+                                        ["lemma"] = "proto-dwarf",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "race.dwarf.proto.singular",
+                                        ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                                    }
+                                }
+                            },
+                            ["gnome"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "animate",
+                                            ["derivation"] = "proto",
+                                            ["gender"] = "masculine",
+                                            ["number"] = "singular",
+                                            ["root"] = "race.gnome"
+                                        },
+                                        ["id"] = "race.gnome.proto.singular",
+                                        ["lemma"] = "proto-gnome",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "race.gnome.proto.singular",
+                                        ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "animate",
+                                            ["case"] = "nominative",
+                                            ["derivation"] = "proto",
+                                            ["gender"] = "masculine",
+                                            ["number"] = "singular",
+                                            ["root"] = "race.gnome"
+                                        },
+                                        ["id"] = "race.gnome.proto.singular",
+                                        ["lemma"] = "proto-gnome",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "race.gnome.proto.singular",
+                                        ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                    }
+                                }
+                            },
+                            ["orc"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "animate",
+                                            ["derivation"] = "proto",
+                                            ["gender"] = "masculine",
+                                            ["number"] = "singular",
+                                            ["root"] = "race.orc"
+                                        },
+                                        ["id"] = "race.orc.proto.singular",
+                                        ["lemma"] = "proto-orc",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "race.orc.proto.singular",
+                                        ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "animate",
+                                            ["case"] = "nominative",
+                                            ["derivation"] = "proto",
+                                            ["gender"] = "masculine",
+                                            ["number"] = "singular",
+                                            ["root"] = "race.orc"
+                                        },
+                                        ["id"] = "race.orc.proto.singular",
+                                        ["lemma"] = "proto-orc",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "race.orc.proto.singular",
+                                        ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["raid"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "game.raid",
+                                ["lemma"] = "Raid",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.raid",
+                                ["sourceRefs"] = { "ua-forever:game.raid" }
+                            }
+                        }
+                    },
+                    ["shield"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "game.shield",
+                                ["lemma"] = "Shield",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.shield",
+                                ["sourceRefs"] = { "ua-forever:game.shield" }
+                            }
+                        }
+                    },
+                    ["sword"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "goods.sword",
+                                ["lemma"] = "sword",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.sword",
+                                ["sourceRefs"] = { "ua-forever:goods.sword" }
+                            }
+                        }
+                    },
+                    ["wannabe"] = {
+                        ["dwarf"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "diminished",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.dwarf"
+                                    },
+                                    ["id"] = "race.dwarf.diminished.singular",
+                                    ["lemma"] = "wannabe dwarf",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.dwarf.diminished.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "diminished",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.dwarf"
+                                    },
+                                    ["id"] = "race.dwarf.diminished.singular",
+                                    ["lemma"] = "wannabe dwarf",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.dwarf.diminished.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["gnome"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "diminished",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.gnome"
+                                    },
+                                    ["id"] = "race.gnome.diminished.singular",
+                                    ["lemma"] = "wannabe gnome",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.gnome.diminished.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "diminished",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.gnome"
+                                    },
+                                    ["id"] = "race.gnome.diminished.singular",
+                                    ["lemma"] = "wannabe gnome",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.gnome.diminished.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["orc"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "diminished",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.orc"
+                                    },
+                                    ["id"] = "race.orc.diminished.singular",
+                                    ["lemma"] = "wannabe orc",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.orc.diminished.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "diminished",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.orc"
+                                    },
+                                    ["id"] = "race.orc.diminished.singular",
+                                    ["lemma"] = "wannabe orc",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.orc.diminished.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ab"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.arathi_basin",
+                            ["lemma"] = "Arathi Basin",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.arathi_basin",
+                            ["sourceRefs"] = { "ua-forever:place.arathi_basin", "wow-community:classic" }
+                        }
+                    }
+                },
+                ["adds"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.adds",
+                            ["lemma"] = "adds",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.adds",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    },
+                    ["inc"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.adds-inc",
+                                ["lemma"] = "adds inc",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.adds-inc",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["aggro"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.aggro",
+                            ["lemma"] = "Aggro",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.aggro",
+                            ["sourceRefs"] = { "ua-forever:game.aggro" }
+                        }
+                    }
+                },
+                ["ah"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.auction_house",
+                            ["lemma"] = "Auction House",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.auction_house",
+                            ["sourceRefs"] = { "ua-forever:game.auction_house" }
+                        }
+                    }
+                },
+                ["alchemy"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.alchemy",
+                            ["lemma"] = "Alchemy",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.alchemy",
+                            ["sourceRefs"] = { "ua-forever:profession.alchemy" }
+                        }
+                    }
+                },
+                ["alliance"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.alliance",
+                            ["lemma"] = "Alliance",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.alliance",
+                            ["sourceRefs"] = { "ua-forever:game.alliance" }
+                        }
+                    }
+                },
+                ["alt"] = {
+                    ["run"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.alt-run",
+                                ["lemma"] = "alt run",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.alt-run",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    }
+                },
+                ["alterac"] = {
+                    ["valley"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.alterac_valley",
+                                ["lemma"] = "Alterac Valley",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.alterac_valley",
+                                ["sourceRefs"] = { "ua-forever:place.alterac_valley", "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["an"] = {
+                    ["arrow"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "goods.arrow",
+                                ["lemma"] = "arrow",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.arrow",
+                                ["sourceRefs"] = { "ua-forever:goods.arrow" }
+                            }
+                        }
+                    },
+                    ["axe"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "goods.axe",
+                                ["lemma"] = "axe",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.axe",
+                                ["sourceRefs"] = { "ua-forever:goods.axe" }
+                            }
+                        }
+                    },
+                    ["orc"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "base",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.orc"
+                                },
+                                ["id"] = "race.orc.base.singular",
+                                ["lemma"] = "orc",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.orc.base.singular",
+                                ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "base",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.orc"
+                                },
+                                ["id"] = "race.orc.base.singular",
+                                ["lemma"] = "orc",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.orc.base.singular",
+                                ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["aoe"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.aoe",
+                            ["lemma"] = "AoE",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.aoe",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["aq20"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.ruins_of_ahn_qiraj",
+                            ["lemma"] = "Ruins of Ahn'Qiraj",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.ruins_of_ahn_qiraj",
+                            ["sourceRefs"] = { "ua-forever:place.ruins_of_ahn_qiraj" }
+                        }
+                    }
+                },
+                ["aq40"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.temple_of_ahn_qiraj",
+                            ["lemma"] = "Temple of Ahn'Qiraj",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.temple_of_ahn_qiraj",
+                            ["sourceRefs"] = { "ua-forever:place.temple_of_ahn_qiraj" }
+                        }
+                    }
+                },
+                ["arathi"] = {
+                    ["basin"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.arathi_basin",
+                                ["lemma"] = "Arathi Basin",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.arathi_basin",
+                                ["sourceRefs"] = { "ua-forever:place.arathi_basin", "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["area"] = {
+                    ["of"] = {
+                        ["effect"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.aoe",
+                                    ["lemma"] = "AoE",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.aoe",
+                                    ["sourceRefs"] = { "wow-community:forum" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["armor"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.armor",
+                            ["lemma"] = "Armor",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.armor",
+                            ["sourceRefs"] = { "ua-forever:game.armor" }
+                        }
+                    }
+                },
+                ["arrow"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.arrow",
+                            ["lemma"] = "arrow",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.arrow",
+                            ["sourceRefs"] = { "ua-forever:goods.arrow" }
+                        }
+                    }
+                },
+                ["arrows"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.arrow",
+                            ["lemma"] = "arrow",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.arrow",
+                            ["sourceRefs"] = { "ua-forever:goods.arrow" }
+                        },
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "goods.arrow",
+                            ["lemma"] = "arrow",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.arrow",
+                            ["sourceRefs"] = { "ua-forever:goods.arrow" }
+                        }
+                    }
+                },
+                ["ashenvale"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.ashenvale",
+                            ["lemma"] = "Ashenvale",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.ashenvale",
+                            ["sourceRefs"] = { "ua-forever:place.ashenvale" }
+                        }
+                    }
+                },
+                ["auction"] = {
+                    ["house"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "game.auction_house",
+                                ["lemma"] = "Auction House",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.auction_house",
+                                ["sourceRefs"] = { "ua-forever:game.auction_house" }
+                            }
+                        }
+                    }
+                },
+                ["av"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.alterac_valley",
+                            ["lemma"] = "Alterac Valley",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.alterac_valley",
+                            ["sourceRefs"] = { "ua-forever:place.alterac_valley", "wow-community:classic" }
+                        }
+                    }
+                },
+                ["axe"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.axe",
+                            ["lemma"] = "axe",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.axe",
+                            ["sourceRefs"] = { "ua-forever:goods.axe" }
+                        }
+                    }
+                },
+                ["axes"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.axe",
+                            ["lemma"] = "axe",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.axe",
+                            ["sourceRefs"] = { "ua-forever:goods.axe" }
+                        },
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "goods.axe",
+                            ["lemma"] = "axe",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.axe",
+                            ["sourceRefs"] = { "ua-forever:goods.axe" }
+                        }
+                    }
+                },
+                ["b"] = {
+                    ["-"] = {
+                        ["rez"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.brez",
+                                    ["lemma"] = "brez",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.brez",
+                                    ["sourceRefs"] = { "wow-community:forum" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["bag"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.bag",
+                            ["lemma"] = "Bag",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.bag",
+                            ["sourceRefs"] = { "ua-forever:game.bag" }
+                        }
+                    }
+                },
+                ["bank"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.bank",
+                            ["lemma"] = "Bank",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.bank",
+                            ["sourceRefs"] = { "ua-forever:game.bank" }
+                        }
+                    }
+                },
+                ["battle"] = {
+                    ["res"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.brez",
+                                ["lemma"] = "brez",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.brez",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    },
+                    ["resurrection"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.brez",
+                                ["lemma"] = "brez",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.brez",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    },
+                    ["rez"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.brez",
+                                ["lemma"] = "brez",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.brez",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["battleground"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.battleground",
+                            ["lemma"] = "Battleground",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.battleground",
+                            ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                        }
+                    }
+                },
+                ["best"] = {
+                    ["-"] = {
+                        ["in"] = {
+                            ["-"] = {
+                                ["slot"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.trade.bis",
+                                            ["lemma"] = "BiS",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.trade.bis",
+                                            ["sourceRefs"] = { "wow-community:wiki" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["in"] = {
+                        ["slot"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.trade.bis",
+                                    ["lemma"] = "BiS",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.trade.bis",
+                                    ["sourceRefs"] = { "wow-community:wiki" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["bfd"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.blackfathom_deeps",
+                            ["lemma"] = "Blackfathom Deeps",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.blackfathom_deeps",
+                            ["sourceRefs"] = { "ua-forever:place.blackfathom_deeps" }
+                        }
+                    }
+                },
+                ["bg"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.battleground",
+                            ["lemma"] = "Battleground",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.battleground",
+                            ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                        }
+                    }
+                },
+                ["big"] = {
+                    ["gnome"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "augmentative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.augmentative.singular",
+                                ["lemma"] = "big gnome",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.augmentative.singular",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "augmentative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.augmentative.singular",
+                                ["lemma"] = "big gnome",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.augmentative.singular",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["gnomes"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "augmentative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.augmentative.plural",
+                                ["lemma"] = "big gnomes",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.augmentative.plural",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "augmentative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.augmentative.plural",
+                                ["lemma"] = "big gnomes",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.augmentative.plural",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["bind"] = {
+                    ["on"] = {
+                        ["equip"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.trade.boe",
+                                    ["lemma"] = "BoE",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.trade.boe",
+                                    ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when equipped" }
+                                }
+                            }
+                        },
+                        ["pickup"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.trade.bind-on-pickup",
+                                    ["lemma"] = "bind on pickup",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.trade.bind-on-pickup",
+                                    ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when picked up" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["binds"] = {
+                    ["when"] = {
+                        ["equipped"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.trade.boe",
+                                    ["lemma"] = "BoE",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.trade.boe",
+                                    ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when equipped" }
+                                }
+                            }
+                        },
+                        ["picked"] = {
+                            ["up"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.trade.bind-on-pickup",
+                                        ["lemma"] = "bind on pickup",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.trade.bind-on-pickup",
+                                        ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when picked up" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["bio"] = {
+                    ["afk"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.social.bio-break",
+                                ["lemma"] = "bio break",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.social.bio-break",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    },
+                    ["break"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.social.bio-break",
+                                ["lemma"] = "bio break",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.social.bio-break",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["bis"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.trade.bis",
+                            ["lemma"] = "BiS",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.trade.bis",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["blackfathom"] = {
+                    ["deeps"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.blackfathom_deeps",
+                                ["lemma"] = "Blackfathom Deeps",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.blackfathom_deeps",
+                                ["sourceRefs"] = { "ua-forever:place.blackfathom_deeps" }
+                            }
+                        }
+                    }
+                },
+                ["blackrock"] = {
+                    ["depths"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.blackrock_depths",
+                                ["lemma"] = "Blackrock Depths",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.blackrock_depths",
+                                ["sourceRefs"] = { "ua-forever:place.blackrock_depths" }
+                            }
+                        }
+                    },
+                    ["spire"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.blackrock_spire",
+                                ["lemma"] = "Blackrock Spire",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.blackrock_spire",
+                                ["sourceRefs"] = { "ua-forever:place.blackrock_spire" }
+                            }
+                        }
+                    }
+                },
+                ["blacksmithing"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.blacksmithing",
+                            ["lemma"] = "Blacksmithing",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.blacksmithing",
+                            ["sourceRefs"] = { "ua-forever:profession.blacksmithing" }
+                        }
+                    }
+                },
+                ["blackwing"] = {
+                    ["lair"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.blackwing_lair",
+                                ["lemma"] = "Blackwing Lair",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.blackwing_lair",
+                                ["sourceRefs"] = { "ua-forever:place.blackwing_lair" }
+                            }
+                        }
+                    }
+                },
+                ["body"] = {
+                    ["pull"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.body-pull",
+                                ["lemma"] = "body pull",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.body-pull",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    }
+                },
+                ["boe"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.trade.boe",
+                            ["lemma"] = "BoE",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.trade.boe",
+                            ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when equipped" }
+                        }
+                    }
+                },
+                ["bop"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.trade.bop",
+                            ["lemma"] = "BoP",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.trade.bop",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    },
+                    ["gear"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.bop-item",
+                                ["lemma"] = "BoP item",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.bop-item",
+                                ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when picked up" }
+                            }
+                        }
+                    },
+                    ["item"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.bop-item",
+                                ["lemma"] = "BoP item",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.bop-item",
+                                ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when picked up" }
+                            }
+                        }
+                    },
+                    ["loot"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.bop-item",
+                                ["lemma"] = "BoP item",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.bop-item",
+                                ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when picked up" }
+                            }
+                        }
+                    },
+                    ["me"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.bop-me",
+                                ["lemma"] = "BoP me",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.bop-me",
+                                ["sourceRefs"] = { "wow-community:forum", "ua-forever:spell.Blessing of Protection" }
+                            }
+                        },
+                        ["pls"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.trade.bop-me",
+                                    ["lemma"] = "BoP me",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.trade.bop-me",
+                                    ["sourceRefs"] = { "wow-community:forum", "ua-forever:spell.Blessing of Protection" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["bracers"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "equipment.bracers",
+                            ["lemma"] = "bracers",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.bracers",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["brd"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.blackrock_depths",
+                            ["lemma"] = "Blackrock Depths",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.blackrock_depths",
+                            ["sourceRefs"] = { "ua-forever:place.blackrock_depths" }
+                        }
+                    }
+                },
+                ["bread"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.bread",
+                            ["lemma"] = "bread",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.bread",
+                            ["sourceRefs"] = { "project-authored:chat-0.1:goods.bread" }
+                        }
+                    }
+                },
+                ["brez"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.brez",
+                            ["lemma"] = "brez",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.brez",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["brs"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.blackrock_spire",
+                            ["lemma"] = "Blackrock Spire",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.blackrock_spire",
+                            ["sourceRefs"] = { "ua-forever:place.blackrock_spire" }
+                        }
+                    }
+                },
+                ["bwl"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.blackwing_lair",
+                            ["lemma"] = "Blackwing Lair",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.blackwing_lair",
+                            ["sourceRefs"] = { "ua-forever:place.blackwing_lair" }
+                        }
+                    }
+                },
+                ["c"] = {
+                    ["."] = {
+                        ["o"] = {
+                            ["."] = {
+                                ["d"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.trade.cod",
+                                            ["lemma"] = "COD",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.trade.cod",
+                                            ["sourceRefs"] = { "wow-community:wiki" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["cash"] = {
+                    ["on"] = {
+                        ["delivery"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.trade.cod",
+                                    ["lemma"] = "COD",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.trade.cod",
+                                    ["sourceRefs"] = { "wow-community:wiki" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["cc"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.cc",
+                            ["lemma"] = "CC",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.cc",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["cd"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.cd",
+                            ["lemma"] = "CD",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.cd",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["chain"] = {
+                    ["pull"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.chain-pull",
+                                ["lemma"] = "chain pull",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.chain-pull",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    },
+                    ["pulling"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.chain-pull",
+                                ["lemma"] = "chain pull",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.chain-pull",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    }
+                },
+                ["chest"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.chest",
+                            ["lemma"] = "chest",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.chest",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["cod"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.trade.cod",
+                            ["lemma"] = "COD",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.trade.cod",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["combat"] = {
+                    ["rez"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.brez",
+                                ["lemma"] = "brez",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.brez",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["complaining"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "behavior.complain",
+                            ["lemma"] = "complaining",
+                            ["pos"] = "noun",
+                            ["sense"] = "behavior.complain",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["cooking"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.cooking",
+                            ["lemma"] = "Cooking",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.cooking",
+                            ["sourceRefs"] = { "ua-forever:profession.cooking" }
+                        }
+                    }
+                },
+                ["cooldown"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.cd",
+                            ["lemma"] = "CD",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.cd",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["crafting"] = {
+                    ["materials"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.mats",
+                                ["lemma"] = "mats",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.mats",
+                                ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    },
+                    ["mats"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.mats",
+                                ["lemma"] = "mats",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.mats",
+                                ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    }
+                },
+                ["crowd"] = {
+                    ["control"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.cc",
+                                ["lemma"] = "CC",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.cc",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["damage"] = {
+                    ["dealer"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["pos"] = "noun"
+                                },
+                                ["id"] = "role.damage",
+                                ["lemma"] = "DPS",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.damage",
+                                ["sourceRefs"] = { "ua-forever:role.damage" }
+                            }
+                        }
+                    },
+                    ["over"] = {
+                        ["time"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.dot",
+                                    ["lemma"] = "DoT",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.dot",
+                                    ["sourceRefs"] = { "wow-community:classic" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["darnassus"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.darnassus",
+                            ["lemma"] = "Darnassus",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.darnassus",
+                            ["sourceRefs"] = { "ua-forever:place.darnassus" }
+                        }
+                    }
+                },
+                ["dd"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.damage",
+                            ["lemma"] = "DPS",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.damage",
+                            ["sourceRefs"] = { "ua-forever:role.damage" }
+                        }
+                    }
+                },
+                ["ding"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.social.ding",
+                            ["lemma"] = "ding",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.social.ding",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["dire"] = {
+                    ["maul"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.dire_maul",
+                                ["lemma"] = "Dire Maul",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dire_maul",
+                                ["sourceRefs"] = { "ua-forever:place.dire_maul" }
+                            }
+                        }
+                    }
+                },
+                ["dkp"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.dkp",
+                            ["lemma"] = "DKP",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.dkp",
+                            ["sourceRefs"] = { "wow-community:dkp" }
+                        }
+                    }
+                },
+                ["dm"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.the_deadmines",
+                            ["lemma"] = "The Deadmines",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.the_deadmines",
+                            ["sourceRefs"] = { "ua-forever:place.the_deadmines" }
+                        }
+                    }
+                },
+                ["dnd"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.social.dnd",
+                            ["lemma"] = "DND",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.social.dnd",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["dot"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.dot",
+                            ["lemma"] = "DoT",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.dot",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["dps"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.damage",
+                            ["lemma"] = "DPS",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.damage",
+                            ["sourceRefs"] = { "ua-forever:role.damage" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.damage",
+                            ["lemma"] = "DPS",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.damage",
+                            ["sourceRefs"] = { "ua-forever:role.damage" }
+                        }
+                    }
+                },
+                ["dragon"] = {
+                    ["kill"] = {
+                        ["points"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.loot.dkp",
+                                    ["lemma"] = "DKP",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.loot.dkp",
+                                    ["sourceRefs"] = { "wow-community:dkp" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["draw"] = {
+                    ["aggro"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.pull-aggro",
+                                ["lemma"] = "pull aggro",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.pull-aggro",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["druid"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.druid",
+                            ["lemma"] = "Druid",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.druid",
+                            ["sourceRefs"] = { "ua-forever:class.druid" }
+                        }
+                    }
+                },
+                ["dung"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.dungeon",
+                            ["lemma"] = "Dungeon",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.dungeon",
+                            ["sourceRefs"] = { "ua-forever:game.dungeon" }
+                        }
+                    }
+                },
+                ["dungeon"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.dungeon",
+                            ["lemma"] = "Dungeon",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.dungeon",
+                            ["sourceRefs"] = { "ua-forever:game.dungeon" }
+                        }
+                    }
+                },
+                ["durotar"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.durotar",
+                            ["lemma"] = "Durotar",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.durotar",
+                            ["sourceRefs"] = { "ua-forever:place.durotar" }
+                        }
+                    }
+                },
+                ["duskwood"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.duskwood",
+                            ["lemma"] = "Duskwood",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.duskwood",
+                            ["sourceRefs"] = { "ua-forever:place.duskwood" }
+                        }
+                    }
+                },
+                ["dwarf"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.singular",
+                            ["lemma"] = "dwarf",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.singular",
+                            ["lemma"] = "dwarf",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["dwarves"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.plural",
+                            ["lemma"] = "dwarves",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.plural",
+                            ["lemma"] = "dwarves",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["eastern"] = {
+                    ["plaguelands"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.eastern_plaguelands",
+                                ["lemma"] = "Eastern Plaguelands",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.eastern_plaguelands",
+                                ["sourceRefs"] = { "ua-forever:place.eastern_plaguelands" }
+                            }
+                        }
+                    }
+                },
+                ["elwynn"] = {
+                    ["forest"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.elwynn_forest",
+                                ["lemma"] = "Elwynn Forest",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.elwynn_forest",
+                                ["sourceRefs"] = { "ua-forever:place.elwynn_forest" }
+                            }
+                        }
+                    }
+                },
+                ["enchanter"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.enchanting",
+                            ["lemma"] = "Enchanting",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.enchanting",
+                            ["sourceRefs"] = { "ua-forever:profession.enchanting" }
+                        }
+                    }
+                },
+                ["enchanting"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.enchanting",
+                            ["lemma"] = "Enchanting",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.enchanting",
+                            ["sourceRefs"] = { "ua-forever:profession.enchanting" }
+                        }
+                    }
+                },
+                ["engineering"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.engineering",
+                            ["lemma"] = "Engineering",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.engineering",
+                            ["sourceRefs"] = { "ua-forever:profession.engineering" }
+                        }
+                    }
+                },
+                ["epl"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.eastern_plaguelands",
+                            ["lemma"] = "Eastern Plaguelands",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.eastern_plaguelands",
+                            ["sourceRefs"] = { "ua-forever:place.eastern_plaguelands" }
+                        }
+                    }
+                },
+                ["first"] = {
+                    ["aid"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "profession.first_aid",
+                                ["lemma"] = "First Aid",
+                                ["pos"] = "noun",
+                                ["sense"] = "profession.first_aid",
+                                ["sourceRefs"] = { "ua-forever:profession.first_aid" }
+                            }
+                        }
+                    }
+                },
+                ["fishing"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.fishing",
+                            ["lemma"] = "Fishing",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.fishing",
+                            ["sourceRefs"] = { "ua-forever:profession.fishing" }
+                        }
+                    }
+                },
+                ["food"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.food",
+                            ["lemma"] = "Food",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.food",
+                            ["sourceRefs"] = { "ua-forever:game.food" }
+                        }
+                    }
+                },
+                ["free"] = {
+                    ["roll"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.free-roll",
+                                ["lemma"] = "free roll",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.free-roll",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    },
+                    ["rolls"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.free-roll",
+                                ["lemma"] = "free roll",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.free-roll",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["freeroll"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.free-roll",
+                            ["lemma"] = "free roll",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.free-roll",
+                            ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["g2g"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.social.gtg",
+                            ["lemma"] = "GTG",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.social.gtg",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["gank"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.gank",
+                            ["lemma"] = "gank",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.gank",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["ganking"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.gank",
+                            ["lemma"] = "gank",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.gank",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["gcd"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.gcd",
+                            ["lemma"] = "GCD",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.gcd",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["gdkp"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.gdkp",
+                            ["lemma"] = "GDKP",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.gdkp",
+                            ["sourceRefs"] = { "wow-community:dkp" }
+                        }
+                    }
+                },
+                ["gl"] = {
+                    ["hf"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.social.glhf",
+                                ["lemma"] = "GLHF",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.social.glhf",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["glhf"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.social.glhf",
+                            ["lemma"] = "GLHF",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.social.glhf",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["global"] = {
+                    ["cooldown"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.gcd",
+                                ["lemma"] = "GCD",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.gcd",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["gloves"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "equipment.gloves",
+                            ["lemma"] = "gloves",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.gloves",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["gnome"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.singular",
+                            ["lemma"] = "gnome",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.singular",
+                            ["lemma"] = "gnome",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["gnomer"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Gnomeregan",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        }
+                    }
+                },
+                ["gnomeregan"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Gnomeregan",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        }
+                    }
+                },
+                ["gnomes"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.plural",
+                            ["lemma"] = "gnomes",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.plural",
+                            ["lemma"] = "gnomes",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["gold"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.gold",
+                            ["lemma"] = "Gold",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.gold",
+                            ["sourceRefs"] = { "ua-forever:game.gold" }
+                        }
+                    },
+                    ["dkp"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.gdkp",
+                                ["lemma"] = "GDKP",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.gdkp",
+                                ["sourceRefs"] = { "wow-community:dkp" }
+                            }
+                        }
+                    }
+                },
+                ["greed"] = {
+                    ["roll"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.greed-roll",
+                                ["lemma"] = "Greed roll",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.greed-roll",
+                                ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Greed" }
+                            }
+                        }
+                    }
+                },
+                ["gtg"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.social.gtg",
+                            ["lemma"] = "GTG",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.social.gtg",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["guild"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.guild",
+                            ["lemma"] = "Guild",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.guild",
+                            ["sourceRefs"] = { "ua-forever:game.guild" }
+                        }
+                    }
+                },
+                ["hall"] = {
+                    ["of"] = {
+                        ["thanes"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.hall_of_thanes",
+                                    ["lemma"] = "The Hall of Thanes",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.hall_of_thanes",
+                                    ["sourceRefs"] = {
+                                        "ua-forever:place.hall_of_thanes",
+                                        "project-authored:apertium-pipeline-1"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["hard"] = {
+                    ["res"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.hard-reserve",
+                                ["lemma"] = "hard reserve",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.hard-reserve",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    },
+                    ["reserve"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.hard-reserve",
+                                ["lemma"] = "hard reserve",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.hard-reserve",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    },
+                    ["reserved"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.hard-reserve",
+                                ["lemma"] = "hard reserve",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.hard-reserve",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["heal"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Healer",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        }
+                    }
+                },
+                ["healer"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Healer",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        }
+                    }
+                },
+                ["healers"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Healer",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Healer",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        }
+                    }
+                },
+                ["healing"] = {
+                    ["per"] = {
+                        ["second"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.hps",
+                                    ["lemma"] = "HPS",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.hps",
+                                    ["sourceRefs"] = { "wow-community:forum" }
+                                }
+                            }
+                        }
+                    },
+                    ["potion"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "goods.health_potion",
+                                ["lemma"] = "health potion",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.health_potion",
+                                ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                            }
+                        }
+                    },
+                    ["potions"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "goods.health_potion",
+                                ["lemma"] = "health potion",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.health_potion",
+                                ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                            }
+                        }
+                    }
+                },
+                ["heals"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Healer",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        }
+                    }
+                },
+                ["health"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.health",
+                            ["lemma"] = "Health",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.health",
+                            ["sourceRefs"] = { "ua-forever:game.health" }
+                        }
+                    },
+                    ["potion"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "goods.health_potion",
+                                ["lemma"] = "health potion",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.health_potion",
+                                ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                            }
+                        }
+                    },
+                    ["potions"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "goods.health_potion",
+                                ["lemma"] = "health potion",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.health_potion",
+                                ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.health_potion",
+                                ["lemma"] = "health potion",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.health_potion",
+                                ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                            }
+                        }
+                    }
+                },
+                ["her"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "recipient.her",
+                            ["lemma"] = "her",
+                            ["pos"] = "noun",
+                            ["sense"] = "recipient.her",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["herbalism"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.herbalism",
+                            ["lemma"] = "Herbalism",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.herbalism",
+                            ["sourceRefs"] = { "ua-forever:profession.herbalism" }
+                        }
+                    }
+                },
+                ["him"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "recipient.him",
+                            ["lemma"] = "him",
+                            ["pos"] = "noun",
+                            ["sense"] = "recipient.him",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["horde"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.horde",
+                            ["lemma"] = "Horde",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.horde",
+                            ["sourceRefs"] = { "ua-forever:game.horde" }
+                        }
+                    }
+                },
+                ["hot"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.hall_of_thanes",
+                            ["lemma"] = "The Hall of Thanes",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.hall_of_thanes",
+                            ["sourceRefs"] = { "ua-forever:place.hall_of_thanes", "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.hot",
+                            ["lemma"] = "HoT",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.hot",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["hp"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.health",
+                            ["lemma"] = "Health",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.health",
+                            ["sourceRefs"] = { "ua-forever:game.health" }
+                        }
+                    }
+                },
+                ["hps"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.hps",
+                            ["lemma"] = "HPS",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.hps",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["hr"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.hr",
+                            ["lemma"] = "HR",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.hr",
+                            ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["hunter"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.hunter",
+                            ["lemma"] = "Hunter",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.hunter",
+                            ["sourceRefs"] = { "ua-forever:class.hunter" }
+                        }
+                    }
+                },
+                ["if"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.ironforge",
+                            ["lemma"] = "Ironforge",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.ironforge",
+                            ["sourceRefs"] = { "ua-forever:place.ironforge" }
+                        }
+                    }
+                },
+                ["inc"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.inc",
+                            ["lemma"] = "inc",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.inc",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["interrupt"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.interrupt",
+                            ["lemma"] = "Interrupt",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.interrupt",
+                            ["sourceRefs"] = { "ua-forever:game.interrupt" }
+                        }
+                    }
+                },
+                ["inv"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.social.inv",
+                            ["lemma"] = "inv",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.social.inv",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    },
+                    ["me"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.social.inv",
+                                ["lemma"] = "inv",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.social.inv",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    },
+                    ["please"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.social.inv",
+                                ["lemma"] = "inv",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.social.inv",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    },
+                    ["pls"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.social.inv",
+                                ["lemma"] = "inv",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.social.inv",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["ironforge"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.ironforge",
+                            ["lemma"] = "Ironforge",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.ironforge",
+                            ["sourceRefs"] = { "ua-forever:place.ironforge" }
+                        }
+                    }
+                },
+                ["item"] = {
+                    ["hr"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.hard-reserve",
+                                ["lemma"] = "hard reserve",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.hard-reserve",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["kite"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.kite",
+                            ["lemma"] = "kite",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.kite",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["kiting"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.kite",
+                            ["lemma"] = "kite",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.kite",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["krol'dok"] = {
+                    ["stronghold"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.kroldok_stronghold",
+                                ["lemma"] = "Krol'dok Stronghold",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.kroldok_stronghold",
+                                ["sourceRefs"] = {
+                                    "ua-forever:place.kroldok_stronghold",
+                                    "project-authored:apertium-pipeline-1"
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ks"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.kroldok_stronghold",
+                            ["lemma"] = "Krol'dok Stronghold",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.kroldok_stronghold",
+                            ["sourceRefs"] = {
+                                "ua-forever:place.kroldok_stronghold",
+                                "project-authored:apertium-pipeline-1"
+                            }
+                        }
+                    }
+                },
+                ["lbrs"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.lower_blackrock_spire",
+                            ["lemma"] = "Lower Blackrock Spire",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.lower_blackrock_spire",
+                            ["sourceRefs"] = { "ua-forever:place.lower_blackrock_spire", "wow-community:dungeons" }
+                        }
+                    }
+                },
+                ["leader"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.leader",
+                            ["lemma"] = "Leader",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.leader",
+                            ["sourceRefs"] = { "ua-forever:game.leader" }
+                        }
+                    }
+                },
+                ["leatherworking"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.leatherworking",
+                            ["lemma"] = "Leatherworking",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.leatherworking",
+                            ["sourceRefs"] = { "ua-forever:profession.leatherworking" }
+                        }
+                    }
+                },
+                ["lfw"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.trade.lfw",
+                            ["lemma"] = "LFW",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.trade.lfw",
+                            ["sourceRefs"] = { "wow-community:craft" }
+                        }
+                    }
+                },
+                ["line"] = {
+                    ["of"] = {
+                        ["sight"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.los",
+                                    ["lemma"] = "LoS",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.los",
+                                    ["sourceRefs"] = { "wow-community:strategy" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["little"] = {
+                    ["dwarf"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "diminutive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.dwarf"
+                                },
+                                ["id"] = "race.dwarf.diminutive.singular",
+                                ["lemma"] = "little dwarf",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.dwarf.diminutive.singular",
+                                ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "diminutive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.dwarf"
+                                },
+                                ["id"] = "race.dwarf.diminutive.singular",
+                                ["lemma"] = "little dwarf",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.dwarf.diminutive.singular",
+                                ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["dwarves"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "diminutive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.dwarf"
+                                },
+                                ["id"] = "race.dwarf.diminutive.plural",
+                                ["lemma"] = "little dwarves",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.dwarf.diminutive.plural",
+                                ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "diminutive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.dwarf"
+                                },
+                                ["id"] = "race.dwarf.diminutive.plural",
+                                ["lemma"] = "little dwarves",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.dwarf.diminutive.plural",
+                                ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["gnome"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "diminutive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.diminutive.singular",
+                                ["lemma"] = "little gnome",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.diminutive.singular",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "diminutive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.diminutive.singular",
+                                ["lemma"] = "little gnome",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.diminutive.singular",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["gnomes"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "diminutive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.diminutive.plural",
+                                ["lemma"] = "little gnomes",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.diminutive.plural",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "diminutive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.diminutive.plural",
+                                ["lemma"] = "little gnomes",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.diminutive.plural",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["orc"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "diminutive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.orc"
+                                },
+                                ["id"] = "race.orc.diminutive.singular",
+                                ["lemma"] = "little orc",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.orc.diminutive.singular",
+                                ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "diminutive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.orc"
+                                },
+                                ["id"] = "race.orc.diminutive.singular",
+                                ["lemma"] = "little orc",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.orc.diminutive.singular",
+                                ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["orcs"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "diminutive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.orc"
+                                },
+                                ["id"] = "race.orc.diminutive.plural",
+                                ["lemma"] = "little orcs",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.orc.diminutive.plural",
+                                ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "diminutive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.orc"
+                                },
+                                ["id"] = "race.orc.diminutive.plural",
+                                ["lemma"] = "little orcs",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.orc.diminutive.plural",
+                                ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["loot"] = {
+                    ["council"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.loot-council",
+                                ["lemma"] = "loot council",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.loot-council",
+                                ["sourceRefs"] = { "wow-community:loot-council" }
+                            }
+                        },
+                        ["system"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.loot.loot-council",
+                                    ["lemma"] = "loot council",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.loot.loot-council",
+                                    ["sourceRefs"] = { "wow-community:loot-council" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["los"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.los",
+                            ["lemma"] = "LoS",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.los",
+                            ["sourceRefs"] = { "wow-community:strategy" }
+                        }
+                    },
+                    ["pull"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.los-pull",
+                                ["lemma"] = "LoS pull",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.los-pull",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    },
+                    ["the"] = {
+                        ["pull"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.los-pull",
+                                    ["lemma"] = "LoS pull",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.los-pull",
+                                    ["sourceRefs"] = { "wow-community:wiki" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["lower"] = {
+                    ["blackrock"] = {
+                        ["spire"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.lower_blackrock_spire",
+                                    ["lemma"] = "Lower Blackrock Spire",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.lower_blackrock_spire",
+                                    ["sourceRefs"] = { "ua-forever:place.lower_blackrock_spire", "wow-community:dungeons" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["mage"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.mage",
+                            ["lemma"] = "Mage",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.mage",
+                            ["sourceRefs"] = { "ua-forever:class.mage" }
+                        }
+                    }
+                },
+                ["main"] = {
+                    ["spec"] = {
+                        ["over"] = {
+                            ["off"] = {
+                                ["spec"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.loot.ms-over-os",
+                                            ["lemma"] = "MS>OS",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.loot.ms-over-os",
+                                            ["sourceRefs"] = { "wow-community:loot" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["roll"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.loot.ms-roll",
+                                    ["lemma"] = "MS roll",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.loot.ms-roll",
+                                    ["sourceRefs"] = { "wow-community:loot" }
+                                }
+                            }
+                        }
+                    },
+                    ["tank"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["pos"] = "noun"
+                                },
+                                ["id"] = "role.tank",
+                                ["lemma"] = "Tank",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.tank",
+                                ["sourceRefs"] = { "ua-forever:role.tank" }
+                            }
+                        }
+                    }
+                },
+                ["mana"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.mana",
+                            ["lemma"] = "Mana",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.mana",
+                            ["sourceRefs"] = { "ua-forever:game.mana" }
+                        }
+                    }
+                },
+                ["mara"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.maraudon",
+                            ["lemma"] = "Maraudon",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.maraudon",
+                            ["sourceRefs"] = { "ua-forever:place.maraudon" }
+                        }
+                    }
+                },
+                ["maraudon"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.maraudon",
+                            ["lemma"] = "Maraudon",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.maraudon",
+                            ["sourceRefs"] = { "ua-forever:place.maraudon" }
+                        }
+                    }
+                },
+                ["mats"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.trade.mats",
+                            ["lemma"] = "mats",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.trade.mats",
+                            ["sourceRefs"] = { "wow-community:craft" }
+                        }
+                    }
+                },
+                ["mc"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.molten_core",
+                            ["lemma"] = "Molten Core",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.molten_core",
+                            ["sourceRefs"] = { "ua-forever:place.molten_core" }
+                        }
+                    }
+                },
+                ["member"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.member",
+                            ["lemma"] = "Member",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.member",
+                            ["sourceRefs"] = { "ua-forever:game.member" }
+                        }
+                    }
+                },
+                ["mining"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.mining",
+                            ["lemma"] = "Mining",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.mining",
+                            ["sourceRefs"] = { "ua-forever:profession.mining" }
+                        }
+                    }
+                },
+                ["molten"] = {
+                    ["core"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.molten_core",
+                                ["lemma"] = "Molten Core",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.molten_core",
+                                ["sourceRefs"] = { "ua-forever:place.molten_core" }
+                            }
+                        }
+                    }
+                },
+                ["mp"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.mana",
+                            ["lemma"] = "Mana",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.mana",
+                            ["sourceRefs"] = { "ua-forever:game.mana" }
+                        }
+                    }
+                },
+                ["ms"] = {
+                    [">"] = {
+                        ["os"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.loot.ms-over-os",
+                                    ["lemma"] = "MS>OS",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.loot.ms-over-os",
+                                    ["sourceRefs"] = { "wow-community:loot" }
+                                }
+                            }
+                        }
+                    },
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.ms",
+                            ["lemma"] = "MS",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.ms",
+                            ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Primary Specialization" }
+                        }
+                    },
+                    ["over"] = {
+                        ["os"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.loot.ms-over-os",
+                                    ["lemma"] = "MS>OS",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.loot.ms-over-os",
+                                    ["sourceRefs"] = { "wow-community:loot" }
+                                }
+                            }
+                        }
+                    },
+                    ["roll"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.ms-roll",
+                                ["lemma"] = "MS roll",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.ms-roll",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["mt"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.tank",
+                            ["lemma"] = "Tank",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.tank",
+                            ["sourceRefs"] = { "ua-forever:role.tank" }
+                        }
+                    }
+                },
+                ["my"] = {
+                    ["mats"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.my-mats",
+                                ["lemma"] = "my mats",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.my-mats",
+                                ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    }
+                },
+                ["naxx"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.naxxramas",
+                            ["lemma"] = "Naxxramas",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.naxxramas",
+                            ["sourceRefs"] = { "ua-forever:place.naxxramas" }
+                        }
+                    }
+                },
+                ["naxxramas"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.naxxramas",
+                            ["lemma"] = "Naxxramas",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.naxxramas",
+                            ["sourceRefs"] = { "ua-forever:place.naxxramas" }
+                        }
+                    }
+                },
+                ["nbg"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.need-before-greed",
+                            ["lemma"] = "Need before Greed",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.need-before-greed",
+                            ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need", "ua-forever:ui.Greed" }
+                        }
+                    }
+                },
+                ["need"] = {
+                    ["before"] = {
+                        ["greed"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.loot.need-before-greed",
+                                    ["lemma"] = "Need before Greed",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.loot.need-before-greed",
+                                    ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need", "ua-forever:ui.Greed" }
+                                }
+                            }
+                        }
+                    },
+                    ["roll"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.need-roll",
+                                ["lemma"] = "Need roll",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.need-roll",
+                                ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need" }
+                            }
+                        }
+                    }
+                },
+                ["ninja"] = {
+                    ["loot"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.ninja-loot",
+                                ["lemma"] = "ninja loot",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.ninja-loot",
+                                ["sourceRefs"] = { "wow-community:loot-council" }
+                            }
+                        }
+                    },
+                    ["looting"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.ninja-loot",
+                                ["lemma"] = "ninja loot",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.ninja-loot",
+                                ["sourceRefs"] = { "wow-community:loot-council" }
+                            }
+                        }
+                    }
+                },
+                ["obo"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.trade.obo",
+                            ["lemma"] = "OBO",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.trade.obo",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["off"] = {
+                    ["spec"] = {
+                        ["roll"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.loot.os-roll",
+                                    ["lemma"] = "OS roll",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.loot.os-roll",
+                                    ["sourceRefs"] = { "wow-community:loot" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["offspec"] = {
+                    ["roll"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.os-roll",
+                                ["lemma"] = "OS roll",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.os-roll",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["og"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Orgrimmar",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["ony"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.onyxia_s_lair",
+                            ["lemma"] = "Onyxia's Lair",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.onyxia_s_lair",
+                            ["sourceRefs"] = { "ua-forever:place.onyxia_s_lair" }
+                        }
+                    }
+                },
+                ["onyxia's"] = {
+                    ["lair"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.onyxia_s_lair",
+                                ["lemma"] = "Onyxia's Lair",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.onyxia_s_lair",
+                                ["sourceRefs"] = { "ua-forever:place.onyxia_s_lair" }
+                            }
+                        }
+                    }
+                },
+                ["open"] = {
+                    ["roll"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.free-roll",
+                                ["lemma"] = "free roll",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.free-roll",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["or"] = {
+                    ["best"] = {
+                        ["offer"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.trade.obo",
+                                    ["lemma"] = "OBO",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.trade.obo",
+                                    ["sourceRefs"] = { "wow-community:classic" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["orc"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.singular",
+                            ["lemma"] = "orc",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.singular",
+                            ["lemma"] = "orc",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["orcs"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.plural",
+                            ["lemma"] = "orcs",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.plural",
+                            ["lemma"] = "orcs",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["org"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Orgrimmar",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["orgrimmar"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Orgrimmar",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["os"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.os",
+                            ["lemma"] = "OS",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.os",
+                            ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Secondary Specialization" }
+                        }
+                    },
+                    ["roll"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.os-roll",
+                                ["lemma"] = "OS roll",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.os-roll",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["ot"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.groups.offtank",
+                            ["lemma"] = "OT",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.groups.offtank",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["paladin"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.paladin",
+                            ["lemma"] = "Paladin",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.paladin",
+                            ["sourceRefs"] = { "ua-forever:class.paladin" }
+                        }
+                    }
+                },
+                ["party"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.party",
+                            ["lemma"] = "Party",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.party",
+                            ["sourceRefs"] = { "ua-forever:game.party" }
+                        }
+                    }
+                },
+                ["pat"] = {
+                    ["inc"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.pat-inc",
+                                ["lemma"] = "pat inc",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.pat-inc",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["patrol"] = {
+                    ["incoming"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.pat-inc",
+                                ["lemma"] = "pat inc",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.pat-inc",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["pick"] = {
+                    ["-"] = {
+                        ["up"] = {
+                            ["group"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.groups.pug",
+                                        ["lemma"] = "PuG",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.groups.pug",
+                                        ["sourceRefs"] = { "wow-community:forum" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["pickup"] = {
+                    ["group"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.pug",
+                                ["lemma"] = "PuG",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.pug",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["player"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "role.player",
+                            ["lemma"] = "Player",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.player",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["players"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "role.player",
+                            ["lemma"] = "Player",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.player",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "role.player",
+                            ["lemma"] = "Player",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.player",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["pre"] = {
+                    ["-"] = {
+                        ["raid"] = {
+                            ["bis"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.trade.pre-raid-bis",
+                                        ["lemma"] = "pre-raid BiS",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.trade.pre-raid-bis",
+                                        ["sourceRefs"] = { "wow-community:wiki" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["raid"] = {
+                        ["bis"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.trade.pre-raid-bis",
+                                    ["lemma"] = "pre-raid BiS",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.trade.pre-raid-bis",
+                                    ["sourceRefs"] = { "wow-community:wiki" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["premade"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.groups.premade",
+                            ["lemma"] = "premade",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.groups.premade",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["preraid"] = {
+                    ["bis"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.pre-raid-bis",
+                                ["lemma"] = "pre-raid BiS",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.pre-raid-bis",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    }
+                },
+                ["priest"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.priest",
+                            ["lemma"] = "Priest",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.priest",
+                            ["sourceRefs"] = { "ua-forever:class.priest" }
+                        }
+                    }
+                },
+                ["proc"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.proc",
+                            ["lemma"] = "proc",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.proc",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["procs"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.procs",
+                            ["lemma"] = "procs",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.procs",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["proto"] = {
+                    ["-"] = {
+                        ["dwarf"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "proto",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.dwarf"
+                                    },
+                                    ["id"] = "race.dwarf.proto.singular",
+                                    ["lemma"] = "proto-dwarf",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.dwarf.proto.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "proto",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.dwarf"
+                                    },
+                                    ["id"] = "race.dwarf.proto.singular",
+                                    ["lemma"] = "proto-dwarf",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.dwarf.proto.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["dwarves"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "proto",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["root"] = "race.dwarf"
+                                    },
+                                    ["id"] = "race.dwarf.proto.plural",
+                                    ["lemma"] = "proto-dwarves",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.dwarf.proto.plural",
+                                    ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "proto",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["root"] = "race.dwarf"
+                                    },
+                                    ["id"] = "race.dwarf.proto.plural",
+                                    ["lemma"] = "proto-dwarves",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.dwarf.proto.plural",
+                                    ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["gnome"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "proto",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.gnome"
+                                    },
+                                    ["id"] = "race.gnome.proto.singular",
+                                    ["lemma"] = "proto-gnome",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.gnome.proto.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "proto",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.gnome"
+                                    },
+                                    ["id"] = "race.gnome.proto.singular",
+                                    ["lemma"] = "proto-gnome",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.gnome.proto.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["gnomes"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "proto",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["root"] = "race.gnome"
+                                    },
+                                    ["id"] = "race.gnome.proto.plural",
+                                    ["lemma"] = "proto-gnomes",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.gnome.proto.plural",
+                                    ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "proto",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["root"] = "race.gnome"
+                                    },
+                                    ["id"] = "race.gnome.proto.plural",
+                                    ["lemma"] = "proto-gnomes",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.gnome.proto.plural",
+                                    ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["orc"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "proto",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.orc"
+                                    },
+                                    ["id"] = "race.orc.proto.singular",
+                                    ["lemma"] = "proto-orc",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.orc.proto.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "proto",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.orc"
+                                    },
+                                    ["id"] = "race.orc.proto.singular",
+                                    ["lemma"] = "proto-orc",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.orc.proto.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["orcs"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["derivation"] = "proto",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["root"] = "race.orc"
+                                    },
+                                    ["id"] = "race.orc.proto.plural",
+                                    ["lemma"] = "proto-orcs",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.orc.proto.plural",
+                                    ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "proto",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["root"] = "race.orc"
+                                    },
+                                    ["id"] = "race.orc.proto.plural",
+                                    ["lemma"] = "proto-orcs",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.orc.proto.plural",
+                                    ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["pst"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.social.pst",
+                            ["lemma"] = "PST",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.social.pst",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["pug"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.groups.pug",
+                            ["lemma"] = "PuG",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.groups.pug",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["pugs"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.groups.pugs",
+                            ["lemma"] = "pugs",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.groups.pugs",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["pull"] = {
+                    ["aggro"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.pull-aggro",
+                                ["lemma"] = "pull aggro",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.pull-aggro",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["pve"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.pve",
+                            ["lemma"] = "PvE",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.pve",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["pvp"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.pvp",
+                            ["lemma"] = "PvP",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.pvp",
+                            ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Player vs. Player" }
+                        }
+                    }
+                },
+                ["quest"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.quest",
+                            ["lemma"] = "Quest",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.quest",
+                            ["sourceRefs"] = { "ua-forever:game.quest" }
+                        }
+                    }
+                },
+                ["ragefire"] = {
+                    ["chasm"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.ragefire_chasm",
+                                ["lemma"] = "Ragefire Chasm",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ragefire_chasm",
+                                ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" }
+                            }
+                        }
+                    }
+                },
+                ["raid"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.raid",
+                            ["lemma"] = "Raid",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.raid",
+                            ["sourceRefs"] = { "ua-forever:game.raid" }
+                        }
+                    },
+                    ["id"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.raid-id",
+                                ["lemma"] = "raid ID",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.raid-id",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    },
+                    ["leader"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.rl",
+                                ["lemma"] = "RL",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.rl",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    },
+                    ["lockout"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.raid-lockout",
+                                ["lemma"] = "raid lockout",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.raid-lockout",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    }
+                },
+                ["razorfen"] = {
+                    ["downs"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.razorfen_downs",
+                                ["lemma"] = "Razorfen Downs",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.razorfen_downs",
+                                ["sourceRefs"] = { "ua-forever:place.razorfen_downs" }
+                            }
+                        }
+                    },
+                    ["kraul"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.razorfen_kraul",
+                                ["lemma"] = "Razorfen Kraul",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.razorfen_kraul",
+                                ["sourceRefs"] = { "ua-forever:place.razorfen_kraul" }
+                            }
+                        }
+                    }
+                },
+                ["rc"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.ready_check",
+                            ["lemma"] = "Ready Check",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.ready_check",
+                            ["sourceRefs"] = { "ua-forever:game.ready_check" }
+                        }
+                    }
+                },
+                ["rdy"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.social.rdy",
+                            ["lemma"] = "rdy",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.social.rdy",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["ready"] = {
+                    ["check"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "game.ready_check",
+                                ["lemma"] = "Ready Check",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.ready_check",
+                                ["sourceRefs"] = { "ua-forever:game.ready_check" }
+                            }
+                        }
+                    }
+                },
+                ["readycheck"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.ready_check",
+                            ["lemma"] = "Ready Check",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.ready_check",
+                            ["sourceRefs"] = { "ua-forever:game.ready_check" }
+                        }
+                    }
+                },
+                ["res"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.resurrection",
+                            ["lemma"] = "Resurrection",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.resurrection",
+                            ["sourceRefs"] = { "ua-forever:game.resurrection" }
+                        }
+                    },
+                    ["me"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.rez-me",
+                                ["lemma"] = "rez me",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.rez-me",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    },
+                    ["pls"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.rez-me",
+                                ["lemma"] = "rez me",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.rez-me",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["resurrection"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.resurrection",
+                            ["lemma"] = "Resurrection",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.resurrection",
+                            ["sourceRefs"] = { "ua-forever:game.resurrection" }
+                        }
+                    }
+                },
+                ["rez"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.resurrection",
+                            ["lemma"] = "Resurrection",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.resurrection",
+                            ["sourceRefs"] = { "ua-forever:game.resurrection" }
+                        }
+                    },
+                    ["me"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.rez-me",
+                                ["lemma"] = "rez me",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.rez-me",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    },
+                    ["pls"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.rez-me",
+                                ["lemma"] = "rez me",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.rez-me",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["rezz"] = {
+                    ["me"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.rez-me",
+                                ["lemma"] = "rez me",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.rez-me",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["rfc"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.ragefire_chasm",
+                            ["lemma"] = "Ragefire Chasm",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.ragefire_chasm",
+                            ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" }
+                        }
+                    }
+                },
+                ["rfd"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.razorfen_downs",
+                            ["lemma"] = "Razorfen Downs",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.razorfen_downs",
+                            ["sourceRefs"] = { "ua-forever:place.razorfen_downs" }
+                        }
+                    }
+                },
+                ["rfk"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.razorfen_kraul",
+                            ["lemma"] = "Razorfen Kraul",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.razorfen_kraul",
+                            ["sourceRefs"] = { "ua-forever:place.razorfen_kraul" }
+                        }
+                    }
+                },
+                ["rl"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.groups.rl",
+                            ["lemma"] = "RL",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.groups.rl",
+                            ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["rogue"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.rogue",
+                            ["lemma"] = "Rogue",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.rogue",
+                            ["sourceRefs"] = { "ua-forever:class.rogue" }
+                        }
+                    }
+                },
+                ["roll"] = {
+                    ["greed"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.greed-roll",
+                                ["lemma"] = "Greed roll",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.greed-roll",
+                                ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Greed" }
+                            }
+                        }
+                    },
+                    ["need"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.need-roll",
+                                ["lemma"] = "Need roll",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.need-roll",
+                                ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need" }
+                            }
+                        }
+                    }
+                },
+                ["ruins"] = {
+                    ["of"] = {
+                        ["ahn'qiraj"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.ruins_of_ahn_qiraj",
+                                    ["lemma"] = "Ruins of Ahn'Qiraj",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.ruins_of_ahn_qiraj",
+                                    ["sourceRefs"] = { "ua-forever:place.ruins_of_ahn_qiraj" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["scarlet"] = {
+                    ["monastery"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.scarlet_monastery",
+                                ["lemma"] = "Scarlet Monastery",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" }
+                            }
+                        }
+                    }
+                },
+                ["scholo"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.scholomance",
+                            ["lemma"] = "Scholomance",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.scholomance",
+                            ["sourceRefs"] = { "ua-forever:place.scholomance" }
+                        }
+                    }
+                },
+                ["scholomance"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.scholomance",
+                            ["lemma"] = "Scholomance",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.scholomance",
+                            ["sourceRefs"] = { "ua-forever:place.scholomance" }
+                        }
+                    }
+                },
+                ["sfk"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.shadowfang_keep",
+                            ["lemma"] = "Shadowfang Keep",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.shadowfang_keep",
+                            ["sourceRefs"] = { "ua-forever:place.shadowfang_keep" }
+                        }
+                    }
+                },
+                ["shadowfang"] = {
+                    ["keep"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.shadowfang_keep",
+                                ["lemma"] = "Shadowfang Keep",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.shadowfang_keep",
+                                ["sourceRefs"] = { "ua-forever:place.shadowfang_keep" }
+                            }
+                        }
+                    }
+                },
+                ["shaman"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.shaman",
+                            ["lemma"] = "Shaman",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.shaman",
+                            ["sourceRefs"] = { "ua-forever:class.shaman" }
+                        }
+                    }
+                },
+                ["shield"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.shield",
+                            ["lemma"] = "Shield",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.shield",
+                            ["sourceRefs"] = { "ua-forever:game.shield" }
+                        }
+                    }
+                },
+                ["shields"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.shield",
+                            ["lemma"] = "Shield",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.shield",
+                            ["sourceRefs"] = { "ua-forever:game.shield" }
+                        },
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "game.shield",
+                            ["lemma"] = "Shield",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.shield",
+                            ["sourceRefs"] = { "ua-forever:game.shield" }
+                        }
+                    }
+                },
+                ["shouting"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "behavior.shout",
+                            ["lemma"] = "shouting",
+                            ["pos"] = "noun",
+                            ["sense"] = "behavior.shout",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["skinning"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.skinning",
+                            ["lemma"] = "Skinning",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.skinning",
+                            ["sourceRefs"] = { "ua-forever:profession.skinning" }
+                        }
+                    }
+                },
+                ["sm"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.scarlet_monastery",
+                            ["lemma"] = "Scarlet Monastery",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.scarlet_monastery",
+                            ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" }
+                        }
+                    }
+                },
+                ["soft"] = {
+                    ["res"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.soft-reserve",
+                                ["lemma"] = "soft reserve",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.soft-reserve",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    },
+                    ["reserve"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.soft-reserve",
+                                ["lemma"] = "soft reserve",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.soft-reserve",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    },
+                    ["reserved"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.soft-reserve",
+                                ["lemma"] = "soft reserve",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.soft-reserve",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["some"] = {
+                    ["bread"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "goods.bread",
+                                ["lemma"] = "bread",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.bread",
+                                ["sourceRefs"] = { "project-authored:chat-0.1:goods.bread" }
+                            }
+                        }
+                    },
+                    ["food"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "game.food",
+                                ["lemma"] = "Food",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.food",
+                                ["sourceRefs"] = { "ua-forever:game.food" }
+                            }
+                        }
+                    },
+                    ["water"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "game.water",
+                                ["lemma"] = "Water",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.water",
+                                ["sourceRefs"] = { "ua-forever:game.water" }
+                            }
+                        }
+                    }
+                },
+                ["sr"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.sr",
+                            ["lemma"] = "SR",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.sr",
+                            ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["st"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.the_temple_of_atal_hakkar",
+                            ["lemma"] = "The Temple of Atal'Hakkar",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.the_temple_of_atal_hakkar",
+                            ["sourceRefs"] = { "ua-forever:place.the_temple_of_atal_hakkar" }
+                        }
+                    }
+                },
+                ["stamina"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.stamina",
+                            ["lemma"] = "stamina",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.stamina",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["stats"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.all",
+                            ["lemma"] = "stats",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.all",
+                            ["sourceRefs"] = { "ua-forever:stat.all", "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["stockade"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.the_stockade",
+                            ["lemma"] = "The Stockade",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.the_stockade",
+                            ["sourceRefs"] = { "ua-forever:place.the_stockade" }
+                        }
+                    }
+                },
+                ["stockades"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.the_stockade",
+                            ["lemma"] = "The Stockade",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.the_stockade",
+                            ["sourceRefs"] = { "ua-forever:place.the_stockade" }
+                        }
+                    }
+                },
+                ["stocks"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.the_stockade",
+                            ["lemma"] = "The Stockade",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.the_stockade",
+                            ["sourceRefs"] = { "ua-forever:place.the_stockade" }
+                        }
+                    }
+                },
+                ["stormwind"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.stormwind",
+                            ["lemma"] = "Stormwind",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.stormwind",
+                            ["sourceRefs"] = { "ua-forever:place.stormwind" }
+                        }
+                    }
+                },
+                ["strat"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.stratholme",
+                            ["lemma"] = "Stratholme",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.stratholme",
+                            ["sourceRefs"] = { "ua-forever:place.stratholme" }
+                        }
+                    }
+                },
+                ["stratholme"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.stratholme",
+                            ["lemma"] = "Stratholme",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.stratholme",
+                            ["sourceRefs"] = { "ua-forever:place.stratholme" }
+                        }
+                    }
+                },
+                ["strength"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.strength",
+                            ["lemma"] = "strength",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.strength",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["summon"] = {
+                    ["me"] = {
+                        ["pls"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.groups.summon-please",
+                                    ["lemma"] = "summon pls",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.groups.summon-please",
+                                    ["sourceRefs"] = { "wow-community:classic" }
+                                }
+                            }
+                        }
+                    },
+                    ["please"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.summon-please",
+                                ["lemma"] = "summon pls",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.summon-please",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    },
+                    ["pls"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.summon-please",
+                                ["lemma"] = "summon pls",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.summon-please",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["sunken"] = {
+                    ["temple"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.the_temple_of_atal_hakkar",
+                                ["lemma"] = "The Temple of Atal'Hakkar",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.the_temple_of_atal_hakkar",
+                                ["sourceRefs"] = { "ua-forever:place.the_temple_of_atal_hakkar" }
+                            }
+                        }
+                    }
+                },
+                ["sw"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.stormwind",
+                            ["lemma"] = "Stormwind",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.stormwind",
+                            ["sourceRefs"] = { "ua-forever:place.stormwind" }
+                        }
+                    }
+                },
+                ["sword"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.sword",
+                            ["lemma"] = "sword",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.sword",
+                            ["sourceRefs"] = { "ua-forever:goods.sword" }
+                        }
+                    }
+                },
+                ["swords"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.sword",
+                            ["lemma"] = "sword",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.sword",
+                            ["sourceRefs"] = { "ua-forever:goods.sword" }
+                        },
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "goods.sword",
+                            ["lemma"] = "sword",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.sword",
+                            ["sourceRefs"] = { "ua-forever:goods.sword" }
+                        }
+                    }
+                },
+                ["tailoring"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.tailoring",
+                            ["lemma"] = "Tailoring",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.tailoring",
+                            ["sourceRefs"] = { "ua-forever:profession.tailoring" }
+                        }
+                    }
+                },
+                ["tanaris"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.tanaris",
+                            ["lemma"] = "Tanaris",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.tanaris",
+                            ["sourceRefs"] = { "ua-forever:place.tanaris" }
+                        }
+                    }
+                },
+                ["tank"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.tank",
+                            ["lemma"] = "Tank",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.tank",
+                            ["sourceRefs"] = { "ua-forever:role.tank" }
+                        }
+                    }
+                },
+                ["tanks"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.tank",
+                            ["lemma"] = "Tank",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.tank",
+                            ["sourceRefs"] = { "ua-forever:role.tank" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.tank",
+                            ["lemma"] = "Tank",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.tank",
+                            ["sourceRefs"] = { "ua-forever:role.tank" }
+                        }
+                    }
+                },
+                ["tb"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.thunder_bluff",
+                            ["lemma"] = "Thunder Bluff",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.thunder_bluff",
+                            ["sourceRefs"] = { "ua-forever:place.thunder_bluff" }
+                        }
+                    }
+                },
+                ["temple"] = {
+                    ["of"] = {
+                        ["ahn'qiraj"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.temple_of_ahn_qiraj",
+                                    ["lemma"] = "Temple of Ahn'Qiraj",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.temple_of_ahn_qiraj",
+                                    ["sourceRefs"] = { "ua-forever:place.temple_of_ahn_qiraj" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["the"] = {
+                    ["barrens"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.the_barrens",
+                                ["lemma"] = "The Barrens",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.the_barrens",
+                                ["sourceRefs"] = { "ua-forever:place.the_barrens" }
+                            }
+                        }
+                    },
+                    ["deadmines"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.the_deadmines",
+                                ["lemma"] = "The Deadmines",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.the_deadmines",
+                                ["sourceRefs"] = { "ua-forever:place.the_deadmines" }
+                            }
+                        }
+                    },
+                    ["hall"] = {
+                        ["of"] = {
+                            ["thanes"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "place.hall_of_thanes",
+                                        ["lemma"] = "The Hall of Thanes",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.hall_of_thanes",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:place.hall_of_thanes",
+                                            "project-authored:apertium-pipeline-1"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["stockade"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.the_stockade",
+                                ["lemma"] = "The Stockade",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.the_stockade",
+                                ["sourceRefs"] = { "ua-forever:place.the_stockade" }
+                            }
+                        }
+                    },
+                    ["temple"] = {
+                        ["of"] = {
+                            ["atal'hakkar"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "place.the_temple_of_atal_hakkar",
+                                        ["lemma"] = "The Temple of Atal'Hakkar",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.the_temple_of_atal_hakkar",
+                                        ["sourceRefs"] = { "ua-forever:place.the_temple_of_atal_hakkar" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["them"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "recipient.them",
+                            ["lemma"] = "them",
+                            ["pos"] = "noun",
+                            ["sense"] = "recipient.them",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["threat"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.threat",
+                            ["lemma"] = "Threat",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.threat",
+                            ["sourceRefs"] = { "ua-forever:game.threat" }
+                        }
+                    }
+                },
+                ["thunder"] = {
+                    ["bluff"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.thunder_bluff",
+                                ["lemma"] = "Thunder Bluff",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.thunder_bluff",
+                                ["sourceRefs"] = { "ua-forever:place.thunder_bluff" }
+                            }
+                        }
+                    }
+                },
+                ["trash"] = {
+                    ["mobs"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.trash-mobs",
+                                ["lemma"] = "trash mobs",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.trash-mobs",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    },
+                    ["packs"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.trash-mobs",
+                                ["lemma"] = "trash mobs",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.trash-mobs",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["twink"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.twink",
+                            ["lemma"] = "twink",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.twink",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["twinks"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.twink",
+                            ["lemma"] = "twink",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.twink",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["ubrs"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.upper_blackrock_spire",
+                            ["lemma"] = "Upper Blackrock Spire",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.upper_blackrock_spire",
+                            ["sourceRefs"] = { "ua-forever:place.upper_blackrock_spire", "wow-community:dungeons" }
+                        }
+                    }
+                },
+                ["uc"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.undercity",
+                            ["lemma"] = "Undercity",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.undercity",
+                            ["sourceRefs"] = { "ua-forever:place.undercity" }
+                        }
+                    }
+                },
+                ["ulda"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.uldaman",
+                            ["lemma"] = "Uldaman",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.uldaman",
+                            ["sourceRefs"] = { "ua-forever:place.uldaman" }
+                        }
+                    }
+                },
+                ["uldaman"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.uldaman",
+                            ["lemma"] = "Uldaman",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.uldaman",
+                            ["sourceRefs"] = { "ua-forever:place.uldaman" }
+                        }
+                    }
+                },
+                ["undercity"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.undercity",
+                            ["lemma"] = "Undercity",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.undercity",
+                            ["sourceRefs"] = { "ua-forever:place.undercity" }
+                        }
+                    }
+                },
+                ["upper"] = {
+                    ["blackrock"] = {
+                        ["spire"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.upper_blackrock_spire",
+                                    ["lemma"] = "Upper Blackrock Spire",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.upper_blackrock_spire",
+                                    ["sourceRefs"] = { "ua-forever:place.upper_blackrock_spire", "wow-community:dungeons" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ur"] = {
+                    ["mats"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.your-mats",
+                                ["lemma"] = "your mats",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.your-mats",
+                                ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    }
+                },
+                ["vc"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.the_deadmines",
+                            ["lemma"] = "The Deadmines",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.the_deadmines",
+                            ["sourceRefs"] = { "ua-forever:place.the_deadmines" }
+                        }
+                    }
+                },
+                ["vendor"] = {
+                    ["trash"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.vendor-trash",
+                                ["lemma"] = "vendor trash",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.vendor-trash",
+                                ["sourceRefs"] = { "wow-community:strategy" }
+                            }
+                        }
+                    }
+                },
+                ["wailing"] = {
+                    ["caverns"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.wailing_caverns",
+                                ["lemma"] = "Wailing Caverns",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.wailing_caverns",
+                                ["sourceRefs"] = { "ua-forever:place.wailing_caverns" }
+                            }
+                        }
+                    }
+                },
+                ["wannabe"] = {
+                    ["dwarf"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "diminished",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.dwarf"
+                                },
+                                ["id"] = "race.dwarf.diminished.singular",
+                                ["lemma"] = "wannabe dwarf",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.dwarf.diminished.singular",
+                                ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "diminished",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.dwarf"
+                                },
+                                ["id"] = "race.dwarf.diminished.singular",
+                                ["lemma"] = "wannabe dwarf",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.dwarf.diminished.singular",
+                                ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["dwarves"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "diminished",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.dwarf"
+                                },
+                                ["id"] = "race.dwarf.diminished.plural",
+                                ["lemma"] = "wannabe dwarves",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.dwarf.diminished.plural",
+                                ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "diminished",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.dwarf"
+                                },
+                                ["id"] = "race.dwarf.diminished.plural",
+                                ["lemma"] = "wannabe dwarves",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.dwarf.diminished.plural",
+                                ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["gnome"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "diminished",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.diminished.singular",
+                                ["lemma"] = "wannabe gnome",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.diminished.singular",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "diminished",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.diminished.singular",
+                                ["lemma"] = "wannabe gnome",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.diminished.singular",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["gnomes"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "diminished",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.diminished.plural",
+                                ["lemma"] = "wannabe gnomes",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.diminished.plural",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "diminished",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.gnome"
+                                },
+                                ["id"] = "race.gnome.diminished.plural",
+                                ["lemma"] = "wannabe gnomes",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.gnome.diminished.plural",
+                                ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["orc"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "diminished",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.orc"
+                                },
+                                ["id"] = "race.orc.diminished.singular",
+                                ["lemma"] = "wannabe orc",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.orc.diminished.singular",
+                                ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "diminished",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.orc"
+                                },
+                                ["id"] = "race.orc.diminished.singular",
+                                ["lemma"] = "wannabe orc",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.orc.diminished.singular",
+                                ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["orcs"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "diminished",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.orc"
+                                },
+                                ["id"] = "race.orc.diminished.plural",
+                                ["lemma"] = "wannabe orcs",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.orc.diminished.plural",
+                                ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "diminished",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["root"] = "race.orc"
+                                },
+                                ["id"] = "race.orc.diminished.plural",
+                                ["lemma"] = "wannabe orcs",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.orc.diminished.plural",
+                                ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["warlock"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.warlock",
+                            ["lemma"] = "Warlock",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warlock",
+                            ["sourceRefs"] = { "ua-forever:class.warlock" }
+                        }
+                    }
+                },
+                ["warrior"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.warrior",
+                            ["lemma"] = "Warrior",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warrior",
+                            ["sourceRefs"] = { "ua-forever:class.warrior" }
+                        }
+                    }
+                },
+                ["warsong"] = {
+                    ["gulch"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.warsong_gulch",
+                                ["lemma"] = "Warsong Gulch",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.warsong_gulch",
+                                ["sourceRefs"] = { "ua-forever:place.warsong_gulch", "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["water"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.water",
+                            ["lemma"] = "Water",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.water",
+                            ["sourceRefs"] = { "ua-forever:game.water" }
+                        }
+                    }
+                },
+                ["wc"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.wailing_caverns",
+                            ["lemma"] = "Wailing Caverns",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.wailing_caverns",
+                            ["sourceRefs"] = { "ua-forever:place.wailing_caverns" }
+                        }
+                    }
+                },
+                ["weapon"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.weapon",
+                            ["lemma"] = "Weapon",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.weapon",
+                            ["sourceRefs"] = { "ua-forever:game.weapon" }
+                        }
+                    }
+                },
+                ["western"] = {
+                    ["plaguelands"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.western_plaguelands",
+                                ["lemma"] = "Western Plaguelands",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.western_plaguelands",
+                                ["sourceRefs"] = { "ua-forever:place.western_plaguelands" }
+                            }
+                        }
+                    }
+                },
+                ["westfall"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.westfall",
+                            ["lemma"] = "Westfall",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.westfall",
+                            ["sourceRefs"] = { "ua-forever:place.westfall" }
+                        }
+                    }
+                },
+                ["whining"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "behavior.whine",
+                            ["lemma"] = "whining",
+                            ["pos"] = "noun",
+                            ["sense"] = "behavior.whine",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["whisper"] = {
+                    ["me"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.social.pst",
+                                ["lemma"] = "PST",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.social.pst",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["winterspring"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.winterspring",
+                            ["lemma"] = "Winterspring",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.winterspring",
+                            ["sourceRefs"] = { "ua-forever:place.winterspring" }
+                        }
+                    }
+                },
+                ["world"] = {
+                    ["pvp"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.wpvp",
+                                ["lemma"] = "WPvP",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.wpvp",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["wpl"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.western_plaguelands",
+                            ["lemma"] = "Western Plaguelands",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.western_plaguelands",
+                            ["sourceRefs"] = { "ua-forever:place.western_plaguelands" }
+                        }
+                    }
+                },
+                ["wpvp"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.wpvp",
+                            ["lemma"] = "WPvP",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.wpvp",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["wsg"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.warsong_gulch",
+                            ["lemma"] = "Warsong Gulch",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.warsong_gulch",
+                            ["sourceRefs"] = { "ua-forever:place.warsong_gulch", "wow-community:classic" }
+                        }
+                    }
+                },
+                ["wsp"] = {
+                    ["me"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.social.pst",
+                                ["lemma"] = "PST",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.social.pst",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["yelling"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "behavior.shout",
+                            ["lemma"] = "shouting",
+                            ["pos"] = "noun",
+                            ["sense"] = "behavior.shout",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["you"] = {
+                    ["big"] = {
+                        ["gnome"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "augmentative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["root"] = "race.gnome"
+                                    },
+                                    ["id"] = "race.gnome.augmentative.singular",
+                                    ["lemma"] = "big gnome",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.gnome.augmentative.singular",
+                                    ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["gnomes"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["derivation"] = "augmentative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["root"] = "race.gnome"
+                                    },
+                                    ["id"] = "race.gnome.augmentative.plural",
+                                    ["lemma"] = "big gnomes",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "race.gnome.augmentative.plural",
+                                    ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["your"] = {
+                    ["mats"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.your-mats",
+                                ["lemma"] = "your mats",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.your-mats",
+                                ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    }
+                },
+                ["zf"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.zul_farrak",
+                            ["lemma"] = "Zul'Farrak",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.zul_farrak",
+                            ["sourceRefs"] = { "ua-forever:place.zul_farrak" }
+                        }
+                    }
+                },
+                ["zg"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.zul_gurub",
+                            ["lemma"] = "Zul'Gurub",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.zul_gurub",
+                            ["sourceRefs"] = { "ua-forever:place.zul_gurub" }
+                        }
+                    }
+                },
+                ["zul'farrak"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.zul_farrak",
+                            ["lemma"] = "Zul'Farrak",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.zul_farrak",
+                            ["sourceRefs"] = { "ua-forever:place.zul_farrak" }
+                        }
+                    }
+                },
+                ["zul'gurub"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.zul_gurub",
+                            ["lemma"] = "Zul'Gurub",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.zul_gurub",
+                            ["sourceRefs"] = { "ua-forever:place.zul_gurub" }
+                        }
+                    }
+                }
+            },
+            ["uk-en"] = {
+                ["1"] = {
+                    ["резерв"] = {
+                        ["для"] = {
+                            ["участі"] = {
+                                ["в"] = {
+                                    ["кидку"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {},
+                                                ["id"] = "slang.loot.one-sr",
+                                                ["lemma"] = "1 резерв для участі в кидку",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "slang.loot.one-sr",
+                                                ["sourceRefs"] = { "wow-community:loot" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["2"] = {
+                    ["резерви"] = {
+                        ["для"] = {
+                            ["участі"] = {
+                                ["в"] = {
+                                    ["кидках"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {},
+                                                ["id"] = "slang.loot.two-sr",
+                                                ["lemma"] = "2 резерви для участі в кидках",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "slang.loot.two-sr",
+                                                ["sourceRefs"] = { "wow-community:loot" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["3"] = {
+                    ["резерви"] = {
+                        ["для"] = {
+                            ["участі"] = {
+                                ["в"] = {
+                                    ["кидках"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {},
+                                                ["id"] = "slang.loot.three-sr",
+                                                ["lemma"] = "3 резерви для участі в кидках",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "slang.loot.three-sr",
+                                                ["sourceRefs"] = { "wow-community:loot" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["dps"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.damage",
+                            ["lemma"] = "DPS",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.damage",
+                            ["sourceRefs"] = { "ua-forever:role.damage" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.damage",
+                            ["lemma"] = "DPS",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.damage",
+                            ["sourceRefs"] = { "ua-forever:role.damage" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.damage",
+                            ["lemma"] = "DPS",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.damage",
+                            ["sourceRefs"] = { "ua-forever:role.damage" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.damage",
+                            ["lemma"] = "DPS",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.damage",
+                            ["sourceRefs"] = { "ua-forever:role.damage" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.damage",
+                            ["lemma"] = "DPS",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.damage",
+                            ["sourceRefs"] = { "ua-forever:role.damage" }
+                        }
+                    }
+                },
+                ["pvp"] = {
+                    ["у"] = {
+                        ["відкритому"] = {
+                            ["світі"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.combat.wpvp",
+                                        ["lemma"] = "PvP у відкритому світі",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.combat.wpvp",
+                                        ["sourceRefs"] = { "wow-community:classic" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["«"] = {
+                    ["потрібно"] = {
+                        ["»"] = {
+                            ["має"] = {
+                                ["пріоритет"] = {
+                                    ["над"] = {
+                                        ["«"] = {
+                                            ["не"] = {
+                                                ["відмовлюсь"] = {
+                                                    ["»"] = {
+                                                        ["_analyses"] = {
+                                                            {
+                                                                ["features"] = {},
+                                                                ["id"] = "slang.loot.need-before-greed",
+                                                                ["lemma"] = "«Потрібно» має пріоритет над «Не відмовлюсь»",
+                                                                ["pos"] = "noun",
+                                                                ["sense"] = "slang.loot.need-before-greed",
+                                                                ["sourceRefs"] = {
+                                                                    "wow-community:loot",
+                                                                    "ua-forever:ui.Need",
+                                                                    "ua-forever:ui.Greed"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["або"] = {
+                    ["за"] = {
+                        ["найкращою"] = {
+                            ["пропозицією"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.trade.obo",
+                                        ["lemma"] = "Або за найкращою пропозицією",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.trade.obo",
+                                        ["sourceRefs"] = { "wow-community:classic" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["найкраща"] = {
+                        ["пропозиція"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.trade.obo",
+                                    ["lemma"] = "Або за найкращою пропозицією",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.trade.obo",
+                                    ["sourceRefs"] = { "wow-community:classic" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["агро"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.aggro",
+                            ["lemma"] = "Агро",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.aggro",
+                            ["sourceRefs"] = { "ua-forever:game.aggro" }
+                        }
+                    }
+                },
+                ["адди"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.adds",
+                            ["lemma"] = "Додаткові вороги",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.adds",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["ади"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.adds",
+                            ["lemma"] = "Додаткові вороги",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.adds",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["айронфордж"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.ironforge",
+                            ["lemma"] = "Залізогарт",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.ironforge",
+                            ["sourceRefs"] = { "ua-forever:place.ironforge" }
+                        }
+                    }
+                },
+                ["алхімія"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.alchemy",
+                            ["lemma"] = "Алхімія",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.alchemy",
+                            ["sourceRefs"] = { "ua-forever:profession.alchemy" }
+                        }
+                    }
+                },
+                ["альтерацька"] = {
+                    ["долина"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.alterac_valley",
+                                ["lemma"] = "Альтерацька долина",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.alterac_valley",
+                                ["sourceRefs"] = { "ua-forever:place.alterac_valley", "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["альянс"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.alliance",
+                            ["lemma"] = "Альянс",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.alliance",
+                            ["sourceRefs"] = { "ua-forever:game.alliance" }
+                        }
+                    }
+                },
+                ["андерсіті"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.undercity",
+                            ["lemma"] = "Підмісто",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.undercity",
+                            ["sourceRefs"] = { "ua-forever:place.undercity" }
+                        }
+                    }
+                },
+                ["аое"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.aoe",
+                            ["lemma"] = "Дія в зоні",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.aoe",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["аук"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.auction_house",
+                            ["lemma"] = "Аукціонний дім",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.auction_house",
+                            ["sourceRefs"] = { "ua-forever:game.auction_house" }
+                        }
+                    }
+                },
+                ["аукціонний"] = {
+                    ["дім"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "game.auction_house",
+                                ["lemma"] = "Аукціонний дім",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.auction_house",
+                                ["sourceRefs"] = { "ua-forever:game.auction_house" }
+                            }
+                        }
+                    }
+                },
+                ["багряний"] = {
+                    ["монастир"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.scarlet_monastery",
+                                ["lemma"] = "Багряний монастир",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" }
+                            }
+                        }
+                    }
+                },
+                ["багряного"] = {
+                    ["монастиря"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.scarlet_monastery",
+                                ["lemma"] = "Багряний монастир",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" }
+                            }
+                        }
+                    }
+                },
+                ["багряному"] = {
+                    ["монастирі"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.scarlet_monastery",
+                                ["lemma"] = "Багряний монастир",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" }
+                            }
+                        }
+                    }
+                },
+                ["банк"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.bank",
+                            ["lemma"] = "Банк",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.bank",
+                            ["sourceRefs"] = { "ua-forever:game.bank" }
+                        }
+                    }
+                },
+                ["батлграунд"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.battleground",
+                            ["lemma"] = "Поле бою",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.battleground",
+                            ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                        }
+                    }
+                },
+                ["батлграунді"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.battleground",
+                            ["lemma"] = "Поле бою",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.battleground",
+                            ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                        }
+                    }
+                },
+                ["бг"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.battleground",
+                            ["lemma"] = "Поле бою",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.battleground",
+                            ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                        }
+                    }
+                },
+                ["бгшка"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.battleground",
+                            ["lemma"] = "Поле бою",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.battleground",
+                            ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                        }
+                    }
+                },
+                ["бгшку"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.battleground",
+                            ["lemma"] = "Поле бою",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.battleground",
+                            ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                        }
+                    }
+                },
+                ["бетлграунд"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.battleground",
+                            ["lemma"] = "Поле бою",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.battleground",
+                            ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                        }
+                    }
+                },
+                ["бетлграунді"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.battleground",
+                            ["lemma"] = "Поле бою",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.battleground",
+                            ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                        }
+                    }
+                },
+                ["бетлграцунд"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.battleground",
+                            ["lemma"] = "Поле бою",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.battleground",
+                            ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                        }
+                    }
+                },
+                ["бодіпул"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.body-pull",
+                            ["lemma"] = "Зачепити ворога наближенням",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.body-pull",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["бое"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.trade.boe",
+                            ["lemma"] = "Стає персональним при екіпіруванні",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.trade.boe",
+                            ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when equipped" }
+                        }
+                    }
+                },
+                ["бойовий"] = {
+                    ["рес"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.brez",
+                                ["lemma"] = "Воскресіння в бою",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.brez",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["боп"] = {
+                    ["-"] = {
+                        ["предмет"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.trade.bop-item",
+                                    ["lemma"] = "Предмет стає персональним при отриманні",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.trade.bop-item",
+                                    ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when picked up" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["бопни"] = {
+                    ["мене"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.bop-me",
+                                ["lemma"] = "Дайте мені Благословення захисту",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.bop-me",
+                                ["sourceRefs"] = { "wow-community:forum", "ua-forever:spell.Blessing of Protection" }
+                            }
+                        }
+                    }
+                },
+                ["брез"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.brez",
+                            ["lemma"] = "Воскресіння в бою",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.brez",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["броня"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.armor",
+                            ["lemma"] = "Броня",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.armor",
+                            ["sourceRefs"] = { "ua-forever:game.armor" }
+                        }
+                    }
+                },
+                ["біс"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.trade.bis",
+                            ["lemma"] = "Найкращий предмет для цієї комірки",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.trade.bis",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["в'язниця"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.the_stockade",
+                            ["lemma"] = "В'язниця",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.the_stockade",
+                            ["sourceRefs"] = { "ua-forever:place.the_stockade" }
+                        }
+                    }
+                },
+                ["вар"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.warrior",
+                            ["lemma"] = "Воїн",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warrior",
+                            ["sourceRefs"] = { "ua-forever:class.warrior" }
+                        }
+                    }
+                },
+                ["ваші"] = {
+                    ["матеріали"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.your-mats",
+                                ["lemma"] = "Твої матеріали",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.your-mats",
+                                ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    }
+                },
+                ["вендорський"] = {
+                    ["мотлох"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.vendor-trash",
+                                ["lemma"] = "Мотлох на продаж торговцю",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.vendor-trash",
+                                ["sourceRefs"] = { "wow-community:strategy" }
+                            }
+                        }
+                    }
+                },
+                ["верхня"] = {
+                    ["частина"] = {
+                        ["чорноскельного"] = {
+                            ["шпиля"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "place.upper_blackrock_spire",
+                                        ["lemma"] = "Верхня частина Чорноскельного шпиля",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.upper_blackrock_spire",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:place.upper_blackrock_spire",
+                                            "wow-community:dungeons"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["викличте"] = {
+                    ["мене"] = {
+                        [","] = {
+                            ["будь"] = {
+                                ["ласка"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.groups.summon-please",
+                                            ["lemma"] = "Викличте мене, будь ласка",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.groups.summon-please",
+                                            ["sourceRefs"] = { "wow-community:classic" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["вимани"] = {
+                    ["ворогів"] = {
+                        ["за"] = {
+                            ["кут"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.combat.los-pull",
+                                        ["lemma"] = "Вимани ворогів за кут",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.combat.los-pull",
+                                        ["sourceRefs"] = { "wow-community:wiki" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["випадково"] = {
+                    ["зібрана"] = {
+                        ["група"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.groups.pug",
+                                    ["lemma"] = "Випадково зібрана група",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.groups.pug",
+                                    ["sourceRefs"] = { "wow-community:forum" }
+                                }
+                            }
+                        }
+                    },
+                    ["зібрані"] = {
+                        ["групи"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.groups.pugs",
+                                    ["lemma"] = "Випадково зібрані групи",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.groups.pugs",
+                                    ["sourceRefs"] = { "wow-community:forum" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["витривалості"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "stat.stamina",
+                            ["lemma"] = "Витривалість",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.stamina",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["витривалість"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.stamina",
+                            ["lemma"] = "Витривалість",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.stamina",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["вода"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.water",
+                            ["lemma"] = "Вода",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.water",
+                            ["sourceRefs"] = { "ua-forever:game.water" }
+                        }
+                    }
+                },
+                ["води"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.water",
+                            ["lemma"] = "Вода",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.water",
+                            ["sourceRefs"] = { "ua-forever:game.water" }
+                        }
+                    }
+                },
+                ["водити"] = {
+                    ["ворога"] = {
+                        ["за"] = {
+                            ["собою"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.combat.kite",
+                                        ["lemma"] = "Водити ворога за собою",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.combat.kite",
+                                        ["sourceRefs"] = { "wow-community:classic" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["водичку"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.water",
+                            ["lemma"] = "Вода",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.water",
+                            ["sourceRefs"] = { "ua-forever:game.water" }
+                        }
+                    }
+                },
+                ["воду"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.water",
+                            ["lemma"] = "Вода",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.water",
+                            ["sourceRefs"] = { "ua-forever:game.water" }
+                        }
+                    }
+                },
+                ["вороги"] = {
+                    ["наближаються"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.inc",
+                                ["lemma"] = "Вороги наближаються",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.inc",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["воскреси"] = {
+                    ["мене"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.rez-me",
+                                ["lemma"] = "Воскреси мене",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.rez-me",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["воскресіння"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.resurrection",
+                            ["lemma"] = "Воскресіння",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.resurrection",
+                            ["sourceRefs"] = { "ua-forever:game.resurrection" }
+                        }
+                    },
+                    ["в"] = {
+                        ["бою"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.brez",
+                                    ["lemma"] = "Воскресіння в бою",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.brez",
+                                    ["sourceRefs"] = { "wow-community:forum" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["воїн"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.warrior",
+                            ["lemma"] = "Воїн",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warrior",
+                            ["sourceRefs"] = { "ua-forever:class.warrior" }
+                        }
+                    }
+                },
+                ["воїна"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "class.warrior",
+                            ["lemma"] = "Воїн",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warrior",
+                            ["sourceRefs"] = { "ua-forever:class.warrior" }
+                        }
+                    }
+                },
+                ["впвп"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.wpvp",
+                            ["lemma"] = "PvP у відкритому світі",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.wpvp",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["ганк"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.gank",
+                            ["lemma"] = "Застати гравця зненацька в PvP",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.gank",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["ганкати"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.gank",
+                            ["lemma"] = "Застати гравця зненацька в PvP",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.gank",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["гдкп"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.gdkp",
+                            ["lemma"] = "Рейд, де за здобич торгуються золотом",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.gdkp",
+                            ["sourceRefs"] = { "wow-community:dkp" }
+                        }
+                    },
+                    ["рейд"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.gdkp",
+                                ["lemma"] = "Рейд, де за здобич торгуються золотом",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.gdkp",
+                                ["sourceRefs"] = { "wow-community:dkp" }
+                            }
+                        }
+                    }
+                },
+                ["гкд"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.gcd",
+                            ["lemma"] = "Глобальний час відновлення",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.gcd",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["глобальний"] = {
+                    ["час"] = {
+                        ["відновлення"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.gcd",
+                                    ["lemma"] = "Глобальний час відновлення",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.gcd",
+                                    ["sourceRefs"] = { "wow-community:forum" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["гном"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.singular",
+                            ["lemma"] = "гном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.singular",
+                            ["lemma"] = "гном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гнома"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.singular",
+                            ["lemma"] = "гном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.singular",
+                            ["lemma"] = "гном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.plural",
+                            ["lemma"] = "гноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномами"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.plural",
+                            ["lemma"] = "гноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномах"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.plural",
+                            ["lemma"] = "гноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гноме"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.singular",
+                            ["lemma"] = "гном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномереган"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Гномреґан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        }
+                    }
+                },
+                ["гномерегана"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Гномреґан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        }
+                    }
+                },
+                ["гномереґан"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Гномреґан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        }
+                    }
+                },
+                ["гномеригaн"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Гномреґан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        }
+                    }
+                },
+                ["гномериган"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Гномреґан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        }
+                    }
+                },
+                ["гноми"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.plural",
+                            ["lemma"] = "гноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.plural",
+                            ["lemma"] = "гноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.plural",
+                            ["lemma"] = "гноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномик"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.singular",
+                            ["lemma"] = "гномик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.singular",
+                            ["lemma"] = "гномик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномика"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.singular",
+                            ["lemma"] = "гномик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.singular",
+                            ["lemma"] = "гномик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномикам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.plural",
+                            ["lemma"] = "гномики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномиками"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.plural",
+                            ["lemma"] = "гномики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномиках"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.plural",
+                            ["lemma"] = "гномики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномики"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.plural",
+                            ["lemma"] = "гномики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.plural",
+                            ["lemma"] = "гномики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.plural",
+                            ["lemma"] = "гномики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномикові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.singular",
+                            ["lemma"] = "гномик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.singular",
+                            ["lemma"] = "гномик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномиком"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.singular",
+                            ["lemma"] = "гномик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномику"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.singular",
+                            ["lemma"] = "гномик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.singular",
+                            ["lemma"] = "гномик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.singular",
+                            ["lemma"] = "гномик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномиків"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.plural",
+                            ["lemma"] = "гномики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminutive.plural",
+                            ["lemma"] = "гномики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.singular",
+                            ["lemma"] = "гном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.singular",
+                            ["lemma"] = "гном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.singular",
+                            ["lemma"] = "гном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномреґан"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Гномреґан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        }
+                    }
+                },
+                ["гномреґана"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Гномреґан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        }
+                    }
+                },
+                ["гному"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.singular",
+                            ["lemma"] = "гном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномяр"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.plural",
+                            ["lemma"] = "гномяри",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.plural",
+                            ["lemma"] = "гномяри",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномяра"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.singular",
+                            ["lemma"] = "гномяра",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.singular",
+                            ["lemma"] = "гномяра",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномярам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.plural",
+                            ["lemma"] = "гномяри",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномярами"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.plural",
+                            ["lemma"] = "гномяри",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномярах"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.plural",
+                            ["lemma"] = "гномяри",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномяри"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.plural",
+                            ["lemma"] = "гномяри",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.plural",
+                            ["lemma"] = "гномяри",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.plural",
+                            ["lemma"] = "гномяри",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.singular",
+                            ["lemma"] = "гномяра",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномяро"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.singular",
+                            ["lemma"] = "гномяра",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномярою"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.singular",
+                            ["lemma"] = "гномяра",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномяру"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.singular",
+                            ["lemma"] = "гномяра",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномярі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.singular",
+                            ["lemma"] = "гномяра",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "augmentative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.augmentative.singular",
+                            ["lemma"] = "гномяра",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.augmentative.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.singular",
+                            ["lemma"] = "гном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гномів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.plural",
+                            ["lemma"] = "гноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.base.plural",
+                            ["lemma"] = "гноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["горлати"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "behavior.shout",
+                            ["lemma"] = "кричати",
+                            ["pos"] = "noun",
+                            ["sense"] = "behavior.shout",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["готовий"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.social.rdy",
+                            ["lemma"] = "Готовий",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.social.rdy",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    },
+                    ["до"] = {
+                        ["бою"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.social.rdy",
+                                    ["lemma"] = "Готовий",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.social.rdy",
+                                    ["sourceRefs"] = { "wow-community:wiki" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["гра"] = {
+                    ["проти"] = {
+                        ["ігрового"] = {
+                            ["оточення"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.combat.pve",
+                                        ["lemma"] = "Гра проти ігрового оточення",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.combat.pve",
+                                        ["sourceRefs"] = { "wow-community:forum" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["гравець"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "role.player",
+                            ["lemma"] = "Гравець",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.player",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    },
+                    ["проти"] = {
+                        ["гравця"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.pvp",
+                                    ["lemma"] = "Гравець проти гравця",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.pvp",
+                                    ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Player vs. Player" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["гравця"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "role.player",
+                            ["lemma"] = "Гравець",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.player",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "role.player",
+                            ["lemma"] = "Гравець",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.player",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["гравці"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "role.player",
+                            ["lemma"] = "Гравець",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.player",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["гравців"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "role.player",
+                            ["lemma"] = "Гравець",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.player",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["громовий"] = {
+                    ["бескид"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.thunder_bluff",
+                                ["lemma"] = "Громовий Бескид",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.thunder_bluff",
+                                ["sourceRefs"] = { "ua-forever:place.thunder_bluff" }
+                            }
+                        }
+                    }
+                },
+                ["громового"] = {
+                    ["бескиду"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.thunder_bluff",
+                                ["lemma"] = "Громовий Бескид",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.thunder_bluff",
+                                ["sourceRefs"] = { "ua-forever:place.thunder_bluff" }
+                            }
+                        }
+                    }
+                },
+                ["громовому"] = {
+                    ["бескиді"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.thunder_bluff",
+                                ["lemma"] = "Громовий Бескид",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.thunder_bluff",
+                                ["sourceRefs"] = { "ua-forever:place.thunder_bluff" }
+                            }
+                        }
+                    }
+                },
+                ["група"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.party",
+                            ["lemma"] = "Група",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.party",
+                            ["sourceRefs"] = { "ua-forever:game.party" }
+                        }
+                    }
+                },
+                ["грізний"] = {
+                    ["молот"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.dire_maul",
+                                ["lemma"] = "Грізний Молот",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dire_maul",
+                                ["sourceRefs"] = { "ua-forever:place.dire_maul" }
+                            }
+                        }
+                    }
+                },
+                ["гільдія"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.guild",
+                            ["lemma"] = "Гільдія",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.guild",
+                            ["sourceRefs"] = { "ua-forever:game.guild" }
+                        }
+                    }
+                },
+                ["гірництво"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.mining",
+                            ["lemma"] = "Гірництво",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.mining",
+                            ["sourceRefs"] = { "ua-forever:profession.mining" }
+                        }
+                    }
+                },
+                ["дайте"] = {
+                    ["мені"] = {
+                        ["благословення"] = {
+                            ["захисту"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.trade.bop-me",
+                                        ["lemma"] = "Дайте мені Благословення захисту",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.trade.bop-me",
+                                        ["sourceRefs"] = {
+                                            "wow-community:forum",
+                                            "ua-forever:spell.Blessing of Protection"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["данж"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.dungeon",
+                            ["lemma"] = "Підземелля",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.dungeon",
+                            ["sourceRefs"] = { "ua-forever:game.dungeon" }
+                        }
+                    }
+                },
+                ["дарнас"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.darnassus",
+                            ["lemma"] = "Дарнас",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.darnassus",
+                            ["sourceRefs"] = { "ua-forever:place.darnassus" }
+                        }
+                    }
+                },
+                ["дарнаса"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.darnassus",
+                            ["lemma"] = "Дарнас",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.darnassus",
+                            ["sourceRefs"] = { "ua-forever:place.darnassus" }
+                        }
+                    }
+                },
+                ["дарнасс"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.darnassus",
+                            ["lemma"] = "Дарнас",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.darnassus",
+                            ["sourceRefs"] = { "ua-forever:place.darnassus" }
+                        }
+                    }
+                },
+                ["дарнасі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.darnassus",
+                            ["lemma"] = "Дарнас",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.darnassus",
+                            ["sourceRefs"] = { "ua-forever:place.darnassus" }
+                        }
+                    }
+                },
+                ["дворф"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.singular",
+                            ["lemma"] = "дворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.singular",
+                            ["lemma"] = "дворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфа"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.singular",
+                            ["lemma"] = "дворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.singular",
+                            ["lemma"] = "дворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.plural",
+                            ["lemma"] = "дворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфами"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.plural",
+                            ["lemma"] = "дворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфах"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.plural",
+                            ["lemma"] = "дворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфе"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.singular",
+                            ["lemma"] = "дворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфи"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.plural",
+                            ["lemma"] = "дворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.plural",
+                            ["lemma"] = "дворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.plural",
+                            ["lemma"] = "дворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфик"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.singular",
+                            ["lemma"] = "дворфик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.singular",
+                            ["lemma"] = "дворфик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфика"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.singular",
+                            ["lemma"] = "дворфик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.singular",
+                            ["lemma"] = "дворфик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфикам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.plural",
+                            ["lemma"] = "дворфики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфиками"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.plural",
+                            ["lemma"] = "дворфики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфиках"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.plural",
+                            ["lemma"] = "дворфики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфики"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.plural",
+                            ["lemma"] = "дворфики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.plural",
+                            ["lemma"] = "дворфики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.plural",
+                            ["lemma"] = "дворфики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфикові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.singular",
+                            ["lemma"] = "дворфик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.singular",
+                            ["lemma"] = "дворфик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфиком"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.singular",
+                            ["lemma"] = "дворфик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфику"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.singular",
+                            ["lemma"] = "дворфик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.singular",
+                            ["lemma"] = "дворфик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.singular",
+                            ["lemma"] = "дворфик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфиків"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.plural",
+                            ["lemma"] = "дворфики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminutive.plural",
+                            ["lemma"] = "дворфики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.singular",
+                            ["lemma"] = "дворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.singular",
+                            ["lemma"] = "дворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.singular",
+                            ["lemma"] = "дворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфу"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.singular",
+                            ["lemma"] = "дворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.singular",
+                            ["lemma"] = "дворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дворфів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.plural",
+                            ["lemma"] = "дворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.base.plural",
+                            ["lemma"] = "дворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дд"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.damage",
+                            ["lemma"] = "DPS",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.damage",
+                            ["sourceRefs"] = { "ua-forever:role.damage" }
+                        }
+                    }
+                },
+                ["дкп"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.dkp",
+                            ["lemma"] = "Рейдові бали для розподілу здобичі",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.dkp",
+                            ["sourceRefs"] = { "wow-community:dkp" }
+                        }
+                    }
+                },
+                ["дм"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.the_deadmines",
+                            ["lemma"] = "Мертві копальні",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.the_deadmines",
+                            ["sourceRefs"] = { "ua-forever:place.the_deadmines" }
+                        }
+                    }
+                },
+                ["добре"] = {
+                    ["споряджений"] = {
+                        ["персонаж"] = {
+                            ["низького"] = {
+                                ["рівня"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.combat.twink",
+                                            ["lemma"] = "Добре споряджений персонаж низького рівня",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.combat.twink",
+                                            ["sourceRefs"] = { "wow-community:wiki" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["додаткова"] = {
+                    ["спеціалізація"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.os",
+                                ["lemma"] = "Додаткова спеціалізація",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.os",
+                                ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Secondary Specialization" }
+                            }
+                        }
+                    }
+                },
+                ["додаткові"] = {
+                    ["вороги"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.adds",
+                                ["lemma"] = "Додаткові вороги",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.adds",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["дот"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.dot",
+                            ["lemma"] = "Періодичні пошкодження",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.dot",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["дпс"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.damage",
+                            ["lemma"] = "DPS",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.damage",
+                            ["sourceRefs"] = { "ua-forever:role.damage" }
+                        }
+                    }
+                },
+                ["дру"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.druid",
+                            ["lemma"] = "Друїд",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.druid",
+                            ["sourceRefs"] = { "ua-forever:class.druid" }
+                        }
+                    }
+                },
+                ["другий"] = {
+                    ["танк"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.offtank",
+                                ["lemma"] = "Другий танк",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.offtank",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["друїд"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.druid",
+                            ["lemma"] = "Друїд",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.druid",
+                            ["sourceRefs"] = { "ua-forever:class.druid" }
+                        }
+                    }
+                },
+                ["друїда"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "class.druid",
+                            ["lemma"] = "Друїд",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.druid",
+                            ["sourceRefs"] = { "ua-forever:class.druid" }
+                        }
+                    }
+                },
+                ["дуротар"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.durotar",
+                            ["lemma"] = "Дуротар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.durotar",
+                            ["sourceRefs"] = { "ua-forever:place.durotar" }
+                        }
+                    }
+                },
+                ["дуротару"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.durotar",
+                            ["lemma"] = "Дуротар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.durotar",
+                            ["sourceRefs"] = { "ua-forever:place.durotar" }
+                        }
+                    }
+                },
+                ["дуротарі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.durotar",
+                            ["lemma"] = "Дуротар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.durotar",
+                            ["sourceRefs"] = { "ua-forever:place.durotar" }
+                        }
+                    }
+                },
+                ["дія"] = {
+                    ["в"] = {
+                        ["зоні"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.aoe",
+                                    ["lemma"] = "Дія в зоні",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.aoe",
+                                    ["sourceRefs"] = { "wow-community:forum" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ельвиннський"] = {
+                    ["ліс"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.elwynn_forest",
+                                ["lemma"] = "Ельвиннський ліс",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.elwynn_forest",
+                                ["sourceRefs"] = { "ua-forever:place.elwynn_forest" }
+                            }
+                        }
+                    }
+                },
+                ["жалітися"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "behavior.complain",
+                            ["lemma"] = "скаржитися",
+                            ["pos"] = "noun",
+                            ["sense"] = "behavior.complain",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["жрець"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.priest",
+                            ["lemma"] = "Жрець",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.priest",
+                            ["sourceRefs"] = { "ua-forever:class.priest" }
+                        }
+                    }
+                },
+                ["жреця"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "class.priest",
+                            ["lemma"] = "Жрець",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.priest",
+                            ["sourceRefs"] = { "ua-forever:class.priest" }
+                        }
+                    }
+                },
+                ["забрати"] = {
+                    ["здобич"] = {
+                        ["усупереч"] = {
+                            ["правилам"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.loot.ninja-loot",
+                                        ["lemma"] = "Забрати здобич усупереч правилам",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.loot.ninja-loot",
+                                        ["sourceRefs"] = { "wow-community:loot-council" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["завдання"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.quest",
+                            ["lemma"] = "Завдання",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.quest",
+                            ["sourceRefs"] = { "ua-forever:game.quest" }
+                        }
+                    }
+                },
+                ["загроза"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.threat",
+                            ["lemma"] = "Загроза",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.threat",
+                            ["sourceRefs"] = { "ua-forever:game.threat" }
+                        }
+                    }
+                },
+                ["заздалегідь"] = {
+                    ["зібрана"] = {
+                        ["група"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.groups.premade",
+                                    ["lemma"] = "Заздалегідь зібрана група",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.groups.premade",
+                                    ["sourceRefs"] = { "wow-community:wiki" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["закріпити"] = {
+                    ["здобич"] = {
+                        ["за"] = {
+                            ["гравцем"] = {
+                                ["або"] = {
+                                    ["групою"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {},
+                                                ["id"] = "slang.loot.hard-reserve",
+                                                ["lemma"] = "Закріпити здобич за гравцем або групою",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "slang.loot.hard-reserve",
+                                                ["sourceRefs"] = { "wow-community:loot" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["зала"] = {
+                    ["танів"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.hall_of_thanes",
+                                ["lemma"] = "Зала Танів",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.hall_of_thanes",
+                                ["sourceRefs"] = {
+                                    "ua-forever:place.hall_of_thanes",
+                                    "project-authored:apertium-pipeline-1"
+                                }
+                            }
+                        }
+                    }
+                },
+                ["зали"] = {
+                    ["танів"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.hall_of_thanes",
+                                ["lemma"] = "Зала Танів",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.hall_of_thanes",
+                                ["sourceRefs"] = {
+                                    "ua-forever:place.hall_of_thanes",
+                                    "project-authored:apertium-pipeline-1"
+                                }
+                            }
+                        }
+                    }
+                },
+                ["залі"] = {
+                    ["танів"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.hall_of_thanes",
+                                ["lemma"] = "Зала Танів",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.hall_of_thanes",
+                                ["sourceRefs"] = {
+                                    "ua-forever:place.hall_of_thanes",
+                                    "project-authored:apertium-pipeline-1"
+                                }
+                            }
+                        }
+                    }
+                },
+                ["залізогарт"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.ironforge",
+                            ["lemma"] = "Залізогарт",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.ironforge",
+                            ["sourceRefs"] = { "ua-forever:place.ironforge" }
+                        }
+                    }
+                },
+                ["залізогарта"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.ironforge",
+                            ["lemma"] = "Залізогарт",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.ironforge",
+                            ["sourceRefs"] = { "ua-forever:place.ironforge" }
+                        }
+                    }
+                },
+                ["залізогарті"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.ironforge",
+                            ["lemma"] = "Залізогарт",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.ironforge",
+                            ["sourceRefs"] = { "ua-forever:place.ironforge" }
+                        }
+                    }
+                },
+                ["запроси"] = {
+                    ["в"] = {
+                        ["групу"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.social.inv",
+                                    ["lemma"] = "Запроси в групу",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.social.inv",
+                                    ["sourceRefs"] = { "wow-community:classic" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["застати"] = {
+                    ["гравця"] = {
+                        ["зненацька"] = {
+                            ["в"] = {
+                                ["pvp"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.combat.gank",
+                                            ["lemma"] = "Застати гравця зненацька в PvP",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.combat.gank",
+                                            ["sourceRefs"] = { "wow-community:wiki" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["західний"] = {
+                    ["край"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.westfall",
+                                ["lemma"] = "Західний край",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.westfall",
+                                ["sourceRefs"] = { "ua-forever:place.westfall" }
+                            }
+                        }
+                    }
+                },
+                ["західні"] = {
+                    ["зачумлені"] = {
+                        ["землі"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.western_plaguelands",
+                                    ["lemma"] = "Західні Зачумлені землі",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.western_plaguelands",
+                                    ["sourceRefs"] = { "ua-forever:place.western_plaguelands" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["зачарування"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.enchanting",
+                            ["lemma"] = "Зачарування",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.enchanting",
+                            ["sourceRefs"] = { "ua-forever:profession.enchanting" }
+                        }
+                    }
+                },
+                ["зачепити"] = {
+                    ["ворога"] = {
+                        ["наближенням"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.body-pull",
+                                    ["lemma"] = "Зачепити ворога наближенням",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.body-pull",
+                                    ["sourceRefs"] = { "wow-community:wiki" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["зброя"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.weapon",
+                            ["lemma"] = "Зброя",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.weapon",
+                            ["sourceRefs"] = { "ua-forever:game.weapon" }
+                        }
+                    }
+                },
+                ["звичайні"] = {
+                    ["вороги"] = {
+                        ["в"] = {
+                            ["підземеллі"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.combat.trash-mobs",
+                                        ["lemma"] = "Звичайні вороги в підземеллі",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.combat.trash-mobs",
+                                        ["sourceRefs"] = { "wow-community:classic" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["здоров'я"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.health",
+                            ["lemma"] = "Здоров’я",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.health",
+                            ["sourceRefs"] = { "ua-forever:game.health" }
+                        }
+                    }
+                },
+                ["зимоключ"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.winterspring",
+                            ["lemma"] = "Зимоключ",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.winterspring",
+                            ["sourceRefs"] = { "ua-forever:place.winterspring" }
+                        }
+                    }
+                },
+                ["зняття"] = {
+                    ["шкур"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "profession.skinning",
+                                ["lemma"] = "Зняття шкур",
+                                ["pos"] = "noun",
+                                ["sense"] = "profession.skinning",
+                                ["sourceRefs"] = { "ua-forever:profession.skinning" }
+                            }
+                        }
+                    }
+                },
+                ["золото"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.gold",
+                            ["lemma"] = "Золото",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.gold",
+                            ["sourceRefs"] = { "ua-forever:game.gold" }
+                        }
+                    }
+                },
+                ["зул'фаррак"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.zul_farrak",
+                            ["lemma"] = "Зул'Фаррак",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.zul_farrak",
+                            ["sourceRefs"] = { "ua-forever:place.zul_farrak" }
+                        }
+                    }
+                },
+                ["зул'ґуруб"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.zul_gurub",
+                            ["lemma"] = "Зул'Ґуруб",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.zul_gurub",
+                            ["sourceRefs"] = { "ua-forever:place.zul_gurub" }
+                        }
+                    }
+                },
+                ["зцілення"] = {
+                    ["за"] = {
+                        ["секунду"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.hps",
+                                    ["lemma"] = "Зцілення за секунду",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.hps",
+                                    ["sourceRefs"] = { "wow-community:forum" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["зілля"] = {
+                    ["здоров'я"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "goods.health_potion",
+                                ["lemma"] = "Зілля здоров’я",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.health_potion",
+                                ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.health_potion",
+                                ["lemma"] = "Зілля здоров’я",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.health_potion",
+                                ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "countTwoToFour",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.health_potion",
+                                ["lemma"] = "Зілля здоров’я",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.health_potion",
+                                ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                            }
+                        }
+                    },
+                    ["лікування"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "goods.health_potion",
+                                ["lemma"] = "Зілля здоров’я",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.health_potion",
+                                ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                            }
+                        }
+                    }
+                },
+                ["зіль"] = {
+                    ["здоров'я"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.health_potion",
+                                ["lemma"] = "Зілля здоров’я",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.health_potion",
+                                ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                            }
+                        }
+                    }
+                },
+                ["зірвати"] = {
+                    ["агро"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.pull-aggro",
+                                ["lemma"] = "Перетягнути агро",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.pull-aggro",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["йому"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "recipient.him",
+                            ["lemma"] = "йому",
+                            ["pos"] = "noun",
+                            ["sense"] = "recipient.him",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["кайт"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.kite",
+                            ["lemma"] = "Водити ворога за собою",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.kite",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["кайтити"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.kite",
+                            ["lemma"] = "Водити ворога за собою",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.kite",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["кд"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.cd",
+                            ["lemma"] = "Час відновлення",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.cd",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    },
+                    ["рейду"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.raid-lockout",
+                                ["lemma"] = "Обмеження на повторне проходження рейду",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.raid-lockout",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    }
+                },
+                ["кидок"] = {
+                    ["«"] = {
+                        ["не"] = {
+                            ["відмовлюсь"] = {
+                                ["»"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.loot.greed-roll",
+                                            ["lemma"] = "Кидок «Не відмовлюсь»",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.loot.greed-roll",
+                                            ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Greed" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["потрібно"] = {
+                            ["»"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.loot.need-roll",
+                                        ["lemma"] = "Кидок «Потрібно»",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.loot.need-roll",
+                                        ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["відкритий"] = {
+                        ["для"] = {
+                            ["всіх"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.loot.free-roll",
+                                        ["lemma"] = "Кидок відкритий для всіх",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.loot.free-roll",
+                                        ["sourceRefs"] = { "wow-community:loot" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["за"] = {
+                        ["додаткову"] = {
+                            ["спеціалізацію"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.loot.os-roll",
+                                        ["lemma"] = "Кидок за додаткову спеціалізацію",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.loot.os-roll",
+                                        ["sourceRefs"] = { "wow-community:loot" }
+                                    }
+                                }
+                            }
+                        },
+                        ["основну"] = {
+                            ["спеціалізацію"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.loot.ms-roll",
+                                        ["lemma"] = "Кидок за основну спеціалізацію",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.loot.ms-roll",
+                                        ["sourceRefs"] = { "wow-community:loot" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ковальство"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.blacksmithing",
+                            ["lemma"] = "Ковальство",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.blacksmithing",
+                            ["sourceRefs"] = { "ua-forever:profession.blacksmithing" }
+                        }
+                    }
+                },
+                ["контроль"] = {
+                    ["натовпу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.cc",
+                                ["lemma"] = "Контроль натовпу",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.cc",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    },
+                    ["юрби"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.cc",
+                                ["lemma"] = "Контроль натовпу",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.cc",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["крааль"] = {
+                    ["бритвоболотих"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.razorfen_kraul",
+                                ["lemma"] = "крааль Бритвоболотих",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.razorfen_kraul",
+                                ["sourceRefs"] = { "ua-forever:place.razorfen_kraul" }
+                            }
+                        }
+                    }
+                },
+                ["кравецтво"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.tailoring",
+                            ["lemma"] = "Кравецтво",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.tailoring",
+                            ["sourceRefs"] = { "ua-forever:profession.tailoring" }
+                        }
+                    }
+                },
+                ["кричати"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "behavior.shout",
+                            ["lemma"] = "кричати",
+                            ["pos"] = "noun",
+                            ["sense"] = "behavior.shout",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["кулінарія"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.cooking",
+                            ["lemma"] = "Кулінарія",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.cooking",
+                            ["sourceRefs"] = { "ua-forever:profession.cooking" }
+                        }
+                    }
+                },
+                ["лок"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.warlock",
+                            ["lemma"] = "Чорнокнижник",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warlock",
+                            ["sourceRefs"] = { "ua-forever:class.warlock" }
+                        }
+                    }
+                },
+                ["лос"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.los",
+                            ["lemma"] = "Пряма видимість",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.los",
+                            ["sourceRefs"] = { "wow-community:strategy" }
+                        }
+                    }
+                },
+                ["лут"] = {
+                    ["консіл"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.loot-council",
+                                ["lemma"] = "Рада з розподілу здобичі",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.loot-council",
+                                ["sourceRefs"] = { "wow-community:loot-council" }
+                            }
+                        }
+                    }
+                },
+                ["лігво"] = {
+                    ["оніксії"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.onyxia_s_lair",
+                                ["lemma"] = "лігво Оніксії",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.onyxia_s_lair",
+                                ["sourceRefs"] = { "ua-forever:place.onyxia_s_lair" }
+                            }
+                        }
+                    },
+                    ["чорного"] = {
+                        ["крила"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.blackwing_lair",
+                                    ["lemma"] = "лігво Чорного Крила",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.blackwing_lair",
+                                    ["sourceRefs"] = { "ua-forever:place.blackwing_lair" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["лідер"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.leader",
+                            ["lemma"] = "Лідер",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.leader",
+                            ["sourceRefs"] = { "ua-forever:game.leader" }
+                        }
+                    },
+                    ["рейду"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.rl",
+                                ["lemma"] = "Лідер рейду",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.rl",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["маг"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.mage",
+                            ["lemma"] = "Маг",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.mage",
+                            ["sourceRefs"] = { "ua-forever:class.mage" }
+                        }
+                    }
+                },
+                ["мага"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "class.mage",
+                            ["lemma"] = "Маг",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.mage",
+                            ["sourceRefs"] = { "ua-forever:class.mage" }
+                        }
+                    }
+                },
+                ["майстер"] = {
+                    ["зачарування"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "profession.enchanting",
+                                ["lemma"] = "Зачарування",
+                                ["pos"] = "noun",
+                                ["sense"] = "profession.enchanting",
+                                ["sourceRefs"] = { "ua-forever:profession.enchanting" }
+                            }
+                        }
+                    }
+                },
+                ["майстра"] = {
+                    ["зачарування"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "profession.enchanting",
+                                ["lemma"] = "Зачарування",
+                                ["pos"] = "noun",
+                                ["sense"] = "profession.enchanting",
+                                ["sourceRefs"] = { "ua-forever:profession.enchanting" }
+                            }
+                        }
+                    }
+                },
+                ["мана"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.mana",
+                            ["lemma"] = "Мана",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.mana",
+                            ["sourceRefs"] = { "ua-forever:game.mana" }
+                        }
+                    }
+                },
+                ["мародон"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.maraudon",
+                            ["lemma"] = "Мародон",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.maraudon",
+                            ["sourceRefs"] = { "ua-forever:place.maraudon" }
+                        }
+                    }
+                },
+                ["матеріали"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.trade.mats",
+                            ["lemma"] = "Матеріали",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.trade.mats",
+                            ["sourceRefs"] = { "wow-community:craft" }
+                        }
+                    }
+                },
+                ["мати"] = {
+                    ["для"] = {
+                        ["крафту"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.trade.mats",
+                                    ["lemma"] = "Матеріали",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.trade.mats",
+                                    ["sourceRefs"] = { "wow-community:craft" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["мейнспек"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.ms",
+                            ["lemma"] = "Основна спеціалізація",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.ms",
+                            ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Primary Specialization" }
+                        }
+                    },
+                    ["перед"] = {
+                        ["офспеком"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.loot.ms-over-os",
+                                    ["lemma"] = "Основна спеціалізація має пріоритет",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.loot.ms-over-os",
+                                    ["sourceRefs"] = { "wow-community:loot" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["мені"] = {
+                    ["пора"] = {
+                        ["йти"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.social.gtg",
+                                    ["lemma"] = "Мені час іти або я готовий",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.social.gtg",
+                                    ["sourceRefs"] = { "wow-community:classic" }
+                                }
+                            }
+                        }
+                    },
+                    ["час"] = {
+                        ["іти"] = {
+                            ["або"] = {
+                                ["я"] = {
+                                    ["готовий"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {},
+                                                ["id"] = "slang.social.gtg",
+                                                ["lemma"] = "Мені час іти або я готовий",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "slang.social.gtg",
+                                                ["sourceRefs"] = { "wow-community:classic" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["мертвих"] = {
+                    ["копалень"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.the_deadmines",
+                                ["lemma"] = "Мертві копальні",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.the_deadmines",
+                                ["sourceRefs"] = { "ua-forever:place.the_deadmines" }
+                            }
+                        }
+                    },
+                    ["копальнях"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.the_deadmines",
+                                ["lemma"] = "Мертві копальні",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.the_deadmines",
+                                ["sourceRefs"] = { "ua-forever:place.the_deadmines" }
+                            }
+                        }
+                    }
+                },
+                ["мертві"] = {
+                    ["копальні"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.the_deadmines",
+                                ["lemma"] = "Мертві копальні",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.the_deadmines",
+                                ["sourceRefs"] = { "ua-forever:place.the_deadmines" }
+                            }
+                        }
+                    }
+                },
+                ["меч"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.sword",
+                            ["lemma"] = "Меч",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.sword",
+                            ["sourceRefs"] = { "ua-forever:goods.sword" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "goods.sword",
+                            ["lemma"] = "Меч",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.sword",
+                            ["sourceRefs"] = { "ua-forever:goods.sword" }
+                        }
+                    }
+                },
+                ["меча"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.sword",
+                            ["lemma"] = "Меч",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.sword",
+                            ["sourceRefs"] = { "ua-forever:goods.sword" }
+                        }
+                    }
+                },
+                ["мечі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "goods.sword",
+                            ["lemma"] = "Меч",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.sword",
+                            ["sourceRefs"] = { "ua-forever:goods.sword" }
+                        }
+                    }
+                },
+                ["мечів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "goods.sword",
+                            ["lemma"] = "Меч",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.sword",
+                            ["sourceRefs"] = { "ua-forever:goods.sword" }
+                        }
+                    }
+                },
+                ["мисливець"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.hunter",
+                            ["lemma"] = "Мисливець",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.hunter",
+                            ["sourceRefs"] = { "ua-forever:class.hunter" }
+                        }
+                    }
+                },
+                ["мисливця"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "class.hunter",
+                            ["lemma"] = "Мисливець",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.hunter",
+                            ["sourceRefs"] = { "ua-forever:class.hunter" }
+                        }
+                    }
+                },
+                ["мотлох"] = {
+                    ["на"] = {
+                        ["продаж"] = {
+                            ["торговцю"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.trade.vendor-trash",
+                                        ["lemma"] = "Мотлох на продаж торговцю",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.trade.vendor-trash",
+                                        ["sourceRefs"] = { "wow-community:strategy" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["мої"] = {
+                    ["матеріали"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.my-mats",
+                                ["lemma"] = "Мої матеріали",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.my-mats",
+                                ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    },
+                    ["мати"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.my-mats",
+                                ["lemma"] = "Мої матеріали",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.my-mats",
+                                ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    }
+                },
+                ["наближаються"] = {
+                    ["додаткові"] = {
+                        ["вороги"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.adds-inc",
+                                    ["lemma"] = "Наближаються додаткові вороги",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.adds-inc",
+                                    ["sourceRefs"] = { "wow-community:classic" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["нагрудник"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.chest",
+                            ["lemma"] = "нагрудник",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.chest",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.chest",
+                            ["lemma"] = "нагрудник",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.chest",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["нагруднику"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.chest",
+                            ["lemma"] = "нагрудник",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.chest",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["найкращий"] = {
+                    ["предмет"] = {
+                        ["для"] = {
+                            ["цієї"] = {
+                                ["комірки"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.trade.bis",
+                                            ["lemma"] = "Найкращий предмет для цієї комірки",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.trade.bis",
+                                            ["sourceRefs"] = { "wow-community:wiki" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["рейдів"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.trade.pre-raid-bis",
+                                        ["lemma"] = "Найкращий предмет до рейдів",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.trade.pre-raid-bis",
+                                        ["sourceRefs"] = { "wow-community:wiki" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["наксрамас"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.naxxramas",
+                            ["lemma"] = "Наксрамас",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.naxxramas",
+                            ["sourceRefs"] = { "ua-forever:place.naxxramas" }
+                        }
+                    }
+                },
+                ["наксрамаса"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.naxxramas",
+                            ["lemma"] = "Наксрамас",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.naxxramas",
+                            ["sourceRefs"] = { "ua-forever:place.naxxramas" }
+                        }
+                    }
+                },
+                ["наксрамасі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.naxxramas",
+                            ["lemma"] = "Наксрамас",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.naxxramas",
+                            ["sourceRefs"] = { "ua-forever:place.naxxramas" }
+                        }
+                    }
+                },
+                ["наложка"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.trade.cod",
+                            ["lemma"] = "Оплата при отриманні пошти",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.trade.cod",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["напиши"] = {
+                    ["в"] = {
+                        ["приват"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.social.pst",
+                                    ["lemma"] = "Напиши пошепки",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.social.pst",
+                                    ["sourceRefs"] = { "wow-community:forum" }
+                                }
+                            }
+                        }
+                    },
+                    ["пошепки"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.social.pst",
+                                ["lemma"] = "Напиши пошепки",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.social.pst",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["наручах"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.bracers",
+                            ["lemma"] = "наручі",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.bracers",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["наручі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "equipment.bracers",
+                            ["lemma"] = "наручі",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.bracers",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.bracers",
+                            ["lemma"] = "наручі",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.bracers",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["не"] = {
+                    ["турбувати"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.social.dnd",
+                                ["lemma"] = "Не турбувати",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.social.dnd",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["недогном"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.singular",
+                            ["lemma"] = "недогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.singular",
+                            ["lemma"] = "недогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недогнома"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.singular",
+                            ["lemma"] = "недогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.singular",
+                            ["lemma"] = "недогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недогномам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.plural",
+                            ["lemma"] = "недогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недогномами"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.plural",
+                            ["lemma"] = "недогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недогномах"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.plural",
+                            ["lemma"] = "недогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недогноме"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.singular",
+                            ["lemma"] = "недогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недогноми"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.plural",
+                            ["lemma"] = "недогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.plural",
+                            ["lemma"] = "недогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.plural",
+                            ["lemma"] = "недогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недогномові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.singular",
+                            ["lemma"] = "недогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.singular",
+                            ["lemma"] = "недогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недогномом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.singular",
+                            ["lemma"] = "недогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недогному"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.singular",
+                            ["lemma"] = "недогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недогномі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.singular",
+                            ["lemma"] = "недогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недогномів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.plural",
+                            ["lemma"] = "недогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.diminished.plural",
+                            ["lemma"] = "недогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недодворф"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.singular",
+                            ["lemma"] = "недодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.singular",
+                            ["lemma"] = "недодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недодворфа"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.singular",
+                            ["lemma"] = "недодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.singular",
+                            ["lemma"] = "недодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недодворфам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.plural",
+                            ["lemma"] = "недодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недодворфами"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.plural",
+                            ["lemma"] = "недодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недодворфах"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.plural",
+                            ["lemma"] = "недодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недодворфе"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.singular",
+                            ["lemma"] = "недодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недодворфи"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.plural",
+                            ["lemma"] = "недодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.plural",
+                            ["lemma"] = "недодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.plural",
+                            ["lemma"] = "недодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недодворфові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.singular",
+                            ["lemma"] = "недодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.singular",
+                            ["lemma"] = "недодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недодворфом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.singular",
+                            ["lemma"] = "недодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недодворфу"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.singular",
+                            ["lemma"] = "недодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недодворфі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.singular",
+                            ["lemma"] = "недодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недодворфів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.plural",
+                            ["lemma"] = "недодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.diminished.plural",
+                            ["lemma"] = "недодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недоорк"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.singular",
+                            ["lemma"] = "недоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.singular",
+                            ["lemma"] = "недоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недоорка"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.singular",
+                            ["lemma"] = "недоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.singular",
+                            ["lemma"] = "недоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недооркам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.plural",
+                            ["lemma"] = "недоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недоорками"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.plural",
+                            ["lemma"] = "недоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недоорках"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.plural",
+                            ["lemma"] = "недоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недоорки"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.plural",
+                            ["lemma"] = "недоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.plural",
+                            ["lemma"] = "недоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.plural",
+                            ["lemma"] = "недоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недооркові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.singular",
+                            ["lemma"] = "недоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.singular",
+                            ["lemma"] = "недоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недоорком"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.singular",
+                            ["lemma"] = "недоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недоорку"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.singular",
+                            ["lemma"] = "недоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.singular",
+                            ["lemma"] = "недоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.singular",
+                            ["lemma"] = "недоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["недоорків"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.plural",
+                            ["lemma"] = "недоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "diminished",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminished.plural",
+                            ["lemma"] = "недоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminished.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["некроситет"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.scholomance",
+                            ["lemma"] = "Некроситет",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.scholomance",
+                            ["sourceRefs"] = { "ua-forever:place.scholomance" }
+                        }
+                    }
+                },
+                ["нижня"] = {
+                    ["частина"] = {
+                        ["чорноскельного"] = {
+                            ["шпиля"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "place.lower_blackrock_spire",
+                                        ["lemma"] = "Нижня частина Чорноскельного шпиля",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.lower_blackrock_spire",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:place.lower_blackrock_spire",
+                                            "wow-community:dungeons"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["низина"] = {
+                    ["араті"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.arathi_basin",
+                                ["lemma"] = "низина Араті",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.arathi_basin",
+                                ["sourceRefs"] = { "ua-forever:place.arathi_basin", "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["нити"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "behavior.whine",
+                            ["lemma"] = "нити",
+                            ["pos"] = "noun",
+                            ["sense"] = "behavior.whine",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["новий"] = {
+                    ["рівень"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.social.ding",
+                                ["lemma"] = "Новий рівень!",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.social.ding",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["нори"] = {
+                    ["бритвоболотих"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.razorfen_downs",
+                                ["lemma"] = "нори Бритвоболотих",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.razorfen_downs",
+                                ["sourceRefs"] = { "ua-forever:place.razorfen_downs" }
+                            }
+                        }
+                    }
+                },
+                ["нід"] = {
+                    ["перед"] = {
+                        ["грідом"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.loot.need-before-greed",
+                                    ["lemma"] = "«Потрібно» має пріоритет над «Не відмовлюсь»",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.loot.need-before-greed",
+                                    ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need", "ua-forever:ui.Greed" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ніндзя"] = {
+                    ["-"] = {
+                        ["лут"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.loot.ninja-loot",
+                                    ["lemma"] = "Забрати здобич усупереч правилам",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.loot.ninja-loot",
+                                    ["sourceRefs"] = { "wow-community:loot-council" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ніндзялут"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.ninja-loot",
+                            ["lemma"] = "Забрати здобич усупереч правилам",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.ninja-loot",
+                            ["sourceRefs"] = { "wow-community:loot-council" }
+                        }
+                    }
+                },
+                ["обмеження"] = {
+                    ["на"] = {
+                        ["повторне"] = {
+                            ["проходження"] = {
+                                ["рейду"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.groups.raid-lockout",
+                                            ["lemma"] = "Обмеження на повторне проходження рейду",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.groups.raid-lockout",
+                                            ["sourceRefs"] = { "wow-community:wiki" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["оплата"] = {
+                    ["при"] = {
+                        ["отриманні"] = {
+                            ["пошти"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.trade.cod",
+                                        ["lemma"] = "Оплата при отриманні пошти",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.trade.cod",
+                                        ["sourceRefs"] = { "wow-community:wiki" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["оргримар"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["оргримара"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["оргримарі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["оргриммар"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["оргрі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["оргрімар"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["оргрімара"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["оргрімарі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["оргріммар"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["оргріммара"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["оргріммарі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["орда"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.horde",
+                            ["lemma"] = "Орда",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.horde",
+                            ["sourceRefs"] = { "ua-forever:game.horde" }
+                        }
+                    }
+                },
+                ["орк"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.singular",
+                            ["lemma"] = "орк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.singular",
+                            ["lemma"] = "орк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орка"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.singular",
+                            ["lemma"] = "орк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.singular",
+                            ["lemma"] = "орк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["оркам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.plural",
+                            ["lemma"] = "орки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орками"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.plural",
+                            ["lemma"] = "орки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орках"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.plural",
+                            ["lemma"] = "орки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орки"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.plural",
+                            ["lemma"] = "орки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.plural",
+                            ["lemma"] = "орки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.plural",
+                            ["lemma"] = "орки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["оркові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.singular",
+                            ["lemma"] = "орк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.singular",
+                            ["lemma"] = "орк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орком"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.singular",
+                            ["lemma"] = "орк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орку"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.singular",
+                            ["lemma"] = "орк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.singular",
+                            ["lemma"] = "орк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.singular",
+                            ["lemma"] = "орк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орків"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.plural",
+                            ["lemma"] = "орки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.base.plural",
+                            ["lemma"] = "орки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орчик"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.singular",
+                            ["lemma"] = "орчик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.singular",
+                            ["lemma"] = "орчик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орчика"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.singular",
+                            ["lemma"] = "орчик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.singular",
+                            ["lemma"] = "орчик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орчикам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.plural",
+                            ["lemma"] = "орчики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орчиками"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.plural",
+                            ["lemma"] = "орчики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орчиках"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.plural",
+                            ["lemma"] = "орчики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орчики"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.plural",
+                            ["lemma"] = "орчики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.plural",
+                            ["lemma"] = "орчики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.plural",
+                            ["lemma"] = "орчики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орчикові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.singular",
+                            ["lemma"] = "орчик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.singular",
+                            ["lemma"] = "орчик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орчиком"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.singular",
+                            ["lemma"] = "орчик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орчику"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.singular",
+                            ["lemma"] = "орчик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.singular",
+                            ["lemma"] = "орчик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.singular",
+                            ["lemma"] = "орчик",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орчиків"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.plural",
+                            ["lemma"] = "орчики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "diminutive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.diminutive.plural",
+                            ["lemma"] = "орчики",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.diminutive.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["орґрі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["орґрімар"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["орґріммар"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["орґріммара"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["орґріммарі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.orgrimmar",
+                            ["lemma"] = "Орґріммар",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.orgrimmar",
+                            ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["основна"] = {
+                    ["спеціалізація"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.ms",
+                                ["lemma"] = "Основна спеціалізація",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.ms",
+                                ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Primary Specialization" }
+                            }
+                        },
+                        ["має"] = {
+                            ["пріоритет"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.loot.ms-over-os",
+                                        ["lemma"] = "Основна спеціалізація має пріоритет",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.loot.ms-over-os",
+                                        ["sourceRefs"] = { "wow-community:loot" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["офспек"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.os",
+                            ["lemma"] = "Додаткова спеціалізація",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.os",
+                            ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Secondary Specialization" }
+                        }
+                    }
+                },
+                ["офтанк"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.groups.offtank",
+                            ["lemma"] = "Другий танк",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.groups.offtank",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["оффспек"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.os",
+                            ["lemma"] = "Додаткова спеціалізація",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.os",
+                            ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Secondary Specialization" }
+                        }
+                    }
+                },
+                ["оффтанк"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.groups.offtank",
+                            ["lemma"] = "Другий танк",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.groups.offtank",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["пал"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.paladin",
+                            ["lemma"] = "Паладин",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.paladin",
+                            ["sourceRefs"] = { "ua-forever:class.paladin" }
+                        }
+                    }
+                },
+                ["паладин"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.paladin",
+                            ["lemma"] = "Паладин",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.paladin",
+                            ["sourceRefs"] = { "ua-forever:class.paladin" }
+                        }
+                    }
+                },
+                ["паладина"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "class.paladin",
+                            ["lemma"] = "Паладин",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.paladin",
+                            ["sourceRefs"] = { "ua-forever:class.paladin" }
+                        }
+                    }
+                },
+                ["палаюче"] = {
+                    ["ядро"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.molten_core",
+                                ["lemma"] = "Палаюче Ядро",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.molten_core",
+                                ["sourceRefs"] = { "ua-forever:place.molten_core" }
+                            }
+                        }
+                    }
+                },
+                ["патруль"] = {
+                    ["наближається"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.pat-inc",
+                                ["lemma"] = "Патруль наближається",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.pat-inc",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["пве"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.pve",
+                            ["lemma"] = "Гра проти ігрового оточення",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.pve",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["пвп"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.pvp",
+                            ["lemma"] = "Гравець проти гравця",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.pvp",
+                            ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Player vs. Player" }
+                        }
+                    }
+                },
+                ["перевірка"] = {
+                    ["готовності"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "game.ready_check",
+                                ["lemma"] = "Перевірка готовності",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.ready_check",
+                                ["sourceRefs"] = { "ua-forever:game.ready_check" }
+                            }
+                        }
+                    }
+                },
+                ["перерва"] = {
+                    ["до"] = {
+                        ["вбиральні"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.social.bio-break",
+                                    ["lemma"] = "Перерва до вбиральні",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.social.bio-break",
+                                    ["sourceRefs"] = { "wow-community:forum" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["переривання"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.interrupt",
+                            ["lemma"] = "Переривання",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.interrupt",
+                            ["sourceRefs"] = { "ua-forever:game.interrupt" }
+                        }
+                    }
+                },
+                ["перетягнути"] = {
+                    ["агро"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.pull-aggro",
+                                ["lemma"] = "Перетягнути агро",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.pull-aggro",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["перша"] = {
+                    ["допомога"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "profession.first_aid",
+                                ["lemma"] = "Перша допомога",
+                                ["pos"] = "noun",
+                                ["sense"] = "profession.first_aid",
+                                ["sourceRefs"] = { "ua-forever:profession.first_aid" }
+                            }
+                        }
+                    }
+                },
+                ["періодичне"] = {
+                    ["зцілення"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.hot",
+                                ["lemma"] = "Періодичне зцілення",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.hot",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["періодичні"] = {
+                    ["пошкодження"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.dot",
+                                ["lemma"] = "Періодичні пошкодження",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.dot",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["плачучих"] = {
+                    ["печер"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.wailing_caverns",
+                                ["lemma"] = "Плачучі печери",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.wailing_caverns",
+                                ["sourceRefs"] = { "ua-forever:place.wailing_caverns" }
+                            }
+                        }
+                    },
+                    ["печерах"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.wailing_caverns",
+                                ["lemma"] = "Плачучі печери",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.wailing_caverns",
+                                ["sourceRefs"] = { "ua-forever:place.wailing_caverns" }
+                            }
+                        }
+                    }
+                },
+                ["плачучі"] = {
+                    ["печери"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.wailing_caverns",
+                                ["lemma"] = "Плачучі печери",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.wailing_caverns",
+                                ["sourceRefs"] = { "ua-forever:place.wailing_caverns" }
+                            }
+                        }
+                    }
+                },
+                ["поле"] = {
+                    ["бою"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "activity.battleground",
+                                ["lemma"] = "Поле бою",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.battleground",
+                                ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "activity.battleground",
+                                ["lemma"] = "Поле бою",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.battleground",
+                                ["sourceRefs"] = { "ua-forever:activity.battleground" }
+                            }
+                        }
+                    }
+                },
+                ["починати"] = {
+                    ["сутички"] = {
+                        ["одну"] = {
+                            ["за"] = {
+                                ["одною"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.combat.chain-pull",
+                                            ["lemma"] = "Починати сутички одну за одною",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.combat.chain-pull",
+                                            ["sourceRefs"] = { "wow-community:wiki" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["предмет"] = {
+                    ["закріплено"] = {
+                        ["за"] = {
+                            ["гравцем"] = {
+                                ["або"] = {
+                                    ["групою"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {},
+                                                ["id"] = "slang.loot.hr",
+                                                ["lemma"] = "Предмет закріплено за гравцем або групою",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "slang.loot.hr",
+                                                ["sourceRefs"] = { "wow-community:loot" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["стає"] = {
+                        ["персональним"] = {
+                            ["при"] = {
+                                ["отриманні"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.trade.bop-item",
+                                            ["lemma"] = "Предмет стає персональним при отриманні",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.trade.bop-item",
+                                            ["sourceRefs"] = {
+                                                "wow-community:forum",
+                                                "ua-forever:ui.Binds when picked up"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["премейд"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.groups.premade",
+                            ["lemma"] = "Заздалегідь зібрана група",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.groups.premade",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["пререйд"] = {
+                    ["біс"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.pre-raid-bis",
+                                ["lemma"] = "Найкращий предмет до рейдів",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.pre-raid-bis",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    }
+                },
+                ["приймаю"] = {
+                    ["замовлення"] = {
+                        ["на"] = {
+                            ["виготовлення"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.trade.lfw",
+                                        ["lemma"] = "Приймаю замовлення на виготовлення",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.trade.lfw",
+                                        ["sourceRefs"] = { "wow-community:craft" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["прок"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.proc",
+                            ["lemma"] = "Спрацювання ефекту",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.proc",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["проки"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.procs",
+                            ["lemma"] = "Спрацювання ефектів",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.procs",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["протогном"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.singular",
+                            ["lemma"] = "протогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.singular",
+                            ["lemma"] = "протогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протогнома"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.singular",
+                            ["lemma"] = "протогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.singular",
+                            ["lemma"] = "протогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протогномам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.plural",
+                            ["lemma"] = "протогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протогномами"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.plural",
+                            ["lemma"] = "протогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протогномах"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.plural",
+                            ["lemma"] = "протогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протогноме"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.singular",
+                            ["lemma"] = "протогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протогноми"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.plural",
+                            ["lemma"] = "протогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.plural",
+                            ["lemma"] = "протогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.plural",
+                            ["lemma"] = "протогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протогномові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.singular",
+                            ["lemma"] = "протогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.singular",
+                            ["lemma"] = "протогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протогномом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.singular",
+                            ["lemma"] = "протогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протогному"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.singular",
+                            ["lemma"] = "протогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протогномі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.singular",
+                            ["lemma"] = "протогном",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протогномів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.plural",
+                            ["lemma"] = "протогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.gnome"
+                            },
+                            ["id"] = "race.gnome.proto.plural",
+                            ["lemma"] = "протогноми",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.gnome.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протодворф"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.singular",
+                            ["lemma"] = "протодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.singular",
+                            ["lemma"] = "протодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протодворфа"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.singular",
+                            ["lemma"] = "протодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.singular",
+                            ["lemma"] = "протодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протодворфам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.plural",
+                            ["lemma"] = "протодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протодворфами"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.plural",
+                            ["lemma"] = "протодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протодворфах"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.plural",
+                            ["lemma"] = "протодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протодворфе"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.singular",
+                            ["lemma"] = "протодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протодворфи"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.plural",
+                            ["lemma"] = "протодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.plural",
+                            ["lemma"] = "протодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.plural",
+                            ["lemma"] = "протодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протодворфові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.singular",
+                            ["lemma"] = "протодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.singular",
+                            ["lemma"] = "протодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протодворфом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.singular",
+                            ["lemma"] = "протодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протодворфу"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.singular",
+                            ["lemma"] = "протодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протодворфі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.singular",
+                            ["lemma"] = "протодворф",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протодворфів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.plural",
+                            ["lemma"] = "протодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.dwarf"
+                            },
+                            ["id"] = "race.dwarf.proto.plural",
+                            ["lemma"] = "протодворфи",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.dwarf.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протоорк"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.singular",
+                            ["lemma"] = "протоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.singular",
+                            ["lemma"] = "протоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протоорка"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.singular",
+                            ["lemma"] = "протоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.singular",
+                            ["lemma"] = "протоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протооркам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.plural",
+                            ["lemma"] = "протоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протоорками"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.plural",
+                            ["lemma"] = "протоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протоорках"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.plural",
+                            ["lemma"] = "протоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протоорки"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.plural",
+                            ["lemma"] = "протоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.plural",
+                            ["lemma"] = "протоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.plural",
+                            ["lemma"] = "протоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протооркові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.singular",
+                            ["lemma"] = "протоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.singular",
+                            ["lemma"] = "протоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протоорком"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.singular",
+                            ["lemma"] = "протоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протоорку"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.singular",
+                            ["lemma"] = "протоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.singular",
+                            ["lemma"] = "протоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.singular",
+                            ["lemma"] = "протоорк",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.singular",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["протоорків"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.plural",
+                            ["lemma"] = "протоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "proto",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.orc"
+                            },
+                            ["id"] = "race.orc.proto.plural",
+                            ["lemma"] = "протоорки",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.orc.proto.plural",
+                            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["пряма"] = {
+                    ["видимість"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.los",
+                                ["lemma"] = "Пряма видимість",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.los",
+                                ["sourceRefs"] = { "wow-community:strategy" }
+                            }
+                        }
+                    }
+                },
+                ["прірва"] = {
+                    ["лютого"] = {
+                        ["полум'я"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.ragefire_chasm",
+                                    ["lemma"] = "прірва Лютого Полум'я",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.ragefire_chasm",
+                                    ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["пуг"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.groups.pug",
+                            ["lemma"] = "Випадково зібрана група",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.groups.pug",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["пуги"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.groups.pugs",
+                            ["lemma"] = "Випадково зібрані групи",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.groups.pugs",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["підземелля"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.dungeon",
+                            ["lemma"] = "Підземелля",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.dungeon",
+                            ["sourceRefs"] = { "ua-forever:game.dungeon" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.dungeon",
+                            ["lemma"] = "Підземелля",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.dungeon",
+                            ["sourceRefs"] = { "ua-forever:game.dungeon" }
+                        }
+                    }
+                },
+                ["підземка"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.dungeon",
+                            ["lemma"] = "Підземелля",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.dungeon",
+                            ["sourceRefs"] = { "ua-forever:game.dungeon" }
+                        }
+                    }
+                },
+                ["підземку"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.dungeon",
+                            ["lemma"] = "Підземелля",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.dungeon",
+                            ["sourceRefs"] = { "ua-forever:game.dungeon" }
+                        }
+                    }
+                },
+                ["підмісто"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.undercity",
+                            ["lemma"] = "Підмісто",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.undercity",
+                            ["sourceRefs"] = { "ua-forever:place.undercity" }
+                        }
+                    }
+                },
+                ["підмістя"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.undercity",
+                            ["lemma"] = "Підмісто",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.undercity",
+                            ["sourceRefs"] = { "ua-forever:place.undercity" }
+                        }
+                    }
+                },
+                ["підмісті"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.undercity",
+                            ["lemma"] = "Підмісто",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.undercity",
+                            ["sourceRefs"] = { "ua-forever:place.undercity" }
+                        }
+                    }
+                },
+                ["рада"] = {
+                    ["з"] = {
+                        ["розподілу"] = {
+                            ["здобичі"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.loot.loot-council",
+                                        ["lemma"] = "Рада з розподілу здобичі",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.loot.loot-council",
+                                        ["sourceRefs"] = { "wow-community:loot-council" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["резерв"] = {
+                    ["для"] = {
+                        ["кидка"] = {
+                            ["за"] = {
+                                ["предмет"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.loot.soft-reserve",
+                                            ["lemma"] = "Резерв для кидка за предмет",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.loot.soft-reserve",
+                                            ["sourceRefs"] = { "wow-community:loot" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["участі"] = {
+                            ["в"] = {
+                                ["кидку"] = {
+                                    ["за"] = {
+                                        ["предмет"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {},
+                                                    ["id"] = "slang.loot.sr",
+                                                    ["lemma"] = "Резерв для участі в кидку за предмет",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "slang.loot.sr",
+                                                    ["sourceRefs"] = { "wow-community:loot" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["рейд"] = {
+                    [","] = {
+                        ["де"] = {
+                            ["за"] = {
+                                ["здобич"] = {
+                                    ["торгуються"] = {
+                                        ["золотом"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {},
+                                                    ["id"] = "slang.loot.gdkp",
+                                                    ["lemma"] = "Рейд, де за здобич торгуються золотом",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "slang.loot.gdkp",
+                                                    ["sourceRefs"] = { "wow-community:dkp" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.raid",
+                            ["lemma"] = "Рейд",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.raid",
+                            ["sourceRefs"] = { "ua-forever:game.raid" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.raid",
+                            ["lemma"] = "Рейд",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.raid",
+                            ["sourceRefs"] = { "ua-forever:game.raid" }
+                        }
+                    },
+                    ["альтами"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.alt-run",
+                                ["lemma"] = "Рейд другорядними персонажами",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.alt-run",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    },
+                    ["другорядними"] = {
+                        ["персонажами"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.groups.alt-run",
+                                    ["lemma"] = "Рейд другорядними персонажами",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.groups.alt-run",
+                                    ["sourceRefs"] = { "wow-community:wiki" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["рейдлідер"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.groups.rl",
+                            ["lemma"] = "Лідер рейду",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.groups.rl",
+                            ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["рейдові"] = {
+                    ["бали"] = {
+                        ["для"] = {
+                            ["розподілу"] = {
+                                ["здобичі"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "slang.loot.dkp",
+                                            ["lemma"] = "Рейдові бали для розподілу здобичі",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "slang.loot.dkp",
+                                            ["sourceRefs"] = { "wow-community:dkp" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ресни"] = {
+                    ["мене"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.rez-me",
+                                ["lemma"] = "Воскреси мене",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.rez-me",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["ресніть"] = {
+                    ["мене"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.rez-me",
+                                ["lemma"] = "Воскреси мене",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.rez-me",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["рибальство"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.fishing",
+                            ["lemma"] = "Рибальство",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.fishing",
+                            ["sourceRefs"] = { "ua-forever:profession.fishing" }
+                        }
+                    }
+                },
+                ["рл"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.groups.rl",
+                            ["lemma"] = "Лідер рейду",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.groups.rl",
+                            ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["рога"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.rogue",
+                            ["lemma"] = "Розбійник",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.rogue",
+                            ["sourceRefs"] = { "ua-forever:class.rogue" }
+                        }
+                    }
+                },
+                ["розбійник"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.rogue",
+                            ["lemma"] = "Розбійник",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.rogue",
+                            ["sourceRefs"] = { "ua-forever:class.rogue" }
+                        }
+                    }
+                },
+                ["розбійника"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "class.rogue",
+                            ["lemma"] = "Розбійник",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.rogue",
+                            ["sourceRefs"] = { "ua-forever:class.rogue" }
+                        }
+                    }
+                },
+                ["рол"] = {
+                    ["на"] = {
+                        ["грід"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.loot.greed-roll",
+                                    ["lemma"] = "Кидок «Не відмовлюсь»",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.loot.greed-roll",
+                                    ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Greed" }
+                                }
+                            }
+                        },
+                        ["нід"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.loot.need-roll",
+                                    ["lemma"] = "Кидок «Потрібно»",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.loot.need-roll",
+                                    ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["рукавицях"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.gloves",
+                            ["lemma"] = "рукавиці",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.gloves",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["рукавиці"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "equipment.gloves",
+                            ["lemma"] = "рукавиці",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.gloves",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.gloves",
+                            ["lemma"] = "рукавиці",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.gloves",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["руїни"] = {
+                    ["ан'кіражу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.ruins_of_ahn_qiraj",
+                                ["lemma"] = "руїни Ан'Кіражу",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ruins_of_ahn_qiraj",
+                                ["sourceRefs"] = { "ua-forever:place.ruins_of_ahn_qiraj" }
+                            }
+                        }
+                    }
+                },
+                ["сила"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.strength",
+                            ["lemma"] = "Сила",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.strength",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["сили"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "stat.strength",
+                            ["lemma"] = "Сила",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.strength",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["скаржитися"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "behavior.complain",
+                            ["lemma"] = "скаржитися",
+                            ["pos"] = "noun",
+                            ["sense"] = "behavior.complain",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["скиглити"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "behavior.whine",
+                            ["lemma"] = "нити",
+                            ["pos"] = "noun",
+                            ["sense"] = "behavior.whine",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["см"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.scarlet_monastery",
+                            ["lemma"] = "Багряний монастир",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.scarlet_monastery",
+                            ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" }
+                        }
+                    }
+                },
+                ["смерколісся"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.duskwood",
+                            ["lemma"] = "Смерколісся",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.duskwood",
+                            ["sourceRefs"] = { "ua-forever:place.duskwood" }
+                        }
+                    }
+                },
+                ["сокир"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "goods.axe",
+                            ["lemma"] = "Сокира",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.axe",
+                            ["sourceRefs"] = { "ua-forever:goods.axe" }
+                        }
+                    }
+                },
+                ["сокира"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.axe",
+                            ["lemma"] = "Сокира",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.axe",
+                            ["sourceRefs"] = { "ua-forever:goods.axe" }
+                        }
+                    }
+                },
+                ["сокири"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "goods.axe",
+                            ["lemma"] = "Сокира",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.axe",
+                            ["sourceRefs"] = { "ua-forever:goods.axe" }
+                        }
+                    }
+                },
+                ["сокирку"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.axe",
+                            ["lemma"] = "Сокира",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.axe",
+                            ["sourceRefs"] = { "ua-forever:goods.axe" }
+                        }
+                    }
+                },
+                ["сокиру"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "goods.axe",
+                            ["lemma"] = "Сокира",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.axe",
+                            ["sourceRefs"] = { "ua-forever:goods.axe" }
+                        }
+                    }
+                },
+                ["софт"] = {
+                    ["рез"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.soft-reserve",
+                                ["lemma"] = "Резерв для кидка за предмет",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.soft-reserve",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["софтрез"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.soft-reserve",
+                            ["lemma"] = "Резерв для кидка за предмет",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.soft-reserve",
+                            ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["спрацювання"] = {
+                    ["ефекту"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.proc",
+                                ["lemma"] = "Спрацювання ефекту",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.proc",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    },
+                    ["ефектів"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.procs",
+                                ["lemma"] = "Спрацювання ефектів",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.procs",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["стає"] = {
+                    ["персональним"] = {
+                        ["при"] = {
+                            ["екіпіруванні"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.trade.boe",
+                                        ["lemma"] = "Стає персональним при екіпіруванні",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.trade.boe",
+                                        ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when equipped" }
+                                    }
+                                }
+                            },
+                            ["отриманні"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.trade.bind-on-pickup",
+                                        ["lemma"] = "Стає персональним при отриманні",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.trade.bind-on-pickup",
+                                        ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when picked up" }
+                                    }
+                                },
+                                ["або"] = {
+                                    ["благословення"] = {
+                                        ["захисту"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {},
+                                                    ["id"] = "slang.trade.bop",
+                                                    ["lemma"] = "Стає персональним при отриманні або Благословення захисту",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "slang.trade.bop",
+                                                    ["sourceRefs"] = { "wow-community:forum" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["степи"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.the_barrens",
+                            ["lemma"] = "Степи",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.the_barrens",
+                            ["sourceRefs"] = { "ua-forever:place.the_barrens" }
+                        }
+                    }
+                },
+                ["стратгольм"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.stratholme",
+                            ["lemma"] = "Стратгольм",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.stratholme",
+                            ["sourceRefs"] = { "ua-forever:place.stratholme" }
+                        }
+                    }
+                },
+                ["стріл"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "goods.arrow",
+                            ["lemma"] = "Стріла",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.arrow",
+                            ["sourceRefs"] = { "ua-forever:goods.arrow" }
+                        }
+                    }
+                },
+                ["стріла"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.arrow",
+                            ["lemma"] = "Стріла",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.arrow",
+                            ["sourceRefs"] = { "ua-forever:goods.arrow" }
+                        }
+                    }
+                },
+                ["стріли"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "goods.arrow",
+                            ["lemma"] = "Стріла",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.arrow",
+                            ["sourceRefs"] = { "ua-forever:goods.arrow" }
+                        }
+                    }
+                },
+                ["стрілу"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "goods.arrow",
+                            ["lemma"] = "Стріла",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.arrow",
+                            ["sourceRefs"] = { "ua-forever:goods.arrow" }
+                        }
+                    }
+                },
+                ["сумка"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.bag",
+                            ["lemma"] = "Сумка",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.bag",
+                            ["sourceRefs"] = { "ua-forever:game.bag" }
+                        }
+                    }
+                },
+                ["сумон"] = {
+                    ["пліз"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.summon-please",
+                                ["lemma"] = "Викличте мене, будь ласка",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.summon-please",
+                                ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["східні"] = {
+                    ["зачумлені"] = {
+                        ["землі"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.eastern_plaguelands",
+                                    ["lemma"] = "Східні Зачумлені землі",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.eastern_plaguelands",
+                                    ["sourceRefs"] = { "ua-forever:place.eastern_plaguelands" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["танаріс"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.tanaris",
+                            ["lemma"] = "Танаріс",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.tanaris",
+                            ["sourceRefs"] = { "ua-forever:place.tanaris" }
+                        }
+                    }
+                },
+                ["танаріса"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.tanaris",
+                            ["lemma"] = "Танаріс",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.tanaris",
+                            ["sourceRefs"] = { "ua-forever:place.tanaris" }
+                        }
+                    }
+                },
+                ["танарісі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.tanaris",
+                            ["lemma"] = "Танаріс",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.tanaris",
+                            ["sourceRefs"] = { "ua-forever:place.tanaris" }
+                        }
+                    }
+                },
+                ["танк"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.tank",
+                            ["lemma"] = "Танк",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.tank",
+                            ["sourceRefs"] = { "ua-forever:role.tank" }
+                        }
+                    }
+                },
+                ["танка"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.tank",
+                            ["lemma"] = "Танк",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.tank",
+                            ["sourceRefs"] = { "ua-forever:role.tank" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.tank",
+                            ["lemma"] = "Танк",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.tank",
+                            ["sourceRefs"] = { "ua-forever:role.tank" }
+                        }
+                    }
+                },
+                ["танки"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.tank",
+                            ["lemma"] = "Танк",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.tank",
+                            ["sourceRefs"] = { "ua-forever:role.tank" }
+                        }
+                    }
+                },
+                ["танків"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.tank",
+                            ["lemma"] = "Танк",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.tank",
+                            ["sourceRefs"] = { "ua-forever:role.tank" }
+                        }
+                    }
+                },
+                ["твердиня"] = {
+                    ["крол'док"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.kroldok_stronghold",
+                                ["lemma"] = "Твердиня Крол'док",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.kroldok_stronghold",
+                                ["sourceRefs"] = {
+                                    "ua-forever:place.kroldok_stronghold",
+                                    "project-authored:apertium-pipeline-1"
+                                }
+                            }
+                        }
+                    }
+                },
+                ["твердині"] = {
+                    ["крол'док"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.kroldok_stronghold",
+                                ["lemma"] = "Твердиня Крол'док",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.kroldok_stronghold",
+                                ["sourceRefs"] = {
+                                    "ua-forever:place.kroldok_stronghold",
+                                    "project-authored:apertium-pipeline-1"
+                                }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.kroldok_stronghold",
+                                ["lemma"] = "Твердиня Крол'док",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.kroldok_stronghold",
+                                ["sourceRefs"] = {
+                                    "ua-forever:place.kroldok_stronghold",
+                                    "project-authored:apertium-pipeline-1"
+                                }
+                            }
+                        }
+                    }
+                },
+                ["твої"] = {
+                    ["матеріали"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.your-mats",
+                                ["lemma"] = "Твої матеріали",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.your-mats",
+                                ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    },
+                    ["мати"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.trade.your-mats",
+                                ["lemma"] = "Твої матеріали",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.trade.your-mats",
+                                ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    }
+                },
+                ["твінк"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.twink",
+                            ["lemma"] = "Добре споряджений персонаж низького рівня",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.twink",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["твінки"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.twink",
+                            ["lemma"] = "Добре споряджений персонаж низького рівня",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.twink",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["травництво"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.herbalism",
+                            ["lemma"] = "Травництво",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.herbalism",
+                            ["sourceRefs"] = { "ua-forever:profession.herbalism" }
+                        }
+                    }
+                },
+                ["треш"] = {
+                    ["-"] = {
+                        ["моби"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "slang.combat.trash-mobs",
+                                    ["lemma"] = "Звичайні вороги в підземеллі",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "slang.combat.trash-mobs",
+                                    ["sourceRefs"] = { "wow-community:classic" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["тіснина"] = {
+                    ["пісні"] = {
+                        ["війни"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.warsong_gulch",
+                                    ["lemma"] = "тіснина Пісні Війни",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.warsong_gulch",
+                                    ["sourceRefs"] = { "ua-forever:place.warsong_gulch", "wow-community:classic" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ульдаман"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.uldaman",
+                            ["lemma"] = "Ульдаман",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.uldaman",
+                            ["sourceRefs"] = { "ua-forever:place.uldaman" }
+                        }
+                    }
+                },
+                ["учасник"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.member",
+                            ["lemma"] = "Учасник",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.member",
+                            ["sourceRefs"] = { "ua-forever:game.member" }
+                        }
+                    }
+                },
+                ["фортеця"] = {
+                    ["тіньового"] = {
+                        ["ікла"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.shadowfang_keep",
+                                    ["lemma"] = "фортеця Тіньового Ікла",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.shadowfang_keep",
+                                    ["sourceRefs"] = { "ua-forever:place.shadowfang_keep" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["фрірол"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.free-roll",
+                            ["lemma"] = "Кидок відкритий для всіх",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.free-roll",
+                            ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["хант"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.hunter",
+                            ["lemma"] = "Мисливець",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.hunter",
+                            ["sourceRefs"] = { "ua-forever:class.hunter" }
+                        }
+                    }
+                },
+                ["характеристик"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "stat.all",
+                            ["lemma"] = "Характеристики",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.all",
+                            ["sourceRefs"] = { "ua-forever:stat.all", "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["характеристики"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.all",
+                            ["lemma"] = "Характеристики",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.all",
+                            ["sourceRefs"] = { "ua-forever:stat.all", "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["хард"] = {
+                    ["рез"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.loot.hard-reserve",
+                                ["lemma"] = "Закріпити здобич за гравцем або групою",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.loot.hard-reserve",
+                                ["sourceRefs"] = { "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["хардрез"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.loot.hard-reserve",
+                            ["lemma"] = "Закріпити здобич за гравцем або групою",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.loot.hard-reserve",
+                            ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["хліб"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.bread",
+                            ["lemma"] = "Хліб",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.bread",
+                            ["sourceRefs"] = { "project-authored:chat-0.1:goods.bread" }
+                        }
+                    }
+                },
+                ["хліба"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "goods.bread",
+                            ["lemma"] = "Хліб",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.bread",
+                            ["sourceRefs"] = { "project-authored:chat-0.1:goods.bread" }
+                        }
+                    }
+                },
+                ["хлібець"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.bread",
+                            ["lemma"] = "Хліб",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.bread",
+                            ["sourceRefs"] = { "project-authored:chat-0.1:goods.bread" }
+                        }
+                    }
+                },
+                ["хлібця"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.bread",
+                            ["lemma"] = "Хліб",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.bread",
+                            ["sourceRefs"] = { "project-authored:chat-0.1:goods.bread" }
+                        }
+                    }
+                },
+                ["хот"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.hot",
+                            ["lemma"] = "Періодичне зцілення",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.hot",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["хоти"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.hot",
+                            ["lemma"] = "Періодичне зцілення",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.hot",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["хпс"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.hps",
+                            ["lemma"] = "Зцілення за секунду",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.hps",
+                            ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["храм"] = {
+                    ["ан'кіражу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.temple_of_ahn_qiraj",
+                                ["lemma"] = "храм Ан'Кіражу",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.temple_of_ahn_qiraj",
+                                ["sourceRefs"] = { "ua-forever:place.temple_of_ahn_qiraj" }
+                            }
+                        }
+                    },
+                    ["атал'гаккара"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.the_temple_of_atal_hakkar",
+                                ["lemma"] = "Храм Атал'Гаккара",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.the_temple_of_atal_hakkar",
+                                ["sourceRefs"] = { "ua-forever:place.the_temple_of_atal_hakkar" }
+                            }
+                        }
+                    }
+                },
+                ["хіл"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Цілитель",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        }
+                    }
+                },
+                ["хілер"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Цілитель",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        }
+                    }
+                },
+                ["хілку"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "goods.health_potion",
+                            ["lemma"] = "Зілля здоров’я",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.health_potion",
+                            ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                        }
+                    }
+                },
+                ["цілитель"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Цілитель",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        }
+                    }
+                },
+                ["цілителя"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Цілитель",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Цілитель",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        }
+                    }
+                },
+                ["цілителі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Цілитель",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        }
+                    }
+                },
+                ["цілителів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Цілитель",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        }
+                    }
+                },
+                ["час"] = {
+                    ["відновлення"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.combat.cd",
+                                ["lemma"] = "Час відновлення",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.combat.cd",
+                                ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["чейнпул"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.chain-pull",
+                            ["lemma"] = "Починати сутички одну за одною",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.chain-pull",
+                            ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["чорноводні"] = {
+                    ["глибини"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.blackfathom_deeps",
+                                ["lemma"] = "Чорноводні глибини",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.blackfathom_deeps",
+                                ["sourceRefs"] = { "ua-forever:place.blackfathom_deeps" }
+                            }
+                        }
+                    }
+                },
+                ["чорнокнижник"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.warlock",
+                            ["lemma"] = "Чорнокнижник",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warlock",
+                            ["sourceRefs"] = { "ua-forever:class.warlock" }
+                        }
+                    }
+                },
+                ["чорнокнижника"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "class.warlock",
+                            ["lemma"] = "Чорнокнижник",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warlock",
+                            ["sourceRefs"] = { "ua-forever:class.warlock" }
+                        }
+                    }
+                },
+                ["чорноскельний"] = {
+                    ["шпиль"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.blackrock_spire",
+                                ["lemma"] = "Чорноскельний шпиль",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.blackrock_spire",
+                                ["sourceRefs"] = { "ua-forever:place.blackrock_spire" }
+                            }
+                        }
+                    }
+                },
+                ["чорноскельні"] = {
+                    ["надра"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.blackrock_depths",
+                                ["lemma"] = "Чорноскельні надра",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.blackrock_depths",
+                                ["sourceRefs"] = { "ua-forever:place.blackrock_depths" }
+                            }
+                        }
+                    }
+                },
+                ["шаман"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "class.shaman",
+                            ["lemma"] = "Шаман",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.shaman",
+                            ["sourceRefs"] = { "ua-forever:class.shaman" }
+                        }
+                    }
+                },
+                ["шамана"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "class.shaman",
+                            ["lemma"] = "Шаман",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.shaman",
+                            ["sourceRefs"] = { "ua-forever:class.shaman" }
+                        }
+                    }
+                },
+                ["шкірництво"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.leatherworking",
+                            ["lemma"] = "Шкірництво",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.leatherworking",
+                            ["sourceRefs"] = { "ua-forever:profession.leatherworking" }
+                        }
+                    }
+                },
+                ["шторм"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.stormwind",
+                            ["lemma"] = "Штормовій",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.stormwind",
+                            ["sourceRefs"] = { "ua-forever:place.stormwind" }
+                        }
+                    }
+                },
+                ["штормві́нд"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.stormwind",
+                            ["lemma"] = "Штормовій",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.stormwind",
+                            ["sourceRefs"] = { "ua-forever:place.stormwind" }
+                        }
+                    }
+                },
+                ["штормвінд"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.stormwind",
+                            ["lemma"] = "Штормовій",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.stormwind",
+                            ["sourceRefs"] = { "ua-forever:place.stormwind" }
+                        }
+                    }
+                },
+                ["штормовій"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.stormwind",
+                            ["lemma"] = "Штормовій",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.stormwind",
+                            ["sourceRefs"] = { "ua-forever:place.stormwind" }
+                        }
+                    }
+                },
+                ["штормовія"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.stormwind",
+                            ["lemma"] = "Штормовій",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.stormwind",
+                            ["sourceRefs"] = { "ua-forever:place.stormwind" }
+                        }
+                    }
+                },
+                ["штормовії"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.stormwind",
+                            ["lemma"] = "Штормовій",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.stormwind",
+                            ["sourceRefs"] = { "ua-forever:place.stormwind" }
+                        }
+                    }
+                },
+                ["шукаю"] = {
+                    ["замовлення"] = {
+                        ["на"] = {
+                            ["крафт"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.trade.lfw",
+                                        ["lemma"] = "Приймаю замовлення на виготовлення",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.trade.lfw",
+                                        ["sourceRefs"] = { "wow-community:craft" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["щасти"] = {
+                    ["та"] = {
+                        ["приємної"] = {
+                            ["гри"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "slang.social.glhf",
+                                        ["lemma"] = "Щасти та приємної гри",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "slang.social.glhf",
+                                        ["sourceRefs"] = { "wow-community:classic" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["щит"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.shield",
+                            ["lemma"] = "Щит",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.shield",
+                            ["sourceRefs"] = { "ua-forever:game.shield" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.shield",
+                            ["lemma"] = "Щит",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.shield",
+                            ["sourceRefs"] = { "ua-forever:game.shield" }
+                        }
+                    }
+                },
+                ["щита"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.shield",
+                            ["lemma"] = "Щит",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.shield",
+                            ["sourceRefs"] = { "ua-forever:game.shield" }
+                        }
+                    }
+                },
+                ["щити"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "game.shield",
+                            ["lemma"] = "Щит",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.shield",
+                            ["sourceRefs"] = { "ua-forever:game.shield" }
+                        }
+                    }
+                },
+                ["щитів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "game.shield",
+                            ["lemma"] = "Щит",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.shield",
+                            ["sourceRefs"] = { "ua-forever:game.shield" }
+                        }
+                    }
+                },
+                ["ясенеділ"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.ashenvale",
+                            ["lemma"] = "Ясенеділ",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.ashenvale",
+                            ["sourceRefs"] = { "ua-forever:place.ashenvale" }
+                        }
+                    }
+                },
+                ["ід"] = {
+                    ["рейду"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.raid-id",
+                                ["lemma"] = "Ідентифікатор рейду",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.raid-id",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    }
+                },
+                ["ідентифікатор"] = {
+                    ["рейду"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "slang.groups.raid-id",
+                                ["lemma"] = "Ідентифікатор рейду",
+                                ["pos"] = "noun",
+                                ["sense"] = "slang.groups.raid-id",
+                                ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    }
+                },
+                ["інв"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.social.inv",
+                            ["lemma"] = "Запроси в групу",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.social.inv",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["інженерія"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "profession.engineering",
+                            ["lemma"] = "Інженерія",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.engineering",
+                            ["sourceRefs"] = { "ua-forever:profession.engineering" }
+                        }
+                    }
+                },
+                ["інкам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "slang.combat.inc",
+                            ["lemma"] = "Вороги наближаються",
+                            ["pos"] = "noun",
+                            ["sense"] = "slang.combat.inc",
+                            ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["їжа"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.food",
+                            ["lemma"] = "Їжа",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.food",
+                            ["sourceRefs"] = { "ua-forever:game.food" }
+                        }
+                    }
+                },
+                ["їжу"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "game.food",
+                            ["lemma"] = "Їжа",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.food",
+                            ["sourceRefs"] = { "ua-forever:game.food" }
+                        }
+                    }
+                },
+                ["їжі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.food",
+                            ["lemma"] = "Їжа",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.food",
+                            ["sourceRefs"] = { "ua-forever:game.food" }
+                        }
+                    }
+                },
+                ["їй"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "recipient.her",
+                            ["lemma"] = "їй",
+                            ["pos"] = "noun",
+                            ["sense"] = "recipient.her",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["їм"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "recipient.them",
+                            ["lemma"] = "їм",
+                            ["pos"] = "noun",
+                            ["sense"] = "recipient.them",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                }
+            }
+        },
+        ["generation"] = {
+            ["activity.battleground"] = {
+                ["en"] = {
+                    ["canonical"] = "Battleground"
+                },
+                ["uk"] = {
+                    ["accusative"] = "поле бою",
+                    ["canonical"] = "Поле бою"
+                }
+            },
+            ["behavior.complain"] = {
+                ["en"] = {
+                    ["canonical"] = "complaining"
+                },
+                ["uk"] = {
+                    ["canonical"] = "скаржитися"
+                }
+            },
+            ["behavior.shout"] = {
+                ["en"] = {
+                    ["canonical"] = "shouting"
+                },
+                ["uk"] = {
+                    ["canonical"] = "кричати"
+                }
+            },
+            ["behavior.whine"] = {
+                ["en"] = {
+                    ["canonical"] = "whining"
+                },
+                ["uk"] = {
+                    ["canonical"] = "нити"
+                }
+            },
+            ["class.druid"] = {
+                ["en"] = {
+                    ["canonical"] = "Druid"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Друїд",
+                    ["genitiveSingular"] = "друїда"
+                }
+            },
+            ["class.hunter"] = {
+                ["en"] = {
+                    ["canonical"] = "Hunter"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Мисливець",
+                    ["genitiveSingular"] = "мисливця"
+                }
+            },
+            ["class.mage"] = {
+                ["en"] = {
+                    ["canonical"] = "Mage"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Маг",
+                    ["genitiveSingular"] = "мага"
+                }
+            },
+            ["class.paladin"] = {
+                ["en"] = {
+                    ["canonical"] = "Paladin"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Паладин",
+                    ["genitiveSingular"] = "паладина"
+                }
+            },
+            ["class.priest"] = {
+                ["en"] = {
+                    ["canonical"] = "Priest"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Жрець",
+                    ["genitiveSingular"] = "жреця"
+                }
+            },
+            ["class.rogue"] = {
+                ["en"] = {
+                    ["canonical"] = "Rogue"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Розбійник",
+                    ["genitiveSingular"] = "розбійника"
+                }
+            },
+            ["class.shaman"] = {
+                ["en"] = {
+                    ["canonical"] = "Shaman"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Шаман",
+                    ["genitiveSingular"] = "шамана"
+                }
+            },
+            ["class.warlock"] = {
+                ["en"] = {
+                    ["canonical"] = "Warlock"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Чорнокнижник",
+                    ["genitiveSingular"] = "чорнокнижника"
+                }
+            },
+            ["class.warrior"] = {
+                ["en"] = {
+                    ["canonical"] = "Warrior"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Воїн",
+                    ["genitiveSingular"] = "воїна"
+                }
+            },
+            ["equipment.bracers"] = {
+                ["en"] = {
+                    ["canonical"] = "bracers"
+                },
+                ["uk"] = {
+                    ["accusative"] = "наручі",
+                    ["canonical"] = "наручі",
+                    ["locative"] = "наручах"
+                }
+            },
+            ["equipment.chest"] = {
+                ["en"] = {
+                    ["canonical"] = "chest"
+                },
+                ["uk"] = {
+                    ["accusative"] = "нагрудник",
+                    ["canonical"] = "нагрудник",
+                    ["locative"] = "нагруднику"
+                }
+            },
+            ["equipment.gloves"] = {
+                ["en"] = {
+                    ["canonical"] = "gloves"
+                },
+                ["uk"] = {
+                    ["accusative"] = "рукавиці",
+                    ["canonical"] = "рукавиці",
+                    ["locative"] = "рукавицях"
+                }
+            },
+            ["game.aggro"] = {
+                ["en"] = {
+                    ["canonical"] = "Aggro"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Агро"
+                }
+            },
+            ["game.alliance"] = {
+                ["en"] = {
+                    ["canonical"] = "Alliance"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Альянс"
+                }
+            },
+            ["game.armor"] = {
+                ["en"] = {
+                    ["canonical"] = "Armor"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Броня"
+                }
+            },
+            ["game.auction_house"] = {
+                ["en"] = {
+                    ["canonical"] = "Auction House"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Аукціонний дім"
+                }
+            },
+            ["game.bag"] = {
+                ["en"] = {
+                    ["canonical"] = "Bag"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Сумка"
+                }
+            },
+            ["game.bank"] = {
+                ["en"] = {
+                    ["canonical"] = "Bank"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Банк"
+                }
+            },
+            ["game.dungeon"] = {
+                ["en"] = {
+                    ["canonical"] = "Dungeon"
+                },
+                ["uk"] = {
+                    ["accusative"] = "підземелля",
+                    ["canonical"] = "Підземелля"
+                }
+            },
+            ["game.food"] = {
+                ["en"] = {
+                    ["canonical"] = "Food"
+                },
+                ["uk"] = {
+                    ["accusative"] = "їжі",
+                    ["canonical"] = "Їжа"
+                }
+            },
+            ["game.gold"] = {
+                ["en"] = {
+                    ["canonical"] = "Gold"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Золото"
+                }
+            },
+            ["game.guild"] = {
+                ["en"] = {
+                    ["canonical"] = "Guild"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Гільдія"
+                }
+            },
+            ["game.health"] = {
+                ["en"] = {
+                    ["canonical"] = "Health"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Здоров’я"
+                }
+            },
+            ["game.horde"] = {
+                ["en"] = {
+                    ["canonical"] = "Horde"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Орда"
+                }
+            },
+            ["game.interrupt"] = {
+                ["en"] = {
+                    ["canonical"] = "Interrupt"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Переривання"
+                }
+            },
+            ["game.leader"] = {
+                ["en"] = {
+                    ["canonical"] = "Leader"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Лідер"
+                }
+            },
+            ["game.mana"] = {
+                ["en"] = {
+                    ["canonical"] = "Mana"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Мана"
+                }
+            },
+            ["game.member"] = {
+                ["en"] = {
+                    ["canonical"] = "Member"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Учасник"
+                }
+            },
+            ["game.party"] = {
+                ["en"] = {
+                    ["canonical"] = "Party"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Група"
+                }
+            },
+            ["game.quest"] = {
+                ["en"] = {
+                    ["canonical"] = "Quest"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Завдання"
+                }
+            },
+            ["game.raid"] = {
+                ["en"] = {
+                    ["canonical"] = "Raid"
+                },
+                ["uk"] = {
+                    ["accusative"] = "рейд",
+                    ["canonical"] = "Рейд"
+                }
+            },
+            ["game.ready_check"] = {
+                ["en"] = {
+                    ["canonical"] = "Ready Check"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Перевірка готовності"
+                }
+            },
+            ["game.resurrection"] = {
+                ["en"] = {
+                    ["canonical"] = "Resurrection"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Воскресіння"
+                }
+            },
+            ["game.shield"] = {
+                ["en"] = {
+                    ["canonical"] = "Shield",
+                    ["plural"] = "shields"
+                },
+                ["uk"] = {
+                    ["accusative"] = "щит",
+                    ["accusativePlural"] = "щити",
+                    ["canonical"] = "Щит",
+                    ["genitivePlural"] = "щитів"
+                }
+            },
+            ["game.threat"] = {
+                ["en"] = {
+                    ["canonical"] = "Threat"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Загроза"
+                }
+            },
+            ["game.water"] = {
+                ["en"] = {
+                    ["canonical"] = "Water"
+                },
+                ["uk"] = {
+                    ["accusative"] = "води",
+                    ["canonical"] = "Вода"
+                }
+            },
+            ["game.weapon"] = {
+                ["en"] = {
+                    ["canonical"] = "Weapon"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зброя"
+                }
+            },
+            ["goods.arrow"] = {
+                ["en"] = {
+                    ["canonical"] = "arrow",
+                    ["plural"] = "arrows"
+                },
+                ["uk"] = {
+                    ["accusative"] = "стрілу",
+                    ["accusativePlural"] = "стріли",
+                    ["canonical"] = "Стріла",
+                    ["genitivePlural"] = "стріл"
+                }
+            },
+            ["goods.axe"] = {
+                ["en"] = {
+                    ["canonical"] = "axe",
+                    ["plural"] = "axes"
+                },
+                ["uk"] = {
+                    ["accusative"] = "сокиру",
+                    ["accusativePlural"] = "сокири",
+                    ["canonical"] = "Сокира",
+                    ["genitivePlural"] = "сокир"
+                }
+            },
+            ["goods.bread"] = {
+                ["en"] = {
+                    ["canonical"] = "bread"
+                },
+                ["uk"] = {
+                    ["accusative"] = "хліба",
+                    ["canonical"] = "Хліб"
+                }
+            },
+            ["goods.health_potion"] = {
+                ["en"] = {
+                    ["canonical"] = "health potion",
+                    ["plural"] = "health potions"
+                },
+                ["uk"] = {
+                    ["accusative"] = "зілля здоров’я",
+                    ["canonical"] = "Зілля здоров’я",
+                    ["countTwoToFour"] = "зілля здоров’я",
+                    ["genitivePlural"] = "зіль здоров’я"
+                }
+            },
+            ["goods.sword"] = {
+                ["en"] = {
+                    ["canonical"] = "sword",
+                    ["plural"] = "swords"
+                },
+                ["uk"] = {
+                    ["accusative"] = "меч",
+                    ["accusativePlural"] = "мечі",
+                    ["canonical"] = "Меч",
+                    ["genitivePlural"] = "мечів"
+                }
+            },
+            ["place.alterac_valley"] = {
+                ["en"] = {
+                    ["canonical"] = "Alterac Valley"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Альтерацька долина"
+                }
+            },
+            ["place.arathi_basin"] = {
+                ["en"] = {
+                    ["canonical"] = "Arathi Basin"
+                },
+                ["uk"] = {
+                    ["canonical"] = "низина Араті"
+                }
+            },
+            ["place.ashenvale"] = {
+                ["en"] = {
+                    ["canonical"] = "Ashenvale"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Ясенеділ"
+                }
+            },
+            ["place.blackfathom_deeps"] = {
+                ["en"] = {
+                    ["canonical"] = "Blackfathom Deeps"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Чорноводні глибини"
+                }
+            },
+            ["place.blackrock_depths"] = {
+                ["en"] = {
+                    ["canonical"] = "Blackrock Depths"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Чорноскельні надра"
+                }
+            },
+            ["place.blackrock_spire"] = {
+                ["en"] = {
+                    ["canonical"] = "Blackrock Spire"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Чорноскельний шпиль"
+                }
+            },
+            ["place.blackwing_lair"] = {
+                ["en"] = {
+                    ["canonical"] = "Blackwing Lair"
+                },
+                ["uk"] = {
+                    ["canonical"] = "лігво Чорного Крила"
+                }
+            },
+            ["place.darnassus"] = {
+                ["en"] = {
+                    ["canonical"] = "Darnassus"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Дарнас",
+                    ["genitiveSingular"] = "Дарнаса",
+                    ["locative"] = "Дарнасі"
+                }
+            },
+            ["place.dire_maul"] = {
+                ["en"] = {
+                    ["canonical"] = "Dire Maul"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Грізний Молот"
+                }
+            },
+            ["place.durotar"] = {
+                ["en"] = {
+                    ["canonical"] = "Durotar"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Дуротар",
+                    ["genitiveSingular"] = "Дуротару",
+                    ["locative"] = "Дуротарі"
+                }
+            },
+            ["place.duskwood"] = {
+                ["en"] = {
+                    ["canonical"] = "Duskwood"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Смерколісся"
+                }
+            },
+            ["place.eastern_plaguelands"] = {
+                ["en"] = {
+                    ["canonical"] = "Eastern Plaguelands"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Східні Зачумлені землі"
+                }
+            },
+            ["place.elwynn_forest"] = {
+                ["en"] = {
+                    ["canonical"] = "Elwynn Forest"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Ельвиннський ліс"
+                }
+            },
+            ["place.gnomeregan"] = {
+                ["en"] = {
+                    ["canonical"] = "Gnomeregan"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Гномреґан",
+                    ["genitiveSingular"] = "Гномреґана"
+                }
+            },
+            ["place.hall_of_thanes"] = {
+                ["en"] = {
+                    ["canonical"] = "The Hall of Thanes"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зала Танів",
+                    ["genitiveSingular"] = "Зали Танів",
+                    ["locative"] = "Залі Танів"
+                }
+            },
+            ["place.ironforge"] = {
+                ["en"] = {
+                    ["canonical"] = "Ironforge"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Залізогарт",
+                    ["genitiveSingular"] = "Залізогарта",
+                    ["locative"] = "Залізогарті"
+                }
+            },
+            ["place.kroldok_stronghold"] = {
+                ["en"] = {
+                    ["canonical"] = "Krol'dok Stronghold"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Твердиня Крол'док",
+                    ["genitiveSingular"] = "Твердині Крол'док",
+                    ["locative"] = "Твердині Крол'док"
+                }
+            },
+            ["place.lower_blackrock_spire"] = {
+                ["en"] = {
+                    ["canonical"] = "Lower Blackrock Spire"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Нижня частина Чорноскельного шпиля"
+                }
+            },
+            ["place.maraudon"] = {
+                ["en"] = {
+                    ["canonical"] = "Maraudon"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Мародон"
+                }
+            },
+            ["place.molten_core"] = {
+                ["en"] = {
+                    ["canonical"] = "Molten Core"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Палаюче Ядро"
+                }
+            },
+            ["place.naxxramas"] = {
+                ["en"] = {
+                    ["canonical"] = "Naxxramas"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Наксрамас",
+                    ["genitiveSingular"] = "Наксрамаса",
+                    ["locative"] = "Наксрамасі"
+                }
+            },
+            ["place.onyxia_s_lair"] = {
+                ["en"] = {
+                    ["canonical"] = "Onyxia's Lair"
+                },
+                ["uk"] = {
+                    ["canonical"] = "лігво Оніксії"
+                }
+            },
+            ["place.orgrimmar"] = {
+                ["en"] = {
+                    ["canonical"] = "Orgrimmar"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Орґріммар",
+                    ["genitiveSingular"] = "Орґріммара",
+                    ["locative"] = "Орґріммарі"
+                }
+            },
+            ["place.ragefire_chasm"] = {
+                ["en"] = {
+                    ["canonical"] = "Ragefire Chasm"
+                },
+                ["uk"] = {
+                    ["canonical"] = "прірва Лютого Полум'я"
+                }
+            },
+            ["place.razorfen_downs"] = {
+                ["en"] = {
+                    ["canonical"] = "Razorfen Downs"
+                },
+                ["uk"] = {
+                    ["canonical"] = "нори Бритвоболотих"
+                }
+            },
+            ["place.razorfen_kraul"] = {
+                ["en"] = {
+                    ["canonical"] = "Razorfen Kraul"
+                },
+                ["uk"] = {
+                    ["canonical"] = "крааль Бритвоболотих"
+                }
+            },
+            ["place.ruins_of_ahn_qiraj"] = {
+                ["en"] = {
+                    ["canonical"] = "Ruins of Ahn'Qiraj"
+                },
+                ["uk"] = {
+                    ["canonical"] = "руїни Ан'Кіражу"
+                }
+            },
+            ["place.scarlet_monastery"] = {
+                ["en"] = {
+                    ["canonical"] = "Scarlet Monastery"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Багряний монастир",
+                    ["genitiveSingular"] = "Багряного монастиря",
+                    ["locative"] = "Багряному монастирі"
+                }
+            },
+            ["place.scholomance"] = {
+                ["en"] = {
+                    ["canonical"] = "Scholomance"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Некроситет"
+                }
+            },
+            ["place.shadowfang_keep"] = {
+                ["en"] = {
+                    ["canonical"] = "Shadowfang Keep"
+                },
+                ["uk"] = {
+                    ["canonical"] = "фортеця Тіньового Ікла"
+                }
+            },
+            ["place.stormwind"] = {
+                ["en"] = {
+                    ["canonical"] = "Stormwind"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Штормовій",
+                    ["genitiveSingular"] = "Штормовія",
+                    ["locative"] = "Штормовії"
+                }
+            },
+            ["place.stratholme"] = {
+                ["en"] = {
+                    ["canonical"] = "Stratholme"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Стратгольм"
+                }
+            },
+            ["place.tanaris"] = {
+                ["en"] = {
+                    ["canonical"] = "Tanaris"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Танаріс",
+                    ["genitiveSingular"] = "Танаріса",
+                    ["locative"] = "Танарісі"
+                }
+            },
+            ["place.temple_of_ahn_qiraj"] = {
+                ["en"] = {
+                    ["canonical"] = "Temple of Ahn'Qiraj"
+                },
+                ["uk"] = {
+                    ["canonical"] = "храм Ан'Кіражу"
+                }
+            },
+            ["place.the_barrens"] = {
+                ["en"] = {
+                    ["canonical"] = "The Barrens"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Степи"
+                }
+            },
+            ["place.the_deadmines"] = {
+                ["en"] = {
+                    ["canonical"] = "The Deadmines"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Мертві копальні",
+                    ["genitiveSingular"] = "Мертвих копалень",
+                    ["locative"] = "Мертвих копальнях"
+                }
+            },
+            ["place.the_stockade"] = {
+                ["en"] = {
+                    ["canonical"] = "The Stockade"
+                },
+                ["uk"] = {
+                    ["canonical"] = "В'язниця"
+                }
+            },
+            ["place.the_temple_of_atal_hakkar"] = {
+                ["en"] = {
+                    ["canonical"] = "The Temple of Atal'Hakkar"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Храм Атал'Гаккара"
+                }
+            },
+            ["place.thunder_bluff"] = {
+                ["en"] = {
+                    ["canonical"] = "Thunder Bluff"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Громовий Бескид",
+                    ["genitiveSingular"] = "Громового Бескиду",
+                    ["locative"] = "Громовому Бескиді"
+                }
+            },
+            ["place.uldaman"] = {
+                ["en"] = {
+                    ["canonical"] = "Uldaman"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Ульдаман"
+                }
+            },
+            ["place.undercity"] = {
+                ["en"] = {
+                    ["canonical"] = "Undercity"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Підмісто",
+                    ["genitiveSingular"] = "Підмістя",
+                    ["locative"] = "Підмісті"
+                }
+            },
+            ["place.upper_blackrock_spire"] = {
+                ["en"] = {
+                    ["canonical"] = "Upper Blackrock Spire"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Верхня частина Чорноскельного шпиля"
+                }
+            },
+            ["place.wailing_caverns"] = {
+                ["en"] = {
+                    ["canonical"] = "Wailing Caverns"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Плачучі печери",
+                    ["genitiveSingular"] = "Плачучих печер",
+                    ["locative"] = "Плачучих печерах"
+                }
+            },
+            ["place.warsong_gulch"] = {
+                ["en"] = {
+                    ["canonical"] = "Warsong Gulch"
+                },
+                ["uk"] = {
+                    ["canonical"] = "тіснина Пісні Війни"
+                }
+            },
+            ["place.western_plaguelands"] = {
+                ["en"] = {
+                    ["canonical"] = "Western Plaguelands"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Західні Зачумлені землі"
+                }
+            },
+            ["place.westfall"] = {
+                ["en"] = {
+                    ["canonical"] = "Westfall"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Західний край"
+                }
+            },
+            ["place.winterspring"] = {
+                ["en"] = {
+                    ["canonical"] = "Winterspring"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зимоключ"
+                }
+            },
+            ["place.zul_farrak"] = {
+                ["en"] = {
+                    ["canonical"] = "Zul'Farrak"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зул'Фаррак"
+                }
+            },
+            ["place.zul_gurub"] = {
+                ["en"] = {
+                    ["canonical"] = "Zul'Gurub"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зул'Ґуруб"
+                }
+            },
+            ["profession.alchemy"] = {
+                ["en"] = {
+                    ["canonical"] = "Alchemy"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Алхімія"
+                }
+            },
+            ["profession.blacksmithing"] = {
+                ["en"] = {
+                    ["canonical"] = "Blacksmithing"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Ковальство"
+                }
+            },
+            ["profession.cooking"] = {
+                ["en"] = {
+                    ["canonical"] = "Cooking"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Кулінарія"
+                }
+            },
+            ["profession.enchanting"] = {
+                ["en"] = {
+                    ["canonical"] = "Enchanting"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зачарування"
+                }
+            },
+            ["profession.engineering"] = {
+                ["en"] = {
+                    ["canonical"] = "Engineering"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Інженерія"
+                }
+            },
+            ["profession.first_aid"] = {
+                ["en"] = {
+                    ["canonical"] = "First Aid"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Перша допомога"
+                }
+            },
+            ["profession.fishing"] = {
+                ["en"] = {
+                    ["canonical"] = "Fishing"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Рибальство"
+                }
+            },
+            ["profession.herbalism"] = {
+                ["en"] = {
+                    ["canonical"] = "Herbalism"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Травництво"
+                }
+            },
+            ["profession.leatherworking"] = {
+                ["en"] = {
+                    ["canonical"] = "Leatherworking"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Шкірництво"
+                }
+            },
+            ["profession.mining"] = {
+                ["en"] = {
+                    ["canonical"] = "Mining"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Гірництво"
+                }
+            },
+            ["profession.skinning"] = {
+                ["en"] = {
+                    ["canonical"] = "Skinning"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зняття шкур"
+                }
+            },
+            ["profession.tailoring"] = {
+                ["en"] = {
+                    ["canonical"] = "Tailoring"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Кравецтво"
+                }
+            },
+            ["race.dwarf.base.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "dwarves"
+                },
+                ["uk"] = {
+                    ["accusative"] = "дворфів",
+                    ["canonical"] = "дворфи",
+                    ["dative"] = "дворфам",
+                    ["genitive"] = "дворфів",
+                    ["instrumental"] = "дворфами",
+                    ["locative"] = "дворфах",
+                    ["nominative"] = "дворфи",
+                    ["vocative"] = "дворфи"
+                }
+            },
+            ["race.dwarf.base.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "dwarf"
+                },
+                ["uk"] = {
+                    ["accusative"] = "дворфа",
+                    ["canonical"] = "дворф",
+                    ["dative"] = "дворфові",
+                    ["genitive"] = "дворфа",
+                    ["instrumental"] = "дворфом",
+                    ["locative"] = "дворфові",
+                    ["nominative"] = "дворф",
+                    ["vocative"] = "дворфе"
+                }
+            },
+            ["race.dwarf.diminished.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "wannabe dwarves"
+                },
+                ["uk"] = {
+                    ["accusative"] = "недодворфів",
+                    ["canonical"] = "недодворфи",
+                    ["dative"] = "недодворфам",
+                    ["genitive"] = "недодворфів",
+                    ["instrumental"] = "недодворфами",
+                    ["locative"] = "недодворфах",
+                    ["nominative"] = "недодворфи",
+                    ["vocative"] = "недодворфи"
+                }
+            },
+            ["race.dwarf.diminished.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "wannabe dwarf"
+                },
+                ["uk"] = {
+                    ["accusative"] = "недодворфа",
+                    ["canonical"] = "недодворф",
+                    ["dative"] = "недодворфові",
+                    ["genitive"] = "недодворфа",
+                    ["instrumental"] = "недодворфом",
+                    ["locative"] = "недодворфові",
+                    ["nominative"] = "недодворф",
+                    ["vocative"] = "недодворфе"
+                }
+            },
+            ["race.dwarf.diminutive.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "little dwarves"
+                },
+                ["uk"] = {
+                    ["accusative"] = "дворфиків",
+                    ["canonical"] = "дворфики",
+                    ["dative"] = "дворфикам",
+                    ["genitive"] = "дворфиків",
+                    ["instrumental"] = "дворфиками",
+                    ["locative"] = "дворфиках",
+                    ["nominative"] = "дворфики",
+                    ["vocative"] = "дворфики"
+                }
+            },
+            ["race.dwarf.diminutive.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "little dwarf"
+                },
+                ["uk"] = {
+                    ["accusative"] = "дворфика",
+                    ["canonical"] = "дворфик",
+                    ["dative"] = "дворфикові",
+                    ["genitive"] = "дворфика",
+                    ["instrumental"] = "дворфиком",
+                    ["locative"] = "дворфикові",
+                    ["nominative"] = "дворфик",
+                    ["vocative"] = "дворфику"
+                }
+            },
+            ["race.dwarf.proto.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "proto-dwarves"
+                },
+                ["uk"] = {
+                    ["accusative"] = "протодворфів",
+                    ["canonical"] = "протодворфи",
+                    ["dative"] = "протодворфам",
+                    ["genitive"] = "протодворфів",
+                    ["instrumental"] = "протодворфами",
+                    ["locative"] = "протодворфах",
+                    ["nominative"] = "протодворфи",
+                    ["vocative"] = "протодворфи"
+                }
+            },
+            ["race.dwarf.proto.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "proto-dwarf"
+                },
+                ["uk"] = {
+                    ["accusative"] = "протодворфа",
+                    ["canonical"] = "протодворф",
+                    ["dative"] = "протодворфові",
+                    ["genitive"] = "протодворфа",
+                    ["instrumental"] = "протодворфом",
+                    ["locative"] = "протодворфові",
+                    ["nominative"] = "протодворф",
+                    ["vocative"] = "протодворфе"
+                }
+            },
+            ["race.gnome.augmentative.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "big gnomes"
+                },
+                ["uk"] = {
+                    ["accusative"] = "гномяр",
+                    ["canonical"] = "гномяри",
+                    ["dative"] = "гномярам",
+                    ["genitive"] = "гномяр",
+                    ["instrumental"] = "гномярами",
+                    ["locative"] = "гномярах",
+                    ["nominative"] = "гномяри",
+                    ["vocative"] = "гномяри"
+                }
+            },
+            ["race.gnome.augmentative.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "big gnome"
+                },
+                ["uk"] = {
+                    ["accusative"] = "гномяру",
+                    ["canonical"] = "гномяра",
+                    ["dative"] = "гномярі",
+                    ["genitive"] = "гномяри",
+                    ["instrumental"] = "гномярою",
+                    ["locative"] = "гномярі",
+                    ["nominative"] = "гномяра",
+                    ["vocative"] = "гномяро"
+                }
+            },
+            ["race.gnome.base.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "gnomes"
+                },
+                ["uk"] = {
+                    ["accusative"] = "гномів",
+                    ["canonical"] = "гноми",
+                    ["dative"] = "гномам",
+                    ["genitive"] = "гномів",
+                    ["instrumental"] = "гномами",
+                    ["locative"] = "гномах",
+                    ["nominative"] = "гноми",
+                    ["vocative"] = "гноми"
+                }
+            },
+            ["race.gnome.base.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "gnome"
+                },
+                ["uk"] = {
+                    ["accusative"] = "гнома",
+                    ["canonical"] = "гном",
+                    ["dative"] = "гномові",
+                    ["genitive"] = "гнома",
+                    ["instrumental"] = "гномом",
+                    ["locative"] = "гномові",
+                    ["nominative"] = "гном",
+                    ["vocative"] = "гноме"
+                }
+            },
+            ["race.gnome.diminished.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "wannabe gnomes"
+                },
+                ["uk"] = {
+                    ["accusative"] = "недогномів",
+                    ["canonical"] = "недогноми",
+                    ["dative"] = "недогномам",
+                    ["genitive"] = "недогномів",
+                    ["instrumental"] = "недогномами",
+                    ["locative"] = "недогномах",
+                    ["nominative"] = "недогноми",
+                    ["vocative"] = "недогноми"
+                }
+            },
+            ["race.gnome.diminished.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "wannabe gnome"
+                },
+                ["uk"] = {
+                    ["accusative"] = "недогнома",
+                    ["canonical"] = "недогном",
+                    ["dative"] = "недогномові",
+                    ["genitive"] = "недогнома",
+                    ["instrumental"] = "недогномом",
+                    ["locative"] = "недогномові",
+                    ["nominative"] = "недогном",
+                    ["vocative"] = "недогноме"
+                }
+            },
+            ["race.gnome.diminutive.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "little gnomes"
+                },
+                ["uk"] = {
+                    ["accusative"] = "гномиків",
+                    ["canonical"] = "гномики",
+                    ["dative"] = "гномикам",
+                    ["genitive"] = "гномиків",
+                    ["instrumental"] = "гномиками",
+                    ["locative"] = "гномиках",
+                    ["nominative"] = "гномики",
+                    ["vocative"] = "гномики"
+                }
+            },
+            ["race.gnome.diminutive.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "little gnome"
+                },
+                ["uk"] = {
+                    ["accusative"] = "гномика",
+                    ["canonical"] = "гномик",
+                    ["dative"] = "гномикові",
+                    ["genitive"] = "гномика",
+                    ["instrumental"] = "гномиком",
+                    ["locative"] = "гномикові",
+                    ["nominative"] = "гномик",
+                    ["vocative"] = "гномику"
+                }
+            },
+            ["race.gnome.proto.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "proto-gnomes"
+                },
+                ["uk"] = {
+                    ["accusative"] = "протогномів",
+                    ["canonical"] = "протогноми",
+                    ["dative"] = "протогномам",
+                    ["genitive"] = "протогномів",
+                    ["instrumental"] = "протогномами",
+                    ["locative"] = "протогномах",
+                    ["nominative"] = "протогноми",
+                    ["vocative"] = "протогноми"
+                }
+            },
+            ["race.gnome.proto.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "proto-gnome"
+                },
+                ["uk"] = {
+                    ["accusative"] = "протогнома",
+                    ["canonical"] = "протогном",
+                    ["dative"] = "протогномові",
+                    ["genitive"] = "протогнома",
+                    ["instrumental"] = "протогномом",
+                    ["locative"] = "протогномові",
+                    ["nominative"] = "протогном",
+                    ["vocative"] = "протогноме"
+                }
+            },
+            ["race.orc.base.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "orcs"
+                },
+                ["uk"] = {
+                    ["accusative"] = "орків",
+                    ["canonical"] = "орки",
+                    ["dative"] = "оркам",
+                    ["genitive"] = "орків",
+                    ["instrumental"] = "орками",
+                    ["locative"] = "орках",
+                    ["nominative"] = "орки",
+                    ["vocative"] = "орки"
+                }
+            },
+            ["race.orc.base.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "orc"
+                },
+                ["uk"] = {
+                    ["accusative"] = "орка",
+                    ["canonical"] = "орк",
+                    ["dative"] = "оркові",
+                    ["genitive"] = "орка",
+                    ["instrumental"] = "орком",
+                    ["locative"] = "оркові",
+                    ["nominative"] = "орк",
+                    ["vocative"] = "орку"
+                }
+            },
+            ["race.orc.diminished.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "wannabe orcs"
+                },
+                ["uk"] = {
+                    ["accusative"] = "недоорків",
+                    ["canonical"] = "недоорки",
+                    ["dative"] = "недооркам",
+                    ["genitive"] = "недоорків",
+                    ["instrumental"] = "недоорками",
+                    ["locative"] = "недоорках",
+                    ["nominative"] = "недоорки",
+                    ["vocative"] = "недоорки"
+                }
+            },
+            ["race.orc.diminished.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "wannabe orc"
+                },
+                ["uk"] = {
+                    ["accusative"] = "недоорка",
+                    ["canonical"] = "недоорк",
+                    ["dative"] = "недооркові",
+                    ["genitive"] = "недоорка",
+                    ["instrumental"] = "недоорком",
+                    ["locative"] = "недооркові",
+                    ["nominative"] = "недоорк",
+                    ["vocative"] = "недоорку"
+                }
+            },
+            ["race.orc.diminutive.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "little orcs"
+                },
+                ["uk"] = {
+                    ["accusative"] = "орчиків",
+                    ["canonical"] = "орчики",
+                    ["dative"] = "орчикам",
+                    ["genitive"] = "орчиків",
+                    ["instrumental"] = "орчиками",
+                    ["locative"] = "орчиках",
+                    ["nominative"] = "орчики",
+                    ["vocative"] = "орчики"
+                }
+            },
+            ["race.orc.diminutive.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "little orc"
+                },
+                ["uk"] = {
+                    ["accusative"] = "орчика",
+                    ["canonical"] = "орчик",
+                    ["dative"] = "орчикові",
+                    ["genitive"] = "орчика",
+                    ["instrumental"] = "орчиком",
+                    ["locative"] = "орчикові",
+                    ["nominative"] = "орчик",
+                    ["vocative"] = "орчику"
+                }
+            },
+            ["race.orc.proto.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "proto-orcs"
+                },
+                ["uk"] = {
+                    ["accusative"] = "протоорків",
+                    ["canonical"] = "протоорки",
+                    ["dative"] = "протооркам",
+                    ["genitive"] = "протоорків",
+                    ["instrumental"] = "протоорками",
+                    ["locative"] = "протоорках",
+                    ["nominative"] = "протоорки",
+                    ["vocative"] = "протоорки"
+                }
+            },
+            ["race.orc.proto.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "proto-orc"
+                },
+                ["uk"] = {
+                    ["accusative"] = "протоорка",
+                    ["canonical"] = "протоорк",
+                    ["dative"] = "протооркові",
+                    ["genitive"] = "протоорка",
+                    ["instrumental"] = "протоорком",
+                    ["locative"] = "протооркові",
+                    ["nominative"] = "протоорк",
+                    ["vocative"] = "протоорку"
+                }
+            },
+            ["recipient.her"] = {
+                ["en"] = {
+                    ["canonical"] = "her"
+                },
+                ["uk"] = {
+                    ["canonical"] = "їй"
+                }
+            },
+            ["recipient.him"] = {
+                ["en"] = {
+                    ["canonical"] = "him"
+                },
+                ["uk"] = {
+                    ["canonical"] = "йому"
+                }
+            },
+            ["recipient.them"] = {
+                ["en"] = {
+                    ["canonical"] = "them"
+                },
+                ["uk"] = {
+                    ["canonical"] = "їм"
+                }
+            },
+            ["role.damage"] = {
+                ["en"] = {
+                    ["canonical"] = "DPS",
+                    ["plural"] = "DPS"
+                },
+                ["uk"] = {
+                    ["accusative"] = "DPS",
+                    ["canonical"] = "DPS",
+                    ["genitivePlural"] = "DPS",
+                    ["genitiveSingular"] = "DPS",
+                    ["nominativePlural"] = "DPS"
+                }
+            },
+            ["role.healer"] = {
+                ["en"] = {
+                    ["canonical"] = "Healer",
+                    ["plural"] = "Healers"
+                },
+                ["uk"] = {
+                    ["accusative"] = "цілителя",
+                    ["canonical"] = "Цілитель",
+                    ["genitivePlural"] = "цілителів",
+                    ["genitiveSingular"] = "цілителя",
+                    ["nominativePlural"] = "цілителі"
+                }
+            },
+            ["role.player"] = {
+                ["en"] = {
+                    ["canonical"] = "Player",
+                    ["plural"] = "Players"
+                },
+                ["uk"] = {
+                    ["accusative"] = "гравця",
+                    ["canonical"] = "Гравець",
+                    ["genitivePlural"] = "гравців",
+                    ["genitiveSingular"] = "гравця",
+                    ["nominativePlural"] = "гравці"
+                }
+            },
+            ["role.tank"] = {
+                ["en"] = {
+                    ["canonical"] = "Tank",
+                    ["plural"] = "Tanks"
+                },
+                ["uk"] = {
+                    ["accusative"] = "танка",
+                    ["canonical"] = "Танк",
+                    ["genitivePlural"] = "танків",
+                    ["genitiveSingular"] = "танка",
+                    ["nominativePlural"] = "танки"
+                }
+            },
+            ["slang.combat.adds"] = {
+                ["en"] = {
+                    ["canonical"] = "adds"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Додаткові вороги"
+                }
+            },
+            ["slang.combat.adds-inc"] = {
+                ["en"] = {
+                    ["canonical"] = "adds inc"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Наближаються додаткові вороги"
+                }
+            },
+            ["slang.combat.aoe"] = {
+                ["en"] = {
+                    ["canonical"] = "AoE"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Дія в зоні"
+                }
+            },
+            ["slang.combat.body-pull"] = {
+                ["en"] = {
+                    ["canonical"] = "body pull"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зачепити ворога наближенням"
+                }
+            },
+            ["slang.combat.brez"] = {
+                ["en"] = {
+                    ["canonical"] = "brez"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Воскресіння в бою"
+                }
+            },
+            ["slang.combat.cc"] = {
+                ["en"] = {
+                    ["canonical"] = "CC"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Контроль натовпу"
+                }
+            },
+            ["slang.combat.cd"] = {
+                ["en"] = {
+                    ["canonical"] = "CD"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Час відновлення"
+                }
+            },
+            ["slang.combat.chain-pull"] = {
+                ["en"] = {
+                    ["canonical"] = "chain pull"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Починати сутички одну за одною"
+                }
+            },
+            ["slang.combat.dot"] = {
+                ["en"] = {
+                    ["canonical"] = "DoT"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Періодичні пошкодження"
+                }
+            },
+            ["slang.combat.gank"] = {
+                ["en"] = {
+                    ["canonical"] = "gank"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Застати гравця зненацька в PvP"
+                }
+            },
+            ["slang.combat.gcd"] = {
+                ["en"] = {
+                    ["canonical"] = "GCD"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Глобальний час відновлення"
+                }
+            },
+            ["slang.combat.hot"] = {
+                ["en"] = {
+                    ["canonical"] = "HoT"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Періодичне зцілення"
+                }
+            },
+            ["slang.combat.hps"] = {
+                ["en"] = {
+                    ["canonical"] = "HPS"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зцілення за секунду"
+                }
+            },
+            ["slang.combat.inc"] = {
+                ["en"] = {
+                    ["canonical"] = "inc"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Вороги наближаються"
+                }
+            },
+            ["slang.combat.kite"] = {
+                ["en"] = {
+                    ["canonical"] = "kite"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Водити ворога за собою"
+                }
+            },
+            ["slang.combat.los"] = {
+                ["en"] = {
+                    ["canonical"] = "LoS"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Пряма видимість"
+                }
+            },
+            ["slang.combat.los-pull"] = {
+                ["en"] = {
+                    ["canonical"] = "LoS pull"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Вимани ворогів за кут"
+                }
+            },
+            ["slang.combat.pat-inc"] = {
+                ["en"] = {
+                    ["canonical"] = "pat inc"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Патруль наближається"
+                }
+            },
+            ["slang.combat.proc"] = {
+                ["en"] = {
+                    ["canonical"] = "proc"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Спрацювання ефекту"
+                }
+            },
+            ["slang.combat.procs"] = {
+                ["en"] = {
+                    ["canonical"] = "procs"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Спрацювання ефектів"
+                }
+            },
+            ["slang.combat.pull-aggro"] = {
+                ["en"] = {
+                    ["canonical"] = "pull aggro"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Перетягнути агро"
+                }
+            },
+            ["slang.combat.pve"] = {
+                ["en"] = {
+                    ["canonical"] = "PvE"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Гра проти ігрового оточення"
+                }
+            },
+            ["slang.combat.pvp"] = {
+                ["en"] = {
+                    ["canonical"] = "PvP"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Гравець проти гравця"
+                }
+            },
+            ["slang.combat.rez-me"] = {
+                ["en"] = {
+                    ["canonical"] = "rez me"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Воскреси мене"
+                }
+            },
+            ["slang.combat.trash-mobs"] = {
+                ["en"] = {
+                    ["canonical"] = "trash mobs"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Звичайні вороги в підземеллі"
+                }
+            },
+            ["slang.combat.twink"] = {
+                ["en"] = {
+                    ["canonical"] = "twink"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Добре споряджений персонаж низького рівня"
+                }
+            },
+            ["slang.combat.wpvp"] = {
+                ["en"] = {
+                    ["canonical"] = "WPvP"
+                },
+                ["uk"] = {
+                    ["canonical"] = "PvP у відкритому світі"
+                }
+            },
+            ["slang.groups.alt-run"] = {
+                ["en"] = {
+                    ["canonical"] = "alt run"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Рейд другорядними персонажами"
+                }
+            },
+            ["slang.groups.offtank"] = {
+                ["en"] = {
+                    ["canonical"] = "OT"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Другий танк"
+                }
+            },
+            ["slang.groups.premade"] = {
+                ["en"] = {
+                    ["canonical"] = "premade"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Заздалегідь зібрана група"
+                }
+            },
+            ["slang.groups.pug"] = {
+                ["en"] = {
+                    ["canonical"] = "PuG"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Випадково зібрана група"
+                }
+            },
+            ["slang.groups.pugs"] = {
+                ["en"] = {
+                    ["canonical"] = "pugs"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Випадково зібрані групи"
+                }
+            },
+            ["slang.groups.raid-id"] = {
+                ["en"] = {
+                    ["canonical"] = "raid ID"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Ідентифікатор рейду"
+                }
+            },
+            ["slang.groups.raid-lockout"] = {
+                ["en"] = {
+                    ["canonical"] = "raid lockout"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Обмеження на повторне проходження рейду"
+                }
+            },
+            ["slang.groups.rl"] = {
+                ["en"] = {
+                    ["canonical"] = "RL"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Лідер рейду"
+                }
+            },
+            ["slang.groups.summon-please"] = {
+                ["en"] = {
+                    ["canonical"] = "summon pls"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Викличте мене, будь ласка"
+                }
+            },
+            ["slang.loot.dkp"] = {
+                ["en"] = {
+                    ["canonical"] = "DKP"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Рейдові бали для розподілу здобичі"
+                }
+            },
+            ["slang.loot.free-roll"] = {
+                ["en"] = {
+                    ["canonical"] = "free roll"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Кидок відкритий для всіх"
+                }
+            },
+            ["slang.loot.gdkp"] = {
+                ["en"] = {
+                    ["canonical"] = "GDKP"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Рейд, де за здобич торгуються золотом"
+                }
+            },
+            ["slang.loot.greed-roll"] = {
+                ["en"] = {
+                    ["canonical"] = "Greed roll"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Кидок «Не відмовлюсь»"
+                }
+            },
+            ["slang.loot.hard-reserve"] = {
+                ["en"] = {
+                    ["canonical"] = "hard reserve"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Закріпити здобич за гравцем або групою"
+                }
+            },
+            ["slang.loot.hr"] = {
+                ["en"] = {
+                    ["canonical"] = "HR"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Предмет закріплено за гравцем або групою"
+                }
+            },
+            ["slang.loot.loot-council"] = {
+                ["en"] = {
+                    ["canonical"] = "loot council"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Рада з розподілу здобичі"
+                }
+            },
+            ["slang.loot.ms"] = {
+                ["en"] = {
+                    ["canonical"] = "MS"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Основна спеціалізація"
+                }
+            },
+            ["slang.loot.ms-over-os"] = {
+                ["en"] = {
+                    ["canonical"] = "MS>OS"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Основна спеціалізація має пріоритет"
+                }
+            },
+            ["slang.loot.ms-roll"] = {
+                ["en"] = {
+                    ["canonical"] = "MS roll"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Кидок за основну спеціалізацію"
+                }
+            },
+            ["slang.loot.need-before-greed"] = {
+                ["en"] = {
+                    ["canonical"] = "Need before Greed"
+                },
+                ["uk"] = {
+                    ["canonical"] = "«Потрібно» має пріоритет над «Не відмовлюсь»"
+                }
+            },
+            ["slang.loot.need-roll"] = {
+                ["en"] = {
+                    ["canonical"] = "Need roll"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Кидок «Потрібно»"
+                }
+            },
+            ["slang.loot.ninja-loot"] = {
+                ["en"] = {
+                    ["canonical"] = "ninja loot"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Забрати здобич усупереч правилам"
+                }
+            },
+            ["slang.loot.one-sr"] = {
+                ["en"] = {
+                    ["canonical"] = "1SR"
+                },
+                ["uk"] = {
+                    ["canonical"] = "1 резерв для участі в кидку"
+                }
+            },
+            ["slang.loot.os"] = {
+                ["en"] = {
+                    ["canonical"] = "OS"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Додаткова спеціалізація"
+                }
+            },
+            ["slang.loot.os-roll"] = {
+                ["en"] = {
+                    ["canonical"] = "OS roll"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Кидок за додаткову спеціалізацію"
+                }
+            },
+            ["slang.loot.soft-reserve"] = {
+                ["en"] = {
+                    ["canonical"] = "soft reserve"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Резерв для кидка за предмет"
+                }
+            },
+            ["slang.loot.sr"] = {
+                ["en"] = {
+                    ["canonical"] = "SR"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Резерв для участі в кидку за предмет"
+                }
+            },
+            ["slang.loot.three-sr"] = {
+                ["en"] = {
+                    ["canonical"] = "3SR"
+                },
+                ["uk"] = {
+                    ["canonical"] = "3 резерви для участі в кидках"
+                }
+            },
+            ["slang.loot.two-sr"] = {
+                ["en"] = {
+                    ["canonical"] = "2SR"
+                },
+                ["uk"] = {
+                    ["canonical"] = "2 резерви для участі в кидках"
+                }
+            },
+            ["slang.social.bio-break"] = {
+                ["en"] = {
+                    ["canonical"] = "bio break"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Перерва до вбиральні"
+                }
+            },
+            ["slang.social.ding"] = {
+                ["en"] = {
+                    ["canonical"] = "ding"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Новий рівень!"
+                }
+            },
+            ["slang.social.dnd"] = {
+                ["en"] = {
+                    ["canonical"] = "DND"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Не турбувати"
+                }
+            },
+            ["slang.social.glhf"] = {
+                ["en"] = {
+                    ["canonical"] = "GLHF"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Щасти та приємної гри"
+                }
+            },
+            ["slang.social.gtg"] = {
+                ["en"] = {
+                    ["canonical"] = "GTG"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Мені час іти або я готовий"
+                }
+            },
+            ["slang.social.inv"] = {
+                ["en"] = {
+                    ["canonical"] = "inv"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Запроси в групу"
+                }
+            },
+            ["slang.social.pst"] = {
+                ["en"] = {
+                    ["canonical"] = "PST"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Напиши пошепки"
+                }
+            },
+            ["slang.social.rdy"] = {
+                ["en"] = {
+                    ["canonical"] = "rdy"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Готовий"
+                }
+            },
+            ["slang.trade.bind-on-pickup"] = {
+                ["en"] = {
+                    ["canonical"] = "bind on pickup"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Стає персональним при отриманні"
+                }
+            },
+            ["slang.trade.bis"] = {
+                ["en"] = {
+                    ["canonical"] = "BiS"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Найкращий предмет для цієї комірки"
+                }
+            },
+            ["slang.trade.boe"] = {
+                ["en"] = {
+                    ["canonical"] = "BoE"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Стає персональним при екіпіруванні"
+                }
+            },
+            ["slang.trade.bop"] = {
+                ["en"] = {
+                    ["canonical"] = "BoP"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Стає персональним при отриманні або Благословення захисту"
+                }
+            },
+            ["slang.trade.bop-item"] = {
+                ["en"] = {
+                    ["canonical"] = "BoP item"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Предмет стає персональним при отриманні"
+                }
+            },
+            ["slang.trade.bop-me"] = {
+                ["en"] = {
+                    ["canonical"] = "BoP me"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Дайте мені Благословення захисту"
+                }
+            },
+            ["slang.trade.cod"] = {
+                ["en"] = {
+                    ["canonical"] = "COD"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Оплата при отриманні пошти"
+                }
+            },
+            ["slang.trade.lfw"] = {
+                ["en"] = {
+                    ["canonical"] = "LFW"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Приймаю замовлення на виготовлення"
+                }
+            },
+            ["slang.trade.mats"] = {
+                ["en"] = {
+                    ["canonical"] = "mats"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Матеріали"
+                }
+            },
+            ["slang.trade.my-mats"] = {
+                ["en"] = {
+                    ["canonical"] = "my mats"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Мої матеріали"
+                }
+            },
+            ["slang.trade.obo"] = {
+                ["en"] = {
+                    ["canonical"] = "OBO"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Або за найкращою пропозицією"
+                }
+            },
+            ["slang.trade.pre-raid-bis"] = {
+                ["en"] = {
+                    ["canonical"] = "pre-raid BiS"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Найкращий предмет до рейдів"
+                }
+            },
+            ["slang.trade.vendor-trash"] = {
+                ["en"] = {
+                    ["canonical"] = "vendor trash"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Мотлох на продаж торговцю"
+                }
+            },
+            ["slang.trade.your-mats"] = {
+                ["en"] = {
+                    ["canonical"] = "your mats"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Твої матеріали"
+                }
+            },
+            ["stat.all"] = {
+                ["en"] = {
+                    ["canonical"] = "stats"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Характеристики",
+                    ["genitivePlural"] = "характеристик"
+                }
+            },
+            ["stat.stamina"] = {
+                ["en"] = {
+                    ["canonical"] = "stamina"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Витривалість",
+                    ["genitivePlural"] = "витривалості"
+                }
+            },
+            ["stat.strength"] = {
+                ["en"] = {
+                    ["canonical"] = "strength"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Сила",
+                    ["genitivePlural"] = "сили"
+                }
+            }
+        },
+        ["schema"] = 1
+    },
     ["manifest"] = {
-        ["concepts"] = 186,
+        ["concepts"] = 195,
         ["derivedNouns"] = 26,
+        ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 74,
         ["source"] = {
             ["approvalMeaning"] = "Editorially reviewed for this addon; not a claim of individual user approval.",
@@ -11585,7 +29825,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 85,
-        ["version"] = "f72c7ce924b719d51ff3cbe0645384ebb2d6c2a67dc7c9c1efd3c3c1a814e562"
+        ["version"] = "ce115595bc523776b8a496b8f07bc3e30263f28738472c739f2b59326eac7cb8"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -20026,6 +38266,86 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Воїн"
         },
+        ["equipment.bracers"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "equipment",
+            ["contextOnly"] = true,
+            ["en"] = "bracers",
+            ["features"] = {
+                ["number"] = "plural"
+            },
+            ["forms"] = {
+                ["accusative"] = "наручі",
+                ["locative"] = "наручах"
+            },
+            ["id"] = "equipment.bracers",
+            ["provenance"] = {
+                ["context"] = "equipment enhancement",
+                ["key"] = "bracers",
+                ["source"] = "project-authored",
+                ["version"] = "apertium-pipeline-1"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "наручі"
+        },
+        ["equipment.chest"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "equipment",
+            ["contextOnly"] = true,
+            ["en"] = "chest",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["number"] = "singular"
+            },
+            ["forms"] = {
+                ["accusative"] = "нагрудник",
+                ["locative"] = "нагруднику"
+            },
+            ["id"] = "equipment.chest",
+            ["provenance"] = {
+                ["context"] = "equipment slot in an enhancement; not a container",
+                ["key"] = "chest",
+                ["source"] = "project-authored",
+                ["version"] = "apertium-pipeline-1"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "нагрудник"
+        },
+        ["equipment.gloves"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "equipment",
+            ["contextOnly"] = true,
+            ["en"] = "gloves",
+            ["features"] = {
+                ["number"] = "plural"
+            },
+            ["forms"] = {
+                ["accusative"] = "рукавиці",
+                ["locative"] = "рукавицях"
+            },
+            ["id"] = "equipment.gloves",
+            ["provenance"] = {
+                ["context"] = "equipment enhancement",
+                ["key"] = "gloves",
+                ["source"] = "project-authored",
+                ["version"] = "apertium-pipeline-1"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "рукавиці"
+        },
         ["game.aggro"] = {
             ["aliases"] = {
                 ["en"] = {},
@@ -20854,10 +39174,14 @@ ns.Data = {
             ["en"] = "Alterac Valley",
             ["id"] = "place.alterac_valley",
             ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
                 ["file"] = "entries/forever/cliend_db/zones.lua",
                 ["key"] = "Alterac Valley",
                 ["line"] = 79,
-                ["source"] = "ua-forever"
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
             },
             ["sourceRefs"] = { "ua-forever:place.alterac_valley", "wow-community:classic" },
             ["status"] = "approved",
@@ -20871,10 +39195,14 @@ ns.Data = {
             ["en"] = "Arathi Basin",
             ["id"] = "place.arathi_basin",
             ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
                 ["file"] = "entries/forever/cliend_db/zones.lua",
                 ["key"] = "Arathi Basin",
                 ["line"] = 116,
-                ["source"] = "ua-forever"
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
             },
             ["sourceRefs"] = { "ua-forever:place.arathi_basin", "wow-community:classic" },
             ["status"] = "approved",
@@ -21200,6 +39528,37 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Гномреґан"
         },
+        ["place.hall_of_thanes"] = {
+            ["aliases"] = {
+                ["en"] = { "Hall of Thanes" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contextAliases"] = {
+                ["en"] = { "HoT" },
+                ["uk"] = {}
+            },
+            ["en"] = "The Hall of Thanes",
+            ["features"] = {},
+            ["forms"] = {
+                ["genitiveSingular"] = "Зали Танів",
+                ["locative"] = "Залі Танів"
+            },
+            ["id"] = "place.hall_of_thanes",
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "recruitment destination; HoT competes with healing-over-time",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "The Hall of Thanes",
+                ["line"] = 2932,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.hall_of_thanes", "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "Зала Танів"
+        },
         ["place.ironforge"] = {
             ["aliases"] = {
                 ["en"] = { "if" },
@@ -21229,6 +39588,37 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Залізогарт"
         },
+        ["place.kroldok_stronghold"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contextAliases"] = {
+                ["en"] = { "KS" },
+                ["uk"] = {}
+            },
+            ["en"] = "Krol'dok Stronghold",
+            ["features"] = {},
+            ["forms"] = {
+                ["genitiveSingular"] = "Твердині Крол'док",
+                ["locative"] = "Твердині Крол'док"
+            },
+            ["id"] = "place.kroldok_stronghold",
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "recruitment destination; KS is not a general-chat translation",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Krol'dok Stronghold",
+                ["line"] = 1570,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.kroldok_stronghold", "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "Твердиня Крол'док"
+        },
         ["place.lower_blackrock_spire"] = {
             ["aliases"] = {
                 ["en"] = { "LBRS" }
@@ -21238,10 +39628,14 @@ ns.Data = {
             ["id"] = "place.lower_blackrock_spire",
             ["literalInChat"] = true,
             ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
                 ["file"] = "entries/forever/cliend_db/zones.lua",
                 ["key"] = "Lower Blackrock Spire",
                 ["line"] = 1665,
-                ["source"] = "ua-forever"
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
             },
             ["sourceRefs"] = { "ua-forever:place.lower_blackrock_spire", "wow-community:dungeons" },
             ["status"] = "approved",
@@ -21892,10 +40286,14 @@ ns.Data = {
             ["id"] = "place.upper_blackrock_spire",
             ["literalInChat"] = true,
             ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
                 ["file"] = "entries/forever/cliend_db/zones.lua",
                 ["key"] = "Upper Blackrock Spire",
                 ["line"] = 3305,
-                ["source"] = "ua-forever"
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
             },
             ["sourceRefs"] = { "ua-forever:place.upper_blackrock_spire", "wow-community:dungeons" },
             ["status"] = "approved",
@@ -21939,10 +40337,14 @@ ns.Data = {
             ["id"] = "place.warsong_gulch",
             ["literalInChat"] = true,
             ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
                 ["file"] = "entries/forever/cliend_db/zones.lua",
                 ["key"] = "Warsong Gulch",
                 ["line"] = 3443,
-                ["source"] = "ua-forever"
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
             },
             ["sourceRefs"] = { "ua-forever:place.warsong_gulch", "wow-community:classic" },
             ["status"] = "approved",
@@ -22158,13 +40560,14 @@ ns.Data = {
         },
         ["profession.enchanting"] = {
             ["aliases"] = {
-                ["en"] = {},
-                ["uk"] = {}
+                ["en"] = { "enchanter" },
+                ["uk"] = { "майстра зачарування", "майстер зачарування" }
             },
             ["category"] = "professions",
             ["contexts"] = { "professions" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Enchanting",
+            ["englishPractitioner"] = "enchanter",
             ["forms"] = {},
             ["id"] = "profession.enchanting",
             ["priority"] = 100,
@@ -22177,6 +40580,9 @@ ns.Data = {
                 ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
                 ["source"] = "ua-forever",
                 ["version"] = "1.0.3"
+            },
+            ["renderForms"] = {
+                ["practitioner"] = "майстра зачарування"
             },
             ["sourceRefs"] = { "ua-forever:profession.enchanting" },
             ["status"] = "approved",
@@ -22395,6 +40801,10 @@ ns.Data = {
             ["en"] = "dwarves",
             ["englishAddress"] = "dwarves",
             ["englishObject"] = "dwarves",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "дворфів",
                 ["dative"] = "дворфам",
@@ -22428,6 +40838,10 @@ ns.Data = {
             ["en"] = "dwarf",
             ["englishAddress"] = "dwarf",
             ["englishObject"] = "a dwarf",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "дворфа",
                 ["dative"] = "дворфові",
@@ -22461,6 +40875,10 @@ ns.Data = {
             ["en"] = "wannabe dwarves",
             ["englishAddress"] = "wannabe dwarves",
             ["englishObject"] = "wannabe dwarves",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "недодворфів",
                 ["dative"] = "недодворфам",
@@ -22494,6 +40912,10 @@ ns.Data = {
             ["en"] = "wannabe dwarf",
             ["englishAddress"] = "wannabe dwarf",
             ["englishObject"] = "a wannabe dwarf",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "недодворфа",
                 ["dative"] = "недодворфові",
@@ -22527,6 +40949,10 @@ ns.Data = {
             ["en"] = "little dwarves",
             ["englishAddress"] = "little dwarves",
             ["englishObject"] = "little dwarves",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "дворфиків",
                 ["dative"] = "дворфикам",
@@ -22560,6 +40986,10 @@ ns.Data = {
             ["en"] = "little dwarf",
             ["englishAddress"] = "little dwarf",
             ["englishObject"] = "a little dwarf",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "дворфика",
                 ["dative"] = "дворфикові",
@@ -22593,6 +41023,10 @@ ns.Data = {
             ["en"] = "proto-dwarves",
             ["englishAddress"] = "proto-dwarves",
             ["englishObject"] = "proto-dwarves",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "протодворфів",
                 ["dative"] = "протодворфам",
@@ -22626,6 +41060,10 @@ ns.Data = {
             ["en"] = "proto-dwarf",
             ["englishAddress"] = "proto-dwarf",
             ["englishObject"] = "a proto-dwarf",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "протодворфа",
                 ["dative"] = "протодворфові",
@@ -22659,6 +41097,10 @@ ns.Data = {
             ["en"] = "big gnomes",
             ["englishAddress"] = "you big gnomes",
             ["englishObject"] = "big gnomes",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "гномяр",
                 ["dative"] = "гномярам",
@@ -22692,6 +41134,10 @@ ns.Data = {
             ["en"] = "big gnome",
             ["englishAddress"] = "you big gnome",
             ["englishObject"] = "a big gnome",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "гномяру",
                 ["dative"] = "гномярі",
@@ -22725,6 +41171,10 @@ ns.Data = {
             ["en"] = "gnomes",
             ["englishAddress"] = "gnomes",
             ["englishObject"] = "gnomes",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "гномів",
                 ["dative"] = "гномам",
@@ -22758,6 +41208,10 @@ ns.Data = {
             ["en"] = "gnome",
             ["englishAddress"] = "gnome",
             ["englishObject"] = "a gnome",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "гнома",
                 ["dative"] = "гномові",
@@ -22791,6 +41245,10 @@ ns.Data = {
             ["en"] = "wannabe gnomes",
             ["englishAddress"] = "wannabe gnomes",
             ["englishObject"] = "wannabe gnomes",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "недогномів",
                 ["dative"] = "недогномам",
@@ -22824,6 +41282,10 @@ ns.Data = {
             ["en"] = "wannabe gnome",
             ["englishAddress"] = "wannabe gnome",
             ["englishObject"] = "a wannabe gnome",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "недогнома",
                 ["dative"] = "недогномові",
@@ -22857,6 +41319,10 @@ ns.Data = {
             ["en"] = "little gnomes",
             ["englishAddress"] = "little gnomes",
             ["englishObject"] = "little gnomes",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "гномиків",
                 ["dative"] = "гномикам",
@@ -22890,6 +41356,10 @@ ns.Data = {
             ["en"] = "little gnome",
             ["englishAddress"] = "little gnome",
             ["englishObject"] = "a little gnome",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "гномика",
                 ["dative"] = "гномикові",
@@ -22923,6 +41393,10 @@ ns.Data = {
             ["en"] = "proto-gnomes",
             ["englishAddress"] = "proto-gnomes",
             ["englishObject"] = "proto-gnomes",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "протогномів",
                 ["dative"] = "протогномам",
@@ -22956,6 +41430,10 @@ ns.Data = {
             ["en"] = "proto-gnome",
             ["englishAddress"] = "proto-gnome",
             ["englishObject"] = "a proto-gnome",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "протогнома",
                 ["dative"] = "протогномові",
@@ -22989,6 +41467,10 @@ ns.Data = {
             ["en"] = "orcs",
             ["englishAddress"] = "orcs",
             ["englishObject"] = "orcs",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "орків",
                 ["dative"] = "оркам",
@@ -23022,6 +41504,10 @@ ns.Data = {
             ["en"] = "orc",
             ["englishAddress"] = "orc",
             ["englishObject"] = "an orc",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "орка",
                 ["dative"] = "оркові",
@@ -23055,6 +41541,10 @@ ns.Data = {
             ["en"] = "wannabe orcs",
             ["englishAddress"] = "wannabe orcs",
             ["englishObject"] = "wannabe orcs",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "недоорків",
                 ["dative"] = "недооркам",
@@ -23088,6 +41578,10 @@ ns.Data = {
             ["en"] = "wannabe orc",
             ["englishAddress"] = "wannabe orc",
             ["englishObject"] = "a wannabe orc",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "недоорка",
                 ["dative"] = "недооркові",
@@ -23121,6 +41615,10 @@ ns.Data = {
             ["en"] = "little orcs",
             ["englishAddress"] = "little orcs",
             ["englishObject"] = "little orcs",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "орчиків",
                 ["dative"] = "орчикам",
@@ -23154,6 +41652,10 @@ ns.Data = {
             ["en"] = "little orc",
             ["englishAddress"] = "little orc",
             ["englishObject"] = "a little orc",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "орчика",
                 ["dative"] = "орчикові",
@@ -23187,6 +41689,10 @@ ns.Data = {
             ["en"] = "proto-orcs",
             ["englishAddress"] = "proto-orcs",
             ["englishObject"] = "proto-orcs",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "протоорків",
                 ["dative"] = "протооркам",
@@ -23220,6 +41726,10 @@ ns.Data = {
             ["en"] = "proto-orc",
             ["englishAddress"] = "proto-orc",
             ["englishObject"] = "a proto-orc",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "протоорка",
                 ["dative"] = "протооркові",
@@ -23330,7 +41840,14 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "DPS",
             ["englishPlural"] = "DPS",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["number"] = "singular",
+                ["pos"] = "noun"
+            },
             ["forms"] = {
+                ["accusative"] = "DPS",
                 ["genitivePlural"] = "DPS",
                 ["genitiveSingular"] = "DPS",
                 ["nominativePlural"] = "DPS"
@@ -23361,7 +41878,14 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Healer",
             ["englishPlural"] = "Healers",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["number"] = "singular",
+                ["pos"] = "noun"
+            },
             ["forms"] = {
+                ["accusative"] = "цілителя",
                 ["genitivePlural"] = "цілителів",
                 ["genitiveSingular"] = "цілителя",
                 ["nominativePlural"] = "цілителі"
@@ -23382,6 +41906,36 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Цілитель"
         },
+        ["role.player"] = {
+            ["aliases"] = {
+                ["en"] = { "player", "players" },
+                ["uk"] = { "гравець" }
+            },
+            ["category"] = "roles",
+            ["en"] = "Player",
+            ["englishPlural"] = "Players",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["number"] = "singular"
+            },
+            ["forms"] = {
+                ["accusative"] = "гравця",
+                ["genitivePlural"] = "гравців",
+                ["genitiveSingular"] = "гравця",
+                ["nominativePlural"] = "гравці"
+            },
+            ["id"] = "role.player",
+            ["provenance"] = {
+                ["context"] = "Unspecified player role in recruitment",
+                ["key"] = "Player",
+                ["source"] = "project-authored",
+                ["version"] = "apertium-pipeline-1"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "Гравець"
+        },
         ["role.tank"] = {
             ["aliases"] = {
                 ["en"] = { "mt", "main tank", "Tanks" },
@@ -23392,7 +41946,14 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Tank",
             ["englishPlural"] = "Tanks",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["number"] = "singular",
+                ["pos"] = "noun"
+            },
             ["forms"] = {
+                ["accusative"] = "танка",
                 ["genitivePlural"] = "танків",
                 ["genitiveSingular"] = "танка",
                 ["nominativePlural"] = "танки"
@@ -23421,6 +41982,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "adds",
             ["id"] = "slang.combat.adds",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "adds",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Додаткові вороги"
@@ -23429,6 +42000,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "adds inc",
             ["id"] = "slang.combat.adds-inc",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "adds inc",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Наближаються додаткові вороги"
@@ -23441,6 +42022,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "AoE",
             ["id"] = "slang.combat.aoe",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "AoE",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Дія в зоні"
@@ -23453,6 +42044,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "body pull",
             ["id"] = "slang.combat.body-pull",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "body pull",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Зачепити ворога наближенням"
@@ -23465,6 +42066,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "brez",
             ["id"] = "slang.combat.brez",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "brez",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Воскресіння в бою"
@@ -23477,6 +42088,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "CC",
             ["id"] = "slang.combat.cc",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "CC",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Контроль натовпу"
@@ -23489,6 +42110,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "CD",
             ["id"] = "slang.combat.cd",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "CD",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Час відновлення"
@@ -23501,6 +42132,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "chain pull",
             ["id"] = "slang.combat.chain-pull",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "chain pull",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Починати сутички одну за одною"
@@ -23513,6 +42154,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "DoT",
             ["id"] = "slang.combat.dot",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "DoT",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Періодичні пошкодження"
@@ -23525,6 +42176,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "gank",
             ["id"] = "slang.combat.gank",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "gank",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Застати гравця зненацька в PvP"
@@ -23537,6 +42198,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "GCD",
             ["id"] = "slang.combat.gcd",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "GCD",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Глобальний час відновлення"
@@ -23550,6 +42221,16 @@ ns.Data = {
             ["en"] = "HoT",
             ["englishLookupOnly"] = true,
             ["id"] = "slang.combat.hot",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "HoT",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Періодичне зцілення"
@@ -23562,6 +42243,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "HPS",
             ["id"] = "slang.combat.hps",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "HPS",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Зцілення за секунду"
@@ -23574,6 +42265,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "inc",
             ["id"] = "slang.combat.inc",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "inc",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Вороги наближаються"
@@ -23586,6 +42287,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "kite",
             ["id"] = "slang.combat.kite",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "kite",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Водити ворога за собою"
@@ -23598,6 +42309,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "LoS",
             ["id"] = "slang.combat.los",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "LoS",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:strategy" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:strategy" },
             ["status"] = "approved",
             ["uk"] = "Пряма видимість"
@@ -23610,6 +42331,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "LoS pull",
             ["id"] = "slang.combat.los-pull",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "LoS pull",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Вимани ворогів за кут"
@@ -23622,6 +42353,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "pat inc",
             ["id"] = "slang.combat.pat-inc",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "pat inc",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Патруль наближається"
@@ -23634,6 +42375,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "proc",
             ["id"] = "slang.combat.proc",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "proc",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Спрацювання ефекту"
@@ -23646,6 +42397,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "procs",
             ["id"] = "slang.combat.procs",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "procs",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Спрацювання ефектів"
@@ -23658,6 +42419,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "pull aggro",
             ["id"] = "slang.combat.pull-aggro",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "pull aggro",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Перетягнути агро"
@@ -23670,6 +42441,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "PvE",
             ["id"] = "slang.combat.pve",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "PvE",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Гра проти ігрового оточення"
@@ -23682,6 +42463,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "PvP",
             ["id"] = "slang.combat.pvp",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "PvP",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum", "ua-forever:ui.Player vs. Player" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Player vs. Player" },
             ["status"] = "approved",
             ["uk"] = "Гравець проти гравця"
@@ -23694,6 +42485,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "rez me",
             ["id"] = "slang.combat.rez-me",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "rez me",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Воскреси мене"
@@ -23706,6 +42507,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "trash mobs",
             ["id"] = "slang.combat.trash-mobs",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "trash mobs",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Звичайні вороги в підземеллі"
@@ -23718,6 +42529,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "twink",
             ["id"] = "slang.combat.twink",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "twink",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Добре споряджений персонаж низького рівня"
@@ -23730,6 +42551,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "WPvP",
             ["id"] = "slang.combat.wpvp",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "WPvP",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "PvP у відкритому світі"
@@ -23742,6 +42573,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "alt run",
             ["id"] = "slang.groups.alt-run",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "alt run",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Рейд другорядними персонажами"
@@ -23755,6 +42596,16 @@ ns.Data = {
             ["en"] = "OT",
             ["englishLookupOnly"] = true,
             ["id"] = "slang.groups.offtank",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "OT",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Другий танк"
@@ -23767,6 +42618,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "premade",
             ["id"] = "slang.groups.premade",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "premade",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Заздалегідь зібрана група"
@@ -23779,6 +42640,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "PuG",
             ["id"] = "slang.groups.pug",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "PuG",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Випадково зібрана група"
@@ -23791,6 +42662,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "pugs",
             ["id"] = "slang.groups.pugs",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "pugs",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Випадково зібрані групи"
@@ -23803,6 +42684,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "raid ID",
             ["id"] = "slang.groups.raid-id",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "raid ID",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Ідентифікатор рейду"
@@ -23815,6 +42706,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "raid lockout",
             ["id"] = "slang.groups.raid-lockout",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "raid lockout",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Обмеження на повторне проходження рейду"
@@ -23827,6 +42728,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "RL",
             ["id"] = "slang.groups.rl",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "RL",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot" },
             ["status"] = "approved",
             ["uk"] = "Лідер рейду"
@@ -23839,6 +42750,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "summon pls",
             ["id"] = "slang.groups.summon-please",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "summon pls",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Викличте мене, будь ласка"
@@ -23851,6 +42772,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "DKP",
             ["id"] = "slang.loot.dkp",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "DKP",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:dkp" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:dkp" },
             ["status"] = "approved",
             ["uk"] = "Рейдові бали для розподілу здобичі"
@@ -23863,6 +42794,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "free roll",
             ["id"] = "slang.loot.free-roll",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "free roll",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot" },
             ["status"] = "approved",
             ["uk"] = "Кидок відкритий для всіх"
@@ -23875,6 +42816,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "GDKP",
             ["id"] = "slang.loot.gdkp",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "GDKP",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:dkp" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:dkp" },
             ["status"] = "approved",
             ["uk"] = "Рейд, де за здобич торгуються золотом"
@@ -23887,6 +42838,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "Greed roll",
             ["id"] = "slang.loot.greed-roll",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "Greed roll",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot", "ua-forever:ui.Greed" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Greed" },
             ["status"] = "approved",
             ["uk"] = "Кидок «Не відмовлюсь»"
@@ -23899,6 +42860,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "hard reserve",
             ["id"] = "slang.loot.hard-reserve",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "hard reserve",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot" },
             ["status"] = "approved",
             ["uk"] = "Закріпити здобич за гравцем або групою"
@@ -23908,6 +42879,16 @@ ns.Data = {
             ["en"] = "HR",
             ["englishLookupOnly"] = true,
             ["id"] = "slang.loot.hr",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "HR",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot" },
             ["status"] = "approved",
             ["uk"] = "Предмет закріплено за гравцем або групою"
@@ -23920,6 +42901,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "loot council",
             ["id"] = "slang.loot.loot-council",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "loot council",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot-council" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot-council" },
             ["status"] = "approved",
             ["uk"] = "Рада з розподілу здобичі"
@@ -23933,6 +42924,16 @@ ns.Data = {
             ["en"] = "MS",
             ["englishLookupOnly"] = true,
             ["id"] = "slang.loot.ms",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "MS",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot", "ua-forever:ui.Primary Specialization" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Primary Specialization" },
             ["status"] = "approved",
             ["uk"] = "Основна спеціалізація"
@@ -23945,6 +42946,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "MS>OS",
             ["id"] = "slang.loot.ms-over-os",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "MS>OS",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot" },
             ["status"] = "approved",
             ["uk"] = "Основна спеціалізація має пріоритет"
@@ -23957,6 +42968,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "MS roll",
             ["id"] = "slang.loot.ms-roll",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "MS roll",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot" },
             ["status"] = "approved",
             ["uk"] = "Кидок за основну спеціалізацію"
@@ -23969,6 +42990,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "Need before Greed",
             ["id"] = "slang.loot.need-before-greed",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "Need before Greed",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need", "ua-forever:ui.Greed" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need", "ua-forever:ui.Greed" },
             ["status"] = "approved",
             ["uk"] = "«Потрібно» має пріоритет над «Не відмовлюсь»"
@@ -23981,6 +43012,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "Need roll",
             ["id"] = "slang.loot.need-roll",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "Need roll",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need" },
             ["status"] = "approved",
             ["uk"] = "Кидок «Потрібно»"
@@ -23993,6 +43034,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "ninja loot",
             ["id"] = "slang.loot.ninja-loot",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "ninja loot",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot-council" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot-council" },
             ["status"] = "approved",
             ["uk"] = "Забрати здобич усупереч правилам"
@@ -24005,6 +43056,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "1SR",
             ["id"] = "slang.loot.one-sr",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "1SR",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot" },
             ["status"] = "approved",
             ["uk"] = "1 резерв для участі в кидку"
@@ -24018,6 +43079,16 @@ ns.Data = {
             ["en"] = "OS",
             ["englishLookupOnly"] = true,
             ["id"] = "slang.loot.os",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "OS",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot", "ua-forever:ui.Secondary Specialization" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Secondary Specialization" },
             ["status"] = "approved",
             ["uk"] = "Додаткова спеціалізація"
@@ -24030,6 +43101,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "OS roll",
             ["id"] = "slang.loot.os-roll",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "OS roll",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot" },
             ["status"] = "approved",
             ["uk"] = "Кидок за додаткову спеціалізацію"
@@ -24042,6 +43123,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "soft reserve",
             ["id"] = "slang.loot.soft-reserve",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "soft reserve",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot" },
             ["status"] = "approved",
             ["uk"] = "Резерв для кидка за предмет"
@@ -24051,6 +43142,16 @@ ns.Data = {
             ["en"] = "SR",
             ["englishLookupOnly"] = true,
             ["id"] = "slang.loot.sr",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "SR",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot" },
             ["status"] = "approved",
             ["uk"] = "Резерв для участі в кидку за предмет"
@@ -24063,6 +43164,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "3SR",
             ["id"] = "slang.loot.three-sr",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "3SR",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot" },
             ["status"] = "approved",
             ["uk"] = "3 резерви для участі в кидках"
@@ -24075,6 +43186,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "2SR",
             ["id"] = "slang.loot.two-sr",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "2SR",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:loot" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:loot" },
             ["status"] = "approved",
             ["uk"] = "2 резерви для участі в кидках"
@@ -24087,6 +43208,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "bio break",
             ["id"] = "slang.social.bio-break",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "bio break",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Перерва до вбиральні"
@@ -24095,6 +43226,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "ding",
             ["id"] = "slang.social.ding",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "ding",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Новий рівень!"
@@ -24103,6 +43244,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "DND",
             ["id"] = "slang.social.dnd",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "DND",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Не турбувати"
@@ -24115,6 +43266,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "GLHF",
             ["id"] = "slang.social.glhf",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "GLHF",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Щасти та приємної гри"
@@ -24128,6 +43289,16 @@ ns.Data = {
             ["en"] = "GTG",
             ["englishLookupOnly"] = true,
             ["id"] = "slang.social.gtg",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "GTG",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Мені час іти або я готовий"
@@ -24140,6 +43311,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "inv",
             ["id"] = "slang.social.inv",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "inv",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Запроси в групу"
@@ -24152,6 +43333,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "PST",
             ["id"] = "slang.social.pst",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "PST",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Напиши пошепки"
@@ -24164,6 +43355,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "rdy",
             ["id"] = "slang.social.rdy",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "rdy",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Готовий"
@@ -24176,6 +43377,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "bind on pickup",
             ["id"] = "slang.trade.bind-on-pickup",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "bind on pickup",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when picked up" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when picked up" },
             ["status"] = "approved",
             ["uk"] = "Стає персональним при отриманні"
@@ -24188,6 +43399,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "BiS",
             ["id"] = "slang.trade.bis",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "BiS",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Найкращий предмет для цієї комірки"
@@ -24200,6 +43421,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "BoE",
             ["id"] = "slang.trade.boe",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "BoE",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when equipped" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when equipped" },
             ["status"] = "approved",
             ["uk"] = "Стає персональним при екіпіруванні"
@@ -24209,6 +43440,16 @@ ns.Data = {
             ["en"] = "BoP",
             ["englishLookupOnly"] = true,
             ["id"] = "slang.trade.bop",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "BoP",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum" },
             ["status"] = "approved",
             ["uk"] = "Стає персональним при отриманні або Благословення захисту"
@@ -24221,6 +43462,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "BoP item",
             ["id"] = "slang.trade.bop-item",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "BoP item",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when picked up" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when picked up" },
             ["status"] = "approved",
             ["uk"] = "Предмет стає персональним при отриманні"
@@ -24233,6 +43484,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "BoP me",
             ["id"] = "slang.trade.bop-me",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "BoP me",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:forum", "ua-forever:spell.Blessing of Protection" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:forum", "ua-forever:spell.Blessing of Protection" },
             ["status"] = "approved",
             ["uk"] = "Дайте мені Благословення захисту"
@@ -24245,6 +43506,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "COD",
             ["id"] = "slang.trade.cod",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "COD",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Оплата при отриманні пошти"
@@ -24257,6 +43528,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "LFW",
             ["id"] = "slang.trade.lfw",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "LFW",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:craft" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:craft" },
             ["status"] = "approved",
             ["uk"] = "Приймаю замовлення на виготовлення"
@@ -24269,6 +43550,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "mats",
             ["id"] = "slang.trade.mats",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "mats",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:craft" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:craft" },
             ["status"] = "approved",
             ["uk"] = "Матеріали"
@@ -24281,6 +43572,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "my mats",
             ["id"] = "slang.trade.my-mats",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "my mats",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:craft" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:craft" },
             ["status"] = "approved",
             ["uk"] = "Мої матеріали"
@@ -24293,6 +43594,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "OBO",
             ["id"] = "slang.trade.obo",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "OBO",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:classic" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:classic" },
             ["status"] = "approved",
             ["uk"] = "Або за найкращою пропозицією"
@@ -24305,6 +43616,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "pre-raid BiS",
             ["id"] = "slang.trade.pre-raid-bis",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "pre-raid BiS",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:wiki" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:wiki" },
             ["status"] = "approved",
             ["uk"] = "Найкращий предмет до рейдів"
@@ -24317,6 +43638,16 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "vendor trash",
             ["id"] = "slang.trade.vendor-trash",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "vendor trash",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:strategy" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:strategy" },
             ["status"] = "approved",
             ["uk"] = "Мотлох на продаж торговцю"
@@ -24329,9 +43660,92 @@ ns.Data = {
             ["category"] = "slang",
             ["en"] = "your mats",
             ["id"] = "slang.trade.your-mats",
+            ["provenance"] = {
+                ["context"] = "slang",
+                ["key"] = "your mats",
+                ["license"] = nil,
+                ["note"] = "Predates the structural pipeline. Exact origin, version and redistribution terms were not recorded; existing references are retained without attribution claims.",
+                ["originalSourceRefs"] = { "wow-community:craft" },
+                ["source"] = "legacy-curated",
+                ["unresolved"] = true,
+                ["version"] = nil
+            },
             ["sourceRefs"] = { "wow-community:craft" },
             ["status"] = "approved",
             ["uk"] = "Твої матеріали"
+        },
+        ["stat.all"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "stats",
+            ["contextOnly"] = true,
+            ["en"] = "stats",
+            ["features"] = {},
+            ["forms"] = {
+                ["genitivePlural"] = "характеристик"
+            },
+            ["id"] = "stat.all",
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "equipment stats; not statistics",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "stats",
+                ["line"] = 16147,
+                ["sha256"] = "2040d6459d34f1f710875fe6277658d900970b8b2f7df5133eef99365630e1f6",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:stat.all", "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "Характеристики"
+        },
+        ["stat.stamina"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "stats",
+            ["contextOnly"] = true,
+            ["en"] = "stamina",
+            ["features"] = {},
+            ["forms"] = {
+                ["genitivePlural"] = "витривалості"
+            },
+            ["id"] = "stat.stamina",
+            ["provenance"] = {
+                ["context"] = "equipment enhancement",
+                ["key"] = "stamina",
+                ["source"] = "project-authored",
+                ["version"] = "apertium-pipeline-1"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "Витривалість"
+        },
+        ["stat.strength"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "stats",
+            ["contextOnly"] = true,
+            ["en"] = "strength",
+            ["features"] = {},
+            ["forms"] = {
+                ["genitivePlural"] = "сили"
+            },
+            ["id"] = "stat.strength",
+            ["provenance"] = {
+                ["context"] = "equipment enhancement",
+                ["key"] = "strength",
+                ["source"] = "project-authored",
+                ["version"] = "apertium-pipeline-1"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "Сила"
         }
     }
 }

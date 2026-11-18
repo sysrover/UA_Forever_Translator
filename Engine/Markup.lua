@@ -25,16 +25,22 @@ local function findTag(text, tag, first)
     end
 end
 
-function M.isLink(text)
+function M.isLink(text, kind)
     local first, last = 1, #text
     if text:match("^|c%x%x%x%x%x%x%x%x") and text:sub(-2) == "|r" then
         first, last = 11, last - 2
     end
     if text:sub(first, first + 1) ~= "|H" then return false end
+    if kind and text:sub(first + 2, first + 2 + #kind) ~= kind .. ":" then return false end
     local label = findTag(text, "|h", first + 2)
     if not label or label <= first + 2 then return false end
     local close = findTag(text, "|h", label + 2)
     return close ~= nil and close + 1 == last
+end
+function M.linkKind(text)
+    if not M.isLink(text) then return nil end
+    local first = text:match("^|c%x%x%x%x%x%x%x%x") and 11 or 1
+    return text:sub(first + 2):match("^([%w_]+):")
 end
 function M.split(text)
     local segments, plain, i, length = {}, 1, 1, #text

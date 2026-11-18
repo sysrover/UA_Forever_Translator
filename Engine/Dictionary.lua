@@ -20,7 +20,8 @@ function D.longest(tokens, first, direction, category, limit, requiredCase, requ
         if tokens[i].protected then break end
         node = node[tokens[i].key]
         if not node then break end
-        local candidate = node._id and ns.Data.terms[node._id]
+        local id = (category and node._byCategory and node._byCategory[category]) or node._id
+        local candidate = id and ns.Data.terms[id]
         if candidate and not requiredNumber and (not category or candidate.category == category
             or (category == "goods" and candidate.englishObject)
             or (category == "activities" and candidate.englishActivity)) then
@@ -37,7 +38,7 @@ local function generalTerm(token, direction)
     if token.protected then return nil end
     local curated = ns.Data.aliases[direction][token.key]
     -- Leave intentionally ambiguous curated forms for the user's review.
-    if curated and (curated._id or curated._literal or curated._morph) then return nil end
+    if curated and (curated._id or curated._literal or curated._morph or curated._byCategory) then return nil end
     return ns.Engine.GeneralDictionary.lookup(token.key, direction)
 end
 

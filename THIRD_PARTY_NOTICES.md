@@ -1,5 +1,9 @@
 # Third-party notices
 
+The pre-existing `Data/GeneralUkEn.lua` and `Data/GeneralEnUk.lua` snapshots identify KOReader Dicts, dated `2026.09.21`, with CC BY-SA 4.0 declared in their headers. Their attribution identifies English Wiktionary via Kaikki/Wiktextract and, for EN → UK, Princeton WordNet 3.0. Sources: https://danielgregorini.github.io/koreader-dicts/en/uk-en/ and https://danielgregorini.github.io/koreader-dicts/en/en-uk/. No re-import was performed for the structural pipeline.
+
+`legacy-curated` / `unresolved` records retain their original sourceRefs; their exact origin and redistribution terms are unknown. The new morphology and transfer implementation contains no copied Apertium, lttoolbox, or VESUM code or linguistic data.
+
 Selected Ukrainian game terms and grammatical forms are drawn from [UA Forever](https://github.com/sysrover/UA_Forever), version 1.0.3, [source snapshot](https://github.com/sysrover/UA_Forever/tree/5c1cadddc75e18cd569207437e8ebf68ac162da1). The compiled [dictionary](Data/Dictionary.lua) records provenance for the relevant entries, including the UA Forever UI, zone, and shared grammar catalogs. Credits belong to UA Forever contributors and the upstream contributors identified by that project, including ClassicUA where applicable.
 
 World of Warcraft, client fonts, and game content belong to their respective rights holders. The addon refers to a font already shipped with the client. This repository carries no client binaries, extracted Blizzard resources, or copied font files.

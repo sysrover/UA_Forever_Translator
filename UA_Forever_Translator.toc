@@ -21,6 +21,9 @@ Engine\GeneralDictionary.lua
 Engine\Dictionary.lua
 Engine\Grammar.lua
 Engine\Parser.lua
+Engine\Morphology.lua
+Engine\Syntax.lua
+Engine\Transfer.lua
 Engine\Translator.lua
 UI\ChatTab.lua
 Modules\ChatLog.lua

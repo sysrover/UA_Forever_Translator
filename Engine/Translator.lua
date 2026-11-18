@@ -64,9 +64,28 @@ local function compute(text, direction)
     if exact then
         return {text = exact.text, mode = "exact", intent = exact.id, matchedTerms = {}, unknownSpans = {}, sourceRefs = exact.sourceRefs}
     end
-    local output, rule, slots = ns.Engine.Parser.translate(text, tokens, direction)
+    local document = ns.Engine.Morphology.analyze(text, tokens, direction)
+    local output, tree, syntaxFragments = ns.Engine.Syntax.translate(document)
+    local rule, slots
+    if tree then
+        rule, slots = {intent=tree.kind, sourceRefs={"project-authored:apertium-pipeline-1"}}, tree.slots
+    elseif not document.truncated and not document.ambiguities then
+        output, rule, slots = ns.Engine.Parser.translate(text, tokens, direction)
+    end
     local clauses, fragments
-    if not output then output, clauses, fragments = ns.Engine.Parser.compose(text, tokens, direction) end
+    if not output and not document.truncated and not document.ambiguities then
+        output, clauses, fragments = ns.Engine.Parser.compose(text, tokens, direction)
+    end
+    if syntaxFragments and not output then
+        fragments = fragments or {}
+        -- Structural chunks take priority; discard overlapping legacy clauses.
+        for first, fragment in pairs(syntaxFragments) do
+            for start, old in pairs(fragments) do
+                if start <= fragment.last and old.last >= first then fragments[start] = nil end
+            end
+            fragments[first] = fragment
+        end
+    end
     if output then
         local matched, refs, seen = {}, {}, {}
         if clauses then
@@ -76,17 +95,24 @@ local function compute(text, direction)
         end
         table.sort(matched)
         table.sort(refs)
-        return {text = output, mode = "template", intent = clauses and "composition" or rule.intent, matchedTerms = matched, unknownSpans = {}, sourceRefs = refs}
+        return {text = output, mode = "template", intent = clauses and "composition" or rule.intent,
+            matchedTerms = matched, unknownSpans = {}, sourceRefs = refs,
+            coverage = {complete=true, pipeline=tree and "structural" or "legacy"}}
     end
     local chunks, matched, unknown, refs, refSeen, i, cursor = {}, {}, {}, {}, {}, 1, 1
     local foundContent, hasMatch = false, false
     while i <= #tokens do
         local token = tokens[i]
         local fragment = fragments and fragments[i]
+        local preserve = document.preserve and document.preserve[i]
         local term, last, replacement
         if fragment then
             last, replacement = fragment.last, fragment.text
             addClause(matched, refs, refSeen, fragment.rule, fragment.slots)
+        elseif preserve then
+            last = preserve.last
+            replacement = text:sub(token.first, tokens[last].last)
+            unknown[#unknown + 1] = {first=token.first, last=tokens[last].last, reason=preserve.reason}
         elseif not token.protected then
             term, last = ns.Engine.Dictionary.literal(tokens, i, direction, fragments)
             if term then

@@ -4,6 +4,7 @@ local category = {
     role = "roles", place = "places", profession = "professions", class = "classes",
     goods = "goods", goods2 = "goods", activity = "activities", address = "addresses",
     creature = "creatures", creaturePlural = "creatures", behavior = "behaviors", recipient = "recipients",
+    equipment = "equipment", stat = "stats", country = "countries", nationality = "nationalities", territory = "territories",
 }
 local requiredCase = { address = "vocative", creature = "accusative", creaturePlural = "nominative" }
 local requiredNumber = { creaturePlural = "plural" }
@@ -145,7 +146,8 @@ local function slot(text, tokens, index, name, direction, limit)
         if category[name] == "goods" then
             if token.protected then
                 local raw = tokenText(text, tokens, index, index)
-                if ns.Engine.Markup.isLink(raw) then return {raw = raw}, index + 1 end
+                local kind = ns.Engine.Markup.linkKind(raw)
+                if kind == "item" or kind == "spell" then return {raw = raw}, index + 1 end
             elseif direction == "en-uk" and (token.key == "a" or token.key == "an" or token.key == "some") then
                 index = index + 1
             end
@@ -164,16 +166,20 @@ local function slot(text, tokens, index, name, direction, limit)
         if token.key:match("^%d+$") and #token.key <= 3 and tonumber(token.key) > 0 then
             return {raw = token.key}, index + 1
         end
-    elseif name == "item" then
-        -- Full trade templates accept a protected hyperlink only. Unknown plain
-        -- item names stay in a visibly partial result instead of swallowing conditions.
+    elseif name == "item" or name == "trade" or name == "quest" then
+        -- Scoped links distinguish service offers and quest requests from sales.
+        if not token.protected then return nil end
         local raw = tokenText(text, tokens, index, index)
-        if token.protected and ns.Engine.Markup.isLink(raw) then return {raw = raw}, index + 1 end
+        local kind = ns.Engine.Markup.linkKind(raw)
+        -- Legacy {item} also serves spell recipes, but never a profession or quest.
+        if kind == name or (name == "item" and kind == "spell") then return {raw = raw}, index + 1 end
     elseif name == "price" or name == "time" then
+        if token.protected then return nil end
+        local pattern = name == "price" and "^(%d+[%.,]?%d*)%s*([gsc])$" or "^(%d+[%.,]?%d*)%s*([mh])$"
         for last = math.min(limit, index + 4), index, -1 do
             local raw = tokenText(text, tokens, index, last)
-            local pattern = name == "price" and "^%d+[%.,]?%d*%s*[gsc]$" or "^%d+[%.,]?%d*%s*[mh]$"
-            if not token.protected and raw:lower():match(pattern) then return {raw = raw}, last + 1 end
+            local amount, unit = raw:lower():match(pattern)
+            if amount then return {raw = raw, amount = amount, unit = unit}, last + 1 end
         end
     end
 end
@@ -209,32 +215,52 @@ local function matchRule(rule, text, tokens, direction, first, last)
     end
     if output then return output, slots end
 end
+local function selectMatch(matches, text, tokens, direction, first, last, selected, selectedRule, selectedSlots, ambiguous)
+    local priority = selectedRule and (selectedRule.priority or 100)
+    for _, rule in ipairs(matches) do
+        local currentPriority = rule.priority or 100
+        if not selected or currentPriority >= priority then
+            local output, slots = matchRule(rule, text, tokens, direction, first, last)
+            if output then
+                if not selected or currentPriority > priority then
+                    selected, selectedRule, selectedSlots = output, rule, slots
+                    priority, ambiguous = currentPriority, false
+                elseif selected ~= output then
+                    ambiguous = true
+                elseif rule.order < selectedRule.order then
+                    selectedRule, selectedSlots = rule, slots
+                end
+            end
+        end
+    end
+    return selected, selectedRule, selectedSlots, ambiguous
+end
+
 function P.translate(text, tokens, direction, first, last)
     first, last = first or 1, last or #tokens
     if first > last then return nil end
     local node = ns.Data.rules[direction]
-    local selected, selectedRule, selectedSlots, priority, ambiguous
+    local selected, selectedRule, selectedSlots, ambiguous
+    if node.leading then
+        local token = tokens[first]
+        local bucket
+        if token.protected then
+            bucket = node.leading.link
+        else
+            local byte = token.key:byte()
+            if byte and byte >= 48 and byte <= 57 then bucket = node.leading.price end
+        end
+        if bucket then
+            selected, selectedRule, selectedSlots, ambiguous = selectMatch(bucket.matches, text, tokens, direction, first, last)
+        end
+    end
     for i = first, last do
         if not node.next or tokens[i].protected then break end
         node = node.next[tokens[i].key]
         if not node then break end
         if node.matches then
-            for _, rule in ipairs(node.matches) do
-                local currentPriority = rule.priority or 100
-                if not selected or currentPriority >= priority then
-                    local output, slots = matchRule(rule, text, tokens, direction, i + 1, last)
-                    if output then
-                        if not selected or currentPriority > priority then
-                            selected, selectedRule, selectedSlots = output, rule, slots
-                            priority, ambiguous = currentPriority, false
-                        elseif selected ~= output then
-                            ambiguous = true
-                        elseif rule.order < selectedRule.order then
-                            selectedRule, selectedSlots = rule, slots
-                        end
-                    end
-                end
-            end
+            selected, selectedRule, selectedSlots, ambiguous = selectMatch(node.matches, text, tokens, direction, i + 1, last,
+                selected, selectedRule, selectedSlots, ambiguous)
         end
     end
     if selected and not ambiguous then return selected, selectedRule, selectedSlots end

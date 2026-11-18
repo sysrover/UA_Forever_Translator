@@ -1,5 +1,24 @@
 local _, ns = ...
 local G = {}; ns.Engine.Grammar = G
+local moneyForms = {
+    g = {"золоту монету", "золоті монети", "золотих монет", "золотої монети"},
+    s = {"срібну монету", "срібні монети", "срібних монет", "срібної монети"},
+    c = {"мідну монету", "мідні монети", "мідних монет", "мідної монети"},
+}
+
+local function renderMoney(slot)
+    local amount, forms = slot.amount, moneyForms[slot.unit]
+    if not amount or not forms then return slot.raw end
+    local numeric = tonumber((amount:gsub(",", ".")))
+    if not numeric then return slot.raw end
+    local last, pair = numeric % 10, numeric % 100
+    local form = 3
+    if numeric % 1 ~= 0 then form = 4
+    elseif last == 1 and pair ~= 11 then form = 1
+    elseif last >= 2 and last <= 4 and (pair < 12 or pair > 14) then form = 2 end
+    return amount .. " " .. forms[form]
+end
+
 function G.numberForm(number)
     local n = tonumber(number)
     if not n then return "genitivePlural" end
@@ -25,6 +44,10 @@ function G.render(template, slots, direction)
                 end
                 return slot.term.en
             end
+            if form == "destination" then
+                local genitive = slot.term.forms and slot.term.forms.genitiveSingular
+                return genitive and " до " .. genitive or " — " .. slot.term.uk
+            end
             if form == "activity" then form = "accusative" end
             if form == "object" or form == "negativeObject" then
                 form = slot.plural and "accusativePlural" or "accusative"
@@ -48,7 +71,7 @@ function G.render(template, slots, direction)
             end
             return slot.term.uk
         end
-        return slot.raw
+        return form == "money" and renderMoney(slot) or slot.raw
     end)
     if failed then return nil end
     return output
