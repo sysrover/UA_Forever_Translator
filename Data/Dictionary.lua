@@ -871,6 +871,42 @@ ns.Data = {
                         ["text"] = "повернися",
                         ["weak"] = false
                     }
+                },
+                ["on"] = {
+                    [","] = {
+                        ["fellahs"] = {
+                            ["_literal"] = {
+                                ["id"] = "literal.come_on_fellas",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                                ["text"] = "Ну давайте, друзі",
+                                ["weak"] = false
+                            }
+                        },
+                        ["fellas"] = {
+                            ["_literal"] = {
+                                ["id"] = "literal.come_on_fellas",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                                ["text"] = "Ну давайте, друзі",
+                                ["weak"] = false
+                            }
+                        }
+                    },
+                    ["fellahs"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.come_on_fellas",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "Ну давайте, друзі",
+                            ["weak"] = false
+                        }
+                    },
+                    ["fellas"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.come_on_fellas",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "Ну давайте, друзі",
+                            ["weak"] = false
+                        }
+                    }
                 }
             },
             ["complaining"] = {
@@ -1998,6 +2034,14 @@ ns.Data = {
                 }
             },
             ["last"] = {
+                ["member"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.last_member",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "останній учасник",
+                        ["weak"] = false
+                    }
+                },
                 ["slot"] = {
                     ["_literal"] = {
                         ["id"] = "literal.recruit.last_slot",
@@ -8379,6 +8423,20 @@ ns.Data = {
                     }
                 }
             },
+            ["ну"] = {
+                ["давайте"] = {
+                    [","] = {
+                        ["друзі"] = {
+                            ["_literal"] = {
+                                ["id"] = "literal.come_on_fellas",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                                ["text"] = "Come on, fellas",
+                                ["weak"] = false
+                            }
+                        }
+                    }
+                }
+            },
             ["ні"] = {
                 ["_literal"] = {
                     ["id"] = "literal.no",
@@ -8758,6 +8816,16 @@ ns.Data = {
                         ["пріоритет"] = {
                             ["_id"] = "slang.loot.ms-over-os"
                         }
+                    }
+                }
+            },
+            ["останній"] = {
+                ["учасник"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.last_member",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "last member",
+                        ["weak"] = false
                     }
                 }
             },
@@ -11677,6 +11745,16 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Шукаю гільдію"
             },
+            ["lf1m hot come on fellahs last member"] = {
+                ["id"] = "recruit_one_more_fellas",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Шукаємо ще 1 гравця. Ну давайте, друзі, останній учасник!"
+            },
+            ["lf1m! come on, fellas, one more"] = {
+                ["id"] = "recruit_one_more_fellas",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Шукаємо ще 1 гравця. Ну давайте, друзі, останній учасник!"
+            },
             ["lfg"] = {
                 ["id"] = "lfg",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -12723,6 +12801,11 @@ ns.Data = {
                 ["id"] = "guild",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Looking for a guild"
+            },
+            ["шукаємо ще 1 гравця. ну давайте, друзі, останній учасник"] = {
+                ["id"] = "recruit_one_more_fellas",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "LF1M! Come on, fellas, one more!"
             },
             ["щасти"] = {
                 ["id"] = "gl",
@@ -33293,7 +33376,7 @@ ns.Data = {
         ["concepts"] = 212,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
-        ["phraseFamilies"] = 76,
+        ["phraseFamilies"] = 77,
         ["source"] = {
             ["approvalMeaning"] = "Editorially reviewed for this addon; not a claim of individual user approval.",
             ["catalogBuild"] = "1.60.1.70938",
@@ -33309,7 +33392,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "04a170a6940067589f01f68aa2f12aebbb3c0dae3edbc43ed135286db8d38812"
+        ["version"] = "dc73df7df13f8c44be6d846b802e3a8b02d72132ff7fff933f3635af6f80534f"
     },
     ["rules"] = {
         ["en-uk"] = {
