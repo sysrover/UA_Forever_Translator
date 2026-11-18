@@ -51,18 +51,18 @@ local auxiliary = {
 }
 auxiliary["do"] = auxiliary.do_
 
-local function verb(document, index, limit, subject, base, imperative, sense, aspect, headword)
+local function verb(document, index, limit, subject, base, imperative, sense, aspect, headword, previous)
     if index > limit then return nil end
     local english = document.direction == "en-uk"
     local after = index + 1
-    if english and not headword and P.key(document, after, limit) == "off" then
-        local key = P.key(document, index, limit)
-        if key == "set" or key == "sets" or key == "setting" then
-            headword, after = key .. " off", after + 1
-        end
+    if english and not headword then
+        local phrase, finish = L.phraseAt(document, index, limit, "verb")
+        if phrase then headword, after = phrase, finish end
     end
     local selected = L.choose(document, headword or index, "verb", nil, sense, function(candidate)
         local f = candidate.form
+        local context = lexemeFrame(candidate).coordinatedAfter
+        if context and not (previous and previous.verb and context[previous.verb.lexeme.en]) then return false end
         if aspect == "resultative" then
             return f.verbalForm == "participle" and f.tense == "past" and lexemeFrame(candidate).resultative
         end
@@ -149,6 +149,20 @@ local function smallActivity(document, index, limit)
 end
 
 local simple
+local function coordinatedObject(document, first, limit, case, locationOnly)
+    local startsPredicate
+    if document.direction == "en-uk" then
+        startsPredicate = function(index)
+            local candidate, after = verb(document, index, limit, nil, true)
+            if not candidate or after > limit then return false end
+            local object = P.noun(document, after, limit, "accusative")
+            if object and (object.article or object.pronoun or object.possessor or object.quantity) then return true end
+            return P.preposition(document, after, limit, lexemeFrame(candidate).motion) ~= nil
+        end
+    end
+    return P.coordinated(document, first, limit, case, startsPredicate, locationOnly)
+end
+
 local function complements(document, tree, index, limit, depth)
     depth = depth or 0
     local frame = lexemeFrame(tree.verb)
@@ -191,12 +205,12 @@ local function complements(document, tree, index, limit, depth)
     if frame.recipientCase then
         recipient, after = P.noun(document, index, limit, english and "accusative" or frame.recipientCase)
         if recipient then
-            local object, last = P.coordinated(document, after, limit, objectCase)
+            local object, last = coordinatedObject(document, after, limit, objectCase)
             if object then tree.recipient, tree.object, index = recipient, object, last end
         end
     end
     if not tree.object and not frame.motion and not frame.intransitive and (not objectPreposition or preposition) then
-        local object, nextIndex = P.coordinated(document, index, limit, objectCase)
+        local object, nextIndex = coordinatedObject(document, index, limit, objectCase, frame.destinationObject)
         if object then tree.object, index = object, nextIndex
         elseif preposition then return nil end
     end
@@ -425,7 +439,9 @@ simple = function(document, first, limit, previous, depth, indirect)
     if english then aux = auxiliary[head] end
     local invertedCopula = negativeCopula[head] or head
     local relativeSubject = indirect and previous and previous.subject
-    local inverted = english and not relativeSubject and (aux or copula[invertedCopula])
+    local continuedAux = english and previous and previous.subject and aux
+        and verb(document, index + 1, limit, previous.subject, true, nil, nil, nil, nil, previous)
+    local inverted = english and not relativeSubject and not continuedAux and (aux or copula[invertedCopula])
     if inverted then
         tree.question = true
         if not aux then
@@ -437,7 +453,7 @@ simple = function(document, first, limit, previous, depth, indirect)
     local contraction = english and not inverted and contracted[head]
     if contraction then
         subject, nextIndex = personalSubject(contraction[1]), index + 1
-    elseif not relativeSubject then
+    elseif not relativeSubject and not continuedAux then
         subject, nextIndex = P.coordinated(document, index, limit, "nominative")
     end
     if subject then tree.subject, index = subject, nextIndex end
@@ -533,12 +549,14 @@ simple = function(document, first, limit, previous, depth, indirect)
     end
     local inheritedSubject = not subject and previous and previous.subject
     local inheritedImperative = not subject and previous and previous.imperative
+    local sharedModal = inheritedSubject and not aux and previous.modal or nil
     tree.imperative = (not subject and not inheritedSubject and not aux and english) or inheritedImperative
     if inverted and not subject then return nil end
     local afterVerb
     local contractedPredicate = contraction and contraction[3]
     tree.verb, afterVerb = verb(document, contractedPredicate and headIndex or index, limit,
-        subject or inheritedSubject, aux ~= nil, tree.imperative, nil, nil, contractedPredicate)
+        subject or inheritedSubject, aux ~= nil or sharedModal ~= nil, tree.imperative, nil, nil,
+        contractedPredicate, inheritedSubject and previous)
     if not tree.verb and not subject and not english and not aux then
         tree.verb, afterVerb = verb(document, index, limit, nil, false, true)
         tree.imperative = tree.verb ~= nil
@@ -548,9 +566,12 @@ simple = function(document, first, limit, previous, depth, indirect)
         if finish then tree.copula, tree.tense = true, "present"; return tree, finish end
     end
     if not tree.verb and english and subject and not aux and not tree.question then
-        local imperative, after = verb(document, first, limit, nil, false, true)
+        local imperative, after = verb(document, first, limit, nil, false, true, nil, nil, nil, previous)
         if imperative then
             tree, subject, afterVerb = {kind="clause", verb=imperative, imperative=true}, nil, after
+            if previous and previous.subject and previous.modal then
+                inheritedSubject, sharedModal, tree.imperative = previous.subject, previous.modal, nil
+            end
         end
     end
     if not tree.verb and tree.imperative and english and not subject and not aux then
@@ -569,6 +590,7 @@ simple = function(document, first, limit, previous, depth, indirect)
     end
     tree.subject = subject or inheritedSubject
     tree.inherited = inheritedSubject ~= nil and inheritedSubject ~= false
+    tree.modal, tree.sharedModal = tree.modal or sharedModal, sharedModal ~= nil
     tree.tense = tree.tense or tree.verb.form.tense or "present"
     local finish = complements(document, tree, afterVerb, limit, depth)
     if finish then

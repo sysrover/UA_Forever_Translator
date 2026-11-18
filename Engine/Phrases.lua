@@ -71,6 +71,11 @@ local function nounHead(document, first, limit, case, locationOnly)
         end
         return nil
     end
+    local phrase, phraseEnd = L.phraseAt(document, first, limit, "noun")
+    if phrase then
+        local entry = L.choose(document, phrase, "noun")
+        if entry then return lexicalNoun(entry), phraseEnd end
+    end
     local pronouns, last = L.functional(document, "pronouns", first, limit)
     if pronouns and last <= limit and not locationOnly then
         local selected
@@ -97,6 +102,8 @@ local function nounHead(document, first, limit, case, locationOnly)
     end
     if ambiguous then return nil end
     local lexeme = L.choose(document, first, "noun", nil, nil, function(candidate)
+        local frame = candidate.lexeme.frame
+        if document.direction == "en-uk" and frame and frame.requiresLocation and not locationOnly then return false end
         return not reverseCase or candidate.form.case == reverseCase
             or (reverseCase == "nominative" and candidate.form.case == nil)
     end)
@@ -234,30 +241,33 @@ end
 function P.preposition(document, first, limit, motion)
     local choices, last = L.functional(document, "prepositions", first, limit)
     if not choices or last > limit then return nil end
-    local selected, after
+    local selected, after, priority, ambiguous
     for _, id in ipairs(choices) do
         local rule = ns.Linguistics.grammar.prepositions[id]
         local case = motion and rule.id == "in" and "accusative" or rule.case
         local object, ending = P.noun(document, last + 1, limit, case,
             rule.id == "in" or rule.id == "to" or rule.id == "from")
-        if object then
-            if selected then return nil end
-            selected, after = {rule=rule, object=object, case=case}, ending
+        local frame = object and object.entry and object.entry.lexeme.frame
+        if object and (not rule.requiresLexicalLocative or (frame and frame.locativePreposition == rule.targetUk)) then
+            local rank = rule.requiresLexicalLocative and 1 or 0
+            if not priority or rank > priority then
+                selected, after, priority, ambiguous = {rule=rule, object=object, case=case}, ending, rank, false
+            elseif rank == priority then ambiguous = true end
         end
     end
-    return selected, after
+    if not ambiguous then return selected, after end
 end
 
-function P.coordinated(document, first, limit, case)
-    local head, index = P.noun(document, first, limit, case)
+function P.coordinated(document, first, limit, case, startsPredicate, locationOnly)
+    local head, index = P.noun(document, first, limit, case, locationOnly)
     if not head then return nil end
     local members, joins = {head}, {}
     for _ = 2, 4 do
         local choices, last = L.functional(document, "connectors", index, limit)
         local connector = choices and ns.Linguistics.grammar.connectors[choices[1]]
         if not connector or (connector.id ~= "and" and connector.id ~= "or") then break end
-        local member, after = P.noun(document, last + 1, limit, case)
-        if not member then break end
+        local member, after = P.noun(document, last + 1, limit, case, locationOnly)
+        if not member or (startsPredicate and startsPredicate(last + 1)) then break end
         members[#members + 1] = member
         joins[#joins + 1] = connector
         index = after

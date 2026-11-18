@@ -69,7 +69,8 @@ local function grammarClause(document, first, last)
     local parsed = ns.Engine.ClauseAnalysis.parse(document, first, last)
     if not parsed then return nil end
     local output = ns.Engine.ClauseGeneration.render(parsed, document.direction, punctuation)
-    if output then return output, {intent=parsed.trees[1].kind, sourceRefs=ns.Linguistics.manifest.sourceRefs} end
+    if output then return output, {intent=parsed.trees[1].kind, imperative=parsed.trees[1].imperative == true,
+        sourceRefs=ns.Linguistics.manifest.sourceRefs} end
 end
 local function compute(text, direction)
     local tokens = ns.Engine.Tokenizer.scan(text)
@@ -132,6 +133,9 @@ local function compute(text, direction)
         local token = tokens[i]
         local fragment = fragments and fragments[i]
         local preserve = document.preserve and document.preserve[i]
+        if fragment and fragment.preserve then
+            preserve, fragment = {last=fragment.last, reason=fragment.preserve}, nil
+        end
         if not fragment and not preserve and ns.Engine.ClauseAnalysis.isNegation(token.key) then
             local stop = i
             while stop < #tokens and not tokens[stop + 1].key:match("^[.!?,;]$")

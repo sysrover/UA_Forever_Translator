@@ -11,6 +11,8 @@ local requiredNumber = { creaturePlural = "plural" }
 local dashJoins = { ["—"] = " — ", ["–"] = " – " }
 local sentenceJoins = { ["."] = ". ", ["!"] = "! ", ["?"] = "? " }
 local alternatives = { ["or"] = true, ["або"] = true, ["чи"] = true }
+local sharedPredicateJoins = {and=true, ["or"]=true, then=true, ["і"]=true, ["й"]=true,
+    ["та"]=true, ["або"]=true, ["чи"]=true, ["потім"]=true, ["тоді"]=true}
 local function joinAt(tokens, index, joins)
     local current = tokens[index]
     local wordJoin = joins[current.key] or dashJoins[current.key]
@@ -106,7 +108,9 @@ function P.compose(text, tokens, direction, grammarFallback)
                     and left:sub(-1) == "?"
                 if left and (sentence or alternativeQuestion or (not sourceHasEnd and not left:match("[?!]$"))) then
                     local right, rest = joinFrom(i + 1, depth - 1)
-                    if right and (not alternativeQuestion or right:sub(-1) == "?") then
+                    local detachedCommand = right and sharedPredicateJoins[tokens[i].key]
+                        and rest[1].rule.imperative and not matched.rule.imperative
+                    if right and not detachedCommand and (not alternativeQuestion or right:sub(-1) == "?") then
                         table.insert(rest, 1, matched)
                         local leftText = left:gsub((sentence or alternativeQuestion) and "[.!?]+$" or "%.$", "")
                         return leftText .. join .. (sentence and right or lowerStart(right)), rest
@@ -123,12 +127,13 @@ function P.compose(text, tokens, direction, grammarFallback)
 
     -- A failed composition can still contribute complete clauses to a preview.
     -- Keep their original boundaries so the caller can preserve every gap.
-    local starts, ends, sentenceEnds = {first}, {}, {}
+    local starts, ends, sentenceEnds, linked = {first}, {}, {}, {}
     local sentenceStart = 1
     for i = first + 1, #tokens - 1 do
         local join, sentence = joinAt(tokens, i, joins)
         if join then
             ends[#ends + 1] = endBefore(i)
+            if sharedPredicateJoins[tokens[i].key] then linked[i + 1] = starts[#starts] end
             starts[#starts + 1] = i + 1
             if sentence then
                 for segment = sentenceStart, #ends do sentenceEnds[segment] = #ends end
@@ -150,6 +155,12 @@ function P.compose(text, tokens, direction, grammarFallback)
             if match then
                 local last = finish
                 while last > start and tokens[last].key:match("^[.!?]$") do last = last - 1 end
+                local previous = linked[start] and fragments[linked[start]]
+                if linked[start] and match.rule.imperative and not (previous and previous.rule and previous.rule.imperative) then
+                    fragments[start] = {last=last, preserve="unresolved-predicate-scope"}
+                    nextSegment = block + 1
+                    break
+                end
                 local sourceEnd = tokens[last + 1]
                 local hasEnd = sourceEnd and sentenceJoins[sourceEnd.key]
                 local replacement = match.text:gsub(hasEnd and "[.!?]+$" or "[.!]+$", "")
@@ -161,7 +172,7 @@ function P.compose(text, tokens, direction, grammarFallback)
         end
         segment = nextSegment
     end
-    return nil, nil, accepted > 0 and fragments or nil
+    return nil, nil, next(fragments) and fragments or nil
 end
 local function slot(text, tokens, index, name, direction, limit)
     if index > limit then return nil end

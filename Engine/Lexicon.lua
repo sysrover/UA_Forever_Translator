@@ -63,6 +63,36 @@ function L.at(document, index)
     return L.lookup(document, token.key)
 end
 
+function L.phraseAt(document, first, limit, partOfSpeech)
+    if document.direction ~= "en-uk" then return nil end
+    local data = ns.Linguistics
+    local index = data and data.phraseLengths and data.phraseLengths[partOfSpeech]
+    local head = document.tokens[first]
+    if not index or not head or head.protected then return nil end
+    local lengths = index[head.key]
+    if not lengths then return nil end
+    for _, length in ipairs(lengths) do
+        local last = first + length - 1
+        if last <= limit then
+            local words = {}
+            for position = first, last do
+                local token = document.tokens[position]
+                if token.protected then break end
+                words[#words + 1] = token.key
+            end
+            if #words == length then
+                local phrase = table.concat(words, " ")
+                for _, candidate in ipairs(L.lookup(document, phrase)) do
+                    local lexeme = candidate.lexeme
+                    if lexeme.pos == partOfSpeech and lexeme.frame and lexeme.frame.lexicalPhrase then
+                        return phrase, last + 1
+                    end
+                end
+            end
+        end
+    end
+end
+
 local function matches(form, requested)
     for key,value in pairs(requested or {}) do
         if key=="mood" and value=="indicative" then

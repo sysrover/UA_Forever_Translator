@@ -242,7 +242,7 @@ local function ukrainianVerb(tree)
         form = L.inflect(entry, {tense=tree.tense or "present", mood="indicative", number=number, person=person})
     end
     if not form then return nil end
-    if tree.modal then
+    if tree.modal and not tree.sharedModal then
         local modal = ukrainianModals[tree.modal]
         if tree.modal == "can" or tree.modalSense == "possibility" then modal = ukrainianModals.can[key]
         elseif tree.modal == "could" then modal = modal[number == "plural" and "plural" or gender]
@@ -257,6 +257,7 @@ end
 
 local function englishVerb(tree, subject)
     local lemma = tree.verb.lexeme.en
+    if tree.sharedModal then return (tree.negative and "not " or "") .. lemma end
     if tree.tense == "infinitive" then return lemma end
     local person, number = agreement(tree)
     local third = person == 3 and number == "singular"
@@ -283,7 +284,11 @@ local function addPrepositions(parts, tree, english)
     for _, complement in ipairs(tree.prepositions or {}) do
         local value = G.noun(complement.object, english, complement.case, true)
         if not value then return false end
-        append(parts, english and complement.rule.en[1] or complement.rule.targetUk)
+        local rule = complement.rule
+        local entry = complement.object.entry
+        local frame = entry and entry.lexeme.frame
+        local locative = rule.id == "in" and complement.case == "locative" and frame and frame.locativePreposition
+        append(parts, english and (rule.targetEn or rule.en[1]) or locative or rule.targetUk)
         append(parts, value)
     end
     return true
