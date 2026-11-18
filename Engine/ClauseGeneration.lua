@@ -219,7 +219,8 @@ local function ukrainianVerb(tree)
         if frame.imperative then form = L.inflectLemma(frame.imperative, "verb", features)
         else form = L.inflect(entry, features) end
     elseif tree.modal or tree.tense == "infinitive" then
-        form = (tree.modal == "can" or tree.modal == "could") and frame.possibleOutcome or lemma
+        form = tree.purposeClause and frame.purposeLemma
+            or (tree.modal == "can" or tree.modal == "could") and frame.possibleOutcome or lemma
     elseif tree.tense == "past" then
         if number == "singular" and not gender then return nil end
         local features = {tense="past", mood="indicative", number=number, gender=number == "singular" and gender or nil}
@@ -247,6 +248,7 @@ end
 
 local function englishVerb(tree, subject)
     local lemma = tree.verb.lexeme.en
+    if tree.tense == "infinitive" then return lemma end
     local person, number = agreement(tree)
     local third = person == 3 and number == "singular"
     local prefix
@@ -338,6 +340,9 @@ end
 
 render = function(tree, english)
     if tree.kind == "duration" then return duration(tree, english) end
+    if tree.kind == "activity" then
+        return english and ("do a bit of " .. tree.activity.en[1]) or ("трохи " .. tree.activity.targetUk)
+    end
     if tree.kind == "wish" then
         local parts = {english and "Good luck" or tree.everyone and "Усім удачі" or "Удачі"}
         if tree.everyone and english then append(parts, "to everyone") end
@@ -441,6 +446,21 @@ render = function(tree, english)
     end
     if not addPrepositions(parts, tree, english) then return nil end
     for _, adverb in ipairs(tree.adverbs or {}) do append(parts, (english and adverb.en or adverb.uk)[1]) end
+    if tree.purpose then
+        local purpose = tree.purpose
+        local value, marker
+        if purpose.verb or purpose.kind == "activity" then
+            value = render(purpose, english)
+            marker = english and (purpose.negative and "not to" or "to") or "щоб"
+        else
+            value = G.noun(purpose.object, english, "accusative", true)
+            marker = english and "for" or "щоб отримати"
+        end
+        if not value then return nil end
+        if not english then parts[#parts] = parts[#parts] .. "," end
+        append(parts, marker)
+        append(parts, value)
+    end
     return table.concat(parts, " ")
 end
 

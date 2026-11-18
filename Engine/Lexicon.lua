@@ -76,7 +76,7 @@ end
 -- valency/sense entries rank above imported alternatives. Equal target meanings
 -- may share source analyses; different equally-ranked meanings remain visible.
 function L.choose(document, first, pos, requested, sense, compatible)
-    local candidates=L.at(document, first)
+    local candidates=type(first) == "string" and L.lookup(document, first) or L.at(document, first)
     local selected,score,ambiguous
     local target = document.direction == "en-uk" and "uk" or "en"
     for _,candidate in ipairs(candidates) do
