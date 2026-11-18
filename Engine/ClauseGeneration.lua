@@ -182,6 +182,7 @@ function G.noun(node, english, case, article, compoundModifier)
         if node.article == "definite" then return "the " .. value end
         local proper = node.term and node.term.category == "places"
         local mass = node.entry and node.entry.head.mass
+        if article == "definite" and not proper and not mass and number == "singular" then return "the " .. value end
         if (article or node.article == "indefinite") and not proper and not mass and number == "singular" then
             local indefinite = value:match("^[AEIOUaeiou]") and "an" or "a"
             return indefinite .. " " .. value
@@ -217,16 +218,23 @@ local function ukrainianVerb(tree)
     local form
     if tree.imperative then
         local features = {mood="imperative", person=2, number="singular"}
-        if frame.imperative then form = L.inflectLemma(frame.imperative, "verb", features)
+        if frame.imperative and not tree.negative then form = L.inflectLemma(frame.imperative, "verb", features)
         else form = L.inflect(entry, features) end
     elseif tree.modal or tree.tense == "infinitive" then
         form = tree.purposeClause and frame.purposeLemma
+            or (tree.modal == "can" and tree.object and tree.object.number == "singular") and frame.modalLemma
             or (tree.modal == "can" or tree.modal == "could") and frame.possibleOutcome or lemma
     elseif tree.tense == "past" then
-        if number == "singular" and not gender then return nil end
-        local features = {tense="past", mood="indicative", number=number, gender=number == "singular" and gender or nil}
         local completed = frame.pastLemma or (tree.aspect == "perfect" and frame.completed)
-        if completed then form = L.inflectLemma(completed, "verb", features)
+        local features = {tense="past", mood="indicative", number=number, gender=number == "singular" and gender or nil}
+        if number == "singular" and not gender then
+            if not tree.ellipticSubject then return nil end
+            features.gender = "masculine"
+            local masculine = L.inflectLemma(completed or lemma, "verb", features)
+            features.gender = "feminine"
+            local feminine = L.inflectLemma(completed or lemma, "verb", features)
+            if masculine and feminine then form = masculine .. "/" .. feminine end
+        elseif completed then form = L.inflectLemma(completed, "verb", features)
         else form = L.inflect(entry, features) end
     elseif tree.tense == "future" and entry.head.aspect ~= "perfective" then
         form = future[key] .. " " .. lemma
@@ -283,7 +291,9 @@ end
 
 local function subjectText(tree, english)
     if tree.inherited then return "" end
-    if tree.subject then return G.noun(tree.subject, english, "nominative", false) end
+    if tree.subject then
+        return G.noun(tree.subject, english, "nominative", english and tree.where and not tree.question and "definite")
+    end
     if tree.kind == "nounPhrase" or tree.imperative or tree.tense == "infinitive" or not english then return "" end
     local _, number, gender, key = agreement(tree)
     return inferredPronouns[key] or (number == "singular" and inferredPronouns[gender])
@@ -343,6 +353,35 @@ render = function(tree, english)
     if tree.kind == "duration" then return duration(tree, english) end
     if tree.kind == "activity" then
         return english and ("do a bit of " .. tree.activity.en[1]) or ("трохи " .. tree.activity.targetUk)
+    end
+    if tree.kind == "need" then
+        local object = tree.object
+        local value = G.noun(object, english, "nominative", true)
+        if not value then return nil end
+        if english then return "Need " .. value end
+        local agreement = object.number == "plural" and "plural" or object.gender
+        local forms = {masculine="Потрібен", feminine="Потрібна", neuter="Потрібне", plural="Потрібні"}
+        return (forms[agreement] or "Потрібно") .. " " .. value
+    end
+    if tree.kind == "existential" then
+        local noun = tree.subject
+        local subject = G.noun(noun, english, "nominative", true)
+        if not subject then return nil end
+        local category = noun.term and noun.term.category
+        local profession = category == "classes" or category == "roles"
+        if profession then subject = ns.Engine.Normalize.word(subject) end
+        local opening = english and (noun.number == "plural" and "Are there " or "Is there ")
+            or (tree.nearby and "Чи є тут " or "Чи є ")
+        local output = opening .. subject .. (english and tree.nearby and " around" or "")
+        if not tree.relative then return output end
+        local relative = render(tree.relative, english)
+        if not relative then return nil end
+        local person = noun.animacy == "animate" or profession or tree.relativeMarker == "who" or tree.relativeMarker == "хто"
+        local markers = {masculine="який", feminine="яка", neuter="яке", plural="які"}
+        local agreement = noun.number == "plural" and "plural" or noun.gender or (profession and "masculine")
+        local connector = english and (person and " who " or " that ")
+            or ", " .. (markers[agreement] or (person and "хто" or "що")) .. " "
+        return output .. connector .. relative
     end
     if tree.kind == "wish" then
         local parts = {english and "Good luck" or tree.everyone and "Усім удачі" or "Удачі"}
@@ -440,7 +479,7 @@ render = function(tree, english)
                 if not value then return nil end
                 if index > 1 then append(parts, english and "and" or "і")
                 elseif not english then parts[#parts] = parts[#parts] .. "," end
-                append(parts, english and "that" or "що")
+                if not embedded.where and not embedded.why then append(parts, english and "that" or "що") end
                 append(parts, value)
             end
         end
@@ -465,15 +504,6 @@ render = function(tree, english)
     return table.concat(parts, " ")
 end
 
-local function upperStart(value)
-    local word = value:match("^[a-z]") or value:match("^[\208\209\210][\128-\191]")
-    if not word then return value end
-    local lower = "абвгґдеєжзиіїйклмнопрстуфхцчшщьюя"
-    local upper = "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ"
-    local index = lower:find(word, 1, true)
-    return (index and upper:sub(index, index + 1) or word:upper()) .. value:sub(#word + 1)
-end
-
 function G.render(parse, direction, punctuation)
     local english = direction == "uk-en"
     local parts, last = {}, nil
@@ -495,5 +525,5 @@ function G.render(parse, direction, punctuation)
         append(parts, value)
         last = tree
     end
-    return upperStart(table.concat(parts, " ")) .. (last.question and "?" or punctuation or ".")
+    return ns.Engine.Normalize.upperStart(table.concat(parts, " ")) .. (last.question and "?" or punctuation or ".")
 end

@@ -132,6 +132,12 @@ local function compute(text, direction)
         local token = tokens[i]
         local fragment = fragments and fragments[i]
         local preserve = document.preserve and document.preserve[i]
+        if not fragment and not preserve and ns.Engine.ClauseAnalysis.isNegation(token.key) then
+            local stop = i
+            while stop < #tokens and not tokens[stop + 1].key:match("^[.!?,;]$")
+                and not (fragments and fragments[stop + 1]) do stop = stop + 1 end
+            preserve = {last=stop, reason="unresolved-negation"}
+        end
         local term, last, replacement
         if fragment then
             last, replacement = fragment.last, fragment.text

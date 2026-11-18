@@ -12,6 +12,7 @@ local copula = {am="present", is="present", are="present", was="past", were="pas
 local negativeCopula = {["isn't"]="is", ["aren't"]="are", ["wasn't"]="was", ["weren't"]="were"}
 local have = {have=true, has=true, had=true}
 local contracted = {
+    idk={"i","do","know",true},
     ["i'm"]={"i","am"}, ["you're"]={"you","are"}, ["we're"]={"we","are"}, ["they're"]={"they","are"},
     ["i've"]={"i","have"}, ["you've"]={"you","have"}, ["we've"]={"we","have"}, ["they've"]={"they","have"},
     ["i'll"]={"i","will"}, ["you'll"]={"you","will"}, ["he'll"]={"he","will"}, ["she'll"]={"she","will"},
@@ -154,11 +155,14 @@ local function complements(document, tree, index, limit, depth)
         local marker = english and "that" or "що"
         local start = index
         if not english and P.key(document, start, limit) == "," then start = start + 1 end
-        if P.key(document, start, limit) == marker then
-            local embedded, finish = simple(document, start + 1, limit, nil, depth + 1)
+        local linker = P.key(document, start, limit)
+        local indirect = linker == "where" or linker == "де" or linker == "why" or linker == "чому"
+        if linker == marker or indirect then
+            local embedded, finish = simple(document, indirect and start or start + 1, limit, nil, depth + 1, indirect)
             if embedded and embedded.subject and not embedded.imperative and not embedded.question then
                 tree.content = {embedded}
                 index = finish
+                if indirect then return index end
                 for _ = 1, 2 do
                     local nextMarker = index
                     if P.key(document, nextMarker, limit) == "," then nextMarker = nextMarker + 1 end
@@ -323,26 +327,87 @@ local function wish(document, first, limit)
     if tree.everyone or tree.recipient or tree.prepositions then return tree, nextIndex end
 end
 
-simple = function(document, first, limit, previous, depth)
+local function existentialQuestion(document, first, limit, depth)
+    if depth >= 3 then return end
+    local english = document.direction == "en-uk"
+    local key, index, copulaNumber = P.key(document, first, limit), first
+    local nearby
+    if english then
+        if key == "any" and document.tokens[limit + 1] and document.tokens[limit + 1].key == "?" then
+            index = index + 1
+        elseif (key == "is" or key == "are") and P.key(document, index + 1, limit) == "there" then
+            copulaNumber, index = key == "is" and "singular" or "plural", index + 2
+            if P.key(document, index, limit) == "any" then index = index + 1 end
+        else return end
+    elseif key == "чи" and P.key(document, index + 1, limit) == "є" then
+        index = index + 2
+        if P.key(document, index, limit) == "тут" then nearby, index = true, index + 1 end
+    else return end
+    local subject, after = P.noun(document, index, limit, "nominative")
+    if not subject or (copulaNumber and subject.number ~= copulaNumber) then return end
+    local here = P.key(document, after, limit)
+    if here == "around" or here == "here" or here == "тут" then nearby, after = true, after + 1 end
+    local tree = {kind="existential", subject=subject, question=true, nearby=nearby}
+    if after > limit then return tree, after end
+    if P.key(document, after, limit) == "," then after = after + 1 end
+    local marker = P.key(document, after, limit)
+    if marker == "who" or marker == "that" or marker == "which" or marker == "хто" or marker == "що"
+        or marker == "який" or marker == "яка" or marker == "яке" or marker == "які" then
+        local relative, finish = simple(document, after + 1, limit, {subject=subject}, depth + 1, true)
+        if relative and relative.inherited and not relative.question then
+            tree.relative, tree.relativeMarker = relative, marker
+            return tree, finish
+        end
+    end
+end
+
+local needAgreement = {["потрібен"]="masculine", ["потрібна"]="feminine", ["потрібне"]="neuter", ["потрібні"]="plural"}
+
+simple = function(document, first, limit, previous, depth, indirect)
     local english = document.direction == "en-uk"
     local key = P.key(document, first, limit)
     local special, after = duration(document, first, limit)
     if special then return special, after end
     special, after = wish(document, first, limit)
     if special then return special, after end
+    if not indirect then
+        special, after = existentialQuestion(document, first, limit, depth)
+        if special then return special, after end
+    end
+    if not english and needAgreement[key] then
+        local object, finish = P.coordinated(document, first + 1, limit, "nominative")
+        local agreement = object and (object.number == "plural" and "plural" or object.gender)
+        if agreement == needAgreement[key] then return {kind="need", object=object}, finish end
+    end
     local tree, index = {kind="clause"}, first
     if key == "where" or key == "де" then
-        tree.where, tree.question, index = true, true, index + 1
+        tree.where, tree.question, index = true, not indirect, index + 1
     elseif key == "why" or key == "чому" then
-        tree.why, tree.question, index = true, true, index + 1
+        tree.why, tree.question, index = true, not indirect, index + 1
     elseif key == "чи" and not english then
         tree.question, index = true, index + 1
     end
+    local headIndex = index
     local head = P.key(document, index, limit)
+    if english and index == first then
+        local commandStart
+        if head == "don't" or head == "dont" then commandStart = index + 1
+        elseif head == "do" and P.key(document, index + 1, limit) == "not" then commandStart = index + 2 end
+        if commandStart then
+            local command, afterVerb = verb(document, commandStart, limit, nil, true, true)
+            if command and not lexemeFrame(command).impersonalNeed then
+                tree.verb, tree.imperative, tree.negative, tree.tense = command, true, true, "present"
+                local finish = complements(document, tree, afterVerb, limit, depth)
+                if finish then return tree, finish end
+                return nil
+            end
+        end
+    end
     local aux
     if english then aux = auxiliary[head] end
     local invertedCopula = negativeCopula[head] or head
-    local inverted = english and (aux or copula[invertedCopula])
+    local relativeSubject = indirect and previous and previous.subject
+    local inverted = english and not relativeSubject and (aux or copula[invertedCopula])
     if inverted then
         tree.question = true
         if not aux then
@@ -360,13 +425,23 @@ simple = function(document, first, limit, previous, depth)
                 break
             end
         end
-    else
+    elseif not relativeSubject then
         subject, nextIndex = P.coordinated(document, index, limit, "nominative")
     end
     if subject then tree.subject, index = subject, nextIndex end
     local current = contraction and contraction[2] or P.key(document, index, limit)
     local contractedNegative = negativeCopula[current]
     if contractedNegative then current = contractedNegative end
+    if english and subject and not inverted and not contraction and not indirect
+        and document.tokens[limit + 1] and document.tokens[limit + 1].key == "?" then
+        local ongoing, afterVerb = verb(document, index, limit, subject, false, false, nil, "present")
+        if ongoing then
+            tree.verb, tree.tense, tree.aspect, tree.question = ongoing, "present", "continuous", true
+            local finish = complements(document, tree, afterVerb, limit, depth)
+            if finish then return tree, finish end
+            return nil
+        end
+    end
     -- Auxiliary selection is licensed by a participle. A possessive "have"
     -- and an ordinary copula continue through the existing paths.
     if english and subject and (have[current] or copula[current]) then
@@ -409,7 +484,8 @@ simple = function(document, first, limit, previous, depth)
         aux, index = auxiliary[P.key(document, index, limit)], index + 1
     end
     if aux then
-        tree.tense, tree.modal, tree.negative = aux.tense, aux.modal, tree.negative or aux.negative
+        tree.tense, tree.modal, tree.negative = aux.tense, aux.modal,
+            tree.negative or aux.negative or (contraction and contraction[4])
         tree.inferred = aux.person and {person=aux.person, number=aux.number} or nil
         local auxiliarySubject = subject or (previous and previous.subject)
         if auxiliarySubject then
@@ -425,6 +501,9 @@ simple = function(document, first, limit, previous, depth)
         end
     end
     if tree.copula then
+        if not subject and relativeSubject then
+            subject, tree.subject, tree.inherited = relativeSubject, relativeSubject, true
+        end
         if not subject then return nil end
         tree.copula, tree.tense = true, tree.tense or "present"
         if english and P.key(document, index, limit) == "off" and P.key(document, index + 1, limit) == "to" then
@@ -445,7 +524,9 @@ simple = function(document, first, limit, previous, depth)
     tree.imperative = (not subject and not inheritedSubject and not aux and english) or inheritedImperative
     if inverted and not subject then return nil end
     local afterVerb
-    tree.verb, afterVerb = verb(document, index, limit, subject or inheritedSubject, aux ~= nil, tree.imperative)
+    local contractedPredicate = contraction and contraction[3]
+    tree.verb, afterVerb = verb(document, contractedPredicate and headIndex or index, limit,
+        subject or inheritedSubject, aux ~= nil, tree.imperative, nil, nil, contractedPredicate)
     if not tree.verb and not subject and not english and not aux then
         tree.verb, afterVerb = verb(document, index, limit, nil, false, true)
         tree.imperative = tree.verb ~= nil
@@ -457,12 +538,23 @@ simple = function(document, first, limit, previous, depth)
     if not tree.verb and english and subject and not aux and not tree.question then
         local imperative, after = verb(document, first, limit, nil, false, true)
         if imperative then
-            local command = {kind="clause", verb=imperative, imperative=true}
-            local finish = complements(document, command, after, limit, depth)
-            if finish then return command, finish end
+            tree, subject, afterVerb = {kind="clause", verb=imperative, imperative=true}, nil, after
+        end
+    end
+    if not tree.verb and tree.imperative and english and not subject and not aux then
+        local past = L.choose(document, index, "verb", {tense="past"}, nil, function(candidate)
+            return not candidate.form.verbalForm and not candidate.form.mood
+        end)
+        if past then
+            tree.verb, tree.imperative, tree.ellipticSubject, afterVerb = past, nil, true, index + 1
         end
     end
     if not tree.verb then return nil end
+    if english and tree.imperative and not tree.negative and lexemeFrame(tree.verb).impersonalNeed then
+        local object, finish = P.coordinated(document, afterVerb, limit, "accusative")
+        if object then return {kind="need", object=object}, finish end
+        return nil
+    end
     tree.subject = subject or inheritedSubject
     tree.inherited = inheritedSubject ~= nil and inheritedSubject ~= false
     tree.tense = tree.tense or tree.verb.form.tense or "present"
@@ -555,4 +647,10 @@ function A.hasClauseCue(document)
     end
     local key = tokens[#tokens].key
     return auxiliary[key] ~= nil or negativeCopula[key] ~= nil
+end
+
+function A.isNegation(key)
+    local aux = auxiliary[key]
+    return key == "not" or key == "never" or key == "dont" or key == "не" or key == "ніколи"
+        or negativeCopula[key] ~= nil or (aux and aux.negative)
 end

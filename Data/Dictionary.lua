@@ -10356,6 +10356,8 @@ ns.Data = {
             },
             ["prefixes"] = {
                 ["ah right"] = "А, так, ",
+                ["never mind"] = "Та байдуже, ",
+                ["nvm"] = "Та байдуже, ",
                 ["oh right"] = "О, так, ",
                 ["ok"] = "Гаразд, ",
                 ["okay"] = "Гаразд, ",
@@ -30669,7 +30671,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "503e201e203101287c46623a53174e51705b0b2dbacfb8e7ac7ac8797def624c"
+        ["version"] = "43da329ad4ee90b489ff586ae042d4959874c0baf37541242af0e08f0870677e"
     },
     ["rules"] = {
         ["en-uk"] = {

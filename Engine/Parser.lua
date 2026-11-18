@@ -34,15 +34,19 @@ function P.compose(text, tokens, direction, grammarFallback)
     local composition = ns.Data.composition and ns.Data.composition[direction]
     if not composition or #tokens == 0 or #tokens > 96 then return nil end
     local prefixes, joins = composition.prefixes, composition.joins
-    local first, prefixEnd, prefix = 1, 1, prefixes[tokens[1].key]
-    local second = tokens[2] and tokens[2].key == "," and 3 or 2
-    if tokens[second] and not tokens[second].protected then
-        local pair = prefixes[tokens[1].key .. " " .. tokens[second].key]
-        if pair then prefix, prefixEnd = pair, second end
+    local function prefixAt(start, limit)
+        local ending, prefix = start, prefixes[tokens[start].key]
+        local second = tokens[start + 1] and tokens[start + 1].key == "," and start + 2 or start + 1
+        if second <= limit and not tokens[second].protected then
+            local pair = prefixes[tokens[start].key .. " " .. tokens[second].key]
+            if pair then prefix, ending = pair, second end
+        end
+        if not prefix then return start end
+        local separator = tokens[ending + 1] and tokens[ending + 1].key
+        return ending + ((separator == "," or dashJoins[separator]) and 2 or 1), prefix
     end
+    local first, prefix = prefixAt(1, #tokens)
     if prefix then
-        local separator = tokens[prefixEnd + 1] and tokens[prefixEnd + 1].key
-        first = prefixEnd + ((separator == "," or dashJoins[separator]) and 2 or 1)
         if first > #tokens then return nil end
     else
         local found
@@ -67,6 +71,13 @@ function P.compose(text, tokens, direction, grammarFallback)
         else
             output, rule, slots = P.translate(text, tokens, direction, start, finish)
             if not output and grammarFallback then output, rule = grammarFallback(start, finish) end
+            if not output then
+                local rest, lead = prefixAt(start, finish)
+                if lead then
+                    local matched = translateClause(rest, finish)
+                    if matched then output, rule, slots = lead .. lowerStart(matched.text), matched.rule, matched.slots end
+                end
+            end
         end
         local match = output and {text = output, rule = rule, slots = slots} or false
         row[finish] = match

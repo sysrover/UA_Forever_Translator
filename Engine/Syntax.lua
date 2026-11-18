@@ -368,9 +368,7 @@ function S.translate(document)
     -- No unbounded chart search and no reconstruction of the input from words.
     local minimum = math.max(1, #document.tokens - 24)
     for last = #document.tokens - 1, minimum, -1 do
-        -- Keep a boundary comma in the original gap between fragments.
-        if document.tokens[last].key == "," then tree = nil
-        else tree = S.parse(document, last) end
+        tree = S.parse(document, last)
         if tree then
             local output = ns.Engine.Transfer.render(tree, document.direction)
             if output then
