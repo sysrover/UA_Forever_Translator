@@ -32,11 +32,21 @@ function D.longest(tokens, first, direction, category, limit, requiredCase, requ
     end
     return term, last
 end
+
+local function generalTerm(token, direction)
+    if direction ~= "uk-en" or token.protected or not ns.Engine.GeneralUkEn then return nil end
+    local curated = ns.Data.aliases[direction][token.key]
+    -- Leave intentionally ambiguous curated forms for the user's review.
+    if curated and (curated._id or curated._literal or curated._morph) then return nil end
+    return ns.Engine.GeneralUkEn.lookup(token.key)
+end
+
 function D.lookup(text, direction)
     local tokens = ns.Engine.Tokenizer.scan(text)
     if not tokens or #tokens == 0 then return nil end
     local term, last = D.longest(tokens, 1, direction)
     if last == #tokens then return term end
+    if #tokens == 1 then return generalTerm(tokens[1], direction) end
 end
 
 function D.literal(tokens, first, direction, fragments)
@@ -57,5 +67,7 @@ function D.literal(tokens, first, direction, fragments)
             if derived then entry, last = derived, i end
         end
     end
-    return entry, last
+    if entry then return entry, last end
+    local general = generalTerm(tokens[first], direction)
+    if general then return general, first end
 end

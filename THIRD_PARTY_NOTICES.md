@@ -4,4 +4,10 @@ Selected Ukrainian game terms and grammatical forms are drawn from [UA Forever](
 
 World of Warcraft, client fonts, and game content belong to their respective rights holders. The addon refers to a font already shipped with the client. This repository carries no client binaries, extracted Blizzard resources, or copied font files.
 
-This notice records attribution. A distribution license has not been selected for this project.
+## General Ukrainian–English dictionary
+
+[Data/GeneralUkEn.lua](Data/GeneralUkEn.lua) adapts the [KOReader Dicts Ukrainian → English StarDict dictionary](https://danielgregorini.github.io/koreader-dicts/en/uk-en/) by Daniel Gregorini and contributors, built on 2026-09-21. That dictionary is derived from [the Ukrainian entries of English Wiktionary](https://en.wiktionary.org/wiki/Category:Ukrainian_lemmas) via [Kaikki / Wiktextract](https://kaikki.org/dictionary/Ukrainian/index.html).
+
+The imported Lua data is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). This adaptation extracts brief English equivalents, filters explanatory prose, normalizes Ukrainian spelling keys, and packs entries and inflected aliases into a lookup index. The downloaded archive has SHA-256 `690c61e8bb7673e0bdeab6f0bd5c5884f648998373dfdd9b04b9c5d4e7bfb76d`.
+
+A separate distribution license has not been selected for the addon's original code.
