@@ -181,6 +181,35 @@ function P.preposition(document, first, limit, motion)
     return selected, after
 end
 
+function P.coordinated(document, first, limit, case)
+    local head, index = P.noun(document, first, limit, case)
+    if not head then return nil end
+    local members, joins = {head}, {}
+    for _ = 2, 4 do
+        local choices, last = L.functional(document, "connectors", index, limit)
+        local connector = choices and ns.Linguistics.grammar.connectors[choices[1]]
+        if not connector or (connector.id ~= "and" and connector.id ~= "or") then break end
+        local member, after = P.noun(document, last + 1, limit, case)
+        if not member then break end
+        members[#members + 1] = member
+        joins[#joins + 1] = connector
+        index = after
+    end
+    if #members == 1 then return head, index end
+    local person, number = head.person, head.number
+    for i, connector in ipairs(joins) do
+        local member = members[i + 1]
+        if connector.id == "and" then
+            person, number = math.min(person, member.person), "plural"
+        elseif case == "nominative" then
+            -- Agreement across a disjunction is language-specific. Leave a
+            -- mixed-number subject unresolved instead of guessing a form.
+            if person ~= member.person or number ~= member.number then return nil end
+        end
+    end
+    return {members=members, joins=joins, person=person, number=number}, index
+end
+
 function P.quantity(document, first, limit)
     local key = P.key(document, first, limit)
     if not key then return nil end

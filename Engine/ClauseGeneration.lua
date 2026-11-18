@@ -90,6 +90,17 @@ local function demonstrative(node, english, case, number)
 end
 
 function G.noun(node, english, case, article)
+    if node.members then
+        local values = {}
+        for index, member in ipairs(node.members) do
+            local join = node.joins[index - 1]
+            if join then append(values, (english and join.en or join.uk)[1]) end
+            local value = G.noun(member, english, case, article)
+            if not value then return nil end
+            append(values, value)
+        end
+        return table.concat(values, " ")
+    end
     if node.raw then return node.raw end
     if node.pronoun then
         local forms = english and node.pronoun.en or node.pronoun.uk
@@ -393,6 +404,10 @@ end
 function G.render(parse, direction, punctuation)
     local english = direction == "uk-en"
     local parts, last = {}, nil
+    local final = parse.trees[#parse.trees]
+    if english and punctuation == "?" and final.kind == "clause" and not final.imperative then
+        final.question = true
+    end
     if parse.prefix then append(parts, (english and parse.prefix.en or parse.prefix.uk)[1]) end
     for i, tree in ipairs(parse.trees) do
         local value = render(tree, english)

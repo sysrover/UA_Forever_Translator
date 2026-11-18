@@ -81,12 +81,12 @@ local function complements(document, tree, index, limit)
     if frame.recipientCase then
         recipient, after = P.noun(document, index, limit, english and "accusative" or frame.recipientCase)
         if recipient then
-            local object, last = P.noun(document, after, limit, objectCase)
+            local object, last = P.coordinated(document, after, limit, objectCase)
             if object then tree.recipient, tree.object, index = recipient, object, last end
         end
     end
     if not tree.object and not frame.motion and (english or not frame.objectPreposition or preposition) then
-        local object, nextIndex = P.noun(document, index, limit, objectCase)
+        local object, nextIndex = P.coordinated(document, index, limit, objectCase)
         if object then tree.object, index = object, nextIndex
         elseif preposition then return nil end
     end
@@ -200,7 +200,7 @@ local function simple(document, first, limit, previous)
             end
         end
     else
-        subject, nextIndex = P.noun(document, index, limit, "nominative")
+        subject, nextIndex = P.coordinated(document, index, limit, "nominative")
     end
     if subject then tree.subject, index = subject, nextIndex end
     local current = contraction and contraction[2] or P.key(document, index, limit)
