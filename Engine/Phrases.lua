@@ -9,6 +9,7 @@ local demonstratives = {this="near", these="near", that="far", those="far",
     ["того"]="far", ["той"]="far", ["та"]="far", ["те"]="far", ["ті"]="far", ["ту"]="far"}
 local semanticNouns = {roles=true, classes=true, places=true, creatures=true, goods=true, game=true,
     professions=true, activities=true, equipment=true, stats=true, countries=true, territories=true}
+local groupNouns = {group=true, party=true, team=true, raid=true}
 local timeUnits = {
     min="хвилина", mins="хвилина", minute="хвилина", minutes="хвилина",
     s="секунда", sec="секунда", secs="секунда", second="секунда", seconds="секунда",
@@ -44,7 +45,10 @@ local function curated(document, first, last, requiredCase, locationOnly)
             and (not requiredCase or not candidate.features.case or requiredCase == candidate.features.case)
             and not contextual then
             if not selected or candidate.last > selected.last then selected = candidate
-            elseif candidate.last == selected.last and candidate.id ~= selected.id then return nil, true end
+            elseif candidate.last == selected.last then
+                if candidate.id ~= selected.id then return nil, true end
+                if requiredCase and candidate.features.case and not selected.features.case then selected = candidate end
+            end
         end
     end
     return selected
@@ -52,12 +56,49 @@ end
 
 local function lexicalNoun(lexeme)
     return {entry=lexeme, person=3, number=lexeme.form.number or lexeme.head.number or "singular",
-        gender=lexeme.form.gender or lexeme.head.gender, animacy=lexeme.head.animacy}
+        gender=lexeme.form.gender or lexeme.head.gender, animacy=lexeme.head.animacy, sourceCase=lexeme.form.case}
+end
+
+local function curatedNoun(candidate)
+    local features = candidate.features
+    return {term=candidate.term, person=3, number=features.number or "singular",
+        gender=features.gender, animacy=features.animacy, sourceCase=features.case}
+end
+
+local function groupDestination(document, first, limit)
+    local english = document.direction == "en-uk"
+    local marker = P.key(document, first, limit)
+    if english and marker ~= "for" or not english and marker ~= "на" and marker ~= "до" then return nil end
+    local start = first + 1
+    local case = not english and (marker == "на" and "accusative" or "genitive") or nil
+    local place = curated(document, start, limit, case, true)
+    if not place and english and P.key(document, start, limit) == "the" then
+        place = curated(document, start + 1, limit, case, true)
+    end
+    if place then return curatedNoun(place), place.last + 1 end
 end
 
 local function possessive(candidate)
     local frame = candidate.lexeme.frame
     return frame and frame.possessive
+end
+
+function P.pronoun(document, first, limit, case, personOnly)
+    local choices, last = L.functional(document, "pronouns", first, limit)
+    if not choices then return nil end
+    local selected
+    for _, match in ipairs(choices) do
+        local valid = case == match.case or (case ~= "nominative" and match.case ~= "nominative"
+            and match.case ~= "possessive" and document.direction == "en-uk")
+        local candidate = ns.Linguistics.grammar.pronouns[match.id]
+        if valid and (not personOnly or candidate.id ~= "it") then
+            if selected and selected ~= candidate then return false end
+            selected = candidate
+        end
+    end
+    if selected then
+        return {pronoun=selected, person=selected.person, gender=selected.gender, number=selected.number}, last + 1
+    end
 end
 
 local function nounHead(document, first, limit, case, locationOnly)
@@ -76,30 +117,13 @@ local function nounHead(document, first, limit, case, locationOnly)
         local entry = L.choose(document, phrase, "noun")
         if entry then return lexicalNoun(entry), phraseEnd end
     end
-    local pronouns, last = L.functional(document, "pronouns", first, limit)
-    if pronouns and last <= limit and not locationOnly then
-        local selected
-        for _, match in ipairs(pronouns) do
-            local valid = case == match.case or (case ~= "nominative" and match.case ~= "nominative"
-                and match.case ~= "possessive" and document.direction == "en-uk")
-            if valid then
-                local candidate = ns.Linguistics.grammar.pronouns[match.id]
-                if selected and selected ~= candidate then return nil end
-                selected = candidate
-            end
-        end
-        if selected then
-            return {pronoun=selected, person=selected.person, gender=selected.gender,
-                number=selected.number}, last + 1
-        end
+    if not locationOnly then
+        local pronoun, after = P.pronoun(document, first, limit, case)
+        if pronoun ~= nil then return pronoun or nil, after end
     end
     local reverseCase = document.direction == "uk-en" and case or nil
     local known, ambiguous = curated(document, first, limit, reverseCase, locationOnly)
-    if known then
-        local term, features = known.term, known.features
-        return {term=term, person=3, number=features.number or "singular",
-            gender=features.gender, animacy=features.animacy}, known.last + 1
-    end
+    if known then return curatedNoun(known), known.last + 1 end
     if ambiguous then return nil end
     local lexeme = L.choose(document, first, "noun", nil, nil, function(candidate)
         local frame = candidate.lexeme.frame
@@ -107,6 +131,11 @@ local function nounHead(document, first, limit, case, locationOnly)
         return not reverseCase or candidate.form.case == reverseCase
             or (reverseCase == "nominative" and candidate.form.case == nil)
     end)
+    if not lexeme and reverseCase and not locationOnly and groupDestination(document, first + 1, limit) then
+        lexeme = L.choose(document, first, "noun", {case=reverseCase}, nil, function(candidate)
+            return groupNouns[candidate.lexeme.en]
+        end)
+    end
     if lexeme then
         local node = lexicalNoun(lexeme)
         local frame = lexeme.lexeme.frame
@@ -172,7 +201,8 @@ function P.noun(document, first, limit, case, locationOnly, count, simple)
     -- wins, with a bounded number of modifiers.
     for _ = 0, 2 do
         local head, after = nounHead(document, index, limit, case, locationOnly)
-        if head and (not head.pronoun or index == first) and (not intensity or #adjectives > 0) then
+        if head and (not head.pronoun or index == first) and (not intensity or #adjectives > 0)
+            and (not best or after > nextIndex or (after == nextIndex and head.term and not best.term)) then
             best, nextIndex, headIndex = head, after, index
             if #adjectives > 0 then best.adjectives = {unpack(adjectives)} end
         end
@@ -235,10 +265,26 @@ function P.noun(document, first, limit, case, locationOnly, count, simple)
             best.class, nextIndex = class, after
         end
     end
+    if not simple and not (best.raw or best.pronoun or best.nominalObject or best.class) and nextIndex <= limit then
+        local marker = P.key(document, nextIndex, limit)
+        local lemma = best.entry and best.entry.lexeme.en or best.term and best.term.en
+        if lemma and groupNouns[ns.Engine.Normalize.word(lemma)] then
+            local destination, after = groupDestination(document, nextIndex, limit)
+            if destination then best.destination, nextIndex = destination, after end
+        end
+        if not best.destination and (not en or marker == "of") then
+            local dependent, after = P.noun(document, nextIndex + (en and 1 or 0), limit,
+                "genitive", false, false, true)
+            if dependent and not dependent.pronoun and (en or dependent.sourceCase == "genitive") then
+                best.genitive, nextIndex = dependent, after
+            end
+        end
+    end
     return best, nextIndex
 end
 
 function P.preposition(document, first, limit, motion)
+    if document.direction == "en-uk" and P.key(document, first, limit) == "of" then return nil end
     local choices, last = L.functional(document, "prepositions", first, limit)
     if not choices or last > limit then return nil end
     local selected, after, priority, ambiguous
@@ -248,8 +294,9 @@ function P.preposition(document, first, limit, motion)
         local object, ending = P.noun(document, last + 1, limit, case,
             rule.id == "in" or rule.id == "to" or rule.id == "from")
         local frame = object and object.entry and object.entry.lexeme.frame
-        if object and (not rule.requiresLexicalLocative or (frame and frame.locativePreposition == rule.targetUk)) then
-            local rank = rule.requiresLexicalLocative and 1 or 0
+        if object and (not rule.requiresLexicalLocative or (frame and frame.locativePreposition == rule.targetUk))
+            and (not rule.requiresNearLandmark or (frame and frame.atNearLandmark)) then
+            local rank = (rule.requiresLexicalLocative or rule.requiresNearLandmark) and 1 or 0
             if not priority or rank > priority then
                 selected, after, priority, ambiguous = {rule=rule, object=object, case=case}, ending, rank, false
             elseif rank == priority then ambiguous = true end

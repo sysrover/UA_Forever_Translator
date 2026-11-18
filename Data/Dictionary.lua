@@ -347,6 +347,9 @@ ns.Data = {
                     }
                 }
             },
+            ["attempt"] = {
+                ["_id"] = "activity.attempt"
+            },
             ["auction"] = {
                 ["house"] = {
                     ["_id"] = "game.auction_house"
@@ -1390,6 +1393,13 @@ ns.Data = {
                     ["_id"] = "slang.loot.gdkp"
                 }
             },
+            ["greater"] = {
+                ["healing"] = {
+                    ["potion"] = {
+                        ["_id"] = "goods.greater_healing_potion"
+                    }
+                }
+            },
             ["greed"] = {
                 ["roll"] = {
                     ["_id"] = "slang.loot.greed-roll"
@@ -1505,6 +1515,14 @@ ns.Data = {
                     ["_id"] = "goods.health_potion"
                 }
             },
+            ["healthstone"] = {
+                ["_id"] = "goods.healthstone"
+            },
+            ["heavy"] = {
+                ["leather"] = {
+                    ["_id"] = "goods.heavy_leather"
+                }
+            },
             ["hello"] = {
                 ["_literal"] = {
                     ["id"] = "literal.hello",
@@ -1563,6 +1581,7 @@ ns.Data = {
                 ["_id"] = "recipient.him"
             },
             ["hogger"] = {
+                ["_id"] = "npc.hogger",
                 ["_literal"] = {
                     ["id"] = "literal.npc.hogger",
                     ["sourceRefs"] = { "ua-forever:npc.448" },
@@ -2103,6 +2122,11 @@ ns.Data = {
             ["mage"] = {
                 ["_id"] = "class.mage"
             },
+            ["mageweave"] = {
+                ["cloth"] = {
+                    ["_id"] = "goods.mageweave_cloth"
+                }
+            },
             ["main"] = {
                 ["spec"] = {
                     ["_literal"] = {
@@ -2199,6 +2223,11 @@ ns.Data = {
             ["mining"] = {
                 ["_id"] = "profession.mining"
             },
+            ["mithril"] = {
+                ["bar"] = {
+                    ["_id"] = "goods.mithril_bar"
+                }
+            },
             ["mob"] = {
                 ["_literal"] = {
                     ["id"] = "literal.mob",
@@ -2224,6 +2253,11 @@ ns.Data = {
                         ["text"] = "Палаюче Ядро",
                         ["weak"] = false
                     }
+                }
+            },
+            ["mooncloth"] = {
+                ["bag"] = {
+                    ["_id"] = "goods.mooncloth_bag"
                 }
             },
             ["move"] = {
@@ -3037,6 +3071,9 @@ ns.Data = {
                 }
             },
             ["run"] = {
+                ["_byCategory"] = {
+                    ["countedEvents"] = "activity.completed_run"
+                },
                 ["_literal"] = {
                     ["id"] = "literal.run",
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -3414,6 +3451,14 @@ ns.Data = {
             },
             ["tanks"] = {
                 ["_id"] = "role.tank"
+            },
+            ["target"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.game.target",
+                    ["sourceRefs"] = { "ua-forever:ui.Target" },
+                    ["text"] = "ціль",
+                    ["weak"] = false
+                }
             },
             ["tb"] = {
                 ["_id"] = "place.thunder_bluff"
@@ -4609,6 +4654,21 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["важка"] = {
+                ["шкіра"] = {
+                    ["_id"] = "goods.heavy_leather"
+                }
+            },
+            ["важкої"] = {
+                ["шкіри"] = {
+                    ["_id"] = "goods.heavy_leather"
+                }
+            },
+            ["важку"] = {
+                ["шкіру"] = {
+                    ["_id"] = "goods.heavy_leather"
+                }
+            },
             ["вали"] = {
                 ["_literal"] = {
                     ["id"] = "literal.hurry",
@@ -4695,6 +4755,34 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "upstairs",
                     ["weak"] = false
+                }
+            },
+            ["велике"] = {
+                ["зілля"] = {
+                    ["зцілення"] = {
+                        ["_id"] = "goods.greater_healing_potion"
+                    }
+                }
+            },
+            ["великих"] = {
+                ["зіль"] = {
+                    ["зцілення"] = {
+                        ["_id"] = "goods.greater_healing_potion"
+                    }
+                }
+            },
+            ["великого"] = {
+                ["зілля"] = {
+                    ["зцілення"] = {
+                        ["_id"] = "goods.greater_healing_potion"
+                    }
+                }
+            },
+            ["великі"] = {
+                ["зілля"] = {
+                    ["зцілення"] = {
+                        ["_id"] = "goods.greater_healing_potion"
+                    }
                 }
             },
             ["вендорський"] = {
@@ -5600,6 +5688,9 @@ ns.Data = {
             ["гільдія"] = {
                 ["_id"] = "game.guild"
             },
+            ["гірництва"] = {
+                ["_id"] = "profession.mining"
+            },
             ["гірництво"] = {
                 ["_id"] = "profession.mining"
             },
@@ -6231,6 +6322,11 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["залу"] = {
+                ["танів"] = {
+                    ["_id"] = "place.hall_of_thanes"
+                }
+            },
             ["залі"] = {
                 ["танів"] = {
                     ["_id"] = "place.hall_of_thanes"
@@ -6438,6 +6534,26 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:place.winterspring" },
                     ["text"] = "Winterspring",
                     ["weak"] = false
+                }
+            },
+            ["злитка"] = {
+                ["мітрилу"] = {
+                    ["_id"] = "goods.mithril_bar"
+                }
+            },
+            ["злитки"] = {
+                ["мітрилу"] = {
+                    ["_id"] = "goods.mithril_bar"
+                }
+            },
+            ["злитків"] = {
+                ["мітрилу"] = {
+                    ["_id"] = "goods.mithril_bar"
+                }
+            },
+            ["злиток"] = {
+                ["мітрилу"] = {
+                    ["_id"] = "goods.mithril_bar"
                 }
             },
             ["зліва"] = {
@@ -6692,6 +6808,26 @@ ns.Data = {
             ["кайтити"] = {
                 ["_id"] = "slang.combat.kite"
             },
+            ["каменя"] = {
+                ["здоров'я"] = {
+                    ["_id"] = "goods.healthstone"
+                }
+            },
+            ["камені"] = {
+                ["здоров'я"] = {
+                    ["_id"] = "goods.healthstone"
+                }
+            },
+            ["каменів"] = {
+                ["здоров'я"] = {
+                    ["_id"] = "goods.healthstone"
+                }
+            },
+            ["камінь"] = {
+                ["здоров'я"] = {
+                    ["_id"] = "goods.healthstone"
+                }
+            },
             ["кд"] = {
                 ["_id"] = "slang.combat.cd",
                 ["рейду"] = {
@@ -6759,13 +6895,20 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["кнурила"] = {
+                ["_id"] = "npc.hogger"
+            },
             ["кнурило"] = {
+                ["_id"] = "npc.hogger",
                 ["_literal"] = {
                     ["id"] = "literal.npc.hogger",
                     ["sourceRefs"] = { "ua-forever:npc.448" },
                     ["text"] = "Hogger",
                     ["weak"] = false
                 }
+            },
+            ["кнурилові"] = {
+                ["_id"] = "npc.hogger"
             },
             ["ковальство"] = {
                 ["_id"] = "profession.blacksmithing"
@@ -6852,6 +6995,9 @@ ns.Data = {
                 }
             },
             ["кулінарія"] = {
+                ["_id"] = "profession.cooking"
+            },
+            ["кулінарії"] = {
                 ["_id"] = "profession.cooking"
             },
             ["купи"] = {
@@ -7029,6 +7175,16 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "shop",
                     ["weak"] = false
+                }
+            },
+            ["маготкане"] = {
+                ["полотно"] = {
+                    ["_id"] = "goods.mageweave_cloth"
+                }
+            },
+            ["маготканого"] = {
+                ["полотна"] = {
+                    ["_id"] = "goods.mageweave_cloth"
                 }
             },
             ["магів"] = {
@@ -8553,6 +8709,11 @@ ns.Data = {
                     ["_id"] = "profession.first_aid"
                 }
             },
+            ["першої"] = {
+                ["допомоги"] = {
+                    ["_id"] = "profession.first_aid"
+                }
+            },
             ["періодичне"] = {
                 ["зцілення"] = {
                     ["_id"] = "slang.combat.hot"
@@ -9269,6 +9430,16 @@ ns.Data = {
                     }
                 }
             },
+            ["проходження"] = {
+                ["_byCategory"] = {
+                    ["countedEvents"] = "activity.completed_run"
+                }
+            },
+            ["проходжень"] = {
+                ["_byCategory"] = {
+                    ["countedEvents"] = "activity.completed_run"
+                }
+            },
             ["пряма"] = {
                 ["видимість"] = {
                     ["_id"] = "slang.combat.los"
@@ -9494,6 +9665,9 @@ ns.Data = {
                     ["_id"] = "slang.combat.rez-me"
                 }
             },
+            ["рибальства"] = {
+                ["_id"] = "profession.fishing"
+            },
             ["рибальство"] = {
                 ["_id"] = "profession.fishing"
             },
@@ -9688,6 +9862,18 @@ ns.Data = {
                     ["stats"] = "stat.agility"
                 }
             },
+            ["спроб"] = {
+                ["_id"] = "activity.attempt"
+            },
+            ["спроба"] = {
+                ["_id"] = "activity.attempt"
+            },
+            ["спроби"] = {
+                ["_id"] = "activity.attempt"
+            },
+            ["спробу"] = {
+                ["_id"] = "activity.attempt"
+            },
             ["срібла"] = {
                 ["_literal"] = {
                     ["id"] = "literal.silver",
@@ -9788,14 +9974,49 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "bag",
                     ["weak"] = false
+                },
+                ["з"] = {
+                    ["місячної"] = {
+                        ["тканини"] = {
+                            ["_id"] = "goods.mooncloth_bag"
+                        }
+                    }
+                }
+            },
+            ["сумки"] = {
+                ["_id"] = "game.bag",
+                ["з"] = {
+                    ["місячної"] = {
+                        ["тканини"] = {
+                            ["_id"] = "goods.mooncloth_bag"
+                        }
+                    }
                 }
             },
             ["сумку"] = {
+                ["_id"] = "game.bag",
                 ["_literal"] = {
                     ["id"] = "literal.bag",
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "bag",
                     ["weak"] = false
+                },
+                ["з"] = {
+                    ["місячної"] = {
+                        ["тканини"] = {
+                            ["_id"] = "goods.mooncloth_bag"
+                        }
+                    }
+                }
+            },
+            ["сумок"] = {
+                ["_id"] = "game.bag",
+                ["з"] = {
+                    ["місячної"] = {
+                        ["тканини"] = {
+                            ["_id"] = "goods.mooncloth_bag"
+                        }
+                    }
                 }
             },
             ["сумон"] = {
@@ -10049,6 +10270,9 @@ ns.Data = {
                     ["text"] = "trade",
                     ["weak"] = false
                 }
+            },
+            ["травництва"] = {
+                ["_id"] = "profession.herbalism"
             },
             ["травництво"] = {
                 ["_id"] = "profession.herbalism"
@@ -13299,6 +13523,37 @@ ns.Data = {
                         }
                     }
                 },
+                ["attempt"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "activity.attempt",
+                            ["lemma"] = "attempt",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.attempt",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["attempts"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "activity.attempt",
+                            ["lemma"] = "attempt",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.attempt",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["auction"] = {
                     ["house"] = {
                         ["_analyses"] = {
@@ -13378,7 +13633,26 @@ ns.Data = {
                 ["bag"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "game.bag",
+                            ["lemma"] = "Bag",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.bag",
+                            ["sourceRefs"] = { "ua-forever:game.bag" }
+                        }
+                    }
+                },
+                ["bags"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine",
+                                ["number"] = "plural"
+                            },
                             ["id"] = "game.bag",
                             ["lemma"] = "Bag",
                             ["pos"] = "noun",
@@ -14098,7 +14372,10 @@ ns.Data = {
                 ["cooking"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
                             ["id"] = "profession.cooking",
                             ["lemma"] = "Cooking",
                             ["pos"] = "noun",
@@ -14631,7 +14908,10 @@ ns.Data = {
                     ["aid"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
                                 ["id"] = "profession.first_aid",
                                 ["lemma"] = "First Aid",
                                 ["pos"] = "noun",
@@ -14644,7 +14924,10 @@ ns.Data = {
                 ["fishing"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter"
+                            },
                             ["id"] = "profession.fishing",
                             ["lemma"] = "Fishing",
                             ["pos"] = "noun",
@@ -14933,6 +15216,41 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "slang.loot.gdkp",
                                 ["sourceRefs"] = { "wow-community:dkp" }
+                            }
+                        }
+                    }
+                },
+                ["greater"] = {
+                    ["healing"] = {
+                        ["potion"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "neuter"
+                                    },
+                                    ["id"] = "goods.greater_healing_potion",
+                                    ["lemma"] = "Greater Healing Potion",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.greater_healing_potion",
+                                    ["sourceRefs"] = { "ua-forever:item.1710" }
+                                }
+                            }
+                        },
+                        ["potions"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "neuter",
+                                        ["number"] = "plural"
+                                    },
+                                    ["id"] = "goods.greater_healing_potion",
+                                    ["lemma"] = "Greater Healing Potion",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.greater_healing_potion",
+                                    ["sourceRefs"] = { "ua-forever:item.1710" }
+                                }
                             }
                         }
                     }
@@ -15236,6 +15554,55 @@ ns.Data = {
                         }
                     }
                 },
+                ["healthstone"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
+                            ["id"] = "goods.healthstone",
+                            ["lemma"] = "Healthstone",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.healthstone",
+                            ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["healthstones"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "goods.healthstone",
+                            ["lemma"] = "Healthstone",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.healthstone",
+                            ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["heavy"] = {
+                    ["leather"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine",
+                                    ["mass"] = true
+                                },
+                                ["id"] = "goods.heavy_leather",
+                                ["lemma"] = "Heavy Leather",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.heavy_leather",
+                                ["sourceRefs"] = { "ua-forever:item.4234" }
+                            }
+                        }
+                    }
+                },
                 ["her"] = {
                     ["_analyses"] = {
                         {
@@ -15251,7 +15618,10 @@ ns.Data = {
                 ["herbalism"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter"
+                            },
                             ["id"] = "profession.herbalism",
                             ["lemma"] = "Herbalism",
                             ["pos"] = "noun",
@@ -15269,6 +15639,22 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "recipient.him",
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["hogger"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "npc.hogger",
+                            ["lemma"] = "Hogger",
+                            ["pos"] = "noun",
+                            ["sense"] = "npc.hogger",
+                            ["sourceRefs"] = { "ua-forever:npc.448" }
                         }
                     }
                 },
@@ -15946,6 +16332,24 @@ ns.Data = {
                         }
                     }
                 },
+                ["mageweave"] = {
+                    ["cloth"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "neuter",
+                                    ["mass"] = true
+                                },
+                                ["id"] = "goods.mageweave_cloth",
+                                ["lemma"] = "Mageweave Cloth",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mageweave_cloth",
+                                ["sourceRefs"] = { "ua-forever:item.4338" }
+                            }
+                        }
+                    }
+                },
                 ["main"] = {
                     ["spec"] = {
                         ["over"] = {
@@ -16070,12 +16474,48 @@ ns.Data = {
                 ["mining"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter"
+                            },
                             ["id"] = "profession.mining",
                             ["lemma"] = "Mining",
                             ["pos"] = "noun",
                             ["sense"] = "profession.mining",
                             ["sourceRefs"] = { "ua-forever:profession.mining" }
+                        }
+                    }
+                },
+                ["mithril"] = {
+                    ["bar"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine"
+                                },
+                                ["id"] = "goods.mithril_bar",
+                                ["lemma"] = "Mithril Bar",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_bar",
+                                ["sourceRefs"] = { "ua-forever:item.3860" }
+                            }
+                        }
+                    },
+                    ["bars"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.mithril_bar",
+                                ["lemma"] = "Mithril Bar",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_bar",
+                                ["sourceRefs"] = { "ua-forever:item.3860" }
+                            }
                         }
                     }
                 },
@@ -16089,6 +16529,39 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.molten_core",
                                 ["sourceRefs"] = { "ua-forever:place.molten_core" }
+                            }
+                        }
+                    }
+                },
+                ["mooncloth"] = {
+                    ["bag"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "goods.mooncloth_bag",
+                                ["lemma"] = "Mooncloth Bag",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mooncloth_bag",
+                                ["sourceRefs"] = { "ua-forever:item.14155" }
+                            }
+                        }
+                    },
+                    ["bags"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.mooncloth_bag",
+                                ["lemma"] = "Mooncloth Bag",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mooncloth_bag",
+                                ["sourceRefs"] = { "ua-forever:item.14155" }
                             }
                         }
                     }
@@ -17404,6 +17877,37 @@ ns.Data = {
                         }
                     }
                 },
+                ["run"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter"
+                            },
+                            ["id"] = "activity.completed_run",
+                            ["lemma"] = "run",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.completed_run",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["runs"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "activity.completed_run",
+                            ["lemma"] = "run",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.completed_run",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["scarlet"] = {
                     ["monastery"] = {
                         ["_analyses"] = {
@@ -17647,7 +18151,10 @@ ns.Data = {
                     ["water"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["gender"] = "feminine",
+                                    ["mass"] = true
+                                },
                                 ["id"] = "game.water",
                                 ["lemma"] = "Water",
                                 ["pos"] = "noun",
@@ -18609,7 +19116,10 @@ ns.Data = {
                 ["water"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["gender"] = "feminine",
+                                ["mass"] = true
+                            },
                             ["id"] = "game.water",
                             ["lemma"] = "Water",
                             ["pos"] = "noun",
@@ -19522,6 +20032,64 @@ ns.Data = {
                         }
                     }
                 },
+                ["важка"] = {
+                    ["шкіра"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine",
+                                    ["mass"] = true
+                                },
+                                ["id"] = "goods.heavy_leather",
+                                ["lemma"] = "Важка шкіра",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.heavy_leather",
+                                ["sourceRefs"] = { "ua-forever:item.4234" }
+                            }
+                        }
+                    }
+                },
+                ["важкої"] = {
+                    ["шкіри"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["mass"] = true,
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.heavy_leather",
+                                ["lemma"] = "Важка шкіра",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.heavy_leather",
+                                ["sourceRefs"] = { "ua-forever:item.4234" }
+                            }
+                        }
+                    }
+                },
+                ["важку"] = {
+                    ["шкіру"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "feminine",
+                                    ["mass"] = true,
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.heavy_leather",
+                                ["lemma"] = "Важка шкіра",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.heavy_leather",
+                                ["sourceRefs"] = { "ua-forever:item.4234" }
+                            }
+                        }
+                    }
+                },
                 ["вар"] = {
                     ["_analyses"] = {
                         {
@@ -19544,6 +20112,114 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "slang.trade.your-mats",
                                 ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    }
+                },
+                ["велике"] = {
+                    ["зілля"] = {
+                        ["зцілення"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "neuter"
+                                    },
+                                    ["id"] = "goods.greater_healing_potion",
+                                    ["lemma"] = "Велике зілля зцілення",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.greater_healing_potion",
+                                    ["sourceRefs"] = { "ua-forever:item.1710" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "accusative",
+                                        ["gender"] = "neuter",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "goods.greater_healing_potion",
+                                    ["lemma"] = "Велике зілля зцілення",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.greater_healing_potion",
+                                    ["sourceRefs"] = { "ua-forever:item.1710" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["великих"] = {
+                    ["зіль"] = {
+                        ["зцілення"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "genitive",
+                                        ["gender"] = "neuter",
+                                        ["number"] = "plural"
+                                    },
+                                    ["id"] = "goods.greater_healing_potion",
+                                    ["lemma"] = "Велике зілля зцілення",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.greater_healing_potion",
+                                    ["sourceRefs"] = { "ua-forever:item.1710" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["великого"] = {
+                    ["зілля"] = {
+                        ["зцілення"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "genitive",
+                                        ["gender"] = "neuter",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "goods.greater_healing_potion",
+                                    ["lemma"] = "Велике зілля зцілення",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.greater_healing_potion",
+                                    ["sourceRefs"] = { "ua-forever:item.1710" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["великі"] = {
+                    ["зілля"] = {
+                        ["зцілення"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "nominative",
+                                        ["gender"] = "neuter",
+                                        ["number"] = "plural"
+                                    },
+                                    ["id"] = "goods.greater_healing_potion",
+                                    ["lemma"] = "Велике зілля зцілення",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.greater_healing_potion",
+                                    ["sourceRefs"] = { "ua-forever:item.1710" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "accusative",
+                                        ["gender"] = "neuter",
+                                        ["number"] = "plural"
+                                    },
+                                    ["id"] = "goods.greater_healing_potion",
+                                    ["lemma"] = "Велике зілля зцілення",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.greater_healing_potion",
+                                    ["sourceRefs"] = { "ua-forever:item.1710" }
+                                }
                             }
                         }
                     }
@@ -19681,7 +20357,10 @@ ns.Data = {
                 ["вода"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["gender"] = "feminine",
+                                ["mass"] = true
+                            },
                             ["id"] = "game.water",
                             ["lemma"] = "Вода",
                             ["pos"] = "noun",
@@ -19695,6 +20374,21 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["case"] = "accusative",
+                                ["gender"] = "feminine",
+                                ["mass"] = true,
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.water",
+                            ["lemma"] = "Вода",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.water",
+                            ["sourceRefs"] = { "ua-forever:game.water" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["gender"] = "feminine",
+                                ["mass"] = true,
                                 ["number"] = "singular"
                             },
                             ["id"] = "game.water",
@@ -19726,7 +20420,10 @@ ns.Data = {
                 ["водичку"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["gender"] = "feminine",
+                                ["mass"] = true
+                            },
                             ["id"] = "game.water",
                             ["lemma"] = "Вода",
                             ["pos"] = "noun",
@@ -19738,7 +20435,10 @@ ns.Data = {
                 ["воду"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["gender"] = "feminine",
+                                ["mass"] = true
+                            },
                             ["id"] = "game.water",
                             ["lemma"] = "Вода",
                             ["pos"] = "noun",
@@ -21176,10 +21876,30 @@ ns.Data = {
                         }
                     }
                 },
+                ["гірництва"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.mining",
+                            ["lemma"] = "Гірництво",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.mining",
+                            ["sourceRefs"] = { "ua-forever:profession.mining" }
+                        }
+                    }
+                },
                 ["гірництво"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter"
+                            },
                             ["id"] = "profession.mining",
                             ["lemma"] = "Гірництво",
                             ["pos"] = "noun",
@@ -21225,6 +21945,17 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {},
+                            ["id"] = "place.darnassus",
+                            ["lemma"] = "Дарнас",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.darnassus",
+                            ["sourceRefs"] = { "ua-forever:place.darnassus" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
                             ["id"] = "place.darnassus",
                             ["lemma"] = "Дарнас",
                             ["pos"] = "noun",
@@ -22379,6 +23110,28 @@ ns.Data = {
                         }
                     }
                 },
+                ["залу"] = {
+                    ["танів"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.hall_of_thanes",
+                                ["lemma"] = "Зала Танів",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.hall_of_thanes",
+                                ["sourceRefs"] = {
+                                    "ua-forever:place.hall_of_thanes",
+                                    "project-authored:apertium-pipeline-1"
+                                }
+                            }
+                        }
+                    }
+                },
                 ["залі"] = {
                     ["танів"] = {
                         ["_analyses"] = {
@@ -22666,6 +23419,106 @@ ns.Data = {
                         }
                     }
                 },
+                ["злитка"] = {
+                    ["мітрилу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.mithril_bar",
+                                ["lemma"] = "Злиток мітрилу",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_bar",
+                                ["sourceRefs"] = { "ua-forever:item.3860" }
+                            }
+                        }
+                    }
+                },
+                ["злитки"] = {
+                    ["мітрилу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.mithril_bar",
+                                ["lemma"] = "Злиток мітрилу",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_bar",
+                                ["sourceRefs"] = { "ua-forever:item.3860" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.mithril_bar",
+                                ["lemma"] = "Злиток мітрилу",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_bar",
+                                ["sourceRefs"] = { "ua-forever:item.3860" }
+                            }
+                        }
+                    }
+                },
+                ["злитків"] = {
+                    ["мітрилу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.mithril_bar",
+                                ["lemma"] = "Злиток мітрилу",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_bar",
+                                ["sourceRefs"] = { "ua-forever:item.3860" }
+                            }
+                        }
+                    }
+                },
+                ["злиток"] = {
+                    ["мітрилу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine"
+                                },
+                                ["id"] = "goods.mithril_bar",
+                                ["lemma"] = "Злиток мітрилу",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_bar",
+                                ["sourceRefs"] = { "ua-forever:item.3860" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.mithril_bar",
+                                ["lemma"] = "Злиток мітрилу",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_bar",
+                                ["sourceRefs"] = { "ua-forever:item.3860" }
+                            }
+                        }
+                    }
+                },
                 ["зняття"] = {
                     ["шкур"] = {
                         ["_analyses"] = {
@@ -22847,6 +23700,106 @@ ns.Data = {
                         }
                     }
                 },
+                ["каменя"] = {
+                    ["здоров'я"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.healthstone",
+                                ["lemma"] = "камінь здоров’я",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.healthstone",
+                                ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" }
+                            }
+                        }
+                    }
+                },
+                ["камені"] = {
+                    ["здоров'я"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.healthstone",
+                                ["lemma"] = "камінь здоров’я",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.healthstone",
+                                ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.healthstone",
+                                ["lemma"] = "камінь здоров’я",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.healthstone",
+                                ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" }
+                            }
+                        }
+                    }
+                },
+                ["каменів"] = {
+                    ["здоров'я"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.healthstone",
+                                ["lemma"] = "камінь здоров’я",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.healthstone",
+                                ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" }
+                            }
+                        }
+                    }
+                },
+                ["камінь"] = {
+                    ["здоров'я"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine"
+                                },
+                                ["id"] = "goods.healthstone",
+                                ["lemma"] = "камінь здоров’я",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.healthstone",
+                                ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.healthstone",
+                                ["lemma"] = "камінь здоров’я",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.healthstone",
+                                ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" }
+                            }
+                        }
+                    }
+                },
                 ["кд"] = {
                     ["_analyses"] = {
                         {
@@ -22951,6 +23904,72 @@ ns.Data = {
                         }
                     }
                 },
+                ["кнурила"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "npc.hogger",
+                            ["lemma"] = "Кнурило",
+                            ["pos"] = "noun",
+                            ["sense"] = "npc.hogger",
+                            ["sourceRefs"] = { "ua-forever:npc.448" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "npc.hogger",
+                            ["lemma"] = "Кнурило",
+                            ["pos"] = "noun",
+                            ["sense"] = "npc.hogger",
+                            ["sourceRefs"] = { "ua-forever:npc.448" }
+                        }
+                    }
+                },
+                ["кнурило"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "npc.hogger",
+                            ["lemma"] = "Кнурило",
+                            ["pos"] = "noun",
+                            ["sense"] = "npc.hogger",
+                            ["sourceRefs"] = { "ua-forever:npc.448" }
+                        }
+                    }
+                },
+                ["кнурилові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "npc.hogger",
+                            ["lemma"] = "Кнурило",
+                            ["pos"] = "noun",
+                            ["sense"] = "npc.hogger",
+                            ["sourceRefs"] = { "ua-forever:npc.448" }
+                        }
+                    }
+                },
                 ["ковальство"] = {
                     ["_analyses"] = {
                         {
@@ -23030,7 +24049,27 @@ ns.Data = {
                 ["кулінарія"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "profession.cooking",
+                            ["lemma"] = "Кулінарія",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.cooking",
+                            ["sourceRefs"] = { "ua-forever:profession.cooking" }
+                        }
+                    }
+                },
+                ["кулінарії"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
                             ["id"] = "profession.cooking",
                             ["lemma"] = "Кулінарія",
                             ["pos"] = "noun",
@@ -23153,6 +24192,58 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "class.mage",
                             ["sourceRefs"] = { "ua-forever:class.mage" }
+                        }
+                    }
+                },
+                ["маготкане"] = {
+                    ["полотно"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "neuter",
+                                    ["mass"] = true
+                                },
+                                ["id"] = "goods.mageweave_cloth",
+                                ["lemma"] = "Маготкане полотно",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mageweave_cloth",
+                                ["sourceRefs"] = { "ua-forever:item.4338" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "neuter",
+                                    ["mass"] = true,
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.mageweave_cloth",
+                                ["lemma"] = "Маготкане полотно",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mageweave_cloth",
+                                ["sourceRefs"] = { "ua-forever:item.4338" }
+                            }
+                        }
+                    }
+                },
+                ["маготканого"] = {
+                    ["полотна"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "neuter",
+                                    ["mass"] = true,
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.mageweave_cloth",
+                                ["lemma"] = "Маготкане полотно",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mageweave_cloth",
+                                ["sourceRefs"] = { "ua-forever:item.4338" }
+                            }
                         }
                     }
                 },
@@ -25945,7 +27036,29 @@ ns.Data = {
                     ["допомога"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "profession.first_aid",
+                                ["lemma"] = "Перша допомога",
+                                ["pos"] = "noun",
+                                ["sense"] = "profession.first_aid",
+                                ["sourceRefs"] = { "ua-forever:profession.first_aid" }
+                            }
+                        }
+                    }
+                },
+                ["першої"] = {
+                    ["допомоги"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
                                 ["id"] = "profession.first_aid",
                                 ["lemma"] = "Перша допомога",
                                 ["pos"] = "noun",
@@ -27125,6 +28238,38 @@ ns.Data = {
                         }
                     }
                 },
+                ["проходження"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter"
+                            },
+                            ["id"] = "activity.completed_run",
+                            ["lemma"] = "проходження",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.completed_run",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["проходжень"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "neuter",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "activity.completed_run",
+                            ["lemma"] = "проходження",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.completed_run",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["пряма"] = {
                     ["видимість"] = {
                         ["_analyses"] = {
@@ -27529,10 +28674,30 @@ ns.Data = {
                         }
                     }
                 },
+                ["рибальства"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.fishing",
+                            ["lemma"] = "Рибальство",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.fishing",
+                            ["sourceRefs"] = { "ua-forever:profession.fishing" }
+                        }
+                    }
+                },
                 ["рибальство"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter"
+                            },
                             ["id"] = "profession.fishing",
                             ["lemma"] = "Рибальство",
                             ["pos"] = "noun",
@@ -27912,6 +29077,98 @@ ns.Data = {
                         }
                     }
                 },
+                ["спроб"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "feminine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "activity.attempt",
+                            ["lemma"] = "спроба",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.attempt",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["спроба"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "activity.attempt",
+                            ["lemma"] = "спроба",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.attempt",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["спроби"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "activity.attempt",
+                            ["lemma"] = "спроба",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.attempt",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "nominative",
+                                ["gender"] = "feminine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "activity.attempt",
+                            ["lemma"] = "спроба",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.attempt",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "feminine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "activity.attempt",
+                            ["lemma"] = "спроба",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.attempt",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["спробу"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "activity.attempt",
+                            ["lemma"] = "спроба",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.attempt",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["стає"] = {
                     ["персональним"] = {
                         ["при"] = {
@@ -28042,12 +29299,200 @@ ns.Data = {
                 ["сумка"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
                             ["id"] = "game.bag",
                             ["lemma"] = "Сумка",
                             ["pos"] = "noun",
                             ["sense"] = "game.bag",
                             ["sourceRefs"] = { "ua-forever:game.bag" }
+                        }
+                    },
+                    ["з"] = {
+                        ["місячної"] = {
+                            ["тканини"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["gender"] = "feminine"
+                                        },
+                                        ["id"] = "goods.mooncloth_bag",
+                                        ["lemma"] = "Сумка з місячної тканини",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "goods.mooncloth_bag",
+                                        ["sourceRefs"] = { "ua-forever:item.14155" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["сумки"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.bag",
+                            ["lemma"] = "Сумка",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.bag",
+                            ["sourceRefs"] = { "ua-forever:game.bag" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "nominative",
+                                ["gender"] = "feminine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "game.bag",
+                            ["lemma"] = "Сумка",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.bag",
+                            ["sourceRefs"] = { "ua-forever:game.bag" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "feminine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "game.bag",
+                            ["lemma"] = "Сумка",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.bag",
+                            ["sourceRefs"] = { "ua-forever:game.bag" }
+                        }
+                    },
+                    ["з"] = {
+                        ["місячної"] = {
+                            ["тканини"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "genitive",
+                                            ["gender"] = "feminine",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "goods.mooncloth_bag",
+                                        ["lemma"] = "Сумка з місячної тканини",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "goods.mooncloth_bag",
+                                        ["sourceRefs"] = { "ua-forever:item.14155" }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "nominative",
+                                            ["gender"] = "feminine",
+                                            ["number"] = "plural"
+                                        },
+                                        ["id"] = "goods.mooncloth_bag",
+                                        ["lemma"] = "Сумка з місячної тканини",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "goods.mooncloth_bag",
+                                        ["sourceRefs"] = { "ua-forever:item.14155" }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "accusative",
+                                            ["gender"] = "feminine",
+                                            ["number"] = "plural"
+                                        },
+                                        ["id"] = "goods.mooncloth_bag",
+                                        ["lemma"] = "Сумка з місячної тканини",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "goods.mooncloth_bag",
+                                        ["sourceRefs"] = { "ua-forever:item.14155" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["сумку"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.bag",
+                            ["lemma"] = "Сумка",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.bag",
+                            ["sourceRefs"] = { "ua-forever:game.bag" }
+                        }
+                    },
+                    ["з"] = {
+                        ["місячної"] = {
+                            ["тканини"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "accusative",
+                                            ["gender"] = "feminine",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "goods.mooncloth_bag",
+                                        ["lemma"] = "Сумка з місячної тканини",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "goods.mooncloth_bag",
+                                        ["sourceRefs"] = { "ua-forever:item.14155" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["сумок"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "feminine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "game.bag",
+                            ["lemma"] = "Сумка",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.bag",
+                            ["sourceRefs"] = { "ua-forever:game.bag" }
+                        }
+                    },
+                    ["з"] = {
+                        ["місячної"] = {
+                            ["тканини"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "genitive",
+                                            ["gender"] = "feminine",
+                                            ["number"] = "plural"
+                                        },
+                                        ["id"] = "goods.mooncloth_bag",
+                                        ["lemma"] = "Сумка з місячної тканини",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "goods.mooncloth_bag",
+                                        ["sourceRefs"] = { "ua-forever:item.14155" }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -28371,10 +29816,30 @@ ns.Data = {
                         }
                     }
                 },
+                ["травництва"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.herbalism",
+                            ["lemma"] = "Травництво",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.herbalism",
+                            ["sourceRefs"] = { "ua-forever:profession.herbalism" }
+                        }
+                    }
+                },
                 ["травництво"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter"
+                            },
                             ["id"] = "profession.herbalism",
                             ["lemma"] = "Травництво",
                             ["pos"] = "noun",
@@ -29340,6 +30805,20 @@ ns.Data = {
             }
         },
         ["generation"] = {
+            ["activity.attempt"] = {
+                ["en"] = {
+                    ["canonical"] = "attempt",
+                    ["plural"] = "attempts"
+                },
+                ["uk"] = {
+                    ["accusative"] = "спробу",
+                    ["accusativePlural"] = "спроби",
+                    ["canonical"] = "спроба",
+                    ["genitivePlural"] = "спроб",
+                    ["genitiveSingular"] = "спроби",
+                    ["nominativePlural"] = "спроби"
+                }
+            },
             ["activity.battleground"] = {
                 ["en"] = {
                     ["canonical"] = "Battleground"
@@ -29347,6 +30826,16 @@ ns.Data = {
                 ["uk"] = {
                     ["accusative"] = "поле бою",
                     ["canonical"] = "Поле бою"
+                }
+            },
+            ["activity.completed_run"] = {
+                ["en"] = {
+                    ["canonical"] = "run",
+                    ["plural"] = "runs"
+                },
+                ["uk"] = {
+                    ["canonical"] = "проходження",
+                    ["genitivePlural"] = "проходжень"
                 }
             },
             ["behavior.complain"] = {
@@ -29554,10 +31043,16 @@ ns.Data = {
             },
             ["game.bag"] = {
                 ["en"] = {
-                    ["canonical"] = "Bag"
+                    ["canonical"] = "Bag",
+                    ["plural"] = "bags"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Сумка"
+                    ["accusative"] = "сумку",
+                    ["accusativePlural"] = "сумки",
+                    ["canonical"] = "Сумка",
+                    ["genitivePlural"] = "сумок",
+                    ["genitiveSingular"] = "сумки",
+                    ["nominativePlural"] = "сумки"
                 }
             },
             ["game.bank"] = {
@@ -29730,7 +31225,8 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["accusative"] = "води",
-                    ["canonical"] = "Вода"
+                    ["canonical"] = "Вода",
+                    ["genitiveSingular"] = "води"
                 }
             },
             ["game.weapon"] = {
@@ -29774,6 +31270,20 @@ ns.Data = {
                     ["canonical"] = "Хліб"
                 }
             },
+            ["goods.greater_healing_potion"] = {
+                ["en"] = {
+                    ["canonical"] = "Greater Healing Potion",
+                    ["plural"] = "greater healing potions"
+                },
+                ["uk"] = {
+                    ["accusative"] = "велике зілля зцілення",
+                    ["accusativePlural"] = "великі зілля зцілення",
+                    ["canonical"] = "Велике зілля зцілення",
+                    ["genitivePlural"] = "великих зіль зцілення",
+                    ["genitiveSingular"] = "великого зілля зцілення",
+                    ["nominativePlural"] = "великі зілля зцілення"
+                }
+            },
             ["goods.health_potion"] = {
                 ["en"] = {
                     ["canonical"] = "health potion",
@@ -29784,6 +31294,68 @@ ns.Data = {
                     ["canonical"] = "Зілля здоров’я",
                     ["countTwoToFour"] = "зілля здоров’я",
                     ["genitivePlural"] = "зіль здоров’я"
+                }
+            },
+            ["goods.healthstone"] = {
+                ["en"] = {
+                    ["canonical"] = "Healthstone",
+                    ["plural"] = "healthstones"
+                },
+                ["uk"] = {
+                    ["accusative"] = "камінь здоров’я",
+                    ["accusativePlural"] = "камені здоров’я",
+                    ["canonical"] = "камінь здоров’я",
+                    ["genitivePlural"] = "каменів здоров’я",
+                    ["genitiveSingular"] = "каменя здоров’я",
+                    ["nominativePlural"] = "камені здоров’я"
+                }
+            },
+            ["goods.heavy_leather"] = {
+                ["en"] = {
+                    ["canonical"] = "Heavy Leather"
+                },
+                ["uk"] = {
+                    ["accusative"] = "важку шкіру",
+                    ["canonical"] = "Важка шкіра",
+                    ["genitiveSingular"] = "важкої шкіри"
+                }
+            },
+            ["goods.mageweave_cloth"] = {
+                ["en"] = {
+                    ["canonical"] = "Mageweave Cloth"
+                },
+                ["uk"] = {
+                    ["accusative"] = "маготкане полотно",
+                    ["canonical"] = "Маготкане полотно",
+                    ["genitiveSingular"] = "маготканого полотна"
+                }
+            },
+            ["goods.mithril_bar"] = {
+                ["en"] = {
+                    ["canonical"] = "Mithril Bar",
+                    ["plural"] = "mithril bars"
+                },
+                ["uk"] = {
+                    ["accusative"] = "злиток мітрилу",
+                    ["accusativePlural"] = "злитки мітрилу",
+                    ["canonical"] = "Злиток мітрилу",
+                    ["genitivePlural"] = "злитків мітрилу",
+                    ["genitiveSingular"] = "злитка мітрилу",
+                    ["nominativePlural"] = "злитки мітрилу"
+                }
+            },
+            ["goods.mooncloth_bag"] = {
+                ["en"] = {
+                    ["canonical"] = "Mooncloth Bag",
+                    ["plural"] = "mooncloth bags"
+                },
+                ["uk"] = {
+                    ["accusative"] = "сумку з місячної тканини",
+                    ["accusativePlural"] = "сумки з місячної тканини",
+                    ["canonical"] = "Сумка з місячної тканини",
+                    ["genitivePlural"] = "сумок з місячної тканини",
+                    ["genitiveSingular"] = "сумки з місячної тканини",
+                    ["nominativePlural"] = "сумки з місячної тканини"
                 }
             },
             ["goods.sword"] = {
@@ -29798,6 +31370,17 @@ ns.Data = {
                     ["genitivePlural"] = "мечів",
                     ["locative"] = "мечі",
                     ["locativePlural"] = "мечах"
+                }
+            },
+            ["npc.hogger"] = {
+                ["en"] = {
+                    ["canonical"] = "Hogger"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Кнурила",
+                    ["canonical"] = "Кнурило",
+                    ["dative"] = "Кнурилові",
+                    ["genitiveSingular"] = "Кнурила"
                 }
             },
             ["place.alterac_valley"] = {
@@ -29861,6 +31444,7 @@ ns.Data = {
                     ["canonical"] = "Darnassus"
                 },
                 ["uk"] = {
+                    ["accusative"] = "Дарнас",
                     ["canonical"] = "Дарнас",
                     ["genitiveSingular"] = "Дарнаса",
                     ["locative"] = "Дарнасі"
@@ -29932,6 +31516,7 @@ ns.Data = {
                     ["canonical"] = "The Hall of Thanes"
                 },
                 ["uk"] = {
+                    ["accusative"] = "Залу Танів",
                     ["canonical"] = "Зала Танів",
                     ["genitiveSingular"] = "Зали Танів",
                     ["locative"] = "Залі Танів"
@@ -30273,7 +31858,8 @@ ns.Data = {
                     ["canonical"] = "Cooking"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Кулінарія"
+                    ["canonical"] = "Кулінарія",
+                    ["genitiveSingular"] = "кулінарії"
                 }
             },
             ["profession.enchanting"] = {
@@ -30297,7 +31883,8 @@ ns.Data = {
                     ["canonical"] = "First Aid"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Перша допомога"
+                    ["canonical"] = "Перша допомога",
+                    ["genitiveSingular"] = "першої допомоги"
                 }
             },
             ["profession.fishing"] = {
@@ -30305,7 +31892,8 @@ ns.Data = {
                     ["canonical"] = "Fishing"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Рибальство"
+                    ["canonical"] = "Рибальство",
+                    ["genitiveSingular"] = "рибальства"
                 }
             },
             ["profession.herbalism"] = {
@@ -30313,7 +31901,8 @@ ns.Data = {
                     ["canonical"] = "Herbalism"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Травництво"
+                    ["canonical"] = "Травництво",
+                    ["genitiveSingular"] = "травництва"
                 }
             },
             ["profession.leatherworking"] = {
@@ -30329,7 +31918,8 @@ ns.Data = {
                     ["canonical"] = "Mining"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Гірництво"
+                    ["canonical"] = "Гірництво",
+                    ["genitiveSingular"] = "гірництва"
                 }
             },
             ["profession.skinning"] = {
@@ -31487,7 +33077,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 203,
+        ["concepts"] = 212,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 76,
@@ -31506,7 +33096,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "61d0eb4611619359f5f9432b4635579e25aedb372631b7e16157200122a211d5"
+        ["version"] = "fd16734bfbbe8d315d6261a71fcb77476e38bfcf1d8b78bdbd2ecedfe0ef8125"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -39945,6 +41535,31 @@ ns.Data = {
         }
     },
     ["terms"] = {
+        ["activity.attempt"] = {
+            ["category"] = "activities",
+            ["en"] = "attempt",
+            ["englishPlural"] = "attempts",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "спробу",
+                ["accusativePlural"] = "спроби",
+                ["genitivePlural"] = "спроб",
+                ["genitiveSingular"] = "спроби",
+                ["nominativePlural"] = "спроби"
+            },
+            ["id"] = "activity.attempt",
+            ["provenance"] = {
+                ["context"] = "counted attempts",
+                ["key"] = "attempt",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "спроба"
+        },
         ["activity.battleground"] = {
             ["aliases"] = {
                 ["en"] = { "bg" },
@@ -39982,6 +41597,28 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:activity.battleground" },
             ["status"] = "approved",
             ["uk"] = "Поле бою"
+        },
+        ["activity.completed_run"] = {
+            ["category"] = "countedEvents",
+            ["contextOnly"] = true,
+            ["en"] = "run",
+            ["englishPlural"] = "runs",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["genitivePlural"] = "проходжень"
+            },
+            ["id"] = "activity.completed_run",
+            ["provenance"] = {
+                ["context"] = "repetitions required to complete an activity",
+                ["key"] = "run",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "проходження"
         },
         ["behavior.complain"] = {
             ["aliases"] = {
@@ -40555,7 +42192,18 @@ ns.Data = {
             ["contexts"] = { "game" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Bag",
-            ["forms"] = {},
+            ["englishPlural"] = "bags",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "сумку",
+                ["accusativePlural"] = "сумки",
+                ["genitivePlural"] = "сумок",
+                ["genitiveSingular"] = "сумки",
+                ["nominativePlural"] = "сумки"
+            },
             ["id"] = "game.bag",
             ["priority"] = 100,
             ["provenance"] = {
@@ -41090,8 +42738,13 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Water",
             ["englishObject"] = "some water",
+            ["features"] = {
+                ["gender"] = "feminine",
+                ["mass"] = true
+            },
             ["forms"] = {
-                ["accusative"] = "води"
+                ["accusative"] = "води",
+                ["genitiveSingular"] = "води"
             },
             ["id"] = "game.water",
             ["priority"] = 100,
@@ -41223,6 +42876,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Хліб"
         },
+        ["goods.greater_healing_potion"] = {
+            ["category"] = "goods",
+            ["en"] = "Greater Healing Potion",
+            ["englishPlural"] = "greater healing potions",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["accusative"] = "велике зілля зцілення",
+                ["accusativePlural"] = "великі зілля зцілення",
+                ["genitivePlural"] = "великих зіль зцілення",
+                ["genitiveSingular"] = "великого зілля зцілення",
+                ["nominativePlural"] = "великі зілля зцілення"
+            },
+            ["id"] = "goods.greater_healing_potion",
+            ["provenance"] = {
+                ["context"] = "item 1710",
+                ["key"] = "Greater Healing Potion",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:item.1710" },
+            ["status"] = "approved",
+            ["uk"] = "Велике зілля зцілення"
+        },
         ["goods.health_potion"] = {
             ["aliases"] = {
                 ["en"] = { "healing potion", "healing potions", "health potions" },
@@ -41254,6 +42932,125 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:goods.health_potion" },
             ["status"] = "approved",
             ["uk"] = "Зілля здоров’я"
+        },
+        ["goods.healthstone"] = {
+            ["category"] = "goods",
+            ["en"] = "Healthstone",
+            ["englishPlural"] = "healthstones",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine"
+            },
+            ["forms"] = {
+                ["accusative"] = "камінь здоров’я",
+                ["accusativePlural"] = "камені здоров’я",
+                ["genitivePlural"] = "каменів здоров’я",
+                ["genitiveSingular"] = "каменя здоров’я",
+                ["nominativePlural"] = "камені здоров’я"
+            },
+            ["id"] = "goods.healthstone",
+            ["provenance"] = {
+                ["context"] = "conjured consumable",
+                ["key"] = "Healthstone",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "камінь здоров’я"
+        },
+        ["goods.heavy_leather"] = {
+            ["category"] = "goods",
+            ["en"] = "Heavy Leather",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine",
+                ["mass"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "важку шкіру",
+                ["genitiveSingular"] = "важкої шкіри"
+            },
+            ["id"] = "goods.heavy_leather",
+            ["provenance"] = {
+                ["context"] = "item 4234",
+                ["key"] = "Heavy Leather",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:item.4234" },
+            ["status"] = "approved",
+            ["uk"] = "Важка шкіра"
+        },
+        ["goods.mageweave_cloth"] = {
+            ["category"] = "goods",
+            ["en"] = "Mageweave Cloth",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter",
+                ["mass"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "маготкане полотно",
+                ["genitiveSingular"] = "маготканого полотна"
+            },
+            ["id"] = "goods.mageweave_cloth",
+            ["provenance"] = {
+                ["context"] = "item 4338",
+                ["key"] = "Mageweave Cloth",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:item.4338" },
+            ["status"] = "approved",
+            ["uk"] = "Маготкане полотно"
+        },
+        ["goods.mithril_bar"] = {
+            ["category"] = "goods",
+            ["en"] = "Mithril Bar",
+            ["englishPlural"] = "mithril bars",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine"
+            },
+            ["forms"] = {
+                ["accusative"] = "злиток мітрилу",
+                ["accusativePlural"] = "злитки мітрилу",
+                ["genitivePlural"] = "злитків мітрилу",
+                ["genitiveSingular"] = "злитка мітрилу",
+                ["nominativePlural"] = "злитки мітрилу"
+            },
+            ["id"] = "goods.mithril_bar",
+            ["provenance"] = {
+                ["context"] = "item 3860",
+                ["key"] = "Mithril Bar",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:item.3860" },
+            ["status"] = "approved",
+            ["uk"] = "Злиток мітрилу"
+        },
+        ["goods.mooncloth_bag"] = {
+            ["category"] = "goods",
+            ["en"] = "Mooncloth Bag",
+            ["englishPlural"] = "mooncloth bags",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "сумку з місячної тканини",
+                ["accusativePlural"] = "сумки з місячної тканини",
+                ["genitivePlural"] = "сумок з місячної тканини",
+                ["genitiveSingular"] = "сумки з місячної тканини",
+                ["nominativePlural"] = "сумки з місячної тканини"
+            },
+            ["id"] = "goods.mooncloth_bag",
+            ["provenance"] = {
+                ["context"] = "item 14155",
+                ["key"] = "Mooncloth Bag",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:item.14155" },
+            ["status"] = "approved",
+            ["uk"] = "Сумка з місячної тканини"
         },
         ["goods.sword"] = {
             ["aliases"] = {
@@ -41288,6 +43085,29 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:goods.sword" },
             ["status"] = "approved",
             ["uk"] = "Меч"
+        },
+        ["npc.hogger"] = {
+            ["category"] = "creatures",
+            ["en"] = "Hogger",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Кнурила",
+                ["dative"] = "Кнурилові",
+                ["genitiveSingular"] = "Кнурила"
+            },
+            ["id"] = "npc.hogger",
+            ["provenance"] = {
+                ["context"] = "named NPC 448",
+                ["key"] = "Hogger",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:npc.448" },
+            ["status"] = "approved",
+            ["uk"] = "Кнурило"
         },
         ["place.alterac_valley"] = {
             ["aliases"] = {
@@ -41471,6 +43291,7 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Darnassus",
             ["forms"] = {
+                ["accusative"] = "Дарнас",
                 ["genitiveSingular"] = "Дарнаса",
                 ["locative"] = "Дарнасі"
             },
@@ -41701,6 +43522,7 @@ ns.Data = {
                 ["gender"] = "feminine"
             },
             ["forms"] = {
+                ["accusative"] = "Залу Танів",
                 ["genitiveSingular"] = "Зали Танів",
                 ["locative"] = "Залі Танів"
             },
@@ -42769,7 +44591,13 @@ ns.Data = {
             ["contexts"] = { "professions" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Cooking",
-            ["forms"] = {},
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["genitiveSingular"] = "кулінарії"
+            },
             ["id"] = "profession.cooking",
             ["priority"] = 100,
             ["provenance"] = {
@@ -42851,7 +44679,13 @@ ns.Data = {
             ["contexts"] = { "professions" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "First Aid",
-            ["forms"] = {},
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["genitiveSingular"] = "першої допомоги"
+            },
             ["id"] = "profession.first_aid",
             ["priority"] = 100,
             ["provenance"] = {
@@ -42877,7 +44711,13 @@ ns.Data = {
             ["contexts"] = { "professions" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Fishing",
-            ["forms"] = {},
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["genitiveSingular"] = "рибальства"
+            },
             ["id"] = "profession.fishing",
             ["priority"] = 100,
             ["provenance"] = {
@@ -42903,7 +44743,13 @@ ns.Data = {
             ["contexts"] = { "professions" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Herbalism",
-            ["forms"] = {},
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["genitiveSingular"] = "травництва"
+            },
             ["id"] = "profession.herbalism",
             ["priority"] = 100,
             ["provenance"] = {
@@ -42955,7 +44801,13 @@ ns.Data = {
             ["contexts"] = { "professions" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Mining",
-            ["forms"] = {},
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["genitiveSingular"] = "гірництва"
+            },
             ["id"] = "profession.mining",
             ["priority"] = 100,
             ["provenance"] = {
