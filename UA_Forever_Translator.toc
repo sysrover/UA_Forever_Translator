@@ -1,0 +1,26 @@
+## Interface: 16001
+## AllowLoadGameType: camelot
+## Title: UA Forever Translator
+## Notes: English-Ukrainian game chat phrases and reviewed outgoing drafts.
+## Author: UA Forever Translator contributors
+## Version: 0.1.0
+## SavedVariables: UA_Forever_TranslatorDB
+
+Core\Namespace.lua
+Core\Compat.lua
+Core\Database.lua
+UI\LocaleUk.lua
+Data\Dictionary.lua
+Engine\Markup.lua
+Engine\Normalize.lua
+Engine\Tokenizer.lua
+Engine\Dictionary.lua
+Engine\Grammar.lua
+Engine\Parser.lua
+Engine\Translator.lua
+Modules\Incoming.lua
+Modules\Composer.lua
+UI\ComposeWindow.lua
+UI\Settings.lua
+Modules\Commands.lua
+Core\Init.lua

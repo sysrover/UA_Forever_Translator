@@ -1,0 +1,20800 @@
+-- Offline dictionary snapshot; no runtime indexing.
+local _, ns = ...
+ns.Data = {
+    ["aliases"] = {
+        ["en-uk"] = {
+            ["a"] = {
+                ["big"] = {
+                    ["gnome"] = {
+                        ["_morph"] = {
+                            ["race.gnome.augmentative.singular"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    }
+                },
+                ["dwarf"] = {
+                    ["_morph"] = {
+                        ["race.dwarf.base.singular"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["gnome"] = {
+                    ["_morph"] = {
+                        ["race.gnome.base.singular"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["little"] = {
+                    ["dwarf"] = {
+                        ["_morph"] = {
+                            ["race.dwarf.diminutive.singular"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    },
+                    ["gnome"] = {
+                        ["_morph"] = {
+                            ["race.gnome.diminutive.singular"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    },
+                    ["orc"] = {
+                        ["_morph"] = {
+                            ["race.orc.diminutive.singular"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    }
+                },
+                ["proto"] = {
+                    ["-"] = {
+                        ["dwarf"] = {
+                            ["_morph"] = {
+                                ["race.dwarf.proto.singular"] = {
+                                    ["nominative"] = true
+                                }
+                            }
+                        },
+                        ["gnome"] = {
+                            ["_morph"] = {
+                                ["race.gnome.proto.singular"] = {
+                                    ["nominative"] = true
+                                }
+                            }
+                        },
+                        ["orc"] = {
+                            ["_morph"] = {
+                                ["race.orc.proto.singular"] = {
+                                    ["nominative"] = true
+                                }
+                            }
+                        }
+                    }
+                },
+                ["wannabe"] = {
+                    ["dwarf"] = {
+                        ["_morph"] = {
+                            ["race.dwarf.diminished.singular"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    },
+                    ["gnome"] = {
+                        ["_morph"] = {
+                            ["race.gnome.diminished.singular"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    },
+                    ["orc"] = {
+                        ["_morph"] = {
+                            ["race.orc.diminished.singular"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    }
+                }
+            },
+            ["after"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.after",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "після",
+                    ["weak"] = false
+                }
+            },
+            ["again"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.again",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "знову",
+                    ["weak"] = false
+                }
+            },
+            ["aggro"] = {
+                ["_id"] = "game.aggro"
+            },
+            ["ah"] = {
+                ["_id"] = "game.auction_house"
+            },
+            ["alchemy"] = {
+                ["_id"] = "profession.alchemy"
+            },
+            ["alliance"] = {
+                ["_id"] = "game.alliance"
+            },
+            ["already"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.already",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "вже",
+                    ["weak"] = false
+                }
+            },
+            ["an"] = {
+                ["orc"] = {
+                    ["_morph"] = {
+                        ["race.orc.base.singular"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                }
+            },
+            ["and"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.and",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "і",
+                    ["weak"] = true
+                }
+            },
+            ["aq20"] = {
+                ["_id"] = "place.ruins_of_ahn_qiraj"
+            },
+            ["aq40"] = {
+                ["_id"] = "place.temple_of_ahn_qiraj"
+            },
+            ["are"] = {
+                ["you"] = {
+                    ["coming"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.are_you_coming",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "ти підеш",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["armor"] = {
+                ["_id"] = "game.armor",
+                ["_literal"] = {
+                    ["id"] = "literal.armor",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "броня",
+                    ["weak"] = false
+                }
+            },
+            ["arrow"] = {
+                ["_id"] = "goods.arrow"
+            },
+            ["arrows"] = {
+                ["_id"] = "goods.arrow",
+                ["_literal"] = {
+                    ["id"] = "literal.goods.arrow.plural",
+                    ["sourceRefs"] = { "ua-forever:goods.arrow" },
+                    ["text"] = "стріли",
+                    ["weak"] = false
+                }
+            },
+            ["asap"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.quickly",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "швидко",
+                    ["weak"] = false
+                }
+            },
+            ["ashenvale"] = {
+                ["_id"] = "place.ashenvale",
+                ["_literal"] = {
+                    ["id"] = "literal.place.ashenvale",
+                    ["sourceRefs"] = { "ua-forever:place.ashenvale" },
+                    ["text"] = "Ясенеділ",
+                    ["weak"] = false
+                }
+            },
+            ["attack"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.attack",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "атакуй",
+                    ["weak"] = false
+                },
+                ["the"] = {
+                    ["boss"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.attack_the_boss",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "атакуй боса",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["auction"] = {
+                ["house"] = {
+                    ["_id"] = "game.auction_house"
+                }
+            },
+            ["axe"] = {
+                ["_id"] = "goods.axe"
+            },
+            ["axes"] = {
+                ["_id"] = "goods.axe",
+                ["_literal"] = {
+                    ["id"] = "literal.goods.axe.plural",
+                    ["sourceRefs"] = { "ua-forever:goods.axe" },
+                    ["text"] = "сокири",
+                    ["weak"] = false
+                }
+            },
+            ["bag"] = {
+                ["_id"] = "game.bag",
+                ["_literal"] = {
+                    ["id"] = "literal.bag",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "сумка",
+                    ["weak"] = false
+                }
+            },
+            ["bandage"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bandage",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "бинт",
+                    ["weak"] = false
+                }
+            },
+            ["bandages"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bandages",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "бинти",
+                    ["weak"] = false
+                }
+            },
+            ["bank"] = {
+                ["_id"] = "game.bank"
+            },
+            ["battleground"] = {
+                ["_id"] = "activity.battleground"
+            },
+            ["because"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.because",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "бо",
+                    ["weak"] = true
+                }
+            },
+            ["before"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.before",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "перед",
+                    ["weak"] = false
+                }
+            },
+            ["bfd"] = {
+                ["_id"] = "place.blackfathom_deeps"
+            },
+            ["bg"] = {
+                ["_id"] = "activity.battleground"
+            },
+            ["big"] = {
+                ["gnome"] = {
+                    ["_morph"] = {
+                        ["race.gnome.augmentative.singular"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["gnomes"] = {
+                    ["_morph"] = {
+                        ["race.gnome.augmentative.plural"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                }
+            },
+            ["blackfathom"] = {
+                ["deeps"] = {
+                    ["_id"] = "place.blackfathom_deeps",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.blackfathom_deeps",
+                        ["sourceRefs"] = { "ua-forever:place.blackfathom_deeps" },
+                        ["text"] = "Чорноводні глибини",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["blackrock"] = {
+                ["depths"] = {
+                    ["_id"] = "place.blackrock_depths",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.blackrock_depths",
+                        ["sourceRefs"] = { "ua-forever:place.blackrock_depths" },
+                        ["text"] = "Чорноскельні надра",
+                        ["weak"] = false
+                    }
+                },
+                ["spire"] = {
+                    ["_id"] = "place.blackrock_spire",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.blackrock_spire",
+                        ["sourceRefs"] = { "ua-forever:place.blackrock_spire" },
+                        ["text"] = "Чорноскельний шпиль",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["blacksmithing"] = {
+                ["_id"] = "profession.blacksmithing"
+            },
+            ["blackwing"] = {
+                ["lair"] = {
+                    ["_id"] = "place.blackwing_lair",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.blackwing_lair",
+                        ["sourceRefs"] = { "ua-forever:place.blackwing_lair" },
+                        ["text"] = "лігво Чорного Крила",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["boss"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.boss",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "бос",
+                    ["weak"] = false
+                }
+            },
+            ["bosses"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bosses",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "боси",
+                    ["weak"] = false
+                }
+            },
+            ["brd"] = {
+                ["_id"] = "place.blackrock_depths"
+            },
+            ["bread"] = {
+                ["_id"] = "goods.bread"
+            },
+            ["bridge"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bridge",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "міст",
+                    ["weak"] = false
+                }
+            },
+            ["bring"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bring",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "принеси",
+                    ["weak"] = false
+                },
+                ["me"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.bring_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "принеси мені",
+                        ["weak"] = false
+                    }
+                },
+                ["us"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.bring_us",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "принеси нам",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["brs"] = {
+                ["_id"] = "place.blackrock_spire"
+            },
+            ["but"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.but",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "але",
+                    ["weak"] = true
+                }
+            },
+            ["buy"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.buy",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "купи",
+                    ["weak"] = false
+                }
+            },
+            ["buying"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.buy",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "купи",
+                    ["weak"] = false
+                }
+            },
+            ["bwl"] = {
+                ["_id"] = "place.blackwing_lair"
+            },
+            ["can"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.can",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "можу",
+                    ["weak"] = false
+                }
+            },
+            ["can't"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.cannot",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "не можу",
+                    ["weak"] = false
+                }
+            },
+            ["cannot"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.cannot",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "не можу",
+                    ["weak"] = false
+                }
+            },
+            ["cheap"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.cheap",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "дешево",
+                    ["weak"] = false
+                }
+            },
+            ["city"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.city",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "місто",
+                    ["weak"] = false
+                }
+            },
+            ["come"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.come",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "приходь",
+                    ["weak"] = false
+                },
+                ["back"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.come_back",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "повернися",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["complaining"] = {
+                ["_id"] = "behavior.complain"
+            },
+            ["cooking"] = {
+                ["_id"] = "profession.cooking"
+            },
+            ["copper"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.copper",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "мідь",
+                    ["weak"] = false
+                }
+            },
+            ["cost"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.price",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "ціна",
+                    ["weak"] = false
+                }
+            },
+            ["craft"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.craft",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "виготовити",
+                    ["weak"] = false
+                }
+            },
+            ["damage"] = {
+                ["dealer"] = {
+                    ["_id"] = "role.damage"
+                }
+            },
+            ["darnassus"] = {
+                ["_id"] = "place.darnassus",
+                ["_literal"] = {
+                    ["id"] = "literal.place.darnassus",
+                    ["sourceRefs"] = { "ua-forever:place.darnassus" },
+                    ["text"] = "Дарнас",
+                    ["weak"] = false
+                }
+            },
+            ["dd"] = {
+                ["_id"] = "role.damage"
+            },
+            ["dire"] = {
+                ["maul"] = {
+                    ["_id"] = "place.dire_maul",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.dire_maul",
+                        ["sourceRefs"] = { "ua-forever:place.dire_maul" },
+                        ["text"] = "Грізний Молот",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["dm"] = {
+                ["_id"] = "place.the_deadmines"
+            },
+            ["do"] = {
+                ["not"] = {
+                    ["attack"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.do_not_attack",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "не атакуйте",
+                            ["weak"] = false
+                        }
+                    },
+                    ["pull"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.do_not_pull",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "не починайте бій",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["don't"] = {
+                ["attack"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.do_not_attack",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "не атакуйте",
+                        ["weak"] = false
+                    }
+                },
+                ["pull"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.do_not_pull",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "не починайте бій",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["dont"] = {
+                ["pull"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.do_not_pull",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "не починайте бій",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["downstairs"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.downstairs",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "внизу",
+                    ["weak"] = false
+                }
+            },
+            ["dps"] = {
+                ["_id"] = "role.damage"
+            },
+            ["druid"] = {
+                ["_id"] = "class.druid"
+            },
+            ["dung"] = {
+                ["_id"] = "game.dungeon"
+            },
+            ["dungeon"] = {
+                ["_id"] = "game.dungeon"
+            },
+            ["durotar"] = {
+                ["_id"] = "place.durotar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.durotar",
+                    ["sourceRefs"] = { "ua-forever:place.durotar" },
+                    ["text"] = "Дуротар",
+                    ["weak"] = false
+                }
+            },
+            ["duskwood"] = {
+                ["_id"] = "place.duskwood",
+                ["_literal"] = {
+                    ["id"] = "literal.place.duskwood",
+                    ["sourceRefs"] = { "ua-forever:place.duskwood" },
+                    ["text"] = "Смерколісся",
+                    ["weak"] = false
+                }
+            },
+            ["dwarf"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["dwarves"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.plural"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["eastern"] = {
+                ["plaguelands"] = {
+                    ["_id"] = "place.eastern_plaguelands",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.eastern_plaguelands",
+                        ["sourceRefs"] = { "ua-forever:place.eastern_plaguelands" },
+                        ["text"] = "Східні Зачумлені землі",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["elwynn"] = {
+                ["forest"] = {
+                    ["_id"] = "place.elwynn_forest",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.elwynn_forest",
+                        ["sourceRefs"] = { "ua-forever:place.elwynn_forest" },
+                        ["text"] = "Ельвиннський ліс",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["enchanting"] = {
+                ["_id"] = "profession.enchanting"
+            },
+            ["enemies"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.enemies",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "вороги",
+                    ["weak"] = false
+                }
+            },
+            ["enemy"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.enemy",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "ворог",
+                    ["weak"] = false
+                }
+            },
+            ["engineering"] = {
+                ["_id"] = "profession.engineering"
+            },
+            ["entrance"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.entrance",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "вхід",
+                    ["weak"] = false
+                }
+            },
+            ["epl"] = {
+                ["_id"] = "place.eastern_plaguelands"
+            },
+            ["exit"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.exit",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "вихід",
+                    ["weak"] = false
+                }
+            },
+            ["expensive"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.expensive",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "дорого",
+                    ["weak"] = false
+                }
+            },
+            ["fetch"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bring",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "принеси",
+                    ["weak"] = false
+                },
+                ["me"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.bring_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "принеси мені",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["find"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.find",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "знайди",
+                    ["weak"] = false
+                }
+            },
+            ["first"] = {
+                ["aid"] = {
+                    ["_id"] = "profession.first_aid"
+                }
+            },
+            ["fishing"] = {
+                ["_id"] = "profession.fishing"
+            },
+            ["fly"] = {
+                ["to"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.fly_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "лети до",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["follow"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.follow",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "іди за",
+                    ["weak"] = false
+                },
+                ["me"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.follow_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "іди за мною",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["food"] = {
+                ["_id"] = "game.food",
+                ["_literal"] = {
+                    ["id"] = "literal.food",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "їжа",
+                    ["weak"] = false
+                }
+            },
+            ["for"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.for",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "для",
+                    ["weak"] = true
+                }
+            },
+            ["from"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.from",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "від",
+                    ["weak"] = true
+                },
+                ["here"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.from_here",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "звідси",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["get"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.get",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "дістань",
+                    ["weak"] = false
+                }
+            },
+            ["give"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.give",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "дай",
+                    ["weak"] = false
+                },
+                ["me"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.give_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "дай мені",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["gnome"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["gnomer"] = {
+                ["_id"] = "place.gnomeregan"
+            },
+            ["gnomeregan"] = {
+                ["_id"] = "place.gnomeregan",
+                ["_literal"] = {
+                    ["id"] = "literal.place.gnomeregan",
+                    ["sourceRefs"] = { "ua-forever:place.gnomeregan" },
+                    ["text"] = "Гномреґан",
+                    ["weak"] = false
+                }
+            },
+            ["gnomes"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.plural"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["go"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.go",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "іди",
+                    ["weak"] = false
+                }
+            },
+            ["gold"] = {
+                ["_id"] = "game.gold"
+            },
+            ["guild"] = {
+                ["_id"] = "game.guild"
+            },
+            ["have"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.have",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "маю",
+                    ["weak"] = false
+                }
+            },
+            ["he"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.he",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "він",
+                    ["weak"] = true
+                }
+            },
+            ["heal"] = {
+                ["_id"] = "role.healer",
+                ["_literal"] = {
+                    ["id"] = "literal.heal",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "зціли",
+                    ["weak"] = false
+                }
+            },
+            ["healer"] = {
+                ["_id"] = "role.healer"
+            },
+            ["healers"] = {
+                ["_id"] = "role.healer"
+            },
+            ["healing"] = {
+                ["potion"] = {
+                    ["_id"] = "goods.health_potion"
+                },
+                ["potions"] = {
+                    ["_id"] = "goods.health_potion"
+                }
+            },
+            ["heals"] = {
+                ["_id"] = "role.healer"
+            },
+            ["health"] = {
+                ["_id"] = "game.health",
+                ["potion"] = {
+                    ["_id"] = "goods.health_potion"
+                },
+                ["potions"] = {
+                    ["_id"] = "goods.health_potion"
+                }
+            },
+            ["hello"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.hello",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "привіт",
+                    ["weak"] = false
+                }
+            },
+            ["help"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.help",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "допоможи",
+                    ["weak"] = false
+                }
+            },
+            ["her"] = {
+                ["_id"] = "recipient.her"
+            },
+            ["herbalism"] = {
+                ["_id"] = "profession.herbalism"
+            },
+            ["here"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.here",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "тут",
+                    ["weak"] = false
+                },
+                ["is"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.here_is",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "ось",
+                        ["weak"] = true
+                    }
+                }
+            },
+            ["hey"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.hey",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "гей",
+                    ["weak"] = false
+                }
+            },
+            ["hi"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.hello",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "привіт",
+                    ["weak"] = false
+                }
+            },
+            ["him"] = {
+                ["_id"] = "recipient.him"
+            },
+            ["horde"] = {
+                ["_id"] = "game.horde"
+            },
+            ["how"] = {
+                ["many"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.how_much",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "скільки",
+                        ["weak"] = false
+                    }
+                },
+                ["much"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.how_much",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "скільки",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["hp"] = {
+                ["_id"] = "game.health"
+            },
+            ["hunter"] = {
+                ["_id"] = "class.hunter"
+            },
+            ["hurry"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.hurry",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "поспішай",
+                    ["weak"] = false
+                },
+                ["to"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.hurry_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "гайни до",
+                        ["weak"] = false
+                    }
+                },
+                ["up"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.hurry",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "поспішай",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["i"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.i",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "я",
+                    ["weak"] = true
+                },
+                ["need"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.need_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "мені потрібно",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["if"] = {
+                ["_id"] = "place.ironforge",
+                ["_literal"] = {
+                    ["id"] = "literal.if",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "якщо",
+                    ["weak"] = true
+                }
+            },
+            ["in"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.in",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "в",
+                    ["weak"] = true
+                }
+            },
+            ["inn"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.inn",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "корчма",
+                    ["weak"] = false
+                }
+            },
+            ["inside"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.inside",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "усередині",
+                    ["weak"] = false
+                }
+            },
+            ["interrupt"] = {
+                ["_id"] = "game.interrupt",
+                ["_literal"] = {
+                    ["id"] = "literal.interrupt",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "перерви",
+                    ["weak"] = false
+                }
+            },
+            ["into"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.in",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "в",
+                    ["weak"] = true
+                }
+            },
+            ["invite"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.invite",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "запроси",
+                    ["weak"] = false
+                }
+            },
+            ["ironforge"] = {
+                ["_id"] = "place.ironforge",
+                ["_literal"] = {
+                    ["id"] = "literal.place.ironforge",
+                    ["sourceRefs"] = { "ua-forever:place.ironforge" },
+                    ["text"] = "Залізогарт",
+                    ["weak"] = false
+                }
+            },
+            ["join"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.join",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "приєднайся",
+                    ["weak"] = false
+                }
+            },
+            ["key"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.key",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "ключ",
+                    ["weak"] = false
+                }
+            },
+            ["kill"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.kill",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "убий",
+                    ["weak"] = false
+                }
+            },
+            ["later"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.later",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "пізніше",
+                    ["weak"] = false
+                }
+            },
+            ["leader"] = {
+                ["_id"] = "game.leader"
+            },
+            ["leatherworking"] = {
+                ["_id"] = "profession.leatherworking"
+            },
+            ["leave"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.leave",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "виходь",
+                    ["weak"] = false
+                }
+            },
+            ["link"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.link",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "посилання",
+                    ["weak"] = false
+                }
+            },
+            ["little"] = {
+                ["dwarf"] = {
+                    ["_morph"] = {
+                        ["race.dwarf.diminutive.singular"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["dwarves"] = {
+                    ["_morph"] = {
+                        ["race.dwarf.diminutive.plural"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["gnome"] = {
+                    ["_morph"] = {
+                        ["race.gnome.diminutive.singular"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["gnomes"] = {
+                    ["_morph"] = {
+                        ["race.gnome.diminutive.plural"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["orc"] = {
+                    ["_morph"] = {
+                        ["race.orc.diminutive.singular"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["orcs"] = {
+                    ["_morph"] = {
+                        ["race.orc.diminutive.plural"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                }
+            },
+            ["look"] = {
+                ["for"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.look_for",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "шукати",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["looking"] = {
+                ["for"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.look_for",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "шукати",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["loot"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.loot",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "здобич",
+                    ["weak"] = false
+                }
+            },
+            ["mage"] = {
+                ["_id"] = "class.mage"
+            },
+            ["main"] = {
+                ["tank"] = {
+                    ["_id"] = "role.tank"
+                }
+            },
+            ["mana"] = {
+                ["_id"] = "game.mana"
+            },
+            ["mara"] = {
+                ["_id"] = "place.maraudon"
+            },
+            ["maraudon"] = {
+                ["_id"] = "place.maraudon",
+                ["_literal"] = {
+                    ["id"] = "literal.place.maraudon",
+                    ["sourceRefs"] = { "ua-forever:place.maraudon" },
+                    ["text"] = "Мародон",
+                    ["weak"] = false
+                }
+            },
+            ["mc"] = {
+                ["_id"] = "place.molten_core"
+            },
+            ["me"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.me",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "мене",
+                    ["weak"] = true
+                }
+            },
+            ["meet"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.meet",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "зустрінь",
+                    ["weak"] = false
+                }
+            },
+            ["member"] = {
+                ["_id"] = "game.member"
+            },
+            ["mining"] = {
+                ["_id"] = "profession.mining"
+            },
+            ["mob"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.mob",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "моб",
+                    ["weak"] = false
+                }
+            },
+            ["mobs"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.mobs",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "моби",
+                    ["weak"] = false
+                }
+            },
+            ["molten"] = {
+                ["core"] = {
+                    ["_id"] = "place.molten_core",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.molten_core",
+                        ["sourceRefs"] = { "ua-forever:place.molten_core" },
+                        ["text"] = "Палаюче Ядро",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["move"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.move",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "рухайся",
+                    ["weak"] = false
+                }
+            },
+            ["mp"] = {
+                ["_id"] = "game.mana"
+            },
+            ["mt"] = {
+                ["_id"] = "role.tank"
+            },
+            ["my"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.my",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "мій",
+                    ["weak"] = true
+                }
+            },
+            ["naxx"] = {
+                ["_id"] = "place.naxxramas"
+            },
+            ["naxxramas"] = {
+                ["_id"] = "place.naxxramas",
+                ["_literal"] = {
+                    ["id"] = "literal.place.naxxramas",
+                    ["sourceRefs"] = { "ua-forever:place.naxxramas" },
+                    ["text"] = "Наксрамас",
+                    ["weak"] = false
+                }
+            },
+            ["near"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.near",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "біля",
+                    ["weak"] = false
+                }
+            },
+            ["need"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.need",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "потрібно",
+                    ["weak"] = false
+                }
+            },
+            ["next"] = {
+                ["to"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.near",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "біля",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["no"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.no",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "ні",
+                    ["weak"] = true
+                },
+                ["pull"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.do_not_pull",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "не починайте бій",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["not"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.not",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "не",
+                    ["weak"] = true
+                },
+                ["ready"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.not_ready",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "не готовий",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["nothing"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.nothing",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "нічого",
+                    ["weak"] = false
+                }
+            },
+            ["now"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.now",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "зараз",
+                    ["weak"] = false
+                }
+            },
+            ["og"] = {
+                ["_id"] = "place.orgrimmar"
+            },
+            ["oi"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.hey",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "гей",
+                    ["weak"] = false
+                }
+            },
+            ["ok"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.okay",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "гаразд",
+                    ["weak"] = true
+                }
+            },
+            ["okay"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.okay",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "гаразд",
+                    ["weak"] = true
+                }
+            },
+            ["on"] = {
+                ["the"] = {
+                    ["left"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.on_the_left",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "ліворуч",
+                            ["weak"] = false
+                        }
+                    },
+                    ["right"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.on_the_right",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "праворуч",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["only"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.only",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "лише",
+                    ["weak"] = true
+                }
+            },
+            ["ony"] = {
+                ["_id"] = "place.onyxia_s_lair"
+            },
+            ["onyxia's"] = {
+                ["lair"] = {
+                    ["_id"] = "place.onyxia_s_lair",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.onyxia_s_lair",
+                        ["sourceRefs"] = { "ua-forever:place.onyxia_s_lair" },
+                        ["text"] = "лігво Оніксії",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["or"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.or",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "або",
+                    ["weak"] = true
+                }
+            },
+            ["orc"] = {
+                ["_morph"] = {
+                    ["race.orc.base.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["orcs"] = {
+                ["_morph"] = {
+                    ["race.orc.base.plural"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["org"] = {
+                ["_id"] = "place.orgrimmar"
+            },
+            ["orgrimmar"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Орґріммар",
+                    ["weak"] = false
+                }
+            },
+            ["our"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.our",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "наш",
+                    ["weak"] = true
+                }
+            },
+            ["outside"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.outside",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "зовні",
+                    ["weak"] = false
+                }
+            },
+            ["paladin"] = {
+                ["_id"] = "class.paladin"
+            },
+            ["party"] = {
+                ["_id"] = "game.party"
+            },
+            ["player"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.player",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "гравець",
+                    ["weak"] = false
+                }
+            },
+            ["players"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.players",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "гравці",
+                    ["weak"] = false
+                }
+            },
+            ["please"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.please",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "будь ласка",
+                    ["weak"] = false
+                }
+            },
+            ["pls"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.please",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "будь ласка",
+                    ["weak"] = false
+                }
+            },
+            ["plz"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.please",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "будь ласка",
+                    ["weak"] = false
+                }
+            },
+            ["portal"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.portal",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "портал",
+                    ["weak"] = false
+                }
+            },
+            ["potion"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.potion",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "зілля",
+                    ["weak"] = false
+                }
+            },
+            ["price"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.price",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "ціна",
+                    ["weak"] = false
+                }
+            },
+            ["priest"] = {
+                ["_id"] = "class.priest"
+            },
+            ["proto"] = {
+                ["-"] = {
+                    ["dwarf"] = {
+                        ["_morph"] = {
+                            ["race.dwarf.proto.singular"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    },
+                    ["dwarves"] = {
+                        ["_morph"] = {
+                            ["race.dwarf.proto.plural"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    },
+                    ["gnome"] = {
+                        ["_morph"] = {
+                            ["race.gnome.proto.singular"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    },
+                    ["gnomes"] = {
+                        ["_morph"] = {
+                            ["race.gnome.proto.plural"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    },
+                    ["orc"] = {
+                        ["_morph"] = {
+                            ["race.orc.proto.singular"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    },
+                    ["orcs"] = {
+                        ["_morph"] = {
+                            ["race.orc.proto.plural"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    }
+                }
+            },
+            ["pull"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.pull",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "починай бій",
+                    ["weak"] = false
+                }
+            },
+            ["quest"] = {
+                ["_id"] = "game.quest"
+            },
+            ["quickly"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.quickly",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "швидко",
+                    ["weak"] = false
+                }
+            },
+            ["ragefire"] = {
+                ["chasm"] = {
+                    ["_id"] = "place.ragefire_chasm",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.ragefire_chasm",
+                        ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" },
+                        ["text"] = "прірва Лютого Полум'я",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["raid"] = {
+                ["_id"] = "game.raid"
+            },
+            ["razorfen"] = {
+                ["downs"] = {
+                    ["_id"] = "place.razorfen_downs",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.razorfen_downs",
+                        ["sourceRefs"] = { "ua-forever:place.razorfen_downs" },
+                        ["text"] = "нори Бритвоболотих",
+                        ["weak"] = false
+                    }
+                },
+                ["kraul"] = {
+                    ["_id"] = "place.razorfen_kraul",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.razorfen_kraul",
+                        ["sourceRefs"] = { "ua-forever:place.razorfen_kraul" },
+                        ["text"] = "крааль Бритвоболотих",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["rc"] = {
+                ["_id"] = "game.ready_check"
+            },
+            ["ready"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.ready",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "готовий",
+                    ["weak"] = false
+                },
+                ["check"] = {
+                    ["_id"] = "game.ready_check"
+                }
+            },
+            ["repair"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.repair",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "полагодь",
+                    ["weak"] = false
+                }
+            },
+            ["res"] = {
+                ["_id"] = "game.resurrection"
+            },
+            ["resurrect"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.resurrect",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "воскреси",
+                    ["weak"] = false
+                }
+            },
+            ["resurrection"] = {
+                ["_id"] = "game.resurrection"
+            },
+            ["return"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.come_back",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "повернися",
+                    ["weak"] = false
+                }
+            },
+            ["rez"] = {
+                ["_id"] = "game.resurrection"
+            },
+            ["rfc"] = {
+                ["_id"] = "place.ragefire_chasm"
+            },
+            ["rfd"] = {
+                ["_id"] = "place.razorfen_downs"
+            },
+            ["rfk"] = {
+                ["_id"] = "place.razorfen_kraul"
+            },
+            ["rogue"] = {
+                ["_id"] = "class.rogue"
+            },
+            ["ruins"] = {
+                ["of"] = {
+                    ["ahn'qiraj"] = {
+                        ["_id"] = "place.ruins_of_ahn_qiraj",
+                        ["_literal"] = {
+                            ["id"] = "literal.place.ruins_of_ahn_qiraj",
+                            ["sourceRefs"] = { "ua-forever:place.ruins_of_ahn_qiraj" },
+                            ["text"] = "руїни Ан'Кіражу",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["run"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.run",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "біжи",
+                    ["weak"] = false
+                },
+                ["to"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.run_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "біжи до",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["scarlet"] = {
+                ["monastery"] = {
+                    ["_id"] = "place.scarlet_monastery",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.scarlet_monastery",
+                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" },
+                        ["text"] = "Багряний монастир",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["scholo"] = {
+                ["_id"] = "place.scholomance"
+            },
+            ["scholomance"] = {
+                ["_id"] = "place.scholomance",
+                ["_literal"] = {
+                    ["id"] = "literal.place.scholomance",
+                    ["sourceRefs"] = { "ua-forever:place.scholomance" },
+                    ["text"] = "Некроситет",
+                    ["weak"] = false
+                }
+            },
+            ["sell"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.sell",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "продай",
+                    ["weak"] = false
+                }
+            },
+            ["selling"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.sell",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "продай",
+                    ["weak"] = false
+                }
+            },
+            ["sfk"] = {
+                ["_id"] = "place.shadowfang_keep"
+            },
+            ["shadowfang"] = {
+                ["keep"] = {
+                    ["_id"] = "place.shadowfang_keep",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.shadowfang_keep",
+                        ["sourceRefs"] = { "ua-forever:place.shadowfang_keep" },
+                        ["text"] = "фортеця Тіньового Ікла",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["shaman"] = {
+                ["_id"] = "class.shaman"
+            },
+            ["share"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.share",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "поділись",
+                    ["weak"] = false
+                }
+            },
+            ["she"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.she",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "вона",
+                    ["weak"] = true
+                }
+            },
+            ["shield"] = {
+                ["_id"] = "game.shield"
+            },
+            ["shields"] = {
+                ["_id"] = "game.shield",
+                ["_literal"] = {
+                    ["id"] = "literal.game.shield.plural",
+                    ["sourceRefs"] = { "ua-forever:game.shield" },
+                    ["text"] = "щити",
+                    ["weak"] = false
+                }
+            },
+            ["shop"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.shop",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "магазин",
+                    ["weak"] = false
+                }
+            },
+            ["shouting"] = {
+                ["_id"] = "behavior.shout"
+            },
+            ["silver"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.silver",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "срібло",
+                    ["weak"] = false
+                }
+            },
+            ["skinning"] = {
+                ["_id"] = "profession.skinning"
+            },
+            ["slowly"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.slowly",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "повільно",
+                    ["weak"] = false
+                }
+            },
+            ["sm"] = {
+                ["_id"] = "place.scarlet_monastery"
+            },
+            ["some"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.some",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "трохи",
+                    ["weak"] = true
+                }
+            },
+            ["something"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.something",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "щось",
+                    ["weak"] = false
+                }
+            },
+            ["soon"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.soon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "скоро",
+                    ["weak"] = false
+                }
+            },
+            ["sorry"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.sorry",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "вибач",
+                    ["weak"] = false
+                }
+            },
+            ["sry"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.sorry",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "вибач",
+                    ["weak"] = false
+                }
+            },
+            ["st"] = {
+                ["_id"] = "place.the_temple_of_atal_hakkar"
+            },
+            ["stand"] = {
+                ["around"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.stand_around",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "втикати",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["stay"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.stay",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "залишайся",
+                    ["weak"] = false
+                }
+            },
+            ["still"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.still",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "досі",
+                    ["weak"] = false
+                }
+            },
+            ["stocks"] = {
+                ["_id"] = "place.the_stockade"
+            },
+            ["stop"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.stop",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "зупинись",
+                    ["weak"] = false
+                }
+            },
+            ["store"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.shop",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "магазин",
+                    ["weak"] = false
+                }
+            },
+            ["stormwind"] = {
+                ["_id"] = "place.stormwind",
+                ["_literal"] = {
+                    ["id"] = "literal.place.stormwind",
+                    ["sourceRefs"] = { "ua-forever:place.stormwind" },
+                    ["text"] = "Штормовій",
+                    ["weak"] = false
+                }
+            },
+            ["strat"] = {
+                ["_id"] = "place.stratholme"
+            },
+            ["stratholme"] = {
+                ["_id"] = "place.stratholme",
+                ["_literal"] = {
+                    ["id"] = "literal.place.stratholme",
+                    ["sourceRefs"] = { "ua-forever:place.stratholme" },
+                    ["text"] = "Стратгольм",
+                    ["weak"] = false
+                }
+            },
+            ["summon"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.summon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "виклич",
+                    ["weak"] = false
+                }
+            },
+            ["sunken"] = {
+                ["temple"] = {
+                    ["_id"] = "place.the_temple_of_atal_hakkar"
+                }
+            },
+            ["sw"] = {
+                ["_id"] = "place.stormwind"
+            },
+            ["sword"] = {
+                ["_id"] = "goods.sword"
+            },
+            ["swords"] = {
+                ["_id"] = "goods.sword",
+                ["_literal"] = {
+                    ["id"] = "literal.goods.sword.plural",
+                    ["sourceRefs"] = { "ua-forever:goods.sword" },
+                    ["text"] = "мечі",
+                    ["weak"] = false
+                }
+            },
+            ["tailoring"] = {
+                ["_id"] = "profession.tailoring"
+            },
+            ["tanaris"] = {
+                ["_id"] = "place.tanaris",
+                ["_literal"] = {
+                    ["id"] = "literal.place.tanaris",
+                    ["sourceRefs"] = { "ua-forever:place.tanaris" },
+                    ["text"] = "Танаріс",
+                    ["weak"] = false
+                }
+            },
+            ["tank"] = {
+                ["_id"] = "role.tank"
+            },
+            ["tanks"] = {
+                ["_id"] = "role.tank"
+            },
+            ["tb"] = {
+                ["_id"] = "place.thunder_bluff"
+            },
+            ["teleport"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.teleport",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "телепортуйся",
+                    ["weak"] = false
+                }
+            },
+            ["temple"] = {
+                ["of"] = {
+                    ["ahn'qiraj"] = {
+                        ["_id"] = "place.temple_of_ahn_qiraj",
+                        ["_literal"] = {
+                            ["id"] = "literal.place.temple_of_ahn_qiraj",
+                            ["sourceRefs"] = { "ua-forever:place.temple_of_ahn_qiraj" },
+                            ["text"] = "храм Ан'Кіражу",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["thank"] = {
+                ["you"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.thanks",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "дякую",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["thanks"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.thanks",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "дякую",
+                    ["weak"] = false
+                }
+            },
+            ["the"] = {
+                ["barrens"] = {
+                    ["_id"] = "place.the_barrens",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.the_barrens",
+                        ["sourceRefs"] = { "ua-forever:place.the_barrens" },
+                        ["text"] = "Степи",
+                        ["weak"] = false
+                    }
+                },
+                ["deadmines"] = {
+                    ["_id"] = "place.the_deadmines",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.the_deadmines",
+                        ["sourceRefs"] = { "ua-forever:place.the_deadmines" },
+                        ["text"] = "Мертві копальні",
+                        ["weak"] = false
+                    }
+                },
+                ["stockade"] = {
+                    ["_id"] = "place.the_stockade",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.the_stockade",
+                        ["sourceRefs"] = { "ua-forever:place.the_stockade" },
+                        ["text"] = "В'язниця",
+                        ["weak"] = false
+                    }
+                },
+                ["temple"] = {
+                    ["of"] = {
+                        ["atal'hakkar"] = {
+                            ["_id"] = "place.the_temple_of_atal_hakkar",
+                            ["_literal"] = {
+                                ["id"] = "literal.place.the_temple_of_atal_hakkar",
+                                ["sourceRefs"] = { "ua-forever:place.the_temple_of_atal_hakkar" },
+                                ["text"] = "Храм Атал'Гаккара",
+                                ["weak"] = false
+                            }
+                        }
+                    }
+                }
+            },
+            ["them"] = {
+                ["_id"] = "recipient.them"
+            },
+            ["then"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.then",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "тоді",
+                    ["weak"] = true
+                }
+            },
+            ["there"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.there",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "там",
+                    ["weak"] = false
+                }
+            },
+            ["they"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.they",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "вони",
+                    ["weak"] = true
+                }
+            },
+            ["threat"] = {
+                ["_id"] = "game.threat"
+            },
+            ["thunder"] = {
+                ["bluff"] = {
+                    ["_id"] = "place.thunder_bluff",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.thunder_bluff",
+                        ["sourceRefs"] = { "ua-forever:place.thunder_bluff" },
+                        ["text"] = "Громовий Бескид",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["thx"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.thanks",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "дякую",
+                    ["weak"] = false
+                }
+            },
+            ["till"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.until",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "доки",
+                    ["weak"] = false
+                }
+            },
+            ["to"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.to",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "до",
+                    ["weak"] = true
+                }
+            },
+            ["town"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.city",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "місто",
+                    ["weak"] = false
+                }
+            },
+            ["trade"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.trade",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "обмін",
+                    ["weak"] = false
+                }
+            },
+            ["ty"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.thanks",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "дякую",
+                    ["weak"] = false
+                }
+            },
+            ["uc"] = {
+                ["_id"] = "place.undercity"
+            },
+            ["ulda"] = {
+                ["_id"] = "place.uldaman"
+            },
+            ["uldaman"] = {
+                ["_id"] = "place.uldaman",
+                ["_literal"] = {
+                    ["id"] = "literal.place.uldaman",
+                    ["sourceRefs"] = { "ua-forever:place.uldaman" },
+                    ["text"] = "Ульдаман",
+                    ["weak"] = false
+                }
+            },
+            ["undercity"] = {
+                ["_id"] = "place.undercity",
+                ["_literal"] = {
+                    ["id"] = "literal.place.undercity",
+                    ["sourceRefs"] = { "ua-forever:place.undercity" },
+                    ["text"] = "Підмісто",
+                    ["weak"] = false
+                }
+            },
+            ["unless"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.unless",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "хіба що",
+                    ["weak"] = false
+                }
+            },
+            ["until"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.until",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "доки",
+                    ["weak"] = false
+                }
+            },
+            ["upstairs"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.upstairs",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "нагорі",
+                    ["weak"] = false
+                }
+            },
+            ["us"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.us",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "нам",
+                    ["weak"] = true
+                }
+            },
+            ["vc"] = {
+                ["_id"] = "place.the_deadmines"
+            },
+            ["wailing"] = {
+                ["caverns"] = {
+                    ["_id"] = "place.wailing_caverns",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.wailing_caverns",
+                        ["sourceRefs"] = { "ua-forever:place.wailing_caverns" },
+                        ["text"] = "Плачучі печери",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["wait"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.wait",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "зачекай",
+                    ["weak"] = false
+                },
+                ["for"] = {
+                    ["me"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.wait_for_me",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "зачекай на мене",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["wannabe"] = {
+                ["dwarf"] = {
+                    ["_morph"] = {
+                        ["race.dwarf.diminished.singular"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["dwarves"] = {
+                    ["_morph"] = {
+                        ["race.dwarf.diminished.plural"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["gnome"] = {
+                    ["_morph"] = {
+                        ["race.gnome.diminished.singular"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["gnomes"] = {
+                    ["_morph"] = {
+                        ["race.gnome.diminished.plural"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["orc"] = {
+                    ["_morph"] = {
+                        ["race.orc.diminished.singular"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
+                ["orcs"] = {
+                    ["_morph"] = {
+                        ["race.orc.diminished.plural"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                }
+            },
+            ["want"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.want",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "хочу",
+                    ["weak"] = false
+                }
+            },
+            ["warlock"] = {
+                ["_id"] = "class.warlock"
+            },
+            ["warrior"] = {
+                ["_id"] = "class.warrior"
+            },
+            ["water"] = {
+                ["_id"] = "game.water",
+                ["_literal"] = {
+                    ["id"] = "literal.water",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "вода",
+                    ["weak"] = false
+                }
+            },
+            ["wc"] = {
+                ["_id"] = "place.wailing_caverns"
+            },
+            ["we"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.we",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "ми",
+                    ["weak"] = true
+                }
+            },
+            ["weapon"] = {
+                ["_id"] = "game.weapon",
+                ["_literal"] = {
+                    ["id"] = "literal.weapon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "зброя",
+                    ["weak"] = false
+                }
+            },
+            ["western"] = {
+                ["plaguelands"] = {
+                    ["_id"] = "place.western_plaguelands",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.western_plaguelands",
+                        ["sourceRefs"] = { "ua-forever:place.western_plaguelands" },
+                        ["text"] = "Західні Зачумлені землі",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["westfall"] = {
+                ["_id"] = "place.westfall",
+                ["_literal"] = {
+                    ["id"] = "literal.place.westfall",
+                    ["sourceRefs"] = { "ua-forever:place.westfall" },
+                    ["text"] = "Західний край",
+                    ["weak"] = false
+                }
+            },
+            ["when"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.when",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "коли",
+                    ["weak"] = false
+                }
+            },
+            ["where"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.where",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "де",
+                    ["weak"] = false
+                }
+            },
+            ["which"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.which",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "який",
+                    ["weak"] = false
+                }
+            },
+            ["whining"] = {
+                ["_id"] = "behavior.whine"
+            },
+            ["why"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.why",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "чому",
+                    ["weak"] = false
+                }
+            },
+            ["winterspring"] = {
+                ["_id"] = "place.winterspring",
+                ["_literal"] = {
+                    ["id"] = "literal.place.winterspring",
+                    ["sourceRefs"] = { "ua-forever:place.winterspring" },
+                    ["text"] = "Зимоключ",
+                    ["weak"] = false
+                }
+            },
+            ["with"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.with",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "з",
+                    ["weak"] = true
+                },
+                ["me"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.with_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "зі мною",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["without"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.without",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "без",
+                    ["weak"] = false
+                }
+            },
+            ["wpl"] = {
+                ["_id"] = "place.western_plaguelands"
+            },
+            ["yeah"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.yes",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "так",
+                    ["weak"] = true
+                }
+            },
+            ["yelling"] = {
+                ["_id"] = "behavior.shout"
+            },
+            ["yep"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.yes",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "так",
+                    ["weak"] = true
+                }
+            },
+            ["yes"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.yes",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "так",
+                    ["weak"] = true
+                }
+            },
+            ["you"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.you",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "ти",
+                    ["weak"] = true
+                },
+                ["big"] = {
+                    ["gnome"] = {
+                        ["_morph"] = {
+                            ["race.gnome.augmentative.singular"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    },
+                    ["gnomes"] = {
+                        ["_morph"] = {
+                            ["race.gnome.augmentative.plural"] = {
+                                ["nominative"] = true
+                            }
+                        }
+                    }
+                }
+            },
+            ["zf"] = {
+                ["_id"] = "place.zul_farrak"
+            },
+            ["zg"] = {
+                ["_id"] = "place.zul_gurub"
+            },
+            ["zul'farrak"] = {
+                ["_id"] = "place.zul_farrak",
+                ["_literal"] = {
+                    ["id"] = "literal.place.zul_farrak",
+                    ["sourceRefs"] = { "ua-forever:place.zul_farrak" },
+                    ["text"] = "Зул'Фаррак",
+                    ["weak"] = false
+                }
+            },
+            ["zul'gurub"] = {
+                ["_id"] = "place.zul_gurub",
+                ["_literal"] = {
+                    ["id"] = "literal.place.zul_gurub",
+                    ["sourceRefs"] = { "ua-forever:place.zul_gurub" },
+                    ["text"] = "Зул'Ґуруб",
+                    ["weak"] = false
+                }
+            }
+        },
+        ["uk-en"] = {
+            ["dps"] = {
+                ["_id"] = "role.damage"
+            },
+            ["або"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.or",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "or",
+                    ["weak"] = true
+                }
+            },
+            ["ага"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.yes",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "yes",
+                    ["weak"] = true
+                }
+            },
+            ["агро"] = {
+                ["_id"] = "game.aggro"
+            },
+            ["айронфордж"] = {
+                ["_id"] = "place.ironforge",
+                ["_literal"] = {
+                    ["id"] = "literal.place.ironforge",
+                    ["sourceRefs"] = { "ua-forever:place.ironforge" },
+                    ["text"] = "Ironforge",
+                    ["weak"] = false
+                }
+            },
+            ["але"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.but",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "but",
+                    ["weak"] = true
+                }
+            },
+            ["алхімія"] = {
+                ["_id"] = "profession.alchemy"
+            },
+            ["альянс"] = {
+                ["_id"] = "game.alliance"
+            },
+            ["андерсіті"] = {
+                ["_id"] = "place.undercity",
+                ["_literal"] = {
+                    ["id"] = "literal.place.undercity",
+                    ["sourceRefs"] = { "ua-forever:place.undercity" },
+                    ["text"] = "Undercity",
+                    ["weak"] = false
+                }
+            },
+            ["атакувати"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.attack",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "attack",
+                    ["weak"] = false
+                }
+            },
+            ["атакуй"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.attack",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "attack",
+                    ["weak"] = false
+                },
+                ["боса"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.attack_the_boss",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "attack the boss",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["атакуйте"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.attack",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "attack",
+                    ["weak"] = false
+                }
+            },
+            ["аукціонний"] = {
+                ["дім"] = {
+                    ["_id"] = "game.auction_house"
+                }
+            },
+            ["багряний"] = {
+                ["монастир"] = {
+                    ["_id"] = "place.scarlet_monastery",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.scarlet_monastery",
+                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" },
+                        ["text"] = "Scarlet Monastery",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["багряного"] = {
+                ["монастиря"] = {
+                    ["_id"] = "place.scarlet_monastery",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.scarlet_monastery",
+                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" },
+                        ["text"] = "Scarlet Monastery",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["багряному"] = {
+                ["монастирі"] = {
+                    ["_id"] = "place.scarlet_monastery",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.scarlet_monastery",
+                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" },
+                        ["text"] = "Scarlet Monastery",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["банк"] = {
+                ["_id"] = "game.bank"
+            },
+            ["батлграунд"] = {
+                ["_id"] = "activity.battleground"
+            },
+            ["батлграунді"] = {
+                ["_id"] = "activity.battleground"
+            },
+            ["бг"] = {
+                ["_id"] = "activity.battleground"
+            },
+            ["бгшка"] = {
+                ["_id"] = "activity.battleground"
+            },
+            ["бгшку"] = {
+                ["_id"] = "activity.battleground"
+            },
+            ["без"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.without",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "without",
+                    ["weak"] = false
+                }
+            },
+            ["бетлграунд"] = {
+                ["_id"] = "activity.battleground"
+            },
+            ["бетлграунді"] = {
+                ["_id"] = "activity.battleground"
+            },
+            ["бетлграцунд"] = {
+                ["_id"] = "activity.battleground"
+            },
+            ["бий"] = {
+                ["боса"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.attack_the_boss",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "attack the boss",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["бинт"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bandage",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bandage",
+                    ["weak"] = false
+                }
+            },
+            ["бинти"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bandages",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bandages",
+                    ["weak"] = false
+                }
+            },
+            ["бинтів"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bandages",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bandages",
+                    ["weak"] = false
+                }
+            },
+            ["бо"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.because",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "because",
+                    ["weak"] = true
+                }
+            },
+            ["бос"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.boss",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "boss",
+                    ["weak"] = false
+                }
+            },
+            ["боса"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.boss",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "boss",
+                    ["weak"] = false
+                }
+            },
+            ["боси"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bosses",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bosses",
+                    ["weak"] = false
+                }
+            },
+            ["босів"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bosses",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bosses",
+                    ["weak"] = false
+                }
+            },
+            ["броню"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.armor",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "armor",
+                    ["weak"] = false
+                }
+            },
+            ["броня"] = {
+                ["_id"] = "game.armor",
+                ["_literal"] = {
+                    ["id"] = "literal.armor",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "armor",
+                    ["weak"] = false
+                }
+            },
+            ["броні"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.armor",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "armor",
+                    ["weak"] = false
+                }
+            },
+            ["будь"] = {
+                ["ласка"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.please",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "please",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["будьласка"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.please",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "please",
+                    ["weak"] = false
+                }
+            },
+            ["біжи"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.run",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "run",
+                    ["weak"] = false
+                },
+                ["в"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.run_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "run to",
+                        ["weak"] = false
+                    }
+                },
+                ["до"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.run_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "run to",
+                        ["weak"] = false
+                    }
+                },
+                ["у"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.run_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "run to",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["біля"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.near",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "near",
+                    ["weak"] = false
+                }
+            },
+            ["в"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.in",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "in",
+                    ["weak"] = true
+                }
+            },
+            ["в'язниця"] = {
+                ["_id"] = "place.the_stockade",
+                ["_literal"] = {
+                    ["id"] = "literal.place.the_stockade",
+                    ["sourceRefs"] = { "ua-forever:place.the_stockade" },
+                    ["text"] = "The Stockade",
+                    ["weak"] = false
+                }
+            },
+            ["вали"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.hurry",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "hurry",
+                    ["weak"] = false
+                },
+                ["в"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.hurry_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "hurry to",
+                        ["weak"] = false
+                    }
+                },
+                ["до"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.hurry_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "hurry to",
+                        ["weak"] = false
+                    }
+                },
+                ["у"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.hurry_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "hurry to",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["вам"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.you",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "you",
+                    ["weak"] = true
+                }
+            },
+            ["вар"] = {
+                ["_id"] = "class.warrior"
+            },
+            ["вартість"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.price",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "price",
+                    ["weak"] = false
+                }
+            },
+            ["вас"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.you",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "you",
+                    ["weak"] = true
+                }
+            },
+            ["вбий"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.kill",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "kill",
+                    ["weak"] = false
+                }
+            },
+            ["вбити"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.kill",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "kill",
+                    ["weak"] = false
+                }
+            },
+            ["вгорі"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.upstairs",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "upstairs",
+                    ["weak"] = false
+                }
+            },
+            ["вертайся"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.come_back",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "come back",
+                    ["weak"] = false
+                }
+            },
+            ["вже"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.already",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "already",
+                    ["weak"] = false
+                }
+            },
+            ["ви"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.you",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "you",
+                    ["weak"] = true
+                }
+            },
+            ["вибач"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.sorry",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "sorry",
+                    ["weak"] = false
+                }
+            },
+            ["вибачте"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.sorry",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "sorry",
+                    ["weak"] = false
+                }
+            },
+            ["виготовити"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.craft",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "craft",
+                    ["weak"] = false
+                }
+            },
+            ["виготовлю"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.craft",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "craft",
+                    ["weak"] = false
+                }
+            },
+            ["вийди"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.leave",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "leave",
+                    ["weak"] = false
+                }
+            },
+            ["викликати"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.summon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "summon",
+                    ["weak"] = false
+                }
+            },
+            ["виклич"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.summon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "summon",
+                    ["weak"] = false
+                }
+            },
+            ["викличте"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.summon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "summon",
+                    ["weak"] = false
+                }
+            },
+            ["вирушай"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.go",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "go",
+                    ["weak"] = false
+                }
+            },
+            ["виходу"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.exit",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "exit",
+                    ["weak"] = false
+                }
+            },
+            ["виходь"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.leave",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "leave",
+                    ["weak"] = false
+                }
+            },
+            ["виході"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.exit",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "exit",
+                    ["weak"] = false
+                }
+            },
+            ["вихід"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.exit",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "exit",
+                    ["weak"] = false
+                }
+            },
+            ["внизу"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.downstairs",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "downstairs",
+                    ["weak"] = false
+                }
+            },
+            ["вода"] = {
+                ["_id"] = "game.water",
+                ["_literal"] = {
+                    ["id"] = "literal.water",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "water",
+                    ["weak"] = false
+                }
+            },
+            ["води"] = {
+                ["_id"] = "game.water",
+                ["_literal"] = {
+                    ["id"] = "literal.water",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "water",
+                    ["weak"] = false
+                }
+            },
+            ["водичку"] = {
+                ["_id"] = "game.water",
+                ["_literal"] = {
+                    ["id"] = "literal.water",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "water",
+                    ["weak"] = false
+                }
+            },
+            ["воду"] = {
+                ["_id"] = "game.water",
+                ["_literal"] = {
+                    ["id"] = "literal.water",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "water",
+                    ["weak"] = false
+                }
+            },
+            ["вона"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.she",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "she",
+                    ["weak"] = true
+                }
+            },
+            ["вони"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.they",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "they",
+                    ["weak"] = true
+                }
+            },
+            ["ворог"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.enemy",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "enemy",
+                    ["weak"] = false
+                }
+            },
+            ["ворога"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.enemy",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "enemy",
+                    ["weak"] = false
+                }
+            },
+            ["вороги"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.enemies",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "enemies",
+                    ["weak"] = false
+                }
+            },
+            ["ворогів"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.enemies",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "enemies",
+                    ["weak"] = false
+                }
+            },
+            ["ворушися"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.move",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "move",
+                    ["weak"] = false
+                }
+            },
+            ["воскреси"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.resurrect",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "resurrect",
+                    ["weak"] = false
+                }
+            },
+            ["воскресити"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.resurrect",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "resurrect",
+                    ["weak"] = false
+                }
+            },
+            ["воскресіння"] = {
+                ["_id"] = "game.resurrection"
+            },
+            ["воскресіть"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.resurrect",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "resurrect",
+                    ["weak"] = false
+                }
+            },
+            ["воїн"] = {
+                ["_id"] = "class.warrior"
+            },
+            ["воїна"] = {
+                ["_id"] = "class.warrior"
+            },
+            ["всередині"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.inside",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "inside",
+                    ["weak"] = false
+                }
+            },
+            ["втикати"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.stand_around",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "stand around",
+                    ["weak"] = false
+                }
+            },
+            ["входу"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.entrance",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "entrance",
+                    ["weak"] = false
+                }
+            },
+            ["вході"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.entrance",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "entrance",
+                    ["weak"] = false
+                }
+            },
+            ["вхід"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.entrance",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "entrance",
+                    ["weak"] = false
+                }
+            },
+            ["від"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.from",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "from",
+                    ["weak"] = true
+                }
+            },
+            ["він"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.he",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "he",
+                    ["weak"] = true
+                }
+            },
+            ["гайни"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.hurry",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "hurry",
+                    ["weak"] = false
+                },
+                ["в"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.hurry_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "hurry to",
+                        ["weak"] = false
+                    }
+                },
+                ["до"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.hurry_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "hurry to",
+                        ["weak"] = false
+                    }
+                },
+                ["у"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.hurry_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "hurry to",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["гаразд"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.okay",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "okay",
+                    ["weak"] = true
+                }
+            },
+            ["гей"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.hey",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "hey",
+                    ["weak"] = false
+                }
+            },
+            ["гном"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["гнома"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["гномам"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["гномами"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["гномах"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["гноме"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.singular"] = {
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["гномереган"] = {
+                ["_id"] = "place.gnomeregan",
+                ["_literal"] = {
+                    ["id"] = "literal.place.gnomeregan",
+                    ["sourceRefs"] = { "ua-forever:place.gnomeregan" },
+                    ["text"] = "Gnomeregan",
+                    ["weak"] = false
+                }
+            },
+            ["гномерегана"] = {
+                ["_id"] = "place.gnomeregan",
+                ["_literal"] = {
+                    ["id"] = "literal.place.gnomeregan",
+                    ["sourceRefs"] = { "ua-forever:place.gnomeregan" },
+                    ["text"] = "Gnomeregan",
+                    ["weak"] = false
+                }
+            },
+            ["гномереґан"] = {
+                ["_id"] = "place.gnomeregan",
+                ["_literal"] = {
+                    ["id"] = "literal.place.gnomeregan",
+                    ["sourceRefs"] = { "ua-forever:place.gnomeregan" },
+                    ["text"] = "Gnomeregan",
+                    ["weak"] = false
+                }
+            },
+            ["гномеригaн"] = {
+                ["_id"] = "place.gnomeregan",
+                ["_literal"] = {
+                    ["id"] = "literal.place.gnomeregan",
+                    ["sourceRefs"] = { "ua-forever:place.gnomeregan" },
+                    ["text"] = "Gnomeregan",
+                    ["weak"] = false
+                }
+            },
+            ["гномериган"] = {
+                ["_id"] = "place.gnomeregan",
+                ["_literal"] = {
+                    ["id"] = "literal.place.gnomeregan",
+                    ["sourceRefs"] = { "ua-forever:place.gnomeregan" },
+                    ["text"] = "Gnomeregan",
+                    ["weak"] = false
+                }
+            },
+            ["гноми"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["гномик"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminutive.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["гномика"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminutive.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["гномикам"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminutive.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["гномиками"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminutive.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["гномиках"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminutive.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["гномики"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminutive.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["гномикові"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminutive.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["гномиком"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminutive.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["гномику"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminutive.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["гномиків"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminutive.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["гномові"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["гномом"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["гномреґан"] = {
+                ["_id"] = "place.gnomeregan",
+                ["_literal"] = {
+                    ["id"] = "literal.place.gnomeregan",
+                    ["sourceRefs"] = { "ua-forever:place.gnomeregan" },
+                    ["text"] = "Gnomeregan",
+                    ["weak"] = false
+                }
+            },
+            ["гномреґана"] = {
+                ["_id"] = "place.gnomeregan",
+                ["_literal"] = {
+                    ["id"] = "literal.place.gnomeregan",
+                    ["sourceRefs"] = { "ua-forever:place.gnomeregan" },
+                    ["text"] = "Gnomeregan",
+                    ["weak"] = false
+                }
+            },
+            ["гному"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.singular"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["гномяр"] = {
+                ["_morph"] = {
+                    ["race.gnome.augmentative.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["гномяра"] = {
+                ["_morph"] = {
+                    ["race.gnome.augmentative.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["гномярам"] = {
+                ["_morph"] = {
+                    ["race.gnome.augmentative.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["гномярами"] = {
+                ["_morph"] = {
+                    ["race.gnome.augmentative.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["гномярах"] = {
+                ["_morph"] = {
+                    ["race.gnome.augmentative.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["гномяри"] = {
+                ["_morph"] = {
+                    ["race.gnome.augmentative.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    },
+                    ["race.gnome.augmentative.singular"] = {
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["гномяро"] = {
+                ["_morph"] = {
+                    ["race.gnome.augmentative.singular"] = {
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["гномярою"] = {
+                ["_morph"] = {
+                    ["race.gnome.augmentative.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["гномяру"] = {
+                ["_morph"] = {
+                    ["race.gnome.augmentative.singular"] = {
+                        ["accusative"] = true
+                    }
+                }
+            },
+            ["гномярі"] = {
+                ["_morph"] = {
+                    ["race.gnome.augmentative.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["гномі"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.singular"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["гномів"] = {
+                ["_morph"] = {
+                    ["race.gnome.base.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["горлати"] = {
+                ["_id"] = "behavior.shout"
+            },
+            ["готова"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.ready",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "ready",
+                    ["weak"] = false
+                }
+            },
+            ["готовий"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.ready",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "ready",
+                    ["weak"] = false
+                }
+            },
+            ["готові"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.ready",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "ready",
+                    ["weak"] = false
+                }
+            },
+            ["гравець"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.player",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "player",
+                    ["weak"] = false
+                }
+            },
+            ["гравця"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.player",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "player",
+                    ["weak"] = false
+                }
+            },
+            ["гравці"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.players",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "players",
+                    ["weak"] = false
+                }
+            },
+            ["гравців"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.players",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "players",
+                    ["weak"] = false
+                }
+            },
+            ["громовий"] = {
+                ["бескид"] = {
+                    ["_id"] = "place.thunder_bluff",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.thunder_bluff",
+                        ["sourceRefs"] = { "ua-forever:place.thunder_bluff" },
+                        ["text"] = "Thunder Bluff",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["громового"] = {
+                ["бескиду"] = {
+                    ["_id"] = "place.thunder_bluff",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.thunder_bluff",
+                        ["sourceRefs"] = { "ua-forever:place.thunder_bluff" },
+                        ["text"] = "Thunder Bluff",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["громовому"] = {
+                ["бескиді"] = {
+                    ["_id"] = "place.thunder_bluff",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.thunder_bluff",
+                        ["sourceRefs"] = { "ua-forever:place.thunder_bluff" },
+                        ["text"] = "Thunder Bluff",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["група"] = {
+                ["_id"] = "game.party"
+            },
+            ["грізний"] = {
+                ["молот"] = {
+                    ["_id"] = "place.dire_maul",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.dire_maul",
+                        ["sourceRefs"] = { "ua-forever:place.dire_maul" },
+                        ["text"] = "Dire Maul",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["гільдія"] = {
+                ["_id"] = "game.guild"
+            },
+            ["гірництво"] = {
+                ["_id"] = "profession.mining"
+            },
+            ["дай"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.give",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "give",
+                    ["weak"] = false
+                },
+                ["мені"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.give_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "give me",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["дайте"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.give",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "give",
+                    ["weak"] = false
+                },
+                ["мені"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.give_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "give me",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["данж"] = {
+                ["_id"] = "game.dungeon"
+            },
+            ["дарнас"] = {
+                ["_id"] = "place.darnassus",
+                ["_literal"] = {
+                    ["id"] = "literal.place.darnassus",
+                    ["sourceRefs"] = { "ua-forever:place.darnassus" },
+                    ["text"] = "Darnassus",
+                    ["weak"] = false
+                }
+            },
+            ["дарнаса"] = {
+                ["_id"] = "place.darnassus",
+                ["_literal"] = {
+                    ["id"] = "literal.place.darnassus",
+                    ["sourceRefs"] = { "ua-forever:place.darnassus" },
+                    ["text"] = "Darnassus",
+                    ["weak"] = false
+                }
+            },
+            ["дарнасс"] = {
+                ["_id"] = "place.darnassus",
+                ["_literal"] = {
+                    ["id"] = "literal.place.darnassus",
+                    ["sourceRefs"] = { "ua-forever:place.darnassus" },
+                    ["text"] = "Darnassus",
+                    ["weak"] = false
+                }
+            },
+            ["дарнасі"] = {
+                ["_id"] = "place.darnassus",
+                ["_literal"] = {
+                    ["id"] = "literal.place.darnassus",
+                    ["sourceRefs"] = { "ua-forever:place.darnassus" },
+                    ["text"] = "Darnassus",
+                    ["weak"] = false
+                }
+            },
+            ["дворф"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["дворфа"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["дворфам"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["дворфами"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["дворфах"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["дворфе"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.singular"] = {
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["дворфи"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["дворфик"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminutive.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["дворфика"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminutive.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["дворфикам"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminutive.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["дворфиками"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminutive.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["дворфиках"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminutive.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["дворфики"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminutive.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["дворфикові"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminutive.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["дворфиком"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminutive.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["дворфику"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminutive.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["дворфиків"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminutive.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["дворфові"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["дворфом"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["дворфу"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.singular"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["дворфі"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.singular"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["дворфів"] = {
+                ["_morph"] = {
+                    ["race.dwarf.base.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["дд"] = {
+                ["_id"] = "role.damage"
+            },
+            ["де"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.where",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "where",
+                    ["weak"] = false
+                }
+            },
+            ["дешевий"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.cheap",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "cheap",
+                    ["weak"] = false
+                }
+            },
+            ["дешево"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.cheap",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "cheap",
+                    ["weak"] = false
+                }
+            },
+            ["дещо"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.some",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "some",
+                    ["weak"] = true
+                }
+            },
+            ["для"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.for",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "for",
+                    ["weak"] = true
+                }
+            },
+            ["дм"] = {
+                ["_id"] = "place.the_deadmines"
+            },
+            ["до"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.to",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "to",
+                    ["weak"] = true
+                }
+            },
+            ["добре"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.okay",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "okay",
+                    ["weak"] = true
+                }
+            },
+            ["добудь"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.get",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "get",
+                    ["weak"] = false
+                }
+            },
+            ["доки"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.until",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "until",
+                    ["weak"] = false
+                }
+            },
+            ["долучайся"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.join",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "join",
+                    ["weak"] = false
+                }
+            },
+            ["допоки"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.until",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "until",
+                    ["weak"] = false
+                }
+            },
+            ["допомога"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.help",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "help",
+                    ["weak"] = false
+                }
+            },
+            ["допомогти"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.help",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "help",
+                    ["weak"] = false
+                }
+            },
+            ["допоможи"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.help",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "help",
+                    ["weak"] = false
+                }
+            },
+            ["допоможіть"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.help",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "help",
+                    ["weak"] = false
+                }
+            },
+            ["дорогий"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.expensive",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "expensive",
+                    ["weak"] = false
+                }
+            },
+            ["дорого"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.expensive",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "expensive",
+                    ["weak"] = false
+                }
+            },
+            ["досі"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.still",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "still",
+                    ["weak"] = false
+                }
+            },
+            ["дпс"] = {
+                ["_id"] = "role.damage"
+            },
+            ["дру"] = {
+                ["_id"] = "class.druid"
+            },
+            ["друїд"] = {
+                ["_id"] = "class.druid"
+            },
+            ["друїда"] = {
+                ["_id"] = "class.druid"
+            },
+            ["дуротар"] = {
+                ["_id"] = "place.durotar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.durotar",
+                    ["sourceRefs"] = { "ua-forever:place.durotar" },
+                    ["text"] = "Durotar",
+                    ["weak"] = false
+                }
+            },
+            ["дуротару"] = {
+                ["_id"] = "place.durotar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.durotar",
+                    ["sourceRefs"] = { "ua-forever:place.durotar" },
+                    ["text"] = "Durotar",
+                    ["weak"] = false
+                }
+            },
+            ["дуротарі"] = {
+                ["_id"] = "place.durotar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.durotar",
+                    ["sourceRefs"] = { "ua-forever:place.durotar" },
+                    ["text"] = "Durotar",
+                    ["weak"] = false
+                }
+            },
+            ["дякую"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.thanks",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "thanks",
+                    ["weak"] = false
+                }
+            },
+            ["дістань"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.get",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "get",
+                    ["weak"] = false
+                }
+            },
+            ["ей"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.hey",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "hey",
+                    ["weak"] = false
+                }
+            },
+            ["ельвиннський"] = {
+                ["ліс"] = {
+                    ["_id"] = "place.elwynn_forest",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.elwynn_forest",
+                        ["sourceRefs"] = { "ua-forever:place.elwynn_forest" },
+                        ["text"] = "Elwynn Forest",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["жалітися"] = {
+                ["_id"] = "behavior.complain"
+            },
+            ["жрець"] = {
+                ["_id"] = "class.priest"
+            },
+            ["жреця"] = {
+                ["_id"] = "class.priest"
+            },
+            ["з"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.with",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "with",
+                    ["weak"] = true
+                },
+                ["мною"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.with_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "with me",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["завдання"] = {
+                ["_id"] = "game.quest"
+            },
+            ["загроза"] = {
+                ["_id"] = "game.threat"
+            },
+            ["залишайся"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.stay",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "stay",
+                    ["weak"] = false
+                }
+            },
+            ["залізогарт"] = {
+                ["_id"] = "place.ironforge",
+                ["_literal"] = {
+                    ["id"] = "literal.place.ironforge",
+                    ["sourceRefs"] = { "ua-forever:place.ironforge" },
+                    ["text"] = "Ironforge",
+                    ["weak"] = false
+                }
+            },
+            ["залізогарта"] = {
+                ["_id"] = "place.ironforge",
+                ["_literal"] = {
+                    ["id"] = "literal.place.ironforge",
+                    ["sourceRefs"] = { "ua-forever:place.ironforge" },
+                    ["text"] = "Ironforge",
+                    ["weak"] = false
+                }
+            },
+            ["залізогарті"] = {
+                ["_id"] = "place.ironforge",
+                ["_literal"] = {
+                    ["id"] = "literal.place.ironforge",
+                    ["sourceRefs"] = { "ua-forever:place.ironforge" },
+                    ["text"] = "Ironforge",
+                    ["weak"] = false
+                }
+            },
+            ["запроси"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.invite",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "invite",
+                    ["weak"] = false
+                }
+            },
+            ["запросіть"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.invite",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "invite",
+                    ["weak"] = false
+                }
+            },
+            ["запрошення"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.invite",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "invite",
+                    ["weak"] = false
+                }
+            },
+            ["зараз"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.now",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "now",
+                    ["weak"] = false
+                }
+            },
+            ["західний"] = {
+                ["край"] = {
+                    ["_id"] = "place.westfall",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.westfall",
+                        ["sourceRefs"] = { "ua-forever:place.westfall" },
+                        ["text"] = "Westfall",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["західні"] = {
+                ["зачумлені"] = {
+                    ["землі"] = {
+                        ["_id"] = "place.western_plaguelands",
+                        ["_literal"] = {
+                            ["id"] = "literal.place.western_plaguelands",
+                            ["sourceRefs"] = { "ua-forever:place.western_plaguelands" },
+                            ["text"] = "Western Plaguelands",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["зачарування"] = {
+                ["_id"] = "profession.enchanting"
+            },
+            ["зачекай"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.wait",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "wait",
+                    ["weak"] = false
+                },
+                ["на"] = {
+                    ["мене"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.wait_for_me",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "wait for me",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["зброю"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.weapon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "weapon",
+                    ["weak"] = false
+                }
+            },
+            ["зброя"] = {
+                ["_id"] = "game.weapon",
+                ["_literal"] = {
+                    ["id"] = "literal.weapon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "weapon",
+                    ["weak"] = false
+                }
+            },
+            ["зброї"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.weapon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "weapon",
+                    ["weak"] = false
+                }
+            },
+            ["звідси"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.from_here",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "from here",
+                    ["weak"] = false
+                }
+            },
+            ["здобич"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.loot",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "loot",
+                    ["weak"] = false
+                }
+            },
+            ["здоров'я"] = {
+                ["_id"] = "game.health"
+            },
+            ["зимоключ"] = {
+                ["_id"] = "place.winterspring",
+                ["_literal"] = {
+                    ["id"] = "literal.place.winterspring",
+                    ["sourceRefs"] = { "ua-forever:place.winterspring" },
+                    ["text"] = "Winterspring",
+                    ["weak"] = false
+                }
+            },
+            ["зліва"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.on_the_left",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "on the left",
+                    ["weak"] = false
+                }
+            },
+            ["знайди"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.find",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "find",
+                    ["weak"] = false
+                }
+            },
+            ["знайти"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.find",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "find",
+                    ["weak"] = false
+                }
+            },
+            ["знайшли"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.find",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "find",
+                    ["weak"] = false
+                }
+            },
+            ["знов"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.again",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "again",
+                    ["weak"] = false
+                }
+            },
+            ["знову"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.again",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "again",
+                    ["weak"] = false
+                }
+            },
+            ["зняття"] = {
+                ["шкур"] = {
+                    ["_id"] = "profession.skinning"
+                }
+            },
+            ["зо"] = {
+                ["мною"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.with_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "with me",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["зовні"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.outside",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "outside",
+                    ["weak"] = false
+                }
+            },
+            ["золото"] = {
+                ["_id"] = "game.gold"
+            },
+            ["зроби"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.craft",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "craft",
+                    ["weak"] = false
+                }
+            },
+            ["зул'фаррак"] = {
+                ["_id"] = "place.zul_farrak",
+                ["_literal"] = {
+                    ["id"] = "literal.place.zul_farrak",
+                    ["sourceRefs"] = { "ua-forever:place.zul_farrak" },
+                    ["text"] = "Zul'Farrak",
+                    ["weak"] = false
+                }
+            },
+            ["зул'ґуруб"] = {
+                ["_id"] = "place.zul_gurub",
+                ["_literal"] = {
+                    ["id"] = "literal.place.zul_gurub",
+                    ["sourceRefs"] = { "ua-forever:place.zul_gurub" },
+                    ["text"] = "Zul'Gurub",
+                    ["weak"] = false
+                }
+            },
+            ["зупинись"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.stop",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "stop",
+                    ["weak"] = false
+                }
+            },
+            ["зупинися"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.stop",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "stop",
+                    ["weak"] = false
+                }
+            },
+            ["зустрінь"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.meet",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "meet",
+                    ["weak"] = false
+                }
+            },
+            ["зустріньмося"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.meet",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "meet",
+                    ["weak"] = false
+                }
+            },
+            ["зустрітись"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.meet",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "meet",
+                    ["weak"] = false
+                }
+            },
+            ["зціли"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.heal",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "heal",
+                    ["weak"] = false
+                }
+            },
+            ["зціліть"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.heal",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "heal",
+                    ["weak"] = false
+                }
+            },
+            ["зі"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.with",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "with",
+                    ["weak"] = true
+                },
+                ["мною"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.with_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "with me",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["зілля"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.potion",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "potion",
+                    ["weak"] = false
+                },
+                ["здоров'я"] = {
+                    ["_id"] = "goods.health_potion"
+                },
+                ["лікування"] = {
+                    ["_id"] = "goods.health_potion"
+                }
+            },
+            ["зіль"] = {
+                ["здоров'я"] = {
+                    ["_id"] = "goods.health_potion"
+                }
+            },
+            ["й"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.and",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "and",
+                    ["weak"] = true
+                }
+            },
+            ["йди"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.go",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "go",
+                    ["weak"] = false
+                },
+                ["за"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.follow",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "follow",
+                        ["weak"] = false
+                    },
+                    ["мною"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.follow_me",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "follow me",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["йому"] = {
+                ["_id"] = "recipient.him"
+            },
+            ["йти"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.go",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "go",
+                    ["weak"] = false
+                }
+            },
+            ["ключ"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.key",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "key",
+                    ["weak"] = false
+                }
+            },
+            ["ключа"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.key",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "key",
+                    ["weak"] = false
+                }
+            },
+            ["ковальство"] = {
+                ["_id"] = "profession.blacksmithing"
+            },
+            ["коли"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.when",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "when",
+                    ["weak"] = false
+                }
+            },
+            ["корчма"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.inn",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "inn",
+                    ["weak"] = false
+                }
+            },
+            ["корчму"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.inn",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "inn",
+                    ["weak"] = false
+                }
+            },
+            ["корчмі"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.inn",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "inn",
+                    ["weak"] = false
+                }
+            },
+            ["котрий"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.which",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "which",
+                    ["weak"] = false
+                }
+            },
+            ["коштує"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.price",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "price",
+                    ["weak"] = false
+                }
+            },
+            ["крааль"] = {
+                ["бритвоболотих"] = {
+                    ["_id"] = "place.razorfen_kraul",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.razorfen_kraul",
+                        ["sourceRefs"] = { "ua-forever:place.razorfen_kraul" },
+                        ["text"] = "Razorfen Kraul",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["кравецтво"] = {
+                ["_id"] = "profession.tailoring"
+            },
+            ["кричати"] = {
+                ["_id"] = "behavior.shout"
+            },
+            ["куди"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.where_to",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "where to",
+                    ["weak"] = false
+                }
+            },
+            ["кулінарія"] = {
+                ["_id"] = "profession.cooking"
+            },
+            ["купи"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.buy",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "buy",
+                    ["weak"] = false
+                }
+            },
+            ["купити"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.buy",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "buy",
+                    ["weak"] = false
+                }
+            },
+            ["куплю"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.buy",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "buy",
+                    ["weak"] = false
+                }
+            },
+            ["купувати"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.buy",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "buy",
+                    ["weak"] = false
+                }
+            },
+            ["лети"] = {
+                ["в"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.fly_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "fly to",
+                        ["weak"] = false
+                    }
+                },
+                ["до"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.fly_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "fly to",
+                        ["weak"] = false
+                    }
+                },
+                ["у"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.fly_to",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "fly to",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["лишайся"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.stay",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "stay",
+                    ["weak"] = false
+                }
+            },
+            ["лише"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.only",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "only",
+                    ["weak"] = true
+                }
+            },
+            ["лок"] = {
+                ["_id"] = "class.warlock"
+            },
+            ["лут"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.loot",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "loot",
+                    ["weak"] = false
+                }
+            },
+            ["ліворуч"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.on_the_left",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "on the left",
+                    ["weak"] = false
+                }
+            },
+            ["лігво"] = {
+                ["оніксії"] = {
+                    ["_id"] = "place.onyxia_s_lair",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.onyxia_s_lair",
+                        ["sourceRefs"] = { "ua-forever:place.onyxia_s_lair" },
+                        ["text"] = "Onyxia's Lair",
+                        ["weak"] = false
+                    }
+                },
+                ["чорного"] = {
+                    ["крила"] = {
+                        ["_id"] = "place.blackwing_lair",
+                        ["_literal"] = {
+                            ["id"] = "literal.place.blackwing_lair",
+                            ["sourceRefs"] = { "ua-forever:place.blackwing_lair" },
+                            ["text"] = "Blackwing Lair",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["лідер"] = {
+                ["_id"] = "game.leader"
+            },
+            ["лінк"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.link",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "link",
+                    ["weak"] = false
+                }
+            },
+            ["маг"] = {
+                ["_id"] = "class.mage"
+            },
+            ["мага"] = {
+                ["_id"] = "class.mage"
+            },
+            ["магазин"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.shop",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "shop",
+                    ["weak"] = false
+                }
+            },
+            ["магазину"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.shop",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "shop",
+                    ["weak"] = false
+                }
+            },
+            ["магазині"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.shop",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "shop",
+                    ["weak"] = false
+                }
+            },
+            ["мана"] = {
+                ["_id"] = "game.mana"
+            },
+            ["мародон"] = {
+                ["_id"] = "place.maraudon",
+                ["_literal"] = {
+                    ["id"] = "literal.place.maraudon",
+                    ["sourceRefs"] = { "ua-forever:place.maraudon" },
+                    ["text"] = "Maraudon",
+                    ["weak"] = false
+                }
+            },
+            ["маю"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.have",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "have",
+                    ["weak"] = false
+                }
+            },
+            ["маємо"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.have",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "have",
+                    ["weak"] = false
+                }
+            },
+            ["маєш"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.have",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "have",
+                    ["weak"] = false
+                }
+            },
+            ["мене"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.me",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "me",
+                    ["weak"] = true
+                }
+            },
+            ["мені"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.me",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "me",
+                    ["weak"] = true
+                },
+                ["потрібен"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.need_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "I need",
+                        ["weak"] = false
+                    }
+                },
+                ["потрібна"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.need_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "I need",
+                        ["weak"] = false
+                    }
+                },
+                ["потрібно"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.need_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "I need",
+                        ["weak"] = false
+                    }
+                },
+                ["потрібні"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.need_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "I need",
+                        ["weak"] = false
+                    }
+                },
+                ["треба"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.need_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "I need",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["мертвих"] = {
+                ["копалень"] = {
+                    ["_id"] = "place.the_deadmines",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.the_deadmines",
+                        ["sourceRefs"] = { "ua-forever:place.the_deadmines" },
+                        ["text"] = "The Deadmines",
+                        ["weak"] = false
+                    }
+                },
+                ["копальнях"] = {
+                    ["_id"] = "place.the_deadmines",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.the_deadmines",
+                        ["sourceRefs"] = { "ua-forever:place.the_deadmines" },
+                        ["text"] = "The Deadmines",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["мертві"] = {
+                ["копальні"] = {
+                    ["_id"] = "place.the_deadmines",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.the_deadmines",
+                        ["sourceRefs"] = { "ua-forever:place.the_deadmines" },
+                        ["text"] = "The Deadmines",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["меч"] = {
+                ["_id"] = "goods.sword"
+            },
+            ["меча"] = {
+                ["_id"] = "goods.sword"
+            },
+            ["мечі"] = {
+                ["_id"] = "goods.sword",
+                ["_literal"] = {
+                    ["id"] = "literal.goods.sword.plural",
+                    ["sourceRefs"] = { "ua-forever:goods.sword" },
+                    ["text"] = "swords",
+                    ["weak"] = false
+                }
+            },
+            ["мечів"] = {
+                ["_id"] = "goods.sword",
+                ["_literal"] = {
+                    ["id"] = "literal.goods.sword.plural",
+                    ["sourceRefs"] = { "ua-forever:goods.sword" },
+                    ["text"] = "swords",
+                    ["weak"] = false
+                }
+            },
+            ["ми"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.we",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "we",
+                    ["weak"] = true
+                }
+            },
+            ["мисливець"] = {
+                ["_id"] = "class.hunter"
+            },
+            ["мисливця"] = {
+                ["_id"] = "class.hunter"
+            },
+            ["моб"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.mob",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "mob",
+                    ["weak"] = false
+                }
+            },
+            ["моба"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.mob",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "mob",
+                    ["weak"] = false
+                }
+            },
+            ["моби"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.mobs",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "mobs",
+                    ["weak"] = false
+                }
+            },
+            ["мобів"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.mobs",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "mobs",
+                    ["weak"] = false
+                }
+            },
+            ["можемо"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.can",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "can",
+                    ["weak"] = false
+                }
+            },
+            ["можеш"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.can",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "can",
+                    ["weak"] = false
+                }
+            },
+            ["можу"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.can",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "can",
+                    ["weak"] = false
+                }
+            },
+            ["моста"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bridge",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bridge",
+                    ["weak"] = false
+                }
+            },
+            ["мосту"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bridge",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bridge",
+                    ["weak"] = false
+                }
+            },
+            ["моя"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.my",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "my",
+                    ["weak"] = true
+                }
+            },
+            ["моє"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.my",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "my",
+                    ["weak"] = true
+                }
+            },
+            ["мої"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.my",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "my",
+                    ["weak"] = true
+                }
+            },
+            ["мідь"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.copper",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "copper",
+                    ["weak"] = false
+                }
+            },
+            ["міді"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.copper",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "copper",
+                    ["weak"] = false
+                }
+            },
+            ["мій"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.my",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "my",
+                    ["weak"] = true
+                }
+            },
+            ["міст"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bridge",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bridge",
+                    ["weak"] = false
+                }
+            },
+            ["міста"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.city",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "city",
+                    ["weak"] = false
+                }
+            },
+            ["місто"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.city",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "city",
+                    ["weak"] = false
+                }
+            },
+            ["місті"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.city",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "city",
+                    ["weak"] = false
+                }
+            },
+            ["навіщо"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.why",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "why",
+                    ["weak"] = false
+                }
+            },
+            ["нагорі"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.upstairs",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "upstairs",
+                    ["weak"] = false
+                }
+            },
+            ["надворі"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.outside",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "outside",
+                    ["weak"] = false
+                }
+            },
+            ["наксрамас"] = {
+                ["_id"] = "place.naxxramas",
+                ["_literal"] = {
+                    ["id"] = "literal.place.naxxramas",
+                    ["sourceRefs"] = { "ua-forever:place.naxxramas" },
+                    ["text"] = "Naxxramas",
+                    ["weak"] = false
+                }
+            },
+            ["наксрамаса"] = {
+                ["_id"] = "place.naxxramas",
+                ["_literal"] = {
+                    ["id"] = "literal.place.naxxramas",
+                    ["sourceRefs"] = { "ua-forever:place.naxxramas" },
+                    ["text"] = "Naxxramas",
+                    ["weak"] = false
+                }
+            },
+            ["наксрамасі"] = {
+                ["_id"] = "place.naxxramas",
+                ["_literal"] = {
+                    ["id"] = "literal.place.naxxramas",
+                    ["sourceRefs"] = { "ua-forever:place.naxxramas" },
+                    ["text"] = "Naxxramas",
+                    ["weak"] = false
+                }
+            },
+            ["нам"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.us",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "us",
+                    ["weak"] = true
+                }
+            },
+            ["нас"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.us",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "us",
+                    ["weak"] = true
+                }
+            },
+            ["наш"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.our",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "our",
+                    ["weak"] = true
+                }
+            },
+            ["наша"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.our",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "our",
+                    ["weak"] = true
+                }
+            },
+            ["наше"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.our",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "our",
+                    ["weak"] = true
+                }
+            },
+            ["наші"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.our",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "our",
+                    ["weak"] = true
+                }
+            },
+            ["не"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.not",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "not",
+                    ["weak"] = true
+                },
+                ["атакуй"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.do_not_attack",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "do not attack",
+                        ["weak"] = false
+                    }
+                },
+                ["атакуйте"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.do_not_attack",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "do not attack",
+                        ["weak"] = false
+                    }
+                },
+                ["бий"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.do_not_attack",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "do not attack",
+                        ["weak"] = false
+                    }
+                },
+                ["готова"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.not_ready",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "not ready",
+                        ["weak"] = false
+                    }
+                },
+                ["готовий"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.not_ready",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "not ready",
+                        ["weak"] = false
+                    }
+                },
+                ["готові"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.not_ready",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "not ready",
+                        ["weak"] = false
+                    }
+                },
+                ["можемо"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.cannot",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "cannot",
+                        ["weak"] = false
+                    }
+                },
+                ["можеш"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.cannot",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "cannot",
+                        ["weak"] = false
+                    }
+                },
+                ["можу"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.cannot",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "cannot",
+                        ["weak"] = false
+                    }
+                },
+                ["починай"] = {
+                    ["бій"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.do_not_pull",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "do not pull",
+                            ["weak"] = false
+                        }
+                    }
+                },
+                ["починайте"] = {
+                    ["бій"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.do_not_pull",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "do not pull",
+                            ["weak"] = false
+                        }
+                    }
+                },
+                ["пуль"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.do_not_pull",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "do not pull",
+                        ["weak"] = false
+                    }
+                },
+                ["пуліть"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.do_not_pull",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "do not pull",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["недогном"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminished.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["недогнома"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminished.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["недогномам"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminished.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["недогномами"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminished.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["недогномах"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminished.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["недогноме"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminished.singular"] = {
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["недогноми"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminished.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["недогномові"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminished.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["недогномом"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminished.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["недогному"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminished.singular"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["недогномі"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminished.singular"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["недогномів"] = {
+                ["_morph"] = {
+                    ["race.gnome.diminished.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["недодворф"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminished.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["недодворфа"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminished.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["недодворфам"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminished.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["недодворфами"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminished.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["недодворфах"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminished.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["недодворфе"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminished.singular"] = {
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["недодворфи"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminished.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["недодворфові"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminished.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["недодворфом"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminished.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["недодворфу"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminished.singular"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["недодворфі"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminished.singular"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["недодворфів"] = {
+                ["_morph"] = {
+                    ["race.dwarf.diminished.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["недоорк"] = {
+                ["_morph"] = {
+                    ["race.orc.diminished.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["недоорка"] = {
+                ["_morph"] = {
+                    ["race.orc.diminished.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["недооркам"] = {
+                ["_morph"] = {
+                    ["race.orc.diminished.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["недоорками"] = {
+                ["_morph"] = {
+                    ["race.orc.diminished.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["недоорках"] = {
+                ["_morph"] = {
+                    ["race.orc.diminished.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["недоорки"] = {
+                ["_morph"] = {
+                    ["race.orc.diminished.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["недооркові"] = {
+                ["_morph"] = {
+                    ["race.orc.diminished.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["недоорком"] = {
+                ["_morph"] = {
+                    ["race.orc.diminished.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["недоорку"] = {
+                ["_morph"] = {
+                    ["race.orc.diminished.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["недоорків"] = {
+                ["_morph"] = {
+                    ["race.orc.diminished.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["незабаром"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.soon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "soon",
+                    ["weak"] = false
+                }
+            },
+            ["некроситет"] = {
+                ["_id"] = "place.scholomance",
+                ["_literal"] = {
+                    ["id"] = "literal.place.scholomance",
+                    ["sourceRefs"] = { "ua-forever:place.scholomance" },
+                    ["text"] = "Scholomance",
+                    ["weak"] = false
+                }
+            },
+            ["нити"] = {
+                ["_id"] = "behavior.whine"
+            },
+            ["нори"] = {
+                ["бритвоболотих"] = {
+                    ["_id"] = "place.razorfen_downs",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.razorfen_downs",
+                        ["sourceRefs"] = { "ua-forever:place.razorfen_downs" },
+                        ["text"] = "Razorfen Downs",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["ні"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.no",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "no",
+                    ["weak"] = true
+                }
+            },
+            ["нічого"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.nothing",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "nothing",
+                    ["weak"] = false
+                }
+            },
+            ["обмін"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.trade",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "trade",
+                    ["weak"] = false
+                }
+            },
+            ["обміняй"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.trade",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "trade",
+                    ["weak"] = false
+                }
+            },
+            ["обміняю"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.trade",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "trade",
+                    ["weak"] = false
+                }
+            },
+            ["опісля"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.later",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "later",
+                    ["weak"] = false
+                }
+            },
+            ["оргримар"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["оргримара"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["оргримарі"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["оргриммар"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["оргрі"] = {
+                ["_id"] = "place.orgrimmar"
+            },
+            ["оргрімар"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["оргрімара"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["оргрімарі"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["оргріммар"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["оргріммара"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["оргріммарі"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["орда"] = {
+                ["_id"] = "game.horde"
+            },
+            ["орк"] = {
+                ["_morph"] = {
+                    ["race.orc.base.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["орка"] = {
+                ["_morph"] = {
+                    ["race.orc.base.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["оркам"] = {
+                ["_morph"] = {
+                    ["race.orc.base.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["орками"] = {
+                ["_morph"] = {
+                    ["race.orc.base.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["орках"] = {
+                ["_morph"] = {
+                    ["race.orc.base.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["орки"] = {
+                ["_morph"] = {
+                    ["race.orc.base.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["оркові"] = {
+                ["_morph"] = {
+                    ["race.orc.base.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["орком"] = {
+                ["_morph"] = {
+                    ["race.orc.base.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["орку"] = {
+                ["_morph"] = {
+                    ["race.orc.base.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["орків"] = {
+                ["_morph"] = {
+                    ["race.orc.base.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["орчик"] = {
+                ["_morph"] = {
+                    ["race.orc.diminutive.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["орчика"] = {
+                ["_morph"] = {
+                    ["race.orc.diminutive.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["орчикам"] = {
+                ["_morph"] = {
+                    ["race.orc.diminutive.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["орчиками"] = {
+                ["_morph"] = {
+                    ["race.orc.diminutive.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["орчиках"] = {
+                ["_morph"] = {
+                    ["race.orc.diminutive.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["орчики"] = {
+                ["_morph"] = {
+                    ["race.orc.diminutive.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["орчикові"] = {
+                ["_morph"] = {
+                    ["race.orc.diminutive.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["орчиком"] = {
+                ["_morph"] = {
+                    ["race.orc.diminutive.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["орчику"] = {
+                ["_morph"] = {
+                    ["race.orc.diminutive.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["орчиків"] = {
+                ["_morph"] = {
+                    ["race.orc.diminutive.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["орґрі"] = {
+                ["_id"] = "place.orgrimmar"
+            },
+            ["орґрімар"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["орґріммар"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["орґріммара"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["орґріммарі"] = {
+                ["_id"] = "place.orgrimmar",
+                ["_literal"] = {
+                    ["id"] = "literal.place.orgrimmar",
+                    ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+                    ["text"] = "Orgrimmar",
+                    ["weak"] = false
+                }
+            },
+            ["ось"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.here_is",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "here is",
+                    ["weak"] = true
+                }
+            },
+            ["от"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.here_is",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "here is",
+                    ["weak"] = true
+                }
+            },
+            ["пал"] = {
+                ["_id"] = "class.paladin"
+            },
+            ["паладин"] = {
+                ["_id"] = "class.paladin"
+            },
+            ["паладина"] = {
+                ["_id"] = "class.paladin"
+            },
+            ["палаюче"] = {
+                ["ядро"] = {
+                    ["_id"] = "place.molten_core",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.molten_core",
+                        ["sourceRefs"] = { "ua-forever:place.molten_core" },
+                        ["text"] = "Molten Core",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["перевірка"] = {
+                ["готовності"] = {
+                    ["_id"] = "game.ready_check"
+                }
+            },
+            ["перед"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.before",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "before",
+                    ["weak"] = false
+                }
+            },
+            ["передай"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.give",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "give",
+                    ["weak"] = false
+                },
+                ["мені"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.give_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "give me",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["перепрошую"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.sorry",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "sorry",
+                    ["weak"] = false
+                }
+            },
+            ["перерви"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.interrupt",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "interrupt",
+                    ["weak"] = false
+                }
+            },
+            ["перервіть"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.interrupt",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "interrupt",
+                    ["weak"] = false
+                }
+            },
+            ["переривання"] = {
+                ["_id"] = "game.interrupt",
+                ["_literal"] = {
+                    ["id"] = "literal.interrupt",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "interrupt",
+                    ["weak"] = false
+                }
+            },
+            ["перша"] = {
+                ["допомога"] = {
+                    ["_id"] = "profession.first_aid"
+                }
+            },
+            ["плачучих"] = {
+                ["печер"] = {
+                    ["_id"] = "place.wailing_caverns",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.wailing_caverns",
+                        ["sourceRefs"] = { "ua-forever:place.wailing_caverns" },
+                        ["text"] = "Wailing Caverns",
+                        ["weak"] = false
+                    }
+                },
+                ["печерах"] = {
+                    ["_id"] = "place.wailing_caverns",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.wailing_caverns",
+                        ["sourceRefs"] = { "ua-forever:place.wailing_caverns" },
+                        ["text"] = "Wailing Caverns",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["плачучі"] = {
+                ["печери"] = {
+                    ["_id"] = "place.wailing_caverns",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.wailing_caverns",
+                        ["sourceRefs"] = { "ua-forever:place.wailing_caverns" },
+                        ["text"] = "Wailing Caverns",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["пліз"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.please",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "please",
+                    ["weak"] = false
+                }
+            },
+            ["повернися"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.come_back",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "come back",
+                    ["weak"] = false
+                }
+            },
+            ["повертайся"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.come_back",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "come back",
+                    ["weak"] = false
+                }
+            },
+            ["повільно"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.slowly",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "slowly",
+                    ["weak"] = false
+                }
+            },
+            ["поділись"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.share",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "share",
+                    ["weak"] = false
+                }
+            },
+            ["поділися"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.share",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "share",
+                    ["weak"] = false
+                }
+            },
+            ["полагодити"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.repair",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "repair",
+                    ["weak"] = false
+                }
+            },
+            ["полагодь"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.repair",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "repair",
+                    ["weak"] = false
+                }
+            },
+            ["поле"] = {
+                ["бою"] = {
+                    ["_id"] = "activity.battleground"
+                }
+            },
+            ["портал"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.portal",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "portal",
+                    ["weak"] = false
+                }
+            },
+            ["порталу"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.portal",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "portal",
+                    ["weak"] = false
+                }
+            },
+            ["порталі"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.portal",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "portal",
+                    ["weak"] = false
+                }
+            },
+            ["поряд"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.near",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "near",
+                    ["weak"] = false
+                }
+            },
+            ["посилання"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.link",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "link",
+                    ["weak"] = false
+                }
+            },
+            ["поспішай"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.hurry",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "hurry",
+                    ["weak"] = false
+                }
+            },
+            ["пот"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.potion",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "potion",
+                    ["weak"] = false
+                }
+            },
+            ["потку"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.potion",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "potion",
+                    ["weak"] = false
+                }
+            },
+            ["потрібен"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.need",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "need",
+                    ["weak"] = false
+                }
+            },
+            ["потрібна"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.need",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "need",
+                    ["weak"] = false
+                }
+            },
+            ["потрібно"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.need",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "need",
+                    ["weak"] = false
+                }
+            },
+            ["потрібні"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.need",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "need",
+                    ["weak"] = false
+                }
+            },
+            ["потім"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.then",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "then",
+                    ["weak"] = true
+                }
+            },
+            ["почекай"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.wait",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "wait",
+                    ["weak"] = false
+                }
+            },
+            ["починай"] = {
+                ["бій"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.pull",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "pull",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["пошвидше"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.quickly",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "quickly",
+                    ["weak"] = false
+                }
+            },
+            ["праворуч"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.on_the_right",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "on the right",
+                    ["weak"] = false
+                }
+            },
+            ["привіт"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.hello",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "hello",
+                    ["weak"] = false
+                }
+            },
+            ["призови"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.summon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "summon",
+                    ["weak"] = false
+                }
+            },
+            ["прийди"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.come",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "come",
+                    ["weak"] = false
+                }
+            },
+            ["принеси"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bring",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bring",
+                    ["weak"] = false
+                },
+                ["мені"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.bring_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "bring me",
+                        ["weak"] = false
+                    }
+                },
+                ["нам"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.bring_us",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "bring us",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["принести"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bring",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bring",
+                    ["weak"] = false
+                }
+            },
+            ["принесіть"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bring",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bring",
+                    ["weak"] = false
+                },
+                ["мені"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.bring_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "bring me",
+                        ["weak"] = false
+                    }
+                },
+                ["нам"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.bring_us",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "bring us",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["притягни"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bring",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bring",
+                    ["weak"] = false
+                },
+                ["мені"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.bring_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "bring me",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["приходити"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.come",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "come",
+                    ["weak"] = false
+                }
+            },
+            ["приходь"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.come",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "come",
+                    ["weak"] = false
+                }
+            },
+            ["приєднайся"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.join",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "join",
+                    ["weak"] = false
+                }
+            },
+            ["продавати"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.sell",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "sell",
+                    ["weak"] = false
+                }
+            },
+            ["продай"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.sell",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "sell",
+                    ["weak"] = false
+                }
+            },
+            ["продам"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.sell",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "sell",
+                    ["weak"] = false
+                }
+            },
+            ["продати"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.sell",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "sell",
+                    ["weak"] = false
+                }
+            },
+            ["проте"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.but",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "but",
+                    ["weak"] = true
+                }
+            },
+            ["протогном"] = {
+                ["_morph"] = {
+                    ["race.gnome.proto.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["протогнома"] = {
+                ["_morph"] = {
+                    ["race.gnome.proto.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["протогномам"] = {
+                ["_morph"] = {
+                    ["race.gnome.proto.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["протогномами"] = {
+                ["_morph"] = {
+                    ["race.gnome.proto.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["протогномах"] = {
+                ["_morph"] = {
+                    ["race.gnome.proto.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["протогноме"] = {
+                ["_morph"] = {
+                    ["race.gnome.proto.singular"] = {
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["протогноми"] = {
+                ["_morph"] = {
+                    ["race.gnome.proto.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["протогномові"] = {
+                ["_morph"] = {
+                    ["race.gnome.proto.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["протогномом"] = {
+                ["_morph"] = {
+                    ["race.gnome.proto.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["протогному"] = {
+                ["_morph"] = {
+                    ["race.gnome.proto.singular"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["протогномі"] = {
+                ["_morph"] = {
+                    ["race.gnome.proto.singular"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["протогномів"] = {
+                ["_morph"] = {
+                    ["race.gnome.proto.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["протодворф"] = {
+                ["_morph"] = {
+                    ["race.dwarf.proto.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["протодворфа"] = {
+                ["_morph"] = {
+                    ["race.dwarf.proto.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["протодворфам"] = {
+                ["_morph"] = {
+                    ["race.dwarf.proto.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["протодворфами"] = {
+                ["_morph"] = {
+                    ["race.dwarf.proto.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["протодворфах"] = {
+                ["_morph"] = {
+                    ["race.dwarf.proto.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["протодворфе"] = {
+                ["_morph"] = {
+                    ["race.dwarf.proto.singular"] = {
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["протодворфи"] = {
+                ["_morph"] = {
+                    ["race.dwarf.proto.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["протодворфові"] = {
+                ["_morph"] = {
+                    ["race.dwarf.proto.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["протодворфом"] = {
+                ["_morph"] = {
+                    ["race.dwarf.proto.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["протодворфу"] = {
+                ["_morph"] = {
+                    ["race.dwarf.proto.singular"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["протодворфі"] = {
+                ["_morph"] = {
+                    ["race.dwarf.proto.singular"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["протодворфів"] = {
+                ["_morph"] = {
+                    ["race.dwarf.proto.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["протоорк"] = {
+                ["_morph"] = {
+                    ["race.orc.proto.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["протоорка"] = {
+                ["_morph"] = {
+                    ["race.orc.proto.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["протооркам"] = {
+                ["_morph"] = {
+                    ["race.orc.proto.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["протоорками"] = {
+                ["_morph"] = {
+                    ["race.orc.proto.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["протоорках"] = {
+                ["_morph"] = {
+                    ["race.orc.proto.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["протоорки"] = {
+                ["_morph"] = {
+                    ["race.orc.proto.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["протооркові"] = {
+                ["_morph"] = {
+                    ["race.orc.proto.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["протоорком"] = {
+                ["_morph"] = {
+                    ["race.orc.proto.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["протоорку"] = {
+                ["_morph"] = {
+                    ["race.orc.proto.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["протоорків"] = {
+                ["_morph"] = {
+                    ["race.orc.proto.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["прірва"] = {
+                ["лютого"] = {
+                    ["полум'я"] = {
+                        ["_id"] = "place.ragefire_chasm",
+                        ["_literal"] = {
+                            ["id"] = "literal.place.ragefire_chasm",
+                            ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" },
+                            ["text"] = "Ragefire Chasm",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["пули"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.pull",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "pull",
+                    ["weak"] = false
+                }
+            },
+            ["пуль"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.pull",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "pull",
+                    ["weak"] = false
+                }
+            },
+            ["пуліте"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.pull",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "pull",
+                    ["weak"] = false
+                }
+            },
+            ["підземелля"] = {
+                ["_id"] = "game.dungeon"
+            },
+            ["підземка"] = {
+                ["_id"] = "game.dungeon"
+            },
+            ["підземку"] = {
+                ["_id"] = "game.dungeon"
+            },
+            ["піди"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.go",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "go",
+                    ["weak"] = false
+                }
+            },
+            ["підмісто"] = {
+                ["_id"] = "place.undercity",
+                ["_literal"] = {
+                    ["id"] = "literal.place.undercity",
+                    ["sourceRefs"] = { "ua-forever:place.undercity" },
+                    ["text"] = "Undercity",
+                    ["weak"] = false
+                }
+            },
+            ["підмістя"] = {
+                ["_id"] = "place.undercity",
+                ["_literal"] = {
+                    ["id"] = "literal.place.undercity",
+                    ["sourceRefs"] = { "ua-forever:place.undercity" },
+                    ["text"] = "Undercity",
+                    ["weak"] = false
+                }
+            },
+            ["підмісті"] = {
+                ["_id"] = "place.undercity",
+                ["_literal"] = {
+                    ["id"] = "literal.place.undercity",
+                    ["sourceRefs"] = { "ua-forever:place.undercity" },
+                    ["text"] = "Undercity",
+                    ["weak"] = false
+                }
+            },
+            ["підходь"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.come",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "come",
+                    ["weak"] = false
+                }
+            },
+            ["підхіль"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.heal",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "heal",
+                    ["weak"] = false
+                }
+            },
+            ["пізніше"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.later",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "later",
+                    ["weak"] = false
+                }
+            },
+            ["після"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.after",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "after",
+                    ["weak"] = false
+                }
+            },
+            ["рейд"] = {
+                ["_id"] = "game.raid"
+            },
+            ["ремонт"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.repair",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "repair",
+                    ["weak"] = false
+                }
+            },
+            ["ремонтувати"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.repair",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "repair",
+                    ["weak"] = false
+                }
+            },
+            ["рибальство"] = {
+                ["_id"] = "profession.fishing"
+            },
+            ["рога"] = {
+                ["_id"] = "class.rogue"
+            },
+            ["розбійник"] = {
+                ["_id"] = "class.rogue"
+            },
+            ["розбійника"] = {
+                ["_id"] = "class.rogue"
+            },
+            ["рухайся"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.move",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "move",
+                    ["weak"] = false
+                }
+            },
+            ["руїни"] = {
+                ["ан'кіражу"] = {
+                    ["_id"] = "place.ruins_of_ahn_qiraj",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.ruins_of_ahn_qiraj",
+                        ["sourceRefs"] = { "ua-forever:place.ruins_of_ahn_qiraj" },
+                        ["text"] = "Ruins of Ahn'Qiraj",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["скаржитися"] = {
+                ["_id"] = "behavior.complain"
+            },
+            ["скиглити"] = {
+                ["_id"] = "behavior.whine"
+            },
+            ["скоро"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.soon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "soon",
+                    ["weak"] = false
+                }
+            },
+            ["скрафти"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.craft",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "craft",
+                    ["weak"] = false
+                }
+            },
+            ["скрафчу"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.craft",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "craft",
+                    ["weak"] = false
+                }
+            },
+            ["скільки"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.how_much",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "how much",
+                    ["weak"] = false
+                }
+            },
+            ["слідуй"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.follow",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "follow",
+                    ["weak"] = false
+                }
+            },
+            ["см"] = {
+                ["_id"] = "place.scarlet_monastery"
+            },
+            ["смерколісся"] = {
+                ["_id"] = "place.duskwood",
+                ["_literal"] = {
+                    ["id"] = "literal.place.duskwood",
+                    ["sourceRefs"] = { "ua-forever:place.duskwood" },
+                    ["text"] = "Duskwood",
+                    ["weak"] = false
+                }
+            },
+            ["сокир"] = {
+                ["_id"] = "goods.axe",
+                ["_literal"] = {
+                    ["id"] = "literal.goods.axe.plural",
+                    ["sourceRefs"] = { "ua-forever:goods.axe" },
+                    ["text"] = "axes",
+                    ["weak"] = false
+                }
+            },
+            ["сокира"] = {
+                ["_id"] = "goods.axe"
+            },
+            ["сокири"] = {
+                ["_id"] = "goods.axe",
+                ["_literal"] = {
+                    ["id"] = "literal.goods.axe.plural",
+                    ["sourceRefs"] = { "ua-forever:goods.axe" },
+                    ["text"] = "axes",
+                    ["weak"] = false
+                }
+            },
+            ["сокирку"] = {
+                ["_id"] = "goods.axe"
+            },
+            ["сокиру"] = {
+                ["_id"] = "goods.axe"
+            },
+            ["спасибі"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.thanks",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "thanks",
+                    ["weak"] = false
+                }
+            },
+            ["справа"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.on_the_right",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "on the right",
+                    ["weak"] = false
+                }
+            },
+            ["срібла"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.silver",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "silver",
+                    ["weak"] = false
+                }
+            },
+            ["срібло"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.silver",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "silver",
+                    ["weak"] = false
+                }
+            },
+            ["степи"] = {
+                ["_id"] = "place.the_barrens",
+                ["_literal"] = {
+                    ["id"] = "literal.place.the_barrens",
+                    ["sourceRefs"] = { "ua-forever:place.the_barrens" },
+                    ["text"] = "The Barrens",
+                    ["weak"] = false
+                }
+            },
+            ["стоп"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.stop",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "stop",
+                    ["weak"] = false
+                }
+            },
+            ["стратгольм"] = {
+                ["_id"] = "place.stratholme",
+                ["_literal"] = {
+                    ["id"] = "literal.place.stratholme",
+                    ["sourceRefs"] = { "ua-forever:place.stratholme" },
+                    ["text"] = "Stratholme",
+                    ["weak"] = false
+                }
+            },
+            ["стріл"] = {
+                ["_id"] = "goods.arrow",
+                ["_literal"] = {
+                    ["id"] = "literal.goods.arrow.plural",
+                    ["sourceRefs"] = { "ua-forever:goods.arrow" },
+                    ["text"] = "arrows",
+                    ["weak"] = false
+                }
+            },
+            ["стріла"] = {
+                ["_id"] = "goods.arrow"
+            },
+            ["стріли"] = {
+                ["_id"] = "goods.arrow",
+                ["_literal"] = {
+                    ["id"] = "literal.goods.arrow.plural",
+                    ["sourceRefs"] = { "ua-forever:goods.arrow" },
+                    ["text"] = "arrows",
+                    ["weak"] = false
+                }
+            },
+            ["стрілу"] = {
+                ["_id"] = "goods.arrow"
+            },
+            ["стій"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.stop",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "stop",
+                    ["weak"] = false
+                }
+            },
+            ["сумка"] = {
+                ["_id"] = "game.bag",
+                ["_literal"] = {
+                    ["id"] = "literal.bag",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bag",
+                    ["weak"] = false
+                }
+            },
+            ["сумку"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bag",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bag",
+                    ["weak"] = false
+                }
+            },
+            ["сумонь"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.summon",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "summon",
+                    ["weak"] = false
+                }
+            },
+            ["сумці"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.bag",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "bag",
+                    ["weak"] = false
+                }
+            },
+            ["сходи"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.go",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "go",
+                    ["weak"] = false
+                }
+            },
+            ["східні"] = {
+                ["зачумлені"] = {
+                    ["землі"] = {
+                        ["_id"] = "place.eastern_plaguelands",
+                        ["_literal"] = {
+                            ["id"] = "literal.place.eastern_plaguelands",
+                            ["sourceRefs"] = { "ua-forever:place.eastern_plaguelands" },
+                            ["text"] = "Eastern Plaguelands",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["та"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.and",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "and",
+                    ["weak"] = true
+                }
+            },
+            ["так"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.yes",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "yes",
+                    ["weak"] = true
+                }
+            },
+            ["там"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.there",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "there",
+                    ["weak"] = false
+                }
+            },
+            ["танаріс"] = {
+                ["_id"] = "place.tanaris",
+                ["_literal"] = {
+                    ["id"] = "literal.place.tanaris",
+                    ["sourceRefs"] = { "ua-forever:place.tanaris" },
+                    ["text"] = "Tanaris",
+                    ["weak"] = false
+                }
+            },
+            ["танаріса"] = {
+                ["_id"] = "place.tanaris",
+                ["_literal"] = {
+                    ["id"] = "literal.place.tanaris",
+                    ["sourceRefs"] = { "ua-forever:place.tanaris" },
+                    ["text"] = "Tanaris",
+                    ["weak"] = false
+                }
+            },
+            ["танарісі"] = {
+                ["_id"] = "place.tanaris",
+                ["_literal"] = {
+                    ["id"] = "literal.place.tanaris",
+                    ["sourceRefs"] = { "ua-forever:place.tanaris" },
+                    ["text"] = "Tanaris",
+                    ["weak"] = false
+                }
+            },
+            ["танк"] = {
+                ["_id"] = "role.tank"
+            },
+            ["танка"] = {
+                ["_id"] = "role.tank"
+            },
+            ["танки"] = {
+                ["_id"] = "role.tank"
+            },
+            ["танків"] = {
+                ["_id"] = "role.tank"
+            },
+            ["тебе"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.you",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "you",
+                    ["weak"] = true
+                }
+            },
+            ["телепорт"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.teleport",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "teleport",
+                    ["weak"] = false
+                }
+            },
+            ["телепортуйся"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.teleport",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "teleport",
+                    ["weak"] = false
+                }
+            },
+            ["тепер"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.now",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "now",
+                    ["weak"] = false
+                }
+            },
+            ["ти"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.you",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "you",
+                    ["weak"] = true
+                },
+                ["попреш"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.are_you_coming",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "are you coming",
+                        ["weak"] = false
+                    }
+                },
+                ["поїдеш"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.are_you_coming",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "are you coming",
+                        ["weak"] = false
+                    }
+                },
+                ["підеш"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.are_you_coming",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "are you coming",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["тобі"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.you",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "you",
+                    ["weak"] = true
+                }
+            },
+            ["тоді"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.then",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "then",
+                    ["weak"] = true
+                }
+            },
+            ["тому"] = {
+                ["що"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.because",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "because",
+                        ["weak"] = true
+                    }
+                }
+            },
+            ["торгівля"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.trade",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "trade",
+                    ["weak"] = false
+                }
+            },
+            ["травництво"] = {
+                ["_id"] = "profession.herbalism"
+            },
+            ["треба"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.need",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "need",
+                    ["weak"] = false
+                }
+            },
+            ["трохи"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.some",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "some",
+                    ["weak"] = true
+                }
+            },
+            ["тут"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.here",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "here",
+                    ["weak"] = false
+                }
+            },
+            ["тікай"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.run",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "run",
+                    ["weak"] = false
+                }
+            },
+            ["тільки"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.only",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "only",
+                    ["weak"] = true
+                }
+            },
+            ["у"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.in",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "in",
+                    ["weak"] = true
+                }
+            },
+            ["убий"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.kill",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "kill",
+                    ["weak"] = false
+                }
+            },
+            ["убити"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.kill",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "kill",
+                    ["weak"] = false
+                }
+            },
+            ["уже"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.already",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "already",
+                    ["weak"] = false
+                }
+            },
+            ["ульдаман"] = {
+                ["_id"] = "place.uldaman",
+                ["_literal"] = {
+                    ["id"] = "literal.place.uldaman",
+                    ["sourceRefs"] = { "ua-forever:place.uldaman" },
+                    ["text"] = "Uldaman",
+                    ["weak"] = false
+                }
+            },
+            ["унизу"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.downstairs",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "downstairs",
+                    ["weak"] = false
+                }
+            },
+            ["усередині"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.inside",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "inside",
+                    ["weak"] = false
+                }
+            },
+            ["учасник"] = {
+                ["_id"] = "game.member"
+            },
+            ["фортеця"] = {
+                ["тіньового"] = {
+                    ["ікла"] = {
+                        ["_id"] = "place.shadowfang_keep",
+                        ["_literal"] = {
+                            ["id"] = "literal.place.shadowfang_keep",
+                            ["sourceRefs"] = { "ua-forever:place.shadowfang_keep" },
+                            ["text"] = "Shadowfang Keep",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["хант"] = {
+                ["_id"] = "class.hunter"
+            },
+            ["хліб"] = {
+                ["_id"] = "goods.bread"
+            },
+            ["хліба"] = {
+                ["_id"] = "goods.bread"
+            },
+            ["хлібець"] = {
+                ["_id"] = "goods.bread"
+            },
+            ["хлібця"] = {
+                ["_id"] = "goods.bread"
+            },
+            ["ходи"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.go",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "go",
+                    ["weak"] = false
+                }
+            },
+            ["хочемо"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.want",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "want",
+                    ["weak"] = false
+                }
+            },
+            ["хочеш"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.want",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "want",
+                    ["weak"] = false
+                }
+            },
+            ["хочу"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.want",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "want",
+                    ["weak"] = false
+                }
+            },
+            ["храм"] = {
+                ["ан'кіражу"] = {
+                    ["_id"] = "place.temple_of_ahn_qiraj",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.temple_of_ahn_qiraj",
+                        ["sourceRefs"] = { "ua-forever:place.temple_of_ahn_qiraj" },
+                        ["text"] = "Temple of Ahn'Qiraj",
+                        ["weak"] = false
+                    }
+                },
+                ["атал'гаккара"] = {
+                    ["_id"] = "place.the_temple_of_atal_hakkar",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.the_temple_of_atal_hakkar",
+                        ["sourceRefs"] = { "ua-forever:place.the_temple_of_atal_hakkar" },
+                        ["text"] = "The Temple of Atal'Hakkar",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["хіба"] = {
+                ["що"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.unless",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "unless",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["хіл"] = {
+                ["_id"] = "role.healer"
+            },
+            ["хілер"] = {
+                ["_id"] = "role.healer"
+            },
+            ["хілку"] = {
+                ["_id"] = "goods.health_potion"
+            },
+            ["цілитель"] = {
+                ["_id"] = "role.healer"
+            },
+            ["цілителя"] = {
+                ["_id"] = "role.healer"
+            },
+            ["цілителі"] = {
+                ["_id"] = "role.healer"
+            },
+            ["цілителів"] = {
+                ["_id"] = "role.healer"
+            },
+            ["ціна"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.price",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "price",
+                    ["weak"] = false
+                }
+            },
+            ["чекай"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.wait",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "wait",
+                    ["weak"] = false
+                },
+                ["на"] = {
+                    ["мене"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.wait_for_me",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "wait for me",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["чекайте"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.wait",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "wait",
+                    ["weak"] = false
+                }
+            },
+            ["чи"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.or",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "or",
+                    ["weak"] = true
+                }
+            },
+            ["чому"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.why",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "why",
+                    ["weak"] = false
+                }
+            },
+            ["чорноводні"] = {
+                ["глибини"] = {
+                    ["_id"] = "place.blackfathom_deeps",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.blackfathom_deeps",
+                        ["sourceRefs"] = { "ua-forever:place.blackfathom_deeps" },
+                        ["text"] = "Blackfathom Deeps",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["чорнокнижник"] = {
+                ["_id"] = "class.warlock"
+            },
+            ["чорнокнижника"] = {
+                ["_id"] = "class.warlock"
+            },
+            ["чорноскельний"] = {
+                ["шпиль"] = {
+                    ["_id"] = "place.blackrock_spire",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.blackrock_spire",
+                        ["sourceRefs"] = { "ua-forever:place.blackrock_spire" },
+                        ["text"] = "Blackrock Spire",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["чорноскельні"] = {
+                ["надра"] = {
+                    ["_id"] = "place.blackrock_depths",
+                    ["_literal"] = {
+                        ["id"] = "literal.place.blackrock_depths",
+                        ["sourceRefs"] = { "ua-forever:place.blackrock_depths" },
+                        ["text"] = "Blackrock Depths",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["шаман"] = {
+                ["_id"] = "class.shaman"
+            },
+            ["шамана"] = {
+                ["_id"] = "class.shaman"
+            },
+            ["швидко"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.quickly",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "quickly",
+                    ["weak"] = false
+                }
+            },
+            ["шкірництво"] = {
+                ["_id"] = "profession.leatherworking"
+            },
+            ["шторм"] = {
+                ["_id"] = "place.stormwind"
+            },
+            ["штормві́нд"] = {
+                ["_id"] = "place.stormwind",
+                ["_literal"] = {
+                    ["id"] = "literal.place.stormwind",
+                    ["sourceRefs"] = { "ua-forever:place.stormwind" },
+                    ["text"] = "Stormwind",
+                    ["weak"] = false
+                }
+            },
+            ["штормвінд"] = {
+                ["_id"] = "place.stormwind",
+                ["_literal"] = {
+                    ["id"] = "literal.place.stormwind",
+                    ["sourceRefs"] = { "ua-forever:place.stormwind" },
+                    ["text"] = "Stormwind",
+                    ["weak"] = false
+                }
+            },
+            ["штормовій"] = {
+                ["_id"] = "place.stormwind",
+                ["_literal"] = {
+                    ["id"] = "literal.place.stormwind",
+                    ["sourceRefs"] = { "ua-forever:place.stormwind" },
+                    ["text"] = "Stormwind",
+                    ["weak"] = false
+                }
+            },
+            ["штормовія"] = {
+                ["_id"] = "place.stormwind",
+                ["_literal"] = {
+                    ["id"] = "literal.place.stormwind",
+                    ["sourceRefs"] = { "ua-forever:place.stormwind" },
+                    ["text"] = "Stormwind",
+                    ["weak"] = false
+                }
+            },
+            ["штормовії"] = {
+                ["_id"] = "place.stormwind",
+                ["_literal"] = {
+                    ["id"] = "literal.place.stormwind",
+                    ["sourceRefs"] = { "ua-forever:place.stormwind" },
+                    ["text"] = "Stormwind",
+                    ["weak"] = false
+                }
+            },
+            ["шукай"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.look_for",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "look for",
+                    ["weak"] = false
+                }
+            },
+            ["шукати"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.look_for",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "look for",
+                    ["weak"] = false
+                }
+            },
+            ["шукаю"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.look_for",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "look for",
+                    ["weak"] = false
+                }
+            },
+            ["шукаємо"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.look_for",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "look for",
+                    ["weak"] = false
+                }
+            },
+            ["щит"] = {
+                ["_id"] = "game.shield"
+            },
+            ["щита"] = {
+                ["_id"] = "game.shield"
+            },
+            ["щити"] = {
+                ["_id"] = "game.shield",
+                ["_literal"] = {
+                    ["id"] = "literal.game.shield.plural",
+                    ["sourceRefs"] = { "ua-forever:game.shield" },
+                    ["text"] = "shields",
+                    ["weak"] = false
+                }
+            },
+            ["щитів"] = {
+                ["_id"] = "game.shield",
+                ["_literal"] = {
+                    ["id"] = "literal.game.shield.plural",
+                    ["sourceRefs"] = { "ua-forever:game.shield" },
+                    ["text"] = "shields",
+                    ["weak"] = false
+                }
+            },
+            ["щось"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.something",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "something",
+                    ["weak"] = false
+                },
+                ["таке"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.something",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "something",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["я"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.i",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "I",
+                    ["weak"] = true
+                }
+            },
+            ["яка"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.which",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "which",
+                    ["weak"] = false
+                }
+            },
+            ["якби"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.if",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "if",
+                    ["weak"] = true
+                }
+            },
+            ["яке"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.which",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "which",
+                    ["weak"] = false
+                }
+            },
+            ["який"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.which",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "which",
+                    ["weak"] = false
+                }
+            },
+            ["якщо"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.if",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "if",
+                    ["weak"] = true
+                }
+            },
+            ["які"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.which",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "which",
+                    ["weak"] = false
+                }
+            },
+            ["ясенеділ"] = {
+                ["_id"] = "place.ashenvale",
+                ["_literal"] = {
+                    ["id"] = "literal.place.ashenvale",
+                    ["sourceRefs"] = { "ua-forever:place.ashenvale" },
+                    ["text"] = "Ashenvale",
+                    ["weak"] = false
+                }
+            },
+            ["і"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.and",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "and",
+                    ["weak"] = true
+                }
+            },
+            ["іди"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.go",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "go",
+                    ["weak"] = false
+                },
+                ["за"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.follow",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "follow",
+                        ["weak"] = false
+                    },
+                    ["мною"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.follow_me",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "follow me",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["ідіть"] = {
+                ["за"] = {
+                    ["мною"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.follow_me",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "follow me",
+                            ["weak"] = false
+                        }
+                    }
+                }
+            },
+            ["із"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.with",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "with",
+                    ["weak"] = true
+                },
+                ["мною"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.with_me",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "with me",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["інвайтни"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.invite",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "invite",
+                    ["weak"] = false
+                }
+            },
+            ["інженерія"] = {
+                ["_id"] = "profession.engineering"
+            },
+            ["їжа"] = {
+                ["_id"] = "game.food",
+                ["_literal"] = {
+                    ["id"] = "literal.food",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "food",
+                    ["weak"] = false
+                }
+            },
+            ["їжу"] = {
+                ["_id"] = "game.food",
+                ["_literal"] = {
+                    ["id"] = "literal.food",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "food",
+                    ["weak"] = false
+                }
+            },
+            ["їжі"] = {
+                ["_id"] = "game.food",
+                ["_literal"] = {
+                    ["id"] = "literal.food",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "food",
+                    ["weak"] = false
+                }
+            },
+            ["їй"] = {
+                ["_id"] = "recipient.her"
+            },
+            ["їм"] = {
+                ["_id"] = "recipient.them"
+            }
+        }
+    },
+    ["composition"] = {
+        ["en-uk"] = {
+            ["joins"] = {
+                ["and"] = " і ",
+                ["but"] = ", але ",
+                ["or"] = " або ",
+                ["then"] = ", потім "
+            },
+            ["prefixes"] = {
+                ["ok"] = "Гаразд, ",
+                ["okay"] = "Гаразд, ",
+                ["right"] = "Так, ",
+                ["yeah"] = "Так, "
+            }
+        },
+        ["uk-en"] = {
+            ["joins"] = {
+                ["або"] = " or ",
+                ["але"] = ", but ",
+                ["й"] = " and ",
+                ["потім"] = ", then ",
+                ["та"] = " and ",
+                ["тоді"] = ", then ",
+                ["чи"] = " or ",
+                ["і"] = " and "
+            },
+            ["prefixes"] = {
+                ["гаразд"] = "Okay, ",
+                ["добре"] = "Okay, ",
+                ["так"] = "Right, "
+            }
+        }
+    },
+    ["exact"] = {
+        ["en-uk"] = {
+            ["1 min please"] = {
+                ["id"] = "one_min",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Одну хвилину, будь ласка"
+            },
+            ["afk"] = {
+                ["id"] = "afk",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Відійшов від клавіатури"
+            },
+            ["are you coming with me"] = {
+                ["id"] = "come_with_me_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Підеш зі мною?"
+            },
+            ["are you going to stand around here"] = {
+                ["id"] = "stand_around_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Будеш тут втикати?"
+            },
+            ["are you just going to stand around here"] = {
+                ["id"] = "stand_around_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Будеш тут втикати?"
+            },
+            ["attack now"] = {
+                ["id"] = "fight_now",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Атакуйте зараз"
+            },
+            ["avoid the fire"] = {
+                ["id"] = "avoid",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Вийдіть із вогню"
+            },
+            ["away from keyboard"] = {
+                ["id"] = "afk",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Відійшов від клавіатури"
+            },
+            ["back"] = {
+                ["id"] = "back",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Я повернувся"
+            },
+            ["be right back"] = {
+                ["id"] = "brb",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зараз повернуся"
+            },
+            ["brb"] = {
+                ["id"] = "brb",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зараз повернуся"
+            },
+            ["buff please"] = {
+                ["id"] = "buff",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Накладіть підсилення, будь ласка"
+            },
+            ["buffs please"] = {
+                ["id"] = "buff",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Накладіть підсилення, будь ласка"
+            },
+            ["bye"] = {
+                ["id"] = "bye",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "До побачення"
+            },
+            ["congrats"] = {
+                ["id"] = "gz",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Вітаю з досягненням"
+            },
+            ["congratulations"] = {
+                ["id"] = "gz",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Вітаю з досягненням"
+            },
+            ["dispel me"] = {
+                ["id"] = "dispel",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зніміть із мене ефект"
+            },
+            ["do not attack"] = {
+                ["id"] = "dont_attack",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не атакуйте"
+            },
+            ["do not invite me"] = {
+                ["id"] = "no_inv",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не запрошуйте мене"
+            },
+            ["do not move"] = {
+                ["id"] = "dont_move",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не рухайся"
+            },
+            ["do not pull"] = {
+                ["id"] = "no_pull",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не починайте бій"
+            },
+            ["do not use aoe"] = {
+                ["id"] = "no_aoe",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не застосовуйте шкоду по області"
+            },
+            ["do you want to come with me"] = {
+                ["id"] = "come_with_me_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Підеш зі мною?"
+            },
+            ["don't aoe"] = {
+                ["id"] = "no_aoe",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не застосовуйте шкоду по області"
+            },
+            ["don't attack"] = {
+                ["id"] = "dont_attack",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не атакуйте"
+            },
+            ["don't invite me"] = {
+                ["id"] = "no_inv",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не запрошуйте мене"
+            },
+            ["don't move"] = {
+                ["id"] = "dont_move",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не рухайся"
+            },
+            ["don't pull"] = {
+                ["id"] = "no_pull",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не починайте бій"
+            },
+            ["dont pull"] = {
+                ["id"] = "no_pull",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не починайте бій"
+            },
+            ["drinking"] = {
+                ["id"] = "drink",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Мені потрібно попити"
+            },
+            ["focus boss"] = {
+                ["id"] = "focus",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зосередьтеся на босі"
+            },
+            ["focus the boss"] = {
+                ["id"] = "focus",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зосередьтеся на босі"
+            },
+            ["follow me"] = {
+                ["id"] = "follow",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Ідіть за мною"
+            },
+            ["full"] = {
+                ["id"] = "full",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Група заповнена"
+            },
+            ["gg"] = {
+                ["id"] = "gg",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Гарна гра"
+            },
+            ["gl"] = {
+                ["id"] = "gl",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Удачі"
+            },
+            ["good game"] = {
+                ["id"] = "gg",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Гарна гра"
+            },
+            ["good luck"] = {
+                ["id"] = "gl",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Удачі"
+            },
+            ["good night guild"] = {
+                ["id"] = "guild_bye",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Добраніч, гільдіє"
+            },
+            ["goodbye"] = {
+                ["id"] = "bye",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "До побачення"
+            },
+            ["grats"] = {
+                ["id"] = "gz",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Вітаю з досягненням"
+            },
+            ["group full"] = {
+                ["id"] = "full",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Група заповнена"
+            },
+            ["guild recruiting"] = {
+                ["id"] = "guild_recruit",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Наша гільдія набирає гравців"
+            },
+            ["gz"] = {
+                ["id"] = "gz",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Вітаю з досягненням"
+            },
+            ["have fun"] = {
+                ["id"] = "hf",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Приємної гри"
+            },
+            ["heal me"] = {
+                ["id"] = "heal",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зціліть мене"
+            },
+            ["heal please"] = {
+                ["id"] = "heal",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зціліть мене"
+            },
+            ["heal the group"] = {
+                ["id"] = "heal_party",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зціліть групу"
+            },
+            ["heal the party"] = {
+                ["id"] = "heal_party",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зціліть групу"
+            },
+            ["hello"] = {
+                ["id"] = "hello",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Привіт"
+            },
+            ["hello guild"] = {
+                ["id"] = "guild_hi",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Привіт, гільдіє"
+            },
+            ["help me"] = {
+                ["id"] = "help",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Допоможіть мені"
+            },
+            ["help please"] = {
+                ["id"] = "help",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Допоможіть мені"
+            },
+            ["hey"] = {
+                ["id"] = "hello",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Привіт"
+            },
+            ["hf"] = {
+                ["id"] = "hf",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Приємної гри"
+            },
+            ["hi"] = {
+                ["id"] = "hello",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Привіт"
+            },
+            ["hi guild"] = {
+                ["id"] = "guild_hi",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Привіт, гільдіє"
+            },
+            ["i am back"] = {
+                ["id"] = "back",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Я повернувся"
+            },
+            ["i am waiting for you"] = {
+                ["id"] = "on_you",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Чекаю на тебе"
+            },
+            ["i need help"] = {
+                ["id"] = "need_help",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Потрібна допомога"
+            },
+            ["i need mana"] = {
+                ["id"] = "mana",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Потрібна мана"
+            },
+            ["i need more mana"] = {
+                ["id"] = "give_mana",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Мені потрібно більше мани"
+            },
+            ["i need repairs"] = {
+                ["id"] = "repair",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Мені потрібен ремонт"
+            },
+            ["i need this"] = {
+                ["id"] = "loot.need_this",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Мені це потрібно"
+            },
+            ["i need to drink"] = {
+                ["id"] = "drink",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Мені потрібно попити"
+            },
+            ["i'm back"] = {
+                ["id"] = "back",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Я повернувся"
+            },
+            ["i'm waiting for you"] = {
+                ["id"] = "on_you",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Чекаю на тебе"
+            },
+            ["interrupt now"] = {
+                ["id"] = "interrupt",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Перервіть закляття"
+            },
+            ["inv me"] = {
+                ["id"] = "inv",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Запросіть мене"
+            },
+            ["invite me"] = {
+                ["id"] = "inv",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Запросіть мене"
+            },
+            ["invite please"] = {
+                ["id"] = "inv",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Запросіть мене"
+            },
+            ["kick now"] = {
+                ["id"] = "interrupt",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Перервіть закляття"
+            },
+            ["kill adds"] = {
+                ["id"] = "adds",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Убийте додаткових ворогів"
+            },
+            ["kill the adds"] = {
+                ["id"] = "adds",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Убийте додаткових ворогів"
+            },
+            ["let us take a break"] = {
+                ["id"] = "take_break",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зробімо перерву"
+            },
+            ["let's take a break"] = {
+                ["id"] = "take_break",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зробімо перерву"
+            },
+            ["lf guild"] = {
+                ["id"] = "guild",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Шукаю гільдію"
+            },
+            ["lfg"] = {
+                ["id"] = "lfg",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Шукаю групу"
+            },
+            ["lfm"] = {
+                ["id"] = "lfm",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Набираємо гравців у групу"
+            },
+            ["looking for a guild"] = {
+                ["id"] = "guild",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Шукаю гільдію"
+            },
+            ["looking for group"] = {
+                ["id"] = "lfg",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Шукаю групу"
+            },
+            ["looking for more"] = {
+                ["id"] = "lfm",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Набираємо гравців у групу"
+            },
+            ["move out of fire"] = {
+                ["id"] = "avoid",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Вийдіть із вогню"
+            },
+            ["my bad"] = {
+                ["id"] = "sorry",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Вибачте"
+            },
+            ["need dps"] = {
+                ["id"] = "need_dps",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Потрібен DPS"
+            },
+            ["need healer"] = {
+                ["id"] = "need_heal",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Потрібен цілитель"
+            },
+            ["need help"] = {
+                ["id"] = "need_help",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Потрібна допомога"
+            },
+            ["need mana"] = {
+                ["id"] = "mana",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Потрібна мана"
+            },
+            ["need more mana"] = {
+                ["id"] = "give_mana",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Мені потрібно більше мани"
+            },
+            ["need repair"] = {
+                ["id"] = "repair",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Мені потрібен ремонт"
+            },
+            ["need tank"] = {
+                ["id"] = "need_tank",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Потрібен танк"
+            },
+            ["no"] = {
+                ["id"] = "no",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Ні"
+            },
+            ["no aoe"] = {
+                ["id"] = "no_aoe",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не застосовуйте шкоду по області"
+            },
+            ["no problem"] = {
+                ["id"] = "np",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Без проблем"
+            },
+            ["no pull"] = {
+                ["id"] = "no_pull",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не починайте бій"
+            },
+            ["nope"] = {
+                ["id"] = "no",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Ні"
+            },
+            ["not ready"] = {
+                ["id"] = "not_ready",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не готовий"
+            },
+            ["np"] = {
+                ["id"] = "np",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Без проблем"
+            },
+            ["nr"] = {
+                ["id"] = "not_ready",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Не готовий"
+            },
+            ["omw"] = {
+                ["id"] = "omw",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Уже йду"
+            },
+            ["on my way"] = {
+                ["id"] = "omw",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Уже йду"
+            },
+            ["one minute please"] = {
+                ["id"] = "one_min",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Одну хвилину, будь ласка"
+            },
+            ["oom"] = {
+                ["id"] = "oom",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Немає мани"
+            },
+            ["our guild is recruiting"] = {
+                ["id"] = "guild_recruit",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Наша гільдія набирає гравців"
+            },
+            ["out of mana"] = {
+                ["id"] = "oom",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Немає мани"
+            },
+            ["pull"] = {
+                ["id"] = "pull",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Починайте бій"
+            },
+            ["pull now"] = {
+                ["id"] = "pull",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Починайте бій"
+            },
+            ["r"] = {
+                ["id"] = "ready",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Готовий"
+            },
+            ["ready"] = {
+                ["id"] = "ready",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Готовий"
+            },
+            ["res me"] = {
+                ["id"] = "rez",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Воскресіть мене"
+            },
+            ["resurrect me"] = {
+                ["id"] = "rez",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Воскресіть мене"
+            },
+            ["rez me"] = {
+                ["id"] = "rez",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Воскресіть мене"
+            },
+            ["run"] = {
+                ["id"] = "run",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Тікайте"
+            },
+            ["run away"] = {
+                ["id"] = "run",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Тікайте"
+            },
+            ["see you"] = {
+                ["id"] = "bye",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "До побачення"
+            },
+            ["sorry"] = {
+                ["id"] = "sorry",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Вибачте"
+            },
+            ["spread"] = {
+                ["id"] = "spread",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Розосередьтеся"
+            },
+            ["spread out"] = {
+                ["id"] = "spread",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Розосередьтеся"
+            },
+            ["sry"] = {
+                ["id"] = "sorry",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Вибачте"
+            },
+            ["stack"] = {
+                ["id"] = "stack",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Станьте разом"
+            },
+            ["stack up"] = {
+                ["id"] = "stack",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Станьте разом"
+            },
+            ["stay here"] = {
+                ["id"] = "stay_here",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Залишайся тут"
+            },
+            ["stop"] = {
+                ["id"] = "stop",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зупиніться"
+            },
+            ["stop damage"] = {
+                ["id"] = "no_dps",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Припиніть завдавати шкоди"
+            },
+            ["stop dps"] = {
+                ["id"] = "no_dps",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Припиніть завдавати шкоди"
+            },
+            ["stop healing"] = {
+                ["id"] = "no_heal",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Припиніть зцілення"
+            },
+            ["stop please"] = {
+                ["id"] = "stop",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зупиніться"
+            },
+            ["sum me"] = {
+                ["id"] = "summon",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Викличте мене"
+            },
+            ["summon me"] = {
+                ["id"] = "summon",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Викличте мене"
+            },
+            ["summon please"] = {
+                ["id"] = "summon",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Викличте мене"
+            },
+            ["thank you"] = {
+                ["id"] = "thanks",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Дякую"
+            },
+            ["thanks"] = {
+                ["id"] = "thanks",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Дякую"
+            },
+            ["thanks all"] = {
+                ["id"] = "thanks_group",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Дякую за групу"
+            },
+            ["thanks for the group"] = {
+                ["id"] = "thanks_group",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Дякую за групу"
+            },
+            ["the group is full"] = {
+                ["id"] = "full",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Група заповнена"
+            },
+            ["thx"] = {
+                ["id"] = "thanks",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Дякую"
+            },
+            ["ty"] = {
+                ["id"] = "thanks",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Дякую"
+            },
+            ["ty all"] = {
+                ["id"] = "thanks_group",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Дякую за групу"
+            },
+            ["wait"] = {
+                ["id"] = "wait",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зачекайте"
+            },
+            ["wait for healer"] = {
+                ["id"] = "heal_wait",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зачекайте на цілителя"
+            },
+            ["wait for mana"] = {
+                ["id"] = "mana_wait",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зачекайте на відновлення мани"
+            },
+            ["wait for me"] = {
+                ["id"] = "wait_me",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зачекай на мене"
+            },
+            ["wait for tank"] = {
+                ["id"] = "tank_wait",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зачекайте на танка"
+            },
+            ["wait for the healer"] = {
+                ["id"] = "heal_wait",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зачекайте на цілителя"
+            },
+            ["wait for the tank"] = {
+                ["id"] = "tank_wait",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зачекайте на танка"
+            },
+            ["wait please"] = {
+                ["id"] = "wait",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зачекайте"
+            },
+            ["wait up"] = {
+                ["id"] = "wait_me",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Зачекай на мене"
+            },
+            ["want to come with me"] = {
+                ["id"] = "come_with_me_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Підеш зі мною?"
+            },
+            ["we need a healer"] = {
+                ["id"] = "need_heal",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Потрібен цілитель"
+            },
+            ["we need a tank"] = {
+                ["id"] = "need_tank",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Потрібен танк"
+            },
+            ["we need dps"] = {
+                ["id"] = "need_dps",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Потрібен DPS"
+            },
+            ["will you just stand around here"] = {
+                ["id"] = "stand_around_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Будеш тут втикати?"
+            },
+            ["wipe"] = {
+                ["id"] = "wipe",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Дайте групі загинути"
+            },
+            ["wipe it"] = {
+                ["id"] = "wipe",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Дайте групі загинути"
+            },
+            ["yeah"] = {
+                ["id"] = "yes",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Так"
+            },
+            ["yep"] = {
+                ["id"] = "yes",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Так"
+            },
+            ["yes"] = {
+                ["id"] = "yes",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Так"
+            },
+            ["you are welcome"] = {
+                ["id"] = "welcome",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Будь ласка"
+            },
+            ["you're welcome"] = {
+                ["id"] = "welcome",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Будь ласка"
+            },
+            ["yw"] = {
+                ["id"] = "welcome",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Будь ласка"
+            }
+        },
+        ["uk-en"] = {
+            ["атакуй зараз"] = {
+                ["id"] = "fight_now",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Attack now"
+            },
+            ["атакуйте зараз"] = {
+                ["id"] = "fight_now",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Attack now"
+            },
+            ["без проблем"] = {
+                ["id"] = "np",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "No problem"
+            },
+            ["бувай"] = {
+                ["id"] = "bye",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Goodbye"
+            },
+            ["будеш тут втикати"] = {
+                ["id"] = "stand_around_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Are you just going to stand around here?"
+            },
+            ["будеш тут просто стояти"] = {
+                ["id"] = "stand_around_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Are you just going to stand around here?"
+            },
+            ["будь ласка"] = {
+                ["id"] = "welcome",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "You are welcome"
+            },
+            ["вибач"] = {
+                ["id"] = "sorry",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Sorry"
+            },
+            ["вибачте"] = {
+                ["id"] = "sorry",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Sorry"
+            },
+            ["вийдіть із вогню"] = {
+                ["id"] = "avoid",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Avoid the fire"
+            },
+            ["виклич мене"] = {
+                ["id"] = "summon",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Summon me"
+            },
+            ["викличте мене"] = {
+                ["id"] = "summon",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Summon me"
+            },
+            ["воскреси мене"] = {
+                ["id"] = "rez",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Resurrect me"
+            },
+            ["воскресіть мене"] = {
+                ["id"] = "rez",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Resurrect me"
+            },
+            ["відійшла від клавіатури"] = {
+                ["id"] = "afk",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Away from keyboard"
+            },
+            ["відійшов від клавіатури"] = {
+                ["id"] = "afk",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Away from keyboard"
+            },
+            ["вітаю"] = {
+                ["id"] = "hello",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Hello"
+            },
+            ["вітаю з досягненням"] = {
+                ["id"] = "gz",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Congratulations"
+            },
+            ["гарна гра"] = {
+                ["id"] = "gg",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Good game"
+            },
+            ["готова"] = {
+                ["id"] = "ready",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Ready"
+            },
+            ["готовий"] = {
+                ["id"] = "ready",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Ready"
+            },
+            ["група заповнена"] = {
+                ["id"] = "full",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "The group is full"
+            },
+            ["давайте зробимо перерву"] = {
+                ["id"] = "take_break",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Let us take a break"
+            },
+            ["дайте групі загинути"] = {
+                ["id"] = "wipe",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Wipe it"
+            },
+            ["до побачення"] = {
+                ["id"] = "bye",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Goodbye"
+            },
+            ["добраніч, гільдіє"] = {
+                ["id"] = "guild_bye",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Good night guild"
+            },
+            ["допоможи мені"] = {
+                ["id"] = "help",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Help me"
+            },
+            ["допоможіть мені"] = {
+                ["id"] = "help",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Help me"
+            },
+            ["дякую"] = {
+                ["id"] = "thanks",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Thank you"
+            },
+            ["дякую за групу"] = {
+                ["id"] = "thanks_group",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Thanks for the group"
+            },
+            ["залишайся тут"] = {
+                ["id"] = "stay_here",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Stay here"
+            },
+            ["залишишся тут втикати"] = {
+                ["id"] = "stand_around_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Are you just going to stand around here?"
+            },
+            ["запроси мене"] = {
+                ["id"] = "inv",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Invite me"
+            },
+            ["запросіть мене"] = {
+                ["id"] = "inv",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Invite me"
+            },
+            ["зараз повернусь"] = {
+                ["id"] = "brb",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Be right back"
+            },
+            ["зараз повернуся"] = {
+                ["id"] = "brb",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Be right back"
+            },
+            ["зачекай"] = {
+                ["id"] = "wait",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Wait"
+            },
+            ["зачекай мене"] = {
+                ["id"] = "wait_me",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Wait for me"
+            },
+            ["зачекай на мене"] = {
+                ["id"] = "wait_me",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Wait for me"
+            },
+            ["зачекайте"] = {
+                ["id"] = "wait",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Wait"
+            },
+            ["зачекайте на відновлення мани"] = {
+                ["id"] = "mana_wait",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Wait for mana"
+            },
+            ["зачекайте на танка"] = {
+                ["id"] = "tank_wait",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Wait for the tank"
+            },
+            ["зачекайте на цілителя"] = {
+                ["id"] = "heal_wait",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Wait for the healer"
+            },
+            ["зніміть із мене ефект"] = {
+                ["id"] = "dispel",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Dispel me"
+            },
+            ["зосередьтеся на босі"] = {
+                ["id"] = "focus",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Focus the boss"
+            },
+            ["зробімо паузу"] = {
+                ["id"] = "take_break",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Let us take a break"
+            },
+            ["зробімо перерву"] = {
+                ["id"] = "take_break",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Let us take a break"
+            },
+            ["зупиніться"] = {
+                ["id"] = "stop",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Stop"
+            },
+            ["зціли групу"] = {
+                ["id"] = "heal_party",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Heal the group"
+            },
+            ["зціли мене"] = {
+                ["id"] = "heal",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Heal me"
+            },
+            ["зціліть групу"] = {
+                ["id"] = "heal_party",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Heal the group"
+            },
+            ["зціліть мене"] = {
+                ["id"] = "heal",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Heal me"
+            },
+            ["зі мною підеш"] = {
+                ["id"] = "come_with_me_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Want to come with me?"
+            },
+            ["йдеш зі мною"] = {
+                ["id"] = "come_with_me_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Want to come with me?"
+            },
+            ["йди за мною"] = {
+                ["id"] = "follow",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Follow me"
+            },
+            ["лишайся тут"] = {
+                ["id"] = "stay_here",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Stay here"
+            },
+            ["лишишся тут втикати"] = {
+                ["id"] = "stand_around_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Are you just going to stand around here?"
+            },
+            ["мана закінчилася"] = {
+                ["id"] = "oom",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Out of mana"
+            },
+            ["мені потрібен ремонт"] = {
+                ["id"] = "repair",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I need repairs"
+            },
+            ["мені потрібна допомога"] = {
+                ["id"] = "need_help",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I need help"
+            },
+            ["мені потрібно більше мани"] = {
+                ["id"] = "give_mana",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I need more mana"
+            },
+            ["мені потрібно попити"] = {
+                ["id"] = "drink",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I need to drink"
+            },
+            ["мені це потрібно"] = {
+                ["id"] = "loot.need_this",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I need this"
+            },
+            ["набираємо гравців у групу"] = {
+                ["id"] = "lfm",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Looking for more"
+            },
+            ["накладіть підсилення, будь ласка"] = {
+                ["id"] = "buff",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Buff please"
+            },
+            ["наша гільдія набирає гравців"] = {
+                ["id"] = "guild_recruit",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Our guild is recruiting"
+            },
+            ["не атакуй"] = {
+                ["id"] = "dont_attack",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Do not attack"
+            },
+            ["не атакуйте"] = {
+                ["id"] = "dont_attack",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Do not attack"
+            },
+            ["не бий"] = {
+                ["id"] = "dont_attack",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Do not attack"
+            },
+            ["не ворушися"] = {
+                ["id"] = "dont_move",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Do not move"
+            },
+            ["не готова"] = {
+                ["id"] = "not_ready",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Not ready"
+            },
+            ["не готовий"] = {
+                ["id"] = "not_ready",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Not ready"
+            },
+            ["не запрошуйте мене"] = {
+                ["id"] = "no_inv",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Do not invite me"
+            },
+            ["не застосовуйте шкоду по області"] = {
+                ["id"] = "no_aoe",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Do not use AOE"
+            },
+            ["не починай бій"] = {
+                ["id"] = "no_pull",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Do not pull"
+            },
+            ["не починайте бій"] = {
+                ["id"] = "no_pull",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Do not pull"
+            },
+            ["не пуліть"] = {
+                ["id"] = "no_pull",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Do not pull"
+            },
+            ["не рухайся"] = {
+                ["id"] = "dont_move",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Do not move"
+            },
+            ["немає мани"] = {
+                ["id"] = "oom",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Out of mana"
+            },
+            ["ні"] = {
+                ["id"] = "no",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "No"
+            },
+            ["одну хвилину, будь ласка"] = {
+                ["id"] = "one_min",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "One minute please"
+            },
+            ["перерви закляття"] = {
+                ["id"] = "interrupt",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Interrupt now"
+            },
+            ["перервіть закляття"] = {
+                ["id"] = "interrupt",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Interrupt now"
+            },
+            ["потрібен dps"] = {
+                ["id"] = "need_dps",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "We need DPS"
+            },
+            ["потрібен танк"] = {
+                ["id"] = "need_tank",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "We need a tank"
+            },
+            ["потрібен цілитель"] = {
+                ["id"] = "need_heal",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "We need a healer"
+            },
+            ["потрібна допомога"] = {
+                ["id"] = "need_help",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I need help"
+            },
+            ["потрібна мана"] = {
+                ["id"] = "mana",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I need mana"
+            },
+            ["почекай мене"] = {
+                ["id"] = "wait_me",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Wait for me"
+            },
+            ["почекай на мене"] = {
+                ["id"] = "wait_me",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Wait for me"
+            },
+            ["починай бій"] = {
+                ["id"] = "pull",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Pull now"
+            },
+            ["починайте бій"] = {
+                ["id"] = "pull",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Pull now"
+            },
+            ["привіт"] = {
+                ["id"] = "hello",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Hello"
+            },
+            ["привіт, гільдіє"] = {
+                ["id"] = "guild_hi",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Hello guild"
+            },
+            ["припиніть завдавати шкоди"] = {
+                ["id"] = "no_dps",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Stop DPS"
+            },
+            ["припиніть зцілення"] = {
+                ["id"] = "no_heal",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Stop healing"
+            },
+            ["приємної гри"] = {
+                ["id"] = "hf",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Have fun"
+            },
+            ["підеш з мною"] = {
+                ["id"] = "come_with_me_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Want to come with me?"
+            },
+            ["підеш зо мною"] = {
+                ["id"] = "come_with_me_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Want to come with me?"
+            },
+            ["підеш зі мною"] = {
+                ["id"] = "come_with_me_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Want to come with me?"
+            },
+            ["підеш із мною"] = {
+                ["id"] = "come_with_me_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Want to come with me?"
+            },
+            ["підхіль групу"] = {
+                ["id"] = "heal_party",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Heal the group"
+            },
+            ["розосередьтеся"] = {
+                ["id"] = "spread",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Spread out"
+            },
+            ["спасибі"] = {
+                ["id"] = "thanks",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Thank you"
+            },
+            ["станьте разом"] = {
+                ["id"] = "stack",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Stack up"
+            },
+            ["стоп"] = {
+                ["id"] = "stop",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Stop"
+            },
+            ["стій на місці"] = {
+                ["id"] = "dont_move",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Do not move"
+            },
+            ["стій тут"] = {
+                ["id"] = "stay_here",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Stay here"
+            },
+            ["так"] = {
+                ["id"] = "yes",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Yes"
+            },
+            ["ти будеш тут втикати"] = {
+                ["id"] = "stand_around_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Are you just going to stand around here?"
+            },
+            ["треба більше мани"] = {
+                ["id"] = "give_mana",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I need more mana"
+            },
+            ["тут будеш втикати"] = {
+                ["id"] = "stand_around_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Are you just going to stand around here?"
+            },
+            ["тікай"] = {
+                ["id"] = "run",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Run away"
+            },
+            ["тікайте"] = {
+                ["id"] = "run",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Run away"
+            },
+            ["убийте додаткових ворогів"] = {
+                ["id"] = "adds",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Kill the adds"
+            },
+            ["удачі"] = {
+                ["id"] = "gl",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Good luck"
+            },
+            ["уже йду"] = {
+                ["id"] = "omw",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "On my way"
+            },
+            ["хочеш зі мною"] = {
+                ["id"] = "come_with_me_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Want to come with me?"
+            },
+            ["хочеш піти зі мною"] = {
+                ["id"] = "come_with_me_question",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Want to come with me?"
+            },
+            ["це нідаю"] = {
+                ["id"] = "loot.need_this",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I need this"
+            },
+            ["чекаю на тебе"] = {
+                ["id"] = "on_you",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I am waiting for you"
+            },
+            ["чекаю тебе"] = {
+                ["id"] = "on_you",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I am waiting for you"
+            },
+            ["шукаю групу"] = {
+                ["id"] = "lfg",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Looking for group"
+            },
+            ["шукаю гільдію"] = {
+                ["id"] = "guild",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Looking for a guild"
+            },
+            ["щасти"] = {
+                ["id"] = "gl",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Good luck"
+            },
+            ["я нідаю це"] = {
+                ["id"] = "loot.need_this",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I need this"
+            },
+            ["я повернувся"] = {
+                ["id"] = "back",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I am back"
+            },
+            ["я повернулася"] = {
+                ["id"] = "back",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I am back"
+            },
+            ["я це нідаю"] = {
+                ["id"] = "loot.need_this",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I need this"
+            },
+            ["ідіть за мною"] = {
+                ["id"] = "follow",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Follow me"
+            },
+            ["інвайт"] = {
+                ["id"] = "inv",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Invite me"
+            }
+        }
+    },
+    ["manifest"] = {
+        ["concepts"] = 103,
+        ["derivedNouns"] = 26,
+        ["phraseFamilies"] = 74,
+        ["source"] = {
+            ["approvalMeaning"] = "Editorially reviewed for this addon; not a claim of individual user approval.",
+            ["catalogBuild"] = "1.60.1.70938",
+            ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+            ["files"] = {
+                ["entries/forever/cliend_db/shared_text.lua"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["entries/forever/cliend_db/ui_names_uk.lua"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["entries/forever/cliend_db/zones.lua"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4"
+            },
+            ["id"] = "ua-forever",
+            ["path"] = "C:\\Work\\UA_Forever",
+            ["targetClient"] = "1.60.1.70959",
+            ["version"] = "1.0.3"
+        },
+        ["templateFamilies"] = 81,
+        ["version"] = "0a09725a44f676839acf041efb0695038ccd4efd1ac197cf757fe5353a17481c"
+    },
+    ["rules"] = {
+        ["en-uk"] = {
+            ["next"] = {
+                ["are"] = {
+                    ["next"] = {
+                        ["you"] = {
+                            ["next"] = {
+                                ["coming"] = {
+                                    ["next"] = {
+                                        ["to"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 503,
+                                                    ["output"] = "Підеш зі мною до {place:genitiveSingular}?",
+                                                    ["pattern"] = { "{place}", "with", "me" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["with"] = {
+                                            ["next"] = {
+                                                ["me"] = {
+                                                    ["next"] = {
+                                                        ["to"] = {
+                                                            ["matches"] = {
+                                                                {
+                                                                    ["id"] = "travel.join_question",
+                                                                    ["intent"] = "invitation",
+                                                                    ["order"] = 502,
+                                                                    ["output"] = "Підеш зі мною до {place:genitiveSingular}?",
+                                                                    ["pattern"] = { "{place}" },
+                                                                    ["priority"] = 100,
+                                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["back"] = {
+                    ["next"] = {
+                        ["in"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.return",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 110,
+                                    ["output"] = "Повернуся за {time}.",
+                                    ["pattern"] = { "{time}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "social.return",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 112,
+                                    ["output"] = "Повернуся за {time}.",
+                                    ["pattern"] = { "{time}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["brb"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "social.return",
+                            ["intent"] = "social_reply",
+                            ["order"] = 111,
+                            ["output"] = "Повернуся за {time}.",
+                            ["pattern"] = { "{time}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["bring"] = {
+                    ["next"] = {
+                        ["me"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.bring",
+                                    ["intent"] = "errand",
+                                    ["order"] = 295,
+                                    ["output"] = "Принеси мені {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 303,
+                                    ["output"] = "Принеси мені {goods:object} або {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "or", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 316,
+                                    ["output"] = "Принеси мені {goods:object} і {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "and", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 334,
+                                    ["output"] = "Принеси мені {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["us"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.bring_us",
+                                    ["intent"] = "errand",
+                                    ["order"] = 425,
+                                    ["output"] = "Принеси нам {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 429,
+                                    ["output"] = "Принеси нам {goods:object} або {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "or", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 435,
+                                    ["output"] = "Принеси нам {goods:object} і {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "and", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["buy"] = {
+                    ["next"] = {
+                        ["me"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.buy",
+                                    ["intent"] = "errand",
+                                    ["order"] = 342,
+                                    ["output"] = "Купи мені {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.buy_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 344,
+                                    ["output"] = "Купи мені {goods:object} або {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "or", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.buy_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 347,
+                                    ["output"] = "Купи мені {goods:object} і {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "and", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.buy_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 351,
+                                    ["output"] = "Купи мені {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["buying"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "trade.buy",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 69,
+                            ["output"] = "Куплю {item}.",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["can"] = {
+                    ["next"] = {
+                        ["craft"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "profession.recipe",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 102,
+                                    ["output"] = "Можу виготовити {item}.",
+                                    ["pattern"] = { "{item}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.recipe",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 103,
+                                    ["output"] = "Можу виготовити {item}.",
+                                    ["pattern"] = { "{item}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.craft_price",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 182,
+                                    ["output"] = "Можу виготовити {item} за {price}.",
+                                    ["pattern"] = { "{item}", "for", "{price}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.craft_price",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 183,
+                                    ["output"] = "Можу виготовити {item} за {price}.",
+                                    ["pattern"] = { "{item}", "for", "{price}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["you"] = {
+                            ["next"] = {
+                                ["bring"] = {
+                                    ["next"] = {
+                                        ["me"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "errand.ask",
+                                                    ["intent"] = "errand",
+                                                    ["order"] = 453,
+                                                    ["output"] = "Можеш принести мені {goods:object}?",
+                                                    ["pattern"] = { "{goods}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["come"] = {
+                    ["next"] = {
+                        ["to"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.come",
+                                    ["intent"] = "travel",
+                                    ["order"] = 247,
+                                    ["output"] = "Приходь до {place:genitiveSingular}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["could"] = {
+                    ["next"] = {
+                        ["you"] = {
+                            ["next"] = {
+                                ["bring"] = {
+                                    ["next"] = {
+                                        ["me"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "errand.ask",
+                                                    ["intent"] = "errand",
+                                                    ["order"] = 454,
+                                                    ["output"] = "Можеш принести мені {goods:object}?",
+                                                    ["pattern"] = { "{goods}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["do"] = {
+                    ["next"] = {
+                        ["not"] = {
+                            ["next"] = {
+                                ["bring"] = {
+                                    ["next"] = {
+                                        ["me"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "errand.no_bring",
+                                                    ["intent"] = "errand",
+                                                    ["order"] = 444,
+                                                    ["output"] = "Не принось мені {goods:object}.",
+                                                    ["pattern"] = { "{goods}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                },
+                                                {
+                                                    ["id"] = "errand.no_bring_or",
+                                                    ["intent"] = "errand",
+                                                    ["order"] = 448,
+                                                    ["output"] = "Не принось мені {goods:object} або {goods2:object}.",
+                                                    ["pattern"] = { "{goods}", "or", "{goods2}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["go"] = {
+                                    ["next"] = {
+                                        ["to"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.no_go",
+                                                    ["intent"] = "travel",
+                                                    ["order"] = 273,
+                                                    ["output"] = "Не йди до {place:genitiveSingular}.",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["pull"] = {
+                                    ["next"] = {
+                                        ["without"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "combat.no_role",
+                                                    ["intent"] = "combat_call",
+                                                    ["order"] = 133,
+                                                    ["output"] = "Не починайте бій без {role:genitiveSingular}.",
+                                                    ["pattern"] = { "{role}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                },
+                                                {
+                                                    ["id"] = "combat.no_role",
+                                                    ["intent"] = "combat_call",
+                                                    ["order"] = 135,
+                                                    ["output"] = "Не починайте бій без {role:genitiveSingular}.",
+                                                    ["pattern"] = { "{role}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                },
+                                                {
+                                                    ["id"] = "combat.no_class",
+                                                    ["intent"] = "combat_call",
+                                                    ["order"] = 210,
+                                                    ["output"] = "Не починайте бій без {class:genitiveSingular}.",
+                                                    ["pattern"] = { "{class}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                },
+                                                {
+                                                    ["id"] = "combat.no_class",
+                                                    ["intent"] = "combat_call",
+                                                    ["order"] = 212,
+                                                    ["output"] = "Не починайте бій без {class:genitiveSingular}.",
+                                                    ["pattern"] = { "{class}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["don't"] = {
+                    ["next"] = {
+                        ["bring"] = {
+                            ["next"] = {
+                                ["me"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "errand.no_bring",
+                                            ["intent"] = "errand",
+                                            ["order"] = 443,
+                                            ["output"] = "Не принось мені {goods:object}.",
+                                            ["pattern"] = { "{goods}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "errand.no_bring_or",
+                                            ["intent"] = "errand",
+                                            ["order"] = 447,
+                                            ["output"] = "Не принось мені {goods:object} або {goods2:object}.",
+                                            ["pattern"] = { "{goods}", "or", "{goods2}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["go"] = {
+                            ["next"] = {
+                                ["to"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.no_go",
+                                            ["intent"] = "travel",
+                                            ["order"] = 274,
+                                            ["output"] = "Не йди до {place:genitiveSingular}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["pull"] = {
+                            ["next"] = {
+                                ["without"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "combat.no_role",
+                                            ["intent"] = "combat_call",
+                                            ["order"] = 134,
+                                            ["output"] = "Не починайте бій без {role:genitiveSingular}.",
+                                            ["pattern"] = { "{role}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "combat.no_class",
+                                            ["intent"] = "combat_call",
+                                            ["order"] = 211,
+                                            ["output"] = "Не починайте бій без {class:genitiveSingular}.",
+                                            ["pattern"] = { "{class}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["fetch"] = {
+                    ["next"] = {
+                        ["me"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.bring",
+                                    ["intent"] = "errand",
+                                    ["order"] = 297,
+                                    ["output"] = "Принеси мені {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 305,
+                                    ["output"] = "Принеси мені {goods:object} або {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "or", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 318,
+                                    ["output"] = "Принеси мені {goods:object} і {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "and", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 336,
+                                    ["output"] = "Принеси мені {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["fly"] = {
+                    ["next"] = {
+                        ["to"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.fly",
+                                    ["intent"] = "travel",
+                                    ["order"] = 463,
+                                    ["output"] = "Лети до {place:genitiveSingular}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["get"] = {
+                    ["next"] = {
+                        ["me"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.bring",
+                                    ["intent"] = "errand",
+                                    ["order"] = 296,
+                                    ["output"] = "Принеси мені {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 304,
+                                    ["output"] = "Принеси мені {goods:object} або {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "or", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 317,
+                                    ["output"] = "Принеси мені {goods:object} і {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "and", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 335,
+                                    ["output"] = "Принеси мені {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["over"] = {
+                            ["next"] = {
+                                ["to"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.hurry",
+                                            ["intent"] = "travel",
+                                            ["order"] = 235,
+                                            ["output"] = "Гайни до {place:genitiveSingular}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["us"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.bring_us",
+                                    ["intent"] = "errand",
+                                    ["order"] = 426,
+                                    ["output"] = "Принеси нам {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 430,
+                                    ["output"] = "Принеси нам {goods:object} або {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "or", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 436,
+                                    ["output"] = "Принеси нам {goods:object} і {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "and", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["yourself"] = {
+                            ["next"] = {
+                                ["to"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.hurry",
+                                            ["intent"] = "travel",
+                                            ["order"] = 236,
+                                            ["output"] = "Гайни до {place:genitiveSingular}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["give"] = {
+                    ["next"] = {
+                        ["me"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.give",
+                                    ["intent"] = "errand",
+                                    ["order"] = 353,
+                                    ["output"] = "Дай мені {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 359,
+                                    ["output"] = "Дай мені {goods:object} або {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "or", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 368,
+                                    ["output"] = "Дай мені {goods:object} і {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "and", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 380,
+                                    ["output"] = "Дай мені {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["go"] = {
+                    ["next"] = {
+                        ["to"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 215,
+                                    ["output"] = "Іди до {place:genitiveSingular}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["going"] = {
+                    ["next"] = {
+                        ["to"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.go",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 190,
+                                    ["output"] = "Прямую до місця: {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "social.go",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 191,
+                                    ["output"] = "Прямую до місця: {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["guild"] = {
+                    ["next"] = {
+                        ["looking"] = {
+                            ["next"] = {
+                                ["for"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "guild.role",
+                                            ["intent"] = "guild_recruit",
+                                            ["order"] = 138,
+                                            ["output"] = "Гільдія шукає {role:genitiveSingular}.",
+                                            ["pattern"] = { "{role}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "guild.role",
+                                            ["intent"] = "guild_recruit",
+                                            ["order"] = 140,
+                                            ["output"] = "Гільдія шукає {role:genitiveSingular}.",
+                                            ["pattern"] = { "{role}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "guild.class",
+                                            ["intent"] = "guild_recruit",
+                                            ["order"] = 143,
+                                            ["output"] = "Гільдія шукає {class:genitiveSingular}.",
+                                            ["pattern"] = { "{class}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "guild.class",
+                                            ["intent"] = "guild_recruit",
+                                            ["order"] = 144,
+                                            ["output"] = "Гільдія шукає {class:genitiveSingular}.",
+                                            ["pattern"] = { "{class}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["needs"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "guild.role",
+                                    ["intent"] = "guild_recruit",
+                                    ["order"] = 139,
+                                    ["output"] = "Гільдія шукає {role:genitiveSingular}.",
+                                    ["pattern"] = { "{role}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["recruiting"] = {
+                            ["next"] = {
+                                ["for"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "guild.raid",
+                                            ["intent"] = "guild_recruit",
+                                            ["order"] = 206,
+                                            ["output"] = "Гільдія набирає гравців. Місце: {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "guild.raid",
+                                            ["intent"] = "guild_recruit",
+                                            ["order"] = 207,
+                                            ["output"] = "Гільдія набирає гравців. Місце: {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["hand"] = {
+                    ["next"] = {
+                        ["me"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.give",
+                                    ["intent"] = "errand",
+                                    ["order"] = 355,
+                                    ["output"] = "Дай мені {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 361,
+                                    ["output"] = "Дай мені {goods:object} або {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "or", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 370,
+                                    ["output"] = "Дай мені {goods:object} і {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "and", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 382,
+                                    ["output"] = "Дай мені {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["head"] = {
+                    ["next"] = {
+                        ["to"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 216,
+                                    ["output"] = "Іди до {place:genitiveSingular}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["hey"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "chat.vocative",
+                            ["intent"] = "address",
+                            ["order"] = 494,
+                            ["output"] = "Гей, {address:vocative}",
+                            ["pattern"] = { "{address}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        [","] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "chat.vocative",
+                                    ["intent"] = "address",
+                                    ["order"] = 495,
+                                    ["output"] = "Гей, {address:vocative}",
+                                    ["pattern"] = { "{address}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["how"] = {
+                    ["next"] = {
+                        ["much"] = {
+                            ["next"] = {
+                                ["for"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "trade.price",
+                                            ["intent"] = "trade_question",
+                                            ["order"] = 84,
+                                            ["output"] = "Скільки коштує {item}?",
+                                            ["pattern"] = { "{item}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "trade.price",
+                                            ["intent"] = "trade_question",
+                                            ["order"] = 86,
+                                            ["output"] = "Скільки коштує {item}?",
+                                            ["pattern"] = { "{item}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["hurry"] = {
+                    ["next"] = {
+                        ["to"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.hurry",
+                                    ["intent"] = "travel",
+                                    ["order"] = 237,
+                                    ["output"] = "Гайни до {place:genitiveSingular}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["i"] = {
+                    ["next"] = {
+                        ["am"] = {
+                            ["next"] = {
+                                ["going"] = {
+                                    ["next"] = {
+                                        ["to"] = {
+                                            ["next"] = {
+                                                ["a"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "activity.heading_to",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 475,
+                                                            ["output"] = "Я збираюся на {activity:activity}.",
+                                                            ["pattern"] = { "{activity}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["heading"] = {
+                                    ["next"] = {
+                                        ["to"] = {
+                                            ["next"] = {
+                                                ["a"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "activity.heading_to",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 473,
+                                                            ["output"] = "Я збираюся на {activity:activity}.",
+                                                            ["pattern"] = { "{activity}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["in"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "social.at",
+                                            ["intent"] = "social_reply",
+                                            ["order"] = 195,
+                                            ["output"] = "Я тут. Місце: {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "social.at",
+                                            ["intent"] = "social_reply",
+                                            ["order"] = 197,
+                                            ["output"] = "Я тут. Місце: {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["sick"] = {
+                                    ["next"] = {
+                                        ["of"] = {
+                                            ["next"] = {
+                                                ["these"] = {
+                                                    ["next"] = {
+                                                        ["damn"] = {
+                                                            ["matches"] = {
+                                                                {
+                                                                    ["id"] = "complaint.fed_up_damn",
+                                                                    ["intent"] = "complaint",
+                                                                    ["order"] = 567,
+                                                                    ["output"] = "Мене дістало, що ці довбані {creaturePlural:nominative} {behavior:pluralVerb}.",
+                                                                    ["pattern"] = { "{creaturePlural}", "{behavior}" },
+                                                                    ["priority"] = 100,
+                                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["need"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.need",
+                                    ["intent"] = "errand",
+                                    ["order"] = 386,
+                                    ["output"] = "Мені треба {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 392,
+                                    ["output"] = "Мені треба {goods:object} або {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "or", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 403,
+                                    ["output"] = "Мені треба {goods:object} і {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "and", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 419,
+                                    ["output"] = "Мені треба {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["see"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "sight.creature",
+                                    ["intent"] = "observation",
+                                    ["order"] = 560,
+                                    ["output"] = "Бачу {creature:accusative}.",
+                                    ["pattern"] = { "{creature}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["i'm"] = {
+                    ["next"] = {
+                        ["about"] = {
+                            ["next"] = {
+                                ["to"] = {
+                                    ["next"] = {
+                                        ["queue"] = {
+                                            ["next"] = {
+                                                ["for"] = {
+                                                    ["next"] = {
+                                                        ["a"] = {
+                                                            ["matches"] = {
+                                                                {
+                                                                    ["id"] = "activity.heading_to",
+                                                                    ["intent"] = "invitation",
+                                                                    ["order"] = 476,
+                                                                    ["output"] = "Я збираюся на {activity:activity}.",
+                                                                    ["pattern"] = { "{activity}" },
+                                                                    ["priority"] = 100,
+                                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["going"] = {
+                            ["next"] = {
+                                ["to"] = {
+                                    ["next"] = {
+                                        ["a"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "activity.heading_to",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 474,
+                                                    ["output"] = "Я збираюся на {activity:activity}.",
+                                                    ["pattern"] = { "{activity}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["heading"] = {
+                            ["next"] = {
+                                ["to"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "activity.heading_to",
+                                            ["intent"] = "invitation",
+                                            ["order"] = 472,
+                                            ["output"] = "Я збираюся на {activity:activity}.",
+                                            ["pattern"] = { "{activity}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    },
+                                    ["next"] = {
+                                        ["a"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "activity.heading_to",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 471,
+                                                    ["output"] = "Я збираюся на {activity:activity}.",
+                                                    ["pattern"] = { "{activity}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["in"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.at",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 196,
+                                    ["output"] = "Я тут. Місце: {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["sick"] = {
+                            ["next"] = {
+                                ["of"] = {
+                                    ["next"] = {
+                                        ["these"] = {
+                                            ["next"] = {
+                                                ["damn"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "complaint.fed_up_damn",
+                                                            ["intent"] = "complaint",
+                                                            ["order"] = 566,
+                                                            ["output"] = "Мене дістало, що ці довбані {creaturePlural:nominative} {behavior:pluralVerb}.",
+                                                            ["pattern"] = { "{creaturePlural}", "{behavior}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["invite"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "recruit.invite_creature",
+                            ["intent"] = "invitation",
+                            ["order"] = 563,
+                            ["output"] = "Запроси {creature:accusative}.",
+                            ["pattern"] = { "{creature}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["let's"] = {
+                    ["next"] = {
+                        ["go"] = {
+                            ["next"] = {
+                                ["to"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.lets_go",
+                                            ["intent"] = "travel",
+                                            ["order"] = 284,
+                                            ["output"] = "Ходімо до {place:genitiveSingular}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["lets"] = {
+                    ["next"] = {
+                        ["go"] = {
+                            ["next"] = {
+                                ["to"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.lets_go",
+                                            ["intent"] = "travel",
+                                            ["order"] = 285,
+                                            ["output"] = "Ходімо до {place:genitiveSingular}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["lf"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "recruit.count",
+                            ["intent"] = "recruit",
+                            ["order"] = 10,
+                            ["output"] = "Набір у групу: ще {count}; роль: {role}.",
+                            ["pattern"] = { "{count}", "m", "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.count",
+                            ["intent"] = "recruit",
+                            ["order"] = 12,
+                            ["output"] = "Набір у групу: ще {count}; роль: {role}.",
+                            ["pattern"] = { "{count}", "m", "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.count_place",
+                            ["intent"] = "recruit",
+                            ["order"] = 23,
+                            ["output"] = "Набір у групу: ще {count}; роль: {role}. Місце: {place}.",
+                            ["pattern"] = { "{count}", "m", "{role}", "for", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.count_place",
+                            ["intent"] = "recruit",
+                            ["order"] = 24,
+                            ["output"] = "Набір у групу: ще {count}; роль: {role}. Місце: {place}.",
+                            ["pattern"] = { "{count}", "m", "{role}", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.count_place",
+                            ["intent"] = "recruit",
+                            ["order"] = 25,
+                            ["output"] = "Набір у групу: ще {count}; роль: {role}. Місце: {place}.",
+                            ["pattern"] = { "{count}", "m", "{role}", "for", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "profession.need",
+                            ["intent"] = "craft_service",
+                            ["order"] = 97,
+                            ["output"] = "Шукаю майстра. Професія: {profession}.",
+                            ["pattern"] = { "{profession}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["lfg"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "group.place",
+                            ["intent"] = "looking_for_group",
+                            ["order"] = 28,
+                            ["output"] = "Шукаю групу. Місце: {place}.",
+                            ["pattern"] = { "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "group.place",
+                            ["intent"] = "looking_for_group",
+                            ["order"] = 31,
+                            ["output"] = "Шукаю групу. Місце: {place}.",
+                            ["pattern"] = { "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "group.role_place",
+                            ["intent"] = "looking_for_group",
+                            ["order"] = 35,
+                            ["output"] = "Шукаю групу. Місце: {place}. Роль: {role}.",
+                            ["pattern"] = { "{place}", "as", "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "group.role_place",
+                            ["intent"] = "looking_for_group",
+                            ["order"] = 36,
+                            ["output"] = "Шукаю групу. Місце: {place}. Роль: {role}.",
+                            ["pattern"] = { "{place}", "as", "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["lfm"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "recruit.role",
+                            ["intent"] = "recruit",
+                            ["order"] = 1,
+                            ["output"] = "Шукаємо {role:genitiveSingular}.",
+                            ["pattern"] = { "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.role",
+                            ["intent"] = "recruit",
+                            ["order"] = 4,
+                            ["output"] = "Шукаємо {role:genitiveSingular}.",
+                            ["pattern"] = { "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.place",
+                            ["intent"] = "recruit",
+                            ["order"] = 16,
+                            ["output"] = "Шукаємо {role:genitiveSingular}. Місце: {place}.",
+                            ["pattern"] = { "{role}", "for", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.place",
+                            ["intent"] = "recruit",
+                            ["order"] = 17,
+                            ["output"] = "Шукаємо {role:genitiveSingular}. Місце: {place}.",
+                            ["pattern"] = { "{role}", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.place",
+                            ["intent"] = "recruit",
+                            ["order"] = 19,
+                            ["output"] = "Шукаємо {role:genitiveSingular}. Місце: {place}.",
+                            ["pattern"] = { "{role}", "for", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "group.any_place",
+                            ["intent"] = "recruit",
+                            ["order"] = 40,
+                            ["output"] = "Набираємо групу. Місце: {place}.",
+                            ["pattern"] = { "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "class.recruit",
+                            ["intent"] = "recruit",
+                            ["order"] = 44,
+                            ["output"] = "Шукаємо {class:genitiveSingular}.",
+                            ["pattern"] = { "{class}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "class.recruit",
+                            ["intent"] = "recruit",
+                            ["order"] = 46,
+                            ["output"] = "Шукаємо {class:genitiveSingular}.",
+                            ["pattern"] = { "{class}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "class.place",
+                            ["intent"] = "recruit",
+                            ["order"] = 50,
+                            ["output"] = "Шукаємо {class:genitiveSingular}. Місце: {place}.",
+                            ["pattern"] = { "{class}", "for", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "class.place",
+                            ["intent"] = "recruit",
+                            ["order"] = 51,
+                            ["output"] = "Шукаємо {class:genitiveSingular}. Місце: {place}.",
+                            ["pattern"] = { "{class}", "for", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        ["for"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "group.any_place",
+                                    ["intent"] = "recruit",
+                                    ["order"] = 39,
+                                    ["output"] = "Набираємо групу. Місце: {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "group.any_place",
+                                    ["intent"] = "recruit",
+                                    ["order"] = 41,
+                                    ["output"] = "Набираємо групу. Місце: {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["lfw"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "profession.offer",
+                            ["intent"] = "craft_service",
+                            ["order"] = 91,
+                            ["output"] = "Пропоную послуги. Професія: {profession}.",
+                            ["pattern"] = { "{profession}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["looking"] = {
+                    ["next"] = {
+                        ["for"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "recruit.role",
+                                    ["intent"] = "recruit",
+                                    ["order"] = 2,
+                                    ["output"] = "Шукаємо {role:genitiveSingular}.",
+                                    ["pattern"] = { "{role}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "recruit.place",
+                                    ["intent"] = "recruit",
+                                    ["order"] = 18,
+                                    ["output"] = "Шукаємо {role:genitiveSingular}. Місце: {place}.",
+                                    ["pattern"] = { "{role}", "for", "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.need",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 96,
+                                    ["output"] = "Шукаю майстра. Професія: {profession}.",
+                                    ["pattern"] = { "{profession}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.need",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 98,
+                                    ["output"] = "Шукаю майстра. Професія: {profession}.",
+                                    ["pattern"] = { "{profession}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.need_place",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 178,
+                                    ["output"] = "Шукаю майстра. Професія: {profession}. Місце: {place}.",
+                                    ["pattern"] = { "{profession}", "in", "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.need_place",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 179,
+                                    ["output"] = "Шукаю майстра. Професія: {profession}. Місце: {place}.",
+                                    ["pattern"] = { "{profession}", "in", "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            },
+                            ["next"] = {
+                                ["group"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "group.place",
+                                            ["intent"] = "looking_for_group",
+                                            ["order"] = 30,
+                                            ["output"] = "Шукаю групу. Місце: {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    },
+                                    ["next"] = {
+                                        ["for"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "group.place",
+                                                    ["intent"] = "looking_for_group",
+                                                    ["order"] = 29,
+                                                    ["output"] = "Шукаю групу. Місце: {place}.",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["meet"] = {
+                    ["next"] = {
+                        ["in"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.meet",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 201,
+                                    ["output"] = "Місце зустрічі: {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "social.meet",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 202,
+                                    ["output"] = "Місце зустрічі: {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["me"] = {
+                            ["next"] = {
+                                ["at"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.meet",
+                                            ["intent"] = "meet",
+                                            ["order"] = 257,
+                                            ["output"] = "Зустріньмося в {place:locative}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["in"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.meet",
+                                            ["intent"] = "meet",
+                                            ["order"] = 258,
+                                            ["output"] = "Зустріньмося в {place:locative}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["need"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "recruit.role",
+                            ["intent"] = "recruit",
+                            ["order"] = 3,
+                            ["output"] = "Шукаємо {role:genitiveSingular}.",
+                            ["pattern"] = { "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.count",
+                            ["intent"] = "recruit",
+                            ["order"] = 11,
+                            ["output"] = "Набір у групу: ще {count}; роль: {role}.",
+                            ["pattern"] = { "{count}", "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "class.recruit",
+                            ["intent"] = "recruit",
+                            ["order"] = 45,
+                            ["output"] = "Шукаємо {class:genitiveSingular}.",
+                            ["pattern"] = { "{class}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        ["someone"] = {
+                            ["next"] = {
+                                ["to"] = {
+                                    ["next"] = {
+                                        ["craft"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "profession.craft",
+                                                    ["intent"] = "craft_service",
+                                                    ["order"] = 106,
+                                                    ["output"] = "Потрібно виготовити {item}.",
+                                                    ["pattern"] = { "{item}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                },
+                                                {
+                                                    ["id"] = "profession.craft",
+                                                    ["intent"] = "craft_service",
+                                                    ["order"] = 107,
+                                                    ["output"] = "Потрібно виготовити {item}.",
+                                                    ["pattern"] = { "{item}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                },
+                                                {
+                                                    ["id"] = "profession.need_price",
+                                                    ["intent"] = "craft_service",
+                                                    ["order"] = 186,
+                                                    ["output"] = "Потрібно виготовити {item} за {price}.",
+                                                    ["pattern"] = { "{item}", "for", "{price}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                },
+                                                {
+                                                    ["id"] = "profession.need_price",
+                                                    ["intent"] = "craft_service",
+                                                    ["order"] = 187,
+                                                    ["output"] = "Потрібно виготовити {item} за {price}.",
+                                                    ["pattern"] = { "{item}", "for", "{price}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["offering"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "profession.offer",
+                            ["intent"] = "craft_service",
+                            ["order"] = 90,
+                            ["output"] = "Пропоную послуги. Професія: {profession}.",
+                            ["pattern"] = { "{profession}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "profession.offer",
+                            ["intent"] = "craft_service",
+                            ["order"] = 92,
+                            ["output"] = "Пропоную послуги. Професія: {profession}.",
+                            ["pattern"] = { "{profession}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "profession.offer_place",
+                            ["intent"] = "craft_service",
+                            ["order"] = 174,
+                            ["output"] = "Пропоную послуги. Професія: {profession}. Місце: {place}.",
+                            ["pattern"] = { "{profession}", "in", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "profession.offer_place",
+                            ["intent"] = "craft_service",
+                            ["order"] = 175,
+                            ["output"] = "Пропоную послуги. Професія: {profession}. Місце: {place}.",
+                            ["pattern"] = { "{profession}", "in", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["oi"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "chat.vocative",
+                            ["intent"] = "address",
+                            ["order"] = 496,
+                            ["output"] = "Гей, {address:vocative}",
+                            ["pattern"] = { "{address}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        [","] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "chat.vocative",
+                                    ["intent"] = "address",
+                                    ["order"] = 497,
+                                    ["output"] = "Гей, {address:vocative}",
+                                    ["pattern"] = { "{address}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["pass"] = {
+                    ["next"] = {
+                        ["me"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.give",
+                                    ["intent"] = "errand",
+                                    ["order"] = 354,
+                                    ["output"] = "Дай мені {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 360,
+                                    ["output"] = "Дай мені {goods:object} або {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "or", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 369,
+                                    ["output"] = "Дай мені {goods:object} і {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "and", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 381,
+                                    ["output"] = "Дай мені {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["please"] = {
+                    ["next"] = {
+                        ["bring"] = {
+                            ["next"] = {
+                                ["me"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "errand.polite",
+                                            ["intent"] = "errand",
+                                            ["order"] = 457,
+                                            ["output"] = "Принеси мені {goods:object}, будь ласка.",
+                                            ["pattern"] = { "{goods}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["get"] = {
+                            ["next"] = {
+                                ["me"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "errand.polite",
+                                            ["intent"] = "errand",
+                                            ["order"] = 458,
+                                            ["output"] = "Принеси мені {goods:object}, будь ласка.",
+                                            ["pattern"] = { "{goods}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["price"] = {
+                    ["next"] = {
+                        ["for"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "trade.price",
+                                    ["intent"] = "trade_question",
+                                    ["order"] = 85,
+                                    ["output"] = "Скільки коштує {item}?",
+                                    ["pattern"] = { "{item}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["pull"] = {
+                    ["next"] = {
+                        ["in"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "combat.pull_count",
+                                    ["intent"] = "combat_call",
+                                    ["order"] = 125,
+                                    ["output"] = "Починаємо бій через {count}.",
+                                    ["pattern"] = { "{count}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "combat.pull_count",
+                                    ["intent"] = "combat_call",
+                                    ["order"] = 126,
+                                    ["output"] = "Починаємо бій через {count}.",
+                                    ["pattern"] = { "{count}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["run"] = {
+                    ["next"] = {
+                        ["to"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.run",
+                                    ["intent"] = "travel",
+                                    ["order"] = 467,
+                                    ["output"] = "Біжи до {place:genitiveSingular}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["selling"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "trade.sell",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 55,
+                            ["output"] = "Продам {item}.",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 62,
+                            ["output"] = "Продам {item} за {price}.",
+                            ["pattern"] = { "{item}", "for", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["wait"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "social.wait",
+                            ["intent"] = "social_reply",
+                            ["order"] = 116,
+                            ["output"] = "Зачекайте {time}.",
+                            ["pattern"] = { "{time}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "social.wait",
+                            ["intent"] = "social_reply",
+                            ["order"] = 117,
+                            ["output"] = "Зачекайте {time}.",
+                            ["pattern"] = { "{time}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "combat.wait_count",
+                            ["intent"] = "combat_call",
+                            ["order"] = 129,
+                            ["output"] = "Зачекайте {count}.",
+                            ["pattern"] = { "{count}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "combat.wait_count",
+                            ["intent"] = "combat_call",
+                            ["order"] = 130,
+                            ["output"] = "Зачекайте {count}.",
+                            ["pattern"] = { "{count}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        ["for"] = {
+                            ["next"] = {
+                                ["me"] = {
+                                    ["next"] = {
+                                        ["at"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.wait_at",
+                                                    ["intent"] = "meet",
+                                                    ["order"] = 266,
+                                                    ["output"] = "Зачекай на мене в {place:locative}.",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["in"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.wait_at",
+                                                    ["intent"] = "meet",
+                                                    ["order"] = 265,
+                                                    ["output"] = "Зачекай на мене в {place:locative}.",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["we"] = {
+                    ["next"] = {
+                        ["need"] = {
+                            ["next"] = {
+                                ["to"] = {
+                                    ["next"] = {
+                                        ["smack"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "idiom.smack_to_stop",
+                                                    ["intent"] = "complaint",
+                                                    ["order"] = 574,
+                                                    ["output"] = "Треба {recipient} з’їздити по морді, щоб {recipient:stopClause}.",
+                                                    ["pattern"] = {
+                                                        "{recipient}",
+                                                        "in",
+                                                        "the",
+                                                        "face",
+                                                        "to",
+                                                        "get",
+                                                        "{recipient}",
+                                                        "to",
+                                                        "stop"
+                                                    },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["where"] = {
+                    ["next"] = {
+                        ["is"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.where",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 121,
+                                    ["output"] = "Де {place}?",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "social.where",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 122,
+                                    ["output"] = "Де {place}?",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["will"] = {
+                    ["next"] = {
+                        ["you"] = {
+                            ["next"] = {
+                                ["come"] = {
+                                    ["next"] = {
+                                        ["to"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 505,
+                                                    ["output"] = "Підеш зі мною до {place:genitiveSingular}?",
+                                                    ["pattern"] = { "{place}", "with", "me" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["with"] = {
+                                            ["next"] = {
+                                                ["me"] = {
+                                                    ["next"] = {
+                                                        ["to"] = {
+                                                            ["matches"] = {
+                                                                {
+                                                                    ["id"] = "travel.join_question",
+                                                                    ["intent"] = "invitation",
+                                                                    ["order"] = 504,
+                                                                    ["output"] = "Підеш зі мною до {place:genitiveSingular}?",
+                                                                    ["pattern"] = { "{place}" },
+                                                                    ["priority"] = 100,
+                                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["wtb"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "trade.buy",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 68,
+                            ["output"] = "Куплю {item}.",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 70,
+                            ["output"] = "Куплю {item}.",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_price",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 74,
+                            ["output"] = "Куплю {item} за {price}.",
+                            ["pattern"] = { "{item}", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_price",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 75,
+                            ["output"] = "Куплю {item} за {price}.",
+                            ["pattern"] = { "{item}", "for", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_price",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 76,
+                            ["output"] = "Куплю {item} за {price}.",
+                            ["pattern"] = { "{item}", "for", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_count",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 156,
+                            ["output"] = "Куплю {count} {item}.",
+                            ["pattern"] = { "{count}", "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_count",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 157,
+                            ["output"] = "Куплю {count} {item}.",
+                            ["pattern"] = { "{count}", "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_count_price",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 160,
+                            ["output"] = "Куплю {count} {item} за {price}.",
+                            ["pattern"] = { "{count}", "{item}", "for", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_count_price",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 161,
+                            ["output"] = "Куплю {count} {item} за {price}.",
+                            ["pattern"] = { "{count}", "{item}", "for", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_place",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 169,
+                            ["output"] = "Куплю {item}. Місце: {place}.",
+                            ["pattern"] = { "{item}", "in", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_place",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 170,
+                            ["output"] = "Куплю {item}. Місце: {place}.",
+                            ["pattern"] = { "{item}", "in", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["wts"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "trade.sell",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 54,
+                            ["output"] = "Продам {item}.",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 56,
+                            ["output"] = "Продам {item}.",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 60,
+                            ["output"] = "Продам {item} за {price}.",
+                            ["pattern"] = { "{item}", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 61,
+                            ["output"] = "Продам {item} за {price}.",
+                            ["pattern"] = { "{item}", "for", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 63,
+                            ["output"] = "Продам {item} за {price}.",
+                            ["pattern"] = { "{item}", "for", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_count",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 147,
+                            ["output"] = "Продам {count} {item}.",
+                            ["pattern"] = { "{count}", "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_count",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 148,
+                            ["output"] = "Продам {count} {item}.",
+                            ["pattern"] = { "{count}", "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_count_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 151,
+                            ["output"] = "Продам {count} {item} за {price}.",
+                            ["pattern"] = { "{count}", "{item}", "for", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_count_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 152,
+                            ["output"] = "Продам {count} {item} за {price}.",
+                            ["pattern"] = { "{count}", "{item}", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_count_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 153,
+                            ["output"] = "Продам {count} {item} за {price}.",
+                            ["pattern"] = { "{count}", "{item}", "for", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_place",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 164,
+                            ["output"] = "Продам {item}. Місце: {place}.",
+                            ["pattern"] = { "{item}", "in", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_place",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 165,
+                            ["output"] = "Продам {item}. Місце: {place}.",
+                            ["pattern"] = { "{item}", "in", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["wtt"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "trade.trade",
+                            ["intent"] = "trade_exchange",
+                            ["order"] = 80,
+                            ["output"] = "Обміняю {item}.",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.trade",
+                            ["intent"] = "trade_exchange",
+                            ["order"] = 81,
+                            ["output"] = "Обміняю {item}.",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                }
+            }
+        },
+        ["uk-en"] = {
+            ["next"] = {
+                ["бачу"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "sight.creature",
+                            ["intent"] = "observation",
+                            ["order"] = 561,
+                            ["output"] = "I see {creature:object}.",
+                            ["pattern"] = { "{creature}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["будь"] = {
+                    ["next"] = {
+                        ["ласка"] = {
+                            ["next"] = {
+                                [","] = {
+                                    ["next"] = {
+                                        ["принеси"] = {
+                                            ["next"] = {
+                                                ["мені"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "errand.polite",
+                                                            ["intent"] = "errand",
+                                                            ["order"] = 461,
+                                                            ["output"] = "Please bring me {goods:object}.",
+                                                            ["pattern"] = { "{goods}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["принеси"] = {
+                                    ["next"] = {
+                                        ["мені"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "errand.polite",
+                                                    ["intent"] = "errand",
+                                                    ["order"] = 462,
+                                                    ["output"] = "Please bring me {goods:object}.",
+                                                    ["pattern"] = { "{goods}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["біжи"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.run",
+                                    ["intent"] = "travel",
+                                    ["order"] = 468,
+                                    ["output"] = "Run to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.run",
+                                    ["intent"] = "travel",
+                                    ["order"] = 470,
+                                    ["output"] = "Run to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.run",
+                                    ["intent"] = "travel",
+                                    ["order"] = 469,
+                                    ["output"] = "Run to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["вали"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.hurry",
+                                    ["intent"] = "travel",
+                                    ["order"] = 239,
+                                    ["output"] = "Hurry to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.hurry",
+                                    ["intent"] = "travel",
+                                    ["order"] = 238,
+                                    ["output"] = "Hurry to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.hurry",
+                                    ["intent"] = "travel",
+                                    ["order"] = 240,
+                                    ["output"] = "Hurry to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["вирушай"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 230,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 229,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 231,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["гайда"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.lets_go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 293,
+                                    ["output"] = "Let's go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.lets_go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 292,
+                                    ["output"] = "Let's go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.lets_go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 294,
+                                    ["output"] = "Let's go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["гайни"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.hurry",
+                                    ["intent"] = "travel",
+                                    ["order"] = 242,
+                                    ["output"] = "Hurry to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.hurry",
+                                    ["intent"] = "travel",
+                                    ["order"] = 241,
+                                    ["output"] = "Hurry to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.hurry",
+                                    ["intent"] = "travel",
+                                    ["order"] = 243,
+                                    ["output"] = "Hurry to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["гей"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "chat.vocative",
+                            ["intent"] = "address",
+                            ["order"] = 498,
+                            ["output"] = "Hey, {address:address}",
+                            ["pattern"] = { "{address}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        [","] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "chat.vocative",
+                                    ["intent"] = "address",
+                                    ["order"] = 499,
+                                    ["output"] = "Hey, {address:address}",
+                                    ["pattern"] = { "{address}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["гільдія"] = {
+                    ["next"] = {
+                        ["набирає"] = {
+                            ["next"] = {
+                                ["гравців"] = {
+                                    ["next"] = {
+                                        ["."] = {
+                                            ["next"] = {
+                                                ["місце"] = {
+                                                    ["next"] = {
+                                                        [":"] = {
+                                                            ["matches"] = {
+                                                                {
+                                                                    ["id"] = "guild.raid",
+                                                                    ["intent"] = "guild_recruit",
+                                                                    ["order"] = 209,
+                                                                    ["output"] = "Guild recruiting for {place}",
+                                                                    ["pattern"] = { "{place}" },
+                                                                    ["priority"] = 100,
+                                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["для"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "guild.raid",
+                                            ["intent"] = "guild_recruit",
+                                            ["order"] = 208,
+                                            ["output"] = "Guild recruiting for {place}",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["шукає"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "guild.role",
+                                    ["intent"] = "guild_recruit",
+                                    ["order"] = 141,
+                                    ["output"] = "Guild looking for {role}",
+                                    ["pattern"] = { "{role}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "guild.role",
+                                    ["intent"] = "guild_recruit",
+                                    ["order"] = 142,
+                                    ["output"] = "Guild looking for {role}",
+                                    ["pattern"] = { "{role}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "guild.class",
+                                    ["intent"] = "guild_recruit",
+                                    ["order"] = 145,
+                                    ["output"] = "Guild looking for {class}",
+                                    ["pattern"] = { "{class}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "guild.class",
+                                    ["intent"] = "guild_recruit",
+                                    ["order"] = 146,
+                                    ["output"] = "Guild looking for {class}",
+                                    ["pattern"] = { "{class}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["дай"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "errand.give",
+                            ["intent"] = "errand",
+                            ["order"] = 357,
+                            ["output"] = "Give me {goods:object}.",
+                            ["pattern"] = { "{goods}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.give_or",
+                            ["intent"] = "errand",
+                            ["order"] = 364,
+                            ["output"] = "Give me {goods:object} or {goods2:object}.",
+                            ["pattern"] = { "{goods}", "або", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.give_or",
+                            ["intent"] = "errand",
+                            ["order"] = 365,
+                            ["output"] = "Give me {goods:object} or {goods2:object}.",
+                            ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.give_and",
+                            ["intent"] = "errand",
+                            ["order"] = 374,
+                            ["output"] = "Give me {goods:object} and {goods2:object}.",
+                            ["pattern"] = { "{goods}", "і", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.give_and",
+                            ["intent"] = "errand",
+                            ["order"] = 375,
+                            ["output"] = "Give me {goods:object} and {goods2:object}.",
+                            ["pattern"] = { "{goods}", "й", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.give_and",
+                            ["intent"] = "errand",
+                            ["order"] = 376,
+                            ["output"] = "Give me {goods:object} and {goods2:object}.",
+                            ["pattern"] = { "{goods}", "та", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.give_count",
+                            ["intent"] = "errand",
+                            ["order"] = 384,
+                            ["output"] = "Give me {count} {goods:countedObject}.",
+                            ["pattern"] = { "{count}", "{goods}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        ["мені"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.give",
+                                    ["intent"] = "errand",
+                                    ["order"] = 356,
+                                    ["output"] = "Give me {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 362,
+                                    ["output"] = "Give me {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 363,
+                                    ["output"] = "Give me {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 371,
+                                    ["output"] = "Give me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 372,
+                                    ["output"] = "Give me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 373,
+                                    ["output"] = "Give me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 383,
+                                    ["output"] = "Give me {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["де"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "social.where",
+                            ["intent"] = "social_reply",
+                            ["order"] = 123,
+                            ["output"] = "Where is {place}?",
+                            ["pattern"] = { "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "social.where",
+                            ["intent"] = "social_reply",
+                            ["order"] = 124,
+                            ["output"] = "Where is {place}?",
+                            ["pattern"] = { "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["дістань"] = {
+                    ["next"] = {
+                        ["мені"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.bring",
+                                    ["intent"] = "errand",
+                                    ["order"] = 302,
+                                    ["output"] = "Bring me {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 314,
+                                    ["output"] = "Bring me {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 315,
+                                    ["output"] = "Bring me {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 331,
+                                    ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 332,
+                                    ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 333,
+                                    ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 341,
+                                    ["output"] = "Bring me {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["нам"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.bring_us",
+                                    ["intent"] = "errand",
+                                    ["order"] = 428,
+                                    ["output"] = "Bring us {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 433,
+                                    ["output"] = "Bring us {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 434,
+                                    ["output"] = "Bring us {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 440,
+                                    ["output"] = "Bring us {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 441,
+                                    ["output"] = "Bring us {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 442,
+                                    ["output"] = "Bring us {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ей"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "chat.vocative",
+                            ["intent"] = "address",
+                            ["order"] = 500,
+                            ["output"] = "Hey, {address:address}",
+                            ["pattern"] = { "{address}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        [","] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "chat.vocative",
+                                    ["intent"] = "address",
+                                    ["order"] = 501,
+                                    ["output"] = "Hey, {address:address}",
+                                    ["pattern"] = { "{address}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["запроси"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "recruit.invite_creature",
+                            ["intent"] = "invitation",
+                            ["order"] = 564,
+                            ["output"] = "Invite {creature:object}.",
+                            ["pattern"] = { "{creature}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["запросіть"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "recruit.invite_creature",
+                            ["intent"] = "invitation",
+                            ["order"] = 565,
+                            ["output"] = "Invite {creature:object}.",
+                            ["pattern"] = { "{creature}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["зачекай"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "social.wait",
+                            ["intent"] = "social_reply",
+                            ["order"] = 119,
+                            ["output"] = "Wait {time}",
+                            ["pattern"] = { "{time}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        ["мене"] = {
+                            ["next"] = {
+                                ["в"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.wait_at",
+                                            ["intent"] = "meet",
+                                            ["order"] = 267,
+                                            ["output"] = "Wait for me in {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["у"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.wait_at",
+                                            ["intent"] = "meet",
+                                            ["order"] = 268,
+                                            ["output"] = "Wait for me in {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["на"] = {
+                            ["next"] = {
+                                ["мене"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.wait_at",
+                                                    ["intent"] = "meet",
+                                                    ["order"] = 271,
+                                                    ["output"] = "Wait for me in {place}.",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["у"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.wait_at",
+                                                    ["intent"] = "meet",
+                                                    ["order"] = 272,
+                                                    ["output"] = "Wait for me in {place}.",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["зачекайте"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "social.wait",
+                            ["intent"] = "social_reply",
+                            ["order"] = 118,
+                            ["output"] = "Wait {time}",
+                            ["pattern"] = { "{time}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "social.wait",
+                            ["intent"] = "social_reply",
+                            ["order"] = 120,
+                            ["output"] = "Wait {time}",
+                            ["pattern"] = { "{time}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "combat.wait_count",
+                            ["intent"] = "combat_call",
+                            ["order"] = 131,
+                            ["output"] = "Wait {count}",
+                            ["pattern"] = { "{count}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "combat.wait_count",
+                            ["intent"] = "combat_call",
+                            ["order"] = 132,
+                            ["output"] = "Wait {count}",
+                            ["pattern"] = { "{count}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["зустрінемось"] = {
+                    ["next"] = {
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.meet",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 204,
+                                    ["output"] = "Meet in {place}",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["зустрінемося"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.meet",
+                                    ["intent"] = "meet",
+                                    ["order"] = 263,
+                                    ["output"] = "Meet me in {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.meet",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 203,
+                                    ["output"] = "Meet in {place}",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "travel.meet",
+                                    ["intent"] = "meet",
+                                    ["order"] = 264,
+                                    ["output"] = "Meet me in {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["зустрінь"] = {
+                    ["next"] = {
+                        ["мене"] = {
+                            ["next"] = {
+                                ["в"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.meet",
+                                            ["intent"] = "meet",
+                                            ["order"] = 259,
+                                            ["output"] = "Meet me in {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["у"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.meet",
+                                            ["intent"] = "meet",
+                                            ["order"] = 260,
+                                            ["output"] = "Meet me in {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["зустріньмося"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.meet",
+                                    ["intent"] = "meet",
+                                    ["order"] = 261,
+                                    ["output"] = "Meet me in {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.meet",
+                                    ["intent"] = "meet",
+                                    ["order"] = 262,
+                                    ["output"] = "Meet me in {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["зібрався"] = {
+                    ["next"] = {
+                        ["на"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "activity.heading_to",
+                                    ["intent"] = "invitation",
+                                    ["order"] = 490,
+                                    ["output"] = "I'm heading to {activity:activity}.",
+                                    ["pattern"] = { "{activity}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["зібралася"] = {
+                    ["next"] = {
+                        ["на"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "activity.heading_to",
+                                    ["intent"] = "invitation",
+                                    ["order"] = 491,
+                                    ["output"] = "I'm heading to {activity:activity}.",
+                                    ["pattern"] = { "{activity}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["йди"] = {
+                    ["next"] = {
+                        ["-"] = {
+                            ["next"] = {
+                                ["но"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.go",
+                                                    ["intent"] = "travel",
+                                                    ["order"] = 224,
+                                                    ["output"] = "Go to {place}.",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["до"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.go",
+                                                    ["intent"] = "travel",
+                                                    ["order"] = 223,
+                                                    ["output"] = "Go to {place}.",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["у"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.go",
+                                                    ["intent"] = "travel",
+                                                    ["order"] = 225,
+                                                    ["output"] = "Go to {place}.",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 221,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 220,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 222,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["йду"] = {
+                    ["next"] = {
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.go",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 193,
+                                    ["output"] = "Going to {place}",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["на"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "activity.heading_to",
+                                    ["intent"] = "invitation",
+                                    ["order"] = 493,
+                                    ["output"] = "I'm heading to {activity:activity}.",
+                                    ["pattern"] = { "{activity}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["купи"] = {
+                    ["next"] = {
+                        ["мені"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.buy",
+                                    ["intent"] = "errand",
+                                    ["order"] = 343,
+                                    ["output"] = "Buy me {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.buy_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 345,
+                                    ["output"] = "Buy me {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.buy_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 346,
+                                    ["output"] = "Buy me {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.buy_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 348,
+                                    ["output"] = "Buy me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.buy_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 349,
+                                    ["output"] = "Buy me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.buy_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 350,
+                                    ["output"] = "Buy me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.buy_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 352,
+                                    ["output"] = "Buy me {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["куплю"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "trade.buy",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 71,
+                            ["output"] = "WTB {item}",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 73,
+                            ["output"] = "WTB {item}",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_price",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 77,
+                            ["output"] = "WTB {item} for {price}",
+                            ["pattern"] = { "{item}", "за", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_price",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 78,
+                            ["output"] = "WTB {item} for {price}",
+                            ["pattern"] = { "{item}", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_price",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 79,
+                            ["output"] = "WTB {item} for {price}",
+                            ["pattern"] = { "{item}", "за", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_count",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 158,
+                            ["output"] = "WTB {count} {item}",
+                            ["pattern"] = { "{count}", "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_count",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 159,
+                            ["output"] = "WTB {count} {item}",
+                            ["pattern"] = { "{count}", "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_count_price",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 162,
+                            ["output"] = "WTB {count} {item} for {price}",
+                            ["pattern"] = { "{count}", "{item}", "за", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_count_price",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 163,
+                            ["output"] = "WTB {count} {item} for {price}",
+                            ["pattern"] = { "{count}", "{item}", "за", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_place",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 171,
+                            ["output"] = "WTB {item} in {place}",
+                            ["pattern"] = { "{item}", "у", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_place",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 172,
+                            ["output"] = "WTB {item} in {place}",
+                            ["pattern"] = { "{item}", "в", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_place",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 173,
+                            ["output"] = "WTB {item} in {place}",
+                            ["pattern"] = { "{item}", ".", "місце", ":", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["купую"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "trade.buy",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 72,
+                            ["output"] = "WTB {item}",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["лети"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.fly",
+                                    ["intent"] = "travel",
+                                    ["order"] = 464,
+                                    ["output"] = "Fly to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.fly",
+                                    ["intent"] = "travel",
+                                    ["order"] = 466,
+                                    ["output"] = "Fly to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.fly",
+                                    ["intent"] = "travel",
+                                    ["order"] = 465,
+                                    ["output"] = "Fly to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["мені"] = {
+                    ["next"] = {
+                        ["потрібен"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.need",
+                                    ["intent"] = "errand",
+                                    ["order"] = 388,
+                                    ["output"] = "I need {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 395,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 396,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 407,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 408,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 409,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 421,
+                                    ["output"] = "I need {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["потрібна"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.need",
+                                    ["intent"] = "errand",
+                                    ["order"] = 389,
+                                    ["output"] = "I need {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 397,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 398,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 410,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 411,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 412,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 422,
+                                    ["output"] = "I need {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["потрібно"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.need",
+                                    ["intent"] = "errand",
+                                    ["order"] = 391,
+                                    ["output"] = "I need {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 401,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 402,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 416,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 417,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 418,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 424,
+                                    ["output"] = "I need {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["потрібні"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.need",
+                                    ["intent"] = "errand",
+                                    ["order"] = 390,
+                                    ["output"] = "I need {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 399,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 400,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 413,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 414,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 415,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 423,
+                                    ["output"] = "I need {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["треба"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.need",
+                                    ["intent"] = "errand",
+                                    ["order"] = 387,
+                                    ["output"] = "I need {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 393,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 394,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 404,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 405,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 406,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 420,
+                                    ["output"] = "I need {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["можеш"] = {
+                    ["next"] = {
+                        ["принести"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.ask",
+                                    ["intent"] = "errand",
+                                    ["order"] = 456,
+                                    ["output"] = "Can you bring me {goods:object}?",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            },
+                            ["next"] = {
+                                ["мені"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "errand.ask",
+                                            ["intent"] = "errand",
+                                            ["order"] = 455,
+                                            ["output"] = "Can you bring me {goods:object}?",
+                                            ["pattern"] = { "{goods}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["можу"] = {
+                    ["next"] = {
+                        ["виготовити"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "profession.recipe",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 104,
+                                    ["output"] = "Can craft {item}",
+                                    ["pattern"] = { "{item}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.recipe",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 105,
+                                    ["output"] = "Can craft {item}",
+                                    ["pattern"] = { "{item}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.craft_price",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 184,
+                                    ["output"] = "Can craft {item} for {price}",
+                                    ["pattern"] = { "{item}", "за", "{price}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.craft_price",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 185,
+                                    ["output"] = "Can craft {item} for {price}",
+                                    ["pattern"] = { "{item}", "за", "{price}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["місце"] = {
+                    ["next"] = {
+                        ["зустрічі"] = {
+                            ["next"] = {
+                                [":"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "social.meet",
+                                            ["intent"] = "social_reply",
+                                            ["order"] = 205,
+                                            ["output"] = "Meet in {place}",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["набираємо"] = {
+                    ["next"] = {
+                        ["групу"] = {
+                            ["next"] = {
+                                ["."] = {
+                                    ["next"] = {
+                                        ["місце"] = {
+                                            ["next"] = {
+                                                [":"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "group.any_place",
+                                                            ["intent"] = "recruit",
+                                                            ["order"] = 43,
+                                                            ["output"] = "LFM for {place}",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["для"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "group.any_place",
+                                            ["intent"] = "recruit",
+                                            ["order"] = 42,
+                                            ["output"] = "LFM for {place}",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["набір"] = {
+                    ["next"] = {
+                        ["у"] = {
+                            ["next"] = {
+                                ["групу"] = {
+                                    ["next"] = {
+                                        [":"] = {
+                                            ["next"] = {
+                                                ["ще"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "recruit.count",
+                                                            ["intent"] = "recruit",
+                                                            ["order"] = 15,
+                                                            ["output"] = "LF{count}M {role}",
+                                                            ["pattern"] = { "{count}", ";", "роль", ":", "{role}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        },
+                                                        {
+                                                            ["id"] = "recruit.count_place",
+                                                            ["intent"] = "recruit",
+                                                            ["order"] = 27,
+                                                            ["output"] = "LF{count}M {role} for {place}",
+                                                            ["pattern"] = {
+                                                                "{count}",
+                                                                ";",
+                                                                "роль",
+                                                                ":",
+                                                                "{role}",
+                                                                ".",
+                                                                "місце",
+                                                                ":",
+                                                                "{place}"
+                                                            },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["не"] = {
+                    ["next"] = {
+                        ["йди"] = {
+                            ["next"] = {
+                                ["в"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.no_go",
+                                            ["intent"] = "travel",
+                                            ["order"] = 276,
+                                            ["output"] = "Do not go to {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["до"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.no_go",
+                                            ["intent"] = "travel",
+                                            ["order"] = 275,
+                                            ["output"] = "Do not go to {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["у"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.no_go",
+                                            ["intent"] = "travel",
+                                            ["order"] = 277,
+                                            ["output"] = "Do not go to {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["неси"] = {
+                            ["next"] = {
+                                ["мені"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "errand.no_bring",
+                                            ["intent"] = "errand",
+                                            ["order"] = 446,
+                                            ["output"] = "Do not bring me {goods:negativeObject}.",
+                                            ["pattern"] = { "{goods}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "errand.no_bring_or",
+                                            ["intent"] = "errand",
+                                            ["order"] = 451,
+                                            ["output"] = "Do not bring me {goods:negativeObject} or {goods2:negativeObject}.",
+                                            ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "errand.no_bring_or",
+                                            ["intent"] = "errand",
+                                            ["order"] = 452,
+                                            ["output"] = "Do not bring me {goods:negativeObject} or {goods2:negativeObject}.",
+                                            ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["починайте"] = {
+                            ["next"] = {
+                                ["бій"] = {
+                                    ["next"] = {
+                                        ["без"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "combat.no_role",
+                                                    ["intent"] = "combat_call",
+                                                    ["order"] = 136,
+                                                    ["output"] = "Do not pull without {role}",
+                                                    ["pattern"] = { "{role}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                },
+                                                {
+                                                    ["id"] = "combat.no_role",
+                                                    ["intent"] = "combat_call",
+                                                    ["order"] = 137,
+                                                    ["output"] = "Do not pull without {role}",
+                                                    ["pattern"] = { "{role}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                },
+                                                {
+                                                    ["id"] = "combat.no_class",
+                                                    ["intent"] = "combat_call",
+                                                    ["order"] = 213,
+                                                    ["output"] = "Do not pull without {class}",
+                                                    ["pattern"] = { "{class}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                },
+                                                {
+                                                    ["id"] = "combat.no_class",
+                                                    ["intent"] = "combat_call",
+                                                    ["order"] = 214,
+                                                    ["output"] = "Do not pull without {class}",
+                                                    ["pattern"] = { "{class}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["принось"] = {
+                            ["next"] = {
+                                ["мені"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "errand.no_bring",
+                                            ["intent"] = "errand",
+                                            ["order"] = 445,
+                                            ["output"] = "Do not bring me {goods:negativeObject}.",
+                                            ["pattern"] = { "{goods}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "errand.no_bring_or",
+                                            ["intent"] = "errand",
+                                            ["order"] = 449,
+                                            ["output"] = "Do not bring me {goods:negativeObject} or {goods2:negativeObject}.",
+                                            ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "errand.no_bring_or",
+                                            ["intent"] = "errand",
+                                            ["order"] = 450,
+                                            ["output"] = "Do not bring me {goods:negativeObject} or {goods2:negativeObject}.",
+                                            ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["ходи"] = {
+                            ["next"] = {
+                                ["в"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.no_go",
+                                            ["intent"] = "travel",
+                                            ["order"] = 282,
+                                            ["output"] = "Do not go to {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["до"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.no_go",
+                                            ["intent"] = "travel",
+                                            ["order"] = 281,
+                                            ["output"] = "Do not go to {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["у"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.no_go",
+                                            ["intent"] = "travel",
+                                            ["order"] = 283,
+                                            ["output"] = "Do not go to {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["іди"] = {
+                            ["next"] = {
+                                ["в"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.no_go",
+                                            ["intent"] = "travel",
+                                            ["order"] = 279,
+                                            ["output"] = "Do not go to {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["до"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.no_go",
+                                            ["intent"] = "travel",
+                                            ["order"] = 278,
+                                            ["output"] = "Do not go to {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["у"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "travel.no_go",
+                                            ["intent"] = "travel",
+                                            ["order"] = 280,
+                                            ["output"] = "Do not go to {place}.",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["обміняю"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "trade.trade",
+                            ["intent"] = "trade_exchange",
+                            ["order"] = 82,
+                            ["output"] = "WTT {item}",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.trade",
+                            ["intent"] = "trade_exchange",
+                            ["order"] = 83,
+                            ["output"] = "WTT {item}",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["передай"] = {
+                    ["next"] = {
+                        ["мені"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.give",
+                                    ["intent"] = "errand",
+                                    ["order"] = 358,
+                                    ["output"] = "Give me {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 366,
+                                    ["output"] = "Give me {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 367,
+                                    ["output"] = "Give me {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 377,
+                                    ["output"] = "Give me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 378,
+                                    ["output"] = "Give me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 379,
+                                    ["output"] = "Give me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.give_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 385,
+                                    ["output"] = "Give me {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["повернусь"] = {
+                    ["next"] = {
+                        ["за"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.return",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 114,
+                                    ["output"] = "Back in {time}",
+                                    ["pattern"] = { "{time}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["повернуся"] = {
+                    ["next"] = {
+                        ["за"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.return",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 113,
+                                    ["output"] = "Back in {time}",
+                                    ["pattern"] = { "{time}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "social.return",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 115,
+                                    ["output"] = "Back in {time}",
+                                    ["pattern"] = { "{time}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["попреш"] = {
+                    ["next"] = {
+                        ["з"] = {
+                            ["next"] = {
+                                ["мною"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 509,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["до"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 511,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["у"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 510,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["зі"] = {
+                            ["next"] = {
+                                ["мною"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 506,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["до"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 508,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["у"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 507,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["із"] = {
+                            ["next"] = {
+                                ["мною"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 512,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["до"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 514,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["у"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 513,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["послуги"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "profession.offer",
+                            ["intent"] = "craft_service",
+                            ["order"] = 94,
+                            ["output"] = "Offering {profession}",
+                            ["pattern"] = { "{profession}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["потрібен"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "recruit.role",
+                            ["intent"] = "recruit",
+                            ["order"] = 6,
+                            ["output"] = "LFM {role}",
+                            ["pattern"] = { "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.place",
+                            ["intent"] = "recruit",
+                            ["order"] = 21,
+                            ["output"] = "LFM {role} for {place}",
+                            ["pattern"] = { "{role}", "для", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "class.recruit",
+                            ["intent"] = "recruit",
+                            ["order"] = 48,
+                            ["output"] = "LFM {class}",
+                            ["pattern"] = { "{class}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        ["майстер"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "profession.need",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 100,
+                                    ["output"] = "Looking for {profession}",
+                                    ["pattern"] = { "{profession}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["потрібно"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "recruit.role",
+                            ["intent"] = "recruit",
+                            ["order"] = 8,
+                            ["output"] = "LFM {role}",
+                            ["pattern"] = { "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 585,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = { "{recipient}", "по", "морді", "з'їздити", "щоб", "{recipient:stopClause}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 586,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = {
+                                "{recipient}",
+                                "по",
+                                "морді",
+                                "з'їздити",
+                                ",",
+                                "щоб",
+                                "{recipient:stopClause}"
+                            },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 587,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = { "{recipient}", "по", "морді", "зїздити", "щоб", "{recipient:stopClause}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 588,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = {
+                                "{recipient}",
+                                "по",
+                                "морді",
+                                "зїздити",
+                                ",",
+                                "щоб",
+                                "{recipient:stopClause}"
+                            },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 589,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = { "{recipient}", "з'їздити", "по", "морді", "щоб", "{recipient:stopClause}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 590,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = {
+                                "{recipient}",
+                                "з'їздити",
+                                "по",
+                                "морді",
+                                ",",
+                                "щоб",
+                                "{recipient:stopClause}"
+                            },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 591,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = { "{recipient}", "зїздити", "по", "морді", "щоб", "{recipient:stopClause}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 592,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = {
+                                "{recipient}",
+                                "зїздити",
+                                "по",
+                                "морді",
+                                ",",
+                                "щоб",
+                                "{recipient:stopClause}"
+                            },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 593,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = { "{recipient}", "дати", "по", "морді", "щоб", "{recipient:stopClause}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 594,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = { "{recipient}", "дати", "по", "морді", ",", "щоб", "{recipient:stopClause}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        ["виготовити"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "profession.craft",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 108,
+                                    ["output"] = "Need someone to craft {item}",
+                                    ["pattern"] = { "{item}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.craft",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 109,
+                                    ["output"] = "Need someone to craft {item}",
+                                    ["pattern"] = { "{item}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.need_price",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 188,
+                                    ["output"] = "Need someone to craft {item} for {price}",
+                                    ["pattern"] = { "{item}", "за", "{price}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.need_price",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 189,
+                                    ["output"] = "Need someone to craft {item} for {price}",
+                                    ["pattern"] = { "{item}", "за", "{price}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["ще"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "recruit.count",
+                                    ["intent"] = "recruit",
+                                    ["order"] = 14,
+                                    ["output"] = "LF{count}M {role}",
+                                    ["pattern"] = { "{count}", "{role}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["потрібні"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "recruit.role",
+                            ["intent"] = "recruit",
+                            ["order"] = 7,
+                            ["output"] = "LFM {role}",
+                            ["pattern"] = { "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["почекай"] = {
+                    ["next"] = {
+                        ["на"] = {
+                            ["next"] = {
+                                ["мене"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.wait_at",
+                                                    ["intent"] = "meet",
+                                                    ["order"] = 269,
+                                                    ["output"] = "Wait for me in {place}.",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["у"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.wait_at",
+                                                    ["intent"] = "meet",
+                                                    ["order"] = 270,
+                                                    ["output"] = "Wait for me in {place}.",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["починаємо"] = {
+                    ["next"] = {
+                        ["бій"] = {
+                            ["next"] = {
+                                ["через"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "combat.pull_count",
+                                            ["intent"] = "combat_call",
+                                            ["order"] = 127,
+                                            ["output"] = "Pull in {count}",
+                                            ["pattern"] = { "{count}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "combat.pull_count",
+                                            ["intent"] = "combat_call",
+                                            ["order"] = 128,
+                                            ["output"] = "Pull in {count}",
+                                            ["pattern"] = { "{count}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["поїдеш"] = {
+                    ["next"] = {
+                        ["з"] = {
+                            ["next"] = {
+                                ["мною"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 527,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["до"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 529,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["у"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 528,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["зі"] = {
+                            ["next"] = {
+                                ["мною"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 524,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["до"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 526,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["у"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 525,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["із"] = {
+                            ["next"] = {
+                                ["мною"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 530,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["до"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 532,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["у"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 531,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["прийди"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.come",
+                                    ["intent"] = "travel",
+                                    ["order"] = 252,
+                                    ["output"] = "Come to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.come",
+                                    ["intent"] = "travel",
+                                    ["order"] = 251,
+                                    ["output"] = "Come to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.come",
+                                    ["intent"] = "travel",
+                                    ["order"] = 253,
+                                    ["output"] = "Come to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["принеси"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "errand.bring",
+                            ["intent"] = "errand",
+                            ["order"] = 299,
+                            ["output"] = "Bring me {goods:object}.",
+                            ["pattern"] = { "{goods}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.bring_or",
+                            ["intent"] = "errand",
+                            ["order"] = 308,
+                            ["output"] = "Bring me {goods:object} or {goods2:object}.",
+                            ["pattern"] = { "{goods}", "або", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.bring_or",
+                            ["intent"] = "errand",
+                            ["order"] = 309,
+                            ["output"] = "Bring me {goods:object} or {goods2:object}.",
+                            ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.bring_and",
+                            ["intent"] = "errand",
+                            ["order"] = 322,
+                            ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                            ["pattern"] = { "{goods}", "і", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.bring_and",
+                            ["intent"] = "errand",
+                            ["order"] = 323,
+                            ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                            ["pattern"] = { "{goods}", "й", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.bring_and",
+                            ["intent"] = "errand",
+                            ["order"] = 324,
+                            ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                            ["pattern"] = { "{goods}", "та", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.bring_count",
+                            ["intent"] = "errand",
+                            ["order"] = 338,
+                            ["output"] = "Bring me {count} {goods:countedObject}.",
+                            ["pattern"] = { "{count}", "{goods}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        ["мені"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.bring",
+                                    ["intent"] = "errand",
+                                    ["order"] = 298,
+                                    ["output"] = "Bring me {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 306,
+                                    ["output"] = "Bring me {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 307,
+                                    ["output"] = "Bring me {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 319,
+                                    ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 320,
+                                    ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 321,
+                                    ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 337,
+                                    ["output"] = "Bring me {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.polite",
+                                    ["intent"] = "errand",
+                                    ["order"] = 459,
+                                    ["output"] = "Please bring me {goods:object}.",
+                                    ["pattern"] = { "{goods}", "будь", "ласка" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.polite",
+                                    ["intent"] = "errand",
+                                    ["order"] = 460,
+                                    ["output"] = "Please bring me {goods:object}.",
+                                    ["pattern"] = { "{goods}", ",", "будь", "ласка" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["нам"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.bring_us",
+                                    ["intent"] = "errand",
+                                    ["order"] = 427,
+                                    ["output"] = "Bring us {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 431,
+                                    ["output"] = "Bring us {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 432,
+                                    ["output"] = "Bring us {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 437,
+                                    ["output"] = "Bring us {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 438,
+                                    ["output"] = "Bring us {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_us_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 439,
+                                    ["output"] = "Bring us {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["притягни"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "errand.bring",
+                            ["intent"] = "errand",
+                            ["order"] = 301,
+                            ["output"] = "Bring me {goods:object}.",
+                            ["pattern"] = { "{goods}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.bring_or",
+                            ["intent"] = "errand",
+                            ["order"] = 312,
+                            ["output"] = "Bring me {goods:object} or {goods2:object}.",
+                            ["pattern"] = { "{goods}", "або", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.bring_or",
+                            ["intent"] = "errand",
+                            ["order"] = 313,
+                            ["output"] = "Bring me {goods:object} or {goods2:object}.",
+                            ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.bring_and",
+                            ["intent"] = "errand",
+                            ["order"] = 328,
+                            ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                            ["pattern"] = { "{goods}", "і", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.bring_and",
+                            ["intent"] = "errand",
+                            ["order"] = 329,
+                            ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                            ["pattern"] = { "{goods}", "й", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.bring_and",
+                            ["intent"] = "errand",
+                            ["order"] = 330,
+                            ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                            ["pattern"] = { "{goods}", "та", "{goods2}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "errand.bring_count",
+                            ["intent"] = "errand",
+                            ["order"] = 340,
+                            ["output"] = "Bring me {count} {goods:countedObject}.",
+                            ["pattern"] = { "{count}", "{goods}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        ["мені"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.bring",
+                                    ["intent"] = "errand",
+                                    ["order"] = 300,
+                                    ["output"] = "Bring me {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 310,
+                                    ["output"] = "Bring me {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 311,
+                                    ["output"] = "Bring me {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 325,
+                                    ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 326,
+                                    ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 327,
+                                    ["output"] = "Bring me {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.bring_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 339,
+                                    ["output"] = "Bring me {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["приходь"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.come",
+                                    ["intent"] = "travel",
+                                    ["order"] = 249,
+                                    ["output"] = "Come to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.come",
+                                    ["intent"] = "travel",
+                                    ["order"] = 248,
+                                    ["output"] = "Come to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.come",
+                                    ["intent"] = "travel",
+                                    ["order"] = 250,
+                                    ["output"] = "Come to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["продам"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "trade.sell",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 57,
+                            ["output"] = "WTS {item}",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 59,
+                            ["output"] = "WTS {item}",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 64,
+                            ["output"] = "WTS {item} for {price}",
+                            ["pattern"] = { "{item}", "за", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 65,
+                            ["output"] = "WTS {item} for {price}",
+                            ["pattern"] = { "{item}", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 67,
+                            ["output"] = "WTS {item} for {price}",
+                            ["pattern"] = { "{item}", "за", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_count",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 149,
+                            ["output"] = "WTS {count} {item}",
+                            ["pattern"] = { "{count}", "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_count",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 150,
+                            ["output"] = "WTS {count} {item}",
+                            ["pattern"] = { "{count}", "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_count_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 154,
+                            ["output"] = "WTS {count} {item} for {price}",
+                            ["pattern"] = { "{count}", "{item}", "за", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_count_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 155,
+                            ["output"] = "WTS {count} {item} for {price}",
+                            ["pattern"] = { "{count}", "{item}", "за", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_place",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 166,
+                            ["output"] = "WTS {item} in {place}",
+                            ["pattern"] = { "{item}", "у", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_place",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 167,
+                            ["output"] = "WTS {item} in {place}",
+                            ["pattern"] = { "{item}", "в", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_place",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 168,
+                            ["output"] = "WTS {item} in {place}",
+                            ["pattern"] = { "{item}", ".", "місце", ":", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["продаю"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "trade.sell",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 58,
+                            ["output"] = "WTS {item}",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_price",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 66,
+                            ["output"] = "WTS {item} for {price}",
+                            ["pattern"] = { "{item}", "за", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["пропоную"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "profession.offer",
+                            ["intent"] = "craft_service",
+                            ["order"] = 93,
+                            ["output"] = "Offering {profession}",
+                            ["pattern"] = { "{profession}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "profession.offer_place",
+                            ["intent"] = "craft_service",
+                            ["order"] = 176,
+                            ["output"] = "Offering {profession} in {place}",
+                            ["pattern"] = { "{profession}", "у", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        ["послуги"] = {
+                            ["next"] = {
+                                ["."] = {
+                                    ["next"] = {
+                                        ["професія"] = {
+                                            ["next"] = {
+                                                [":"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "profession.offer",
+                                                            ["intent"] = "craft_service",
+                                                            ["order"] = 95,
+                                                            ["output"] = "Offering {profession}",
+                                                            ["pattern"] = { "{profession}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        },
+                                                        {
+                                                            ["id"] = "profession.offer_place",
+                                                            ["intent"] = "craft_service",
+                                                            ["order"] = 177,
+                                                            ["output"] = "Offering {profession} in {place}",
+                                                            ["pattern"] = {
+                                                                "{profession}",
+                                                                ".",
+                                                                "місце",
+                                                                ":",
+                                                                "{place}"
+                                                            },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["прямую"] = {
+                    ["next"] = {
+                        ["до"] = {
+                            ["next"] = {
+                                ["місця"] = {
+                                    ["next"] = {
+                                        [":"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "social.go",
+                                                    ["intent"] = "social_reply",
+                                                    ["order"] = 194,
+                                                    ["output"] = "Going to {place}",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["підеш"] = {
+                    ["next"] = {
+                        ["з"] = {
+                            ["next"] = {
+                                ["мною"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 518,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["до"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 520,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["у"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 519,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["зі"] = {
+                            ["next"] = {
+                                ["мною"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 515,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["до"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 517,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["у"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 516,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["із"] = {
+                            ["next"] = {
+                                ["мною"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 521,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["до"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 523,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["у"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "travel.join_question",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 522,
+                                                    ["output"] = "Are you coming with me to {place}?",
+                                                    ["pattern"] = { "{place}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["піди"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 227,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 226,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 228,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["підходь"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.come",
+                                    ["intent"] = "travel",
+                                    ["order"] = 255,
+                                    ["output"] = "Come to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.come",
+                                    ["intent"] = "travel",
+                                    ["order"] = 254,
+                                    ["output"] = "Come to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.come",
+                                    ["intent"] = "travel",
+                                    ["order"] = 256,
+                                    ["output"] = "Come to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["пішли"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.lets_go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 290,
+                                    ["output"] = "Let's go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.lets_go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 289,
+                                    ["output"] = "Let's go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.lets_go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 291,
+                                    ["output"] = "Let's go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["скільки"] = {
+                    ["next"] = {
+                        ["коштує"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "trade.price",
+                                    ["intent"] = "trade_question",
+                                    ["order"] = 87,
+                                    ["output"] = "How much for {item}?",
+                                    ["pattern"] = { "{item}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "trade.price",
+                                    ["intent"] = "trade_question",
+                                    ["order"] = 89,
+                                    ["output"] = "How much for {item}?",
+                                    ["pattern"] = { "{item}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["сходи"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 233,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 232,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 234,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ти"] = {
+                    ["next"] = {
+                        ["попреш"] = {
+                            ["next"] = {
+                                ["з"] = {
+                                    ["next"] = {
+                                        ["мною"] = {
+                                            ["next"] = {
+                                                ["в"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 536,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["до"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 538,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["у"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 537,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["зі"] = {
+                                    ["next"] = {
+                                        ["мною"] = {
+                                            ["next"] = {
+                                                ["в"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 533,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["до"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 535,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["у"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 534,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["із"] = {
+                                    ["next"] = {
+                                        ["мною"] = {
+                                            ["next"] = {
+                                                ["в"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 539,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["до"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 541,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["у"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 540,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["поїдеш"] = {
+                            ["next"] = {
+                                ["з"] = {
+                                    ["next"] = {
+                                        ["мною"] = {
+                                            ["next"] = {
+                                                ["в"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 554,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["до"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 556,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["у"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 555,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["зі"] = {
+                                    ["next"] = {
+                                        ["мною"] = {
+                                            ["next"] = {
+                                                ["в"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 551,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["до"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 553,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["у"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 552,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["із"] = {
+                                    ["next"] = {
+                                        ["мною"] = {
+                                            ["next"] = {
+                                                ["в"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 557,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["до"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 559,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["у"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 558,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["підеш"] = {
+                            ["next"] = {
+                                ["з"] = {
+                                    ["next"] = {
+                                        ["мною"] = {
+                                            ["next"] = {
+                                                ["в"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 545,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["до"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 547,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["у"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 546,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["зі"] = {
+                                    ["next"] = {
+                                        ["мною"] = {
+                                            ["next"] = {
+                                                ["в"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 542,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["до"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 544,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["у"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 543,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["із"] = {
+                                    ["next"] = {
+                                        ["мною"] = {
+                                            ["next"] = {
+                                                ["в"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 548,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["до"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 550,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                },
+                                                ["у"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "travel.join_question",
+                                                            ["intent"] = "invitation",
+                                                            ["order"] = 549,
+                                                            ["output"] = "Are you coming with me to {place}?",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["треба"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 575,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = { "{recipient}", "по", "морді", "з'їздити", "щоб", "{recipient:stopClause}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 576,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = {
+                                "{recipient}",
+                                "по",
+                                "морді",
+                                "з'їздити",
+                                ",",
+                                "щоб",
+                                "{recipient:stopClause}"
+                            },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 577,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = { "{recipient}", "по", "морді", "зїздити", "щоб", "{recipient:stopClause}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 578,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = {
+                                "{recipient}",
+                                "по",
+                                "морді",
+                                "зїздити",
+                                ",",
+                                "щоб",
+                                "{recipient:stopClause}"
+                            },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 579,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = { "{recipient}", "з'їздити", "по", "морді", "щоб", "{recipient:stopClause}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 580,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = {
+                                "{recipient}",
+                                "з'їздити",
+                                "по",
+                                "морді",
+                                ",",
+                                "щоб",
+                                "{recipient:stopClause}"
+                            },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 581,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = { "{recipient}", "зїздити", "по", "морді", "щоб", "{recipient:stopClause}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 582,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = {
+                                "{recipient}",
+                                "зїздити",
+                                "по",
+                                "морді",
+                                ",",
+                                "щоб",
+                                "{recipient:stopClause}"
+                            },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 583,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = { "{recipient}", "дати", "по", "морді", "щоб", "{recipient:stopClause}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "idiom.smack_to_stop",
+                            ["intent"] = "complaint",
+                            ["order"] = 584,
+                            ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
+                            ["pattern"] = { "{recipient}", "дати", "по", "морді", ",", "щоб", "{recipient:stopClause}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["ходімо"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.lets_go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 287,
+                                    ["output"] = "Let's go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.lets_go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 286,
+                                    ["output"] = "Let's go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.lets_go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 288,
+                                    ["output"] = "Let's go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ці"] = {
+                    ["next"] = {
+                        ["довбані"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "complaint.fed_up_damn",
+                                    ["intent"] = "complaint",
+                                    ["order"] = 568,
+                                    ["output"] = "I'm sick of these damn {creaturePlural} {behavior}.",
+                                    ["pattern"] = { "{creaturePlural}", "задовбали", "{behavior}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "complaint.fed_up_damn",
+                                    ["intent"] = "complaint",
+                                    ["order"] = 569,
+                                    ["output"] = "I'm sick of these damn {creaturePlural} {behavior}.",
+                                    ["pattern"] = { "{creaturePlural}", "дістали", "{behavior}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["кляті"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "complaint.fed_up_damn",
+                                    ["intent"] = "complaint",
+                                    ["order"] = 570,
+                                    ["output"] = "I'm sick of these damn {creaturePlural} {behavior}.",
+                                    ["pattern"] = { "{creaturePlural}", "задовбали", "{behavior}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "complaint.fed_up_damn",
+                                    ["intent"] = "complaint",
+                                    ["order"] = 571,
+                                    ["output"] = "I'm sick of these damn {creaturePlural} {behavior}.",
+                                    ["pattern"] = { "{creaturePlural}", "дістали", "{behavior}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["чортові"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "complaint.fed_up_damn",
+                                    ["intent"] = "complaint",
+                                    ["order"] = 572,
+                                    ["output"] = "I'm sick of these damn {creaturePlural} {behavior}.",
+                                    ["pattern"] = { "{creaturePlural}", "задовбали", "{behavior}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "complaint.fed_up_damn",
+                                    ["intent"] = "complaint",
+                                    ["order"] = 573,
+                                    ["output"] = "I'm sick of these damn {creaturePlural} {behavior}.",
+                                    ["pattern"] = { "{creaturePlural}", "дістали", "{behavior}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ціна"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "trade.price",
+                            ["intent"] = "trade_question",
+                            ["order"] = 88,
+                            ["output"] = "How much for {item}?",
+                            ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["чеши"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.hurry",
+                                    ["intent"] = "travel",
+                                    ["order"] = 245,
+                                    ["output"] = "Hurry to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.hurry",
+                                    ["intent"] = "travel",
+                                    ["order"] = 244,
+                                    ["output"] = "Hurry to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.hurry",
+                                    ["intent"] = "travel",
+                                    ["order"] = 246,
+                                    ["output"] = "Hurry to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["шукаю"] = {
+                    ["next"] = {
+                        ["групу"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "group.place",
+                                    ["intent"] = "looking_for_group",
+                                    ["order"] = 33,
+                                    ["output"] = "LFG {place}",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            },
+                            ["next"] = {
+                                ["."] = {
+                                    ["next"] = {
+                                        ["місце"] = {
+                                            ["next"] = {
+                                                [":"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "group.place",
+                                                            ["intent"] = "looking_for_group",
+                                                            ["order"] = 34,
+                                                            ["output"] = "LFG {place}",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        },
+                                                        {
+                                                            ["id"] = "group.role_place",
+                                                            ["intent"] = "looking_for_group",
+                                                            ["order"] = 38,
+                                                            ["output"] = "LFG {place} as {role}",
+                                                            ["pattern"] = { "{place}", ".", "роль", ":", "{role}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["для"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "group.place",
+                                            ["intent"] = "looking_for_group",
+                                            ["order"] = 32,
+                                            ["output"] = "LFG {place}",
+                                            ["pattern"] = { "{place}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        },
+                                        {
+                                            ["id"] = "group.role_place",
+                                            ["intent"] = "looking_for_group",
+                                            ["order"] = 37,
+                                            ["output"] = "LFG {place} as {role}",
+                                            ["pattern"] = { "{place}", "як", "{role}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["майстра"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "profession.need",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 99,
+                                    ["output"] = "Looking for {profession}",
+                                    ["pattern"] = { "{profession}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "profession.need_place",
+                                    ["intent"] = "craft_service",
+                                    ["order"] = 180,
+                                    ["output"] = "Looking for {profession} in {place}",
+                                    ["pattern"] = { "{profession}", "у", "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            },
+                            ["next"] = {
+                                ["."] = {
+                                    ["next"] = {
+                                        ["професія"] = {
+                                            ["next"] = {
+                                                [":"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "profession.need",
+                                                            ["intent"] = "craft_service",
+                                                            ["order"] = 101,
+                                                            ["output"] = "Looking for {profession}",
+                                                            ["pattern"] = { "{profession}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        },
+                                                        {
+                                                            ["id"] = "profession.need_place",
+                                                            ["intent"] = "craft_service",
+                                                            ["order"] = 181,
+                                                            ["output"] = "Looking for {profession} in {place}",
+                                                            ["pattern"] = {
+                                                                "{profession}",
+                                                                ".",
+                                                                "місце",
+                                                                ":",
+                                                                "{place}"
+                                                            },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["шукаємо"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "recruit.role",
+                            ["intent"] = "recruit",
+                            ["order"] = 5,
+                            ["output"] = "LFM {role}",
+                            ["pattern"] = { "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.role",
+                            ["intent"] = "recruit",
+                            ["order"] = 9,
+                            ["output"] = "LFM {role}",
+                            ["pattern"] = { "{role}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.place",
+                            ["intent"] = "recruit",
+                            ["order"] = 20,
+                            ["output"] = "LFM {role} for {place}",
+                            ["pattern"] = { "{role}", "для", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "recruit.place",
+                            ["intent"] = "recruit",
+                            ["order"] = 22,
+                            ["output"] = "LFM {role} for {place}",
+                            ["pattern"] = { "{role}", ".", "місце", ":", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "class.recruit",
+                            ["intent"] = "recruit",
+                            ["order"] = 47,
+                            ["output"] = "LFM {class}",
+                            ["pattern"] = { "{class}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "class.recruit",
+                            ["intent"] = "recruit",
+                            ["order"] = 49,
+                            ["output"] = "LFM {class}",
+                            ["pattern"] = { "{class}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "class.place",
+                            ["intent"] = "recruit",
+                            ["order"] = 52,
+                            ["output"] = "LFM {class} for {place}",
+                            ["pattern"] = { "{class}", "для", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "class.place",
+                            ["intent"] = "recruit",
+                            ["order"] = 53,
+                            ["output"] = "LFM {class} for {place}",
+                            ["pattern"] = { "{class}", ".", "місце", ":", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["next"] = {
+                        ["ще"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "recruit.count",
+                                    ["intent"] = "recruit",
+                                    ["order"] = 13,
+                                    ["output"] = "LF{count}M {role}",
+                                    ["pattern"] = { "{count}", "{role}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "recruit.count_place",
+                                    ["intent"] = "recruit",
+                                    ["order"] = 26,
+                                    ["output"] = "LF{count}M {role} for {place}",
+                                    ["pattern"] = { "{count}", "{role}", "для", "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["я"] = {
+                    ["next"] = {
+                        ["бачу"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "sight.creature",
+                                    ["intent"] = "observation",
+                                    ["order"] = 562,
+                                    ["output"] = "I see {creature:object}.",
+                                    ["pattern"] = { "{creature}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.at",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 199,
+                                    ["output"] = "I am in {place}",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["збираюсь"] = {
+                            ["next"] = {
+                                ["на"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "activity.heading_to",
+                                            ["intent"] = "invitation",
+                                            ["order"] = 482,
+                                            ["output"] = "I'm heading to {activity:activity}.",
+                                            ["pattern"] = { "{activity}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["збираюся"] = {
+                            ["next"] = {
+                                ["в"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "activity.heading_to",
+                                            ["intent"] = "invitation",
+                                            ["order"] = 488,
+                                            ["output"] = "I'm heading to {activity:activity}.",
+                                            ["pattern"] = { "{activity}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["на"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "activity.heading_to",
+                                            ["intent"] = "invitation",
+                                            ["order"] = 481,
+                                            ["output"] = "I'm heading to {activity:activity}.",
+                                            ["pattern"] = { "{activity}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["зібрався"] = {
+                            ["next"] = {
+                                ["в"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "activity.heading_to",
+                                            ["intent"] = "invitation",
+                                            ["order"] = 486,
+                                            ["output"] = "I'm heading to {activity:activity}.",
+                                            ["pattern"] = { "{activity}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["на"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "activity.heading_to",
+                                            ["intent"] = "invitation",
+                                            ["order"] = 479,
+                                            ["output"] = "I'm heading to {activity:activity}.",
+                                            ["pattern"] = { "{activity}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["зібралася"] = {
+                            ["next"] = {
+                                ["в"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "activity.heading_to",
+                                            ["intent"] = "invitation",
+                                            ["order"] = 487,
+                                            ["output"] = "I'm heading to {activity:activity}.",
+                                            ["pattern"] = { "{activity}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["на"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "activity.heading_to",
+                                            ["intent"] = "invitation",
+                                            ["order"] = 480,
+                                            ["output"] = "I'm heading to {activity:activity}.",
+                                            ["pattern"] = { "{activity}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["йду"] = {
+                            ["next"] = {
+                                ["в"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "activity.heading_to",
+                                            ["intent"] = "invitation",
+                                            ["order"] = 489,
+                                            ["output"] = "I'm heading to {activity:activity}.",
+                                            ["pattern"] = { "{activity}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                },
+                                ["на"] = {
+                                    ["matches"] = {
+                                        {
+                                            ["id"] = "activity.heading_to",
+                                            ["intent"] = "invitation",
+                                            ["order"] = 483,
+                                            ["output"] = "I'm heading to {activity:activity}.",
+                                            ["pattern"] = { "{activity}" },
+                                            ["priority"] = 100,
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["тут"] = {
+                            ["next"] = {
+                                ["."] = {
+                                    ["next"] = {
+                                        ["місце"] = {
+                                            ["next"] = {
+                                                [":"] = {
+                                                    ["matches"] = {
+                                                        {
+                                                            ["id"] = "social.at",
+                                                            ["intent"] = "social_reply",
+                                                            ["order"] = 200,
+                                                            ["output"] = "I am in {place}",
+                                                            ["pattern"] = { "{place}" },
+                                                            ["priority"] = 100,
+                                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["зібрався"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "activity.heading_to",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 484,
+                                                    ["output"] = "I'm heading to {activity:activity}.",
+                                                    ["pattern"] = { "{activity}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["на"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "activity.heading_to",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 477,
+                                                    ["output"] = "I'm heading to {activity:activity}.",
+                                                    ["pattern"] = { "{activity}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["зібралася"] = {
+                                    ["next"] = {
+                                        ["в"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "activity.heading_to",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 485,
+                                                    ["output"] = "I'm heading to {activity:activity}.",
+                                                    ["pattern"] = { "{activity}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        },
+                                        ["на"] = {
+                                            ["matches"] = {
+                                                {
+                                                    ["id"] = "activity.heading_to",
+                                                    ["intent"] = "invitation",
+                                                    ["order"] = 478,
+                                                    ["output"] = "I'm heading to {activity:activity}.",
+                                                    ["pattern"] = { "{activity}" },
+                                                    ["priority"] = 100,
+                                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.at",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 198,
+                                    ["output"] = "I am in {place}",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["іди"] = {
+                    ["next"] = {
+                        ["в"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 218,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 217,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["у"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "travel.go",
+                                    ["intent"] = "travel",
+                                    ["order"] = 219,
+                                    ["output"] = "Go to {place}.",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["іду"] = {
+                    ["next"] = {
+                        ["до"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "social.go",
+                                    ["intent"] = "social_reply",
+                                    ["order"] = 192,
+                                    ["output"] = "Going to {place}",
+                                    ["pattern"] = { "{place}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["на"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "activity.heading_to",
+                                    ["intent"] = "invitation",
+                                    ["order"] = 492,
+                                    ["output"] = "I'm heading to {activity:activity}.",
+                                    ["pattern"] = { "{activity}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    ["terms"] = {
+        ["activity.battleground"] = {
+            ["aliases"] = {
+                ["en"] = { "bg" },
+                ["uk"] = {
+                    "бг",
+                    "бгшка",
+                    "бгшку",
+                    "батлграунд",
+                    "бетлграунд",
+                    "бетлграунді",
+                    "бетлграцунд",
+                    "батлграунді"
+                }
+            },
+            ["category"] = "activities",
+            ["contexts"] = { "activities" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Battleground",
+            ["englishActivity"] = "a battleground",
+            ["forms"] = {
+                ["accusative"] = "поле бою"
+            },
+            ["id"] = "activity.battleground",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "activities",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Battleground",
+                ["line"] = 4365,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:activity.battleground" },
+            ["status"] = "approved",
+            ["uk"] = "Поле бою"
+        },
+        ["behavior.complain"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = { "жалітися" }
+            },
+            ["category"] = "behaviors",
+            ["contexts"] = { "behaviors" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "complaining",
+            ["forms"] = {},
+            ["id"] = "behavior.complain",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "behaviors",
+                ["key"] = "complaining",
+                ["source"] = "project-authored"
+            },
+            ["renderForms"] = {
+                ["pluralVerb"] = "скаржаться"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "скаржитися"
+        },
+        ["behavior.shout"] = {
+            ["aliases"] = {
+                ["en"] = { "yelling" },
+                ["uk"] = { "горлати" }
+            },
+            ["category"] = "behaviors",
+            ["contexts"] = { "behaviors" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "shouting",
+            ["forms"] = {},
+            ["id"] = "behavior.shout",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "behaviors",
+                ["key"] = "shouting",
+                ["source"] = "project-authored"
+            },
+            ["renderForms"] = {
+                ["pluralVerb"] = "кричать"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "кричати"
+        },
+        ["behavior.whine"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = { "скиглити" }
+            },
+            ["category"] = "behaviors",
+            ["contexts"] = { "behaviors" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "whining",
+            ["forms"] = {},
+            ["id"] = "behavior.whine",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "behaviors",
+                ["key"] = "whining",
+                ["source"] = "project-authored"
+            },
+            ["renderForms"] = {
+                ["pluralVerb"] = "ниють"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "нити"
+        },
+        ["class.druid"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = { "дру" }
+            },
+            ["category"] = "classes",
+            ["contexts"] = { "classes" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Druid",
+            ["forms"] = {
+                ["genitiveSingular"] = "друїда"
+            },
+            ["id"] = "class.druid",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "classes",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Druid",
+                ["line"] = 7213,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:class.druid" },
+            ["status"] = "approved",
+            ["uk"] = "Друїд"
+        },
+        ["class.hunter"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = { "хант" }
+            },
+            ["category"] = "classes",
+            ["contexts"] = { "classes" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Hunter",
+            ["forms"] = {
+                ["genitiveSingular"] = "мисливця"
+            },
+            ["id"] = "class.hunter",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "classes",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Hunter",
+                ["line"] = 9533,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:class.hunter" },
+            ["status"] = "approved",
+            ["uk"] = "Мисливець"
+        },
+        ["class.mage"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "classes",
+            ["contexts"] = { "classes" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Mage",
+            ["forms"] = {
+                ["genitiveSingular"] = "мага"
+            },
+            ["id"] = "class.mage",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "classes",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Mage",
+                ["line"] = 11066,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:class.mage" },
+            ["status"] = "approved",
+            ["uk"] = "Маг"
+        },
+        ["class.paladin"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = { "пал" }
+            },
+            ["category"] = "classes",
+            ["contexts"] = { "classes" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Paladin",
+            ["forms"] = {
+                ["genitiveSingular"] = "паладина"
+            },
+            ["id"] = "class.paladin",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "classes",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Paladin",
+                ["line"] = 12779,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:class.paladin" },
+            ["status"] = "approved",
+            ["uk"] = "Паладин"
+        },
+        ["class.priest"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "classes",
+            ["contexts"] = { "classes" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Priest",
+            ["forms"] = {
+                ["genitiveSingular"] = "жреця"
+            },
+            ["id"] = "class.priest",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "classes",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Priest",
+                ["line"] = 13374,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:class.priest" },
+            ["status"] = "approved",
+            ["uk"] = "Жрець"
+        },
+        ["class.rogue"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = { "рога" }
+            },
+            ["category"] = "classes",
+            ["contexts"] = { "classes" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Rogue",
+            ["forms"] = {
+                ["genitiveSingular"] = "розбійника"
+            },
+            ["id"] = "class.rogue",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "classes",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Rogue",
+                ["line"] = 14782,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:class.rogue" },
+            ["status"] = "approved",
+            ["uk"] = "Розбійник"
+        },
+        ["class.shaman"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "classes",
+            ["contexts"] = { "classes" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Shaman",
+            ["forms"] = {
+                ["genitiveSingular"] = "шамана"
+            },
+            ["id"] = "class.shaman",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "classes",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Shaman",
+                ["line"] = 15369,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:class.shaman" },
+            ["status"] = "approved",
+            ["uk"] = "Шаман"
+        },
+        ["class.warlock"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = { "лок" }
+            },
+            ["category"] = "classes",
+            ["contexts"] = { "classes" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Warlock",
+            ["forms"] = {
+                ["genitiveSingular"] = "чорнокнижника"
+            },
+            ["id"] = "class.warlock",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "classes",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Warlock",
+                ["line"] = 19446,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:class.warlock" },
+            ["status"] = "approved",
+            ["uk"] = "Чорнокнижник"
+        },
+        ["class.warrior"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = { "вар" }
+            },
+            ["category"] = "classes",
+            ["contexts"] = { "classes" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Warrior",
+            ["forms"] = {
+                ["genitiveSingular"] = "воїна"
+            },
+            ["id"] = "class.warrior",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "classes",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Warrior",
+                ["line"] = 19459,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:class.warrior" },
+            ["status"] = "approved",
+            ["uk"] = "Воїн"
+        },
+        ["game.aggro"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Aggro",
+            ["forms"] = {},
+            ["id"] = "game.aggro",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Aggro",
+                ["line"] = 3350,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.aggro" },
+            ["status"] = "approved",
+            ["uk"] = "Агро"
+        },
+        ["game.alliance"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Alliance",
+            ["forms"] = {},
+            ["id"] = "game.alliance",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Alliance",
+                ["line"] = 3448,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.alliance" },
+            ["status"] = "approved",
+            ["uk"] = "Альянс"
+        },
+        ["game.armor"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Armor",
+            ["forms"] = {},
+            ["id"] = "game.armor",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Armor",
+                ["line"] = 3969,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.armor" },
+            ["status"] = "approved",
+            ["uk"] = "Броня"
+        },
+        ["game.auction_house"] = {
+            ["aliases"] = {
+                ["en"] = { "ah" },
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Auction House",
+            ["forms"] = {},
+            ["id"] = "game.auction_house",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Auction House",
+                ["line"] = 4105,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.auction_house" },
+            ["status"] = "approved",
+            ["uk"] = "Аукціонний дім"
+        },
+        ["game.bag"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Bag",
+            ["forms"] = {},
+            ["id"] = "game.bag",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Bag",
+                ["line"] = 4263,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.bag" },
+            ["status"] = "approved",
+            ["uk"] = "Сумка"
+        },
+        ["game.bank"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Bank",
+            ["forms"] = {},
+            ["id"] = "game.bank",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Bank",
+                ["line"] = 4291,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.bank" },
+            ["status"] = "approved",
+            ["uk"] = "Банк"
+        },
+        ["game.dungeon"] = {
+            ["aliases"] = {
+                ["en"] = { "dung" },
+                ["uk"] = { "підземка", "підземку", "данж" }
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Dungeon",
+            ["englishActivity"] = "a dungeon",
+            ["forms"] = {
+                ["accusative"] = "підземелля"
+            },
+            ["id"] = "game.dungeon",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Dungeon",
+                ["line"] = 7228,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.dungeon" },
+            ["status"] = "approved",
+            ["uk"] = "Підземелля"
+        },
+        ["game.food"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = { "їжу" }
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Food",
+            ["englishObject"] = "some food",
+            ["forms"] = {
+                ["accusative"] = "їжі"
+            },
+            ["id"] = "game.food",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Food",
+                ["line"] = 8477,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.food" },
+            ["status"] = "approved",
+            ["uk"] = "Їжа"
+        },
+        ["game.gold"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Gold",
+            ["forms"] = {},
+            ["id"] = "game.gold",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Gold",
+                ["line"] = 8815,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.gold" },
+            ["status"] = "approved",
+            ["uk"] = "Золото"
+        },
+        ["game.guild"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Guild",
+            ["forms"] = {},
+            ["id"] = "game.guild",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Guild",
+                ["line"] = 8933,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.guild" },
+            ["status"] = "approved",
+            ["uk"] = "Гільдія"
+        },
+        ["game.health"] = {
+            ["aliases"] = {
+                ["en"] = { "hp" },
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Health",
+            ["forms"] = {},
+            ["id"] = "game.health",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Health",
+                ["line"] = 9141,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.health" },
+            ["status"] = "approved",
+            ["uk"] = "Здоров’я"
+        },
+        ["game.horde"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Horde",
+            ["forms"] = {},
+            ["id"] = "game.horde",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Horde",
+                ["line"] = 9452,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.horde" },
+            ["status"] = "approved",
+            ["uk"] = "Орда"
+        },
+        ["game.interrupt"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Interrupt",
+            ["forms"] = {},
+            ["id"] = "game.interrupt",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Interrupt",
+                ["line"] = 10151,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.interrupt" },
+            ["status"] = "approved",
+            ["uk"] = "Переривання"
+        },
+        ["game.leader"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Leader",
+            ["forms"] = {},
+            ["id"] = "game.leader",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Leader",
+                ["line"] = 10580,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.leader" },
+            ["status"] = "approved",
+            ["uk"] = "Лідер"
+        },
+        ["game.mana"] = {
+            ["aliases"] = {
+                ["en"] = { "mp" },
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Mana",
+            ["forms"] = {},
+            ["id"] = "game.mana",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Mana",
+                ["line"] = 11127,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.mana" },
+            ["status"] = "approved",
+            ["uk"] = "Мана"
+        },
+        ["game.member"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Member",
+            ["forms"] = {},
+            ["id"] = "game.member",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Member",
+                ["line"] = 11314,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.member" },
+            ["status"] = "approved",
+            ["uk"] = "Учасник"
+        },
+        ["game.party"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Party",
+            ["forms"] = {},
+            ["id"] = "game.party",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Party",
+                ["line"] = 12801,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.party" },
+            ["status"] = "approved",
+            ["uk"] = "Група"
+        },
+        ["game.quest"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Quest",
+            ["forms"] = {},
+            ["id"] = "game.quest",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Quest",
+                ["line"] = 13563,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.quest" },
+            ["status"] = "approved",
+            ["uk"] = "Завдання"
+        },
+        ["game.raid"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Raid",
+            ["englishActivity"] = "a raid",
+            ["forms"] = {
+                ["accusative"] = "рейд"
+            },
+            ["id"] = "game.raid",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Raid",
+                ["line"] = 13689,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.raid" },
+            ["status"] = "approved",
+            ["uk"] = "Рейд"
+        },
+        ["game.ready_check"] = {
+            ["aliases"] = {
+                ["en"] = { "rc" },
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Ready Check",
+            ["forms"] = {},
+            ["id"] = "game.ready_check",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Ready Check",
+                ["line"] = 13887,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.ready_check" },
+            ["status"] = "approved",
+            ["uk"] = "Перевірка готовності"
+        },
+        ["game.resurrection"] = {
+            ["aliases"] = {
+                ["en"] = { "res", "rez" },
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Resurrection",
+            ["forms"] = {},
+            ["id"] = "game.resurrection",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Resurrection",
+                ["line"] = 14658,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.resurrection" },
+            ["status"] = "approved",
+            ["uk"] = "Воскресіння"
+        },
+        ["game.shield"] = {
+            ["aliases"] = {
+                ["en"] = { "shields" },
+                ["uk"] = { "щита" }
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Shield",
+            ["englishObject"] = "a shield",
+            ["englishPlural"] = "shields",
+            ["forms"] = {
+                ["accusative"] = "щит",
+                ["accusativePlural"] = "щити",
+                ["genitivePlural"] = "щитів"
+            },
+            ["id"] = "game.shield",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Shield",
+                ["line"] = 15406,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.shield" },
+            ["status"] = "approved",
+            ["uk"] = "Щит"
+        },
+        ["game.threat"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Threat",
+            ["forms"] = {},
+            ["id"] = "game.threat",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Threat",
+                ["line"] = 17935,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.threat" },
+            ["status"] = "approved",
+            ["uk"] = "Загроза"
+        },
+        ["game.water"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = { "водичку", "воду" }
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Water",
+            ["englishObject"] = "some water",
+            ["forms"] = {
+                ["accusative"] = "води"
+            },
+            ["id"] = "game.water",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Water",
+                ["line"] = 19474,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.water" },
+            ["status"] = "approved",
+            ["uk"] = "Вода"
+        },
+        ["game.weapon"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Weapon",
+            ["forms"] = {},
+            ["id"] = "game.weapon",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "game",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Weapon",
+                ["line"] = 19500,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:game.weapon" },
+            ["status"] = "approved",
+            ["uk"] = "Зброя"
+        },
+        ["goods.arrow"] = {
+            ["aliases"] = {
+                ["en"] = { "arrows" },
+                ["uk"] = {}
+            },
+            ["category"] = "goods",
+            ["contexts"] = { "goods" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "arrow",
+            ["englishObject"] = "an arrow",
+            ["englishPlural"] = "arrows",
+            ["forms"] = {
+                ["accusative"] = "стрілу",
+                ["accusativePlural"] = "стріли",
+                ["genitivePlural"] = "стріл"
+            },
+            ["id"] = "goods.arrow",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "goods",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "arrow",
+                ["line"] = 3980,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:goods.arrow" },
+            ["status"] = "approved",
+            ["uk"] = "Стріла"
+        },
+        ["goods.axe"] = {
+            ["aliases"] = {
+                ["en"] = { "axes" },
+                ["uk"] = { "сокирку" }
+            },
+            ["category"] = "goods",
+            ["contexts"] = { "goods" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "axe",
+            ["englishObject"] = "an axe",
+            ["englishPlural"] = "axes",
+            ["forms"] = {
+                ["accusative"] = "сокиру",
+                ["accusativePlural"] = "сокири",
+                ["genitivePlural"] = "сокир"
+            },
+            ["id"] = "goods.axe",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "goods",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "axe",
+                ["line"] = 4221,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:goods.axe" },
+            ["status"] = "approved",
+            ["uk"] = "Сокира"
+        },
+        ["goods.bread"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = { "хлібець", "хлібця" }
+            },
+            ["category"] = "goods",
+            ["contexts"] = { "goods" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "bread",
+            ["englishObject"] = "some bread",
+            ["forms"] = {
+                ["accusative"] = "хліба"
+            },
+            ["id"] = "goods.bread",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "goods",
+                ["key"] = "bread",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1:goods.bread" },
+            ["status"] = "approved",
+            ["uk"] = "Хліб"
+        },
+        ["goods.health_potion"] = {
+            ["aliases"] = {
+                ["en"] = { "healing potion", "healing potions", "health potions" },
+                ["uk"] = { "хілку", "зілля лікування" }
+            },
+            ["category"] = "goods",
+            ["contexts"] = { "goods" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "health potion",
+            ["englishObject"] = "a health potion",
+            ["englishPlural"] = "health potions",
+            ["forms"] = {
+                ["accusative"] = "зілля здоров’я",
+                ["countTwoToFour"] = "зілля здоров’я",
+                ["genitivePlural"] = "зіль здоров’я"
+            },
+            ["id"] = "goods.health_potion",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "goods",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "health potion",
+                ["line"] = 9155,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:goods.health_potion" },
+            ["status"] = "approved",
+            ["uk"] = "Зілля здоров’я"
+        },
+        ["goods.sword"] = {
+            ["aliases"] = {
+                ["en"] = { "swords" },
+                ["uk"] = { "меча" }
+            },
+            ["category"] = "goods",
+            ["contexts"] = { "goods" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "sword",
+            ["englishObject"] = "a sword",
+            ["englishPlural"] = "swords",
+            ["forms"] = {
+                ["accusative"] = "меч",
+                ["accusativePlural"] = "мечі",
+                ["genitivePlural"] = "мечів"
+            },
+            ["id"] = "goods.sword",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "goods",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "sword",
+                ["line"] = 16372,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:goods.sword" },
+            ["status"] = "approved",
+            ["uk"] = "Меч"
+        },
+        ["place.ashenvale"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Ashenvale",
+            ["forms"] = {},
+            ["id"] = "place.ashenvale",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Ashenvale",
+                ["line"] = 142,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.ashenvale" },
+            ["status"] = "approved",
+            ["uk"] = "Ясенеділ"
+        },
+        ["place.blackfathom_deeps"] = {
+            ["aliases"] = {
+                ["en"] = { "bfd" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Blackfathom Deeps",
+            ["forms"] = {},
+            ["id"] = "place.blackfathom_deeps",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Blackfathom Deeps",
+                ["line"] = 259,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.blackfathom_deeps" },
+            ["status"] = "approved",
+            ["uk"] = "Чорноводні глибини"
+        },
+        ["place.blackrock_depths"] = {
+            ["aliases"] = {
+                ["en"] = { "brd" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Blackrock Depths",
+            ["forms"] = {},
+            ["id"] = "place.blackrock_depths",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Blackrock Depths",
+                ["line"] = 267,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.blackrock_depths" },
+            ["status"] = "approved",
+            ["uk"] = "Чорноскельні надра"
+        },
+        ["place.blackrock_spire"] = {
+            ["aliases"] = {
+                ["en"] = { "brs" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Blackrock Spire",
+            ["forms"] = {},
+            ["id"] = "place.blackrock_spire",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Blackrock Spire",
+                ["line"] = 271,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.blackrock_spire" },
+            ["status"] = "approved",
+            ["uk"] = "Чорноскельний шпиль"
+        },
+        ["place.blackwing_lair"] = {
+            ["aliases"] = {
+                ["en"] = { "bwl" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Blackwing Lair",
+            ["forms"] = {},
+            ["id"] = "place.blackwing_lair",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Blackwing Lair",
+                ["line"] = 289,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.blackwing_lair" },
+            ["status"] = "approved",
+            ["uk"] = "лігво Чорного Крила"
+        },
+        ["place.darnassus"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = { "дарнасс" }
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Darnassus",
+            ["forms"] = {
+                ["genitiveSingular"] = "Дарнаса",
+                ["locative"] = "Дарнасі"
+            },
+            ["id"] = "place.darnassus",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Darnassus",
+                ["line"] = 674,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.darnassus" },
+            ["status"] = "approved",
+            ["uk"] = "Дарнас"
+        },
+        ["place.dire_maul"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Dire Maul",
+            ["forms"] = {},
+            ["id"] = "place.dire_maul",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Dire Maul",
+                ["line"] = 754,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.dire_maul" },
+            ["status"] = "approved",
+            ["uk"] = "Грізний Молот"
+        },
+        ["place.durotar"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Durotar",
+            ["forms"] = {
+                ["genitiveSingular"] = "Дуротару",
+                ["locative"] = "Дуротарі"
+            },
+            ["id"] = "place.durotar",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Durotar",
+                ["line"] = 845,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.durotar" },
+            ["status"] = "approved",
+            ["uk"] = "Дуротар"
+        },
+        ["place.duskwood"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Duskwood",
+            ["forms"] = {},
+            ["id"] = "place.duskwood",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Duskwood",
+                ["line"] = 851,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.duskwood" },
+            ["status"] = "approved",
+            ["uk"] = "Смерколісся"
+        },
+        ["place.eastern_plaguelands"] = {
+            ["aliases"] = {
+                ["en"] = { "epl" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Eastern Plaguelands",
+            ["forms"] = {},
+            ["id"] = "place.eastern_plaguelands",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Eastern Plaguelands",
+                ["line"] = 873,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.eastern_plaguelands" },
+            ["status"] = "approved",
+            ["uk"] = "Східні Зачумлені землі"
+        },
+        ["place.elwynn_forest"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Elwynn Forest",
+            ["forms"] = {},
+            ["id"] = "place.elwynn_forest",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Elwynn Forest",
+                ["line"] = 914,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.elwynn_forest" },
+            ["status"] = "approved",
+            ["uk"] = "Ельвиннський ліс"
+        },
+        ["place.gnomeregan"] = {
+            ["aliases"] = {
+                ["en"] = { "gnomer" },
+                ["uk"] = { "гномериган", "гномереган", "гномереґан", "гномерегана", "гномеригaн" }
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Gnomeregan",
+            ["forms"] = {
+                ["genitiveSingular"] = "Гномреґана"
+            },
+            ["id"] = "place.gnomeregan",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Gnomeregan",
+                ["line"] = 1197,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.gnomeregan" },
+            ["status"] = "approved",
+            ["uk"] = "Гномреґан"
+        },
+        ["place.ironforge"] = {
+            ["aliases"] = {
+                ["en"] = { "if" },
+                ["uk"] = { "айронфордж" }
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Ironforge",
+            ["forms"] = {
+                ["genitiveSingular"] = "Залізогарта",
+                ["locative"] = "Залізогарті"
+            },
+            ["id"] = "place.ironforge",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Ironforge",
+                ["line"] = 1470,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.ironforge" },
+            ["status"] = "approved",
+            ["uk"] = "Залізогарт"
+        },
+        ["place.maraudon"] = {
+            ["aliases"] = {
+                ["en"] = { "mara" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Maraudon",
+            ["forms"] = {},
+            ["id"] = "place.maraudon",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Maraudon",
+                ["line"] = 1725,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.maraudon" },
+            ["status"] = "approved",
+            ["uk"] = "Мародон"
+        },
+        ["place.molten_core"] = {
+            ["aliases"] = {
+                ["en"] = { "mc" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Molten Core",
+            ["forms"] = {},
+            ["id"] = "place.molten_core",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Molten Core",
+                ["line"] = 1794,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.molten_core" },
+            ["status"] = "approved",
+            ["uk"] = "Палаюче Ядро"
+        },
+        ["place.naxxramas"] = {
+            ["aliases"] = {
+                ["en"] = { "naxx" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Naxxramas",
+            ["forms"] = {
+                ["genitiveSingular"] = "Наксрамаса",
+                ["locative"] = "Наксрамасі"
+            },
+            ["id"] = "place.naxxramas",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Naxxramas",
+                ["line"] = 1843,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.naxxramas" },
+            ["status"] = "approved",
+            ["uk"] = "Наксрамас"
+        },
+        ["place.onyxia_s_lair"] = {
+            ["aliases"] = {
+                ["en"] = { "ony" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Onyxia's Lair",
+            ["forms"] = {},
+            ["id"] = "place.onyxia_s_lair",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Onyxia's Lair",
+                ["line"] = 1971,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.onyxia_s_lair" },
+            ["status"] = "approved",
+            ["uk"] = "лігво Оніксії"
+        },
+        ["place.orgrimmar"] = {
+            ["aliases"] = {
+                ["en"] = { "org", "og" },
+                ["uk"] = {
+                    "оргримар",
+                    "оргрімар",
+                    "оргріммар",
+                    "орґрімар",
+                    "оргриммар",
+                    "оргримара",
+                    "оргрімара",
+                    "оргріммара",
+                    "оргримарі",
+                    "оргрімарі",
+                    "оргріммарі",
+                    "орґрі",
+                    "оргрі"
+                }
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Orgrimmar",
+            ["forms"] = {
+                ["genitiveSingular"] = "Орґріммара",
+                ["locative"] = "Орґріммарі"
+            },
+            ["id"] = "place.orgrimmar",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Orgrimmar",
+                ["line"] = 1984,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.orgrimmar" },
+            ["status"] = "approved",
+            ["uk"] = "Орґріммар"
+        },
+        ["place.ragefire_chasm"] = {
+            ["aliases"] = {
+                ["en"] = { "rfc" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Ragefire Chasm",
+            ["forms"] = {},
+            ["id"] = "place.ragefire_chasm",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Ragefire Chasm",
+                ["line"] = 2086,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" },
+            ["status"] = "approved",
+            ["uk"] = "прірва Лютого Полум'я"
+        },
+        ["place.razorfen_downs"] = {
+            ["aliases"] = {
+                ["en"] = { "rfd" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Razorfen Downs",
+            ["forms"] = {},
+            ["id"] = "place.razorfen_downs",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Razorfen Downs",
+                ["line"] = 2118,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.razorfen_downs" },
+            ["status"] = "approved",
+            ["uk"] = "нори Бритвоболотих"
+        },
+        ["place.razorfen_kraul"] = {
+            ["aliases"] = {
+                ["en"] = { "rfk" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Razorfen Kraul",
+            ["forms"] = {},
+            ["id"] = "place.razorfen_kraul",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Razorfen Kraul",
+                ["line"] = 2120,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.razorfen_kraul" },
+            ["status"] = "approved",
+            ["uk"] = "крааль Бритвоболотих"
+        },
+        ["place.ruins_of_ahn_qiraj"] = {
+            ["aliases"] = {
+                ["en"] = { "aq20" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Ruins of Ahn'Qiraj",
+            ["forms"] = {},
+            ["id"] = "place.ruins_of_ahn_qiraj",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Ruins of Ahn'Qiraj",
+                ["line"] = 2198,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.ruins_of_ahn_qiraj" },
+            ["status"] = "approved",
+            ["uk"] = "руїни Ан'Кіражу"
+        },
+        ["place.scarlet_monastery"] = {
+            ["aliases"] = {
+                ["en"] = { "sm" },
+                ["uk"] = { "см" }
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Scarlet Monastery",
+            ["forms"] = {
+                ["genitiveSingular"] = "Багряного монастиря",
+                ["locative"] = "Багряному монастирі"
+            },
+            ["id"] = "place.scarlet_monastery",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Scarlet Monastery",
+                ["line"] = 2300,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" },
+            ["status"] = "approved",
+            ["uk"] = "Багряний монастир"
+        },
+        ["place.scholomance"] = {
+            ["aliases"] = {
+                ["en"] = { "scholo" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Scholomance",
+            ["forms"] = {},
+            ["id"] = "place.scholomance",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Scholomance",
+                ["line"] = 2322,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.scholomance" },
+            ["status"] = "approved",
+            ["uk"] = "Некроситет"
+        },
+        ["place.shadowfang_keep"] = {
+            ["aliases"] = {
+                ["en"] = { "sfk" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Shadowfang Keep",
+            ["forms"] = {},
+            ["id"] = "place.shadowfang_keep",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Shadowfang Keep",
+                ["line"] = 2384,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.shadowfang_keep" },
+            ["status"] = "approved",
+            ["uk"] = "фортеця Тіньового Ікла"
+        },
+        ["place.stormwind"] = {
+            ["aliases"] = {
+                ["en"] = { "sw" },
+                ["uk"] = { "штормвінд", "шторм", "штормві́нд" }
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Stormwind",
+            ["forms"] = {
+                ["genitiveSingular"] = "Штормовія",
+                ["locative"] = "Штормовії"
+            },
+            ["id"] = "place.stormwind",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Stormwind",
+                ["line"] = 2679,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.stormwind" },
+            ["status"] = "approved",
+            ["uk"] = "Штормовій"
+        },
+        ["place.stratholme"] = {
+            ["aliases"] = {
+                ["en"] = { "strat" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Stratholme",
+            ["forms"] = {},
+            ["id"] = "place.stratholme",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Stratholme",
+                ["line"] = 2696,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.stratholme" },
+            ["status"] = "approved",
+            ["uk"] = "Стратгольм"
+        },
+        ["place.tanaris"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Tanaris",
+            ["forms"] = {
+                ["genitiveSingular"] = "Танаріса",
+                ["locative"] = "Танарісі"
+            },
+            ["id"] = "place.tanaris",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Tanaris",
+                ["line"] = 2764,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.tanaris" },
+            ["status"] = "approved",
+            ["uk"] = "Танаріс"
+        },
+        ["place.temple_of_ahn_qiraj"] = {
+            ["aliases"] = {
+                ["en"] = { "aq40" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Temple of Ahn'Qiraj",
+            ["forms"] = {},
+            ["id"] = "place.temple_of_ahn_qiraj",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Temple of Ahn'Qiraj",
+                ["line"] = 2790,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.temple_of_ahn_qiraj" },
+            ["status"] = "approved",
+            ["uk"] = "храм Ан'Кіражу"
+        },
+        ["place.the_barrens"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "The Barrens",
+            ["forms"] = {},
+            ["id"] = "place.the_barrens",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "The Barrens",
+                ["line"] = 2840,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.the_barrens" },
+            ["status"] = "approved",
+            ["uk"] = "Степи"
+        },
+        ["place.the_deadmines"] = {
+            ["aliases"] = {
+                ["en"] = { "dm", "vc" },
+                ["uk"] = { "дм", "мертві копальні" }
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "The Deadmines",
+            ["forms"] = {
+                ["genitiveSingular"] = "Мертвих копалень",
+                ["locative"] = "Мертвих копальнях"
+            },
+            ["id"] = "place.the_deadmines",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "The Deadmines",
+                ["line"] = 2887,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.the_deadmines" },
+            ["status"] = "approved",
+            ["uk"] = "Мертві копальні"
+        },
+        ["place.the_stockade"] = {
+            ["aliases"] = {
+                ["en"] = { "stocks" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "The Stockade",
+            ["forms"] = {},
+            ["id"] = "place.the_stockade",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "The Stockade",
+                ["line"] = 3056,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.the_stockade" },
+            ["status"] = "approved",
+            ["uk"] = "В'язниця"
+        },
+        ["place.the_temple_of_atal_hakkar"] = {
+            ["aliases"] = {
+                ["en"] = { "st", "sunken temple" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "The Temple of Atal'Hakkar",
+            ["forms"] = {},
+            ["id"] = "place.the_temple_of_atal_hakkar",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "The Temple of Atal'Hakkar",
+                ["line"] = 3070,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.the_temple_of_atal_hakkar" },
+            ["status"] = "approved",
+            ["uk"] = "Храм Атал'Гаккара"
+        },
+        ["place.thunder_bluff"] = {
+            ["aliases"] = {
+                ["en"] = { "tb" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Thunder Bluff",
+            ["forms"] = {
+                ["genitiveSingular"] = "Громового Бескиду",
+                ["locative"] = "Громовому Бескиді"
+            },
+            ["id"] = "place.thunder_bluff",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Thunder Bluff",
+                ["line"] = 3150,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.thunder_bluff" },
+            ["status"] = "approved",
+            ["uk"] = "Громовий Бескид"
+        },
+        ["place.uldaman"] = {
+            ["aliases"] = {
+                ["en"] = { "ulda" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Uldaman",
+            ["forms"] = {},
+            ["id"] = "place.uldaman",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Uldaman",
+                ["line"] = 3281,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.uldaman" },
+            ["status"] = "approved",
+            ["uk"] = "Ульдаман"
+        },
+        ["place.undercity"] = {
+            ["aliases"] = {
+                ["en"] = { "uc" },
+                ["uk"] = { "андерсіті" }
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Undercity",
+            ["forms"] = {
+                ["genitiveSingular"] = "Підмістя",
+                ["locative"] = "Підмісті"
+            },
+            ["id"] = "place.undercity",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Undercity",
+                ["line"] = 3291,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.undercity" },
+            ["status"] = "approved",
+            ["uk"] = "Підмісто"
+        },
+        ["place.wailing_caverns"] = {
+            ["aliases"] = {
+                ["en"] = { "wc" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Wailing Caverns",
+            ["forms"] = {
+                ["genitiveSingular"] = "Плачучих печер",
+                ["locative"] = "Плачучих печерах"
+            },
+            ["id"] = "place.wailing_caverns",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Wailing Caverns",
+                ["line"] = 3425,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.wailing_caverns" },
+            ["status"] = "approved",
+            ["uk"] = "Плачучі печери"
+        },
+        ["place.western_plaguelands"] = {
+            ["aliases"] = {
+                ["en"] = { "wpl" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Western Plaguelands",
+            ["forms"] = {},
+            ["id"] = "place.western_plaguelands",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Western Plaguelands",
+                ["line"] = 3479,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.western_plaguelands" },
+            ["status"] = "approved",
+            ["uk"] = "Західні Зачумлені землі"
+        },
+        ["place.westfall"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Westfall",
+            ["forms"] = {},
+            ["id"] = "place.westfall",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Westfall",
+                ["line"] = 3481,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.westfall" },
+            ["status"] = "approved",
+            ["uk"] = "Західний край"
+        },
+        ["place.winterspring"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Winterspring",
+            ["forms"] = {},
+            ["id"] = "place.winterspring",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Winterspring",
+                ["line"] = 3559,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.winterspring" },
+            ["status"] = "approved",
+            ["uk"] = "Зимоключ"
+        },
+        ["place.zul_farrak"] = {
+            ["aliases"] = {
+                ["en"] = { "zf" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Zul'Farrak",
+            ["forms"] = {},
+            ["id"] = "place.zul_farrak",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Zul'Farrak",
+                ["line"] = 3622,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.zul_farrak" },
+            ["status"] = "approved",
+            ["uk"] = "Зул'Фаррак"
+        },
+        ["place.zul_gurub"] = {
+            ["aliases"] = {
+                ["en"] = { "zg" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Zul'Gurub",
+            ["forms"] = {},
+            ["id"] = "place.zul_gurub",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Zul'Gurub",
+                ["line"] = 3624,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.zul_gurub" },
+            ["status"] = "approved",
+            ["uk"] = "Зул'Ґуруб"
+        },
+        ["profession.alchemy"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "professions",
+            ["contexts"] = { "professions" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Alchemy",
+            ["forms"] = {},
+            ["id"] = "profession.alchemy",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "professions",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Alchemy",
+                ["line"] = 3382,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:profession.alchemy" },
+            ["status"] = "approved",
+            ["uk"] = "Алхімія"
+        },
+        ["profession.blacksmithing"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "professions",
+            ["contexts"] = { "professions" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Blacksmithing",
+            ["forms"] = {},
+            ["id"] = "profession.blacksmithing",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "professions",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Blacksmithing",
+                ["line"] = 4502,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:profession.blacksmithing" },
+            ["status"] = "approved",
+            ["uk"] = "Ковальство"
+        },
+        ["profession.cooking"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "professions",
+            ["contexts"] = { "professions" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Cooking",
+            ["forms"] = {},
+            ["id"] = "profession.cooking",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "professions",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Cooking",
+                ["line"] = 6113,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:profession.cooking" },
+            ["status"] = "approved",
+            ["uk"] = "Кулінарія"
+        },
+        ["profession.enchanting"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "professions",
+            ["contexts"] = { "professions" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Enchanting",
+            ["forms"] = {},
+            ["id"] = "profession.enchanting",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "professions",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Enchanting",
+                ["line"] = 7530,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:profession.enchanting" },
+            ["status"] = "approved",
+            ["uk"] = "Зачарування"
+        },
+        ["profession.engineering"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "professions",
+            ["contexts"] = { "professions" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Engineering",
+            ["forms"] = {},
+            ["id"] = "profession.engineering",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "professions",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Engineering",
+                ["line"] = 7600,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:profession.engineering" },
+            ["status"] = "approved",
+            ["uk"] = "Інженерія"
+        },
+        ["profession.first_aid"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "professions",
+            ["contexts"] = { "professions" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "First Aid",
+            ["forms"] = {},
+            ["id"] = "profession.first_aid",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "professions",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "First Aid",
+                ["line"] = 8323,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:profession.first_aid" },
+            ["status"] = "approved",
+            ["uk"] = "Перша допомога"
+        },
+        ["profession.fishing"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "professions",
+            ["contexts"] = { "professions" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Fishing",
+            ["forms"] = {},
+            ["id"] = "profession.fishing",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "professions",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Fishing",
+                ["line"] = 8340,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:profession.fishing" },
+            ["status"] = "approved",
+            ["uk"] = "Рибальство"
+        },
+        ["profession.herbalism"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "professions",
+            ["contexts"] = { "professions" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Herbalism",
+            ["forms"] = {},
+            ["id"] = "profession.herbalism",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "professions",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Herbalism",
+                ["line"] = 9207,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:profession.herbalism" },
+            ["status"] = "approved",
+            ["uk"] = "Травництво"
+        },
+        ["profession.leatherworking"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "professions",
+            ["contexts"] = { "professions" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Leatherworking",
+            ["forms"] = {},
+            ["id"] = "profession.leatherworking",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "professions",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Leatherworking",
+                ["line"] = 10605,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:profession.leatherworking" },
+            ["status"] = "approved",
+            ["uk"] = "Шкірництво"
+        },
+        ["profession.mining"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "professions",
+            ["contexts"] = { "professions" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Mining",
+            ["forms"] = {},
+            ["id"] = "profession.mining",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "professions",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Mining",
+                ["line"] = 11406,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:profession.mining" },
+            ["status"] = "approved",
+            ["uk"] = "Гірництво"
+        },
+        ["profession.skinning"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "professions",
+            ["contexts"] = { "professions" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Skinning",
+            ["forms"] = {},
+            ["id"] = "profession.skinning",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "professions",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Skinning",
+                ["line"] = 15765,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:profession.skinning" },
+            ["status"] = "approved",
+            ["uk"] = "Зняття шкур"
+        },
+        ["profession.tailoring"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "professions",
+            ["contexts"] = { "professions" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Tailoring",
+            ["forms"] = {},
+            ["id"] = "profession.tailoring",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "professions",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Tailoring",
+                ["line"] = 16425,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:profession.tailoring" },
+            ["status"] = "approved",
+            ["uk"] = "Кравецтво"
+        },
+        ["race.dwarf.base.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "dwarves",
+            ["englishAddress"] = "dwarves",
+            ["englishObject"] = "dwarves",
+            ["forms"] = {
+                ["accusative"] = "дворфів",
+                ["dative"] = "дворфам",
+                ["genitive"] = "дворфів",
+                ["instrumental"] = "дворфами",
+                ["locative"] = "дворфах",
+                ["nominative"] = "дворфи",
+                ["vocative"] = "дворфи"
+            },
+            ["id"] = "race.dwarf.base.plural",
+            ["morphology"] = {
+                ["derivation"] = "base",
+                ["number"] = "plural",
+                ["root"] = "race.dwarf"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "dwarf",
+                ["line"] = 58,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" },
+            ["uk"] = "дворфи"
+        },
+        ["race.dwarf.base.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "dwarf",
+            ["englishAddress"] = "dwarf",
+            ["englishObject"] = "a dwarf",
+            ["forms"] = {
+                ["accusative"] = "дворфа",
+                ["dative"] = "дворфові",
+                ["genitive"] = "дворфа",
+                ["instrumental"] = "дворфом",
+                ["locative"] = "дворфові",
+                ["nominative"] = "дворф",
+                ["vocative"] = "дворфе"
+            },
+            ["id"] = "race.dwarf.base.singular",
+            ["morphology"] = {
+                ["derivation"] = "base",
+                ["number"] = "singular",
+                ["root"] = "race.dwarf"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "dwarf",
+                ["line"] = 58,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" },
+            ["uk"] = "дворф"
+        },
+        ["race.dwarf.diminished.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "wannabe dwarves",
+            ["englishAddress"] = "wannabe dwarves",
+            ["englishObject"] = "wannabe dwarves",
+            ["forms"] = {
+                ["accusative"] = "недодворфів",
+                ["dative"] = "недодворфам",
+                ["genitive"] = "недодворфів",
+                ["instrumental"] = "недодворфами",
+                ["locative"] = "недодворфах",
+                ["nominative"] = "недодворфи",
+                ["vocative"] = "недодворфи"
+            },
+            ["id"] = "race.dwarf.diminished.plural",
+            ["morphology"] = {
+                ["derivation"] = "diminished",
+                ["number"] = "plural",
+                ["root"] = "race.dwarf"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "dwarf",
+                ["line"] = 58,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" },
+            ["uk"] = "недодворфи"
+        },
+        ["race.dwarf.diminished.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "wannabe dwarf",
+            ["englishAddress"] = "wannabe dwarf",
+            ["englishObject"] = "a wannabe dwarf",
+            ["forms"] = {
+                ["accusative"] = "недодворфа",
+                ["dative"] = "недодворфові",
+                ["genitive"] = "недодворфа",
+                ["instrumental"] = "недодворфом",
+                ["locative"] = "недодворфові",
+                ["nominative"] = "недодворф",
+                ["vocative"] = "недодворфе"
+            },
+            ["id"] = "race.dwarf.diminished.singular",
+            ["morphology"] = {
+                ["derivation"] = "diminished",
+                ["number"] = "singular",
+                ["root"] = "race.dwarf"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "dwarf",
+                ["line"] = 58,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" },
+            ["uk"] = "недодворф"
+        },
+        ["race.dwarf.diminutive.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "little dwarves",
+            ["englishAddress"] = "little dwarves",
+            ["englishObject"] = "little dwarves",
+            ["forms"] = {
+                ["accusative"] = "дворфиків",
+                ["dative"] = "дворфикам",
+                ["genitive"] = "дворфиків",
+                ["instrumental"] = "дворфиками",
+                ["locative"] = "дворфиках",
+                ["nominative"] = "дворфики",
+                ["vocative"] = "дворфики"
+            },
+            ["id"] = "race.dwarf.diminutive.plural",
+            ["morphology"] = {
+                ["derivation"] = "diminutive",
+                ["number"] = "plural",
+                ["root"] = "race.dwarf"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "dwarf",
+                ["line"] = 58,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" },
+            ["uk"] = "дворфики"
+        },
+        ["race.dwarf.diminutive.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "little dwarf",
+            ["englishAddress"] = "little dwarf",
+            ["englishObject"] = "a little dwarf",
+            ["forms"] = {
+                ["accusative"] = "дворфика",
+                ["dative"] = "дворфикові",
+                ["genitive"] = "дворфика",
+                ["instrumental"] = "дворфиком",
+                ["locative"] = "дворфикові",
+                ["nominative"] = "дворфик",
+                ["vocative"] = "дворфику"
+            },
+            ["id"] = "race.dwarf.diminutive.singular",
+            ["morphology"] = {
+                ["derivation"] = "diminutive",
+                ["number"] = "singular",
+                ["root"] = "race.dwarf"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "dwarf",
+                ["line"] = 58,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" },
+            ["uk"] = "дворфик"
+        },
+        ["race.dwarf.proto.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "proto-dwarves",
+            ["englishAddress"] = "proto-dwarves",
+            ["englishObject"] = "proto-dwarves",
+            ["forms"] = {
+                ["accusative"] = "протодворфів",
+                ["dative"] = "протодворфам",
+                ["genitive"] = "протодворфів",
+                ["instrumental"] = "протодворфами",
+                ["locative"] = "протодворфах",
+                ["nominative"] = "протодворфи",
+                ["vocative"] = "протодворфи"
+            },
+            ["id"] = "race.dwarf.proto.plural",
+            ["morphology"] = {
+                ["derivation"] = "proto",
+                ["number"] = "plural",
+                ["root"] = "race.dwarf"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "dwarf",
+                ["line"] = 58,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" },
+            ["uk"] = "протодворфи"
+        },
+        ["race.dwarf.proto.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "proto-dwarf",
+            ["englishAddress"] = "proto-dwarf",
+            ["englishObject"] = "a proto-dwarf",
+            ["forms"] = {
+                ["accusative"] = "протодворфа",
+                ["dative"] = "протодворфові",
+                ["genitive"] = "протодворфа",
+                ["instrumental"] = "протодворфом",
+                ["locative"] = "протодворфові",
+                ["nominative"] = "протодворф",
+                ["vocative"] = "протодворфе"
+            },
+            ["id"] = "race.dwarf.proto.singular",
+            ["morphology"] = {
+                ["derivation"] = "proto",
+                ["number"] = "singular",
+                ["root"] = "race.dwarf"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "dwarf",
+                ["line"] = 58,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" },
+            ["uk"] = "протодворф"
+        },
+        ["race.gnome.augmentative.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "big gnomes",
+            ["englishAddress"] = "you big gnomes",
+            ["englishObject"] = "big gnomes",
+            ["forms"] = {
+                ["accusative"] = "гномяр",
+                ["dative"] = "гномярам",
+                ["genitive"] = "гномяр",
+                ["instrumental"] = "гномярами",
+                ["locative"] = "гномярах",
+                ["nominative"] = "гномяри",
+                ["vocative"] = "гномяри"
+            },
+            ["id"] = "race.gnome.augmentative.plural",
+            ["morphology"] = {
+                ["derivation"] = "augmentative",
+                ["number"] = "plural",
+                ["root"] = "race.gnome"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "gnome",
+                ["line"] = 59,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" },
+            ["uk"] = "гномяри"
+        },
+        ["race.gnome.augmentative.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "big gnome",
+            ["englishAddress"] = "you big gnome",
+            ["englishObject"] = "a big gnome",
+            ["forms"] = {
+                ["accusative"] = "гномяру",
+                ["dative"] = "гномярі",
+                ["genitive"] = "гномяри",
+                ["instrumental"] = "гномярою",
+                ["locative"] = "гномярі",
+                ["nominative"] = "гномяра",
+                ["vocative"] = "гномяро"
+            },
+            ["id"] = "race.gnome.augmentative.singular",
+            ["morphology"] = {
+                ["derivation"] = "augmentative",
+                ["number"] = "singular",
+                ["root"] = "race.gnome"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "gnome",
+                ["line"] = 59,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" },
+            ["uk"] = "гномяра"
+        },
+        ["race.gnome.base.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "gnomes",
+            ["englishAddress"] = "gnomes",
+            ["englishObject"] = "gnomes",
+            ["forms"] = {
+                ["accusative"] = "гномів",
+                ["dative"] = "гномам",
+                ["genitive"] = "гномів",
+                ["instrumental"] = "гномами",
+                ["locative"] = "гномах",
+                ["nominative"] = "гноми",
+                ["vocative"] = "гноми"
+            },
+            ["id"] = "race.gnome.base.plural",
+            ["morphology"] = {
+                ["derivation"] = "base",
+                ["number"] = "plural",
+                ["root"] = "race.gnome"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "gnome",
+                ["line"] = 59,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" },
+            ["uk"] = "гноми"
+        },
+        ["race.gnome.base.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "gnome",
+            ["englishAddress"] = "gnome",
+            ["englishObject"] = "a gnome",
+            ["forms"] = {
+                ["accusative"] = "гнома",
+                ["dative"] = "гномові",
+                ["genitive"] = "гнома",
+                ["instrumental"] = "гномом",
+                ["locative"] = "гномові",
+                ["nominative"] = "гном",
+                ["vocative"] = "гноме"
+            },
+            ["id"] = "race.gnome.base.singular",
+            ["morphology"] = {
+                ["derivation"] = "base",
+                ["number"] = "singular",
+                ["root"] = "race.gnome"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "gnome",
+                ["line"] = 59,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" },
+            ["uk"] = "гном"
+        },
+        ["race.gnome.diminished.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "wannabe gnomes",
+            ["englishAddress"] = "wannabe gnomes",
+            ["englishObject"] = "wannabe gnomes",
+            ["forms"] = {
+                ["accusative"] = "недогномів",
+                ["dative"] = "недогномам",
+                ["genitive"] = "недогномів",
+                ["instrumental"] = "недогномами",
+                ["locative"] = "недогномах",
+                ["nominative"] = "недогноми",
+                ["vocative"] = "недогноми"
+            },
+            ["id"] = "race.gnome.diminished.plural",
+            ["morphology"] = {
+                ["derivation"] = "diminished",
+                ["number"] = "plural",
+                ["root"] = "race.gnome"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "gnome",
+                ["line"] = 59,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" },
+            ["uk"] = "недогноми"
+        },
+        ["race.gnome.diminished.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "wannabe gnome",
+            ["englishAddress"] = "wannabe gnome",
+            ["englishObject"] = "a wannabe gnome",
+            ["forms"] = {
+                ["accusative"] = "недогнома",
+                ["dative"] = "недогномові",
+                ["genitive"] = "недогнома",
+                ["instrumental"] = "недогномом",
+                ["locative"] = "недогномові",
+                ["nominative"] = "недогном",
+                ["vocative"] = "недогноме"
+            },
+            ["id"] = "race.gnome.diminished.singular",
+            ["morphology"] = {
+                ["derivation"] = "diminished",
+                ["number"] = "singular",
+                ["root"] = "race.gnome"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "gnome",
+                ["line"] = 59,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" },
+            ["uk"] = "недогном"
+        },
+        ["race.gnome.diminutive.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "little gnomes",
+            ["englishAddress"] = "little gnomes",
+            ["englishObject"] = "little gnomes",
+            ["forms"] = {
+                ["accusative"] = "гномиків",
+                ["dative"] = "гномикам",
+                ["genitive"] = "гномиків",
+                ["instrumental"] = "гномиками",
+                ["locative"] = "гномиках",
+                ["nominative"] = "гномики",
+                ["vocative"] = "гномики"
+            },
+            ["id"] = "race.gnome.diminutive.plural",
+            ["morphology"] = {
+                ["derivation"] = "diminutive",
+                ["number"] = "plural",
+                ["root"] = "race.gnome"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "gnome",
+                ["line"] = 59,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" },
+            ["uk"] = "гномики"
+        },
+        ["race.gnome.diminutive.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "little gnome",
+            ["englishAddress"] = "little gnome",
+            ["englishObject"] = "a little gnome",
+            ["forms"] = {
+                ["accusative"] = "гномика",
+                ["dative"] = "гномикові",
+                ["genitive"] = "гномика",
+                ["instrumental"] = "гномиком",
+                ["locative"] = "гномикові",
+                ["nominative"] = "гномик",
+                ["vocative"] = "гномику"
+            },
+            ["id"] = "race.gnome.diminutive.singular",
+            ["morphology"] = {
+                ["derivation"] = "diminutive",
+                ["number"] = "singular",
+                ["root"] = "race.gnome"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "gnome",
+                ["line"] = 59,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" },
+            ["uk"] = "гномик"
+        },
+        ["race.gnome.proto.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "proto-gnomes",
+            ["englishAddress"] = "proto-gnomes",
+            ["englishObject"] = "proto-gnomes",
+            ["forms"] = {
+                ["accusative"] = "протогномів",
+                ["dative"] = "протогномам",
+                ["genitive"] = "протогномів",
+                ["instrumental"] = "протогномами",
+                ["locative"] = "протогномах",
+                ["nominative"] = "протогноми",
+                ["vocative"] = "протогноми"
+            },
+            ["id"] = "race.gnome.proto.plural",
+            ["morphology"] = {
+                ["derivation"] = "proto",
+                ["number"] = "plural",
+                ["root"] = "race.gnome"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "gnome",
+                ["line"] = 59,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" },
+            ["uk"] = "протогноми"
+        },
+        ["race.gnome.proto.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "proto-gnome",
+            ["englishAddress"] = "proto-gnome",
+            ["englishObject"] = "a proto-gnome",
+            ["forms"] = {
+                ["accusative"] = "протогнома",
+                ["dative"] = "протогномові",
+                ["genitive"] = "протогнома",
+                ["instrumental"] = "протогномом",
+                ["locative"] = "протогномові",
+                ["nominative"] = "протогном",
+                ["vocative"] = "протогноме"
+            },
+            ["id"] = "race.gnome.proto.singular",
+            ["morphology"] = {
+                ["derivation"] = "proto",
+                ["number"] = "singular",
+                ["root"] = "race.gnome"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "gnome",
+                ["line"] = 59,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" },
+            ["uk"] = "протогном"
+        },
+        ["race.orc.base.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "orcs",
+            ["englishAddress"] = "orcs",
+            ["englishObject"] = "orcs",
+            ["forms"] = {
+                ["accusative"] = "орків",
+                ["dative"] = "оркам",
+                ["genitive"] = "орків",
+                ["instrumental"] = "орками",
+                ["locative"] = "орках",
+                ["nominative"] = "орки",
+                ["vocative"] = "орки"
+            },
+            ["id"] = "race.orc.base.plural",
+            ["morphology"] = {
+                ["derivation"] = "base",
+                ["number"] = "plural",
+                ["root"] = "race.orc"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "orc",
+                ["line"] = 62,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" },
+            ["uk"] = "орки"
+        },
+        ["race.orc.base.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "orc",
+            ["englishAddress"] = "orc",
+            ["englishObject"] = "an orc",
+            ["forms"] = {
+                ["accusative"] = "орка",
+                ["dative"] = "оркові",
+                ["genitive"] = "орка",
+                ["instrumental"] = "орком",
+                ["locative"] = "оркові",
+                ["nominative"] = "орк",
+                ["vocative"] = "орку"
+            },
+            ["id"] = "race.orc.base.singular",
+            ["morphology"] = {
+                ["derivation"] = "base",
+                ["number"] = "singular",
+                ["root"] = "race.orc"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "orc",
+                ["line"] = 62,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" },
+            ["uk"] = "орк"
+        },
+        ["race.orc.diminished.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "wannabe orcs",
+            ["englishAddress"] = "wannabe orcs",
+            ["englishObject"] = "wannabe orcs",
+            ["forms"] = {
+                ["accusative"] = "недоорків",
+                ["dative"] = "недооркам",
+                ["genitive"] = "недоорків",
+                ["instrumental"] = "недоорками",
+                ["locative"] = "недоорках",
+                ["nominative"] = "недоорки",
+                ["vocative"] = "недоорки"
+            },
+            ["id"] = "race.orc.diminished.plural",
+            ["morphology"] = {
+                ["derivation"] = "diminished",
+                ["number"] = "plural",
+                ["root"] = "race.orc"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "orc",
+                ["line"] = 62,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" },
+            ["uk"] = "недоорки"
+        },
+        ["race.orc.diminished.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "wannabe orc",
+            ["englishAddress"] = "wannabe orc",
+            ["englishObject"] = "a wannabe orc",
+            ["forms"] = {
+                ["accusative"] = "недоорка",
+                ["dative"] = "недооркові",
+                ["genitive"] = "недоорка",
+                ["instrumental"] = "недоорком",
+                ["locative"] = "недооркові",
+                ["nominative"] = "недоорк",
+                ["vocative"] = "недоорку"
+            },
+            ["id"] = "race.orc.diminished.singular",
+            ["morphology"] = {
+                ["derivation"] = "diminished",
+                ["number"] = "singular",
+                ["root"] = "race.orc"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "orc",
+                ["line"] = 62,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" },
+            ["uk"] = "недоорк"
+        },
+        ["race.orc.diminutive.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "little orcs",
+            ["englishAddress"] = "little orcs",
+            ["englishObject"] = "little orcs",
+            ["forms"] = {
+                ["accusative"] = "орчиків",
+                ["dative"] = "орчикам",
+                ["genitive"] = "орчиків",
+                ["instrumental"] = "орчиками",
+                ["locative"] = "орчиках",
+                ["nominative"] = "орчики",
+                ["vocative"] = "орчики"
+            },
+            ["id"] = "race.orc.diminutive.plural",
+            ["morphology"] = {
+                ["derivation"] = "diminutive",
+                ["number"] = "plural",
+                ["root"] = "race.orc"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "orc",
+                ["line"] = 62,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" },
+            ["uk"] = "орчики"
+        },
+        ["race.orc.diminutive.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "little orc",
+            ["englishAddress"] = "little orc",
+            ["englishObject"] = "a little orc",
+            ["forms"] = {
+                ["accusative"] = "орчика",
+                ["dative"] = "орчикові",
+                ["genitive"] = "орчика",
+                ["instrumental"] = "орчиком",
+                ["locative"] = "орчикові",
+                ["nominative"] = "орчик",
+                ["vocative"] = "орчику"
+            },
+            ["id"] = "race.orc.diminutive.singular",
+            ["morphology"] = {
+                ["derivation"] = "diminutive",
+                ["number"] = "singular",
+                ["root"] = "race.orc"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "orc",
+                ["line"] = 62,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" },
+            ["uk"] = "орчик"
+        },
+        ["race.orc.proto.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "proto-orcs",
+            ["englishAddress"] = "proto-orcs",
+            ["englishObject"] = "proto-orcs",
+            ["forms"] = {
+                ["accusative"] = "протоорків",
+                ["dative"] = "протооркам",
+                ["genitive"] = "протоорків",
+                ["instrumental"] = "протоорками",
+                ["locative"] = "протоорках",
+                ["nominative"] = "протоорки",
+                ["vocative"] = "протоорки"
+            },
+            ["id"] = "race.orc.proto.plural",
+            ["morphology"] = {
+                ["derivation"] = "proto",
+                ["number"] = "plural",
+                ["root"] = "race.orc"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "orc",
+                ["line"] = 62,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" },
+            ["uk"] = "протоорки"
+        },
+        ["race.orc.proto.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "proto-orc",
+            ["englishAddress"] = "proto-orc",
+            ["englishObject"] = "a proto-orc",
+            ["forms"] = {
+                ["accusative"] = "протоорка",
+                ["dative"] = "протооркові",
+                ["genitive"] = "протоорка",
+                ["instrumental"] = "протоорком",
+                ["locative"] = "протооркові",
+                ["nominative"] = "протоорк",
+                ["vocative"] = "протоорку"
+            },
+            ["id"] = "race.orc.proto.singular",
+            ["morphology"] = {
+                ["derivation"] = "proto",
+                ["number"] = "singular",
+                ["root"] = "race.orc"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "race nouns and attested UA_Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "orc",
+                ["line"] = 62,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" },
+            ["uk"] = "протоорк"
+        },
+        ["recipient.her"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "recipients",
+            ["contexts"] = { "recipients" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "her",
+            ["forms"] = {},
+            ["id"] = "recipient.her",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "recipients",
+                ["key"] = "her",
+                ["source"] = "project-authored"
+            },
+            ["renderForms"] = {
+                ["stopClause"] = "перестала"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "їй"
+        },
+        ["recipient.him"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "recipients",
+            ["contexts"] = { "recipients" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "him",
+            ["forms"] = {},
+            ["id"] = "recipient.him",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "recipients",
+                ["key"] = "him",
+                ["source"] = "project-authored"
+            },
+            ["renderForms"] = {
+                ["stopClause"] = "перестав"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "йому"
+        },
+        ["recipient.them"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "recipients",
+            ["contexts"] = { "recipients" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "them",
+            ["forms"] = {},
+            ["id"] = "recipient.them",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "recipients",
+                ["key"] = "them",
+                ["source"] = "project-authored"
+            },
+            ["renderForms"] = {
+                ["stopClause"] = "перестали"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "їм"
+        },
+        ["role.damage"] = {
+            ["aliases"] = {
+                ["en"] = { "dd", "damage dealer", "DPS" },
+                ["uk"] = { "дд", "дпс" }
+            },
+            ["category"] = "roles",
+            ["contexts"] = { "roles" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "DPS",
+            ["englishPlural"] = "DPS",
+            ["forms"] = {
+                ["genitivePlural"] = "DPS",
+                ["genitiveSingular"] = "DPS",
+                ["nominativePlural"] = "DPS"
+            },
+            ["id"] = "role.damage",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "roles",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "DPS",
+                ["line"] = 6552,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:role.damage" },
+            ["status"] = "approved",
+            ["uk"] = "DPS"
+        },
+        ["role.healer"] = {
+            ["aliases"] = {
+                ["en"] = { "heal", "heals", "Healers" },
+                ["uk"] = { "хіл", "хілер" }
+            },
+            ["category"] = "roles",
+            ["contexts"] = { "roles" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Healer",
+            ["englishPlural"] = "Healers",
+            ["forms"] = {
+                ["genitivePlural"] = "цілителів",
+                ["genitiveSingular"] = "цілителя",
+                ["nominativePlural"] = "цілителі"
+            },
+            ["id"] = "role.healer",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "roles",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Healer",
+                ["line"] = 9130,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:role.healer" },
+            ["status"] = "approved",
+            ["uk"] = "Цілитель"
+        },
+        ["role.tank"] = {
+            ["aliases"] = {
+                ["en"] = { "mt", "main tank", "Tanks" },
+                ["uk"] = { "танк" }
+            },
+            ["category"] = "roles",
+            ["contexts"] = { "roles" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Tank",
+            ["englishPlural"] = "Tanks",
+            ["forms"] = {
+                ["genitivePlural"] = "танків",
+                ["genitiveSingular"] = "танка",
+                ["nominativePlural"] = "танки"
+            },
+            ["id"] = "role.tank",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "roles",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Tank",
+                ["line"] = 16461,
+                ["sha256"] = "5f502c98e9d947f4543ac139717035c9455a63c93d91a63c6655443d35262150",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:role.tank" },
+            ["status"] = "approved",
+            ["uk"] = "Танк"
+        }
+    }
+}

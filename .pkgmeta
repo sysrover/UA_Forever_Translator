@@ -1,0 +1,9 @@
+package-as: UA_Forever_Translator
+
+ignore:
+  - CURSEFORGE.md
+  - CurseForgeIcon.png
+
+manual-changelog:
+  filename: CHANGELOG.md
+  markup-type: markdown
