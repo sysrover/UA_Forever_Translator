@@ -157,6 +157,18 @@ local function recruitClasses(p, uk)
     return true
 end
 
+local function preferredClass(p, uk)
+    local start = p.i
+    local marker = uk and p:word("бажано") or not uk and p:any("preferably", "prefer", "pref")
+    if marker then
+        if p:noun("preferred", "classes") then return true end
+    elseif not uk and p:noun("preferred", "classes") and p:any("pref", "preferred") then
+        return true
+    end
+    p.i, p.slots.preferred = start, nil
+    return false
+end
+
 local function recruit(p, direction)
     local uk = direction == "uk-en"
     local leadingPlace
@@ -196,6 +208,8 @@ local function recruit(p, direction)
             end
         elseif not role and recruitClasses(p, uk) then
             role = true
+        elseif role and not p.slots.preferred and preferredClass(p, uk) then
+            -- The class is a preference for the requested role.
         elseif not p.slots.level and recruitLevel(p, uk) then
             -- The level belongs to the recruitment regardless of its position.
         elseif not place then

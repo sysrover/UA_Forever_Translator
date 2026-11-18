@@ -17,6 +17,11 @@ function T.render(tree, direction)
             return value .. (uk and ". Рівень: " or " L") .. s.level.raw
         end
         local function appendConditions(value)
+            if s.preferred then
+                local class = G.render(uk and "{class:genitiveSingular}" or "{class}", {class=s.preferred}, direction)
+                if not class then return nil end
+                value = value .. (uk and ". Бажано " .. class or ", preferably " .. class:lower())
+            end
             if f.run == "full" then value = value .. (uk and ". Повне проходження" or ", full run")
             elseif f.run == "fresh" then value = value .. (uk and ". Проходження з початку" or ", fresh run") end
             if f.summon then value = value .. (uk and ". Можемо прикликати" or ", can summon") end

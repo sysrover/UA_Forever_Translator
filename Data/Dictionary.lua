@@ -10799,6 +10799,11 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Набираємо гравців у групу"
             },
+            ["me too"] = {
+                ["id"] = "me_too",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Я теж"
+            },
             ["move out of fire"] = {
                 ["id"] = "avoid",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -11835,6 +11840,16 @@ ns.Data = {
                 ["id"] = "back",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "I am back"
+            },
+            ["я також"] = {
+                ["id"] = "me_too",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Me too"
+            },
+            ["я теж"] = {
+                ["id"] = "me_too",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Me too"
             },
             ["я це нідаю"] = {
                 ["id"] = "loot.need_this",
@@ -30638,7 +30653,7 @@ ns.Data = {
         ["concepts"] = 198,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
-        ["phraseFamilies"] = 75,
+        ["phraseFamilies"] = 76,
         ["source"] = {
             ["approvalMeaning"] = "Editorially reviewed for this addon; not a claim of individual user approval.",
             ["catalogBuild"] = "1.60.1.70938",
@@ -30654,7 +30669,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "81594f216d8dd52ba8578d198d8799ff39dadb4b69e717739d874a40d767de2d"
+        ["version"] = "503e201e203101287c46623a53174e51705b0b2dbacfb8e7ac7ac8797def624c"
     },
     ["rules"] = {
         ["en-uk"] = {
