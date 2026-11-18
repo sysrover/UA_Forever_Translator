@@ -215,7 +215,8 @@ local function wish(document, first, limit)
         if key == "good" and P.key(document, nextIndex, limit) == "luck" then
             nextIndex = nextIndex + 1
         elseif key ~= "goodluck" and key ~= "gl" then return end
-        if P.key(document, nextIndex, limit) == "to" then nextIndex = nextIndex + 1 end
+        local separator = P.key(document, nextIndex, limit)
+        if separator == "to" or separator == "," then nextIndex = nextIndex + 1 end
     elseif (key == "усім" or key == "всім") and P.key(document, nextIndex, limit) == "удачі" then
         return {kind="wish", everyone=true}, nextIndex + 1
     elseif key ~= "удачі" and key ~= "щасти" then return end
