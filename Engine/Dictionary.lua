@@ -50,50 +50,21 @@ function D.lookup(text, direction)
     if #tokens == 1 then return generalTerm(tokens[1], direction) end
 end
 
-local function agreesWithLexicon(document, first, term)
-    local language = document.direction == "en-uk" and "uk" or "en"
-    local gloss = ns.Engine.Normalize.word(term[language])
-    if gloss:find(" / ", 1, true)
-        or ns.Engine.ClauseAnalysis.isAuxiliary(document.tokens[first].key) then return false end
-    local lexicon = ns.Engine.Lexicon
-    local analyses = lexicon.at(document, first)
-    if analyses.truncated then return false end
-    if #analyses == 0 then
-        return not lexicon.functional(document, "prepositions", first, first)
-    end
-    local pos = analyses[1].lexeme.pos
-    if pos ~= "noun" and pos ~= "verb" and pos ~= "adj" then return false end
-    local best, agrees, base, unanimous = nil, nil, nil, true
-    for _, candidate in ipairs(analyses) do
-        local lexeme = candidate.lexeme
-        if lexeme.pos ~= pos then return false end
-        local rank = lexeme.preference or 0
-        local matches = ns.Engine.Normalize.word(lexeme[language]) == gloss
-        local uninflected = candidate.form.mood == "base" or candidate.form.mood == "infinitive"
-        if not matches then unanimous = false end
-        if not best or rank < best then
-            best, agrees, base = rank, matches, uninflected
-        elseif rank == best then
-            agrees, base = agrees and matches, base or uninflected
-        end
-    end
-    return agrees and (pos ~= "verb" or unanimous or base)
-end
-
-function D.literal(document, first, fragments, contextual)
-    local tokens, direction, preserved = document.tokens, document.direction, document.preserve
+function D.literal(document, first, fragments)
+    local tokens, direction = document.tokens, document.direction
+    if tokens[first].protected then return nil end
     local node = ns.Data.aliases[direction]
     local entry, last
     for i = first, math.min(#tokens, first + 11) do
-        if tokens[i].protected or (i > first and ((fragments and fragments[i]) or (preserved and preserved[i]))) then break end
+        local fragment = fragments and fragments[i]
+        if tokens[i].protected or (i > first and fragment and not fragment.preserve) then break end
         node = node[tokens[i].key]
         if not node then break end
-        local literal = node._literal
+        local literal = node._literal or node._plural
         local term = node._id and ns.Data.terms[node._id]
         if literal then
             entry, last = literal, i
-        elseif term and (term.category ~= "places" or term.literalInChat)
-            and (direction ~= "en-uk" or not term.englishLookupOnly) then
+        elseif term and (direction ~= "en-uk" or not term.englishLookupOnly) then
             entry, last = term, i
         elseif node._morph then
             local derived = derivedTerm(node, direction)
@@ -101,6 +72,15 @@ function D.literal(document, first, fragments, contextual)
         end
     end
     if entry then return entry, last end
-    local general = generalTerm(tokens[first], direction)
-    if general and (not contextual or agreesWithLexicon(document, first, general)) then return general, first end
+    local token = tokens[first]
+    local single = ns.Data.aliases[direction][token.key]
+    local contextual = single and single._id and ns.Data.terms[single._id]
+    if direction == "en-uk" and contextual and contextual.englishLookupOnly then
+        local raw = document.text:sub(token.first, token.last)
+        local previous = tokens[first - 1]
+        -- Keep a spelled-out acronym or a possible unit out of ordinary word lookup.
+        if (raw == contextual.en and raw:match("%u.*%u")) or (previous and previous.key:match("^%d+$")) then return nil end
+    end
+    local general = ns.Engine.GeneralDictionary.lookup(token.key, direction)
+    if general then return general, first end
 end

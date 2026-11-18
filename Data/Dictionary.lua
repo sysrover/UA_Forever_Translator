@@ -248,6 +248,14 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "і",
                     ["weak"] = true
+                },
+                ["more"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.and_more",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "і не тільки",
+                        ["weak"] = false
+                    }
                 }
             },
             ["aoe"] = {
@@ -310,6 +318,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:goods.arrow" },
                     ["text"] = "стріли",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "goods.arrow",
+                    ["sourceRefs"] = { "ua-forever:goods.arrow" },
+                    ["text"] = "стріли"
                 }
             },
             ["asap"] = {
@@ -350,6 +363,13 @@ ns.Data = {
             ["attempt"] = {
                 ["_id"] = "activity.attempt"
             },
+            ["attempts"] = {
+                ["_plural"] = {
+                    ["id"] = "activity.attempt",
+                    ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+                    ["text"] = "спроби"
+                }
+            },
             ["auction"] = {
                 ["house"] = {
                     ["_id"] = "game.auction_house"
@@ -368,6 +388,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:goods.axe" },
                     ["text"] = "сокири",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "goods.axe",
+                    ["sourceRefs"] = { "ua-forever:goods.axe" },
+                    ["text"] = "сокири"
                 }
             },
             ["b"] = {
@@ -384,6 +409,13 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "сумка",
                     ["weak"] = false
+                }
+            },
+            ["bags"] = {
+                ["_plural"] = {
+                    ["id"] = "game.bag",
+                    ["sourceRefs"] = { "ua-forever:game.bag" },
+                    ["text"] = "сумки"
                 }
             },
             ["bandage"] = {
@@ -698,6 +730,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" },
                     ["text"] = "підсилення",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "game.buff",
+                    ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" },
+                    ["text"] = "підсилення"
                 }
             },
             ["but"] = {
@@ -924,6 +961,32 @@ ns.Data = {
             ["dds"] = {
                 ["_id"] = "role.damage"
             },
+            ["did"] = {
+                ["not"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.do_not",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "не",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["didn't"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.do_not",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "не",
+                    ["weak"] = false
+                }
+            },
+            ["didnt"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.do_not",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "не",
+                    ["weak"] = false
+                }
+            },
             ["ding"] = {
                 ["_id"] = "slang.social.ding"
             },
@@ -954,6 +1017,12 @@ ns.Data = {
             },
             ["do"] = {
                 ["not"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.do_not",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "не",
+                        ["weak"] = false
+                    },
                     ["attack"] = {
                         ["_literal"] = {
                             ["id"] = "literal.do_not_attack",
@@ -972,7 +1041,39 @@ ns.Data = {
                     }
                 }
             },
+            ["does"] = {
+                ["not"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.do_not",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "не",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["doesn't"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.do_not",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "не",
+                    ["weak"] = false
+                }
+            },
+            ["doesnt"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.do_not",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "не",
+                    ["weak"] = false
+                }
+            },
             ["don't"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.do_not",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "не",
+                    ["weak"] = false
+                },
                 ["attack"] = {
                     ["_literal"] = {
                         ["id"] = "literal.do_not_attack",
@@ -991,6 +1092,12 @@ ns.Data = {
                 }
             },
             ["dont"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.do_not",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "не",
+                    ["weak"] = false
+                },
                 ["pull"] = {
                     ["_literal"] = {
                         ["id"] = "literal.do_not_pull",
@@ -1012,7 +1119,12 @@ ns.Data = {
                 }
             },
             ["dps"] = {
-                ["_id"] = "role.damage"
+                ["_id"] = "role.damage",
+                ["_plural"] = {
+                    ["id"] = "role.damage",
+                    ["sourceRefs"] = { "ua-forever:role.damage" },
+                    ["text"] = "DPS"
+                }
             },
             ["dragon"] = {
                 ["kill"] = {
@@ -1397,6 +1509,13 @@ ns.Data = {
                 ["healing"] = {
                     ["potion"] = {
                         ["_id"] = "goods.greater_healing_potion"
+                    },
+                    ["potions"] = {
+                        ["_plural"] = {
+                            ["id"] = "goods.greater_healing_potion",
+                            ["sourceRefs"] = { "ua-forever:item.1710" },
+                            ["text"] = "великі зілля зцілення"
+                        }
                     }
                 }
             },
@@ -1478,7 +1597,12 @@ ns.Data = {
                 ["_id"] = "role.healer"
             },
             ["healers"] = {
-                ["_id"] = "role.healer"
+                ["_id"] = "role.healer",
+                ["_plural"] = {
+                    ["id"] = "role.healer",
+                    ["sourceRefs"] = { "ua-forever:role.healer" },
+                    ["text"] = "цілителі"
+                }
             },
             ["healing"] = {
                 ["over"] = {
@@ -1517,6 +1641,13 @@ ns.Data = {
             },
             ["healthstone"] = {
                 ["_id"] = "goods.healthstone"
+            },
+            ["healthstones"] = {
+                ["_plural"] = {
+                    ["id"] = "goods.healthstone",
+                    ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" },
+                    ["text"] = "камені здоров’я"
+                }
             },
             ["heavy"] = {
                 ["leather"] = {
@@ -2226,6 +2357,13 @@ ns.Data = {
             ["mithril"] = {
                 ["bar"] = {
                     ["_id"] = "goods.mithril_bar"
+                },
+                ["bars"] = {
+                    ["_plural"] = {
+                        ["id"] = "goods.mithril_bar",
+                        ["sourceRefs"] = { "ua-forever:item.3860" },
+                        ["text"] = "злитки мітрилу"
+                    }
                 }
             },
             ["mob"] = {
@@ -2258,6 +2396,13 @@ ns.Data = {
             ["mooncloth"] = {
                 ["bag"] = {
                     ["_id"] = "goods.mooncloth_bag"
+                },
+                ["bags"] = {
+                    ["_plural"] = {
+                        ["id"] = "goods.mooncloth_bag",
+                        ["sourceRefs"] = { "ua-forever:item.14155" },
+                        ["text"] = "сумки з місячної тканини"
+                    }
                 }
             },
             ["move"] = {
@@ -2749,6 +2894,11 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "гравці",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "role.player",
+                    ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+                    ["text"] = "гравці"
                 }
             },
             ["please"] = {
@@ -3192,6 +3342,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:game.shield" },
                     ["text"] = "щити",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "game.shield",
+                    ["sourceRefs"] = { "ua-forever:game.shield" },
+                    ["text"] = "щити"
                 }
             },
             ["shop"] = {
@@ -3432,6 +3587,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:goods.sword" },
                     ["text"] = "мечі",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "goods.sword",
+                    ["sourceRefs"] = { "ua-forever:goods.sword" },
+                    ["text"] = "мечі"
                 }
             },
             ["tailoring"] = {
@@ -3450,7 +3610,12 @@ ns.Data = {
                 ["_id"] = "role.tank"
             },
             ["tanks"] = {
-                ["_id"] = "role.tank"
+                ["_id"] = "role.tank",
+                ["_plural"] = {
+                    ["id"] = "role.tank",
+                    ["sourceRefs"] = { "ua-forever:role.tank" },
+                    ["text"] = "танки"
+                }
             },
             ["target"] = {
                 ["_literal"] = {
@@ -3602,6 +3767,16 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "вони",
                     ["weak"] = true
+                }
+            },
+            ["this"] = {
+                ["morning"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.this_morning",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "сьогодні вранці",
+                        ["weak"] = false
+                    }
                 }
             },
             ["threat"] = {
@@ -3992,6 +4167,24 @@ ns.Data = {
             ["whisper"] = {
                 ["me"] = {
                     ["_id"] = "slang.social.pst"
+                }
+            },
+            ["who"] = {
+                ["is"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.who_is",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "хто",
+                        ["weak"] = false
+                    }
+                }
+            },
+            ["who's"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.who_is",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "хто",
+                    ["weak"] = false
                 }
             },
             ["why"] = {
@@ -10061,6 +10254,16 @@ ns.Data = {
                     }
                 }
             },
+            ["сьогодні"] = {
+                ["вранці"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.this_morning",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "this morning",
+                        ["weak"] = false
+                    }
+                }
+            },
             ["та"] = {
                 ["_literal"] = {
                     ["id"] = "literal.and",
@@ -10918,6 +11121,16 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "and",
                     ["weak"] = true
+                },
+                ["не"] = {
+                    ["тільки"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.and_more",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "and more",
+                            ["weak"] = false
+                        }
+                    }
                 }
             },
             ["ід"] = {
@@ -33096,7 +33309,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "fd16734bfbbe8d315d6261a71fcb77476e38bfcf1d8b78bdbd2ecedfe0ef8125"
+        ["version"] = "04a170a6940067589f01f68aa2f12aebbb3c0dae3edbc43ed135286db8d38812"
     },
     ["rules"] = {
         ["en-uk"] = {

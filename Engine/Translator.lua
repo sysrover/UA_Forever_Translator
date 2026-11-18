@@ -127,8 +127,7 @@ local function compute(text, direction)
             coverage = {complete=true, pipeline=general and "grammar" or (tree and "structural" or "legacy")}}
     end
     local chunks, matched, unknown, refs, refSeen, i, cursor = {}, {}, {}, {}, {}, 1, 1
-    local foundContent, hasMatch = false, false
-    local contextual = ns.Linguistics and (#tokens >= 4 or ns.Engine.ClauseAnalysis.hasClauseCue(document))
+    local reason, reasonEnd
     while i <= #tokens do
         local token = tokens[i]
         local fragment = fragments and fragments[i]
@@ -136,22 +135,13 @@ local function compute(text, direction)
         if fragment and fragment.preserve then
             preserve, fragment = {last=fragment.last, reason=fragment.preserve}, nil
         end
-        if not fragment and not preserve and ns.Engine.ClauseAnalysis.isNegation(token.key) then
-            local stop = i
-            while stop < #tokens and not tokens[stop + 1].key:match("^[.!?,;]$")
-                and not (fragments and fragments[stop + 1]) do stop = stop + 1 end
-            preserve = {last=stop, reason="unresolved-negation"}
-        end
+        if preserve then reason, reasonEnd = preserve.reason, preserve.last end
         local term, last, replacement
         if fragment then
             last, replacement = fragment.last, fragment.text
             addClause(matched, refs, refSeen, fragment.rule, fragment.slots)
-        elseif preserve then
-            last = preserve.last
-            replacement = text:sub(token.first, tokens[last].last)
-            unknown[#unknown + 1] = {first=token.first, last=tokens[last].last, reason=preserve.reason}
         elseif not token.protected then
-            term, last = ns.Engine.Dictionary.literal(document, i, fragments, contextual)
+            term, last = ns.Engine.Dictionary.literal(document, i, fragments)
             if term then
                 replacement = term.text or (direction == "en-uk" and term.uk or term.en)
                 matched[#matched + 1] = term.id
@@ -159,19 +149,16 @@ local function compute(text, direction)
             end
         end
         if replacement then
-            hasMatch = true
             chunks[#chunks + 1] = text:sub(cursor, token.first - 1)
             chunks[#chunks + 1] = replacement
-            if not foundContent and (not term or not term.weak) and N.key(replacement) ~= N.key(text:sub(token.first, tokens[last].last)) then
-                foundContent = true
-            end
             cursor, i = tokens[last].last + 1, last + 1
         else
-            unknown[#unknown + 1] = {first = token.first, last = token.last, protected = token.protected or false}
+            unknown[#unknown + 1] = {first = token.first, last = token.last, protected = token.protected or false,
+                reason = reasonEnd and i <= reasonEnd and reason or nil}
             i = i + 1
         end
     end
-    if not hasMatch or (direction == "en-uk" and not foundContent) then return unchanged(text, "unsupported") end
+    if #chunks == 0 then return unchanged(text, "unsupported") end
     chunks[#chunks + 1] = text:sub(cursor)
     local translated = table.concat(chunks)
     if translated == text or N.key(translated) == N.key(text) then return unchanged(text, "identical") end

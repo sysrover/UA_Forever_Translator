@@ -1038,29 +1038,3 @@ function A.parse(document, first, limit)
     return {trees=trees, joins=joins, prefix=prefix}
 end
 
-function A.isAuxiliary(key)
-    local wh = englishQuestions[key]
-    return auxiliary[key] or copula[key] or negativeCopula[key] or contracted[key] or wh and wh.copula
-end
-
-function A.hasClauseCue(document)
-    local tokens = document.tokens
-    if #tokens < 2 then return false end
-    local first = tokens[1].key
-    local english = document.direction == "en-uk"
-    if (english and (first == "any" or englishQuestions[first])) or (not english and ukrainianQuestions[first]) then return true end
-    for index = 1, #tokens - 1 do
-        local key = tokens[index].key
-        if contracted[key] or (index > 1 and A.isAuxiliary(key)) then
-            return true
-        end
-    end
-    local key = tokens[#tokens].key
-    return auxiliary[key] ~= nil or negativeCopula[key] ~= nil
-end
-
-function A.isNegation(key)
-    local aux = auxiliary[key]
-    return key == "not" or key == "never" or key == "dont" or key == "не" or key == "ніколи"
-        or negativeCopula[key] ~= nil or (aux and aux.negative)
-end
