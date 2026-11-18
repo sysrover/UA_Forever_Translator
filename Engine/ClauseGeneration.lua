@@ -56,6 +56,7 @@ local function adjective(modifier, english, case, number, gender, animacy)
         local prefix = intensity == "more" and "more " or intensity == "very" and "very " or ""
         return prefix .. base
     end
+    if entry.lexeme.frame and entry.lexeme.frame.invariable then return entry.lexeme.uk end
     if not gender and number ~= "plural" then return nil end
     local requestedCase = case
     if case == "accusative" and number == "plural" then
@@ -224,7 +225,7 @@ local function ukrainianVerb(tree)
     elseif tree.tense == "past" then
         if number == "singular" and not gender then return nil end
         local features = {tense="past", mood="indicative", number=number, gender=number == "singular" and gender or nil}
-        local completed = tree.aspect == "perfect" and frame.completed
+        local completed = frame.pastLemma or (tree.aspect == "perfect" and frame.completed)
         if completed then form = L.inflectLemma(completed, "verb", features)
         else form = L.inflect(entry, features) end
     elseif tree.tense == "future" and entry.head.aspect ~= "perfective" then

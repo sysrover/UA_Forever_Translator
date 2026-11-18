@@ -54,6 +54,9 @@ local function verb(document, index, limit, subject, base, imperative, sense, as
     end
     local selected = L.choose(document, headword or index, "verb", nil, sense, function(candidate)
         local f = candidate.form
+        if aspect == "resultative" then
+            return f.verbalForm == "participle" and f.tense == "past" and lexemeFrame(candidate).resultative
+        end
         if aspect then return f.verbalForm == "participle" and f.tense == aspect end
         if f.verbalForm then return false end
         if english then
@@ -86,6 +89,15 @@ local function adverbAt(document, first, limit)
     if not rows or last > limit then return nil end
     local adverb = ns.Linguistics.grammar.adverbs[rows[1]]
     if not adverb.context then return adverb, last + 1 end
+end
+
+local function explicitTime(tree)
+    if tree.leadingAdverb and tree.leadingAdverb.time then return tree.leadingAdverb.time end
+    if tree.adverbs then
+        for _, adverb in ipairs(tree.adverbs) do
+            if adverb.time then return adverb.time end
+        end
+    end
 end
 
 local function boundary(document, index, limit)
@@ -170,7 +182,8 @@ local function complements(document, tree, index, limit, depth)
             if object then tree.recipient, tree.object, index = recipient, object, last end
         end
     end
-    if not tree.object and not frame.motion and (english or not frame.objectPreposition or preposition) then
+    if not tree.object and not frame.motion and not frame.intransitive
+        and (english or not frame.objectPreposition or preposition) then
         local object, nextIndex = P.coordinated(document, index, limit, objectCase)
         if object then tree.object, index = object, nextIndex
         elseif preposition then return nil end
@@ -364,10 +377,15 @@ simple = function(document, first, limit, previous, depth)
         local adverb, afterAdverb = adverbAt(document, nextVerb, limit)
         if adverb then nextVerb = afterAdverb end
         local candidate, afterVerb = verb(document, nextVerb, limit, subject, false, false, nil, aspect)
+        local resultative
+        if not candidate and copula[current] then
+            candidate, afterVerb = verb(document, nextVerb, limit, subject, false, false, nil, "resultative")
+            resultative = candidate ~= nil
+        end
         if candidate then
             tree.verb, tree.negative = candidate, negative or contractedNegative ~= nil
-            tree.tense = have[current] and "past" or copula[current]
-            tree.aspect = have[current] and "perfect" or "continuous"
+            tree.tense = (have[current] or resultative) and "past" or copula[current]
+            tree.aspect = resultative and "resultative" or have[current] and "perfect" or "continuous"
             if adverb then tree.leadingAdverb = adverb end
             local finish = complements(document, tree, afterVerb, limit, depth)
             if finish then return tree, finish end
@@ -449,15 +467,12 @@ simple = function(document, first, limit, previous, depth)
     tree.inherited = inheritedSubject ~= nil and inheritedSubject ~= false
     tree.tense = tree.tense or tree.verb.form.tense or "present"
     local finish = complements(document, tree, afterVerb, limit, depth)
-    if finish then return tree, finish end
-end
-
-local function explicitTime(tree)
-    if tree.leadingAdverb and tree.leadingAdverb.time then return tree.leadingAdverb.time end
-    if tree.adverbs then
-        for _, adverb in ipairs(tree.adverbs) do
-            if adverb.time then return adverb.time end
+    if finish then
+        if english and not aux and not tree.imperative and tree.verb.form.mood == "base"
+            and lexemeFrame(tree.verb).unmarkedPast and explicitTime(tree) == "past" then
+            tree.tense = "past"
         end
+        return tree, finish
     end
 end
 

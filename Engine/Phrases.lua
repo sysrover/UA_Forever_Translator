@@ -145,7 +145,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple)
     local article = document.direction == "en-uk" and articles[key]
     local demonstrative = demonstratives[key]
     local ownerIndex, owner = index
-    if not article and not demonstrative and not emphatic and not locationOnly and index <= limit then
+    if not article and not demonstrative and not emphatic and index <= limit then
         owner = L.choose(document, index, "pron", nil, nil, possessive)
     end
     if article or demonstrative then index = index + 1 end
@@ -177,7 +177,10 @@ function P.noun(document, first, limit, case, locationOnly, count, simple)
         adjectives[#adjectives + 1] = {entry=adjective, intensity=#adjectives == 0 and intensity or nil}
         index = index + 1
     end
-    if not best then return nil end
+    if not best then
+        if owner then return nounHead(document, first, limit, case, locationOnly) end
+        return nil
+    end
     local en = document.direction == "en-uk"
     if owner then
         if best.raw or best.pronoun or quantity then return nil end
@@ -192,8 +195,11 @@ function P.noun(document, first, limit, case, locationOnly, count, simple)
             end
         end
         if not en then
-            owner = L.choose(document, ownerIndex, "pron", {case=case, number=best.number,
-                gender=best.number ~= "plural" and best.gender or nil}, nil, possessive)
+            local requested = {case=case, number=best.number, gender=best.number ~= "plural" and best.gender or nil}
+            owner = L.choose(document, ownerIndex, "pron", nil, nil, function(candidate)
+                return possessive(candidate)
+                    and (candidate.lexeme.frame.invariable or L.matches(candidate.form, requested))
+            end)
             if not owner then return nil end
         end
         if best.nominalObject then best.nominalObject.possessor = owner
