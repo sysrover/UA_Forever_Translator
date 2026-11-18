@@ -11,8 +11,7 @@ local requiredNumber = { creaturePlural = "plural" }
 local dashJoins = { ["—"] = " — ", ["–"] = " – " }
 local sentenceJoins = { ["."] = ". ", ["!"] = "! ", ["?"] = "? " }
 local alternatives = { ["or"] = true, ["або"] = true, ["чи"] = true }
-local sharedPredicateJoins = {and=true, ["or"]=true, then=true, ["і"]=true, ["й"]=true,
-    ["та"]=true, ["або"]=true, ["чи"]=true, ["потім"]=true, ["тоді"]=true}
+local sharedPredicateJoins = {["and"]=true, ["or"]=true, ["і"]=true, ["й"]=true, ["та"]=true, ["або"]=true, ["чи"]=true}
 local function joinAt(tokens, index, joins)
     local current = tokens[index]
     local wordJoin = joins[current.key] or dashJoins[current.key]

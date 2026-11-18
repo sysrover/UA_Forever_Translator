@@ -52,6 +52,16 @@ ns.Data = {
                         }
                     }
                 },
+                ["bit"] = {
+                    ["of"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.a-bit-of",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "трохи",
+                            ["weak"] = true
+                        }
+                    }
+                },
                 ["dwarf"] = {
                     ["_morph"] = {
                         ["race.dwarf.base.singular"] = {
@@ -173,6 +183,16 @@ ns.Data = {
             },
             ["aggro"] = {
                 ["_id"] = "game.aggro"
+            },
+            ["agi"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.agility"
+                }
+            },
+            ["agility"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.agility"
+                }
             },
             ["ah"] = {
                 ["_id"] = "game.auction_house"
@@ -524,6 +544,9 @@ ns.Data = {
             ["boe"] = {
                 ["_id"] = "slang.trade.boe"
             },
+            ["boots"] = {
+                ["_id"] = "equipment.boots"
+            },
             ["bop"] = {
                 ["_id"] = "slang.trade.bop",
                 ["gear"] = {
@@ -695,6 +718,14 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "можу",
                     ["weak"] = false
+                },
+                ["you"] = {
+                    ["_literal"] = {
+                        ["id"] = "literal.can-you",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "чи можеш ти",
+                        ["weak"] = true
+                    }
                 }
             },
             ["can't"] = {
@@ -804,6 +835,20 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["could"] = {
+                ["be"] = {
+                    ["the"] = {
+                        ["answer"] = {
+                            ["_literal"] = {
+                                ["id"] = "literal.might-be-the-answer",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                                ["text"] = "може бути розв'язанням",
+                                ["weak"] = false
+                            }
+                        }
+                    }
+                }
+            },
             ["craft"] = {
                 ["_literal"] = {
                     ["id"] = "literal.craft",
@@ -826,6 +871,9 @@ ns.Data = {
                 }
             },
             ["damage"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.damage"
+                },
                 ["dealer"] = {
                     ["_id"] = "role.damage"
                 },
@@ -869,6 +917,11 @@ ns.Data = {
             },
             ["dm"] = {
                 ["_id"] = "place.the_deadmines"
+            },
+            ["dmg"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.damage"
+                }
             },
             ["dnd"] = {
                 ["_id"] = "slang.social.dnd"
@@ -1464,6 +1517,14 @@ ns.Data = {
             ["him"] = {
                 ["_id"] = "recipient.him"
             },
+            ["hogger"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.npc.hogger",
+                    ["sourceRefs"] = { "ua-forever:npc.448" },
+                    ["text"] = "Кнурило",
+                    ["weak"] = false
+                }
+            },
             ["hol"] = {
                 ["_byCategory"] = {
                     ["places"] = "place.halls_of_lightning"
@@ -2009,6 +2070,14 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["materials"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.materials",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "матеріали",
+                    ["weak"] = false
+                }
+            },
             ["mats"] = {
                 ["_id"] = "slang.trade.mats"
             },
@@ -2033,6 +2102,20 @@ ns.Data = {
             },
             ["member"] = {
                 ["_id"] = "game.member"
+            },
+            ["might"] = {
+                ["be"] = {
+                    ["the"] = {
+                        ["answer"] = {
+                            ["_literal"] = {
+                                ["id"] = "literal.might-be-the-answer",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                                ["text"] = "може бути розв'язанням",
+                                ["weak"] = false
+                            }
+                        }
+                    }
+                }
             },
             ["mining"] = {
                 ["_id"] = "profession.mining"
@@ -3019,7 +3102,21 @@ ns.Data = {
                     ["weak"] = true
                 }
             },
+            ["somethig"] = {
+                ["_byCategory"] = {
+                    ["enhancements"] = "enhancement.unspecified"
+                },
+                ["_literal"] = {
+                    ["id"] = "literal.something",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "щось",
+                    ["weak"] = false
+                }
+            },
             ["something"] = {
+                ["_byCategory"] = {
+                    ["enhancements"] = "enhancement.unspecified"
+                },
                 ["_literal"] = {
                     ["id"] = "literal.something",
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -3300,6 +3397,22 @@ ns.Data = {
                             }
                         }
                     }
+                },
+                ["tip"] = {
+                    ["is"] = {
+                        ["up"] = {
+                            ["to"] = {
+                                ["you"] = {
+                                    ["_literal"] = {
+                                        ["id"] = "literal.tip-up-to-you",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                                        ["text"] = "чайові на твій розсуд",
+                                        ["weak"] = false
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             },
             ["them"] = {
@@ -3357,6 +3470,22 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "доки",
                     ["weak"] = false
+                }
+            },
+            ["tip"] = {
+                ["is"] = {
+                    ["up"] = {
+                        ["to"] = {
+                            ["you"] = {
+                                ["_literal"] = {
+                                    ["id"] = "literal.tip-up-to-you",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                                    ["text"] = "чайові на твій розсуд",
+                                    ["weak"] = false
+                                }
+                            }
+                        }
+                    }
                 }
             },
             ["tips"] = {
@@ -3840,6 +3969,26 @@ ns.Data = {
                             ["race.gnome.augmentative.plural"] = {
                                 ["nominative"] = true
                             }
+                        }
+                    }
+                },
+                ["just"] = {
+                    ["need"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.you-only-need",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "тобі треба лише",
+                            ["weak"] = false
+                        }
+                    }
+                },
+                ["only"] = {
+                    ["need"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.you-only-need",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "тобі треба лише",
+                            ["weak"] = false
                         }
                     }
                 }
@@ -6445,6 +6594,14 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["кнурило"] = {
+                ["_literal"] = {
+                    ["id"] = "literal.npc.hogger",
+                    ["sourceRefs"] = { "ua-forever:npc.448" },
+                    ["text"] = "Hogger",
+                    ["weak"] = false
+                }
+            },
             ["ковальство"] = {
                 ["_id"] = "profession.blacksmithing"
             },
@@ -6723,7 +6880,13 @@ ns.Data = {
                 }
             },
             ["матеріали"] = {
-                ["_id"] = "slang.trade.mats"
+                ["_id"] = "slang.trade.mats",
+                ["_literal"] = {
+                    ["id"] = "literal.materials",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "materials",
+                    ["weak"] = false
+                }
             },
             ["мати"] = {
                 ["для"] = {
@@ -6873,6 +7036,9 @@ ns.Data = {
             ["меча"] = {
                 ["_id"] = "goods.sword"
             },
+            ["мечах"] = {
+                ["_id"] = "goods.sword"
+            },
             ["мечі"] = {
                 ["_id"] = "goods.sword",
                 ["_literal"] = {
@@ -6938,6 +7104,18 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "mobs",
                     ["weak"] = false
+                }
+            },
+            ["може"] = {
+                ["бути"] = {
+                    ["розв'язанням"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.might-be-the-answer",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "might be the answer",
+                            ["weak"] = false
+                        }
+                    }
                 }
             },
             ["можемо"] = {
@@ -9293,6 +9471,16 @@ ns.Data = {
                     ["_id"] = "slang.combat.procs"
                 }
             },
+            ["спритності"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.agility"
+                }
+            },
+            ["спритність"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.agility"
+                }
+            },
             ["срібла"] = {
                 ["_literal"] = {
                     ["id"] = "literal.silver",
@@ -9617,6 +9805,16 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "you",
                     ["weak"] = true
+                },
+                ["треба"] = {
+                    ["лише"] = {
+                        ["_literal"] = {
+                            ["id"] = "literal.you-only-need",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" },
+                            ["text"] = "you only need",
+                            ["weak"] = false
+                        }
+                    }
                 }
             },
             ["тоді"] = {
@@ -9911,6 +10109,20 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["чайові"] = {
+                ["на"] = {
+                    ["твій"] = {
+                        ["розсуд"] = {
+                            ["_literal"] = {
+                                ["id"] = "literal.tip-up-to-you",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                                ["text"] = "the tip is up to you",
+                                ["weak"] = false
+                            }
+                        }
+                    }
+                }
+            },
             ["час"] = {
                 ["відновлення"] = {
                     ["_id"] = "slang.combat.cd"
@@ -9952,6 +10164,12 @@ ns.Data = {
                     ["text"] = "or",
                     ["weak"] = true
                 }
+            },
+            ["чоботи"] = {
+                ["_id"] = "equipment.boots"
+            },
+            ["чоботях"] = {
+                ["_id"] = "equipment.boots"
             },
             ["чому"] = {
                 ["_literal"] = {
@@ -10018,6 +10236,16 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "quickly",
                     ["weak"] = false
+                }
+            },
+            ["шкода"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.damage"
+                }
+            },
+            ["шкоди"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.damage"
                 }
             },
             ["шкірництво"] = {
@@ -10144,6 +10372,9 @@ ns.Data = {
                 }
             },
             ["щось"] = {
+                ["_byCategory"] = {
+                    ["enhancements"] = "enhancement.unspecified"
+                },
                 ["_literal"] = {
                     ["id"] = "literal.something",
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -12564,6 +12795,30 @@ ns.Data = {
                         }
                     }
                 },
+                ["agi"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.agility",
+                            ["lemma"] = "agility",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.agility",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["agility"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.agility",
+                            ["lemma"] = "agility",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.agility",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["ah"] = {
                     ["_analyses"] = {
                         {
@@ -13275,6 +13530,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["boots"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "equipment.boots",
+                            ["lemma"] = "boots",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.boots",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["bop"] = {
                     ["_analyses"] = {
                         {
@@ -13626,6 +13895,16 @@ ns.Data = {
                     }
                 },
                 ["damage"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.damage",
+                            ["lemma"] = "damage",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.damage",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    },
                     ["dealer"] = {
                         ["_analyses"] = {
                             {
@@ -13751,6 +14030,18 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.the_deadmines",
                             ["sourceRefs"] = { "ua-forever:place.the_deadmines" }
+                        }
+                    }
+                },
+                ["dmg"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.damage",
+                            ["lemma"] = "damage",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.damage",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
                         }
                     }
                 },
@@ -17098,6 +17389,30 @@ ns.Data = {
                                 ["sense"] = "game.water",
                                 ["sourceRefs"] = { "ua-forever:game.water" }
                             }
+                        }
+                    }
+                },
+                ["somethig"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "enhancement.unspecified",
+                            ["lemma"] = "something",
+                            ["pos"] = "noun",
+                            ["sense"] = "enhancement.unspecified",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["something"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "enhancement.unspecified",
+                            ["lemma"] = "something",
+                            ["pos"] = "noun",
+                            ["sense"] = "enhancement.unspecified",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
                         }
                     }
                 },
@@ -22814,12 +23129,38 @@ ns.Data = {
                         }
                     }
                 },
+                ["мечах"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "goods.sword",
+                            ["lemma"] = "Меч",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.sword",
+                            ["sourceRefs"] = { "ua-forever:goods.sword" }
+                        }
+                    }
+                },
                 ["мечі"] = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
                                 ["case"] = "accusative",
                                 ["number"] = "plural"
+                            },
+                            ["id"] = "goods.sword",
+                            ["lemma"] = "Меч",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.sword",
+                            ["sourceRefs"] = { "ua-forever:goods.sword" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular"
                             },
                             ["id"] = "goods.sword",
                             ["lemma"] = "Меч",
@@ -27207,6 +27548,33 @@ ns.Data = {
                         }
                     }
                 },
+                ["спритності"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "stat.agility",
+                            ["lemma"] = "Спритність",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.agility",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["спритність"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.agility",
+                            ["lemma"] = "Спритність",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.agility",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["стає"] = {
                     ["персональним"] = {
                         ["при"] = {
@@ -28097,6 +28465,46 @@ ns.Data = {
                         }
                     }
                 },
+                ["чоботи"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "equipment.boots",
+                            ["lemma"] = "чоботи",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.boots",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.boots",
+                            ["lemma"] = "чоботи",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.boots",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["чоботях"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.boots",
+                            ["lemma"] = "чоботи",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.boots",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["чорноводні"] = {
                     ["глибини"] = {
                         ["_analyses"] = {
@@ -28220,6 +28628,33 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "class.shaman",
                             ["sourceRefs"] = { "ua-forever:class.shaman" }
+                        }
+                    }
+                },
+                ["шкода"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.damage",
+                            ["lemma"] = "Шкода",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.damage",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["шкоди"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "stat.damage",
+                            ["lemma"] = "Шкода",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.damage",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
                         }
                     }
                 },
@@ -28411,6 +28846,18 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "game.shield",
                             ["sourceRefs"] = { "ua-forever:game.shield" }
+                        }
+                    }
+                },
+                ["щось"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "enhancement.unspecified",
+                            ["lemma"] = "щось",
+                            ["pos"] = "noun",
+                            ["sense"] = "enhancement.unspecified",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
                         }
                     }
                 },
@@ -28686,6 +29133,24 @@ ns.Data = {
                     ["canonical"] = "Воїн",
                     ["genitivePlural"] = "воїнів",
                     ["genitiveSingular"] = "воїна"
+                }
+            },
+            ["enhancement.unspecified"] = {
+                ["en"] = {
+                    ["canonical"] = "something"
+                },
+                ["uk"] = {
+                    ["canonical"] = "щось"
+                }
+            },
+            ["equipment.boots"] = {
+                ["en"] = {
+                    ["canonical"] = "boots"
+                },
+                ["uk"] = {
+                    ["accusative"] = "чоботи",
+                    ["canonical"] = "чоботи",
+                    ["locative"] = "чоботях"
                 }
             },
             ["equipment.bracers"] = {
@@ -28980,7 +29445,9 @@ ns.Data = {
                     ["accusative"] = "меч",
                     ["accusativePlural"] = "мечі",
                     ["canonical"] = "Меч",
-                    ["genitivePlural"] = "мечів"
+                    ["genitivePlural"] = "мечів",
+                    ["locative"] = "мечі",
+                    ["locativePlural"] = "мечах"
                 }
             },
             ["place.alterac_valley"] = {
@@ -30621,6 +31088,15 @@ ns.Data = {
                     ["canonical"] = "Твої матеріали"
                 }
             },
+            ["stat.agility"] = {
+                ["en"] = {
+                    ["canonical"] = "agility"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Спритність",
+                    ["genitivePlural"] = "спритності"
+                }
+            },
             ["stat.all"] = {
                 ["en"] = {
                     ["canonical"] = "stats"
@@ -30628,6 +31104,15 @@ ns.Data = {
                 ["uk"] = {
                     ["canonical"] = "Характеристики",
                     ["genitivePlural"] = "характеристик"
+                }
+            },
+            ["stat.damage"] = {
+                ["en"] = {
+                    ["canonical"] = "damage"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Шкода",
+                    ["genitivePlural"] = "шкоди"
                 }
             },
             ["stat.stamina"] = {
@@ -30652,7 +31137,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 198,
+        ["concepts"] = 202,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 76,
@@ -30671,7 +31156,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "43da329ad4ee90b489ff586ae042d4959874c0baf37541242af0e08f0870677e"
+        ["version"] = "6473a03bff6b6806ec1cdf145d7f8710d26c6003f1c970637aa23c6d0249595e"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -39490,6 +39975,43 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Воїн"
         },
+        ["enhancement.unspecified"] = {
+            ["aliases"] = {
+                ["en"] = { "somethig" }
+            },
+            ["category"] = "enhancements",
+            ["contextOnly"] = true,
+            ["en"] = "something",
+            ["id"] = "enhancement.unspecified",
+            ["provenance"] = {
+                ["context"] = "unspecified enhancement",
+                ["key"] = "something",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "щось"
+        },
+        ["equipment.boots"] = {
+            ["category"] = "equipment",
+            ["en"] = "boots",
+            ["features"] = {
+                ["number"] = "plural"
+            },
+            ["forms"] = {
+                ["accusative"] = "чоботи",
+                ["locative"] = "чоботях"
+            },
+            ["id"] = "equipment.boots",
+            ["provenance"] = {
+                ["context"] = "footwear",
+                ["key"] = "boots",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "чоботи"
+        },
         ["equipment.bracers"] = {
             ["aliases"] = {
                 ["en"] = {},
@@ -40372,7 +40894,9 @@ ns.Data = {
             ["forms"] = {
                 ["accusative"] = "меч",
                 ["accusativePlural"] = "мечі",
-                ["genitivePlural"] = "мечів"
+                ["genitivePlural"] = "мечів",
+                ["locative"] = "мечі",
+                ["locativePlural"] = "мечах"
             },
             ["id"] = "goods.sword",
             ["priority"] = 100,
@@ -45003,6 +45527,26 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Твої матеріали"
         },
+        ["stat.agility"] = {
+            ["aliases"] = {
+                ["en"] = { "agi" }
+            },
+            ["category"] = "stats",
+            ["contextOnly"] = true,
+            ["en"] = "agility",
+            ["forms"] = {
+                ["genitivePlural"] = "спритності"
+            },
+            ["id"] = "stat.agility",
+            ["provenance"] = {
+                ["context"] = "equipment stat",
+                ["key"] = "agility",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "Спритність"
+        },
         ["stat.all"] = {
             ["aliases"] = {
                 ["en"] = {},
@@ -45029,6 +45573,26 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:stat.all", "project-authored:apertium-pipeline-1" },
             ["status"] = "approved",
             ["uk"] = "Характеристики"
+        },
+        ["stat.damage"] = {
+            ["aliases"] = {
+                ["en"] = { "dmg" }
+            },
+            ["category"] = "stats",
+            ["contextOnly"] = true,
+            ["en"] = "damage",
+            ["forms"] = {
+                ["genitivePlural"] = "шкоди"
+            },
+            ["id"] = "stat.damage",
+            ["provenance"] = {
+                ["context"] = "equipment stat",
+                ["key"] = "damage",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "Шкода"
         },
         ["stat.stamina"] = {
             ["aliases"] = {

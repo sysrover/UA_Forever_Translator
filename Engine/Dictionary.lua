@@ -50,19 +50,30 @@ function D.lookup(text, direction)
     if #tokens == 1 then return generalTerm(tokens[1], direction) end
 end
 
-function D.literal(tokens, first, direction, fragments, contextual)
+local function agreesWithLexicon(document, first, term)
+    local language = document.direction == "en-uk" and "uk" or "en"
+    local gloss = ns.Engine.Normalize.word(term[language])
+    local analyses = ns.Engine.Lexicon.at(document, first)
+    if analyses.truncated or #analyses == 0 then return false end
+    local pos = analyses[1].lexeme.pos
+    if pos ~= "noun" and pos ~= "verb" and pos ~= "adj" then return false end
+    for _, candidate in ipairs(analyses) do
+        if candidate.lexeme.pos ~= pos or ns.Engine.Normalize.word(candidate.lexeme[language]) ~= gloss then return false end
+    end
+    return true
+end
+
+function D.literal(document, first, fragments, contextual)
+    local tokens, direction, preserved = document.tokens, document.direction, document.preserve
     local node = ns.Data.aliases[direction]
     local entry, last
     for i = first, math.min(#tokens, first + 11) do
-        if tokens[i].protected or (fragments and i > first and fragments[i]) then break end
+        if tokens[i].protected or (i > first and ((fragments and fragments[i]) or (preserved and preserved[i]))) then break end
         node = node[tokens[i].key]
         if not node then break end
         local literal = node._literal
         local term = node._id and ns.Data.terms[node._id]
-        if contextual and i == first then
-            -- A lone gloss in a failed clause has no established grammatical
-            -- role. Longer approved expressions still work as partial hints.
-        elseif literal then
+        if literal then
             entry, last = literal, i
         elseif term and (term.category ~= "places" or term.literalInChat)
             and (direction ~= "en-uk" or not term.englishLookupOnly) then
@@ -73,7 +84,6 @@ function D.literal(tokens, first, direction, fragments, contextual)
         end
     end
     if entry then return entry, last end
-    if contextual then return nil end
     local general = generalTerm(tokens[first], direction)
-    if general then return general, first end
+    if general and (not contextual or agreesWithLexicon(document, first, general)) then return general, first end
 end

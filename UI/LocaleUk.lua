@@ -39,6 +39,5 @@ ns.L = {
     translationDestination = "Увімкни одне або обидва місця виводу. Команда /uaft tab відкриває вкладку UA.",
     channels = {whisper="Приватні повідомлення", party="Група та група підземелля", raid="Рейд", guild="Гільдія та офіцери", say="Сказати й крикнути", channel="Публічні канали (загальний, торгівля тощо)"},
     chatSources = {whisper="Пошепки", party="Група", raid="Рейд", guild="Гільдія", say="Поруч", channel="Канал"},
-    translationLabel = "[УКР] ", partialLabel = "[УКР · частково] ",
     unsupported = "Непідтримуваний формат тексту.", close = "Закрити",
 }

@@ -151,7 +151,7 @@ local function compute(text, direction)
             replacement = text:sub(token.first, tokens[last].last)
             unknown[#unknown + 1] = {first=token.first, last=tokens[last].last, reason=preserve.reason}
         elseif not token.protected then
-            term, last = ns.Engine.Dictionary.literal(tokens, i, direction, fragments, contextual)
+            term, last = ns.Engine.Dictionary.literal(document, i, fragments, contextual)
             if term then
                 replacement = term.text or (direction == "en-uk" and term.uk or term.en)
                 matched[#matched + 1] = term.id

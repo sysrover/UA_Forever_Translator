@@ -28,8 +28,8 @@ function State:any(...)
     end
     return false
 end
-function State:noun(name, category)
-    local candidate, reason = M.select(self.document, self.i, category, self.limit)
+function State:noun(name, category, case)
+    local candidate, reason = M.select(self.document, self.i, category, self.limit, case)
     if reason == "ambiguous" then self.ambiguous = true end
     if not candidate then return false end
     self.slots[name] = {term=candidate.term, analysis=candidate,
@@ -45,6 +45,23 @@ function State:count(slot)
     end
     return false
 end
+local function compactCountedTerm(token, category)
+    if not token or token.protected then return end
+    local amount, alias = token.key:match("^(%d%d?%d?)([a-z]+)$")
+    if not amount or tonumber(amount) == 0 then return end
+    local index = ns.Data.linguistics and ns.Data.linguistics.analysis["en-uk"]
+    local application = index and index[alias]
+    if not application then return end
+    local selected
+    for _, candidate in ipairs(application._analyses or {}) do
+        local term = ns.Data.terms[candidate.id]
+        if term.category == category then
+            if selected and selected ~= term then return end
+            selected = term
+        end
+    end
+    if selected then return selected, amount end
+end
 function State:role(name, countKey)
     local start, count = self.i, self.slots[countKey]
     local english = self.document.direction == "en-uk"
@@ -52,25 +69,13 @@ function State:role(name, countKey)
     if english and not self.slots[countKey] then self:any("a", "an") end
     if self:noun(name, "roles") then return true end
     local token = self.i <= self.limit and self.tokens[self.i]
-    if english and token and not token.protected and not self.slots[countKey] then
-        local amount, alias = token.key:match("^(%d%d?%d?)([a-z]+)$")
-        local index = ns.Data.linguistics and ns.Data.linguistics.analysis["en-uk"]
-        local application = alias and index and index[alias]
-        if amount and tonumber(amount) > 0 and application then
-            local selected
-            for _, candidate in ipairs(application._analyses or {}) do
-                local term = ns.Data.terms[candidate.id]
-                if term.category == "roles" then
-                    if selected and selected ~= term then selected = nil; break end
-                    selected = term
-                end
-            end
-            if selected then
-                self.slots[name] = {term=selected}
-                self.slots[countKey] = {raw=amount}
-                self.i = self.i + 1
-                return true
-            end
+    if english and not self.slots[countKey] then
+        local term, amount = compactCountedTerm(token, "roles")
+        if term then
+            self.slots[name] = {term=term}
+            self.slots[countKey] = {raw=amount}
+            self.i = self.i + 1
+            return true
         end
     end
     self.i, self.slots[countKey] = start, count
@@ -195,7 +200,7 @@ local function recruit(p, direction)
             role = true
             for n = 2, 4 do
                 local start = p.i
-                local join = p:any("and", "&", "та", "і", "й") and "and" or p:any("or", "/", "або") and "or"
+                local join = p:any("and", "&", "+", "та", "і", "й") and "and" or p:any("or", "/", "або") and "or"
                 if not join then p:word(",") end
                 local suffix = tostring(n)
                 if p:role("role" .. suffix, "count" .. suffix) and (join or p.slots["count" .. suffix]) then
@@ -250,21 +255,60 @@ local function recruit(p, direction)
         run=run, summon=summon})
 end
 
+local function enhancementItem(p, suffix, english, allowOption)
+    local count, stat, equipment = "count" .. suffix, "stat" .. suffix, "equipment" .. suffix
+    if p:word("+") then
+        local token = p.i <= p.limit and p.tokens[p.i]
+        local compact, amount
+        if english then compact, amount = compactCountedTerm(token, "stats") end
+        if compact then
+            p.slots[count], p.slots[stat] = {raw=amount}, {term=compact}
+            p.i = p.i + 1
+        else
+            p:count(count)
+            p:word("до")
+            if not p:noun(stat, "stats") then return end
+        end
+    elseif not english and p:phrase("бонус до") then
+        if not p:noun(stat, "stats") then return end
+    elseif not allowOption or not p:noun("option" .. suffix, "enhancements") then return end
+    if not p:any("on", "на", "до") then return end
+    if english then p:any("a", "the") end
+    local start = p.i
+    local case = not english and "locative" or nil
+    if p:noun(equipment, "equipment", case) then return true end
+    if not p:noun(equipment, "goods", case) then return end
+    local noun = p.slots[equipment]
+    if english and noun.term.englishPlural then
+        local key = ns.Engine.Normalize.key
+        noun.plural = key(ns.Engine.Phrases.raw(p.document, start, p.i - 1)) == key(noun.term.englishPlural)
+    end
+    noun.locative = noun.plural and "locativePlural" or "locative"
+    return noun.term.forms and noun.term.forms[noun.locative] ~= nil
+end
+
 local function enhancement(p, direction)
+    local english = direction == "en-uk"
     local demand
-    if direction == "en-uk" then demand = p:any("lf", "looking for")
+    if english then demand = p:any("lf", "looking for")
     else demand = p:any("шукаю", "потрібен") end
     if demand then
         if not p:noun("profession", "professions") then return end
-        if not p:any("for", "для") then return end
+        if not p:any("for", "для", "—") then return end
     end
-    if not p:word("+") or not p:count() then return end
-    p:word("до")
-    if not p:noun("stat", "stats") then return end
-    if not p:any("on", "на", "до") or not p:noun("equipment", "equipment") then return end
-    p:word(",")
-    local mats = p:any("got mats", "have mats", "i have mats", "матеріали є", "маю матеріали")
-    return p:finish("enhancement", {demand=demand, mats=mats})
+    if not enhancementItem(p, "", english, demand) then return end
+    local joins, mats = {}
+    while p.i <= p.limit do
+        local comma = p:word(",")
+        mats = p:any("got mats", "have mats", "i have mats", "матеріали є", "маю матеріали")
+        if mats then break end
+        local join = p:any("and", "і", "й", "та") and "and"
+            or p:any("or", "або") and "or" or comma and "comma"
+        if not join then break end
+        if not enhancementItem(p, tostring(#joins + 2), english, true) then return end
+        joins[#joins + 1] = join
+    end
+    return p:finish("enhancement", {demand=demand, mats=mats, joins=joins})
 end
 
 local function service(p, direction)

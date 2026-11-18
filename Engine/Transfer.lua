@@ -137,14 +137,33 @@ function T.render(tree, direction)
         return render(uk and "Комусь із {class:genitivePlural} потрібне завдання {quest}?"
             or "Do any {class} need {quest}?")
     elseif tree.kind == "enhancement" then
-        local output = render(uk and "+{count} до {stat:genitivePlural} на {equipment:locative}"
-            or "+{count} {stat} on {equipment}")
-        if not output then return end
+        local items = {}
+        for index = 1, #f.joins + 1 do
+            local suffix = index == 1 and "" or tostring(index)
+            local count, stat, option, equipment = s["count" .. suffix], s["stat" .. suffix],
+                s["option" .. suffix], s["equipment" .. suffix]
+            local shape
+            if option then shape = "{option}"
+            elseif count then shape = uk and "+{count} до {stat:genitivePlural}" or "+{count} {stat}"
+            else shape = uk and "бонус до {stat:genitivePlural}" or "+{stat}" end
+            local bonus = G.render(shape, {count=count, stat=stat, option=option}, direction)
+            local item = G.render(uk and "{equipment:" .. (equipment.locative or "locative") .. "}" or "{equipment}",
+                {equipment=equipment}, direction)
+            if not bonus or not item then return end
+            if index > 1 then
+                local join = f.joins[index - 1]
+                items[#items + 1] = join == "comma" and ", "
+                    or (uk and (join == "and" and " та " or " або ") or " " .. join .. " ")
+            end
+            items[#items + 1] = bonus .. (uk and " на " or " on ") .. item
+        end
+        local output = table.concat(items)
         if f.demand then
             local profession = uk and s.profession.term.renderForms and s.profession.term.renderForms.practitioner
                 or (not uk and s.profession.term.englishPractitioner)
             if not profession then return end
-            output = (uk and "Шукаю " or "Looking for ") .. profession .. (uk and " для " or " for ") .. output
+            local separator = uk and (#f.joins > 0 and " — " or " для ") or " for "
+            output = (uk and "Шукаю " or "Looking for ") .. profession .. separator .. output
         end
         if f.mats then output = output .. (uk and ", матеріали є" or ", got mats") end
         return output .. (uk and "." or "")

@@ -30,6 +30,27 @@ local function display(frame, message, r, g, b, id)
     else frame:AddMessage(message) end
 end
 
+local function playerLink(author, chatType, channelIndex, line)
+    local caption = "[" .. plain(author) .. "]"
+    if author == "" or author:find("[|:%c]") then return caption end
+    if type(GetPlayerLink) == "function" then
+        local chatGroup, chatTarget
+        if ChatFrameUtil and type(ChatFrameUtil.GetChatCategory) == "function" then
+            local ok, category = pcall(ChatFrameUtil.GetChatCategory, chatType)
+            if ok and not C.secret(category) and type(category) == "string" then
+                chatGroup = category
+                if type(FCFManager_GetChatTarget) == "function" then
+                    local found, target = pcall(FCFManager_GetChatTarget, category, author, channelIndex)
+                    if found and not C.secret(target) then chatTarget = target end
+                end
+            end
+        end
+        local ok, link = pcall(GetPlayerLink, author, caption, line, chatGroup, chatTarget)
+        if ok and not C.secret(link) and type(link) == "string" and link ~= "" then return link end
+    end
+    return "|Hplayer:" .. author .. "|h" .. caption .. "|h"
+end
+
 local function addTranslation(tab, main, event, group, text, author, ...)
     if not C.public(text, author, ...) then return end
     if type(text) ~= "string" or type(author) ~= "string" then return end
@@ -48,15 +69,18 @@ local function addTranslation(tab, main, event, group, text, author, ...)
         event=event, line=line, author=author, sender=sender, language=language, target=target })
     if not result or result.mode == "unchanged" then return end
 
-    local label = result.mode == "partial" and ns.L.partialLabel or ns.L.translationLabel
-    local source = ns.L.chatSources[group]
+    local source = "[" .. ns.L.chatSources[group] .. "]"
     local chatType = event:sub(10)
+    local infoType = chatType
     if group == "channel" then
-        if type(channel) == "string" and channel ~= "" then source = plain(channel) end
-        if type(channelIndex) == "number" and channelIndex > 0 then chatType = chatType .. channelIndex end
+        if type(channel) == "string" and channel ~= "" then source = "[" .. plain(channel) .. "]" end
+        if type(channelIndex) == "number" and channelIndex > 0 and channelIndex % 1 == 0 then
+            infoType = chatType .. channelIndex
+            source = "|Hchannel:channel:" .. channelIndex .. "|h" .. source .. "|h"
+        end
     end
-    local info = ChatTypeInfo and ChatTypeInfo[chatType]
-    local message = label .. "[" .. source .. "] [" .. plain(author) .. "]: " .. result.text
+    local info = ChatTypeInfo and ChatTypeInfo[infoType]
+    local message = source .. " " .. playerLink(author, chatType, channelIndex, line) .. ": " .. result.text
     local r, g, b, id
     local color = DB.settings.translationColor
     if color then r, g, b = color.r, color.g, color.b
