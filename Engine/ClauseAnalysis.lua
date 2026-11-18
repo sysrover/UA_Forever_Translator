@@ -211,6 +211,8 @@ simple = function(document, first, limit, previous, depth)
     local tree, index = {kind="clause"}, first
     if key == "where" or key == "де" then
         tree.where, tree.question, index = true, true, index + 1
+    elseif key == "why" or key == "чому" then
+        tree.why, tree.question, index = true, true, index + 1
     elseif key == "чи" and not english then
         tree.question, index = true, index + 1
     end
@@ -288,7 +290,7 @@ simple = function(document, first, limit, previous, depth)
             return tree, index
         end
     end
-    if tree.copula or (not english and tree.where and subject) then
+    if tree.copula then
         if not subject then return nil end
         tree.copula, tree.tense = true, tree.tense or "present"
         local finish = predicate(document, tree, index, limit)

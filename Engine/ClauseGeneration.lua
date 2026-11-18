@@ -274,6 +274,12 @@ local function subjectText(tree, english)
     return inferredPronouns[key] or (number == "singular" and inferredPronouns[gender])
 end
 
+local function questionWord(tree, english)
+    if tree.where then return english and "where" or "де" end
+    if tree.why then return english and "why" or "чому" end
+    if tree.question and not english then return "чи" end
+end
+
 local render
 local function duration(tree, english)
     local rendered
@@ -325,13 +331,13 @@ render = function(tree, english)
     if subject == nil then return nil end
     if tree.kind == "nounPhrase" then append(parts, subject)
     elseif tree.elliptic then
+        append(parts, questionWord(tree, english))
         if english then
             if tree.question then append(parts, "will"); append(parts, subject)
             else append(parts, subject); append(parts, "will") end
             if tree.negative then append(parts, "not") end
         else
             local _, _, _, key = agreement(tree)
-            if tree.question then append(parts, "чи") end
             append(parts, subject)
             if tree.negative then append(parts, "не") end
             append(parts, future[key])
@@ -342,12 +348,12 @@ render = function(tree, english)
             local be
             if tree.tense == "past" then be = (number == "plural" or person == 2) and "were" or "was"
             else be = (number == "plural" or person == 2) and "are" or (person == 1 and "am" or "is") end
-            if tree.where then append(parts, "where") end
+            append(parts, questionWord(tree, english))
             if tree.question then append(parts, be); append(parts, subject)
             else append(parts, subject); append(parts, be) end
             if tree.negative then append(parts, "not") end
         else
-            if tree.where then append(parts, "де") elseif tree.question then append(parts, "чи") end
+            append(parts, questionWord(tree, english))
             append(parts, subject)
             if tree.negative then append(parts, "не") end
             if tree.tense == "past" then
@@ -368,12 +374,12 @@ render = function(tree, english)
     else
         local frame = tree.verb.lexeme.frame or {}
         if english then
-            if tree.where then append(parts, "where") end
+            append(parts, questionWord(tree, english))
             local value = englishVerb(tree, subject ~= "" and subject or nil)
             if not value then return nil end
             append(parts, value)
         else
-            if tree.where then append(parts, "де") elseif tree.question then append(parts, "чи") end
+            append(parts, questionWord(tree, english))
             append(parts, subject)
             if tree.leadingAdverb then append(parts, tree.leadingAdverb.uk[1]) end
             local value = ukrainianVerb(tree)
