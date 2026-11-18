@@ -43,7 +43,8 @@ local function clearPreview(reason)
     status(reason)
 end
 local function preview()
-    local result, reason = ns.Composer.translate(C.read(U.source, "GetText"))
+    local original = C.read(U.source, "GetText")
+    local result, reason = ns.Composer.translate(original)
     if not result then
         clearPreview(reason)
         return
@@ -55,6 +56,7 @@ local function preview()
     end
     U.consent:SetChecked(false)
     status(result.mode)
+    ns.ChatLog.record("COMPOSER_PREVIEW", original, result, "uk-en")
 end
 function U.create()
     if U.frame then return end

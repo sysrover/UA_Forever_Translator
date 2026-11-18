@@ -53,7 +53,7 @@ local function addTranslation(tab, event, group, text, author, ...)
         tab:AddMessage(message)
     end
     if DB.settings.logTranslations then
-        ns.ChatLog.record(event, text, result)
+        ns.ChatLog.record(event, text, result, "en-uk")
     end
 end
 
