@@ -50,7 +50,7 @@ function D.lookup(text, direction)
     if #tokens == 1 then return generalTerm(tokens[1], direction) end
 end
 
-function D.literal(tokens, first, direction, fragments)
+function D.literal(tokens, first, direction, fragments, contextual)
     local node = ns.Data.aliases[direction]
     local entry, last
     for i = first, math.min(#tokens, first + 11) do
@@ -59,7 +59,10 @@ function D.literal(tokens, first, direction, fragments)
         if not node then break end
         local literal = node._literal
         local term = node._id and ns.Data.terms[node._id]
-        if literal then
+        if contextual and i == first then
+            -- A lone gloss in a failed clause has no established grammatical
+            -- role. Longer approved expressions still work as partial hints.
+        elseif literal then
             entry, last = literal, i
         elseif term and (term.category ~= "places" or term.literalInChat)
             and (direction ~= "en-uk" or not term.englishLookupOnly) then
@@ -70,6 +73,7 @@ function D.literal(tokens, first, direction, fragments)
         end
     end
     if entry then return entry, last end
+    if contextual then return nil end
     local general = generalTerm(tokens[first], direction)
     if general then return general, first end
 end

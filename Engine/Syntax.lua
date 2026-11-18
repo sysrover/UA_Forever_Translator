@@ -83,17 +83,39 @@ end
 
 local function recruit(p, direction)
     local uk = direction == "uk-en"
+    local leadingPlace
     if uk then
         if not p:any("шукаємо", "потрібно", "потрібен", "потрібні") then return end
         p:word("ще")
-    elseif not p:any("lfm", "lf", "looking for", "need") then return end
+    elseif not p:any("lfm", "lf", "looking for", "need") then
+        if not p:noun("place", "places") then return end
+        p:word(",")
+        if not p:any("lfm", "lf", "looking for", "need") then return end
+        leadingPlace = true
+    end
     local count = p:count()
     local compact = count and p:word("m")
     local lastSpot = p:any("last spot", "last slot", "останнє місце")
-    local role, place, go
+    local role, place, go = nil, leadingPlace, nil
+    local roleJoins = {}
     for _ = 1, 4 do
         p:word(",")
-        if not role and p:noun("role", "roles") then role = true
+        if not role and p:noun("role", "roles") then
+            role = true
+            for n = 2, 4 do
+                local start, originalCount = p.i, p.slots.count
+                local join = p:any("and", "та", "і", "й") and "and" or p:any("or", "або") and "or"
+                if not join then break end
+                local hasCount = p:count()
+                if p:noun("role" .. n, "roles") then
+                    roleJoins[#roleJoins + 1] = join
+                    if hasCount then p.slots["count" .. n] = p.slots.count end
+                else
+                    p.i = start
+                end
+                p.slots.count = originalCount
+                if p.i == start then break end
+            end
         elseif not place then
             local start = p.i
             local introduced = p:any("for", "для", "у", "в", ". місце :")
@@ -113,10 +135,15 @@ local function recruit(p, direction)
     end
     p:word(",")
     if p:any("last spot", "last slot", "останнє місце") then lastSpot = true end
-    if p:any("and go", "і йдемо", "і вирушаємо") then go = true end
+    local run
+    if p:any("full run", "повне проходження", ". повне проходження") then run = "full"
+    elseif p:any("fresh run", "проходження з початку", ". проходження з початку") then run = "fresh" end
+    p:word(",")
+    local summon = p:any("can summon", "можемо прикликати", ". можемо прикликати")
+    if p:any("and go", "і йдемо", "і вирушаємо", ". і вирушаємо") then go = true end
     if not role and not (place and count) then return end
     if lastSpot and p.slots.count and tonumber(p.slots.count.raw) > 1 then return end
-    return p:finish("recruit", {compact=compact, lastSpot=lastSpot, go=go})
+    return p:finish("recruit", {compact=compact, lastSpot=lastSpot, go=go, roleJoins=roleJoins, run=run, summon=summon})
 end
 
 local function enhancement(p, direction)
@@ -140,19 +167,34 @@ local function service(p, direction)
     local demand, offer
     if direction == "en-uk" then
         demand = p:any("wtb", "lf", "looking for")
-        if not demand then offer = p:any("wts", "lfw", "offering") end
+        if not demand then offer = p:any("wts", "lfw", "offering", "selling", "crafting") end
     else
         demand = p:any("шукаю послуги", "шукаю майстра", "шукаю")
         if not demand then offer = p:any("пропоную послуги", "пропоную", "послуги") end
     end
     p:word(":")
-    if not p:link("trade", "trade") and not p:noun("profession", "professions") then return end
+    local linked = p:link("trade", "trade") or p:link("trade", "enchant")
+    if linked then
+        for index = 2, 4 do
+            local previous = p.i
+            p:word(",")
+            if not p:link("trade" .. index, "enchant") then p.i = previous; break end
+        end
+    elseif not p:noun("profession", "professions") then return end
     if not demand and not offer then
         if not p:any("lfw", "приймаю замовлення") then return end
     end
-    local priced = p:any("for", "за")
-    if priced and not p:money() then return end
-    return p:finish("service", {demand=demand, priced=priced})
+    local free = p:any("for free", "free", "безкоштовно")
+    local priceIntroduced = not free and p:any("for", "за")
+    local priced = not free and p:money()
+    if priceIntroduced and not priced then return end
+    local previous = p.i
+    p:any("-", "—", ",")
+    local materials = p:any("with your mats", "with your materials", "bring mats", "bring your own materials",
+        "з вашими матеріалами", "з твоїми матеріалами", "принесіть матеріали")
+    if not materials then p.i = previous end
+    local promise = materials and p:any("and i make for you", "and i'll make it", "і я виготовлю", ", і я виготовлю")
+    return p:finish("service", {demand=demand, priced=priced, free=free, materials=materials, promise=promise})
 end
 
 local function reward(p, direction)

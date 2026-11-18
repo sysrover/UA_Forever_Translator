@@ -30,7 +30,7 @@ local function lowerStart(value)
     return ns.Engine.Normalize.word(first) .. value:sub(#first + 1)
 end
 
-function P.compose(text, tokens, direction)
+function P.compose(text, tokens, direction, grammarFallback)
     local composition = ns.Data.composition and ns.Data.composition[direction]
     if not composition or #tokens == 0 or #tokens > 96 then return nil end
     local prefixes, joins = composition.prefixes, composition.joins
@@ -61,6 +61,7 @@ function P.compose(text, tokens, direction)
             output, rule = exact.text, exact
         else
             output, rule, slots = P.translate(text, tokens, direction, start, finish)
+            if not output and grammarFallback then output, rule = grammarFallback(start, finish) end
         end
         local match = output and {text = output, rule = rule, slots = slots} or false
         row[finish] = match

@@ -14,6 +14,7 @@ UI\LocaleUk.lua
 Data\Dictionary.lua
 Data\GeneralUkEn.lua
 Data\GeneralEnUk.lua
+Data\Linguistics.lua
 Engine\Markup.lua
 Engine\Normalize.lua
 Engine\Tokenizer.lua
@@ -22,6 +23,10 @@ Engine\Dictionary.lua
 Engine\Grammar.lua
 Engine\Parser.lua
 Engine\Morphology.lua
+Engine\Lexicon.lua
+Engine\Phrases.lua
+Engine\ClauseAnalysis.lua
+Engine\ClauseGeneration.lua
 Engine\Syntax.lua
 Engine\Transfer.lua
 Engine\Translator.lua

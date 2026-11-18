@@ -944,6 +944,11 @@ ns.Data = {
                     ["_id"] = "slang.combat.pull-aggro"
                 }
             },
+            ["drowned"] = {
+                ["city"] = {
+                    ["_id"] = "place.drowned_city"
+                }
+            },
             ["druid"] = {
                 ["_id"] = "class.druid"
             },
@@ -1302,6 +1307,16 @@ ns.Data = {
                     }
                 }
             },
+            ["halls"] = {
+                ["of"] = {
+                    ["lightning"] = {
+                        ["_id"] = "place.halls_of_lightning"
+                    },
+                    ["thanes"] = {
+                        ["_id"] = "place.hall_of_thanes"
+                    }
+                }
+            },
             ["hard"] = {
                 ["res"] = {
                     ["_id"] = "slang.loot.hard-reserve"
@@ -1445,6 +1460,11 @@ ns.Data = {
             },
             ["him"] = {
                 ["_id"] = "recipient.him"
+            },
+            ["hol"] = {
+                ["_byCategory"] = {
+                    ["places"] = "place.halls_of_lightning"
+                }
             },
             ["horde"] = {
                 ["_id"] = "game.horde"
@@ -2906,6 +2926,11 @@ ns.Data = {
             ["shaman"] = {
                 ["_id"] = "class.shaman"
             },
+            ["shaper's"] = {
+                ["terrace"] = {
+                    ["_id"] = "place.shapers_terrace"
+                }
+            },
             ["share"] = {
                 ["_literal"] = {
                     ["id"] = "literal.share",
@@ -3229,11 +3254,21 @@ ns.Data = {
                         ["weak"] = false
                     }
                 },
+                ["drowned"] = {
+                    ["city"] = {
+                        ["_id"] = "place.drowned_city"
+                    }
+                },
                 ["hall"] = {
                     ["of"] = {
                         ["thanes"] = {
                             ["_id"] = "place.hall_of_thanes"
                         }
+                    }
+                },
+                ["shaper's"] = {
+                    ["terrace"] = {
+                        ["_id"] = "place.shapers_terrace"
                     }
                 },
                 ["stockade"] = {
@@ -4715,6 +4750,9 @@ ns.Data = {
             ["воїна"] = {
                 ["_id"] = "class.warrior"
             },
+            ["воїнів"] = {
+                ["_id"] = "class.warrior"
+            },
             ["впвп"] = {
                 ["_id"] = "slang.combat.wpvp"
             },
@@ -5715,6 +5753,9 @@ ns.Data = {
             ["друїда"] = {
                 ["_id"] = "class.druid"
             },
+            ["друїдів"] = {
+                ["_id"] = "class.druid"
+            },
             ["дуротар"] = {
                 ["_id"] = "place.durotar",
                 ["_literal"] = {
@@ -5787,6 +5828,9 @@ ns.Data = {
             ["жалітися"] = {
                 ["_id"] = "behavior.complain"
             },
+            ["жерців"] = {
+                ["_id"] = "class.priest"
+            },
             ["жрець"] = {
                 ["_id"] = "class.priest"
             },
@@ -5844,12 +5888,25 @@ ns.Data = {
                     }
                 }
             },
+            ["зал"] = {
+                ["блискавок"] = {
+                    ["_id"] = "place.halls_of_lightning"
+                }
+            },
             ["зала"] = {
                 ["танів"] = {
                     ["_id"] = "place.hall_of_thanes"
                 }
             },
+            ["залах"] = {
+                ["блискавок"] = {
+                    ["_id"] = "place.halls_of_lightning"
+                }
+            },
             ["зали"] = {
+                ["блискавок"] = {
+                    ["_id"] = "place.halls_of_lightning"
+                },
                 ["танів"] = {
                     ["_id"] = "place.hall_of_thanes"
                 }
@@ -5940,6 +5997,21 @@ ns.Data = {
                             }
                         }
                     }
+                }
+            },
+            ["затонуле"] = {
+                ["місто"] = {
+                    ["_id"] = "place.drowned_city"
+                }
+            },
+            ["затонулого"] = {
+                ["міста"] = {
+                    ["_id"] = "place.drowned_city"
+                }
+            },
+            ["затонулому"] = {
+                ["місті"] = {
+                    ["_id"] = "place.drowned_city"
                 }
             },
             ["західний"] = {
@@ -6617,6 +6689,9 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["магів"] = {
+                ["_id"] = "class.mage"
+            },
             ["майстер"] = {
                 ["зачарування"] = {
                     ["_id"] = "profession.enchanting"
@@ -6820,6 +6895,9 @@ ns.Data = {
                 ["_id"] = "class.hunter"
             },
             ["мисливця"] = {
+                ["_id"] = "class.hunter"
+            },
+            ["мисливців"] = {
                 ["_id"] = "class.hunter"
             },
             ["моб"] = {
@@ -7984,6 +8062,9 @@ ns.Data = {
             ["паладина"] = {
                 ["_id"] = "class.paladin"
             },
+            ["паладинів"] = {
+                ["_id"] = "class.paladin"
+            },
             ["палаюче"] = {
                 ["ядро"] = {
                     ["_id"] = "place.molten_core",
@@ -9035,6 +9116,9 @@ ns.Data = {
             ["розбійника"] = {
                 ["_id"] = "class.rogue"
             },
+            ["розбійників"] = {
+                ["_id"] = "class.rogue"
+            },
             ["рол"] = {
                 ["на"] = {
                     ["грід"] = {
@@ -9472,6 +9556,21 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["тераса"] = {
+                ["творця"] = {
+                    ["_id"] = "place.shapers_terrace"
+                }
+            },
+            ["тераси"] = {
+                ["творця"] = {
+                    ["_id"] = "place.shapers_terrace"
+                }
+            },
+            ["терасі"] = {
+                ["творця"] = {
+                    ["_id"] = "place.shapers_terrace"
+                }
+            },
             ["ти"] = {
                 ["_literal"] = {
                     ["id"] = "literal.you",
@@ -9871,6 +9970,9 @@ ns.Data = {
             ["чорнокнижника"] = {
                 ["_id"] = "class.warlock"
             },
+            ["чорнокнижників"] = {
+                ["_id"] = "class.warlock"
+            },
             ["чорноскельний"] = {
                 ["шпиль"] = {
                     ["_id"] = "place.blackrock_spire",
@@ -9897,6 +9999,9 @@ ns.Data = {
                 ["_id"] = "class.shaman"
             },
             ["шамана"] = {
+                ["_id"] = "class.shaman"
+            },
+            ["шаманів"] = {
                 ["_id"] = "class.shaman"
             },
             ["швидко"] = {
@@ -13673,6 +13778,23 @@ ns.Data = {
                         }
                     }
                 },
+                ["drowned"] = {
+                    ["city"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "neuter"
+                                },
+                                ["id"] = "place.drowned_city",
+                                ["lemma"] = "The Drowned City",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.drowned_city",
+                                ["sourceRefs"] = { "ua-forever:place.drowned_city" }
+                            }
+                        }
+                    }
+                },
                 ["druid"] = {
                     ["_analyses"] = {
                         {
@@ -14101,7 +14223,10 @@ ns.Data = {
                 ["gnomer"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "place.gnomeregan",
                             ["lemma"] = "Gnomeregan",
                             ["pos"] = "noun",
@@ -14113,7 +14238,10 @@ ns.Data = {
                 ["gnomeregan"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "place.gnomeregan",
                             ["lemma"] = "Gnomeregan",
                             ["pos"] = "noun",
@@ -14222,7 +14350,44 @@ ns.Data = {
                         ["thanes"] = {
                             ["_analyses"] = {
                                 {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "place.hall_of_thanes",
+                                    ["lemma"] = "The Hall of Thanes",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.hall_of_thanes",
+                                    ["sourceRefs"] = {
+                                        "ua-forever:place.hall_of_thanes",
+                                        "project-authored:apertium-pipeline-1"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["halls"] = {
+                    ["of"] = {
+                        ["lightning"] = {
+                            ["_analyses"] = {
+                                {
                                     ["features"] = {},
+                                    ["id"] = "place.halls_of_lightning",
+                                    ["lemma"] = "Halls of Lightning",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.halls_of_lightning",
+                                    ["sourceRefs"] = { "ua-forever:place.halls_of_lightning" }
+                                }
+                            }
+                        },
+                        ["thanes"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "feminine"
+                                    },
                                     ["id"] = "place.hall_of_thanes",
                                     ["lemma"] = "The Hall of Thanes",
                                     ["pos"] = "noun",
@@ -14477,6 +14642,18 @@ ns.Data = {
                         }
                     }
                 },
+                ["hol"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "place.halls_of_lightning",
+                            ["lemma"] = "Halls of Lightning",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.halls_of_lightning",
+                            ["sourceRefs"] = { "ua-forever:place.halls_of_lightning" }
+                        }
+                    }
+                },
                 ["horde"] = {
                     ["_analyses"] = {
                         {
@@ -14492,7 +14669,10 @@ ns.Data = {
                 ["hot"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
                             ["id"] = "place.hall_of_thanes",
                             ["lemma"] = "The Hall of Thanes",
                             ["pos"] = "noun",
@@ -14560,7 +14740,10 @@ ns.Data = {
                 ["if"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "place.ironforge",
                             ["lemma"] = "Ironforge",
                             ["pos"] = "noun",
@@ -14644,7 +14827,10 @@ ns.Data = {
                 ["ironforge"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "place.ironforge",
                             ["lemma"] = "Ironforge",
                             ["pos"] = "noun",
@@ -14695,7 +14881,10 @@ ns.Data = {
                     ["stronghold"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
                                 ["id"] = "place.kroldok_stronghold",
                                 ["lemma"] = "Krol'dok Stronghold",
                                 ["pos"] = "noun",
@@ -14711,7 +14900,10 @@ ns.Data = {
                 ["ks"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
                             ["id"] = "place.kroldok_stronghold",
                             ["lemma"] = "Krol'dok Stronghold",
                             ["pos"] = "noun",
@@ -16571,6 +16763,23 @@ ns.Data = {
                         }
                     }
                 },
+                ["shaper's"] = {
+                    ["terrace"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "place.shapers_terrace",
+                                ["lemma"] = "The Shaper's Terrace",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.shapers_terrace",
+                                ["sourceRefs"] = { "ua-forever:place.shapers_terrace" }
+                            }
+                        }
+                    }
+                },
                 ["shield"] = {
                     ["_analyses"] = {
                         {
@@ -17073,12 +17282,32 @@ ns.Data = {
                             }
                         }
                     },
+                    ["drowned"] = {
+                        ["city"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "neuter"
+                                    },
+                                    ["id"] = "place.drowned_city",
+                                    ["lemma"] = "The Drowned City",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.drowned_city",
+                                    ["sourceRefs"] = { "ua-forever:place.drowned_city" }
+                                }
+                            }
+                        }
+                    },
                     ["hall"] = {
                         ["of"] = {
                             ["thanes"] = {
                                 ["_analyses"] = {
                                     {
-                                        ["features"] = {},
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["gender"] = "feminine"
+                                        },
                                         ["id"] = "place.hall_of_thanes",
                                         ["lemma"] = "The Hall of Thanes",
                                         ["pos"] = "noun",
@@ -17088,6 +17317,23 @@ ns.Data = {
                                             "project-authored:apertium-pipeline-1"
                                         }
                                     }
+                                }
+                            }
+                        }
+                    },
+                    ["shaper's"] = {
+                        ["terrace"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "place.shapers_terrace",
+                                    ["lemma"] = "The Shaper's Terrace",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.shapers_terrace",
+                                    ["sourceRefs"] = { "ua-forever:place.shapers_terrace" }
                                 }
                             }
                         }
@@ -18121,7 +18367,10 @@ ns.Data = {
                 ["айронфордж"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "place.ironforge",
                             ["lemma"] = "Залізогарт",
                             ["pos"] = "noun",
@@ -18796,6 +19045,21 @@ ns.Data = {
                         }
                     }
                 },
+                ["воїнів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "class.warrior",
+                            ["lemma"] = "Воїн",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warrior",
+                            ["sourceRefs"] = { "ua-forever:class.warrior" }
+                        }
+                    }
+                },
                 ["впвп"] = {
                     ["_analyses"] = {
                         {
@@ -19030,7 +19294,10 @@ ns.Data = {
                 ["гномереган"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "place.gnomeregan",
                             ["lemma"] = "Гномреґан",
                             ["pos"] = "noun",
@@ -19042,7 +19309,10 @@ ns.Data = {
                 ["гномерегана"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "place.gnomeregan",
                             ["lemma"] = "Гномреґан",
                             ["pos"] = "noun",
@@ -19054,7 +19324,10 @@ ns.Data = {
                 ["гномереґан"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "place.gnomeregan",
                             ["lemma"] = "Гномреґан",
                             ["pos"] = "noun",
@@ -19066,7 +19339,10 @@ ns.Data = {
                 ["гномеригaн"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "place.gnomeregan",
                             ["lemma"] = "Гномреґан",
                             ["pos"] = "noun",
@@ -19078,7 +19354,10 @@ ns.Data = {
                 ["гномериган"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "place.gnomeregan",
                             ["lemma"] = "Гномреґан",
                             ["pos"] = "noun",
@@ -19499,7 +19778,10 @@ ns.Data = {
                 ["гномреґан"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "place.gnomeregan",
                             ["lemma"] = "Гномреґан",
                             ["pos"] = "noun",
@@ -19512,7 +19794,9 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["animacy"] = "inanimate",
                                 ["case"] = "genitive",
+                                ["gender"] = "masculine",
                                 ["number"] = "singular"
                             },
                             ["id"] = "place.gnomeregan",
@@ -21003,6 +21287,21 @@ ns.Data = {
                         }
                     }
                 },
+                ["друїдів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "class.druid",
+                            ["lemma"] = "Друїд",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.druid",
+                            ["sourceRefs"] = { "ua-forever:class.druid" }
+                        }
+                    }
+                },
                 ["дуротар"] = {
                     ["_analyses"] = {
                         {
@@ -21084,6 +21383,21 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "behavior.complain",
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["жерців"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "class.priest",
+                            ["lemma"] = "Жрець",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.priest",
+                            ["sourceRefs"] = { "ua-forever:class.priest" }
                         }
                     }
                 },
@@ -21194,11 +21508,31 @@ ns.Data = {
                         }
                     }
                 },
+                ["зал"] = {
+                    ["блискавок"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.halls_of_lightning",
+                                ["lemma"] = "Зали Блискавок",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.halls_of_lightning",
+                                ["sourceRefs"] = { "ua-forever:place.halls_of_lightning" }
+                            }
+                        }
+                    }
+                },
                 ["зала"] = {
                     ["танів"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
                                 ["id"] = "place.hall_of_thanes",
                                 ["lemma"] = "Зала Танів",
                                 ["pos"] = "noun",
@@ -21211,12 +21545,43 @@ ns.Data = {
                         }
                     }
                 },
+                ["залах"] = {
+                    ["блискавок"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.halls_of_lightning",
+                                ["lemma"] = "Зали Блискавок",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.halls_of_lightning",
+                                ["sourceRefs"] = { "ua-forever:place.halls_of_lightning" }
+                            }
+                        }
+                    }
+                },
                 ["зали"] = {
+                    ["блискавок"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.halls_of_lightning",
+                                ["lemma"] = "Зали Блискавок",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.halls_of_lightning",
+                                ["sourceRefs"] = { "ua-forever:place.halls_of_lightning" }
+                            }
+                        }
+                    },
                     ["танів"] = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {
+                                    ["animacy"] = "inanimate",
                                     ["case"] = "genitive",
+                                    ["gender"] = "feminine",
                                     ["number"] = "singular"
                                 },
                                 ["id"] = "place.hall_of_thanes",
@@ -21236,7 +21601,9 @@ ns.Data = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {
+                                    ["animacy"] = "inanimate",
                                     ["case"] = "locative",
+                                    ["gender"] = "feminine",
                                     ["number"] = "singular"
                                 },
                                 ["id"] = "place.hall_of_thanes",
@@ -21254,7 +21621,10 @@ ns.Data = {
                 ["залізогарт"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "place.ironforge",
                             ["lemma"] = "Залізогарт",
                             ["pos"] = "noun",
@@ -21267,7 +21637,9 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["animacy"] = "inanimate",
                                 ["case"] = "genitive",
+                                ["gender"] = "masculine",
                                 ["number"] = "singular"
                             },
                             ["id"] = "place.ironforge",
@@ -21282,7 +21654,9 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["animacy"] = "inanimate",
                                 ["case"] = "locative",
+                                ["gender"] = "masculine",
                                 ["number"] = "singular"
                             },
                             ["id"] = "place.ironforge",
@@ -21325,6 +21699,61 @@ ns.Data = {
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                },
+                ["затонуле"] = {
+                    ["місто"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "neuter"
+                                },
+                                ["id"] = "place.drowned_city",
+                                ["lemma"] = "Затонуле місто",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.drowned_city",
+                                ["sourceRefs"] = { "ua-forever:place.drowned_city" }
+                            }
+                        }
+                    }
+                },
+                ["затонулого"] = {
+                    ["міста"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "neuter",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.drowned_city",
+                                ["lemma"] = "Затонуле місто",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.drowned_city",
+                                ["sourceRefs"] = { "ua-forever:place.drowned_city" }
+                            }
+                        }
+                    }
+                },
+                ["затонулому"] = {
+                    ["місті"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "neuter",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.drowned_city",
+                                ["lemma"] = "Затонуле місто",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.drowned_city",
+                                ["sourceRefs"] = { "ua-forever:place.drowned_city" }
                             }
                         }
                     }
@@ -21931,6 +22360,21 @@ ns.Data = {
                         }
                     }
                 },
+                ["магів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "class.mage",
+                            ["lemma"] = "Маг",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.mage",
+                            ["sourceRefs"] = { "ua-forever:class.mage" }
+                        }
+                    }
+                },
                 ["майстер"] = {
                     ["зачарування"] = {
                         ["_analyses"] = {
@@ -22202,6 +22646,21 @@ ns.Data = {
                             ["features"] = {
                                 ["case"] = "genitive",
                                 ["number"] = "singular"
+                            },
+                            ["id"] = "class.hunter",
+                            ["lemma"] = "Мисливець",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.hunter",
+                            ["sourceRefs"] = { "ua-forever:class.hunter" }
+                        }
+                    }
+                },
+                ["мисливців"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
                             },
                             ["id"] = "class.hunter",
                             ["lemma"] = "Мисливець",
@@ -24537,6 +24996,21 @@ ns.Data = {
                         }
                     }
                 },
+                ["паладинів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "class.paladin",
+                            ["lemma"] = "Паладин",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.paladin",
+                            ["sourceRefs"] = { "ua-forever:class.paladin" }
+                        }
+                    }
+                },
                 ["палаюче"] = {
                     ["ядро"] = {
                         ["_analyses"] = {
@@ -26224,6 +26698,21 @@ ns.Data = {
                         }
                     }
                 },
+                ["розбійників"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "class.rogue",
+                            ["lemma"] = "Розбійник",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.rogue",
+                            ["sourceRefs"] = { "ua-forever:class.rogue" }
+                        }
+                    }
+                },
                 ["рол"] = {
                     ["на"] = {
                         ["грід"] = {
@@ -26802,7 +27291,10 @@ ns.Data = {
                     ["крол'док"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
                                 ["id"] = "place.kroldok_stronghold",
                                 ["lemma"] = "Твердиня Крол'док",
                                 ["pos"] = "noun",
@@ -26820,7 +27312,9 @@ ns.Data = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {
+                                    ["animacy"] = "inanimate",
                                     ["case"] = "genitive",
+                                    ["gender"] = "feminine",
                                     ["number"] = "singular"
                                 },
                                 ["id"] = "place.kroldok_stronghold",
@@ -26834,7 +27328,9 @@ ns.Data = {
                             },
                             {
                                 ["features"] = {
+                                    ["animacy"] = "inanimate",
                                     ["case"] = "locative",
+                                    ["gender"] = "feminine",
                                     ["number"] = "singular"
                                 },
                                 ["id"] = "place.kroldok_stronghold",
@@ -26896,6 +27392,61 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.combat.twink",
                             ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["тераса"] = {
+                    ["творця"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "place.shapers_terrace",
+                                ["lemma"] = "тераса Творця",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.shapers_terrace",
+                                ["sourceRefs"] = { "ua-forever:place.shapers_terrace" }
+                            }
+                        }
+                    }
+                },
+                ["тераси"] = {
+                    ["творця"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.shapers_terrace",
+                                ["lemma"] = "тераса Творця",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.shapers_terrace",
+                                ["sourceRefs"] = { "ua-forever:place.shapers_terrace" }
+                            }
+                        }
+                    }
+                },
+                ["терасі"] = {
+                    ["творця"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.shapers_terrace",
+                                ["lemma"] = "тераса Творця",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.shapers_terrace",
+                                ["sourceRefs"] = { "ua-forever:place.shapers_terrace" }
+                            }
                         }
                     }
                 },
@@ -27371,6 +27922,21 @@ ns.Data = {
                         }
                     }
                 },
+                ["чорнокнижників"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "class.warlock",
+                            ["lemma"] = "Чорнокнижник",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warlock",
+                            ["sourceRefs"] = { "ua-forever:class.warlock" }
+                        }
+                    }
+                },
                 ["чорноскельний"] = {
                     ["шпиль"] = {
                         ["_analyses"] = {
@@ -27417,6 +27983,21 @@ ns.Data = {
                             ["features"] = {
                                 ["case"] = "genitive",
                                 ["number"] = "singular"
+                            },
+                            ["id"] = "class.shaman",
+                            ["lemma"] = "Шаман",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.shaman",
+                            ["sourceRefs"] = { "ua-forever:class.shaman" }
+                        }
+                    }
+                },
+                ["шаманів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
                             },
                             ["id"] = "class.shaman",
                             ["lemma"] = "Шаман",
@@ -27798,6 +28379,7 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Друїд",
+                    ["genitivePlural"] = "друїдів",
                     ["genitiveSingular"] = "друїда"
                 }
             },
@@ -27807,6 +28389,7 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Мисливець",
+                    ["genitivePlural"] = "мисливців",
                     ["genitiveSingular"] = "мисливця"
                 }
             },
@@ -27816,6 +28399,7 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Маг",
+                    ["genitivePlural"] = "магів",
                     ["genitiveSingular"] = "мага"
                 }
             },
@@ -27825,6 +28409,7 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Паладин",
+                    ["genitivePlural"] = "паладинів",
                     ["genitiveSingular"] = "паладина"
                 }
             },
@@ -27834,6 +28419,7 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Жрець",
+                    ["genitivePlural"] = "жерців",
                     ["genitiveSingular"] = "жреця"
                 }
             },
@@ -27843,6 +28429,7 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Розбійник",
+                    ["genitivePlural"] = "розбійників",
                     ["genitiveSingular"] = "розбійника"
                 }
             },
@@ -27852,6 +28439,7 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Шаман",
+                    ["genitivePlural"] = "шаманів",
                     ["genitiveSingular"] = "шамана"
                 }
             },
@@ -27861,6 +28449,7 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Чорнокнижник",
+                    ["genitivePlural"] = "чорнокнижників",
                     ["genitiveSingular"] = "чорнокнижника"
                 }
             },
@@ -27870,6 +28459,7 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Воїн",
+                    ["genitivePlural"] = "воїнів",
                     ["genitiveSingular"] = "воїна"
                 }
             },
@@ -28242,6 +28832,16 @@ ns.Data = {
                     ["canonical"] = "Грізний Молот"
                 }
             },
+            ["place.drowned_city"] = {
+                ["en"] = {
+                    ["canonical"] = "The Drowned City"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Затонуле місто",
+                    ["genitiveSingular"] = "Затонулого міста",
+                    ["locative"] = "Затонулому місті"
+                }
+            },
             ["place.durotar"] = {
                 ["en"] = {
                     ["canonical"] = "Durotar"
@@ -28293,6 +28893,16 @@ ns.Data = {
                     ["canonical"] = "Зала Танів",
                     ["genitiveSingular"] = "Зали Танів",
                     ["locative"] = "Залі Танів"
+                }
+            },
+            ["place.halls_of_lightning"] = {
+                ["en"] = {
+                    ["canonical"] = "Halls of Lightning"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зали Блискавок",
+                    ["genitiveSingular"] = "Зал Блискавок",
+                    ["locative"] = "Залах Блискавок"
                 }
             },
             ["place.ironforge"] = {
@@ -28423,6 +29033,16 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "фортеця Тіньового Ікла"
+                }
+            },
+            ["place.shapers_terrace"] = {
+                ["en"] = {
+                    ["canonical"] = "The Shaper's Terrace"
+                },
+                ["uk"] = {
+                    ["canonical"] = "тераса Творця",
+                    ["genitiveSingular"] = "тераси Творця",
+                    ["locative"] = "терасі Творця"
                 }
             },
             ["place.stormwind"] = {
@@ -29806,7 +30426,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 195,
+        ["concepts"] = 198,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 74,
@@ -29824,8 +30444,8 @@ ns.Data = {
             ["targetClient"] = "1.60.1.70959",
             ["version"] = "1.0.3"
         },
-        ["templateFamilies"] = 85,
-        ["version"] = "ce115595bc523776b8a496b8f07bc3e30263f28738472c739f2b59326eac7cb8"
+        ["templateFamilies"] = 87,
+        ["version"] = "f30db7eaed698e70dfaea99624f72fa8d419667d92b4d9eaad8ff6ac1698dfb0"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -30042,6 +30662,60 @@ ns.Data = {
                             ["order"] = 100,
                             ["output"] = "Куплю {item}.",
                             ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 652,
+                            ["output"] = "Куплю {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "{price}", "each" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 653,
+                            ["output"] = "Куплю {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "{price}", "a", "piece" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 654,
+                            ["output"] = "Куплю {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "{price}", "per", "item" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 655,
+                            ["output"] = "Куплю {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "for", "{price}", "each" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 656,
+                            ["output"] = "Куплю {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "for", "{price}", "a", "piece" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 657,
+                            ["output"] = "Куплю {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "for", "{price}", "per", "item" },
                             ["priority"] = 100,
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
@@ -32276,6 +32950,60 @@ ns.Data = {
                             ["pattern"] = { "{item}", "for", "{price}" },
                             ["priority"] = 100,
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 632,
+                            ["output"] = "Продам {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "{price}", "each" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 633,
+                            ["output"] = "Продам {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "{price}", "a", "piece" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 634,
+                            ["output"] = "Продам {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "{price}", "per", "item" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 635,
+                            ["output"] = "Продам {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "for", "{price}", "each" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 636,
+                            ["output"] = "Продам {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "for", "{price}", "a", "piece" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 637,
+                            ["output"] = "Продам {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "for", "{price}", "per", "item" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -32562,6 +33290,60 @@ ns.Data = {
                             ["pattern"] = { "{item}", "in", "{place}" },
                             ["priority"] = 100,
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 646,
+                            ["output"] = "Куплю {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "{price}", "each" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 647,
+                            ["output"] = "Куплю {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "{price}", "a", "piece" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 648,
+                            ["output"] = "Куплю {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "{price}", "per", "item" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 649,
+                            ["output"] = "Куплю {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "for", "{price}", "each" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 650,
+                            ["output"] = "Куплю {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "for", "{price}", "a", "piece" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 651,
+                            ["output"] = "Куплю {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "for", "{price}", "per", "item" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -32672,6 +33454,60 @@ ns.Data = {
                             ["order"] = 196,
                             ["output"] = "Продам {item}. Місце: {place}.",
                             ["pattern"] = { "{item}", "in", "{place}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 626,
+                            ["output"] = "Продам {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "{price}", "each" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 627,
+                            ["output"] = "Продам {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "{price}", "a", "piece" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 628,
+                            ["output"] = "Продам {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "{price}", "per", "item" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 629,
+                            ["output"] = "Продам {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "for", "{price}", "each" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 630,
+                            ["output"] = "Продам {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "for", "{price}", "a", "piece" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 631,
+                            ["output"] = "Продам {item} — {price} за штуку.",
+                            ["pattern"] = { "{item}", "for", "{price}", "per", "item" },
                             ["priority"] = 100,
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
@@ -34005,6 +34841,42 @@ ns.Data = {
                             ["pattern"] = { "{item}", ".", "місце", ":", "{place}" },
                             ["priority"] = 100,
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 658,
+                            ["output"] = "WTB {item} for {price} each",
+                            ["pattern"] = { "{item}", "за", "{price}", "за", "штуку" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 659,
+                            ["output"] = "WTB {item} for {price} each",
+                            ["pattern"] = { "{item}", "за", "{price}", "за", "одиницю" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 662,
+                            ["output"] = "WTB {item} for {price} each",
+                            ["pattern"] = { "{item}", "—", "{price}", "за", "штуку" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 663,
+                            ["output"] = "WTB {item} for {price} each",
+                            ["pattern"] = { "{item}", "—", "{price}", "за", "одиницю" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -34016,6 +34888,42 @@ ns.Data = {
                             ["order"] = 103,
                             ["output"] = "WTB {item}",
                             ["pattern"] = { "{item}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 660,
+                            ["output"] = "WTB {item} for {price} each",
+                            ["pattern"] = { "{item}", "за", "{price}", "за", "штуку" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 661,
+                            ["output"] = "WTB {item} for {price} each",
+                            ["pattern"] = { "{item}", "за", "{price}", "за", "одиницю" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 664,
+                            ["output"] = "WTB {item} for {price} each",
+                            ["pattern"] = { "{item}", "—", "{price}", "за", "штуку" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.buy_unit_price",
+                            ["intent"] = "trade.buy_unit_price",
+                            ["order"] = 665,
+                            ["output"] = "WTB {item} for {price} each",
+                            ["pattern"] = { "{item}", "—", "{price}", "за", "одиницю" },
                             ["priority"] = 100,
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
@@ -36140,6 +37048,42 @@ ns.Data = {
                             ["pattern"] = { "{item}", ".", "місце", ":", "{place}" },
                             ["priority"] = 100,
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 638,
+                            ["output"] = "WTS {item} for {price} each",
+                            ["pattern"] = { "{item}", "за", "{price}", "за", "штуку" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 639,
+                            ["output"] = "WTS {item} for {price} each",
+                            ["pattern"] = { "{item}", "за", "{price}", "за", "одиницю" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 642,
+                            ["output"] = "WTS {item} for {price} each",
+                            ["pattern"] = { "{item}", "—", "{price}", "за", "штуку" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 643,
+                            ["output"] = "WTS {item} for {price} each",
+                            ["pattern"] = { "{item}", "—", "{price}", "за", "одиницю" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -36160,6 +37104,42 @@ ns.Data = {
                             ["order"] = 97,
                             ["output"] = "WTS {item} for {price}",
                             ["pattern"] = { "{item}", "за", "{price}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 640,
+                            ["output"] = "WTS {item} for {price} each",
+                            ["pattern"] = { "{item}", "за", "{price}", "за", "штуку" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 641,
+                            ["output"] = "WTS {item} for {price} each",
+                            ["pattern"] = { "{item}", "за", "{price}", "за", "одиницю" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 644,
+                            ["output"] = "WTS {item} for {price} each",
+                            ["pattern"] = { "{item}", "—", "{price}", "за", "штуку" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_unit_price",
+                            ["intent"] = "trade.sell_unit_price",
+                            ["order"] = 645,
+                            ["output"] = "WTS {item} for {price} each",
+                            ["pattern"] = { "{item}", "—", "{price}", "за", "одиницю" },
                             ["priority"] = 100,
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
@@ -38024,6 +39004,7 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Druid",
             ["forms"] = {
+                ["genitivePlural"] = "друїдів",
                 ["genitiveSingular"] = "друїда"
             },
             ["id"] = "class.druid",
@@ -38052,6 +39033,7 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Hunter",
             ["forms"] = {
+                ["genitivePlural"] = "мисливців",
                 ["genitiveSingular"] = "мисливця"
             },
             ["id"] = "class.hunter",
@@ -38080,6 +39062,7 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Mage",
             ["forms"] = {
+                ["genitivePlural"] = "магів",
                 ["genitiveSingular"] = "мага"
             },
             ["id"] = "class.mage",
@@ -38108,6 +39091,7 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Paladin",
             ["forms"] = {
+                ["genitivePlural"] = "паладинів",
                 ["genitiveSingular"] = "паладина"
             },
             ["id"] = "class.paladin",
@@ -38136,6 +39120,7 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Priest",
             ["forms"] = {
+                ["genitivePlural"] = "жерців",
                 ["genitiveSingular"] = "жреця"
             },
             ["id"] = "class.priest",
@@ -38164,6 +39149,7 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Rogue",
             ["forms"] = {
+                ["genitivePlural"] = "розбійників",
                 ["genitiveSingular"] = "розбійника"
             },
             ["id"] = "class.rogue",
@@ -38192,6 +39178,7 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Shaman",
             ["forms"] = {
+                ["genitivePlural"] = "шаманів",
                 ["genitiveSingular"] = "шамана"
             },
             ["id"] = "class.shaman",
@@ -38220,6 +39207,7 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Warlock",
             ["forms"] = {
+                ["genitivePlural"] = "чорнокнижників",
                 ["genitiveSingular"] = "чорнокнижника"
             },
             ["id"] = "class.warlock",
@@ -38248,6 +39236,7 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Warrior",
             ["forms"] = {
+                ["genitivePlural"] = "воїнів",
                 ["genitiveSingular"] = "воїна"
             },
             ["id"] = "class.warrior",
@@ -39393,6 +40382,36 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Грізний Молот"
         },
+        ["place.drowned_city"] = {
+            ["aliases"] = {
+                ["en"] = { "Drowned City" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["en"] = "The Drowned City",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["genitiveSingular"] = "Затонулого міста",
+                ["locative"] = "Затонулому місті"
+            },
+            ["id"] = "place.drowned_city",
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "place",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "The Drowned City",
+                ["line"] = 3641,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.drowned_city" },
+            ["status"] = "approved",
+            ["uk"] = "Затонуле місто"
+        },
         ["place.durotar"] = {
             ["aliases"] = {
                 ["en"] = {},
@@ -39509,6 +40528,10 @@ ns.Data = {
             ["contexts"] = { "places" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Gnomeregan",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["genitiveSingular"] = "Гномреґана"
             },
@@ -39530,7 +40553,7 @@ ns.Data = {
         },
         ["place.hall_of_thanes"] = {
             ["aliases"] = {
-                ["en"] = { "Hall of Thanes" },
+                ["en"] = { "Hall of Thanes", "Halls of Thanes" },
                 ["uk"] = {}
             },
             ["category"] = "places",
@@ -39539,7 +40562,10 @@ ns.Data = {
                 ["uk"] = {}
             },
             ["en"] = "The Hall of Thanes",
-            ["features"] = {},
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
             ["forms"] = {
                 ["genitiveSingular"] = "Зали Танів",
                 ["locative"] = "Залі Танів"
@@ -39559,6 +40585,36 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Зала Танів"
         },
+        ["place.halls_of_lightning"] = {
+            ["aliases"] = {
+                ["en"] = {},
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contextAliases"] = {
+                ["en"] = { "HoL" },
+                ["uk"] = {}
+            },
+            ["en"] = "Halls of Lightning",
+            ["forms"] = {
+                ["genitiveSingular"] = "Зал Блискавок",
+                ["locative"] = "Залах Блискавок"
+            },
+            ["id"] = "place.halls_of_lightning",
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "place",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Halls of Lightning",
+                ["line"] = 1319,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.halls_of_lightning" },
+            ["status"] = "approved",
+            ["uk"] = "Зали Блискавок"
+        },
         ["place.ironforge"] = {
             ["aliases"] = {
                 ["en"] = { "if" },
@@ -39568,6 +40624,10 @@ ns.Data = {
             ["contexts"] = { "places" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Ironforge",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["genitiveSingular"] = "Залізогарта",
                 ["locative"] = "Залізогарті"
@@ -39599,7 +40659,10 @@ ns.Data = {
                 ["uk"] = {}
             },
             ["en"] = "Krol'dok Stronghold",
-            ["features"] = {},
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
             ["forms"] = {
                 ["genitiveSingular"] = "Твердині Крол'док",
                 ["locative"] = "Твердині Крол'док"
@@ -39975,6 +41038,36 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.shadowfang_keep" },
             ["status"] = "approved",
             ["uk"] = "фортеця Тіньового Ікла"
+        },
+        ["place.shapers_terrace"] = {
+            ["aliases"] = {
+                ["en"] = { "Shaper's Terrace" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["en"] = "The Shaper's Terrace",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["genitiveSingular"] = "тераси Творця",
+                ["locative"] = "терасі Творця"
+            },
+            ["id"] = "place.shapers_terrace",
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "place",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "The Shaper's Terrace",
+                ["line"] = 3031,
+                ["sha256"] = "f4c07f6daeaa71bdd01dd320b353f96d2aca164430d9b08572e7c0ac845bb1e4",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:place.shapers_terrace" },
+            ["status"] = "approved",
+            ["uk"] = "тераса Творця"
         },
         ["place.stormwind"] = {
             ["aliases"] = {

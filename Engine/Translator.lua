@@ -57,6 +57,20 @@ local function addClause(matched, refs, seen, rule, slots)
         end
     end
 end
+local function grammarClause(document, first, last)
+    if last - first >= 64 then return nil end
+    local punctuation
+    while last >= first and document.tokens[last].key:match("^[.!?]$") do
+        local key = document.tokens[last].key
+        if not punctuation or key == "?" then punctuation = key end
+        last = last - 1
+    end
+    if last < first then return nil end
+    local parsed = ns.Engine.ClauseAnalysis.parse(document, first, last)
+    if not parsed then return nil end
+    local output = ns.Engine.ClauseGeneration.render(parsed, document.direction, punctuation)
+    if output then return output, {intent=parsed.trees[1].kind, sourceRefs=ns.Linguistics.manifest.sourceRefs} end
+end
 local function compute(text, direction)
     local tokens = ns.Engine.Tokenizer.scan(text)
     if not tokens or #tokens == 0 then return unchanged(text, "token-limit-or-empty") end
@@ -73,8 +87,20 @@ local function compute(text, direction)
         output, rule, slots = ns.Engine.Parser.translate(text, tokens, direction)
     end
     local clauses, fragments
+    local general
+    local grammarEnabled = ns.Linguistics and not document.truncated and not document.ambiguities
+    if not output and grammarEnabled then
+        local rendered, grammarRule = grammarClause(document, 1, #tokens)
+        if rendered and N.key(rendered) ~= N.key(text) then
+            output, rule, general = rendered, grammarRule, true
+        end
+    end
     if not output and not document.truncated and not document.ambiguities then
-        output, clauses, fragments = ns.Engine.Parser.compose(text, tokens, direction)
+        local grammarFallback
+        if grammarEnabled then
+            grammarFallback = function(first, last) return grammarClause(document, first, last) end
+        end
+        output, clauses, fragments = ns.Engine.Parser.compose(text, tokens, direction, grammarFallback)
     end
     if syntaxFragments and not output then
         fragments = fragments or {}
@@ -97,10 +123,11 @@ local function compute(text, direction)
         table.sort(refs)
         return {text = output, mode = "template", intent = clauses and "composition" or rule.intent,
             matchedTerms = matched, unknownSpans = {}, sourceRefs = refs,
-            coverage = {complete=true, pipeline=tree and "structural" or "legacy"}}
+            coverage = {complete=true, pipeline=general and "grammar" or (tree and "structural" or "legacy")}}
     end
     local chunks, matched, unknown, refs, refSeen, i, cursor = {}, {}, {}, {}, {}, 1, 1
     local foundContent, hasMatch = false, false
+    local contextual = ns.Linguistics and #tokens >= 4
     while i <= #tokens do
         local token = tokens[i]
         local fragment = fragments and fragments[i]
@@ -114,7 +141,7 @@ local function compute(text, direction)
             replacement = text:sub(token.first, tokens[last].last)
             unknown[#unknown + 1] = {first=token.first, last=tokens[last].last, reason=preserve.reason}
         elseif not token.protected then
-            term, last = ns.Engine.Dictionary.literal(tokens, i, direction, fragments)
+            term, last = ns.Engine.Dictionary.literal(tokens, i, direction, fragments, contextual)
             if term then
                 replacement = term.text or (direction == "en-uk" and term.uk or term.en)
                 matched[#matched + 1] = term.id

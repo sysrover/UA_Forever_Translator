@@ -1,5 +1,7 @@
 # Third-party notices
 
+`Data/Linguistics.lua` adapts lexical data from [KOReader Dicts EN → UK](https://danielgregorini.github.io/koreader-dicts/en/en-uk/) and inflection data from [Kaikki’s Ukrainian Wiktionary extract](https://kaikki.org/dictionary/Ukrainian/index.html), based on the English Wiktionary dump dated 2026-10-01. The indexed adaptation is distributed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The source articles are credited to [Wiktionary contributors](https://en.wiktionary.org/wiki/Wiktionary:Copyrights). Source hashes are recorded in the generated file manifest.
+
 The pre-existing `Data/GeneralUkEn.lua` and `Data/GeneralEnUk.lua` snapshots identify KOReader Dicts, dated `2026.09.21`, with CC BY-SA 4.0 declared in their headers. Their attribution identifies English Wiktionary via Kaikki/Wiktextract and, for EN → UK, Princeton WordNet 3.0. Sources: https://danielgregorini.github.io/koreader-dicts/en/uk-en/ and https://danielgregorini.github.io/koreader-dicts/en/en-uk/. No re-import was performed for the structural pipeline.
 
 `legacy-curated` / `unresolved` records retain their original sourceRefs; their exact origin and redistribution terms are unknown. The new morphology and transfer implementation contains no copied Apertium, lttoolbox, or VESUM code or linguistic data.
