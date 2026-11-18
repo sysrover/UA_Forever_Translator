@@ -207,10 +207,32 @@ local function predicate(document, tree, index, limit)
     if adjective then tree.adjective = {entry=adjective, intensity=intensity}; return index + 1 end
 end
 
+local function wish(document, first, limit)
+    local english = document.direction == "en-uk"
+    local key = P.key(document, first, limit)
+    local nextIndex = first + 1
+    if english then
+        if key == "good" and P.key(document, nextIndex, limit) == "luck" then
+            nextIndex = nextIndex + 1
+        elseif key ~= "goodluck" and key ~= "gl" then return end
+        if P.key(document, nextIndex, limit) == "to" then nextIndex = nextIndex + 1 end
+    elseif (key == "усім" or key == "всім") and P.key(document, nextIndex, limit) == "удачі" then
+        return {kind="wish", everyone=true}, nextIndex + 1
+    elseif key ~= "удачі" and key ~= "щасти" then return end
+    local recipient = P.key(document, nextIndex, limit)
+    local everyone = english and (recipient == "all" or recipient == "everyone" or recipient == "everybody")
+        or not english and (recipient == "усім" or recipient == "всім")
+    if everyone then return {kind="wish", everyone=true}, nextIndex + 1 end
+    local pronoun, after = P.noun(document, nextIndex, limit, "dative")
+    if pronoun and pronoun.pronoun then return {kind="wish", recipient=pronoun}, after end
+end
+
 simple = function(document, first, limit, previous, depth)
     local english = document.direction == "en-uk"
     local key = P.key(document, first, limit)
     local special, after = duration(document, first, limit)
+    if special then return special, after end
+    special, after = wish(document, first, limit)
     if special then return special, after end
     local tree, index = {kind="clause"}, first
     if key == "where" or key == "де" then
@@ -320,6 +342,14 @@ simple = function(document, first, limit, previous, depth)
     if not tree.verb and not english and subject and not aux then
         local finish = predicate(document, tree, index, limit)
         if finish then tree.copula, tree.tense = true, "present"; return tree, finish end
+    end
+    if not tree.verb and english and subject and not aux and not tree.question then
+        local imperative = verb(document, first, limit, nil, false, true)
+        if imperative then
+            local command = {kind="clause", verb=imperative, imperative=true}
+            local finish = complements(document, command, first + 1, limit, depth)
+            if finish then return command, finish end
+        end
     end
     if not tree.verb then return nil end
     tree.subject = subject or inheritedSubject

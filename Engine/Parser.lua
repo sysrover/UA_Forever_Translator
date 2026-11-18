@@ -107,11 +107,17 @@ function P.compose(text, tokens, direction, grammarFallback)
 
     -- A failed composition can still contribute complete clauses to a preview.
     -- Keep their original boundaries so the caller can preserve every gap.
-    local starts, ends = {first}, {}
+    local starts, ends, sentenceEnds = {first}, {}, {}
+    local sentenceStart = 1
     for i = first + 1, #tokens - 1 do
-        if joinAt(tokens, i, joins) then
+        local join, sentence = joinAt(tokens, i, joins)
+        if join then
             ends[#ends + 1] = endBefore(i)
             starts[#starts + 1] = i + 1
+            if sentence then
+                for segment = sentenceStart, #ends do sentenceEnds[segment] = #ends end
+                sentenceStart = #ends + 1
+            end
         end
     end
     if #starts < 2 then return nil end
@@ -121,7 +127,7 @@ function P.compose(text, tokens, direction, grammarFallback)
     while segment <= #starts and accepted < 4 and attempts > 0 do
         local start = starts[segment]
         local nextSegment = segment + 1
-        for block = #ends, segment, -1 do
+        for block = sentenceEnds[segment] or #ends, segment, -1 do
             if attempts == 0 then break end
             local finish = ends[block]
             local match = translateClause(start, finish)

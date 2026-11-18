@@ -205,9 +205,11 @@ local function ukrainianVerb(tree)
     local lemma = entry.lexeme.uk
     local form
     if tree.imperative then
-        form = L.inflect(entry, {mood="imperative", person=2, number="singular"})
+        local features = {mood="imperative", person=2, number="singular"}
+        if frame.imperative then form = L.inflectLemma(frame.imperative, "verb", features)
+        else form = L.inflect(entry, features) end
     elseif tree.modal or tree.tense == "infinitive" then
-        form = (tree.modal == "can" or tree.modalSense == "possibility") and frame.possibleOutcome or lemma
+        form = (tree.modal == "can" or tree.modal == "could") and frame.possibleOutcome or lemma
     elseif tree.tense == "past" then
         if number == "singular" and not gender then return nil end
         local features = {tense="past", mood="indicative", number=number, gender=number == "singular" and gender or nil}
@@ -326,6 +328,11 @@ end
 
 render = function(tree, english)
     if tree.kind == "duration" then return duration(tree, english) end
+    if tree.kind == "wish" then
+        if tree.everyone then return english and "Good luck to everyone" or "Усім удачі" end
+        local recipient = G.noun(tree.recipient, english, "dative")
+        return recipient and (english and "Good luck to " or "Удачі ") .. recipient
+    end
     local parts = {}
     local subject = subjectText(tree, english)
     if subject == nil then return nil end
