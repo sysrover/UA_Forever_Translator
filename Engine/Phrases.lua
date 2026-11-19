@@ -722,7 +722,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     return best, nextIndex
 end
 
-function P.preposition(document, first, limit, motion, displacement, context)
+function P.preposition(document, first, limit, motion, displacement, context, secondaryContext)
     local english = document.direction == "en-uk"
     if english and P.key(document, first, limit) == "of" then return nil end
     local choices, last = L.functional(document, "prepositions", first, limit)
@@ -734,7 +734,7 @@ function P.preposition(document, first, limit, motion, displacement, context)
         local object, ending
         if (not rule.requiresMotion or motion) and (not rule.excludesMotion or not motion)
             and (not rule.directional or english or motion or displacement)
-            and (not rule.context or rule.context == context) then
+            and (not rule.context or rule.context == context or rule.context == secondaryContext) then
             local spatial = rule.requiresSpatialContainer or displacement and rule.id == "in"
             local locationOnly = rule.requiresSpatialContainer
                 or not displacement and (rule.id == "in" or rule.id == "to" or rule.id == "from")

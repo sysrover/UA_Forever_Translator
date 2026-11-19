@@ -854,10 +854,11 @@ local complements
 
 local function prepositionContext(tree, frame)
     local objectClass = P.semanticClass(tree.object)
-    return tree.kind == "benefit" and objectClass
+    local context = tree.kind == "benefit" and objectClass
         or tree.object and tree.object.sufficient and "supply"
         or frame.objectPrepositionContexts and frame.objectPrepositionContexts[objectClass]
         or frame.prepositionContext
+    return context, frame.durationBoundary and "duration"
 end
 local controlledTemporal = {
     before={en={"before"}, uk={"перш ніж"}, temporal=true, prospectiveEvent=true},
@@ -1314,7 +1315,7 @@ complements = function(document, tree, index, limit, depth)
             tree.priceComparison, tree.priceComma, index = price, comma, finish
         end
     end
-    local adjunctContext = prepositionContext(tree, frame)
+    local adjunctContext, temporalContext = prepositionContext(tree, frame)
     for _ = 1, 3 do
         local delay, delayed = P.delay(document, index, limit)
         if delay and not tree.delay then
@@ -1358,7 +1359,7 @@ complements = function(document, tree, index, limit, depth)
         local pp, last
         if not adverb or not adverb.temporalAdjunct then
             pp, last = P.preposition(document, index, limit, frame.motion, frame.displacesObject and tree.object ~= nil,
-                adjunctContext)
+                adjunctContext, temporalContext)
         end
         if pp then
             local entry = pp.object.entry
@@ -1819,6 +1820,7 @@ local function predicate(document, tree, index, limit, depth)
     end
     if adjective then
         tree.adjective = {entry=adjective, intensity=intensity}
+        tree.predicateIndex = index
         local frame = adjective.lexeme.frame
         if depth and depth < 3 and (adjective.form.degree == "comparative" or intensity == "more") then
             local english = document.direction == "en-uk"
@@ -4114,29 +4116,55 @@ local function unmarkedRelatives(document, first, limit, arcs)
     if parsed then parsed.dependency = true; return parsed end
 end
 
-local function frontedPreposition(document, first, limit, arcs, words)
+local function frontedPrepositionGovernor(arcs, first)
     local marker = arcs[1]
     local noun = marker and marker.relation == "case" and marker.head > 1 and arcs[marker.head]
-    local governor = noun and noun.relation:match("^[^:]+") == "obl" and first + noun.head - 1
-    if not governor or governor > limit or noun.head <= marker.head then return nil end
+    if noun and noun.relation:match("^[^:]+") == "obl" and noun.head > marker.head then
+        return first + noun.head - 1, first + marker.head - 1
+    end
+end
+
+local function attachFrontedPreposition(document, core, first, ending, governor)
+    local tree = core and core.trees[1]
+    if not tree or (tree.verbIndex or tree.predicateIndex) ~= governor then return nil end
+    -- Decode the same constituent with the governing predicate's actual valency.
+    local frame = tree.verb and lexemeFrame(tree.verb) or {}
+    local adjunct, after = P.preposition(document, first, ending, frame.motion,
+        frame.displacesObject and tree.object ~= nil, prepositionContext(tree, frame))
+    if not adjunct or after ~= ending + 1 then return nil end
+    tree.prepositions = tree.prepositions or {}
+    table.insert(tree.prepositions, 1, adjunct)
+    core.dependency = true
+    return core
+end
+
+local function frontedPreposition(document, first, limit, arcs, words)
+    local governor = frontedPrepositionGovernor(arcs, first)
+    if not governor or governor > limit then return nil end
 
     local group = P.dependencyNominals(document, first, arcs, words, {}, true)[1]
     if not group or group.first ~= first or not group.preposition or group.last >= governor then return nil end
     local start = group.last + 1
     if P.key(document, start, limit) == "," then start = start + 1 end
     local core = parseWithRelatives(document, start, limit)
-    local tree = core and core.trees[1]
-    if not tree or tree.verbIndex ~= governor or not tree.verb then return nil end
+    return attachFrontedPreposition(document, core, first, group.last, governor)
+end
 
-    -- Decode the same constituent with the governing predicate's actual valency.
-    local frame = lexemeFrame(tree.verb)
-    local adjunct, after = P.preposition(document, first, group.last, frame.motion,
-        frame.displacesObject and tree.object ~= nil, prepositionContext(tree, frame))
-    if not adjunct or after ~= group.last + 1 then return nil end
-    tree.prepositions = tree.prepositions or {}
-    table.insert(tree.prepositions, 1, adjunct)
-    core.dependency = true
-    return core
+local function frontedTemporalPreposition(document, first, limit)
+    local phrase, after = P.preposition(document, first, limit)
+    local noun = phrase and phrase.rule.temporalAdjunct and phrase.object.headIndex
+    if not noun or after > limit or after - first > 8 then return nil end
+    local start = after + (P.key(document, after, limit) == "," and 1 or 0)
+    local core = parseWithRelatives(document, start, limit)
+    local tree = core and not core.prefix and core.trees[1]
+    local predicate = tree and (tree.verbIndex or tree.predicateIndex)
+    if not predicate then return nil end
+    local tags = {[first]="ADP", [noun]="NOUN", [predicate]=tree.verbIndex and "VERB" or "ADJ"}
+    local arcs = ns.Engine.UDPipe.analyzeDocument(document, first, limit, nil, nil, tags)
+    if not arcs then return nil end
+    local governor, attachedNoun = frontedPrepositionGovernor(arcs, first)
+    if governor ~= predicate or attachedNoun ~= noun then return nil end
+    return attachFrontedPreposition(document, core, first, after - 1, governor)
 end
 
 function A.parseDependencies(document, first, limit, arcs, words)
@@ -4151,5 +4179,6 @@ function A.parseDependencies(document, first, limit, arcs, words)
         fronted = alternate and tags and frontedPreposition(document, first, limit, alternate, tags)
         if fronted then return fronted end
     end
-    return unmarkedRelatives(document, first, limit, arcs) or dependencySequence(document, first, limit, arcs, words)
+    return frontedTemporalPreposition(document, first, limit) or unmarkedRelatives(document, first, limit, arcs)
+        or dependencySequence(document, first, limit, arcs, words)
 end

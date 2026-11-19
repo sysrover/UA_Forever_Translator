@@ -668,7 +668,9 @@ function G.preposition(complement, english, owner)
     local case = complement.case
     local pronoun = not english and complement.object.pronoun
     local marked = pronoun and (case == "genitive" or case == "accusative") and pronoun.ukGenitiveAfterPreposition
-    local value = marked or G.noun(complement.object, english, case, rule.englishArticle or true, nil, owner)
+    local article = rule.englishArticle
+    if article == nil then article = true end
+    local value = marked or G.noun(complement.object, english, case, article, nil, owner)
     if not value then return nil end
     local entry = complement.object.entry
     local frame = entry and entry.lexeme.frame
