@@ -169,6 +169,16 @@ ns.Data = {
                     ["_id"] = "slang.combat.adds-inc"
                 }
             },
+            ["adventurer"] = {
+                ["_id"] = "character.adventurer"
+            },
+            ["adventurers"] = {
+                ["_plural"] = {
+                    ["id"] = "character.adventurer",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "шукачі пригод"
+                }
+            },
             ["afk"] = {
                 ["_literal"] = {
                     ["id"] = "literal.slang.afk",
@@ -408,6 +418,9 @@ ns.Data = {
                     ["text"] = "сокири"
                 }
             },
+            ["azeroth"] = {
+                ["_id"] = "place.azeroth"
+            },
             ["b"] = {
                 ["-"] = {
                     ["rez"] = {
@@ -641,6 +654,9 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["bounties"] = {
+                ["_id"] = "activity.bounty_contracts"
+            },
             ["bracers"] = {
                 ["_byCategory"] = {
                     ["equipment"] = "equipment.bracers"
@@ -832,6 +848,22 @@ ns.Data = {
                     }
                 }
             },
+            ["casual"] = {
+                [","] = {
+                    ["friendly"] = {
+                        ["guild"] = {
+                            ["_id"] = "game.casual_friendly_guild"
+                        }
+                    }
+                },
+                ["and"] = {
+                    ["friendly"] = {
+                        ["guild"] = {
+                            ["_id"] = "game.casual_friendly_guild"
+                        }
+                    }
+                }
+            },
             ["cc"] = {
                 ["_id"] = "slang.combat.cc"
             },
@@ -982,6 +1014,24 @@ ns.Data = {
                     ["_id"] = "slang.trade.mats"
                 }
             },
+            ["cross"] = {
+                ["-"] = {
+                    ["faction"] = {
+                        ["mercenary"] = {
+                            ["network"] = {
+                                ["_id"] = "game.mercenary_network"
+                            }
+                        }
+                    }
+                },
+                ["faction"] = {
+                    ["mercenary"] = {
+                        ["network"] = {
+                            ["_id"] = "game.mercenary_network"
+                        }
+                    }
+                }
+            },
             ["crowd"] = {
                 ["control"] = {
                     ["_id"] = "slang.combat.cc"
@@ -998,6 +1048,23 @@ ns.Data = {
                     ["time"] = {
                         ["_id"] = "slang.combat.dot"
                     }
+                }
+            },
+            ["dandelion"] = {
+                ["."] = {
+                    ["."] = {
+                        ["."] = {
+                            ["dandelion"] = {
+                                ["ragstallion"] = {
+                                    ["_id"] = "character.dandelion_ragstallion"
+                                }
+                            }
+                        }
+                    }
+                },
+                ["_id"] = "character.dandelion_short",
+                ["ragstallion"] = {
+                    ["_id"] = "character.dandelion_ragstallion"
                 }
             },
             ["darnassus"] = {
@@ -1249,6 +1316,26 @@ ns.Data = {
                     }
                 }
             },
+            ["elves"] = {
+                ["-"] = {
+                    ["only"] = {
+                        ["friendly"] = {
+                            ["guild"] = {
+                                ["_id"] = "game.elves_only_guild"
+                            }
+                        }
+                    }
+                },
+                ["only"] = {
+                    ["focused"] = {
+                        ["friendly"] = {
+                            ["guild"] = {
+                                ["_id"] = "game.elves_only_guild"
+                            }
+                        }
+                    }
+                }
+            },
             ["elwynn"] = {
                 ["forest"] = {
                     ["_id"] = "place.elwynn_forest",
@@ -1314,6 +1401,21 @@ ns.Data = {
             ["epl"] = {
                 ["_id"] = "place.eastern_plaguelands"
             },
+            ["escort"] = {
+                ["mission"] = {
+                    ["_id"] = "activity.escort_mission"
+                },
+                ["missions"] = {
+                    ["_plural"] = {
+                        ["id"] = "activity.escort_mission",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "місії супроводу"
+                    }
+                }
+            },
+            ["espionage"] = {
+                ["_id"] = "activity.espionage"
+            },
             ["exit"] = {
                 ["_literal"] = {
                     ["id"] = "literal.exit",
@@ -1347,6 +1449,11 @@ ns.Data = {
                     ["_id"] = "game.expert_fishing"
                 }
             },
+            ["fellow"] = {
+                ["elves"] = {
+                    ["_id"] = "character.fellow_elves"
+                }
+            },
             ["fetch"] = {
                 ["_literal"] = {
                     ["id"] = "literal.bring",
@@ -1374,6 +1481,11 @@ ns.Data = {
             ["first"] = {
                 ["aid"] = {
                     ["_id"] = "profession.first_aid"
+                }
+            },
+            ["firstborn"] = {
+                ["covenant"] = {
+                    ["_id"] = "game.firstborn_covenant"
                 }
             },
             ["fishing"] = {
@@ -1440,6 +1552,22 @@ ns.Data = {
             },
             ["freeroll"] = {
                 ["_id"] = "slang.loot.free-roll"
+            },
+            ["friendly"] = {
+                ["casual"] = {
+                    ["guild"] = {
+                        ["_id"] = "game.casual_friendly_guild"
+                    }
+                },
+                ["guild"] = {
+                    ["for"] = {
+                        ["elves"] = {
+                            ["only"] = {
+                                ["_id"] = "game.elves_only_guild"
+                            }
+                        }
+                    }
+                }
             },
             ["from"] = {
                 ["_literal"] = {
@@ -1569,6 +1697,9 @@ ns.Data = {
                 ["dkp"] = {
                     ["_id"] = "slang.loot.gdkp"
                 }
+            },
+            ["goldshire"] = {
+                ["_id"] = "place.goldshire"
             },
             ["greater"] = {
                 ["healing"] = {
@@ -2178,6 +2309,18 @@ ns.Data = {
             ["lfw"] = {
                 ["_id"] = "slang.trade.lfw"
             },
+            ["life"] = {
+                ["choice"] = {
+                    ["_id"] = "game.life_choice"
+                },
+                ["choices"] = {
+                    ["_plural"] = {
+                        ["id"] = "game.life_choice",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "життєві рішення"
+                    }
+                }
+            },
             ["light"] = {
                 ["rp"] = {
                     ["_literal"] = {
@@ -2424,6 +2567,9 @@ ns.Data = {
                     }
                 }
             },
+            ["milady"] = {
+                ["_id"] = "address.milady"
+            },
             ["mining"] = {
                 ["_id"] = "profession.mining"
             },
@@ -2477,6 +2623,9 @@ ns.Data = {
                         ["text"] = "сумки з місячної тканини"
                     }
                 }
+            },
+            ["moonlight"] = {
+                ["_id"] = "lighting.moonlight"
             },
             ["mount"] = {
                 ["_id"] = "goods.mount"
@@ -2536,6 +2685,9 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "мій",
                     ["weak"] = true
+                },
+                ["lady"] = {
+                    ["_id"] = "address.milady"
                 },
                 ["mats"] = {
                     ["_id"] = "slang.trade.my-mats"
@@ -2750,6 +2902,16 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "лише",
                     ["weak"] = true
+                },
+                ["requirement"] = {
+                    ["_id"] = "game.only_requirement"
+                },
+                ["requirements"] = {
+                    ["_plural"] = {
+                        ["id"] = "game.only_requirement",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "єдині вимоги"
+                    }
                 }
             },
             ["ony"] = {
@@ -3063,6 +3225,11 @@ ns.Data = {
             ["procs"] = {
                 ["_id"] = "slang.combat.procs"
             },
+            ["promised"] = {
+                ["island"] = {
+                    ["_id"] = "place.promised_island"
+                }
+            },
             ["proto"] = {
                 ["-"] = {
                     ["dwarf"] = {
@@ -3133,6 +3300,9 @@ ns.Data = {
                 ["_id"] = "slang.combat.pve"
             },
             ["pvp"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.pvp"
+                },
                 ["_id"] = "slang.combat.pvp"
             },
             ["quest"] = {
@@ -3156,6 +3326,9 @@ ns.Data = {
                         ["weak"] = false
                     }
                 }
+            },
+            ["ragstallion"] = {
+                ["_id"] = "character.ragstallion"
             },
             ["raid"] = {
                 ["_id"] = "game.raid",
@@ -3372,6 +3545,16 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "продай",
                     ["weak"] = false
+                }
+            },
+            ["sense"] = {
+                ["of"] = {
+                    ["humor"] = {
+                        ["_id"] = "game.sense_of_humour"
+                    },
+                    ["humour"] = {
+                        ["_id"] = "game.sense_of_humour"
+                    }
                 }
             },
             ["services"] = {
@@ -3736,6 +3919,9 @@ ns.Data = {
             ["tb"] = {
                 ["_id"] = "place.thunder_bluff"
             },
+            ["tel'abim"] = {
+                ["_id"] = "place.tel_abim"
+            },
             ["teleport"] = {
                 ["_literal"] = {
                     ["id"] = "literal.teleport",
@@ -3809,6 +3995,11 @@ ns.Data = {
                         ["thanes"] = {
                             ["_id"] = "place.hall_of_thanes"
                         }
+                    }
+                },
+                ["promised"] = {
+                    ["island"] = {
+                        ["_id"] = "place.promised_island"
                     }
                 },
                 ["shaper's"] = {
@@ -4364,6 +4555,9 @@ ns.Data = {
             },
             ["world"] = {
                 ["pvp"] = {
+                    ["_byCategory"] = {
+                        ["activities"] = "activity.world_pvp"
+                    },
                     ["_id"] = "slang.combat.wpvp"
                 }
             },
@@ -4546,17 +4740,35 @@ ns.Data = {
                     }
                 }
             },
+            ["dandelion"] = {
+                ["_id"] = "character.dandelion_short",
+                ["ragstallion"] = {
+                    ["_id"] = "character.dandelion_ragstallion"
+                }
+            },
             ["dps"] = {
                 ["_id"] = "role.damage"
             },
             ["pvp"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.pvp"
+                },
                 ["у"] = {
                     ["відкритому"] = {
                         ["світі"] = {
+                            ["_byCategory"] = {
+                                ["activities"] = "activity.world_pvp"
+                            },
                             ["_id"] = "slang.combat.wpvp"
                         }
                     }
                 }
+            },
+            ["ragstallion"] = {
+                ["_id"] = "character.ragstallion"
+            },
+            ["tel'abim"] = {
+                ["_id"] = "place.tel_abim"
             },
             ["«"] = {
                 ["потрібно"] = {
@@ -4615,6 +4827,15 @@ ns.Data = {
             },
             ["ади"] = {
                 ["_id"] = "slang.combat.adds"
+            },
+            ["азерот"] = {
+                ["_id"] = "place.azeroth"
+            },
+            ["азероту"] = {
+                ["_id"] = "place.azeroth"
+            },
+            ["азероті"] = {
+                ["_id"] = "place.azeroth"
             },
             ["айронфордж"] = {
                 ["_id"] = "place.ironforge",
@@ -6024,8 +6245,29 @@ ns.Data = {
                     }
                 }
             },
+            ["гільдію"] = {
+                ["_id"] = "game.guild",
+                ["firstborn"] = {
+                    ["covenant"] = {
+                        ["_id"] = "game.firstborn_covenant"
+                    }
+                }
+            },
             ["гільдія"] = {
-                ["_id"] = "game.guild"
+                ["_id"] = "game.guild",
+                ["firstborn"] = {
+                    ["covenant"] = {
+                        ["_id"] = "game.firstborn_covenant"
+                    }
+                }
+            },
+            ["гільдії"] = {
+                ["_id"] = "game.guild",
+                ["firstborn"] = {
+                    ["covenant"] = {
+                        ["_id"] = "game.firstborn_covenant"
+                    }
+                }
             },
             ["гірництва"] = {
                 ["_id"] = "profession.mining"
@@ -6481,6 +6723,26 @@ ns.Data = {
                     ["_id"] = "slang.groups.offtank"
                 }
             },
+            ["дружня"] = {
+                ["гільдія"] = {
+                    ["зі"] = {
+                        ["спокійним"] = {
+                            ["темпом"] = {
+                                ["гри"] = {
+                                    ["_id"] = "game.casual_friendly_guild"
+                                }
+                            }
+                        }
+                    },
+                    ["лише"] = {
+                        ["для"] = {
+                            ["ельфів"] = {
+                                ["_id"] = "game.elves_only_guild"
+                            }
+                        }
+                    }
+                }
+            },
             ["друїд"] = {
                 ["_id"] = "class.druid"
             },
@@ -6569,6 +6831,16 @@ ns.Data = {
             },
             ["жерців"] = {
                 ["_id"] = "class.priest"
+            },
+            ["життєве"] = {
+                ["рішення"] = {
+                    ["_id"] = "game.life_choice"
+                }
+            },
+            ["життєві"] = {
+                ["рішення"] = {
+                    ["_id"] = "game.life_choice"
+                }
             },
             ["жрець"] = {
                 ["_id"] = "class.priest"
@@ -6899,6 +7171,12 @@ ns.Data = {
                 ["мітрилу"] = {
                     ["_id"] = "goods.mithril_bar"
                 }
+            },
+            ["злотохрестя"] = {
+                ["_id"] = "place.goldshire"
+            },
+            ["злотохресті"] = {
+                ["_id"] = "place.goldshire"
             },
             ["зліва"] = {
                 ["_literal"] = {
@@ -7895,6 +8173,13 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["міжфракційна"] = {
+                ["мережа"] = {
+                    ["найманців"] = {
+                        ["_id"] = "game.mercenary_network"
+                    }
+                }
+            },
             ["мій"] = {
                 ["_literal"] = {
                     ["id"] = "literal.my",
@@ -7933,6 +8218,36 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "city",
                     ["weak"] = false
+                }
+            },
+            ["місячне"] = {
+                ["світло"] = {
+                    ["_id"] = "lighting.moonlight"
+                }
+            },
+            ["місячному"] = {
+                ["світлі"] = {
+                    ["_id"] = "lighting.moonlight"
+                }
+            },
+            ["місія"] = {
+                ["супроводу"] = {
+                    ["_id"] = "activity.escort_mission"
+                }
+            },
+            ["місіями"] = {
+                ["супроводу"] = {
+                    ["_id"] = "activity.escort_mission"
+                }
+            },
+            ["місією"] = {
+                ["супроводу"] = {
+                    ["_id"] = "activity.escort_mission"
+                }
+            },
+            ["місії"] = {
+                ["супроводу"] = {
+                    ["_id"] = "activity.escort_mission"
                 }
             },
             ["наближаються"] = {
@@ -8632,6 +8947,11 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["обіцяний"] = {
+                ["острів"] = {
+                    ["_id"] = "place.promised_island"
+                }
+            },
             ["оплата"] = {
                 ["при"] = {
                     ["отриманні"] = {
@@ -9022,6 +9342,9 @@ ns.Data = {
                     ["_id"] = "place.burning_steppes"
                 }
             },
+            ["пані"] = {
+                ["_id"] = "address.milady"
+            },
             ["патруль"] = {
                 ["наближається"] = {
                     ["_id"] = "slang.combat.pat-inc"
@@ -9166,6 +9489,13 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["побратими"] = {
+                ["-"] = {
+                    ["ельфи"] = {
+                        ["_id"] = "character.fellow_elves"
+                    }
+                }
+            },
             ["повернися"] = {
                 ["_literal"] = {
                     ["id"] = "literal.come_back",
@@ -9225,6 +9555,20 @@ ns.Data = {
             ["поле"] = {
                 ["бою"] = {
                     ["_id"] = "activity.battleground"
+                }
+            },
+            ["полювання"] = {
+                ["за"] = {
+                    ["винагородами"] = {
+                        ["_id"] = "activity.bounty_contracts"
+                    }
+                }
+            },
+            ["полюванням"] = {
+                ["за"] = {
+                    ["винагородами"] = {
+                        ["_id"] = "activity.bounty_contracts"
+                    }
                 }
             },
             ["портал"] = {
@@ -9358,6 +9702,11 @@ ns.Data = {
                             }
                         }
                     }
+                }
+            },
+            ["почуття"] = {
+                ["гумору"] = {
+                    ["_id"] = "game.sense_of_humour"
                 }
             },
             ["пошвидше"] = {
@@ -11144,6 +11493,12 @@ ns.Data = {
             ["шкірництво"] = {
                 ["_id"] = "profession.leatherworking"
             },
+            ["шпигунство"] = {
+                ["_id"] = "activity.espionage"
+            },
+            ["шпигунством"] = {
+                ["_id"] = "activity.espionage"
+            },
             ["шторм"] = {
                 ["_id"] = "place.stormwind"
             },
@@ -11173,6 +11528,9 @@ ns.Data = {
                     ["text"] = "Stormwind",
                     ["weak"] = false
                 }
+            },
+            ["штормовію"] = {
+                ["_id"] = "place.stormwind"
             },
             ["штормовія"] = {
                 ["_id"] = "place.stormwind",
@@ -11206,6 +11564,26 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "look for",
                     ["weak"] = false
+                }
+            },
+            ["шукач"] = {
+                ["пригод"] = {
+                    ["_id"] = "character.adventurer"
+                }
+            },
+            ["шукача"] = {
+                ["пригод"] = {
+                    ["_id"] = "character.adventurer"
+                }
+            },
+            ["шукачі"] = {
+                ["пригод"] = {
+                    ["_id"] = "character.adventurer"
+                }
+            },
+            ["шукачів"] = {
+                ["пригод"] = {
+                    ["_id"] = "character.adventurer"
                 }
             },
             ["шукаю"] = {
@@ -11346,6 +11724,16 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:place.ashenvale" },
                     ["text"] = "Ashenvale",
                     ["weak"] = false
+                }
+            },
+            ["єдина"] = {
+                ["вимога"] = {
+                    ["_id"] = "game.only_requirement"
+                }
+            },
+            ["єдині"] = {
+                ["вимоги"] = {
+                    ["_id"] = "game.only_requirement"
                 }
             },
             ["і"] = {
@@ -11545,6 +11933,16 @@ ns.Data = {
     },
     ["exact"] = {
         ["en-uk"] = {
+            ["/w for in"] = {
+                ["id"] = "whisper_to_join",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Щоб приєднатися, напиши пошепки"
+            },
+            ["/w to join"] = {
+                ["id"] = "whisper_to_join",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Щоб приєднатися, напиши пошепки"
+            },
             ["1 min please"] = {
                 ["id"] = "one_min",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -11589,6 +11987,11 @@ ns.Data = {
                 ["id"] = "back",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Я повернувся"
+            },
+            ["bane of many a wench"] = {
+                ["id"] = "bane_many_wench",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Згуба не однієї панянки"
             },
             ["be right back"] = {
                 ["id"] = "brb",
@@ -11695,6 +12098,16 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Мені потрібно попити"
             },
+            ["excellent"] = {
+                ["id"] = "excellent_reply",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Чудово"
+            },
+            ["fine"] = {
+                ["id"] = "fine_reply",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Добре"
+            },
             ["focus boss"] = {
                 ["id"] = "focus",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -11800,6 +12213,11 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Привіт, гільдіє"
             },
+            ["hellooo"] = {
+                ["id"] = "hello",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Привіт"
+            },
             ["help me"] = {
                 ["id"] = "help",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -11875,6 +12293,16 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Зрозуміло"
             },
+            ["i sure am"] = {
+                ["id"] = "i_sure_am",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Авжеж, це я"
+            },
+            ["i suuure am"] = {
+                ["id"] = "i_sure_am",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Авжеж, це я"
+            },
             ["i'm back"] = {
                 ["id"] = "back",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -11925,10 +12353,20 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Зробімо перерву"
             },
+            ["let's go"] = {
+                ["id"] = "lets_go",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Ходімо"
+            },
             ["let's take a break"] = {
                 ["id"] = "take_break",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Зробімо перерву"
+            },
+            ["lets go"] = {
+                ["id"] = "lets_go",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Ходімо"
             },
             ["lf guild"] = {
                 ["id"] = "guild",
@@ -12235,6 +12673,11 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Дякую за групу"
             },
+            ["that's the name"] = {
+                ["id"] = "thats_the_name",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Саме так мене звати"
+            },
             ["the group is full"] = {
                 ["id"] = "full",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -12254,6 +12697,16 @@ ns.Data = {
                 ["id"] = "thanks_group",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Дякую за групу"
+            },
+            ["vagabond par excellans"] = {
+                ["id"] = "vagabond_par_excellence",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Справжнісінький волоцюга"
+            },
+            ["vagabond par excellence"] = {
+                ["id"] = "vagabond_par_excellence",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Справжнісінький волоцюга"
             },
             ["wait"] = {
                 ["id"] = "wait",
@@ -12325,6 +12778,26 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Ну"
             },
+            ["whisper for details"] = {
+                ["id"] = "guild_whisper_for_details",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "За подробицями пишіть пошепки"
+            },
+            ["whisper for further info"] = {
+                ["id"] = "guild_whisper_for_details",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "За подробицями пишіть пошепки"
+            },
+            ["whisper for more info"] = {
+                ["id"] = "guild_whisper_for_details",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "За подробицями пишіть пошепки"
+            },
+            ["whisper to join"] = {
+                ["id"] = "whisper_to_join",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Щоб приєднатися, напиши пошепки"
+            },
             ["will you just stand around here"] = {
                 ["id"] = "stand_around_question",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -12372,6 +12845,11 @@ ns.Data = {
             }
         },
         ["uk-en"] = {
+            ["авжеж, це я"] = {
+                ["id"] = "i_sure_am",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "I sure am"
+            },
             ["атакуй зараз"] = {
                 ["id"] = "fight_now",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -12502,6 +12980,11 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Good night guild"
             },
+            ["добре"] = {
+                ["id"] = "fine_reply",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Fine"
+            },
             ["допоможи мені"] = {
                 ["id"] = "help",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -12521,6 +13004,11 @@ ns.Data = {
                 ["id"] = "thanks_group",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Thanks for the group"
+            },
+            ["за подробицями пишіть пошепки"] = {
+                ["id"] = "guild_whisper_for_details",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Whisper for further info"
             },
             ["залишайся тут"] = {
                 ["id"] = "stay_here",
@@ -12586,6 +13074,11 @@ ns.Data = {
                 ["id"] = "heal_wait",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Wait for the healer"
+            },
+            ["згуба не однієї панянки"] = {
+                ["id"] = "bane_many_wench",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Bane of many a wench"
             },
             ["зніміть із мене ефект"] = {
                 ["id"] = "dispel",
@@ -12897,10 +13390,20 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Spread out"
             },
+            ["саме так мене звати"] = {
+                ["id"] = "thats_the_name",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "That's the name"
+            },
             ["спасибі"] = {
                 ["id"] = "thanks",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Thank you"
+            },
+            ["справжнісінький волоцюга"] = {
+                ["id"] = "vagabond_par_excellence",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Vagabond par excellence"
             },
             ["станьте разом"] = {
                 ["id"] = "stack",
@@ -12967,6 +13470,11 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "On my way"
             },
+            ["ходімо"] = {
+                ["id"] = "lets_go",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Let's go"
+            },
             ["хочеш зі мною"] = {
                 ["id"] = "come_with_me_question",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -12992,6 +13500,11 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "I am waiting for you"
             },
+            ["чудово"] = {
+                ["id"] = "excellent_reply",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Excellent"
+            },
             ["шукаю групу"] = {
                 ["id"] = "lfg",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -13011,6 +13524,11 @@ ns.Data = {
                 ["id"] = "gl",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Good luck"
+            },
+            ["щоб приєднатися, напиши пошепки"] = {
+                ["id"] = "whisper_to_join",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Whisper to join"
             },
             ["я нідаю це"] = {
                 ["id"] = "loot.need_this",
@@ -13736,6 +14254,37 @@ ns.Data = {
                         }
                     }
                 },
+                ["adventurer"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine"
+                            },
+                            ["id"] = "character.adventurer",
+                            ["lemma"] = "adventurer",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.adventurer",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["adventurers"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "character.adventurer",
+                            ["lemma"] = "adventurer",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.adventurer",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["aggro"] = {
                     ["_analyses"] = {
                         {
@@ -14147,6 +14696,22 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "goods.axe",
                             ["sourceRefs"] = { "ua-forever:goods.axe" }
+                        }
+                    }
+                },
+                ["azeroth"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.azeroth",
+                            ["lemma"] = "Azeroth",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.azeroth",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -14659,6 +15224,18 @@ ns.Data = {
                         }
                     }
                 },
+                ["bounties"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.bounty_contracts",
+                            ["lemma"] = "bounties",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.bounty_contracts",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["bracers"] = {
                     ["_analyses"] = {
                         {
@@ -14813,6 +15390,46 @@ ns.Data = {
                                     ["pos"] = "noun",
                                     ["sense"] = "slang.trade.cod",
                                     ["sourceRefs"] = { "wow-community:wiki" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["casual"] = {
+                    [","] = {
+                        ["friendly"] = {
+                            ["guild"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["gender"] = "feminine"
+                                        },
+                                        ["id"] = "game.casual_friendly_guild",
+                                        ["lemma"] = "casual, friendly guild",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "game.casual_friendly_guild",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["and"] = {
+                        ["friendly"] = {
+                            ["guild"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["gender"] = "feminine"
+                                        },
+                                        ["id"] = "game.casual_friendly_guild",
+                                        ["lemma"] = "casual, friendly guild",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "game.casual_friendly_guild",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    }
                                 }
                             }
                         }
@@ -14975,6 +15592,48 @@ ns.Data = {
                         }
                     }
                 },
+                ["cross"] = {
+                    ["-"] = {
+                        ["faction"] = {
+                            ["mercenary"] = {
+                                ["network"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["animacy"] = "inanimate",
+                                                ["gender"] = "feminine"
+                                            },
+                                            ["id"] = "game.mercenary_network",
+                                            ["lemma"] = "cross-faction mercenary network",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "game.mercenary_network",
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["faction"] = {
+                        ["mercenary"] = {
+                            ["network"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["gender"] = "feminine"
+                                        },
+                                        ["id"] = "game.mercenary_network",
+                                        ["lemma"] = "cross-faction mercenary network",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "game.mercenary_network",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["crowd"] = {
                     ["control"] = {
                         ["_analyses"] = {
@@ -15028,6 +15687,66 @@ ns.Data = {
                                     ["sense"] = "slang.combat.dot",
                                     ["sourceRefs"] = { "wow-community:classic" }
                                 }
+                            }
+                        }
+                    }
+                },
+                ["dandelion"] = {
+                    ["."] = {
+                        ["."] = {
+                            ["."] = {
+                                ["dandelion"] = {
+                                    ["ragstallion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["animacy"] = "animate",
+                                                    ["gender"] = "masculine",
+                                                    ["proper"] = true,
+                                                    ["verbatim"] = true
+                                                },
+                                                ["id"] = "character.dandelion_ragstallion",
+                                                ["lemma"] = "Dandelion Ragstallion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "character.dandelion_ragstallion",
+                                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["caseSensitiveEnglish"] = true,
+                                ["gender"] = "masculine",
+                                ["proper"] = true,
+                                ["verbatim"] = true
+                            },
+                            ["id"] = "character.dandelion_short",
+                            ["lemma"] = "Dandelion",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.dandelion_short",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["ragstallion"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true,
+                                    ["verbatim"] = true
+                                },
+                                ["id"] = "character.dandelion_ragstallion",
+                                ["lemma"] = "Dandelion Ragstallion",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.dandelion_ragstallion",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
                             }
                         }
                     }
@@ -15395,6 +16114,52 @@ ns.Data = {
                         }
                     }
                 },
+                ["elves"] = {
+                    ["-"] = {
+                        ["only"] = {
+                            ["friendly"] = {
+                                ["guild"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["animacy"] = "inanimate",
+                                                ["apposition"] = true,
+                                                ["gender"] = "feminine"
+                                            },
+                                            ["id"] = "game.elves_only_guild",
+                                            ["lemma"] = "friendly guild for elves only",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "game.elves_only_guild",
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["only"] = {
+                        ["focused"] = {
+                            ["friendly"] = {
+                                ["guild"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["animacy"] = "inanimate",
+                                                ["apposition"] = true,
+                                                ["gender"] = "feminine"
+                                            },
+                                            ["id"] = "game.elves_only_guild",
+                                            ["lemma"] = "friendly guild for elves only",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "game.elves_only_guild",
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["elwynn"] = {
                     ["forest"] = {
                         ["_analyses"] = {
@@ -15457,6 +16222,46 @@ ns.Data = {
                         }
                     }
                 },
+                ["escort"] = {
+                    ["mission"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "activity.escort_mission",
+                                ["lemma"] = "escort mission",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.escort_mission",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["missions"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "activity.escort_mission",
+                                ["lemma"] = "escort mission",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.escort_mission",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["espionage"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.espionage",
+                            ["lemma"] = "espionage",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.espionage",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["expert"] = {
                     ["fishing"] = {
                         ["_analyses"] = {
@@ -15475,6 +16280,23 @@ ns.Data = {
                         }
                     }
                 },
+                ["fellow"] = {
+                    ["elves"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "character.fellow_elves",
+                                ["lemma"] = "fellow elves",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.fellow_elves",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["first"] = {
                     ["aid"] = {
                         ["_analyses"] = {
@@ -15488,6 +16310,24 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "profession.first_aid",
                                 ["sourceRefs"] = { "ua-forever:profession.first_aid" }
+                            }
+                        }
+                    }
+                },
+                ["firstborn"] = {
+                    ["covenant"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "game.firstborn_covenant",
+                                ["lemma"] = "Firstborn Covenant",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.firstborn_covenant",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
                             }
                         }
                     }
@@ -15554,6 +16394,47 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.loot.free-roll",
                             ["sourceRefs"] = { "wow-community:loot" }
+                        }
+                    }
+                },
+                ["friendly"] = {
+                    ["casual"] = {
+                        ["guild"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "game.casual_friendly_guild",
+                                    ["lemma"] = "casual, friendly guild",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.casual_friendly_guild",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    },
+                    ["guild"] = {
+                        ["for"] = {
+                            ["elves"] = {
+                                ["only"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["animacy"] = "inanimate",
+                                                ["apposition"] = true,
+                                                ["gender"] = "feminine"
+                                            },
+                                            ["id"] = "game.elves_only_guild",
+                                            ["lemma"] = "friendly guild for elves only",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "game.elves_only_guild",
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -15821,6 +16702,22 @@ ns.Data = {
                         }
                     }
                 },
+                ["goldshire"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.goldshire",
+                            ["lemma"] = "Goldshire",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.goldshire",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["greater"] = {
                     ["healing"] = {
                         ["potion"] = {
@@ -15885,7 +16782,10 @@ ns.Data = {
                 ["guild"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
                             ["id"] = "game.guild",
                             ["lemma"] = "Guild",
                             ["pos"] = "noun",
@@ -16611,6 +17511,39 @@ ns.Data = {
                         }
                     }
                 },
+                ["life"] = {
+                    ["choice"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "neuter"
+                                },
+                                ["id"] = "game.life_choice",
+                                ["lemma"] = "life choice",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.life_choice",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["choices"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "neuter",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "game.life_choice",
+                                ["lemma"] = "life choice",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.life_choice",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["line"] = {
                     ["of"] = {
                         ["sight"] = {
@@ -17072,6 +18005,21 @@ ns.Data = {
                         }
                     }
                 },
+                ["milady"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "address.milady",
+                            ["lemma"] = "milady",
+                            ["pos"] = "noun",
+                            ["sense"] = "address.milady",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["mining"] = {
                     ["_analyses"] = {
                         {
@@ -17164,6 +18112,22 @@ ns.Data = {
                                 ["sense"] = "goods.mooncloth_bag",
                                 ["sourceRefs"] = { "ua-forever:item.14155" }
                             }
+                        }
+                    }
+                },
+                ["moonlight"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter",
+                                ["mass"] = true
+                            },
+                            ["id"] = "lighting.moonlight",
+                            ["lemma"] = "moonlight",
+                            ["pos"] = "noun",
+                            ["sense"] = "lighting.moonlight",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -17280,6 +18244,21 @@ ns.Data = {
                     }
                 },
                 ["my"] = {
+                    ["lady"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "address.milady",
+                                ["lemma"] = "milady",
+                                ["pos"] = "noun",
+                                ["sense"] = "address.milady",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
                     ["mats"] = {
                         ["_analyses"] = {
                             {
@@ -17434,6 +18413,39 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.orgrimmar",
                             ["sourceRefs"] = { "ua-forever:place.orgrimmar" }
+                        }
+                    }
+                },
+                ["only"] = {
+                    ["requirement"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "game.only_requirement",
+                                ["lemma"] = "only requirement",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.only_requirement",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["requirements"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "game.only_requirement",
+                                ["lemma"] = "only requirement",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.only_requirement",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
                         }
                     }
                 },
@@ -17869,6 +18881,23 @@ ns.Data = {
                         }
                     }
                 },
+                ["promised"] = {
+                    ["island"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.promised_island",
+                                ["lemma"] = "the Promised Island",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.promised_island",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["proto"] = {
                     ["-"] = {
                         ["dwarf"] = {
@@ -18136,6 +19165,17 @@ ns.Data = {
                 ["pvp"] = {
                     ["_analyses"] = {
                         {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter"
+                            },
+                            ["id"] = "activity.pvp",
+                            ["lemma"] = "PvP",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.pvp",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
                             ["features"] = {},
                             ["id"] = "slang.combat.pvp",
                             ["lemma"] = "PvP",
@@ -18168,6 +19208,24 @@ ns.Data = {
                                 ["sense"] = "place.ragefire_chasm",
                                 ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" }
                             }
+                        }
+                    }
+                },
+                ["ragstallion"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["caseSensitiveEnglish"] = true,
+                                ["gender"] = "masculine",
+                                ["proper"] = true,
+                                ["verbatim"] = true
+                            },
+                            ["id"] = "character.ragstallion",
+                            ["lemma"] = "Ragstallion",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.ragstallion",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -18621,6 +19679,40 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.searing_gorge",
                                 ["sourceRefs"] = { "ua-forever:place.searing_gorge" }
+                            }
+                        }
+                    }
+                },
+                ["sense"] = {
+                    ["of"] = {
+                        ["humor"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "neuter"
+                                    },
+                                    ["id"] = "game.sense_of_humour",
+                                    ["lemma"] = "sense of humour",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.sense_of_humour",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["humour"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "neuter"
+                                    },
+                                    ["id"] = "game.sense_of_humour",
+                                    ["lemma"] = "sense of humour",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.sense_of_humour",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
                             }
                         }
                     }
@@ -19218,6 +20310,21 @@ ns.Data = {
                         }
                     }
                 },
+                ["tel'abim"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["gender"] = "masculine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.tel_abim",
+                            ["lemma"] = "Tel'Abim",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.tel_abim",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["temple"] = {
                     ["of"] = {
                         ["ahn'qiraj"] = {
@@ -19309,6 +20416,23 @@ ns.Data = {
                                             "project-authored:apertium-pipeline-1"
                                         }
                                     }
+                                }
+                            }
+                        }
+                    },
+                    ["promised"] = {
+                        ["island"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["gender"] = "masculine",
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "place.promised_island",
+                                    ["lemma"] = "the Promised Island",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.promised_island",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
                                 }
                             }
                         }
@@ -19967,6 +21091,14 @@ ns.Data = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {},
+                                ["id"] = "activity.world_pvp",
+                                ["lemma"] = "World PvP",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.world_pvp",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {},
                                 ["id"] = "slang.combat.wpvp",
                                 ["lemma"] = "WPvP",
                                 ["pos"] = "noun",
@@ -20210,6 +21342,56 @@ ns.Data = {
                         }
                     }
                 },
+                ["dandelion"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["caseSensitiveEnglish"] = true,
+                                ["gender"] = "masculine",
+                                ["proper"] = true,
+                                ["verbatim"] = true
+                            },
+                            ["id"] = "character.dandelion_short",
+                            ["lemma"] = "Dandelion",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.dandelion_short",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["ragstallion"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true,
+                                    ["verbatim"] = true
+                                },
+                                ["id"] = "character.dandelion_ragstallion",
+                                ["lemma"] = "Dandelion Ragstallion",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.dandelion_ragstallion",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true,
+                                    ["verbatim"] = true
+                                },
+                                ["id"] = "character.dandelion_ragstallion",
+                                ["lemma"] = "Dandelion Ragstallion",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.dandelion_ragstallion",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["dps"] = {
                     ["_analyses"] = {
                         {
@@ -20284,10 +21466,68 @@ ns.Data = {
                     }
                 },
                 ["pvp"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter"
+                            },
+                            ["id"] = "activity.pvp",
+                            ["lemma"] = "PvP",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.pvp",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "nominative",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "activity.pvp",
+                            ["lemma"] = "PvP",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.pvp",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "activity.pvp",
+                            ["lemma"] = "PvP",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.pvp",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
                     ["у"] = {
                         ["відкритому"] = {
                             ["світі"] = {
                                 ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "activity.world_pvp",
+                                        ["lemma"] = "PvP у відкритому світі",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "activity.world_pvp",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "instrumental",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "activity.world_pvp",
+                                        ["lemma"] = "PvP у відкритому світі",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "activity.world_pvp",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    },
                                     {
                                         ["features"] = {},
                                         ["id"] = "slang.combat.wpvp",
@@ -20298,6 +21538,52 @@ ns.Data = {
                                     }
                                 }
                             }
+                        }
+                    }
+                },
+                ["ragstallion"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["caseSensitiveEnglish"] = true,
+                                ["gender"] = "masculine",
+                                ["proper"] = true,
+                                ["verbatim"] = true
+                            },
+                            ["id"] = "character.ragstallion",
+                            ["lemma"] = "Ragstallion",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.ragstallion",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["tel'abim"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["gender"] = "masculine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.tel_abim",
+                            ["lemma"] = "Tel'Abim",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.tel_abim",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.tel_abim",
+                            ["lemma"] = "Tel'Abim",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.tel_abim",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -20400,6 +21686,86 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.combat.adds",
                             ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["азерот"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.azeroth",
+                            ["lemma"] = "Азерот",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.azeroth",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.azeroth",
+                            ["lemma"] = "Азерот",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.azeroth",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.azeroth",
+                            ["lemma"] = "Азерот",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.azeroth",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["азероту"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.azeroth",
+                            ["lemma"] = "Азерот",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.azeroth",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["азероті"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.azeroth",
+                            ["lemma"] = "Азерот",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.azeroth",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -22742,15 +24108,137 @@ ns.Data = {
                         }
                     }
                 },
-                ["гільдія"] = {
+                ["гільдію"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
                             ["id"] = "game.guild",
                             ["lemma"] = "Гільдія",
                             ["pos"] = "noun",
                             ["sense"] = "game.guild",
                             ["sourceRefs"] = { "ua-forever:game.guild" }
+                        }
+                    },
+                    ["firstborn"] = {
+                        ["covenant"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "accusative",
+                                        ["gender"] = "feminine",
+                                        ["number"] = "singular",
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "game.firstborn_covenant",
+                                    ["lemma"] = "гільдія Firstborn Covenant",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.firstborn_covenant",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["гільдія"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "game.guild",
+                            ["lemma"] = "Гільдія",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.guild",
+                            ["sourceRefs"] = { "ua-forever:game.guild" }
+                        }
+                    },
+                    ["firstborn"] = {
+                        ["covenant"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "feminine",
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "game.firstborn_covenant",
+                                    ["lemma"] = "гільдія Firstborn Covenant",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.firstborn_covenant",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "nominative",
+                                        ["gender"] = "feminine",
+                                        ["number"] = "singular",
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "game.firstborn_covenant",
+                                    ["lemma"] = "гільдія Firstborn Covenant",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.firstborn_covenant",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["гільдії"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.guild",
+                            ["lemma"] = "Гільдія",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.guild",
+                            ["sourceRefs"] = { "ua-forever:game.guild" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "game.guild",
+                            ["lemma"] = "Гільдія",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.guild",
+                            ["sourceRefs"] = { "ua-forever:game.guild" }
+                        }
+                    },
+                    ["firstborn"] = {
+                        ["covenant"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "genitive",
+                                        ["gender"] = "feminine",
+                                        ["number"] = "singular",
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "game.firstborn_covenant",
+                                    ["lemma"] = "гільдія Firstborn Covenant",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.firstborn_covenant",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
                         }
                     }
                 },
@@ -23652,6 +25140,51 @@ ns.Data = {
                         }
                     }
                 },
+                ["дружня"] = {
+                    ["гільдія"] = {
+                        ["зі"] = {
+                            ["спокійним"] = {
+                                ["темпом"] = {
+                                    ["гри"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["animacy"] = "inanimate",
+                                                    ["gender"] = "feminine"
+                                                },
+                                                ["id"] = "game.casual_friendly_guild",
+                                                ["lemma"] = "дружня гільдія зі спокійним темпом гри",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "game.casual_friendly_guild",
+                                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["лише"] = {
+                            ["для"] = {
+                                ["ельфів"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["animacy"] = "inanimate",
+                                                ["apposition"] = true,
+                                                ["gender"] = "feminine"
+                                            },
+                                            ["id"] = "game.elves_only_guild",
+                                            ["lemma"] = "дружня гільдія лише для ельфів",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "game.elves_only_guild",
+                                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["друїд"] = {
                     ["_analyses"] = {
                         {
@@ -23808,6 +25341,42 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "class.priest",
                             ["sourceRefs"] = { "ua-forever:class.priest" }
+                        }
+                    }
+                },
+                ["життєве"] = {
+                    ["рішення"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "neuter"
+                                },
+                                ["id"] = "game.life_choice",
+                                ["lemma"] = "життєве рішення",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.life_choice",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["життєві"] = {
+                    ["рішення"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "neuter",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "game.life_choice",
+                                ["lemma"] = "життєве рішення",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.life_choice",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
                         }
                     }
                 },
@@ -24412,6 +25981,68 @@ ns.Data = {
                                 ["sense"] = "goods.mithril_bar",
                                 ["sourceRefs"] = { "ua-forever:item.3860" }
                             }
+                        }
+                    }
+                },
+                ["злотохрестя"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.goldshire",
+                            ["lemma"] = "Злотохрестя",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.goldshire",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "nominative",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.goldshire",
+                            ["lemma"] = "Злотохрестя",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.goldshire",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.goldshire",
+                            ["lemma"] = "Злотохрестя",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.goldshire",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["злотохресті"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.goldshire",
+                            ["lemma"] = "Злотохрестя",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.goldshire",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -25533,6 +27164,142 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "slang.trade.my-mats",
                                 ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    }
+                },
+                ["міжфракційна"] = {
+                    ["мережа"] = {
+                        ["найманців"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "game.mercenary_network",
+                                    ["lemma"] = "міжфракційна мережа найманців",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.mercenary_network",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["місячне"] = {
+                    ["світло"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "neuter",
+                                    ["mass"] = true
+                                },
+                                ["id"] = "lighting.moonlight",
+                                ["lemma"] = "місячне світло",
+                                ["pos"] = "noun",
+                                ["sense"] = "lighting.moonlight",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "neuter",
+                                    ["mass"] = true,
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "lighting.moonlight",
+                                ["lemma"] = "місячне світло",
+                                ["pos"] = "noun",
+                                ["sense"] = "lighting.moonlight",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["місячному"] = {
+                    ["світлі"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "neuter",
+                                    ["mass"] = true,
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "lighting.moonlight",
+                                ["lemma"] = "місячне світло",
+                                ["pos"] = "noun",
+                                ["sense"] = "lighting.moonlight",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["місія"] = {
+                    ["супроводу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "activity.escort_mission",
+                                ["lemma"] = "місія супроводу",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.escort_mission",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["місіями"] = {
+                    ["супроводу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "instrumentalPlural",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "activity.escort_mission",
+                                ["lemma"] = "місія супроводу",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.escort_mission",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["місією"] = {
+                    ["супроводу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "instrumental",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "activity.escort_mission",
+                                ["lemma"] = "місія супроводу",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.escort_mission",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["місії"] = {
+                    ["супроводу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "nominative",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "activity.escort_mission",
+                                ["lemma"] = "місія супроводу",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.escort_mission",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
                             }
                         }
                     }
@@ -26928,6 +28695,36 @@ ns.Data = {
                         }
                     }
                 },
+                ["обіцяний"] = {
+                    ["острів"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.promised_island",
+                                ["lemma"] = "Обіцяний острів",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.promised_island",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "nominative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.promised_island",
+                                ["lemma"] = "Обіцяний острів",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.promised_island",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["оплата"] = {
                     ["при"] = {
                         ["отриманні"] = {
@@ -27984,6 +29781,47 @@ ns.Data = {
                         }
                     }
                 },
+                ["пані"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "address.milady",
+                            ["lemma"] = "пані",
+                            ["pos"] = "noun",
+                            ["sense"] = "address.milady",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "address.milady",
+                            ["lemma"] = "пані",
+                            ["pos"] = "noun",
+                            ["sense"] = "address.milady",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "address.milady",
+                            ["lemma"] = "пані",
+                            ["pos"] = "noun",
+                            ["sense"] = "address.milady",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["патруль"] = {
                     ["наближається"] = {
                         ["_analyses"] = {
@@ -28188,6 +30026,49 @@ ns.Data = {
                         }
                     }
                 },
+                ["побратими"] = {
+                    ["-"] = {
+                        ["ельфи"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["number"] = "plural"
+                                    },
+                                    ["id"] = "character.fellow_elves",
+                                    ["lemma"] = "побратими-ельфи",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "character.fellow_elves",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["number"] = "plural"
+                                    },
+                                    ["id"] = "character.fellow_elves",
+                                    ["lemma"] = "побратими-ельфи",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "character.fellow_elves",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "vocativePlural",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "character.fellow_elves",
+                                    ["lemma"] = "побратими-ельфи",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "character.fellow_elves",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["поле"] = {
                     ["бою"] = {
                         ["_analyses"] = {
@@ -28213,6 +30094,41 @@ ns.Data = {
                         }
                     }
                 },
+                ["полювання"] = {
+                    ["за"] = {
+                        ["винагородами"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "activity.bounty_contracts",
+                                    ["lemma"] = "полювання за винагородами",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "activity.bounty_contracts",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["полюванням"] = {
+                    ["за"] = {
+                        ["винагородами"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["case"] = "instrumental",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "activity.bounty_contracts",
+                                    ["lemma"] = "полювання за винагородами",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "activity.bounty_contracts",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["починати"] = {
                     ["сутички"] = {
                         ["одну"] = {
@@ -28229,6 +30145,49 @@ ns.Data = {
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                },
+                ["почуття"] = {
+                    ["гумору"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "neuter"
+                                },
+                                ["id"] = "game.sense_of_humour",
+                                ["lemma"] = "почуття гумору",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.sense_of_humour",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "neuter",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "game.sense_of_humour",
+                                ["lemma"] = "почуття гумору",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.sense_of_humour",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "neuter",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "game.sense_of_humour",
+                                ["lemma"] = "почуття гумору",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.sense_of_humour",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
                             }
                         }
                     }
@@ -31589,6 +33548,33 @@ ns.Data = {
                         }
                     }
                 },
+                ["шпигунство"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "activity.espionage",
+                            ["lemma"] = "шпигунство",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.espionage",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["шпигунством"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "instrumental",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "activity.espionage",
+                            ["lemma"] = "шпигунство",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.espionage",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["шторм"] = {
                     ["_analyses"] = {
                         {
@@ -31637,6 +33623,21 @@ ns.Data = {
                         }
                     }
                 },
+                ["штормовію"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "vocative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.stormwind",
+                            ["lemma"] = "Штормовій",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.stormwind",
+                            ["sourceRefs"] = { "ua-forever:place.stormwind" }
+                        }
+                    }
+                },
                 ["штормовія"] = {
                     ["_analyses"] = {
                         {
@@ -31664,6 +33665,106 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.stormwind",
                             ["sourceRefs"] = { "ua-forever:place.stormwind" }
+                        }
+                    }
+                },
+                ["шукач"] = {
+                    ["пригод"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine"
+                                },
+                                ["id"] = "character.adventurer",
+                                ["lemma"] = "шукач пригод",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.adventurer",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["шукача"] = {
+                    ["пригод"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "character.adventurer",
+                                ["lemma"] = "шукач пригод",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.adventurer",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "character.adventurer",
+                                ["lemma"] = "шукач пригод",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.adventurer",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["шукачі"] = {
+                    ["пригод"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "character.adventurer",
+                                ["lemma"] = "шукач пригод",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.adventurer",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["шукачів"] = {
+                    ["пригод"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "character.adventurer",
+                                ["lemma"] = "шукач пригод",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.adventurer",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "character.adventurer",
+                                ["lemma"] = "шукач пригод",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.adventurer",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
                         }
                     }
                 },
@@ -31789,6 +33890,55 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.ashenvale",
                             ["sourceRefs"] = { "ua-forever:place.ashenvale" }
+                        }
+                    }
+                },
+                ["єдина"] = {
+                    ["вимога"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "game.only_requirement",
+                                ["lemma"] = "єдина вимога",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.only_requirement",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "game.only_requirement",
+                                ["lemma"] = "єдина вимога",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.only_requirement",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["єдині"] = {
+                    ["вимоги"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "game.only_requirement",
+                                ["lemma"] = "єдина вимога",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.only_requirement",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
                         }
                     }
                 },
@@ -32038,6 +34188,15 @@ ns.Data = {
                     ["canonical"] = "Поле бою"
                 }
             },
+            ["activity.bounty_contracts"] = {
+                ["en"] = {
+                    ["canonical"] = "bounties"
+                },
+                ["uk"] = {
+                    ["canonical"] = "полювання за винагородами",
+                    ["instrumental"] = "полюванням за винагородами"
+                }
+            },
             ["activity.completed_run"] = {
                 ["en"] = {
                     ["canonical"] = "run",
@@ -32046,6 +34205,56 @@ ns.Data = {
                 ["uk"] = {
                     ["canonical"] = "проходження",
                     ["genitivePlural"] = "проходжень"
+                }
+            },
+            ["activity.escort_mission"] = {
+                ["en"] = {
+                    ["canonical"] = "escort mission",
+                    ["plural"] = "escort missions"
+                },
+                ["uk"] = {
+                    ["canonical"] = "місія супроводу",
+                    ["instrumental"] = "місією супроводу",
+                    ["instrumentalPlural"] = "місіями супроводу",
+                    ["nominativePlural"] = "місії супроводу"
+                }
+            },
+            ["activity.espionage"] = {
+                ["en"] = {
+                    ["canonical"] = "espionage"
+                },
+                ["uk"] = {
+                    ["canonical"] = "шпигунство",
+                    ["instrumental"] = "шпигунством"
+                }
+            },
+            ["activity.pvp"] = {
+                ["en"] = {
+                    ["canonical"] = "PvP"
+                },
+                ["uk"] = {
+                    ["accusative"] = "PvP",
+                    ["canonical"] = "PvP",
+                    ["nominative"] = "PvP"
+                }
+            },
+            ["activity.world_pvp"] = {
+                ["en"] = {
+                    ["canonical"] = "World PvP"
+                },
+                ["uk"] = {
+                    ["canonical"] = "PvP у відкритому світі",
+                    ["instrumental"] = "PvP у відкритому світі"
+                }
+            },
+            ["address.milady"] = {
+                ["en"] = {
+                    ["canonical"] = "milady"
+                },
+                ["uk"] = {
+                    ["canonical"] = "пані",
+                    ["nominative"] = "пані",
+                    ["vocative"] = "пані"
                 }
             },
             ["behavior.complain"] = {
@@ -32070,6 +34279,55 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "нити"
+                }
+            },
+            ["character.adventurer"] = {
+                ["en"] = {
+                    ["canonical"] = "adventurer",
+                    ["plural"] = "adventurers"
+                },
+                ["uk"] = {
+                    ["accusative"] = "шукача пригод",
+                    ["accusativePlural"] = "шукачів пригод",
+                    ["canonical"] = "шукач пригод",
+                    ["genitivePlural"] = "шукачів пригод",
+                    ["genitiveSingular"] = "шукача пригод",
+                    ["nominativePlural"] = "шукачі пригод"
+                }
+            },
+            ["character.dandelion_ragstallion"] = {
+                ["en"] = {
+                    ["canonical"] = "Dandelion Ragstallion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Dandelion Ragstallion",
+                    ["nominative"] = "Dandelion Ragstallion"
+                }
+            },
+            ["character.dandelion_short"] = {
+                ["en"] = {
+                    ["canonical"] = "Dandelion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Dandelion"
+                }
+            },
+            ["character.fellow_elves"] = {
+                ["en"] = {
+                    ["canonical"] = "fellow elves"
+                },
+                ["uk"] = {
+                    ["canonical"] = "побратими-ельфи",
+                    ["nominativePlural"] = "побратими-ельфи",
+                    ["vocativePlural"] = "побратими-ельфи"
+                }
+            },
+            ["character.ragstallion"] = {
+                ["en"] = {
+                    ["canonical"] = "Ragstallion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Ragstallion"
                 }
             },
             ["class.druid"] = {
@@ -32286,6 +34544,14 @@ ns.Data = {
                     ["genitiveSingular"] = "підсилення"
                 }
             },
+            ["game.casual_friendly_guild"] = {
+                ["en"] = {
+                    ["canonical"] = "casual, friendly guild"
+                },
+                ["uk"] = {
+                    ["canonical"] = "дружня гільдія зі спокійним темпом гри"
+                }
+            },
             ["game.dungeon"] = {
                 ["en"] = {
                     ["canonical"] = "Dungeon"
@@ -32295,12 +34561,31 @@ ns.Data = {
                     ["canonical"] = "Підземелля"
                 }
             },
+            ["game.elves_only_guild"] = {
+                ["en"] = {
+                    ["canonical"] = "friendly guild for elves only"
+                },
+                ["uk"] = {
+                    ["canonical"] = "дружня гільдія лише для ельфів"
+                }
+            },
             ["game.expert_fishing"] = {
                 ["en"] = {
                     ["canonical"] = "Expert Fishing"
                 },
                 ["uk"] = {
                     ["canonical"] = "Експертне рибальство"
+                }
+            },
+            ["game.firstborn_covenant"] = {
+                ["en"] = {
+                    ["canonical"] = "Firstborn Covenant"
+                },
+                ["uk"] = {
+                    ["accusative"] = "гільдію Firstborn Covenant",
+                    ["canonical"] = "гільдія Firstborn Covenant",
+                    ["genitiveSingular"] = "гільдії Firstborn Covenant",
+                    ["nominative"] = "гільдія Firstborn Covenant"
                 }
             },
             ["game.food"] = {
@@ -32325,7 +34610,10 @@ ns.Data = {
                     ["canonical"] = "Guild"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Гільдія"
+                    ["accusative"] = "гільдію",
+                    ["canonical"] = "Гільдія",
+                    ["genitiveSingular"] = "гільдії",
+                    ["locative"] = "гільдії"
                 }
             },
             ["game.health"] = {
@@ -32360,6 +34648,16 @@ ns.Data = {
                     ["canonical"] = "Лідер"
                 }
             },
+            ["game.life_choice"] = {
+                ["en"] = {
+                    ["canonical"] = "life choice",
+                    ["plural"] = "life choices"
+                },
+                ["uk"] = {
+                    ["canonical"] = "життєве рішення",
+                    ["nominativePlural"] = "життєві рішення"
+                }
+            },
             ["game.mana"] = {
                 ["en"] = {
                     ["canonical"] = "Mana"
@@ -32374,6 +34672,25 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Учасник"
+                }
+            },
+            ["game.mercenary_network"] = {
+                ["en"] = {
+                    ["canonical"] = "cross-faction mercenary network"
+                },
+                ["uk"] = {
+                    ["canonical"] = "міжфракційна мережа найманців"
+                }
+            },
+            ["game.only_requirement"] = {
+                ["en"] = {
+                    ["canonical"] = "only requirement",
+                    ["plural"] = "only requirements"
+                },
+                ["uk"] = {
+                    ["canonical"] = "єдина вимога",
+                    ["nominative"] = "єдина вимога",
+                    ["nominativePlural"] = "єдині вимоги"
                 }
             },
             ["game.party"] = {
@@ -32415,6 +34732,16 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Воскресіння"
+                }
+            },
+            ["game.sense_of_humour"] = {
+                ["en"] = {
+                    ["canonical"] = "sense of humour"
+                },
+                ["uk"] = {
+                    ["accusative"] = "почуття гумору",
+                    ["canonical"] = "почуття гумору",
+                    ["genitiveSingular"] = "почуття гумору"
                 }
             },
             ["game.shield"] = {
@@ -32624,6 +34951,16 @@ ns.Data = {
                     ["locativePlural"] = "мечах"
                 }
             },
+            ["lighting.moonlight"] = {
+                ["en"] = {
+                    ["canonical"] = "moonlight"
+                },
+                ["uk"] = {
+                    ["canonical"] = "місячне світло",
+                    ["locative"] = "місячному світлі",
+                    ["nominative"] = "місячне світло"
+                }
+            },
             ["npc.hogger"] = {
                 ["en"] = {
                     ["canonical"] = "Hogger"
@@ -32657,6 +34994,18 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Ясенеділ"
+                }
+            },
+            ["place.azeroth"] = {
+                ["en"] = {
+                    ["canonical"] = "Azeroth"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Азерот",
+                    ["canonical"] = "Азерот",
+                    ["genitiveSingular"] = "Азероту",
+                    ["locative"] = "Азероті",
+                    ["nominative"] = "Азерот"
                 }
             },
             ["place.blackfathom_deeps"] = {
@@ -32776,6 +35125,17 @@ ns.Data = {
                     ["locative"] = "Гномреґані"
                 }
             },
+            ["place.goldshire"] = {
+                ["en"] = {
+                    ["canonical"] = "Goldshire"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Злотохрестя",
+                    ["genitiveSingular"] = "Злотохрестя",
+                    ["locative"] = "Злотохресті",
+                    ["nominative"] = "Злотохрестя"
+                }
+            },
             ["place.hall_of_thanes"] = {
                 ["en"] = {
                     ["canonical"] = "The Hall of Thanes"
@@ -32870,6 +35230,15 @@ ns.Data = {
                     ["locative"] = "Орґріммарі"
                 }
             },
+            ["place.promised_island"] = {
+                ["en"] = {
+                    ["canonical"] = "the Promised Island"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Обіцяний острів",
+                    ["nominative"] = "Обіцяний острів"
+                }
+            },
             ["place.ragefire_chasm"] = {
                 ["en"] = {
                     ["canonical"] = "Ragefire Chasm"
@@ -32956,7 +35325,8 @@ ns.Data = {
                 ["uk"] = {
                     ["canonical"] = "Штормовій",
                     ["genitiveSingular"] = "Штормовія",
-                    ["locative"] = "Штормовії"
+                    ["locative"] = "Штормовії",
+                    ["vocative"] = "Штормовію"
                 }
             },
             ["place.stratholme"] = {
@@ -32975,6 +35345,15 @@ ns.Data = {
                     ["canonical"] = "Танаріс",
                     ["genitiveSingular"] = "Танаріса",
                     ["locative"] = "Танарісі"
+                }
+            },
+            ["place.tel_abim"] = {
+                ["en"] = {
+                    ["canonical"] = "Tel'Abim"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Tel'Abim",
+                    ["nominative"] = "Tel'Abim"
                 }
             },
             ["place.temple_of_ahn_qiraj"] = {
@@ -34370,10 +36749,10 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 220,
+        ["concepts"] = 243,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
-        ["phraseFamilies"] = 78,
+        ["phraseFamilies"] = 87,
         ["source"] = {
             ["approvalMeaning"] = "Editorially reviewed for this addon; not a claim of individual user approval.",
             ["catalogBuild"] = "1.60.1.70938",
@@ -34389,7 +36768,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 89,
-        ["version"] = "6d2ed4472a393777609dde0ec16115e9a5254b1aa75e8609de990f678322050d"
+        ["version"] = "fe91945e05472504498422b0e83ac8a06924421d8116d25e8f24be49ca79425b"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -42969,6 +45348,22 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Поле бою"
         },
+        ["activity.bounty_contracts"] = {
+            ["category"] = "activities",
+            ["en"] = "bounties",
+            ["forms"] = {
+                ["instrumental"] = "полюванням за винагородами"
+            },
+            ["id"] = "activity.bounty_contracts",
+            ["provenance"] = {
+                ["context"] = "mercenary contracts in player chat",
+                ["key"] = "bounties",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "полювання за винагородами"
+        },
         ["activity.completed_run"] = {
             ["category"] = "countedEvents",
             ["contextOnly"] = true,
@@ -42990,6 +45385,105 @@ ns.Data = {
             ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
             ["status"] = "approved",
             ["uk"] = "проходження"
+        },
+        ["activity.escort_mission"] = {
+            ["category"] = "activities",
+            ["en"] = "escort mission",
+            ["englishPlural"] = "escort missions",
+            ["forms"] = {
+                ["instrumental"] = "місією супроводу",
+                ["instrumentalPlural"] = "місіями супроводу",
+                ["nominativePlural"] = "місії супроводу"
+            },
+            ["id"] = "activity.escort_mission",
+            ["provenance"] = {
+                ["context"] = "quest activity",
+                ["key"] = "escort mission",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "місія супроводу"
+        },
+        ["activity.espionage"] = {
+            ["category"] = "activities",
+            ["en"] = "espionage",
+            ["forms"] = {
+                ["instrumental"] = "шпигунством"
+            },
+            ["id"] = "activity.espionage",
+            ["provenance"] = {
+                ["context"] = "guild activity",
+                ["key"] = "espionage",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "шпигунство"
+        },
+        ["activity.pvp"] = {
+            ["category"] = "activities",
+            ["contextOnly"] = true,
+            ["en"] = "PvP",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["accusative"] = "PvP",
+                ["nominative"] = "PvP"
+            },
+            ["id"] = "activity.pvp",
+            ["provenance"] = {
+                ["context"] = "activity in prose listings",
+                ["key"] = "PvP",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "PvP"
+        },
+        ["activity.world_pvp"] = {
+            ["category"] = "activities",
+            ["contextOnly"] = true,
+            ["en"] = "World PvP",
+            ["forms"] = {
+                ["instrumental"] = "PvP у відкритому світі"
+            },
+            ["id"] = "activity.world_pvp",
+            ["provenance"] = {
+                ["context"] = "guild activity",
+                ["key"] = "World PvP",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "PvP у відкритому світі"
+        },
+        ["address.milady"] = {
+            ["aliases"] = {
+                ["en"] = { "my lady" },
+                ["uk"] = {}
+            },
+            ["category"] = "addresses",
+            ["en"] = "milady",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["nominative"] = "пані",
+                ["vocative"] = "пані"
+            },
+            ["id"] = "address.milady",
+            ["provenance"] = {
+                ["context"] = "roleplay form of address",
+                ["key"] = "milady",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "пані"
         },
         ["behavior.complain"] = {
             ["aliases"] = {
@@ -43062,6 +45556,118 @@ ns.Data = {
             ["sourceRefs"] = { "project-authored:chat-0.1" },
             ["status"] = "approved",
             ["uk"] = "нити"
+        },
+        ["character.adventurer"] = {
+            ["category"] = "characters",
+            ["en"] = "adventurer",
+            ["englishPlural"] = "adventurers",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
+            ["forms"] = {
+                ["accusative"] = "шукача пригод",
+                ["accusativePlural"] = "шукачів пригод",
+                ["genitivePlural"] = "шукачів пригод",
+                ["genitiveSingular"] = "шукача пригод",
+                ["nominativePlural"] = "шукачі пригод"
+            },
+            ["id"] = "character.adventurer",
+            ["provenance"] = {
+                ["context"] = "ordinary prose and roleplay",
+                ["key"] = "adventurer",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "шукач пригод"
+        },
+        ["character.dandelion_ragstallion"] = {
+            ["aliases"] = {
+                ["en"] = { "Dandelion... Dandelion Ragstallion" },
+                ["uk"] = {}
+            },
+            ["category"] = "characters",
+            ["en"] = "Dandelion Ragstallion",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["proper"] = true,
+                ["verbatim"] = true
+            },
+            ["forms"] = {
+                ["nominative"] = "Dandelion Ragstallion"
+            },
+            ["id"] = "character.dandelion_ragstallion",
+            ["provenance"] = {
+                ["context"] = "roleplay character name in chat",
+                ["key"] = "Dandelion Ragstallion",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Dandelion Ragstallion"
+        },
+        ["character.dandelion_short"] = {
+            ["category"] = "characters",
+            ["en"] = "Dandelion",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["caseSensitiveEnglish"] = true,
+                ["gender"] = "masculine",
+                ["proper"] = true,
+                ["verbatim"] = true
+            },
+            ["id"] = "character.dandelion_short",
+            ["provenance"] = {
+                ["context"] = "capitalized first name of the roleplay character",
+                ["key"] = "Dandelion",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Dandelion"
+        },
+        ["character.fellow_elves"] = {
+            ["category"] = "characters",
+            ["en"] = "fellow elves",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["number"] = "plural"
+            },
+            ["forms"] = {
+                ["nominativePlural"] = "побратими-ельфи",
+                ["vocativePlural"] = "побратими-ельфи"
+            },
+            ["id"] = "character.fellow_elves",
+            ["provenance"] = {
+                ["context"] = "roleplay address",
+                ["key"] = "fellow elves",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "побратими-ельфи"
+        },
+        ["character.ragstallion"] = {
+            ["category"] = "characters",
+            ["en"] = "Ragstallion",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["caseSensitiveEnglish"] = true,
+                ["gender"] = "masculine",
+                ["proper"] = true,
+                ["verbatim"] = true
+            },
+            ["id"] = "character.ragstallion",
+            ["provenance"] = {
+                ["context"] = "surname in roleplay prose",
+                ["key"] = "Ragstallion",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Ragstallion"
         },
         ["class.druid"] = {
             ["aliases"] = {
@@ -43642,6 +46248,27 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "підсилення"
         },
+        ["game.casual_friendly_guild"] = {
+            ["aliases"] = {
+                ["en"] = { "casual and friendly guild", "friendly casual guild" },
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["en"] = "casual, friendly guild",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["id"] = "game.casual_friendly_guild",
+            ["provenance"] = {
+                ["context"] = "guild description",
+                ["key"] = "casual, friendly guild",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "дружня гільдія зі спокійним темпом гри"
+        },
         ["game.dungeon"] = {
             ["aliases"] = {
                 ["en"] = { "dung" },
@@ -43671,6 +46298,28 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Підземелля"
         },
+        ["game.elves_only_guild"] = {
+            ["aliases"] = {
+                ["en"] = { "Elves only focused friendly guild", "elves-only friendly guild" },
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["en"] = "friendly guild for elves only",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["apposition"] = true,
+                ["gender"] = "feminine"
+            },
+            ["id"] = "game.elves_only_guild",
+            ["provenance"] = {
+                ["context"] = "roleplay guild description",
+                ["key"] = "friendly guild for elves only",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "дружня гільдія лише для ельфів"
+        },
         ["game.expert_fishing"] = {
             ["category"] = "game",
             ["en"] = "Expert Fishing",
@@ -43688,6 +46337,29 @@ ns.Data = {
             ["sourceRefs"] = { "project-authored:chat-0.1" },
             ["status"] = "approved",
             ["uk"] = "Експертне рибальство"
+        },
+        ["game.firstborn_covenant"] = {
+            ["category"] = "game",
+            ["en"] = "Firstborn Covenant",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "гільдію Firstborn Covenant",
+                ["genitiveSingular"] = "гільдії Firstborn Covenant",
+                ["nominative"] = "гільдія Firstborn Covenant"
+            },
+            ["id"] = "game.firstborn_covenant",
+            ["provenance"] = {
+                ["context"] = "guild name in player chat",
+                ["key"] = "Firstborn Covenant",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "гільдія Firstborn Covenant"
         },
         ["game.food"] = {
             ["aliases"] = {
@@ -43753,7 +46425,15 @@ ns.Data = {
             ["contexts"] = { "game" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Guild",
-            ["forms"] = {},
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "гільдію",
+                ["genitiveSingular"] = "гільдії",
+                ["locative"] = "гільдії"
+            },
             ["id"] = "game.guild",
             ["priority"] = 100,
             ["provenance"] = {
@@ -43874,6 +46554,27 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Лідер"
         },
+        ["game.life_choice"] = {
+            ["category"] = "game",
+            ["en"] = "life choice",
+            ["englishPlural"] = "life choices",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["nominativePlural"] = "життєві рішення"
+            },
+            ["id"] = "game.life_choice",
+            ["provenance"] = {
+                ["context"] = "common noun phrase",
+                ["key"] = "life choice",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "життєве рішення"
+        },
         ["game.mana"] = {
             ["aliases"] = {
                 ["en"] = { "mp" },
@@ -43925,6 +46626,49 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:game.member" },
             ["status"] = "approved",
             ["uk"] = "Учасник"
+        },
+        ["game.mercenary_network"] = {
+            ["aliases"] = {
+                ["en"] = { "cross faction mercenary network" },
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["en"] = "cross-faction mercenary network",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["id"] = "game.mercenary_network",
+            ["provenance"] = {
+                ["context"] = "guild description",
+                ["key"] = "cross-faction mercenary network",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "міжфракційна мережа найманців"
+        },
+        ["game.only_requirement"] = {
+            ["category"] = "game",
+            ["en"] = "only requirement",
+            ["englishPlural"] = "only requirements",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["nominative"] = "єдина вимога",
+                ["nominativePlural"] = "єдині вимоги"
+            },
+            ["id"] = "game.only_requirement",
+            ["provenance"] = {
+                ["context"] = "ordinary abstract noun phrase",
+                ["key"] = "only requirement",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "єдина вимога"
         },
         ["game.party"] = {
             ["aliases"] = {
@@ -44058,6 +46802,31 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:game.resurrection" },
             ["status"] = "approved",
             ["uk"] = "Воскресіння"
+        },
+        ["game.sense_of_humour"] = {
+            ["aliases"] = {
+                ["en"] = { "sense of humor" },
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["en"] = "sense of humour",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["accusative"] = "почуття гумору",
+                ["genitiveSingular"] = "почуття гумору"
+            },
+            ["id"] = "game.sense_of_humour",
+            ["provenance"] = {
+                ["context"] = "common noun phrase",
+                ["key"] = "sense of humour",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "почуття гумору"
         },
         ["game.shield"] = {
             ["aliases"] = {
@@ -44542,6 +47311,28 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Меч"
         },
+        ["lighting.moonlight"] = {
+            ["category"] = "lighting",
+            ["en"] = "moonlight",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter",
+                ["mass"] = true
+            },
+            ["forms"] = {
+                ["locative"] = "місячному світлі",
+                ["nominative"] = "місячне світло"
+            },
+            ["id"] = "lighting.moonlight",
+            ["provenance"] = {
+                ["context"] = "light in prose",
+                ["key"] = "moonlight",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "місячне світло"
+        },
         ["npc.hogger"] = {
             ["category"] = "creatures",
             ["en"] = "Hogger",
@@ -44632,6 +47423,30 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.ashenvale" },
             ["status"] = "approved",
             ["uk"] = "Ясенеділ"
+        },
+        ["place.azeroth"] = {
+            ["category"] = "places",
+            ["en"] = "Azeroth",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Азерот",
+                ["genitiveSingular"] = "Азероту",
+                ["locative"] = "Азероті",
+                ["nominative"] = "Азерот"
+            },
+            ["id"] = "place.azeroth",
+            ["provenance"] = {
+                ["context"] = "the World of Warcraft world name",
+                ["key"] = "Azeroth",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Азерот"
         },
         ["place.blackfathom_deeps"] = {
             ["aliases"] = {
@@ -44989,6 +47804,29 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Гномреґан"
         },
+        ["place.goldshire"] = {
+            ["category"] = "places",
+            ["en"] = "Goldshire",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["genitiveSingular"] = "Злотохрестя",
+                ["locative"] = "Злотохресті",
+                ["nominative"] = "Злотохрестя"
+            },
+            ["id"] = "place.goldshire",
+            ["provenance"] = {
+                ["context"] = "zone name from the UA_Forever catalog",
+                ["key"] = "Goldshire",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Злотохрестя"
+        },
         ["place.hall_of_thanes"] = {
             ["aliases"] = {
                 ["en"] = { "Hall of Thanes", "Halls of Thanes" },
@@ -45294,6 +48132,30 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Орґріммар"
         },
+        ["place.promised_island"] = {
+            ["aliases"] = {
+                ["en"] = { "Promised Island" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["en"] = "the Promised Island",
+            ["features"] = {
+                ["gender"] = "masculine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["nominative"] = "Обіцяний острів"
+            },
+            ["id"] = "place.promised_island",
+            ["provenance"] = {
+                ["context"] = "place name used in roleplay chat",
+                ["key"] = "the Promised Island",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Обіцяний острів"
+        },
         ["place.ragefire_chasm"] = {
             ["aliases"] = {
                 ["en"] = { "rfc" },
@@ -45545,7 +48407,8 @@ ns.Data = {
             ["en"] = "Stormwind",
             ["forms"] = {
                 ["genitiveSingular"] = "Штормовія",
-                ["locative"] = "Штормовії"
+                ["locative"] = "Штормовії",
+                ["vocative"] = "Штормовію"
             },
             ["id"] = "place.stormwind",
             ["priority"] = 100,
@@ -45617,6 +48480,26 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.tanaris" },
             ["status"] = "approved",
             ["uk"] = "Танаріс"
+        },
+        ["place.tel_abim"] = {
+            ["category"] = "places",
+            ["en"] = "Tel'Abim",
+            ["features"] = {
+                ["gender"] = "masculine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["nominative"] = "Tel'Abim"
+            },
+            ["id"] = "place.tel_abim",
+            ["provenance"] = {
+                ["context"] = "place name used in roleplay chat",
+                ["key"] = "Tel'Abim",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Tel'Abim"
         },
         ["place.temple_of_ahn_qiraj"] = {
             ["aliases"] = {

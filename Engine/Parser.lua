@@ -10,7 +10,7 @@ local category = {
 local requiredCase = { address = "vocative", creature = "accusative", creaturePlural = "nominative" }
 local requiredNumber = { creaturePlural = "plural" }
 local dashJoins = { ["—"] = " — ", ["–"] = " – " }
-local sentenceJoins = { ["."] = ". ", ["!"] = "! ", ["?"] = "? " }
+local sentenceJoins = { ["."] = ". ", ["!"] = "! ", ["?"] = "? ", ["…"] = "… " }
 local alternatives = { ["or"] = true, ["або"] = true, ["чи"] = true }
 local sharedPredicateJoins = {["and"]=true, ["or"]=true, ["і"]=true, ["й"]=true, ["та"]=true, ["або"]=true, ["чи"]=true}
 local function joinAt(tokens, index, joins)
@@ -25,6 +25,46 @@ local function joinAt(tokens, index, joins)
 end
 local function tokenText(text, tokens, first, last)
     return text:sub(tokens[first].first, tokens[last].last)
+end
+
+local function trailingPunctuation(text, tokens, start, finish)
+    local last = finish
+    while last > start and sentenceJoins[tokens[last].key] do last = last - 1 end
+    local punctuation = last < finish and tokenText(text, tokens, last + 1, finish) or ""
+    return last, punctuation
+end
+
+local function withoutSentenceEnd(value)
+    return (value:gsub("…$", ""):gsub("[.!?]+$", ""))
+end
+
+local function addressed(text, tokens, direction, start, finish, resolveCore)
+    local last, punctuation = trailingPunctuation(text, tokens, start, finish)
+    for comma = last - 1, math.max(start + 1, last - 12), -1 do
+        if tokens[comma].key == "," then
+            local address, ending = ns.Engine.Dictionary.longest(tokens, comma + 1, direction, "addresses", last, "vocative")
+            if address and ending == last and address.category == "addresses" then
+                local core = resolveCore(start, comma - 1)
+                local rendered = ns.Engine.Grammar.render("{address:vocative}", {address={term=address}}, direction)
+                if core and rendered then
+                    local slots = {}
+                    for name, value in pairs(core.slots or {}) do slots[name] = value end
+                    slots.finalAddress = {term=address}
+                    local rule = {intent=core.rule.intent or core.rule.id, sourceRefs=core.rule.sourceRefs,
+                        imperative=core.rule.imperative}
+                    return withoutSentenceEnd(core.text) .. ", " .. rendered .. punctuation, rule, slots
+                end
+            end
+            break
+        end
+    end
+end
+
+function P.addressedExact(text, tokens, direction, first, last)
+    return addressed(text, tokens, direction, first or 1, last or #tokens, function(start, finish)
+        local exact = ns.Data.exact[direction][ns.Engine.Normalize.key(tokenText(text, tokens, start, finish))]
+        if exact then return {text=exact.text, rule=exact} end
+    end)
 end
 
 local function lowerStart(value)
@@ -54,7 +94,7 @@ function P.compose(text, tokens, direction, grammarFallback)
     else
         local found
         for i = 2, #tokens - 1 do
-            if joinAt(tokens, i, joins) then found = true; break end
+            if joinAt(tokens, i, joins) or tokens[i].key == "," then found = true; break end
         end
         if not found then return nil end
     end
@@ -66,20 +106,36 @@ function P.compose(text, tokens, direction, grammarFallback)
         if attempts == 0 then return nil end
         attempts = attempts - 1
         if not row then row = {}; memo[start] = row end
-        local key = ns.Engine.Normalize.key(tokenText(text, tokens, start, finish))
-        local exact = ns.Data.exact[direction][key]
         local output, rule, slots
-        if exact then
-            output, rule = exact.text, exact
-        else
-            output, rule, slots = P.translate(text, tokens, direction, start, finish)
-            if not output and grammarFallback then output, rule = grammarFallback(start, finish) end
+        -- The entry point already checked exact, structural and grammar matches for the full message.
+        if start ~= 1 or finish ~= #tokens then
+            local key = ns.Engine.Normalize.key(tokenText(text, tokens, start, finish))
+            local exact = ns.Data.exact[direction][key]
+            if exact then output, rule = exact.text, exact
+            else
+                output, rule, slots = P.translate(text, tokens, direction, start, finish)
+                if not output then output, rule, slots = P.addressedExact(text, tokens, direction, start, finish) end
+                if not output and grammarFallback then output, rule = grammarFallback(start, finish) end
+            end
             if not output then
-                local rest, lead = prefixAt(start, finish)
-                if lead then
-                    local matched = translateClause(rest, finish)
-                    if matched then output, rule, slots = lead .. lowerStart(matched.text), matched.rule, matched.slots end
+                local last = trailingPunctuation(text, tokens, start, finish)
+                local name, nameEnd = ns.Engine.Dictionary.longest(tokens, start, direction, "characters", last)
+                local features = name and name.features
+                if features and features.verbatim and nameEnd == last and (not features.caseSensitiveEnglish
+                    or tokenText(text, tokens, start, last) == name.en) then
+                    output = tokenText(text, tokens, start, finish)
+                    rule = {intent="preserve_name", sourceRefs=name.sourceRefs}
                 end
+            end
+        end
+        if not output then
+            output, rule, slots = addressed(text, tokens, direction, start, finish, translateClause)
+        end
+        if not output then
+            local rest, lead = prefixAt(start, finish)
+            if lead then
+                local matched = translateClause(rest, finish)
+                if matched then output, rule, slots = lead .. lowerStart(matched.text), matched.rule, matched.slots end
             end
         end
         local match = output and {text = output, rule = rule, slots = slots} or false
@@ -89,39 +145,100 @@ function P.compose(text, tokens, direction, grammarFallback)
     local function endBefore(joinIndex)
         return tokens[joinIndex - 1].key == "," and joinIndex - 2 or joinIndex - 1
     end
-    local function joinFrom(start, depth)
-        if attempts == 0 then return nil end
-        -- A complete clause takes precedence over splitting its object list.
-        if start ~= 1 or prefix then
-            local match = translateClause(start, #tokens)
-            if match then return match.text, {match} end
+    local function composeSentences()
+        local ends = {}
+        for index = 2, #tokens - 1 do
+            if sentenceJoins[tokens[index].key] and tokens[index + 1].first > tokens[index].last + 1 then
+                ends[#ends + 1] = index
+                if #ends == 8 then return nil end
+            end
         end
-        if depth == 1 then return nil end
+        if #ends < 3 then return nil end
+        ends[#ends + 1] = #tokens
+        local matches, parts, fragments, start, complete = {}, {}, {}, 1, true
+        for part, finish in ipairs(ends) do
+            local match = translateClause(start, finish)
+            if match then
+                local value = match.text
+                if sentenceJoins[tokens[finish].key] then
+                    local punctuation = finish
+                    while punctuation > start and sentenceJoins[tokens[punctuation - 1].key]
+                        and tokens[punctuation].first == tokens[punctuation - 1].last + 1 do
+                        punctuation = punctuation - 1
+                    end
+                    value = withoutSentenceEnd(value) .. tokenText(text, tokens, punctuation, finish)
+                end
+                matches[part], parts[part] = match, value
+                fragments[start] = {text=value, last=finish, rule=match.rule, slots=match.slots}
+            else
+                complete = false
+            end
+            start = finish + 1
+        end
+        if complete then return table.concat(parts, " "), matches end
+        return nil, nil, fragments
+    end
+    local paragraph, sentences, sentenceFragments = composeSentences()
+    if paragraph then return paragraph, sentences end
+    local chart = {}
+    local function parseFrom(start, depth, noCommand, needQuestion)
+        local states = chart[start]
+        if not states then states = {}; chart[start] = states end
+        local state = depth * 4 + (noCommand and 2 or 0) + (needQuestion and 1 or 0)
+        if states[state] ~= nil then return states[state] or nil end
+        local match = translateClause(start, #tokens)
+        if match and (not noCommand or not match.rule.imperative) and (not needQuestion or match.text:sub(-1) == "?") then
+            local result = {match=match}
+            states[state] = result
+            return result
+        end
+        if depth == 1 then states[state] = false; return nil end
         for i = start + 1, #tokens - 1 do
             local join, sentence = joinAt(tokens, i, joins)
             if join then
                 local finish = endBefore(i)
+                if sentence then
+                    local punctuation = i
+                    while punctuation > start + 1 and sentenceJoins[tokens[punctuation - 1].key]
+                        and tokens[punctuation].first == tokens[punctuation - 1].last + 1 do punctuation = punctuation - 1 end
+                    local marks = tokenText(text, tokens, punctuation, i)
+                    finish = punctuation - 1
+                    if marks == "..." then join = marks .. " " end
+                end
                 local matched = translateClause(start, finish)
                 local left = matched and matched.text
                 local sourceEnd = tokens[finish] and tokens[finish].key
                 local sourceHasEnd = sourceEnd == "?" or sourceEnd == "!"
                 local alternativeQuestion = left and not sourceHasEnd and alternatives[tokens[i].key]
                     and left:sub(-1) == "?"
-                if left and (sentence or alternativeQuestion or (not sourceHasEnd and not left:match("[?!]$"))) then
-                    local right, rest = joinFrom(i + 1, depth - 1)
-                    local detachedCommand = right and sharedPredicateJoins[tokens[i].key]
-                        and rest[1].rule.imperative and not matched.rule.imperative
-                    if right and not detachedCommand and (not alternativeQuestion or right:sub(-1) == "?") then
-                        table.insert(rest, 1, matched)
-                        local leftText = left:gsub((sentence or alternativeQuestion) and "[.!?]+$" or "%.$", "")
-                        return leftText .. join .. (sentence and right or lowerStart(right)), rest
+                if left and (not noCommand or not matched.rule.imperative)
+                    and (sentence or alternativeQuestion or (not sourceHasEnd and not left:match("[?!]$"))) then
+                    local right = parseFrom(i + 1, depth - 1,
+                        sharedPredicateJoins[tokens[i].key] and not matched.rule.imperative, needQuestion or alternativeQuestion)
+                    if right then
+                        local result = {match=matched, join=join, sentence=sentence, alternative=alternativeQuestion, next=right}
+                        states[state] = result
+                        return result
                     end
                 end
             end
         end
+        states[state] = false
     end
-    local output, matches = joinFrom(first, 4)
-    if output then
+    local path = parseFrom(first, 8)
+    if path then
+        local parts, matches, sentenceStart = {}, {}, true
+        while path do
+            local value = sentenceStart and path.match.text or lowerStart(path.match.text)
+            if path.join then
+                if path.sentence or path.alternative then value = withoutSentenceEnd(value)
+                else value = value:gsub("%.$", "") end
+            end
+            parts[#parts + 1], matches[#matches + 1] = value, path.match
+            if path.join then parts[#parts + 1] = path.join end
+            sentenceStart, path = path.sentence, path.next
+        end
+        local output = table.concat(parts)
         if prefix then output = prefix .. lowerStart(output) end
         return output, matches
     end
@@ -142,7 +259,7 @@ function P.compose(text, tokens, direction, grammarFallback)
             end
         end
     end
-    if #starts < 2 then return nil end
+    if #starts < 2 then return nil, nil, sentenceFragments end
     ends[#ends + 1] = #tokens
     local fragments = {}
     local segment, accepted = 1, 0
@@ -176,6 +293,12 @@ function P.compose(text, tokens, direction, grammarFallback)
             end
         end
         segment = nextSegment
+    end
+    for start, sentence in pairs(sentenceFragments or {}) do
+        for first, old in pairs(fragments) do
+            if first <= sentence.last and old.last >= start then fragments[first] = nil end
+        end
+        fragments[start] = sentence
     end
     return nil, nil, next(fragments) and fragments or nil
 end

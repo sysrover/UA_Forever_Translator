@@ -66,19 +66,34 @@ local function grammarClause(document, first, last)
         emote = document.text:sub(colon.first, tail.last)
         last = last - 2
     end
-    local punctuation
-    while last >= first and document.tokens[last].key:match("^[.!?]$") do
+    local punctuation, endToken = nil, last
+    while last >= first and (document.tokens[last].key:match("^[.!?]$") or document.tokens[last].key == "…") do
         local key = document.tokens[last].key
         if not punctuation or key == "?" then punctuation = key end
         last = last - 1
+    end
+    if punctuation == "." and endToken - last == 3 then
+        local raw = document.text:sub(document.tokens[last + 1].first, document.tokens[endToken].last)
+        if raw == "..." then punctuation = raw end
+    end
+    local prefix
+    local lead = document.tokens[first]
+    if first + 1 <= last and lead.key == "…" then
+        prefix = document.text:sub(lead.first, document.tokens[first + 1].first - 1)
+        first = first + 1
+    elseif first + 3 <= last and lead.key == "." and document.tokens[first + 1].key == "."
+        and document.tokens[first + 2].key == "." and document.tokens[first + 2].last == lead.first + 2 then
+        prefix = document.text:sub(lead.first, document.tokens[first + 3].first - 1)
+        first = first + 3
     end
     if last < first then return nil end
     local parsed = ns.Engine.ClauseAnalysis.parse(document, first, last)
     if not parsed then return nil end
     local output = ns.Engine.ClauseGeneration.render(parsed, document.direction, punctuation)
+    if output and prefix then output = prefix .. output end
     if output and emote then output = output .. " " .. emote end
     if output then return output, {intent=parsed.trees[1].kind, imperative=parsed.trees[1].imperative == true,
-        sourceRefs=ns.Linguistics.manifest.sourceRefs} end
+        sourceRefs=ns.Linguistics.manifest.sourceRefs, dependency=parsed.dependency == true} end
 end
 local function compute(text, direction)
     local tokens = ns.Engine.Tokenizer.scan(text)
@@ -94,6 +109,7 @@ local function compute(text, direction)
         rule, slots = {intent=tree.kind, sourceRefs={"project-authored:apertium-pipeline-1"}}, tree.slots
     elseif not document.truncated and not document.ambiguities then
         output, rule, slots = ns.Engine.Parser.translate(text, tokens, direction)
+        if not output then output, rule, slots = ns.Engine.Parser.addressedExact(text, tokens, direction) end
     end
     local clauses, fragments
     local general
@@ -122,6 +138,7 @@ local function compute(text, direction)
         end
     end
     if output then
+        if clauses and N.key(output) == N.key(text) then return unchanged(text, "identical") end
         local matched, refs, seen = {}, {}, {}
         if clauses then
             for _, clause in ipairs(clauses) do addClause(matched, refs, seen, clause.rule, clause.slots) end
@@ -132,7 +149,8 @@ local function compute(text, direction)
         table.sort(refs)
         return {text = output, mode = "template", intent = clauses and "composition" or rule.intent,
             matchedTerms = matched, unknownSpans = {}, sourceRefs = refs,
-            coverage = {complete=true, pipeline=general and "grammar" or (tree and "structural" or "legacy")}}
+            coverage = {complete=true, pipeline=clauses and "composition" or general and "grammar"
+                or tree and "structural" or "legacy", dependency=rule and rule.dependency == true or nil}}
     end
     local chunks, matched, unknown, refs, refSeen, i, cursor = {}, {}, {}, {}, {}, 1, 1
     local reason, reasonEnd
@@ -151,7 +169,8 @@ local function compute(text, direction)
         elseif not token.protected then
             term, last = ns.Engine.Dictionary.literal(document, i, fragments)
             if term then
-                replacement = term.text or (direction == "en-uk" and term.uk or term.en)
+                replacement = term.features and term.features.verbatim and text:sub(token.first, tokens[last].last)
+                    or term.text or (direction == "en-uk" and term.uk or term.en)
                 matched[#matched + 1] = term.id
                 addRefs(refs, refSeen, term.sourceRefs)
             end

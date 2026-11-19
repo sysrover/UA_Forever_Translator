@@ -15,6 +15,8 @@ Data\Dictionary.lua
 Data\GeneralUkEn.lua
 Data\GeneralEnUk.lua
 Data\Linguistics.lua
+Data\Apertium.lua
+Data\UDPipeModels.lua
 Engine\Markup.lua
 Engine\Normalize.lua
 Engine\Tokenizer.lua
@@ -23,7 +25,10 @@ Engine\Dictionary.lua
 Engine\Grammar.lua
 Engine\Parser.lua
 Engine\Morphology.lua
+Engine\Apertium.lua
 Engine\Lexicon.lua
+Engine\UDPipe.lua
+Engine\UDPipeInput.lua
 Engine\Phrases.lua
 Engine\ClauseAnalysis.lua
 Engine\ClauseGeneration.lua

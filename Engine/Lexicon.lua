@@ -1,6 +1,6 @@
 local _, ns = ...
 local L = {}; ns.Engine.Lexicon = L
-local N = ns.Engine.Normalize
+local N, A = ns.Engine.Normalize, ns.Engine.Apertium
 
 local function byteLess(a, b)
     for i=1,math.min(#a,#b) do
@@ -57,10 +57,164 @@ function L.lookup(document, word)
     return result
 end
 
+local function ends(word, suffix)
+    return word:sub(-#suffix) == suffix
+end
+
+local plural = {number="plural"}
+local thirdPerson = {tense="present", person=3, number="singular"}
+local past = {tense="past"}
+local pastParticiple = {tense="past", verbalForm="participle"}
+local presentParticiple = {tense="present", verbalForm="participle"}
+
+local function doublesConsonant(stem)
+    -- A single short vowel followed by one consonant takes a doubled ending.
+    return stem:gsub("qu", "q"):match("^[^aeiou]+[aeiou][^aeiouwxy]$") ~= nil
+end
+
+local function undouble(stem)
+    local final = stem:sub(-1)
+    local base = stem:sub(1, -2)
+    if ends(base, final) and doublesConsonant(base) then return base end
+end
+
+local function englishForms(word, add)
+    if not word:match("^[a-z]+$") then return end
+    if ends(word, "s") then
+        local function pluralOrThird(stem, verbOnly)
+            if #stem < 2 then return end
+            if not verbOnly then add(stem, "noun", plural, "plural") end
+            add(stem, "verb", thirdPerson, "third")
+        end
+        local stem = word:sub(1, -2)
+        if not stem:match("[^aeiou]y$") and not stem:match("[sxz]$") and not stem:match("[cs]h$") then
+            pluralOrThird(stem, false)
+        end
+        if ends(word, "es") then
+            stem = word:sub(1, -3)
+            if stem:match("[sxz]$") or stem:match("[cs]h$") then
+                pluralOrThird(stem, false)
+            elseif ends(stem, "o") then
+                pluralOrThird(stem, true)
+            end
+        end
+        if ends(word, "ies") then
+            stem = word:sub(1, -4)
+            if stem:match("[^aeiou]$") then pluralOrThird(stem .. "y", false) end
+        end
+    elseif ends(word, "ed") then
+        local stem = word:sub(1, -3)
+        local function pastForms(lemma)
+            if #lemma < 2 then return end
+            add(lemma, "verb", past, "past")
+            add(lemma, "verb", pastParticiple, "participle")
+        end
+        if not ends(stem, "e") and not stem:match("[^aeiou]y$") and not doublesConsonant(stem) then pastForms(stem) end
+        local shortened = undouble(stem)
+        if shortened then pastForms(shortened) end
+        pastForms(stem .. "e")
+        if ends(word, "ied") and stem:sub(1, -2):match("[^aeiou]$") then pastForms(stem:sub(1, -2) .. "y") end
+    elseif ends(word, "ing") then
+        local stem = word:sub(1, -4)
+        if #stem < 2 then return end
+        if (not ends(stem, "e") or ends(stem, "ee")) and not doublesConsonant(stem) then
+            add(stem, "verb", presentParticiple, "ing")
+        end
+        local shortened = undouble(stem)
+        if shortened then add(shortened, "verb", presentParticiple, "ing") end
+        if not ends(stem, "e") then add(stem .. "e", "verb", presentParticiple, "ing") end
+        if ends(stem, "y") then add(stem:sub(1, -2) .. "ie", "verb", presentParticiple, "ing") end
+    end
+end
+
+local dativeEndings = {
+    {"ові", "у"}, {"еві", "ю"}, {"єві", "ю"}, {"у", "ові"}, {"ю", "еві"}, {"ю", "єві"},
+}
+
+local function ukrainianForms(word, add)
+    if not word:match("^[\208-\210]") then return end
+    for _, endings in ipairs(dativeEndings) do
+        local from, to = endings[1], endings[2]
+        if #word > #from and ends(word, from) then add(word:sub(1, -#from - 1) .. to, "noun") end
+    end
+end
+
+-- Reverse only productive endings. Exact analyses and authored exceptions take
+-- precedence, and every derived analysis must lead back to an attested entry.
+local function derived(document, word)
+    local data = ns.Linguistics
+    if not data then return {} end
+    document.derivedMemo = document.derivedMemo or {}
+    local cached = document.derivedMemo[word]
+    if cached then return cached end
+    local result, seen = {}, {}
+    document.derivedMemo[word] = result
+    local english = document.direction == "en-uk"
+    local language = english and "en" or "uk"
+    local function add(base, pos, inferred, slot)
+        local attested = not slot and inferred ~= nil
+        local special = english and data.englishIrregular[base]
+        local exception = special and (special[slot] or slot == "participle" and special.past)
+        if exception and word ~= exception then return end
+        local entries = L.lookup(document, base)
+        if entries.truncated then result.truncated = true; return end
+        for _, entry in ipairs(entries) do
+            local lexeme, form = entry.lexeme, entry.form
+            local matchesLemma = attested and lexeme[language] == base
+            local productive = not attested and (english and lexeme.en == base
+                and (pos == "verb" and form.mood == "base" or pos == "noun" and form.number == "singular" and not entry.head.mass)
+                or not english and form.case == "dative" and form.number == "singular" and form.gender == "masculine")
+            if lexeme.pos == pos and (matchesLemma or productive) then
+                local analysis = inferred or form
+                local readings = seen[entry.id]
+                if not readings then readings = {}; seen[entry.id] = readings end
+                if not readings[analysis] then
+                    if #result == 64 then result.truncated = true; return end
+                    readings[analysis] = true
+                    result[#result+1] = {id=entry.id, lexeme=lexeme, form=analysis, head=entry.head}
+                end
+            end
+        end
+    end
+    local analyses = A and A.analyze(word, language)
+    if analyses then
+        local ordered = {}
+        for analysis in pairs(analyses) do ordered[#ordered + 1] = analysis end
+        table.sort(ordered, function(left, right)
+            if analyses[left] == analyses[right] then return byteLess(left, right) end
+            return analyses[left] < analyses[right]
+        end)
+        for _, analysis in ipairs(ordered) do
+            local lemma, pos, form = A.read(analysis, language)
+            if lemma then add(N.word(lemma), pos, form) end
+        end
+        if #result > 0 or result.truncated then return result end
+    end
+    if english then englishForms(word, add)
+    else ukrainianForms(word, add) end
+    return result
+end
+
 function L.at(document, index)
     local token = document.tokens[index]
     if not token or token.protected then return {} end
-    return L.lookup(document, token.key)
+    local direct = L.lookup(document, token.key)
+    if not ns.Linguistics or #direct > 0 then return direct end
+    return derived(document, token.key)
+end
+
+function L.derivedLiteral(document, word)
+    if not ns.Linguistics or #L.lookup(document, word) > 0 then return nil end
+    local candidates = derived(document, word)
+    if candidates.truncated then return nil end
+    local target = document.direction == "en-uk" and "uk" or "en"
+    local translation
+    for _, entry in ipairs(candidates) do
+        local equivalent = entry.lexeme[target]
+        if translation and translation ~= equivalent then return nil end
+        translation = equivalent
+    end
+    if translation then return {id="morphology:" .. word, text=translation, sourceRefs=ns.Linguistics.manifest.sourceRefs} end
 end
 
 function L.phraseAt(document, first, limit, partOfSpeech)
@@ -140,12 +294,16 @@ local function familyForm(id, requested)
 end
 
 function L.inflect(candidate, requested)
-    return familyForm(candidate.lexeme.family,requested)
+    local lexeme = candidate.lexeme
+    return familyForm(lexeme.family, requested)
+        or A and A.generate(lexeme.uk, "uk", lexeme.pos, requested, candidate.head)
 end
 function L.inflectLemma(lemma,pos,requested)
     local data=ns.Linguistics
     local id=data and data.generation[lemma..":"..pos]
-    return id and familyForm(id,requested)
+    if id then
+        return familyForm(id, requested) or A and A.generate(lemma, "uk", pos, requested, L.head(lemma, pos))
+    end
 end
 
 function L.head(lemma,pos)

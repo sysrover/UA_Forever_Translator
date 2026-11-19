@@ -64,7 +64,9 @@ function D.literal(document, first, fragments)
         local term = node._id and ns.Data.terms[node._id]
         if literal then
             entry, last = literal, i
-        elseif term and (direction ~= "en-uk" or not term.englishLookupOnly) then
+        elseif term and (direction ~= "en-uk" or not term.englishLookupOnly and
+            (not (term.features and term.features.caseSensitiveEnglish)
+                or document.text:sub(tokens[first].first, tokens[i].last) == term.en)) then
             entry, last = term, i
         elseif node._morph then
             local derived = derivedTerm(node, direction)
@@ -83,4 +85,6 @@ function D.literal(document, first, fragments)
     end
     local general = ns.Engine.GeneralDictionary.lookup(token.key, direction)
     if general then return general, first end
+    local derived = ns.Engine.Lexicon.derivedLiteral(document, token.key)
+    if derived then return derived, first end
 end
