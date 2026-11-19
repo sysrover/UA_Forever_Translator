@@ -5631,7 +5631,12 @@ ns.Data = {
             ["великих"] = {
                 ["зіль"] = {
                     ["зцілення"] = {
-                        ["_id"] = "goods.greater_healing_potion"
+                        ["_id"] = "goods.greater_healing_potion",
+                        ["_plural"] = {
+                            ["id"] = "goods.greater_healing_potion",
+                            ["sourceRefs"] = { "ua-forever:item.1710" },
+                            ["text"] = "greater healing potions"
+                        }
                     }
                 }
             },
@@ -5645,7 +5650,12 @@ ns.Data = {
             ["великі"] = {
                 ["зілля"] = {
                     ["зцілення"] = {
-                        ["_id"] = "goods.greater_healing_potion"
+                        ["_id"] = "goods.greater_healing_potion",
+                        ["_plural"] = {
+                            ["id"] = "goods.greater_healing_potion",
+                            ["sourceRefs"] = { "ua-forever:item.1710" },
+                            ["text"] = "greater healing potions"
+                        }
                     }
                 }
             },
@@ -5816,16 +5826,36 @@ ns.Data = {
                 ["_id"] = "goods.consumable"
             },
             ["витратникам"] = {
-                ["_id"] = "goods.consumable"
+                ["_id"] = "goods.consumable",
+                ["_plural"] = {
+                    ["id"] = "goods.consumable",
+                    ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" },
+                    ["text"] = "consumables"
+                }
             },
             ["витратниками"] = {
-                ["_id"] = "goods.consumable"
+                ["_id"] = "goods.consumable",
+                ["_plural"] = {
+                    ["id"] = "goods.consumable",
+                    ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" },
+                    ["text"] = "consumables"
+                }
             },
             ["витратниках"] = {
-                ["_id"] = "goods.consumable"
+                ["_id"] = "goods.consumable",
+                ["_plural"] = {
+                    ["id"] = "goods.consumable",
+                    ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" },
+                    ["text"] = "consumables"
+                }
             },
             ["витратники"] = {
-                ["_id"] = "goods.consumable"
+                ["_id"] = "goods.consumable",
+                ["_plural"] = {
+                    ["id"] = "goods.consumable",
+                    ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" },
+                    ["text"] = "consumables"
+                }
             },
             ["витратникові"] = {
                 ["_id"] = "goods.consumable"
@@ -5837,7 +5867,12 @@ ns.Data = {
                 ["_id"] = "goods.consumable"
             },
             ["витратників"] = {
-                ["_id"] = "goods.consumable"
+                ["_id"] = "goods.consumable",
+                ["_plural"] = {
+                    ["id"] = "goods.consumable",
+                    ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" },
+                    ["text"] = "consumables"
+                }
             },
             ["витривалості"] = {
                 ["_byCategory"] = {
@@ -6035,7 +6070,12 @@ ns.Data = {
                 ["_id"] = "class.warrior"
             },
             ["воїнів"] = {
-                ["_id"] = "class.warrior"
+                ["_id"] = "class.warrior",
+                ["_plural"] = {
+                    ["id"] = "class.warrior",
+                    ["sourceRefs"] = { "ua-forever:class.warrior" },
+                    ["text"] = "warriors"
+                }
             },
             ["впвп"] = {
                 ["_id"] = "slang.combat.wpvp"
@@ -6550,6 +6590,11 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "players",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "role.player",
+                    ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+                    ["text"] = "Players"
                 }
             },
             ["гравців"] = {
@@ -6559,6 +6604,11 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "players",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "role.player",
+                    ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+                    ["text"] = "Players"
                 }
             },
             ["громовий"] = {
@@ -7220,7 +7270,12 @@ ns.Data = {
                 ["_id"] = "class.druid"
             },
             ["друїдів"] = {
-                ["_id"] = "class.druid"
+                ["_id"] = "class.druid",
+                ["_plural"] = {
+                    ["id"] = "class.druid",
+                    ["sourceRefs"] = { "ua-forever:class.druid" },
+                    ["text"] = "druids"
+                }
             },
             ["дуротар"] = {
                 ["_id"] = "place.durotar",
@@ -7303,7 +7358,12 @@ ns.Data = {
                 ["_id"] = "class.priest"
             },
             ["жерців"] = {
-                ["_id"] = "class.priest"
+                ["_id"] = "class.priest",
+                ["_plural"] = {
+                    ["id"] = "class.priest",
+                    ["sourceRefs"] = { "ua-forever:class.priest" },
+                    ["text"] = "priests"
+                }
             },
             ["життєве"] = {
                 ["рішення"] = {
@@ -7312,7 +7372,12 @@ ns.Data = {
             },
             ["життєві"] = {
                 ["рішення"] = {
-                    ["_id"] = "game.life_choice"
+                    ["_id"] = "game.life_choice",
+                    ["_plural"] = {
+                        ["id"] = "game.life_choice",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "life choices"
+                    }
                 }
             },
             ["жрець"] = {
@@ -7499,14 +7564,24 @@ ns.Data = {
             ["запрошеннями"] = {
                 ["на"] = {
                     ["шар"] = {
-                        ["_id"] = "game.layer_invite"
+                        ["_id"] = "game.layer_invite",
+                        ["_plural"] = {
+                            ["id"] = "game.layer_invite",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                            ["text"] = "layer invites"
+                        }
                     }
                 }
             },
             ["запрошеннях"] = {
                 ["на"] = {
                     ["шар"] = {
-                        ["_id"] = "game.layer_invite"
+                        ["_id"] = "game.layer_invite",
+                        ["_plural"] = {
+                            ["id"] = "game.layer_invite",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                            ["text"] = "layer invites"
+                        }
                     }
                 }
             },
@@ -7520,7 +7595,12 @@ ns.Data = {
             ["запрошень"] = {
                 ["на"] = {
                     ["шар"] = {
-                        ["_id"] = "game.layer_invite"
+                        ["_id"] = "game.layer_invite",
+                        ["_plural"] = {
+                            ["id"] = "game.layer_invite",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                            ["text"] = "layer invites"
+                        }
                     }
                 }
             },
@@ -7698,12 +7778,22 @@ ns.Data = {
             },
             ["злитки"] = {
                 ["мітрилу"] = {
-                    ["_id"] = "goods.mithril_bar"
+                    ["_id"] = "goods.mithril_bar",
+                    ["_plural"] = {
+                        ["id"] = "goods.mithril_bar",
+                        ["sourceRefs"] = { "ua-forever:item.3860" },
+                        ["text"] = "mithril bars"
+                    }
                 }
             },
             ["злитків"] = {
                 ["мітрилу"] = {
-                    ["_id"] = "goods.mithril_bar"
+                    ["_id"] = "goods.mithril_bar",
+                    ["_plural"] = {
+                        ["id"] = "goods.mithril_bar",
+                        ["sourceRefs"] = { "ua-forever:item.3860" },
+                        ["text"] = "mithril bars"
+                    }
                 }
             },
             ["злиток"] = {
@@ -7918,7 +8008,12 @@ ns.Data = {
             },
             ["зіль"] = {
                 ["здоров'я"] = {
-                    ["_id"] = "goods.health_potion"
+                    ["_id"] = "goods.health_potion",
+                    ["_plural"] = {
+                        ["id"] = "goods.health_potion",
+                        ["sourceRefs"] = { "ua-forever:goods.health_potion" },
+                        ["text"] = "health potions"
+                    }
                 }
             },
             ["зірвати"] = {
@@ -7982,12 +8077,22 @@ ns.Data = {
             },
             ["камені"] = {
                 ["здоров'я"] = {
-                    ["_id"] = "goods.healthstone"
+                    ["_id"] = "goods.healthstone",
+                    ["_plural"] = {
+                        ["id"] = "goods.healthstone",
+                        ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" },
+                        ["text"] = "healthstones"
+                    }
                 }
             },
             ["каменів"] = {
                 ["здоров'я"] = {
-                    ["_id"] = "goods.healthstone"
+                    ["_id"] = "goods.healthstone",
+                    ["_plural"] = {
+                        ["id"] = "goods.healthstone",
+                        ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" },
+                        ["text"] = "healthstones"
+                    }
                 }
             },
             ["камінь"] = {
@@ -8411,7 +8516,12 @@ ns.Data = {
                 }
             },
             ["магів"] = {
-                ["_id"] = "class.mage"
+                ["_id"] = "class.mage",
+                ["_plural"] = {
+                    ["id"] = "class.mage",
+                    ["sourceRefs"] = { "ua-forever:class.mage" },
+                    ["text"] = "mages"
+                }
             },
             ["майстер"] = {
                 ["зачарування"] = {
@@ -8607,7 +8717,12 @@ ns.Data = {
                 ["_id"] = "goods.sword"
             },
             ["мечах"] = {
-                ["_id"] = "goods.sword"
+                ["_id"] = "goods.sword",
+                ["_plural"] = {
+                    ["id"] = "goods.sword",
+                    ["sourceRefs"] = { "ua-forever:goods.sword" },
+                    ["text"] = "swords"
+                }
             },
             ["мечі"] = {
                 ["_id"] = "goods.sword",
@@ -8625,6 +8740,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:goods.sword" },
                     ["text"] = "swords",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "goods.sword",
+                    ["sourceRefs"] = { "ua-forever:goods.sword" },
+                    ["text"] = "swords"
                 }
             },
             ["ми"] = {
@@ -8642,7 +8762,12 @@ ns.Data = {
                 ["_id"] = "class.hunter"
             },
             ["мисливців"] = {
-                ["_id"] = "class.hunter"
+                ["_id"] = "class.hunter",
+                ["_plural"] = {
+                    ["id"] = "class.hunter",
+                    ["sourceRefs"] = { "ua-forever:class.hunter" },
+                    ["text"] = "hunters"
+                }
             },
             ["моб"] = {
                 ["_literal"] = {
@@ -8872,7 +8997,12 @@ ns.Data = {
             },
             ["місіями"] = {
                 ["супроводу"] = {
-                    ["_id"] = "activity.escort_mission"
+                    ["_id"] = "activity.escort_mission",
+                    ["_plural"] = {
+                        ["id"] = "activity.escort_mission",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "escort missions"
+                    }
                 }
             },
             ["місією"] = {
@@ -8882,7 +9012,12 @@ ns.Data = {
             },
             ["місії"] = {
                 ["супроводу"] = {
-                    ["_id"] = "activity.escort_mission"
+                    ["_id"] = "activity.escort_mission",
+                    ["_plural"] = {
+                        ["id"] = "activity.escort_mission",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "escort missions"
+                    }
                 }
             },
             ["наближаються"] = {
@@ -10037,7 +10172,12 @@ ns.Data = {
                 ["_id"] = "class.paladin"
             },
             ["паладинів"] = {
-                ["_id"] = "class.paladin"
+                ["_id"] = "class.paladin",
+                ["_plural"] = {
+                    ["id"] = "class.paladin",
+                    ["sourceRefs"] = { "ua-forever:class.paladin" },
+                    ["text"] = "paladins"
+                }
             },
             ["палаюче"] = {
                 ["ядро"] = {
@@ -10575,22 +10715,42 @@ ns.Data = {
             },
             ["предметам"] = {
                 ["завдання"] = {
-                    ["_id"] = "game.quest_item"
+                    ["_id"] = "game.quest_item",
+                    ["_plural"] = {
+                        ["id"] = "game.quest_item",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "quest items"
+                    }
                 }
             },
             ["предметами"] = {
                 ["завдання"] = {
-                    ["_id"] = "game.quest_item"
+                    ["_id"] = "game.quest_item",
+                    ["_plural"] = {
+                        ["id"] = "game.quest_item",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "quest items"
+                    }
                 }
             },
             ["предметах"] = {
                 ["завдання"] = {
-                    ["_id"] = "game.quest_item"
+                    ["_id"] = "game.quest_item",
+                    ["_plural"] = {
+                        ["id"] = "game.quest_item",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "quest items"
+                    }
                 }
             },
             ["предмети"] = {
                 ["завдання"] = {
-                    ["_id"] = "game.quest_item"
+                    ["_id"] = "game.quest_item",
+                    ["_plural"] = {
+                        ["id"] = "game.quest_item",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "quest items"
+                    }
                 }
             },
             ["предметом"] = {
@@ -10610,7 +10770,12 @@ ns.Data = {
             },
             ["предметів"] = {
                 ["завдання"] = {
-                    ["_id"] = "game.quest_item"
+                    ["_id"] = "game.quest_item",
+                    ["_plural"] = {
+                        ["id"] = "game.quest_item",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "quest items"
+                    }
                 }
             },
             ["премейд"] = {
@@ -11172,7 +11337,12 @@ ns.Data = {
                 ["_id"] = "game.buff"
             },
             ["підсилень"] = {
-                ["_id"] = "game.buff"
+                ["_id"] = "game.buff",
+                ["_plural"] = {
+                    ["id"] = "game.buff",
+                    ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" },
+                    ["text"] = "buffs"
+                }
             },
             ["підходь"] = {
                 ["_literal"] = {
@@ -11323,7 +11493,12 @@ ns.Data = {
                 ["_id"] = "class.rogue"
             },
             ["розбійників"] = {
-                ["_id"] = "class.rogue"
+                ["_id"] = "class.rogue",
+                ["_plural"] = {
+                    ["id"] = "class.rogue",
+                    ["sourceRefs"] = { "ua-forever:class.rogue" },
+                    ["text"] = "rogues"
+                }
             },
             ["рол"] = {
                 ["на"] = {
@@ -11465,6 +11640,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:goods.axe" },
                     ["text"] = "axes",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "goods.axe",
+                    ["sourceRefs"] = { "ua-forever:goods.axe" },
+                    ["text"] = "axes"
                 }
             },
             ["сокира"] = {
@@ -11477,6 +11657,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:goods.axe" },
                     ["text"] = "axes",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "goods.axe",
+                    ["sourceRefs"] = { "ua-forever:goods.axe" },
+                    ["text"] = "axes"
                 }
             },
             ["сокирку"] = {
@@ -11528,7 +11713,12 @@ ns.Data = {
                 }
             },
             ["спроб"] = {
-                ["_id"] = "activity.attempt"
+                ["_id"] = "activity.attempt",
+                ["_plural"] = {
+                    ["id"] = "activity.attempt",
+                    ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+                    ["text"] = "attempts"
+                }
             },
             ["спроба"] = {
                 ["_id"] = "activity.attempt"
@@ -11646,6 +11836,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:goods.arrow" },
                     ["text"] = "arrows",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "goods.arrow",
+                    ["sourceRefs"] = { "ua-forever:goods.arrow" },
+                    ["text"] = "arrows"
                 }
             },
             ["стріла"] = {
@@ -11658,6 +11853,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:goods.arrow" },
                     ["text"] = "arrows",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "goods.arrow",
+                    ["sourceRefs"] = { "ua-forever:goods.arrow" },
+                    ["text"] = "arrows"
                 }
             },
             ["стрілу"] = {
@@ -11715,10 +11915,20 @@ ns.Data = {
             },
             ["сумок"] = {
                 ["_id"] = "game.bag",
+                ["_plural"] = {
+                    ["id"] = "game.bag",
+                    ["sourceRefs"] = { "ua-forever:game.bag" },
+                    ["text"] = "bags"
+                },
                 ["з"] = {
                     ["місячної"] = {
                         ["тканини"] = {
-                            ["_id"] = "goods.mooncloth_bag"
+                            ["_id"] = "goods.mooncloth_bag",
+                            ["_plural"] = {
+                                ["id"] = "goods.mooncloth_bag",
+                                ["sourceRefs"] = { "ua-forever:item.14155" },
+                                ["text"] = "mooncloth bags"
+                            }
                         }
                     }
                 }
@@ -11833,10 +12043,20 @@ ns.Data = {
                 ["_id"] = "role.tank"
             },
             ["танки"] = {
-                ["_id"] = "role.tank"
+                ["_id"] = "role.tank",
+                ["_plural"] = {
+                    ["id"] = "role.tank",
+                    ["sourceRefs"] = { "ua-forever:role.tank" },
+                    ["text"] = "Tanks"
+                }
             },
             ["танків"] = {
-                ["_id"] = "role.tank"
+                ["_id"] = "role.tank",
+                ["_plural"] = {
+                    ["id"] = "role.tank",
+                    ["sourceRefs"] = { "ua-forever:role.tank" },
+                    ["text"] = "Tanks"
+                }
             },
             ["твердиня"] = {
                 ["крол'док"] = {
@@ -12329,13 +12549,28 @@ ns.Data = {
                 ["_id"] = "role.healer"
             },
             ["цілителям"] = {
-                ["_id"] = "role.healer"
+                ["_id"] = "role.healer",
+                ["_plural"] = {
+                    ["id"] = "role.healer",
+                    ["sourceRefs"] = { "ua-forever:role.healer" },
+                    ["text"] = "Healers"
+                }
             },
             ["цілителі"] = {
-                ["_id"] = "role.healer"
+                ["_id"] = "role.healer",
+                ["_plural"] = {
+                    ["id"] = "role.healer",
+                    ["sourceRefs"] = { "ua-forever:role.healer" },
+                    ["text"] = "Healers"
+                }
             },
             ["цілителів"] = {
-                ["_id"] = "role.healer"
+                ["_id"] = "role.healer",
+                ["_plural"] = {
+                    ["id"] = "role.healer",
+                    ["sourceRefs"] = { "ua-forever:role.healer" },
+                    ["text"] = "Healers"
+                }
             },
             ["ціна"] = {
                 ["_literal"] = {
@@ -12446,7 +12681,12 @@ ns.Data = {
                 }
             },
             ["чорнокнижників"] = {
-                ["_id"] = "class.warlock"
+                ["_id"] = "class.warlock",
+                ["_plural"] = {
+                    ["id"] = "class.warlock",
+                    ["sourceRefs"] = { "ua-forever:class.warlock" },
+                    ["text"] = "warlocks"
+                }
             },
             ["чорноскельний"] = {
                 ["шпиль"] = {
@@ -12498,7 +12738,12 @@ ns.Data = {
                 }
             },
             ["шаманів"] = {
-                ["_id"] = "class.shaman"
+                ["_id"] = "class.shaman",
+                ["_plural"] = {
+                    ["id"] = "class.shaman",
+                    ["sourceRefs"] = { "ua-forever:class.shaman" },
+                    ["text"] = "shamans"
+                }
             },
             ["швидко"] = {
                 ["_literal"] = {
@@ -12606,12 +12851,22 @@ ns.Data = {
             },
             ["шукачі"] = {
                 ["пригод"] = {
-                    ["_id"] = "character.adventurer"
+                    ["_id"] = "character.adventurer",
+                    ["_plural"] = {
+                        ["id"] = "character.adventurer",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "adventurers"
+                    }
                 }
             },
             ["шукачів"] = {
                 ["пригод"] = {
-                    ["_id"] = "character.adventurer"
+                    ["_id"] = "character.adventurer",
+                    ["_plural"] = {
+                        ["id"] = "character.adventurer",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "adventurers"
+                    }
                 }
             },
             ["шукаю"] = {
@@ -12659,6 +12914,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:game.shield" },
                     ["text"] = "shields",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "game.shield",
+                    ["sourceRefs"] = { "ua-forever:game.shield" },
+                    ["text"] = "shields"
                 }
             },
             ["щитів"] = {
@@ -12668,6 +12928,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:game.shield" },
                     ["text"] = "shields",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "game.shield",
+                    ["sourceRefs"] = { "ua-forever:game.shield" },
+                    ["text"] = "shields"
                 }
             },
             ["щось"] = {
@@ -12761,7 +13026,12 @@ ns.Data = {
             },
             ["єдині"] = {
                 ["вимоги"] = {
-                    ["_id"] = "game.only_requirement"
+                    ["_id"] = "game.only_requirement",
+                    ["_plural"] = {
+                        ["id"] = "game.only_requirement",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "only requirements"
+                    }
                 }
             },
             ["і"] = {
@@ -12895,7 +13165,12 @@ ns.Data = {
             },
             ["їздових"] = {
                 ["тварин"] = {
-                    ["_id"] = "goods.mount"
+                    ["_id"] = "goods.mount",
+                    ["_plural"] = {
+                        ["id"] = "goods.mount",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "mounts"
+                    }
                 }
             },
             ["їздової"] = {
@@ -12910,7 +13185,12 @@ ns.Data = {
             },
             ["їздові"] = {
                 ["тварини"] = {
-                    ["_id"] = "goods.mount"
+                    ["_id"] = "goods.mount",
+                    ["_plural"] = {
+                        ["id"] = "goods.mount",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "mounts"
+                    }
                 }
             },
             ["їздовій"] = {
