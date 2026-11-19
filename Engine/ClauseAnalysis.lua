@@ -186,7 +186,7 @@ local propertyDegrees = {very="very", so="so", too="too", more="more", pretty="q
     ["дуже"]="very", ["так"]="so", ["настільки"]="so", ["надто"]="too", ["більш"]="more",
     ["доволі"]="quite", ["досить"]="quite"}
 
-local function propertyAt(document, index, limit, case, subject)
+local function propertyAt(document, index, limit, case, subject, sense, compatible)
     if index > limit then return nil end
     local english = document.direction == "en-uk"
     local degree = propertyDegrees[P.key(document, index, limit)]
@@ -196,12 +196,13 @@ local function propertyAt(document, index, limit, case, subject)
     local function allowed(candidate)
         local frame = lexemeFrame(candidate)
         return not frame.profileOnly and (not english or case ~= "adverb" or forms and forms.forms[candidate.lexeme.uk])
+            and (not compatible or compatible(candidate))
     end
     local adjective, finish
     if not english and case == "adverb" then
         local key = P.key(document, index, limit)
         for _, lemma in ipairs(forms and forms.lemmas[key] or {}) do
-            local candidate = L.choose(document, lemma, "adj", {case="nominative"}, nil, allowed)
+            local candidate = L.choose(document, lemma, "adj", {case="nominative"}, sense, allowed)
             if candidate then
                 if adjective and candidate.lexeme.en ~= adjective.lexeme.en then return nil end
                 adjective = candidate
@@ -211,12 +212,35 @@ local function propertyAt(document, index, limit, case, subject)
         local requested = not english and {case=case, number=subject and subject.number,
             gender=subject and subject.number ~= "plural" and subject.gender or nil} or nil
         if not english then
-            adjective = L.genderPair(document, index, limit, "adj", requested, nil, allowed)
+            adjective = L.genderPair(document, index, limit, "adj", requested, sense, allowed)
             if adjective then finish = index + 3 end
         end
-        adjective = adjective or L.choose(document, index, "adj", requested, nil, allowed)
+        adjective = adjective or L.choose(document, index, "adj", requested, sense, allowed)
     end
     if adjective then return {entry=adjective, intensity=degree}, finish or index + 1 end
+end
+
+local function canBeEquipped(object)
+    return P.hasTrait(object, "equipable") or P.semanticClass(object) == "equipment"
+        or object.raw and ns.Engine.Markup.isLink(object.raw, "item")
+end
+
+local function objectStateAt(document, index, limit, object)
+    return propertyAt(document, index, limit, "instrumental", object, "objectState", function(candidate)
+        if not lexemeFrame(candidate).equipableObject then return true end
+        if not object.members then return canBeEquipped(object) end
+        for _, member in ipairs(object.members) do
+            if not canBeEquipped(member) then return false end
+        end
+        return true
+    end)
+end
+
+local function bareAdjunctRule(id)
+    if not id then return nil end
+    for _, rule in ipairs(ns.Linguistics.grammar.prepositions) do
+        if rule.id == id then return rule end
+    end
 end
 
 local function subjectReading(document, subject, frame)
@@ -1067,6 +1091,7 @@ complements = function(document, tree, index, limit, depth)
     depth = depth or 0
     local frame = lexemeFrame(tree.verb)
     local english = document.direction == "en-uk"
+    local bareAdjunct = not english and bareAdjunctRule(frame.bareAdjunct)
     if frame.boundAdverb then
         local adverb, after = gradedAdverbAt(document, index, limit, frame.boundAdverb)
         if not adverb then return nil end
@@ -1309,7 +1334,8 @@ complements = function(document, tree, index, limit, depth)
         if not object and english and frame.ellipticalGroupRole then
             object, nextIndex = P.ellipticalGroupMember(document, index, limit, frame.ellipticalGroupRole)
         end
-        if object and frame.messageContent and not personNoun(object) then object = nil end
+        if object and (frame.messageContent and not personNoun(object)
+            or bareAdjunct and P.semanticClass(object) == bareAdjunct.requiresClass) then object = nil end
         if object then
             local objectFrame = object.entry and object.entry.lexeme.frame
             local quantity = tonumber(object.quantity)
@@ -1343,6 +1369,10 @@ complements = function(document, tree, index, limit, depth)
                 tree.recipient, tree.recipientAfterObject, index = recipient, true, after
             end
         end
+    end
+    if tree.object and frame.objectState then
+        local state, after = objectStateAt(document, index, limit, tree.object)
+        if state then tree.objectState, index = state, after end
     end
     if frame.separation and tree.object and P.key(document, index, limit) == (english and "of" or "від") then
         tree.separation, after = P.noun(document, index + 1, limit, "genitive")
@@ -1475,6 +1505,12 @@ complements = function(document, tree, index, limit, depth)
         if not adverb or not adverb.temporalAdjunct then
             pp, last = P.preposition(document, index, limit, frame.motion, frame.displacesObject and tree.object ~= nil,
                 adjunctContext, temporalContext)
+        end
+        if not pp and bareAdjunct then
+            local object, after = P.noun(document, index, limit, bareAdjunct.case, false, nil, true)
+            if object and P.semanticClass(object) == bareAdjunct.requiresClass then
+                pp, last = {rule=bareAdjunct, object=object, case=bareAdjunct.case}, after
+            end
         end
         if pp then
             local entry = pp.object.entry

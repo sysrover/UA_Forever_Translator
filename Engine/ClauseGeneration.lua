@@ -1522,6 +1522,13 @@ renderTree = function(tree, english, controller)
                 append(parts, recipient)
             end
             if english and (tree.object.pronoun or frame.objectBeforeParticle) then append(parts, frame.particle) end
+            if tree.objectState then
+                local number = targetNumber(tree.object, english)
+                local gender = tree.object.gender or (tree.object.raw and "masculine")
+                local state = agreedAdjective(tree.objectState, english, "instrumental", tree.object, number, gender)
+                if not state then return nil end
+                append(parts, state)
+            end
         elseif not (tree.wh and tree.wh.role == "object") then
             append(parts, english and postposeRecipient and frame.implicitTransferObject or english and frame.enImplicitObject
                 or not english and (tree.relativeImplicitUk or frame.ukImplicitObject))

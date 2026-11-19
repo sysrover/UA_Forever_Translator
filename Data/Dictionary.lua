@@ -15686,7 +15686,11 @@ ns.Data = {
                     ["shield"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["equipable"] = true,
+                                    ["gender"] = "masculine"
+                                },
                                 ["id"] = "game.shield",
                                 ["lemma"] = "Shield",
                                 ["pos"] = "noun",
@@ -15700,6 +15704,7 @@ ns.Data = {
                             {
                                 ["features"] = {
                                     ["animacy"] = "inanimate",
+                                    ["equipable"] = true,
                                     ["gender"] = "masculine"
                                 },
                                 ["id"] = "goods.sword",
@@ -22266,7 +22271,11 @@ ns.Data = {
                 ["shield"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["equipable"] = true,
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "game.shield",
                             ["lemma"] = "Shield",
                             ["pos"] = "noun",
@@ -22279,6 +22288,9 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["equipable"] = true,
+                                ["gender"] = "masculine",
                                 ["number"] = "plural"
                             },
                             ["id"] = "game.shield",
@@ -22776,6 +22788,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["equipable"] = true,
                                 ["gender"] = "masculine"
                             },
                             ["id"] = "goods.sword",
@@ -22791,6 +22804,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["equipable"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "plural"
                             },
@@ -32151,6 +32165,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["equipable"] = true,
                                 ["gender"] = "masculine"
                             },
                             ["id"] = "goods.sword",
@@ -32163,6 +32178,7 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "accusative",
+                                ["equipable"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular"
                             },
@@ -32179,6 +32195,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["equipable"] = true,
                                 ["gender"] = "masculine"
                             },
                             ["id"] = "goods.sword",
@@ -32195,6 +32212,7 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "locative",
+                                ["equipable"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "plural"
                             },
@@ -32212,6 +32230,7 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "accusative",
+                                ["equipable"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "plural"
                             },
@@ -32225,6 +32244,7 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "locative",
+                                ["equipable"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular"
                             },
@@ -32242,6 +32262,7 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "genitive",
+                                ["equipable"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "plural"
                             },
@@ -42036,7 +42057,11 @@ ns.Data = {
                 ["щит"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["equipable"] = true,
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "game.shield",
                             ["lemma"] = "Щит",
                             ["pos"] = "noun",
@@ -42045,7 +42070,10 @@ ns.Data = {
                         },
                         {
                             ["features"] = {
+                                ["animacy"] = "inanimate",
                                 ["case"] = "accusative",
+                                ["equipable"] = true,
+                                ["gender"] = "masculine",
                                 ["number"] = "singular"
                             },
                             ["id"] = "game.shield",
@@ -42059,7 +42087,11 @@ ns.Data = {
                 ["щита"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["equipable"] = true,
+                                ["gender"] = "masculine"
+                            },
                             ["id"] = "game.shield",
                             ["lemma"] = "Щит",
                             ["pos"] = "noun",
@@ -42072,7 +42104,10 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["animacy"] = "inanimate",
                                 ["case"] = "accusative",
+                                ["equipable"] = true,
+                                ["gender"] = "masculine",
                                 ["number"] = "plural"
                             },
                             ["id"] = "game.shield",
@@ -42087,7 +42122,10 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["animacy"] = "inanimate",
                                 ["case"] = "genitive",
+                                ["equipable"] = true,
+                                ["gender"] = "masculine",
                                 ["number"] = "plural"
                             },
                             ["id"] = "game.shield",
@@ -45622,7 +45660,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 89,
-        ["version"] = "737d9eec44a0714a566ff9b112655c93801c00b6f93cd1a8925d328513f04b2f"
+        ["version"] = "2f90cdbd6783583752ca30d3eca7a8d6d939a9ed66610d901526d7f1edb4b612"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -56343,6 +56381,11 @@ ns.Data = {
             ["en"] = "Shield",
             ["englishObject"] = "a shield",
             ["englishPlural"] = "shields",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["equipable"] = true,
+                ["gender"] = "masculine"
+            },
             ["forms"] = {
                 ["accusative"] = "щит",
                 ["accusativePlural"] = "щити",
@@ -56942,6 +56985,7 @@ ns.Data = {
             ["englishPlural"] = "swords",
             ["features"] = {
                 ["animacy"] = "inanimate",
+                ["equipable"] = true,
                 ["gender"] = "masculine"
             },
             ["forms"] = {
