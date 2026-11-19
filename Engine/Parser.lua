@@ -88,7 +88,7 @@ function P.hasExactOpening(text, tokens, direction)
     return false
 end
 
-function P.compose(text, tokens, direction, grammarFallback)
+function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
     local composition = ns.Data.composition and ns.Data.composition[direction]
     if not composition or #tokens == 0 or #tokens > 96 then return nil end
     local prefixes, joins = composition.prefixes, composition.joins
@@ -118,8 +118,9 @@ function P.compose(text, tokens, direction, grammarFallback)
         if start > finish then return nil end
         local row = memo[start]
         if row and row[finish] ~= nil then return row[finish] or nil end
-        if attempts == 0 then return nil end
+        if attempts == 0 or sentenceBudget and sentenceBudget.remaining == 0 then return nil end
         attempts = attempts - 1
+        if sentenceBudget then sentenceBudget.remaining = sentenceBudget.remaining - 1 end
         if not row then row = {}; memo[start] = row end
         local output, rule, slots
         -- The entry point already checked exact, structural and grammar matches for the full message.
@@ -161,6 +162,7 @@ function P.compose(text, tokens, direction, grammarFallback)
         return tokens[joinIndex - 1].key == "," and joinIndex - 2 or joinIndex - 1
     end
     local function composeSentences()
+        if sentenceBudget then return nil end
         local ends = {}
         for index = 2, #tokens - 1 do
             if sentenceJoins[tokens[index].key] and tokens[index + 1].first > tokens[index].last + 1 then
@@ -171,8 +173,24 @@ function P.compose(text, tokens, direction, grammarFallback)
         if #ends < 3 then return nil end
         ends[#ends + 1] = #tokens
         local matches, parts, fragments, start, complete = {}, {}, {}, 1, true
+        local nestedBudget = {remaining=16}
         for part, finish in ipairs(ends) do
             local match = translateClause(start, finish)
+            if not match and grammarFallback and nestedBudget.remaining > 0 and finish - start >= 3 then
+                local offset = start - 1
+                local sentence = {unpack(tokens, start, finish)}
+                local value, subclauses = P.compose(text, sentence, direction, function(first, last)
+                    return grammarFallback(first + offset, last + offset)
+                end, nestedBudget)
+                if value then
+                    local refs, slots = {}, {}
+                    for _, clause in ipairs(subclauses) do
+                        for _, ref in ipairs(clause.rule.sourceRefs or {}) do refs[#refs + 1] = ref end
+                        for _, slot in pairs(clause.slots or {}) do slots[#slots + 1] = slot end
+                    end
+                    match = {text=value, rule={intent="composition", sourceRefs=refs}, slots=slots}
+                end
+            end
             if match then
                 local value = match.text
                 if sentenceJoins[tokens[finish].key] then

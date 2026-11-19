@@ -444,10 +444,35 @@ local function levelAreaAt(document, index, limit)
     end)
 end
 
+local guildNameCopula = {is=true, are=true, was=true, were=true}
+local function bracketedGuildSubject(document, first, limit)
+    local english = document.direction == "en-uk"
+    for ending = first + 1, math.min(limit - 1, first + 10) do
+        local token = document.tokens[ending]
+        if token.protected or token.key == "[" then return end
+        if token.key == "]" then
+            if ending == first + 1 then return end
+            local following = P.key(document, ending + 1, limit)
+            if english and not guildNameCopula[following] then return end
+            local description = P.noun(document,
+                ending + ((english or following == "—" or following == "є") and 2 or 1),
+                limit, "nominative", nil, nil, true)
+            if description and description.term and description.term.id == "game.guild" then
+                local plural = english and (following == "are" or following == "were")
+                return {raw=P.raw(document, first, ending), person=3, number=plural and "plural" or "singular"}, ending + 1
+            end
+            return
+        end
+    end
+end
+
 function P.noun(document, first, limit, case, locationOnly, count, simple, sense, headFilter)
     local index = first
     local key = P.key(document, index, limit)
     local english = document.direction == "en-uk"
+    if key == "[" and case == "nominative" and not (locationOnly or headFilter) then
+        return bracketedGuildSubject(document, first, limit)
+    end
     if not locationOnly and count ~= false then
         local subset, after = subsetAt(document, first, limit, case, sense, headFilter)
         if subset then return subset, after end

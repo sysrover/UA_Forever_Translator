@@ -237,6 +237,7 @@ local function noun(node, english, case, article, compoundModifier, owner)
     local frame = node.entry and node.entry.lexeme.frame
     local mass = P.mass(node)
     if node.term and (mass or node.term.category == "classes"
+        or node.term.features and node.term.features.proseCommonNoun
         or english and node.term.features and node.term.features.englishCommon
         or english and (article == "definite" or node.destination) and node.term.category == "roles" and node.term.en:find("%l")) then
         value = ns.Engine.Normalize.word(value)

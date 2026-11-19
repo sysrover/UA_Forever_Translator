@@ -1208,6 +1208,9 @@ ns.Data = {
                     }
                 }
             },
+            ["discord"] = {
+                ["_id"] = "game.discord"
+            },
             ["dkp"] = {
                 ["_id"] = "slang.loot.dkp"
             },
@@ -5160,6 +5163,9 @@ ns.Data = {
                 ["ragstallion"] = {
                     ["_id"] = "character.dandelion_ragstallion"
                 }
+            },
+            ["discord"] = {
+                ["_id"] = "game.discord"
             },
             ["dps"] = {
                 ["_id"] = "role.damage"
@@ -17950,6 +17956,22 @@ ns.Data = {
                         }
                     }
                 },
+                ["discord"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "game.discord",
+                            ["lemma"] = "Discord",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.discord",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["dkp"] = {
                     ["_analyses"] = {
                         {
@@ -19173,7 +19195,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
-                                ["gender"] = "feminine"
+                                ["gender"] = "feminine",
+                                ["proseCommonNoun"] = true
                             },
                             ["id"] = "game.guild",
                             ["lemma"] = "Guild",
@@ -24530,6 +24553,64 @@ ns.Data = {
                         }
                     }
                 },
+                ["discord"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "game.discord",
+                            ["lemma"] = "Discord",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.discord",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "game.discord",
+                            ["lemma"] = "Discord",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.discord",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "game.discord",
+                            ["lemma"] = "Discord",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.discord",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "game.discord",
+                            ["lemma"] = "Discord",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.discord",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["dps"] = {
                     ["_analyses"] = {
                         {
@@ -28421,7 +28502,8 @@ ns.Data = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "accusative",
                                 ["gender"] = "feminine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["proseCommonNoun"] = true
                             },
                             ["id"] = "game.guild",
                             ["lemma"] = "Гільдія",
@@ -28476,7 +28558,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
-                                ["gender"] = "feminine"
+                                ["gender"] = "feminine",
+                                ["proseCommonNoun"] = true
                             },
                             ["id"] = "game.guild",
                             ["lemma"] = "Гільдія",
@@ -28557,7 +28640,8 @@ ns.Data = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "genitive",
                                 ["gender"] = "feminine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["proseCommonNoun"] = true
                             },
                             ["id"] = "game.guild",
                             ["lemma"] = "Гільдія",
@@ -28570,7 +28654,8 @@ ns.Data = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "locative",
                                 ["gender"] = "feminine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["proseCommonNoun"] = true
                             },
                             ["id"] = "game.guild",
                             ["lemma"] = "Гільдія",
@@ -43981,6 +44066,17 @@ ns.Data = {
                     ["canonical"] = "дружня гільдія зі спокійним темпом гри"
                 }
             },
+            ["game.discord"] = {
+                ["en"] = {
+                    ["canonical"] = "Discord"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Discord",
+                    ["canonical"] = "Discord",
+                    ["genitiveSingular"] = "Discord",
+                    ["locative"] = "Discord"
+                }
+            },
             ["game.dungeon"] = {
                 ["en"] = {
                     ["canonical"] = "Dungeon"
@@ -46485,7 +46581,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 278,
+        ["concepts"] = 279,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 85,
@@ -46504,7 +46600,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "cae98d21f05e7f4bb9587c813fda968603bea0e210060d3d6629710b4a3b6791"
+        ["version"] = "f8d1e71d3a0232c807ba8b3008d8841e2adde69c2d219aab0a7c4c5240f07e3e"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -56467,6 +56563,29 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "дружня гільдія зі спокійним темпом гри"
         },
+        ["game.discord"] = {
+            ["category"] = "game",
+            ["en"] = "Discord",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Discord",
+                ["genitiveSingular"] = "Discord",
+                ["locative"] = "Discord"
+            },
+            ["id"] = "game.discord",
+            ["provenance"] = {
+                ["context"] = "indeclinable platform name in guild recruitment",
+                ["key"] = "Discord",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Discord"
+        },
         ["game.dungeon"] = {
             ["aliases"] = {
                 ["en"] = { "dung" },
@@ -56637,7 +56756,8 @@ ns.Data = {
             ["en"] = "Guild",
             ["features"] = {
                 ["animacy"] = "inanimate",
-                ["gender"] = "feminine"
+                ["gender"] = "feminine",
+                ["proseCommonNoun"] = true
             },
             ["forms"] = {
                 ["accusative"] = "гільдію",
