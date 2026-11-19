@@ -94,7 +94,7 @@ local function adjective(modifier, english, case, number, gender, animacy)
         if degree == "comparative" then base = "more " .. base
         elseif degree == "superlative" then base = "most " .. base end
         local prefix = intensity == "more" and "more " or intensity == "very" and "very " or intensity == "so" and "so "
-            or intensity == "too" and "too " or intensity == "most" and "most " or ""
+            or intensity == "too" and "too " or intensity == "most" and "most " or intensity == "quite" and "quite " or ""
         return prefix .. base
     end
     if entry.lexeme.frame and entry.lexeme.frame.invariable then return entry.lexeme.uk end
@@ -432,7 +432,7 @@ local function agreedAdjective(modifier, english, case, subject, number, gender)
     end
 end
 
-local propertyDegreeUk = {more="більш ", very="дуже ", so="настільки ", too="надто "}
+local propertyDegreeUk = {more="більш ", very="дуже ", so="настільки ", too="надто ", quite="доволі "}
 local function propertyValue(tree, english, case)
     local property = tree.property
     if english then
@@ -638,7 +638,8 @@ local function englishVerb(tree, subject)
     elseif tree.occurrencePerfect or tree.since and (tree.tense == "past" or tree.tense == "present") then
         prefix, lemma = tree.occurrencePerfect == "past" and "had" or third and "has" or "have",
             englishForm(lemma, "participle", "verb")
-    elseif tree.tense == "present" and (tree.aspect == "continuous" or frame.englishProgressiveWithPurpose and tree.purpose) then
+    elseif tree.tense == "present" and (tree.aspect == "continuous" or frame.englishProgressiveWithPurpose and tree.purpose
+        or frame.englishProgressiveStill and leading and leading.en[1] == "still") then
         prefix, lemma = presentBe(person, number), englishForm(lemma, "ing", "verb")
     elseif tree.tense == "future" and not tree.temporalDependent then prefix = "will"
     elseif tree.negative or inversion then
@@ -1684,5 +1685,6 @@ function G.render(parse, direction, punctuation)
         append(parts, value)
         last = tree
     end
+    if parse.questionTail then append(parts, (english and parse.questionTail.en or parse.questionTail.uk)[1]) end
     return ns.Engine.Normalize.upperStart(table.concat(parts, " ")) .. (last.question and "?" or punctuation or ".")
 end

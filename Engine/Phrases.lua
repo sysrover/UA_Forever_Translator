@@ -630,6 +630,9 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
                 local argument, after = P.noun(document, start, limit, governed.case, false, nil, true,
                     governed.argumentSense)
                 local class = P.semanticClass(argument)
+                if not class and argument and argument.raw and ns.Engine.Markup.isLink(argument.raw, "item") then
+                    class = "equipment"
+                end
                 local targetFrame = argument and argument.entry and argument.entry.lexeme.frame
                 local spatial = class == "places" or targetFrame and (targetFrame.spatialContainer or targetFrame.spatialPart)
                 if argument and (not governed.classes or governed.classes[class])

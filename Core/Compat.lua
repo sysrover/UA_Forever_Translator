@@ -35,15 +35,6 @@ function C.activeEdit()
     local ok, edit = pcall(fn)
     if ok and not C.secret(edit) then return edit end
 end
-function C.selectedEdit()
-    local active = C.activeEdit()
-    if active then return active end
-    local fn = ChatFrameUtil and ChatFrameUtil.GetLastActiveWindow
-    if type(fn) == "function" then
-        local ok, edit = pcall(fn)
-        if ok and not C.secret(edit) then return edit end
-    end
-end
 function C.context(edit)
     if not edit or C.secret(edit) then return nil end
     local chatType = C.read(edit, "GetAttribute", "chatType")

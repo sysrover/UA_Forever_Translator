@@ -11,7 +11,8 @@ end
 
 local function personNoun(noun)
     local pronoun = noun and noun.pronoun
-    return noun and (P.relativeAnimate(noun) or pronoun and not (pronoun.inanimate or pronoun.id == "it"))
+    return noun and (P.relativeAnimate(noun) or pronoun and not (pronoun.inanimate or pronoun.id == "it")
+        or noun.raw and ns.Engine.Markup.isLink(noun.raw, "player"))
 end
 
 local function deicticSubject(noun)
@@ -180,8 +181,9 @@ local function verbObjectMarker(document, index, limit, frame)
     end
 end
 
-local propertyDegrees = {very="very", so="so", too="too", more="more",
-    ["дуже"]="very", ["так"]="so", ["настільки"]="so", ["надто"]="too", ["більш"]="more"}
+local propertyDegrees = {very="very", so="so", too="too", more="more", pretty="quite", quite="quite",
+    ["дуже"]="very", ["так"]="so", ["настільки"]="so", ["надто"]="too", ["більш"]="more",
+    ["доволі"]="quite", ["досить"]="quite"}
 
 local function propertyAt(document, index, limit, case, subject)
     if index > limit then return nil end
@@ -1239,7 +1241,7 @@ complements = function(document, tree, index, limit, depth)
         local marked = english and P.key(document, index, limit) == frame.recipientMarker
         if marked or not english then
             recipient, after = objectRecipientAt(document, marked and index + 1 or index, limit, frame, objectCase)
-            if recipient and (not english or personNoun(recipient)) then
+            if recipient and (not english and not recipient.raw or personNoun(recipient)) then
                 tree.recipient, tree.recipientAfterObject, index = recipient, true, after
             end
         end
@@ -2051,7 +2053,8 @@ local function existential(document, first, limit, depth)
             local description = {kind="clause", subject=subject, inherited=true, verb=action, tense="present", aspect="continuous"}
             local markerIndex = complements(document, description, nextIndex, limit, depth + 1)
             local linker = markerIndex and P.key(document, markerIndex, limit)
-            if copulaNumber and markerIndex and boundary(document, markerIndex, limit) then
+            if markerIndex and boundary(document, markerIndex, limit)
+                and (copulaNumber or personal and (bareIndefinite or key == "is" or key == "are")) then
                 tree.relative = description
                 return tree, markerIndex
             end
@@ -3922,7 +3925,17 @@ function A.parse(document, first, limit)
             end
         end
     end
-    return parseGroup(document, first, limit)
+    local parsed = parseGroup(document, first, limit)
+    if parsed or limit <= first then return parsed end
+    local tail, after = adverbAt(document, limit, limit, "questionTail")
+    if not tail or tail.context ~= "questionTail" or after ~= limit + 1 then return nil end
+    local before = P.key(document, limit - 1, limit) == "," and limit - 2 or limit - 1
+    if before < first then return nil end
+    parsed = parseGroup(document, first, before)
+    if parsed and parsed.trees[#parsed.trees].question then
+        parsed.questionTail = tail
+        return parsed
+    end
 end
 
 local independentRelations = {root=true, parataxis=true, conj=true, ["acl:relcl"]=true}
