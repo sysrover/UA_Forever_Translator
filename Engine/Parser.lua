@@ -171,7 +171,7 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
                 if #ends == 8 then return nil end
             end
         end
-        if #ends < 3 then return nil end
+        if #ends < 2 then return nil end
         ends[#ends + 1] = #tokens
         local matches, parts, fragments, start, complete = {}, {}, {}, 1, true
         local nestedBudget = {remaining=16}

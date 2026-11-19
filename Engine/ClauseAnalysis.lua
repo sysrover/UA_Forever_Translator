@@ -3238,6 +3238,14 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap)
             end
         end
         if not subject then subject, nextIndex = P.coordinated(document, index, limit, "nominative") end
+        if not english and not subject then
+            local theme, ending = P.noun(document, index, limit, "nominative", nil, nil, nil, "selfChangeTheme")
+            if theme then
+                local at = ending + (P.key(document, ending, limit) == "не" and 1 or 0)
+                local predicate = verb(document, at, limit, theme)
+                if predicate and lexemeFrame(predicate).selfChange then subject, nextIndex = theme, ending end
+            end
+        end
         local pointer = subject and subject.pronoun and subject.pronoun.id
         if english and not inverted and index + 2 <= limit and (not subject or pointer == "this" or pointer == "that") then
             local event, ending = P.noun(document, index, limit, "nominative", nil, nil, nil, "recordable")
