@@ -50,7 +50,7 @@ function G.render(template, slots, direction)
             end
             if form == "activity" then form = "accusative" end
             if form == "object" or form == "negativeObject" then
-                form = slot.plural and "accusativePlural" or "accusative"
+                form = slot.partitive and "genitiveSingular" or slot.plural and "accusativePlural" or "accusative"
             end
             if form == "countedObject" then
                 local count = slots.count and tonumber(slots.count.raw)
@@ -66,6 +66,12 @@ function G.render(template, slots, direction)
             if form ~= "" and form ~= "canonical" then
                 local value = slot.term.renderForms and slot.term.renderForms[form]
                     or slot.term.forms and slot.term.forms[form]
+                if form == "locative" and not (slot.term.renderForms and slot.term.renderForms.locative) then
+                    local term = slot.term
+                    local number = term.features and term.features.number or term.morphology and term.morphology.number
+                    if slot.plural then number = "plural" end
+                    value = ns.Engine.Lexicon.curatedForm(term, "locative", number or "singular") or value
+                end
                 if not value then failed = true; return "" end
                 return value
             end

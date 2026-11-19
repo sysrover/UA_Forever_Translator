@@ -64,7 +64,7 @@ function A.analyze(word, lang)
     if symbols then return run(graph, symbols) end
 end
 
-local parts = {n="noun", adj="adj", adv="adv", vblex="verb"}
+local parts = {n="noun", adj="adj", det="det", adv="adv", vblex="verb"}
 local cases = {nom="nominative", gen="genitive", dat="dative", acc="accusative",
     ins="instrumental", loc="locative", voc="vocative"}
 local genders = {m="masculine", f="feminine", nt="neuter"}
@@ -109,7 +109,7 @@ function A.read(analysis, lang)
                 return base, pos, form
             end
         elseif pos == "adj" and form.degree then return base, pos, {degree=form.degree} end
-    elseif (pos == "noun" or pos == "adj") and form.case and form.number then
+    elseif (pos == "noun" or pos == "adj" or pos == "det") and form.case and form.number then
         return base, pos, form
     elseif pos == "verb" and not (tags.pp or tags.pprs or tags.pasv or tags.actv or tags.impers) then
         if tags.inf then form.mood = "infinitive"

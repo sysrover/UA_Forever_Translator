@@ -67,16 +67,10 @@ local function rank(pos, previous, following, tags)
     return score
 end
 
-local function choose(document, index, lang, previous, following)
+local function lexicalCandidates(document, index, lang, offer)
     local token = document.tokens[index]
     local readings = A.analyze(token.key, lang) or {}
-    local best, priority, order
-    local function offer(lemma, pos, form, tags, weight, key)
-        local score = rank(pos, previous, following, tags) - weight
-        if not best or score > priority or (score == priority and key < order) then
-            best, priority, order = {lemma=lemma, pos=pos, form=form, tags=tags}, score, key
-        end
-    end
+    local found
     for raw, weight in pairs(readings) do
         local lemma, kind, suffix = raw:match("^([^<+/#]+)<(%w+)>(.*)$")
         if kind and parts[kind] and not suffix:find("[+/#]") then
@@ -90,9 +84,10 @@ local function choose(document, index, lang, previous, following)
                 form.case = tags.subj and "nominative" or tags.obj and "accusative" or nil
             end
             offer(lemma, parts[kind], form, tags, weight, raw)
+            found = true
         end
     end
-    if not best then
+    if not found then
         for _, entry in ipairs(L.at(document, index)) do
             local pos = lexicalParts[entry.lexeme.pos]
             if pos then
@@ -101,38 +96,188 @@ local function choose(document, index, lang, previous, following)
             end
         end
     end
+end
+
+local function choose(document, index, lang, previous, following, hint)
+    local best, priority, order
+    lexicalCandidates(document, index, lang, function(lemma, pos, form, tags, weight, key)
+        if hint and pos ~= hint then return end
+        local score = rank(pos, previous, following, tags) - weight
+        if not best or score > priority or (score == priority and key < order) then
+            best, priority, order = {lemma=lemma, pos=pos, form=form, tags=tags}, score, key
+        end
+    end)
     return best
 end
 
-function U.analyzeDocument(document, first, last, marker, markerEnd)
-    local lang = document.direction == "en-uk" and "en" or "uk"
-    local model = ns.UDPipeModels and ns.UDPipeModels[lang]
-    if not model or last - first >= 32 then return end
-    local words, previous = {}
+local function fixedTag(token, index, marker, markerEnd, markerTags)
+    if token.protected then return "NOUN" end
+    if index >= marker and index <= markerEnd then
+        return markerTags and markerTags[index - marker + 1] or "SCONJ"
+    end
+    if token.key:match("^%d+$") then return "NUM" end
+    if token.key:match("^%p$") or token.key == "…" or token.key == "—" then return "PUNCT" end
+end
+
+local function pronounCandidate(document, index, lang)
+    local readings, finish = L.functional(document, "pronouns", index, index)
+    if not readings or finish ~= index then return end
+    local reading = readings[1]
+    local pronoun = ns.Linguistics.grammar.pronouns[reading.id]
+    local number = lang == "uk" and pronoun.ukNumber or pronoun.number
+    return {lemma=pronoun[lang].nominative, pos="PRON", tags={},
+        form={person=pronoun.person, number=number, gender=pronoun.gender, case=reading.case}}
+end
+
+local function englishCandidates(document, index, raw, weights)
+    local tagIds = weights.ids
+    local key = document.tokens[index].key
+    local candidates = {}
+    lexicalCandidates(document, index, "en", function(lemma, pos, form, tags, weight, reading)
+        local id = tagIds[pos]
+        local score = rank(pos, nil, "", tags) - weight
+        local previous = candidates[id]
+        if not previous or score > previous.rank or (score == previous.rank and reading < previous.reading) then
+            candidates[id] = {lemma=lemma, pos=pos, form=form, tags=tags, rank=score, reading=reading}
+        end
+    end)
+
+    local pronoun = pronounCandidate(document, index, "en")
+    if pronoun then candidates[tagIds.PRON] = pronoun end
+    local word = weights.words[key]
+    if word then
+        for _, candidate in pairs(candidates) do candidate.emission = word[1] end
+        for offset = 2, #word, 3 do
+            local id, emission, feats = word[offset], word[offset + 1], word[offset + 2]
+            local candidate = candidates[id] or {lemma=key, pos=weights.tags[id]}
+            candidate.emission, candidate.feats = emission, feats
+            candidates[id] = candidate
+        end
+    end
+    if raw ~= key then
+        candidates[tagIds.PROPN] = candidates[tagIds.PROPN] or {lemma=key, pos="PROPN", emission=word and word[1]}
+    elseif candidates[tagIds.PROPN] and not candidates[tagIds.PROPN].form then
+        candidates[tagIds.PROPN].emission = candidates[tagIds.PROPN].emission - 180
+    end
+    if not next(candidates) then candidates[tagIds.X] = {lemma=key, pos="X"} end
+    return candidates
+end
+
+local function tagEnglish(document, first, last, marker, markerEnd, weights, hints, markerTags)
+    local tagIds = weights.ids
+    local boundary = tagIds[""]
+    local previous = {[boundary]={score=0}}
+    local words = {}
+    -- Viterbi over the available readings, retaining one predecessor for each part of speech.
     for index = first, last do
         local token = document.tokens[index]
-        local raw = document.text:sub(token.first,token.last)
-        local candidate, pos, lemma, feats
-        if token.protected then raw = lang == "en" and "item" or "предмет"; pos = "NOUN"
-        elseif index >= marker and index <= markerEnd then pos = "SCONJ"
-        elseif token.key:match("^%d+$") then pos = "NUM"
-        elseif token.key:match("^%p$") or token.key == "…" or token.key == "—" then pos = "PUNCT"
-        else
-            local pronouns, finish = L.functional(document,"pronouns",index,index)
-            if pronouns and finish == index then
-                local reading = pronouns[1]
-                local pronoun = ns.Linguistics.grammar.pronouns[reading.id]
-                candidate = {lemma=pronoun[lang].nominative,pos="PRON",
-                    form={person=pronoun.person,number=pronoun.number,gender=pronoun.gender,case=reading.case},tags={}}
-            else
-                candidate = choose(document,index,lang,previous,document.tokens[index+1] and document.tokens[index+1].key or "")
-            end
-            if candidate then
-                pos, lemma, feats = candidate.pos, candidate.lemma, udFeatures(candidate,lang)
-            else pos = raw ~= token.key and "PROPN" or "X" end
+        local raw = token.protected and "item" or document.text:sub(token.first, token.last)
+        local pos = fixedTag(token, index, marker, markerEnd, markerTags)
+        local candidates = pos and {[tagIds[pos]]={pos=pos, lemma=token.key}}
+            or englishCandidates(document, index, raw, weights)
+        local hint = not pos and hints and hints[index]
+        local hintedId = tagIds[hint == true and "VERB" or hint]
+        if hintedId then
+            candidates = {[hintedId]=candidates[hintedId] or {pos=weights.tags[hintedId], lemma=token.key}}
         end
-        words[#words+1] = {form=raw,lemma=lemma or token.key,upos=pos,feats=feats}
-        previous = pos
+        for id, candidate in pairs(candidates) do
+            local best, from
+            for previousId, entry in pairs(previous) do
+                local score = entry.score + weights.transitions[previousId][id]
+                if not best or score > best or (score == best and previousId < from) then
+                    best, from = score, previousId
+                end
+            end
+            candidate.score = best + (candidate.emission or 0)
+            candidate.previous = previous[from]
+            candidate.raw = raw
+        end
+        previous = candidates
     end
-    return U.parse(model, words, 1)
+    local best, selected
+    for id, candidate in pairs(previous) do
+        local score = candidate.score + weights.transitions[id][boundary]
+        if not best or score > best or (score == best and id < selected) then
+            best, selected = score, id
+        end
+    end
+    local candidate = previous[selected]
+    for index = last - first + 1, 1, -1 do
+        local feats = candidate.feats
+        if feats == nil and candidate.form then feats = udFeatures(candidate, "en") end
+        words[index] = {form=candidate.raw, lemma=candidate.lemma, upos=candidate.pos, feats=feats}
+        candidate = candidate.previous
+    end
+    return words
+end
+
+function U.analyzeDocument(document, first, last, marker, markerEnd, hints, markerTags, alternatives, commaBefore)
+    local lang = document.direction == "en-uk" and "en" or "uk"
+    local model = ns.UDPipeModels and ns.UDPipeModels[lang]
+    if not model or last < first or last - first >= 32 then return end
+    local words
+    local original = (alternatives or commaBefore) and {}
+    if lang == "en" and ns.UDPipeTagWeights then
+        words = tagEnglish(document, first, last, marker, markerEnd, ns.UDPipeTagWeights, hints, markerTags)
+        if original then
+            for offset = 1, #words do original[offset] = offset end
+        end
+    else
+        local previous
+        local index = first
+        words = {}
+        while index <= last do
+            local token = document.tokens[index]
+            local raw = document.text:sub(token.first,token.last)
+            local pos = fixedTag(token, index, marker, markerEnd, markerTags)
+            local lemma, feats
+            if token.protected then raw = lang == "en" and "item" or "предмет" end
+            if not pos then
+                local hint = hints and hints[index]
+                if type(hint) == "table" then
+                    pos, lemma, feats = hint.pos, hint.lemma, hint.feats
+                else
+                    local candidate = (not hint or hint == "PRON") and pronounCandidate(document, index, lang)
+                        or choose(document, index, lang, previous, document.tokens[index + 1] and document.tokens[index + 1].key or "", hint)
+                    if candidate then
+                        pos, lemma, feats = candidate.pos, candidate.lemma, udFeatures(candidate,lang)
+                    else pos = hint or (raw ~= token.key and "PROPN" or "X") end
+                end
+            end
+            words[#words+1] = {form=raw,lemma=lemma or token.key,upos=pos,feats=feats}
+            if original then original[#words] = index - first + 1 end
+            previous = pos
+            index = (alternatives and alternatives[index] or index) + 1
+        end
+    end
+    if commaBefore then
+        local separator = commaBefore - first + 1
+        for compact, offset in ipairs(original) do
+            if offset >= separator then
+                table.insert(words, compact, {form=",", lemma=",", upos="PUNCT"})
+                table.insert(original, compact, false)
+                break
+            end
+        end
+    end
+    local arcs = U.parse(model, words, 1)
+    if not arcs or not original then return arcs end
+    -- Keep source token positions when the model sees an inserted comma or one of two verb forms.
+    local expanded, previousOffset = {}, 0
+    for compact, arc in ipairs(arcs) do
+        local offset = original[compact]
+        if offset then
+            local head = arc.head
+            if original[head] == false then head = arcs[head].head end
+            expanded[offset] = {head=original[head] or 0, relation=arc.relation}
+            for alternative = previousOffset + 1, offset - 1 do
+                expanded[alternative] = {head=previousOffset, relation="dep"}
+            end
+            previousOffset = offset
+        end
+    end
+    for alternative = previousOffset + 1, last - first + 1 do
+        expanded[alternative] = {head=previousOffset, relation="dep"}
+    end
+    return expanded
 end

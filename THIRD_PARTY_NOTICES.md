@@ -16,6 +16,10 @@ World of Warcraft, client fonts, and game content belong to their respective rig
 
 `Data/UDPipeModels.lua` adapts the Parsito dependency weights from the English EWT and Ukrainian IU Universal Dependencies 2.5 models. The models are published by the Institute of Formal and Applied Linguistics at Charles University under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The converter extracts the dependency component and changes its storage encoding while preserving the float32 weights. The Lua dependency algorithm follows the upstream Parsito implementation. [Model sources](https://ufal.mff.cuni.cz/udpipe/1/models) · [Parsito source and license](https://github.com/ufal/udpipe/tree/v1.4.0/src/parsito)
 
+`Data/UDPipeTagWeights.lua` derives English part-of-speech transitions, lexical scores and feature bundles from the English Web Treebank contributors' UD 2.5 training split. This derived data is available under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). [Training snapshot](https://github.com/UniversalDependencies/UD_English-EWT/tree/d66085c1146283328dd503e6cc8da64d72149131) · [Treebank credits](https://universaldependencies.org/treebanks/en_ewt/index.html)
+
+`Data/UDPipeEnglishOutput.lua` adapts the English output layer of the published Parsito model. Offline training uses the English Web Treebank UD 2.5 training split and a locally supplied chat corpus tagged by the published model. The model and treebank source terms are listed above. The chat corpus is used locally.
+
 ## General Ukrainian–English dictionary
 
 [Data/GeneralUkEn.lua](Data/GeneralUkEn.lua) adapts the [KOReader Dicts Ukrainian → English StarDict dictionary](https://danielgregorini.github.io/koreader-dicts/en/uk-en/) by Daniel Gregorini and contributors, built on 2026-09-21. That dictionary is derived from [the Ukrainian entries of English Wiktionary](https://en.wiktionary.org/wiki/Category:Ukrainian_lemmas) via [Kaikki / Wiktextract](https://kaikki.org/dictionary/Ukrainian/index.html).

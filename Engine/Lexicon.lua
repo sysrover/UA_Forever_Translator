@@ -47,11 +47,18 @@ function L.lookup(document, word)
     document.lexicalMemo[word]=result
     if not row then return result end
     for id,feature in row:gmatch("(%d+):(%d+)") do
-        if #result==64 then result.truncated=true; break end
-        id,feature=tonumber(id),tonumber(feature)
-        local lexeme=decode(document,data,id)
+        id = tonumber(id)
+        if #result == 64 then
+            result.truncated = true
+            if data.rankedAnalysis then
+                local omitted = decode(document, data, id)
+                result.omittedPreference = omitted and omitted.preference
+            end
+            break
+        end
+        local lexeme = decode(document, data, id)
         if lexeme then
-            result[#result+1]={id=id,lexeme=lexeme,form=data.features[feature],head=data.features[lexeme.features]}
+            result[#result+1]={id=id,lexeme=lexeme,form=data.features[tonumber(feature)],head=data.features[lexeme.features]}
         end
     end
     return result
@@ -203,6 +210,12 @@ function L.at(document, index)
     return derived(document, token.key)
 end
 
+local function available(lexeme, document, sense)
+    local frame = lexeme.frame
+    local domain = frame and frame.contextDomain
+    return not domain or domain == document.transferDomain or sense ~= nil and frame.sense == sense
+end
+
 function L.derivedLiteral(document, word)
     if not ns.Linguistics or #L.lookup(document, word) > 0 then return nil end
     local candidates = derived(document, word)
@@ -210,17 +223,19 @@ function L.derivedLiteral(document, word)
     local target = document.direction == "en-uk" and "uk" or "en"
     local translation
     for _, entry in ipairs(candidates) do
-        local equivalent = entry.lexeme[target]
-        if translation and translation ~= equivalent then return nil end
-        translation = equivalent
+        if available(entry.lexeme, document) then
+            local equivalent = entry.lexeme[target]
+            if translation and translation ~= equivalent then return nil end
+            translation = equivalent
+        end
     end
     if translation then return {id="morphology:" .. word, text=translation, sourceRefs=ns.Linguistics.manifest.sourceRefs} end
 end
 
 function L.phraseAt(document, first, limit, partOfSpeech)
-    if document.direction ~= "en-uk" then return nil end
     local data = ns.Linguistics
-    local index = data and data.phraseLengths and data.phraseLengths[partOfSpeech]
+    local lengthsByPart = data and (document.direction == "en-uk" and data.phraseLengths or data.ukPhraseLengths)
+    local index = lengthsByPart and lengthsByPart[partOfSpeech]
     local head = document.tokens[first]
     if not index or not head or head.protected then return nil end
     local lengths = index[head.key]
@@ -229,12 +244,18 @@ function L.phraseAt(document, first, limit, partOfSpeech)
         local last = first + length - 1
         if last <= limit then
             local words = {}
+            local previous, consumed
             for position = first, last do
                 local token = document.tokens[position]
                 if token.protected then break end
-                words[#words + 1] = token.key
+                if previous and previous.last + 1 == token.first and (token.key == "-" or previous.key == "-") then
+                    words[#words] = words[#words] .. token.key
+                else
+                    words[#words + 1] = token.key
+                end
+                previous, consumed = token, position
             end
-            if #words == length then
+            if consumed == last then
                 local phrase = table.concat(words, " ")
                 for _, candidate in ipairs(L.lookup(document, phrase)) do
                     local lexeme = candidate.lexeme
@@ -265,17 +286,46 @@ function L.choose(document, first, pos, requested, sense, compatible)
     local target = document.direction == "en-uk" and "uk" or "en"
     for _,candidate in ipairs(candidates) do
         local lexeme,form=candidate.lexeme,candidate.form
-        if lexeme.pos==pos and (not requested or matches(form,requested))
-            and (not lexeme.frame or lexeme.frame.sense ~= "duration" or sense == "duration")
-            and (not sense or lexeme.frame and lexeme.frame.sense==sense)
+        local frame=lexeme.frame
+        if available(lexeme, document, sense) and lexeme.pos==pos and (not requested or matches(form,requested))
+            and (not frame or frame.sense ~= "duration" or sense == "duration")
+            and (not frame or not frame.headClasses or sense == "nounModifier")
+            and (not frame or frame.sense ~= "identityDeterminer" or sense == "identityDeterminer")
+            and (not frame or not frame.contextOnly or sense ~= nil
+                or document.direction == "uk-en" and not frame.contextOnlyReverse)
+            and (not sense or frame and frame.sense==sense)
             and (not compatible or compatible(candidate)) then
             local rank=-(lexeme.preference or 0)
             if not score or rank>score then selected,score,ambiguous=candidate,rank,false
             elseif rank==score and selected.lexeme[target]~=lexeme[target] then ambiguous=true end
         end
     end
-    if ambiguous or candidates.truncated then return nil,"ambiguous" end
+    -- An omitted reading can still tie or outrank the visible candidates.
+    local omitted = candidates.omittedPreference
+    if ambiguous or candidates.truncated and (not score or not omitted or score <= -omitted) then
+        return nil, "ambiguous"
+    end
     return selected
+end
+
+function L.genderPair(document, first, limit, pos, requested, sense, compatible)
+    local separator = document.tokens[first + 1]
+    if document.direction ~= "uk-en" or first + 2 > limit or not separator or separator.key ~= "/" then return nil end
+    local second = L.at(document, first + 2)
+    return L.choose(document, first, pos, requested, sense, function(candidate)
+        local form = candidate.form
+        local opposite = form.gender == "masculine" and "feminine" or form.gender == "feminine" and "masculine"
+        if not opposite or form.number ~= "singular" or compatible and not compatible(candidate) then return false end
+        for _, other in ipairs(second) do
+            local nextForm = other.form
+            if candidate.id == other.id and nextForm.gender == opposite and nextForm.number == form.number
+                and nextForm.case == form.case and nextForm.tense == form.tense and nextForm.mood == form.mood
+                and nextForm.degree == form.degree and nextForm.verbalForm == form.verbalForm then
+                return true
+            end
+        end
+        return false
+    end)
 end
 
 local function familyForm(id, requested)
@@ -301,9 +351,8 @@ end
 function L.inflectLemma(lemma,pos,requested)
     local data=ns.Linguistics
     local id=data and data.generation[lemma..":"..pos]
-    if id then
-        return familyForm(id, requested) or A and A.generate(lemma, "uk", pos, requested, L.head(lemma, pos))
-    end
+    return (id and familyForm(id, requested))
+        or A and A.generate(lemma, "uk", pos, requested, id and L.head(lemma, pos))
 end
 
 function L.head(lemma,pos)
@@ -328,6 +377,8 @@ function L.curatedForm(term,case,number)
     if number=="plural" then
         local key=formNames[case] or case.."Plural"
         if forms[key] then return forms[key] end
+        local fixedNumber = term.morphology and term.morphology.number or term.features and term.features.number
+        if fixedNumber == "plural" and forms[case] then return forms[case] end
     else
         if forms[case.."Singular"] then return forms[case.."Singular"] end
         if forms[case] then return forms[case] end
@@ -349,10 +400,13 @@ function L.functional(document, group, first, limit)
     if not data then return nil end
     local lang=document.direction=="en-uk" and "en" or "uk"
     local index=data.grammar.index[lang][group]
+    if not index then return nil end
     local tokens=document.tokens
     local key,last="",nil
     local selected
-    for i=first,math.min(#tokens,limit or #tokens,first+2) do
+    local widths = data.grammar.indexWidths
+    local width = widths and widths[lang][group] or 3
+    for i=first,math.min(#tokens,limit or #tokens,first+width-1) do
         if tokens[i].protected then break end
         key=key=="" and tokens[i].key or key.." "..tokens[i].key
         if index[key] then selected,last=index[key],i end

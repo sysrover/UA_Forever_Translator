@@ -17,6 +17,8 @@ Data\GeneralEnUk.lua
 Data\Linguistics.lua
 Data\Apertium.lua
 Data\UDPipeModels.lua
+Data\UDPipeEnglishOutput.lua
+Data\UDPipeTagWeights.lua
 Engine\Markup.lua
 Engine\Normalize.lua
 Engine\Tokenizer.lua

@@ -95,6 +95,18 @@ local function grammarClause(document, first, last)
     if output then return output, {intent=parsed.trees[1].kind, imperative=parsed.trees[1].imperative == true,
         sourceRefs=ns.Linguistics.manifest.sourceRefs, dependency=parsed.dependency == true} end
 end
+local function placePhrase(document, first, fragments)
+    local phrase, after = ns.Engine.Phrases.preposition(document, first, #document.tokens)
+    local term = phrase and phrase.object.term
+    if not term or term.category ~= "places" then return nil end
+    for i = first + 1, after - 1 do
+        if (fragments and fragments[i]) or (document.preserve and document.preserve[i]) then return nil end
+    end
+    phrase.targetUk = phrase.rule.literalTargetUk
+    local value, marker = ns.Engine.ClauseGeneration.preposition(phrase, document.direction == "uk-en")
+    if value and marker and marker ~= "" then return term, after - 1, marker .. " " .. value end
+end
+
 local function compute(text, direction)
     local tokens = ns.Engine.Tokenizer.scan(text)
     if not tokens or #tokens == 0 then return unchanged(text, "token-limit-or-empty") end
@@ -168,8 +180,12 @@ local function compute(text, direction)
             addClause(matched, refs, refSeen, fragment.rule, fragment.slots)
         elseif not token.protected then
             term, last = ns.Engine.Dictionary.literal(document, i, fragments)
+            if grammarEnabled and not (reasonEnd and i <= reasonEnd) and (not last or last == i) then
+                local place, finish, value = placePhrase(document, i, fragments)
+                if place then term, last, replacement = place, finish, value end
+            end
             if term then
-                replacement = term.features and term.features.verbatim and text:sub(token.first, tokens[last].last)
+                replacement = replacement or term.features and term.features.verbatim and text:sub(token.first, tokens[last].last)
                     or term.text or (direction == "en-uk" and term.uk or term.en)
                 matched[#matched + 1] = term.id
                 addRefs(refs, refSeen, term.sourceRefs)

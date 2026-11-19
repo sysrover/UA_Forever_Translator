@@ -324,7 +324,9 @@ local function slot(text, tokens, index, name, direction, limit)
             local forms = term.forms or {}
             local plural = (direction == "uk-en" and (key == forms.genitivePlural or key == forms.nominativePlural or key == forms.accusativePlural))
                 or (direction == "en-uk" and term.englishPlural and key == ns.Engine.Normalize.word(term.englishPlural))
-            return {term = term, raw = raw, plural = plural}, last + 1
+            local partitive = index > start and token.key == "some" and term.features and term.features.mass
+                and forms.genitiveSingular ~= nil
+            return {term = term, raw = raw, plural = plural, partitive = partitive}, last + 1
         end
     elseif name == "count" then
         if token.key:match("^%d+$") and #token.key <= 3 and tonumber(token.key) > 0 then
