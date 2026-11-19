@@ -3,6 +3,8 @@ local P = {}
 ns.Engine.Phrases = P
 local L = ns.Engine.Lexicon
 local A = ns.Engine.Apertium
+P.spatialAdjuncts = { ["in"]=true, on=true, near=true, ["on-layer"]=true,
+    ["at-landmark"]=true, ["at-near-landmark"]=true }
 
 local articles = {a="indefinite", an="indefinite", the="definite"}
 local demonstratives = {this="near", these="near", that="far", those="far",
@@ -74,10 +76,12 @@ function P.raw(document, first, last)
     return document.text:sub(document.tokens[first].first, document.tokens[last].last)
 end
 
-local function acceptsCategory(category, locationOnly, sense)
+local function acceptsCategory(term, locationOnly, sense)
+    local category = term.category
     if sense == "ability" then return category == "abilities" and not locationOnly end
     if sense == "barAction" then return (category == "abilities" or category == "professions") and not locationOnly end
-    return semanticNouns[category] and (not locationOnly or category == "places")
+    return semanticNouns[category] and (not locationOnly or category == "places"
+        or term.features and term.features.spatialContainer)
 end
 
 local function curatedNoun(candidate)
@@ -106,7 +110,7 @@ local function curated(document, first, last, requiredCase, locationOnly, agrees
             end
         end
         local caseSensitive = document.direction == "en-uk" and term.features and term.features.caseSensitiveEnglish
-        if raw and (not caseSensitive or raw == term.en) and acceptsCategory(category, locationOnly, sense)
+        if raw and (not caseSensitive or raw == term.en) and acceptsCategory(term, locationOnly, sense)
             and (not requiredCase or not candidate.features.case or requiredCase == candidate.features.case)
             and (not agrees or agrees(curatedNoun(candidate)))
             and not contextual then
@@ -127,12 +131,14 @@ end
 
 function P.semanticClass(noun)
     if not noun then return nil end
+    noun = noun.subset or noun
     local frame = noun.entry and noun.entry.lexeme.frame
     local term = noun.term
     return frame and frame.semanticClass or term and (term.features and term.features.semanticClass or term.category)
 end
 
 function P.hasTrait(noun, trait)
+    noun = noun and (noun.subset or noun)
     local frame = noun and noun.entry and noun.entry.lexeme.frame
     local term = noun and noun.term
     return frame and frame[trait] == true or term and term.features and term.features[trait] == true
@@ -140,8 +146,7 @@ end
 
 function P.spatialContainer(noun)
     if not noun then return false end
-    local frame = noun.entry and noun.entry.lexeme.frame
-    return noun.term and noun.term.category == "places" or frame and frame.spatialContainer == true
+    return noun.term and noun.term.category == "places" or P.hasTrait(noun, "spatialContainer")
 end
 
 function P.isResource(noun)
@@ -169,7 +174,7 @@ local function declinedCuratedNoun(document, first, case, locationOnly, agrees, 
             for _, candidate in ipairs(canonical and canonical._analyses or {}) do
                 local term = ns.Data.terms[candidate.id]
                 local features = term.features or {}
-                if candidate.pos == "noun" and acceptsCategory(term.category, locationOnly, sense)
+                if candidate.pos == "noun" and acceptsCategory(term, locationOnly, sense)
                     and not features.verbatim
                     and ns.Engine.Normalize.word(term.uk) == lemma then
                     local noun = {term=term, person=3, number=form.number, sourceCase=case,
@@ -376,10 +381,47 @@ function P.one(gender, case, animacy)
     return forms and forms[case]
 end
 
+local function subsetAt(document, first, limit, case, sense, headFilter)
+    local key, marker = P.key(document, first, limit), P.key(document, first + 1, limit)
+    local english = document.direction == "en-uk"
+    if not key or (english and marker ~= "of")
+        or (not english and marker ~= "із" and marker ~= "з" and marker ~= "зі") then return nil end
+    local grammar = ns.Linguistics.grammar
+    local byCase = not english and grammar.cardinalUkByCase and grammar.cardinalUkByCase[case]
+    local cardinal = english and grammar.cardinalEn[key] or not english and grammar.cardinalUk[key]
+    local collective = not english and (case == "nominative" or case == "accusative")
+        and grammar.collectiveUk and grammar.collectiveUk[key]
+    local one = not english and oneSurfaces[key]
+    local count = one and 1 or cardinal or collective or (byCase and byCase[key])
+        or (key:match("^%d+$") and tonumber(key))
+    if not count or count < 1 then return nil end
+    if not english and count > 1 and not key:match("^%d+$") and case ~= "nominative" and case ~= "accusative"
+        and not (byCase and byCase[key]) then return nil end
+    local group, after = P.noun(document, first + 2, limit, "genitive", false, false, true, sense, headFilter)
+    if not group or group.number ~= "plural" then return nil end
+    local gender = group.gender
+    local animacy = group.animacy or (group.pronoun and not group.pronoun.inanimate and "animate")
+    if not english and one then
+        if gender and P.one(gender, case, animacy) ~= key then return nil end
+        if not gender then
+            for _, candidate in ipairs({"masculine", "feminine", "neuter"}) do
+                if P.one(candidate, case, animacy) == key then gender = candidate; break end
+            end
+            if not gender then return nil end
+        end
+    end
+    return {subset=group, subsetCount=count, person=3, number=count == 1 and "singular" or "plural",
+        gender=gender or "masculine", animacy=animacy, headIndex=first}, after
+end
+
 function P.noun(document, first, limit, case, locationOnly, count, simple, sense, headFilter)
     local index = first
     local key = P.key(document, index, limit)
     local english = document.direction == "en-uk"
+    if not locationOnly and count ~= false then
+        local subset, after = subsetAt(document, first, limit, case, sense, headFilter)
+        if subset then return subset, after end
+    end
     local ordinal
     if not english and key and key:match("^%d+$") and P.key(document, index + 1, limit) == "-"
         and P.key(document, index + 2, limit) == ordinalSuffixes[case] then

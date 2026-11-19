@@ -2,8 +2,7 @@ local _, ns = ...
 local A = {}
 ns.Engine.ClauseAnalysis = A
 local P, L = ns.Engine.Phrases, ns.Engine.Lexicon
-local spatialAdjuncts = {["in"]=true, on=true, near=true, ["on-layer"]=true,
-    ["at-landmark"]=true, ["at-near-landmark"]=true}
+local spatialAdjuncts = P.spatialAdjuncts
 
 local function lexemeFrame(entry)
     return entry.lexeme.frame or {}
@@ -1313,9 +1312,11 @@ complements = function(document, tree, index, limit, depth)
         if not action then return nil end
         tree.infinitive, index = action, finish
     end
+    local objectStart
     if not occupiedObject and not tree.controlled and not tree.object and not tree.infinitive and not frame.motion and not frame.intransitive
         and not frame.gerundComplement
         and (not objectPreposition or preposition or english and frame.optionalEnglishObjectPreposition) then
+        objectStart = index
         local object, nextIndex
         if frame.separation then object, nextIndex = P.noun(document, index, limit, objectCase, false, nil, true)
         else
@@ -1372,7 +1373,15 @@ complements = function(document, tree, index, limit, depth)
     end
     if tree.object and frame.objectState then
         local state, after = objectStateAt(document, index, limit, tree.object)
-        if state then tree.objectState, index = state, after end
+        if state then
+            local sense = lexemeFrame(state.entry).stateObjectSense
+            if english and objectStart and sense then
+                local contextual, finish = coordinatedObject(document, objectStart, index - 1, objectCase,
+                    frame.destinationObject, frame.enumeratesObject, sense)
+                if contextual and finish == index then tree.object = contextual end
+            end
+            tree.objectState, index = state, after
+        end
     end
     if frame.separation and tree.object and P.key(document, index, limit) == (english and "of" or "від") then
         tree.separation, after = P.noun(document, index + 1, limit, "genitive")

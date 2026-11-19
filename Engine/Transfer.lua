@@ -2,6 +2,24 @@ local _, ns = ...
 local T = {}; ns.Engine.Transfer = T
 local G, M = ns.Engine.Grammar, ns.Engine.Morphology
 
+local gratuities = {
+    appreciated={uk=". Буду вдячний за чайові", en=". Tips are appreciated"},
+    accepted={uk=". Приймаю чайові", en=". Tips accepted"},
+    with={uk=" з чайовими", en=" with tips"},
+}
+
+local function serviceTerms(output, features, uk)
+    local tips = gratuities[features.tips]
+    if tips then output = output .. (uk and tips.uk or tips.en) end
+    for index, place in ipairs(features.places or {}) do
+        local value, marker = ns.Engine.ClauseGeneration.preposition(place, not uk)
+        if not value then return nil end
+        if not uk and place.rule.id == "out-of-location" then marker = "outside" end
+        output = output .. (index == 1 and " " or ", ") .. marker .. " " .. value
+    end
+    return output .. (uk and "." or "")
+end
+
 function T.render(tree, direction)
     local s, f, uk = tree.slots, tree.features, direction == "en-uk"
     local function render(template) return G.render(template, s, direction) end
@@ -118,6 +136,12 @@ function T.render(tree, direction)
             if f.lastSpot then output = output .. ", last spot" end
         end
         return appendConditions((output:gsub("%.$", "")))
+    elseif tree.kind == "groupSearch" then
+        if not uk and s.role and not s.place then return render("{role} LFG") end
+        local output = uk and "Шукаю групу" or "LFG"
+        if s.place then output = output .. render(uk and ". Місце: {place}" or " {place}") end
+        if s.role then output = output .. render(uk and ". Роль: {role}" or " as {role}") end
+        return output .. (uk and "." or "")
     elseif tree.kind == "search" then
         local object = ns.Engine.ClauseGeneration.noun(f.object, not uk, "accusative", not uk)
         if object then return (uk and "Шукаю " or "Looking for ") .. object .. "." end
@@ -164,7 +188,7 @@ function T.render(tree, direction)
             output = output .. (uk and " — принесіть матеріали" or " — bring materials")
             if f.promise then output = output .. (uk and ", і я виготовлю" or " and I'll make it") end
         end
-        return output .. (uk and "." or "")
+        return serviceTerms(output, f, uk)
     elseif tree.kind == "reward" then
         return render(uk and "Заплачу {price:money} тому, хто допоможе мені з {quest}."
             or "{price} for anyone who helps me with {quest}")
@@ -204,8 +228,7 @@ function T.render(tree, direction)
         end
         if f.mats then output = output .. (uk and ", матеріали є" or ", got mats") end
         if f.free then output = output .. (uk and " безкоштовно" or " for free") end
-        if f.tips then output = output .. (uk and ". Буду вдячний за чайові" or ". Tips are appreciated") end
-        return output .. (uk and "." or "")
+        return serviceTerms(output, f, uk)
     elseif tree.kind == "statement" then
         local function noun(slot)
             local object = slot.term

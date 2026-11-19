@@ -171,6 +171,19 @@ local function possessiveText(entry, english, case, number, gender, animacy, own
 end
 
 local function noun(node, english, case, article, compoundModifier, owner)
+    if node.subset then
+        local group = node.subset
+        local value = G.noun(group, english, english and "accusative" or "genitive", nil, nil, owner)
+        if not value then return nil end
+        if english and not (group.pronoun or group.article or group.possessor or group.demonstrative) then
+            value = "the " .. value
+        end
+        local count = node.subsetCount
+        local amount = count == 1 and (english and "one" or P.one(node.gender, case, node.animacy)) or tostring(count)
+        local marker = english and "of" or count == 1 and ("ауеоєю"):find(amount:sub(-2), 1, true)
+            and euphonicZ("з", value) or "із"
+        return amount .. " " .. marker .. " " .. value
+    end
     if node.members then
         local values = {}
         for index, member in ipairs(node.members) do
@@ -1410,7 +1423,7 @@ renderTree = function(tree, english, controller)
         elseif tree.predicate then
             local value = G.noun(tree.predicate, english, "nominative", true, nil, owner)
             if not value then return nil end
-            if not english and not tree.subject.pronoun and tree.predicate.members and tree.tense == "present"
+            if not english and not tree.subject.pronoun and (tree.predicate.members or tree.subject.subset) and tree.tense == "present"
                 and not tree.negative then append(parts, "—") end
             append(parts, value)
         elseif tree.evaluation then
