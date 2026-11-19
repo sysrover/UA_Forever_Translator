@@ -1858,10 +1858,6 @@ local function servicePredicate(document, tree, index, limit)
     end
 end
 
-local function quantifiedSubject(noun)
-    return noun and (noun.more or noun.many or noun.abundance)
-end
-
 local function predicate(document, tree, index, limit, depth)
     local head = P.key(document, index, limit)
     if tree.subject and tree.subject.number == "plural" and index < limit
@@ -1899,7 +1895,7 @@ local function predicate(document, tree, index, limit, depth)
     local adverb, after = adverbAt(document, index, limit, "predicate", function(candidate)
         return (not candidate.subjectClasses or candidate.subjectClasses[P.semanticClass(tree.subject)])
             and (not candidate.requiresAnimate or personNoun(tree.subject))
-            and (not candidate.quantifiedSubject or quantifiedSubject(tree.subject))
+            and (not candidate.quantifiedSubject or P.quantifiedSubject(tree.subject))
     end)
     local pronoun = tree.subject and tree.subject.pronoun
     if adverb and adverb.deicticEvaluation and deicticSubject(tree.subject) then
@@ -2533,6 +2529,22 @@ local function statusWithSubject(document, first, limit)
     local question = P.key(document, first, limit) == "чи"
     local marker = first + (question and 1 or 0)
     local key = P.key(document, marker, limit)
+    local negative = key == "не"
+    local start = marker + (negative and 1 or 0)
+    local link = P.key(document, start, limit)
+    local statusTense = link == "було" and "past" or link == "буде" and "future"
+    if statusTense then start = start + 1 end
+    local status, afterStatus = adverbAt(document, start, limit, "predicate", function(candidate)
+        return candidate.quantifiedSubject
+    end)
+    if status then
+        local amount, finish = P.noun(document, afterStatus, limit, "nominative")
+        if P.quantifiedSubject(amount) then
+            local tree = {kind="clause", subject=amount, copula=true, tense=statusTense or "present", question=question,
+                negative=negative or P.key(document, start, limit) == status.negativeUk, predicateAdverb=status}
+            return tree, predicateTime(document, tree, finish, limit)
+        end
+    end
     if key ~= "з" and key ~= "зі" and key ~= "із" then return nil end
     local phrase, at = P.preposition(document, marker, limit)
     if not phrase or phrase.rule.id ~= "with" then return nil end
@@ -3054,17 +3066,6 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap)
         tree.question, index = true, index + 1
     end
     if not english then
-        local status, after = adverbAt(document, index, limit, "predicate", function(candidate)
-            return candidate.quantifiedSubject
-        end)
-        if status then
-            local amount, finish = P.noun(document, after, limit, "nominative")
-            if quantifiedSubject(amount) then
-                tree.subject, tree.copula, tree.tense = amount, true, "present"
-                tree.predicateAdverb = status
-                return tree, predicateTime(document, tree, finish, limit)
-            end
-        end
         local requirement, finish = requiredAction(document, tree, index, limit, depth, indirect)
         if requirement then return requirement, finish end
     end
@@ -3371,6 +3372,12 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap)
     if not english and not aux and not tree.copula then
         local helper, following = inflectedAbility(document, index, limit)
         if helper then aux, index = helper, following end
+    end
+    if not english and aux == auxiliary["буде"] and P.quantifiedSubject(subject)
+        and adverbAt(document, index, limit, "predicate", function(candidate)
+            return candidate.quantifiedSubject
+        end) then
+        tree.copula, tree.tense, aux = true, aux.tense, nil
     end
     if aux then
         tree.tense, tree.modal, tree.negative = aux.tense, aux.modal,

@@ -2961,6 +2961,11 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["neck"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.neck"
+                }
+            },
             ["need"] = {
                 ["_literal"] = {
                     ["id"] = "literal.need",
@@ -13237,6 +13242,21 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["шию"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.neck"
+                }
+            },
+            ["шия"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.neck"
+                }
+            },
+            ["шиї"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.neck"
+                }
+            },
             ["шкода"] = {
                 ["_byCategory"] = {
                     ["stats"] = "stat.damage"
@@ -17066,6 +17086,7 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.boots",
@@ -17164,6 +17185,7 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.bracers",
@@ -17178,6 +17200,7 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.bracers",
@@ -17432,6 +17455,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["enchantmentSlot"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular"
                             },
@@ -17447,6 +17471,7 @@ ns.Data = {
                             {
                                 ["features"] = {
                                     ["animacy"] = "inanimate",
+                                    ["enchantmentSlot"] = true,
                                     ["gender"] = "masculine",
                                     ["number"] = "singular"
                                 },
@@ -17464,6 +17489,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["enchantmentSlot"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular"
                             },
@@ -18904,6 +18930,7 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.gloves",
@@ -20888,6 +20915,23 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.loot.need-before-greed",
                             ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need", "ua-forever:ui.Greed" }
+                        }
+                    }
+                },
+                ["neck"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["enchantmentSlot"] = true,
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.neck",
+                            ["lemma"] = "Neck",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.neck",
+                            ["sourceRefs"] = { "ua-forever:equipment.neck" }
                         }
                     }
                 },
@@ -33364,6 +33408,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["enchantmentSlot"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular"
                             },
@@ -33377,6 +33422,7 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "accusative",
+                                ["enchantmentSlot"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular"
                             },
@@ -33394,6 +33440,7 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "locative",
+                                ["enchantmentSlot"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular"
                             },
@@ -33526,6 +33573,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["case"] = "locative",
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.bracers",
@@ -33540,6 +33588,7 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.bracers",
@@ -33551,6 +33600,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["case"] = "accusative",
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.bracers",
@@ -39781,6 +39831,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["case"] = "locative",
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.gloves",
@@ -39795,6 +39846,7 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.gloves",
@@ -39806,6 +39858,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["case"] = "accusative",
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.gloves",
@@ -42074,6 +42127,7 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.boots",
@@ -42085,6 +42139,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["case"] = "accusative",
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.boots",
@@ -42100,6 +42155,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["case"] = "locative",
+                                ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
                             ["id"] = "equipment.boots",
@@ -42405,6 +42461,59 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "class.shaman",
                             ["sourceRefs"] = { "ua-forever:class.shaman" }
+                        }
+                    }
+                },
+                ["шию"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["enchantmentSlot"] = true,
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.neck",
+                            ["lemma"] = "шия",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.neck",
+                            ["sourceRefs"] = { "ua-forever:equipment.neck" }
+                        }
+                    }
+                },
+                ["шия"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["enchantmentSlot"] = true,
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.neck",
+                            ["lemma"] = "шия",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.neck",
+                            ["sourceRefs"] = { "ua-forever:equipment.neck" }
+                        }
+                    }
+                },
+                ["шиї"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["enchantmentSlot"] = true,
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.neck",
+                            ["lemma"] = "шия",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.neck",
+                            ["sourceRefs"] = { "ua-forever:equipment.neck" }
                         }
                     }
                 },
@@ -43733,6 +43842,16 @@ ns.Data = {
                     ["accusative"] = "рукавиці",
                     ["canonical"] = "рукавиці",
                     ["locative"] = "рукавицях"
+                }
+            },
+            ["equipment.neck"] = {
+                ["en"] = {
+                    ["canonical"] = "Neck"
+                },
+                ["uk"] = {
+                    ["accusative"] = "шию",
+                    ["canonical"] = "шия",
+                    ["locative"] = "шиї"
                 }
             },
             ["equipment.two_handed_weapon"] = {
@@ -46366,7 +46485,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 277,
+        ["concepts"] = 278,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 85,
@@ -46385,7 +46504,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "a9569f5980c37ede23a419404e9f8044f3e90a618521bde35f337e99ee086787"
+        ["version"] = "cae98d21f05e7f4bb9587c813fda968603bea0e210060d3d6629710b4a3b6791"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -55887,6 +56006,7 @@ ns.Data = {
             ["category"] = "equipment",
             ["en"] = "boots",
             ["features"] = {
+                ["enchantmentSlot"] = true,
                 ["number"] = "plural"
             },
             ["forms"] = {
@@ -55912,6 +56032,7 @@ ns.Data = {
             ["contextOnly"] = true,
             ["en"] = "bracers",
             ["features"] = {
+                ["enchantmentSlot"] = true,
                 ["number"] = "plural"
             },
             ["forms"] = {
@@ -55939,6 +56060,7 @@ ns.Data = {
             ["en"] = "chest",
             ["features"] = {
                 ["animacy"] = "inanimate",
+                ["enchantmentSlot"] = true,
                 ["gender"] = "masculine",
                 ["number"] = "singular"
             },
@@ -55966,6 +56088,7 @@ ns.Data = {
             ["contextOnly"] = true,
             ["en"] = "gloves",
             ["features"] = {
+                ["enchantmentSlot"] = true,
                 ["number"] = "plural"
             },
             ["forms"] = {
@@ -55982,6 +56105,33 @@ ns.Data = {
             ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
             ["status"] = "approved",
             ["uk"] = "рукавиці"
+        },
+        ["equipment.neck"] = {
+            ["category"] = "equipment",
+            ["contextOnly"] = true,
+            ["en"] = "Neck",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["enchantmentSlot"] = true,
+                ["gender"] = "feminine",
+                ["number"] = "singular"
+            },
+            ["forms"] = {
+                ["accusative"] = "шию",
+                ["locative"] = "шиї"
+            },
+            ["id"] = "equipment.neck",
+            ["provenance"] = {
+                ["context"] = "equipment slot in an enhancement",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Neck",
+                ["line"] = 11813,
+                ["sha256"] = "c900cecce15452becbd7c9bf1d0ba9d089137df5defbc98dfb9f6f9fef42c72c",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:equipment.neck" },
+            ["status"] = "approved",
+            ["uk"] = "шия"
         },
         ["equipment.two_handed_weapon"] = {
             ["aliases"] = {

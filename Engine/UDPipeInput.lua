@@ -190,14 +190,23 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
     local boundary = tagIds[""]
     local previous = {[boundary]={score=0}}
     local words = {}
+    local quantifiedHeads
     -- Viterbi over the available readings, retaining one predecessor for each part of speech.
     for index = first, last do
         local token = document.tokens[index]
+        if ns.Linguistics and (token.key == "many" or token.key == "much" and document.tokens[index + 1]
+            and document.tokens[index + 1].key == "more") then
+            local noun = ns.Engine.Phrases.noun(document, index, last, "nominative", nil, nil, true)
+            if noun and noun.headIndex and (noun.many or noun.degreeMore) then
+                quantifiedHeads = quantifiedHeads or {}
+                quantifiedHeads[noun.headIndex] = "NOUN"
+            end
+        end
         local raw = token.protected and "item" or document.text:sub(token.first, token.last)
         local pos = fixedTag(token, index, marker, markerEnd, markerTags)
         local candidates = pos and {[tagIds[pos]]={pos=pos, lemma=token.key}}
             or englishCandidates(document, index, raw, weights)
-        local hint = not pos and hints and hints[index]
+        local hint = not pos and (hints and hints[index] or quantifiedHeads and quantifiedHeads[index])
         local hintedId = tagIds[hint == true and "VERB" or hint]
         if hintedId then
             candidates = {[hintedId]=candidates[hintedId] or {pos=weights.tags[hintedId], lemma=token.key}}

@@ -93,15 +93,19 @@ function State:money(name)
     self.slots[name or "price"], self.i = price, after
     return true
 end
+local function emoteAt(p, start, limit)
+    local colon, smile = p.tokens[start], p.tokens[start + 1]
+    if start >= p.first and start + 1 <= limit and colon.key == ":" and smile.first == colon.last + 1
+        and (smile.key == "d" or smile.key == "p" or smile.key == ")" or smile.key == "(") then
+        return p.document.text:sub(colon.first, smile.last), start + 2
+    end
+end
+
 function State:finish(kind, extra)
     extra = extra or {}
     local ending = self.limit
-    local smile, colon = self.tokens[ending], self.tokens[ending - 1]
-    if ending > self.first and colon.key == ":" and smile.first == colon.last + 1
-        and (smile.key == "d" or smile.key == "p" or smile.key == ")" or smile.key == "(") then
-        extra.emote = self.document.text:sub(colon.first, smile.last)
-        ending = ending - 2
-    end
+    local emote = ending > self.first and self.i < ending and emoteAt(self, ending - 1, ending)
+    if emote then extra.emote, ending = emote, ending - 2 end
     if self.tokens[ending] and self.tokens[ending].key == "?" then extra.question = true end
     while self.i <= ending and self.tokens[self.i].key:match("^[.!?]$") do self.i = self.i + 1 end
     if self.i <= ending or self.ambiguous then return nil end
@@ -449,6 +453,102 @@ local function gratuity(p, free)
     p.i = start
 end
 
+local function gratuityNote(p)
+    local tips = gratuity(p)
+    if not tips then return end
+    local emote, after = emoteAt(p, p.i, p.limit)
+    if emote then p.i = after end
+    local references = {}
+    for index = 1, 4 do
+        local slot = "reference" .. index
+        if not (p:link(slot, "enchant") or p:link(slot, "trade")) then break end
+        references[index] = p.slots[slot].raw
+    end
+    return p:finish("gratuityNote", {tips=tips, inlineEmote=emote, references=references})
+end
+
+local function enchantmentMember(p, english, index)
+    local start, slot = p.i, "enchantment" .. index
+    local quoted = p:word("«")
+    if p:link(slot, "enchant") or p:noun(slot, "craftServices") then
+        local entry = p.slots[slot]
+        local features = entry.term and entry.term.features
+        if (entry.raw or features and features.serviceProfession == "profession.enchanting")
+            and (not quoted or p:word("»")) then
+            if english then p:any("enchants", "enchantments") end
+            return {kind="recipe", slot=slot}, true
+        end
+    end
+    p.i, p.slots[slot] = start, nil
+
+    local explicit = english and p:any("enchants for", "enchantments for")
+        or not english and p:any("зачарування на", "чари на")
+    if (english or explicit) and p:noun(slot, "equipment", not english and "accusative" or nil) then
+        local features = p.slots[slot].term.features
+        if features and features.enchantmentSlot then
+            local qualified = explicit or english and p:any("enchants", "enchantments")
+            return {kind="slot", slot=slot}, qualified
+        end
+    end
+    p.i, p.slots[slot] = start, nil
+    local additive = not english and p:word("ще")
+    local other = not additive and (english and p:word("other") or not english and p:word("інші"))
+    local P = ns.Engine.Phrases
+    local plural = other and function(head) return head.number == "plural" end
+    local noun, after = P.noun(p.document, p.i, p.limit, "nominative", nil, nil, nil, nil, plural)
+    if noun and (P.quantifiedSubject(noun) or other) and P.hasTrait(noun, "enchantment")
+        and (not additive or noun.many) then
+        if additive then noun.more, noun.degreeMore, noun.many = true, true, nil
+        elseif other then noun.more = true end
+        p.i = after
+        return {kind="amount", noun=noun}, true
+    end
+    p.i = start
+end
+
+local function enchantmentList(p, direction)
+    if not ns.Linguistics then return end
+    local english = direction == "en-uk"
+    local qualified, status
+    if english and p:any("available enchants", "available enchantments", "enchants available", "enchantments available") then
+        if not p:word(":") then return end
+        qualified, status = true, "available"
+    elseif not english then
+        status = p:word("доступні") and "available" or p:word("недоступні") and "unavailable"
+        if not status then return end
+        p:word(":")
+    end
+    if not status then
+        local last = p.limit
+        if emoteAt(p, last - 1, last) then last = last - 2 end
+        while last >= p.i and p.tokens[last].key:match("^[.!?]$") do last = last - 1 end
+        local predicate = ns.Engine.Phrases.key(p.document, last, p.limit)
+        if predicate ~= "available" and predicate ~= "unavailable" then return end
+    end
+
+    local items, joins = {}, {}
+    local nextJoin
+    for index = 1, 6 do
+        local item, identifiesOffer = enchantmentMember(p, english, index)
+        if not item then return end
+        items[index], joins[index] = item, nextJoin
+        qualified = qualified or identifiesOffer
+        local comma = p:word(",")
+        nextJoin = p:any("and", "і", "й", "та") and "and"
+            or p:any("or", "або") and "or" or comma and "comma"
+        if not nextJoin then break end
+        if index == 6 then return end
+    end
+    if #items == 1 and items[1].kind ~= "slot" or not qualified then return end
+    if not status then
+        status = p:any("are not available", "not available", "are unavailable", "unavailable") and "unavailable"
+            or p:any("are available", "available") and "available"
+        if not status then return end
+    end
+    local exclamation = p.i <= p.limit and p.tokens[p.i].key == "!"
+    return p:finish("enchantmentList", {items=items, joins=joins, status=status, exclamation=exclamation})
+end
+
 local function takeProfession(p, english, demand)
     if english and demand then p:any("a", "an") end
     local first = p.i
@@ -668,7 +768,8 @@ local function statement(p, direction)
     return p:finish("statement", {negative=negative, question=question, modal=modal, conjunction=conjunction})
 end
 
-local parsers = {recruit, enhancement, availability, service, reward, questNeed, statement, price, groupSearch, search}
+local parsers = {recruit, enhancement, availability, service, enchantmentList, gratuityNote, reward, questNeed,
+    statement, price, groupSearch, search}
 function S.parse(document, limit, first)
     for _, parse in ipairs(parsers) do
         local result = parse(state(document, limit or #document.tokens, first or 1), document.direction)

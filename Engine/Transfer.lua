@@ -34,6 +34,56 @@ local function practitionerRequest(term, uk, article)
     return "Looking for " .. determiner .. profession
 end
 
+local function recipeLabel(entry, direction)
+    if entry.raw then return entry.raw end
+    local forms = entry.term.renderForms
+    return forms and forms[direction == "en-uk" and "serviceUk" or "serviceEn"] or M.generate(entry.term, direction)
+end
+
+local function enchantmentList(slots, features, direction)
+    local uk = direction == "en-uk"
+    local parts = {}
+    for index, item in ipairs(features.items) do
+        local value
+        if item.kind == "recipe" then
+            value = recipeLabel(slots[item.slot], direction)
+            if value and uk then value = "«" .. value .. "»" end
+        elseif item.kind == "slot" then
+            local term = slots[item.slot].term
+            local label = M.generate(term, direction, uk and "accusative" or nil)
+            if label then
+                if uk then value = "зачарування на " .. label
+                elseif term.features.number == "plural" then value = "enchants for " .. label
+                else value = ns.Engine.Normalize.word(label) .. " enchants" end
+            end
+        else
+            local amount = item.noun
+            local additive = uk and index > 1 and amount.more and not amount.evenMore
+            local marker
+            if additive then
+                local nominal = {}
+                for key, feature in pairs(amount) do nominal[key] = feature end
+                nominal.many, nominal.more, nominal.degreeMore = amount.degreeMore, nil, nil
+                marker = amount.degreeMore and "ще " or "інші "
+                amount = nominal
+            end
+            value = ns.Engine.ClauseGeneration.noun(amount, not uk, "nominative")
+            if marker and value then value = marker .. value end
+        end
+        if not value then return nil end
+        local join = features.joins[index]
+        if join == "comma" then parts[#parts + 1] = ", "
+        elseif join then parts[#parts + 1] = join == "or" and (uk and " або " or " or ")
+            or (uk and " та " or " and ") end
+        parts[#parts + 1] = value
+    end
+    local list = table.concat(parts)
+    local available = features.status == "available"
+    if uk then list = (available and "Доступні " or "Недоступні ") .. list
+    else list = ns.Engine.Normalize.upperStart(list) .. (available and " are available" or " are not available") end
+    return list .. (features.exclamation and "!" or ".")
+end
+
 function T.render(tree, direction)
     local s, f, uk = tree.slots, tree.features, direction == "en-uk"
     local function render(template) return G.render(template, s, direction) end
@@ -179,11 +229,18 @@ function T.render(tree, direction)
         local skill = s.skill.raw .. "+"
         if uk then return "Чи є " .. profession .. " із навичкою " .. skill .. " " .. place end
         return "Any " .. skill .. " " .. profession .. " " .. place
+    elseif tree.kind == "enchantmentList" then
+        return enchantmentList(s, f, direction)
+    elseif tree.kind == "gratuityNote" then
+        local tips = gratuities[f.tips]
+        local output = (uk and tips.uk or tips.en):sub(3)
+        if f.inlineEmote then output = output .. " " .. f.inlineEmote end
+        if #f.references > 0 then return output .. " " .. table.concat(f.references, " ") end
+        return output .. (f.inlineEmote and "" or ".")
     elseif tree.kind == "service" then
         if s.recipe then
             local request = practitionerRequest(s.profession.term, uk, not f.withRecipe)
-            local forms = s.recipe.term and s.recipe.term.renderForms
-            local recipe = forms and forms[uk and "serviceUk" or "serviceEn"] or render("{recipe}")
+            local recipe = recipeLabel(s.recipe, direction)
             if not request or not recipe then return end
             local marker = f.withRecipe and (uk and " із рецептом " or " with ") or (uk and " для чарів " or " for ")
             local output = request .. marker .. (uk and "«" .. recipe .. "»" or recipe)

@@ -1344,7 +1344,10 @@ renderTree = function(tree, english, controller)
         local pronoun = tree.subject and tree.subject.pronoun
         local evaluation = tree.evaluation
         local difficulty = evaluation and evaluation.difficulty
-        local fusedNegative = not english and difficulty and tree.negative and evaluation.rule.negativeUk
+        local status = tree.predicateAdverb
+        local quantified = status and status.quantifiedSubject
+        local fusedNegative = not english and tree.negative
+            and (difficulty and evaluation.rule.negativeUk or quantified and status.negativeUk)
         local demonstrative = pronoun and pronoun.inanimate and (pronoun.id == "this" or pronoun.id == "that")
         local adjectiveFrame = tree.adjective and tree.adjective.entry.lexeme.frame
         if not english and tree.adjectiveContent and tree.tense == "present" and not tree.negative then
@@ -1429,9 +1432,10 @@ renderTree = function(tree, english, controller)
             if (tree.negative and not fusedNegative) or tree.expletiveNegative then append(parts, "не") end
             if tree.allUnderNegation then append(parts, "всі") end
             if tree.tense == "future" then
-                append(parts, (experiencer or difficulty) and "буде" or future[key])
+                append(parts, (experiencer or difficulty or quantified) and "буде" or future[key])
             elseif tree.tense == "past" then
-                local be = (experiencer or difficulty) and "було" or pastCopula[number == "plural" and "plural" or gender]
+                local be = (experiencer or difficulty or quantified) and "було"
+                    or pastCopula[number == "plural" and "plural" or gender]
                 if not be then return nil end
                 append(parts, be)
             end
@@ -1444,7 +1448,7 @@ renderTree = function(tree, english, controller)
         if tree.predicateAdverb and not state then
             local adverb = tree.predicateAdverb
             append(parts, not english and tree.prepositions and adverb.followLocation
-                or (english and adverb.en or adverb.uk)[1])
+                or quantified and fusedNegative or (english and adverb.en or adverb.uk)[1])
         end
         if tree.exhausted then
             local case = (english or tree.negative) and "nominative" or "genitive"

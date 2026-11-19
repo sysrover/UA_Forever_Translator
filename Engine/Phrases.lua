@@ -165,6 +165,10 @@ function P.mass(noun)
         or entry.lexeme.frame and entry.lexeme.frame.mass)
 end
 
+function P.quantifiedSubject(noun)
+    return noun and (noun.more or noun.many or noun.abundance)
+end
+
 local function declinedCuratedNoun(document, first, case, locationOnly, agrees, sense)
     local index = ns.Data.linguistics and ns.Data.linguistics.analysis["uk-en"]
     if not index then return nil end
