@@ -91,6 +91,11 @@ local function adjective(modifier, english, case, number, gender, animacy)
     local degree = entry.form.degree
     if english then
         local base = entry.lexeme.en
+        local apertium = ns.Engine.Apertium
+        if degree and not intensity and apertium then
+            local inflected = apertium.generate(base, "en", "adj", {degree=degree})
+            if inflected then return inflected end
+        end
         if degree == "comparative" then base = "more " .. base
         elseif degree == "superlative" then base = "most " .. base end
         local prefix = intensity == "more" and "more " or intensity == "very" and "very " or intensity == "so" and "so "
@@ -226,6 +231,8 @@ local function noun(node, english, case, article, compoundModifier, owner)
     if node.destination and node.term and node.term.category == "game" then
         value = ns.Engine.Normalize.word(value)
     end
+    local placeCompound = english and frame and frame.placeCompound and node.genitive
+        and node.genitive.term and node.genitive.term.category == "places"
     local parts = {}
     for _, modifier in ipairs(node.adjectives or {}) do
         local modifierFrame = modifier.entry.lexeme.frame
@@ -235,6 +242,11 @@ local function noun(node, english, case, article, compoundModifier, owner)
         local word = adjective(modifier, english, requested, number, node.gender, node.animacy)
         if not word then return nil end
         append(parts, word)
+    end
+    if placeCompound then
+        local place = G.noun(node.genitive, true, "genitive")
+        if not place then return nil end
+        append(parts, (place:gsub("^The ", "")))
     end
     append(parts, value)
     value = table.concat(parts, " ")
@@ -257,7 +269,7 @@ local function noun(node, english, case, article, compoundModifier, owner)
             value = value .. " " .. ns.Engine.Normalize.word(class)
         end
     end
-    if node.genitive then
+    if node.genitive and not placeCompound then
         local dependent = G.noun(node.genitive, english, "genitive", english and "definite", nil, owner)
         if not dependent then return nil end
         value = value .. (english and " of " or " ") .. dependent
@@ -435,15 +447,7 @@ end
 local propertyDegreeUk = {more="більш ", very="дуже ", so="настільки ", too="надто ", quite="доволі "}
 local function propertyValue(tree, english, case)
     local property = tree.property
-    if english then
-        local degree = property.entry.form.degree
-        local apertium = ns.Engine.Apertium
-        if degree and not property.intensity and apertium then
-            local inflected = apertium.generate(property.entry.lexeme.en, "en", "adj", {degree=degree})
-            if inflected then return inflected end
-        end
-        return adjective(property, true)
-    end
+    if english then return adjective(property, true) end
     local value
     if case == "adverb" then
         local forms = ns.Linguistics.propertyAdverbs
@@ -1387,6 +1391,13 @@ renderTree = function(tree, english, controller)
             local value = experiencer or agreedAdjective(tree.adjective, english, "nominative", tree.subject, number, gender)
             if not value then return nil end
             append(parts, value)
+            if tree.comparison then
+                local standard = render(tree.comparison, english)
+                if not standard then return nil end
+                if not english then parts[#parts] = withComma(parts[#parts]) end
+                append(parts, english and "than" or "ніж")
+                append(parts, standard)
+            end
             if tree.infinitive then
                 local action = render(tree.infinitive, english, owner)
                 if not action then return nil end

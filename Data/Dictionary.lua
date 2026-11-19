@@ -15491,7 +15491,9 @@ ns.Data = {
                 ["ab"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["pvpActivity"] = true
+                            },
                             ["id"] = "place.arathi_basin",
                             ["lemma"] = "Arathi Basin",
                             ["pos"] = "noun",
@@ -15659,7 +15661,9 @@ ns.Data = {
                     ["valley"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["pvpActivity"] = true
+                                },
                                 ["id"] = "place.alterac_valley",
                                 ["lemma"] = "Alterac Valley",
                                 ["pos"] = "noun",
@@ -15786,7 +15790,9 @@ ns.Data = {
                     ["basin"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["pvpActivity"] = true
+                                },
                                 ["id"] = "place.arathi_basin",
                                 ["lemma"] = "Arathi Basin",
                                 ["pos"] = "noun",
@@ -15950,7 +15956,9 @@ ns.Data = {
                 ["av"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["pvpActivity"] = true
+                            },
                             ["id"] = "place.alterac_valley",
                             ["lemma"] = "Alterac Valley",
                             ["pos"] = "noun",
@@ -23113,7 +23121,9 @@ ns.Data = {
                     ["gulch"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["pvpActivity"] = true
+                                },
                                 ["id"] = "place.warsong_gulch",
                                 ["lemma"] = "Warsong Gulch",
                                 ["pos"] = "noun",
@@ -23232,7 +23242,9 @@ ns.Data = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {
-                                    ["englishUncountable"] = true
+                                    ["englishUncountable"] = true,
+                                    ["pvpActivity"] = true,
+                                    ["worldPvP"] = true
                                 },
                                 ["id"] = "activity.world_pvp",
                                 ["lemma"] = "World PvP",
@@ -23278,7 +23290,9 @@ ns.Data = {
                 ["wsg"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["pvpActivity"] = true
+                            },
                             ["id"] = "place.warsong_gulch",
                             ["lemma"] = "Warsong Gulch",
                             ["pos"] = "noun",
@@ -23654,7 +23668,9 @@ ns.Data = {
                                 ["_analyses"] = {
                                     {
                                         ["features"] = {
-                                            ["englishUncountable"] = true
+                                            ["englishUncountable"] = true,
+                                            ["pvpActivity"] = true,
+                                            ["worldPvP"] = true
                                         },
                                         ["id"] = "activity.world_pvp",
                                         ["lemma"] = "PvP у відкритому світі",
@@ -23666,7 +23682,9 @@ ns.Data = {
                                         ["features"] = {
                                             ["case"] = "instrumental",
                                             ["englishUncountable"] = true,
-                                            ["number"] = "singular"
+                                            ["number"] = "singular",
+                                            ["pvpActivity"] = true,
+                                            ["worldPvP"] = true
                                         },
                                         ["id"] = "activity.world_pvp",
                                         ["lemma"] = "PvP у відкритому світі",
@@ -23678,7 +23696,23 @@ ns.Data = {
                                         ["features"] = {
                                             ["case"] = "genitive",
                                             ["englishUncountable"] = true,
-                                            ["number"] = "singular"
+                                            ["number"] = "singular",
+                                            ["pvpActivity"] = true,
+                                            ["worldPvP"] = true
+                                        },
+                                        ["id"] = "activity.world_pvp",
+                                        ["lemma"] = "PvP у відкритому світі",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "activity.world_pvp",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "locative",
+                                            ["englishUncountable"] = true,
+                                            ["number"] = "singular",
+                                            ["pvpActivity"] = true,
+                                            ["worldPvP"] = true
                                         },
                                         ["id"] = "activity.world_pvp",
                                         ["lemma"] = "PvP у відкритому світі",
@@ -23990,7 +24024,9 @@ ns.Data = {
                     ["долина"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["pvpActivity"] = true
+                                },
                                 ["id"] = "place.alterac_valley",
                                 ["lemma"] = "Альтерацька долина",
                                 ["pos"] = "noun",
@@ -24006,7 +24042,8 @@ ns.Data = {
                             {
                                 ["features"] = {
                                     ["case"] = "genitive",
-                                    ["number"] = "singular"
+                                    ["number"] = "singular",
+                                    ["pvpActivity"] = true
                                 },
                                 ["id"] = "place.alterac_valley",
                                 ["lemma"] = "Альтерацька долина",
@@ -24023,7 +24060,8 @@ ns.Data = {
                             {
                                 ["features"] = {
                                     ["case"] = "locative",
-                                    ["number"] = "singular"
+                                    ["number"] = "singular",
+                                    ["pvpActivity"] = true
                                 },
                                 ["id"] = "place.alterac_valley",
                                 ["lemma"] = "Альтерацька долина",
@@ -32599,7 +32637,9 @@ ns.Data = {
                     ["араті"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["pvpActivity"] = true
+                                },
                                 ["id"] = "place.arathi_basin",
                                 ["lemma"] = "низина Араті",
                                 ["pos"] = "noun",
@@ -32615,7 +32655,8 @@ ns.Data = {
                             {
                                 ["features"] = {
                                     ["case"] = "genitive",
-                                    ["number"] = "singular"
+                                    ["number"] = "singular",
+                                    ["pvpActivity"] = true
                                 },
                                 ["id"] = "place.arathi_basin",
                                 ["lemma"] = "низина Араті",
@@ -32632,7 +32673,8 @@ ns.Data = {
                             {
                                 ["features"] = {
                                     ["case"] = "locative",
-                                    ["number"] = "singular"
+                                    ["number"] = "singular",
+                                    ["pvpActivity"] = true
                                 },
                                 ["id"] = "place.arathi_basin",
                                 ["lemma"] = "низина Араті",
@@ -38838,7 +38880,9 @@ ns.Data = {
                         ["війни"] = {
                             ["_analyses"] = {
                                 {
-                                    ["features"] = {},
+                                    ["features"] = {
+                                        ["pvpActivity"] = true
+                                    },
                                     ["id"] = "place.warsong_gulch",
                                     ["lemma"] = "тіснина Пісні Війни",
                                     ["pos"] = "noun",
@@ -38856,7 +38900,8 @@ ns.Data = {
                                 {
                                     ["features"] = {
                                         ["case"] = "genitive",
-                                        ["number"] = "singular"
+                                        ["number"] = "singular",
+                                        ["pvpActivity"] = true
                                     },
                                     ["id"] = "place.warsong_gulch",
                                     ["lemma"] = "тіснина Пісні Війни",
@@ -38875,7 +38920,8 @@ ns.Data = {
                                 {
                                     ["features"] = {
                                         ["case"] = "locative",
-                                        ["number"] = "singular"
+                                        ["number"] = "singular",
+                                        ["pvpActivity"] = true
                                     },
                                     ["id"] = "place.warsong_gulch",
                                     ["lemma"] = "тіснина Пісні Війни",
@@ -40753,7 +40799,8 @@ ns.Data = {
                 ["uk"] = {
                     ["canonical"] = "PvP у відкритому світі",
                     ["genitiveSingular"] = "PvP у відкритому світі",
-                    ["instrumental"] = "PvP у відкритому світі"
+                    ["instrumental"] = "PvP у відкритому світі",
+                    ["locative"] = "PvP у відкритому світі"
                 }
             },
             ["address.milady"] = {
@@ -43570,7 +43617,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 89,
-        ["version"] = "32aca8385152daa65130dfc0c0dceb8ead27163062abac8790b8c1bf248c5909"
+        ["version"] = "33c5878d9f1e7cc9c05cc0297bb0e92750be1dd97d646c779fc0e7b676e1fc49"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -52494,11 +52541,14 @@ ns.Data = {
             ["contextOnly"] = true,
             ["en"] = "World PvP",
             ["features"] = {
-                ["englishUncountable"] = true
+                ["englishUncountable"] = true,
+                ["pvpActivity"] = true,
+                ["worldPvP"] = true
             },
             ["forms"] = {
                 ["genitiveSingular"] = "PvP у відкритому світі",
-                ["instrumental"] = "PvP у відкритому світі"
+                ["instrumental"] = "PvP у відкритому світі",
+                ["locative"] = "PvP у відкритому світі"
             },
             ["id"] = "activity.world_pvp",
             ["provenance"] = {
@@ -54785,6 +54835,9 @@ ns.Data = {
             },
             ["category"] = "places",
             ["en"] = "Alterac Valley",
+            ["features"] = {
+                ["pvpActivity"] = true
+            },
             ["forms"] = {
                 ["genitiveSingular"] = "Альтерацької долини",
                 ["locative"] = "Альтерацькій долині"
@@ -54810,6 +54863,9 @@ ns.Data = {
             },
             ["category"] = "places",
             ["en"] = "Arathi Basin",
+            ["features"] = {
+                ["pvpActivity"] = true
+            },
             ["forms"] = {
                 ["genitiveSingular"] = "низини Араті",
                 ["locative"] = "низині Араті"
@@ -56433,6 +56489,9 @@ ns.Data = {
             },
             ["category"] = "places",
             ["en"] = "Warsong Gulch",
+            ["features"] = {
+                ["pvpActivity"] = true
+            },
             ["forms"] = {
                 ["genitiveSingular"] = "тіснини Пісні Війни",
                 ["locative"] = "тіснині Пісні Війни"

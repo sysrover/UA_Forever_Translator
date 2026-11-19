@@ -123,6 +123,11 @@ function P.semanticClass(noun)
     return frame and frame.semanticClass or term and (term.features and term.features.semanticClass or term.category)
 end
 
+function P.hasTrait(noun, trait)
+    local term = noun and noun.term
+    return term and term.features and term.features[trait] == true
+end
+
 function P.spatialContainer(noun)
     if not noun then return false end
     local frame = noun.entry and noun.entry.lexeme.frame
@@ -181,6 +186,21 @@ local function groupDestination(document, first, limit)
         place = curated(document, start + 1, limit, case, true)
     end
     if place then return curatedNoun(place), place.last + 1 end
+end
+
+-- A recruitment predicate can recover an omitted role when an actual group
+-- destination follows the additional count.
+function P.ellipticalGroupMember(document, first, limit, roleId)
+    local key = P.key(document, first, limit)
+    local count = key and (ns.Linguistics.grammar.cardinalEn[key] or tonumber(key))
+    if not count or count < 1 or count > 999 or count % 1 ~= 0
+        or P.key(document, first + 1, limit) ~= "more" then return nil end
+    local place, after = groupDestination(document, first + 2, limit)
+    local term = ns.Data.terms[roleId]
+    if not place or not term then return nil end
+    return {term=term, person=3, number=count == 1 and "singular" or "plural",
+        gender=term.features.gender, animacy=term.features.animacy, quantity=tostring(count),
+        additional=true, destination=place}, after
 end
 
 local function possessive(candidate)
@@ -404,6 +424,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     local some = count ~= false and not (article or demonstrative or owner) and
         quantity == (english and "some" or "трохи")
     local quantifierStart = count ~= false and not (article or demonstrative or owner)
+    local another = quantifierStart and english and quantity == "another"
     local lot = count ~= false and english and article == "indefinite" and quantity == "lot"
         and P.key(document, index + 1, limit) == "of"
     local lots = quantifierStart and english and quantity == "lots" and P.key(document, index + 1, limit) == "of"
@@ -412,18 +433,19 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     local evenMore = quantifierStart and quantity == (english and "even" or "ще")
         and P.key(document, index + 1, limit) == moreKey
     local more = quantifierStart and (evenMore or quantity == moreKey)
+    local grammar = ns.Linguistics.grammar
+    local cardinals = english and grammar.cardinalEn or grammar.cardinalUk
+    local caseCardinals = not english and grammar.cardinalUkByCase and grammar.cardinalUkByCase[case]
     local additional, oneSurface
     if not english and count ~= false and not (demonstrative or owner) and quantity == "ще" then
         local amount = P.key(document, index + 1, limit)
-        if oneSurfaces[amount] or amount and amount:match("^%d+$") then
+        if oneSurfaces[amount] or amount and (amount:match("^%d+$") or cardinals[amount]
+            or caseCardinals and caseCardinals[amount] or grammar.collectiveUk and grammar.collectiveUk[amount]) then
             additional, oneSurface, index = true, oneSurfaces[amount] and amount, index + 1
             quantity = oneSurface and "1" or amount
         end
     end
-    local grammar = ns.Linguistics.grammar
-    local cardinals = english and grammar.cardinalEn or grammar.cardinalUk
     local collective = not english and grammar.collectiveUk and grammar.collectiveUk[quantity]
-    local caseCardinals = not english and grammar.cardinalUkByCase and grammar.cardinalUkByCase[case]
     local cardinal = collective or cardinals and cardinals[quantity] or caseCardinals and caseCardinals[quantity]
     if cardinal then quantity = tostring(cardinal) end
     if many or more then
@@ -432,6 +454,8 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     elseif few or sufficient or some then
         index, article, quantity = index + 1, nil, nil
         if not english and (sufficient or some or case == "nominative" or case == "accusative") then case = "genitive" end
+    elseif another then
+        additional, quantity, index = true, "1", index + 1
     elseif count ~= false and quantity and quantity:match("^%d+$") then
         local followsQuantity = english and P.key(document, index + 1, limit) == "more"
         additional, index = additional or followsQuantity, index + (followsQuantity and 2 or 1)
@@ -494,9 +518,10 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         local head, after
         if contextual then head, after = lexicalNoun(contextual), index + 1
         else head, after = nounHead(document, index, limit, case, locationOnly, sense, required) end
-        if english and not simple and #adjectives == 0 then
+        if english and not simple then
             local prefix, following = head, after
-            if owner and P.key(document, index, limit) == "the" then
+            local definitePlace = P.key(document, index, limit) == "the"
+            if definitePlace then
                 local place = curated(document, index + 1, limit, nil, true)
                 if place then prefix, following = curatedNoun(place), place.last + 1 end
             end
@@ -505,11 +530,18 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             if following and following <= limit and (place or frame and frame.spatialContainer) then
                 local part, ending = nounHead(document, following, limit, case, locationOnly)
                 local relation = part and part.entry and part.entry.lexeme.frame
-                if relation and relation.spatialPart then
+                local session, sessionEnd
+                if place and not locationOnly then
+                    session, sessionEnd = nounHead(document, following, limit, case, false, "iteration")
+                end
+                if session and session.entry and session.entry.lexeme.frame and session.entry.lexeme.frame.placeCompound then
+                    session.genitive = prefix
+                    head, after = session, sessionEnd
+                elseif #adjectives == 0 and (not definitePlace or owner) and relation and relation.spatialPart then
                     if relation.pathTo then part.pathTo = prefix
                     else part.genitive = prefix end
                     head, after = part, ending
-                elseif part and place and assignedRole(part) then
+                elseif #adjectives == 0 and (not definitePlace or owner) and part and place and assignedRole(part) then
                     part.destination = prefix
                     head, after = part, ending
                 end
@@ -712,12 +744,13 @@ function P.preposition(document, first, limit, motion, displacement, context)
         local class = P.semanticClass(object)
         if object and (not rule.requiresCategory or (object.term and object.term.category == rule.requiresCategory))
             and (not rule.requiresClass or class == rule.requiresClass)
+            and (not rule.requiresTrait or P.hasTrait(object, rule.requiresTrait))
             and (not rule.requiresResource or P.isResource(object))
             and (not rule.requiresSpatialContainer or P.spatialContainer(object))
             and (not rule.requiresLexicalLocative or (frame and frame.locativePreposition == rule.targetUk))
             and (not rule.requiresNearLandmark or (frame and frame.atNearLandmark)) then
             local rank = (rule.requiresLexicalLocative or rule.requiresNearLandmark or rule.requiresCategory
-                or rule.requiresClass or rule.requiresResource or rule.requiresSpatialContainer) and 1 or 0
+                or rule.requiresClass or rule.requiresTrait or rule.requiresResource or rule.requiresSpatialContainer) and 1 or 0
             if rule.context then rank = rank + 2 end
             if not priority or rank > priority then
                 selected, after, priority, ambiguous = {rule=rule, object=object, case=case}, ending, rank, false
