@@ -428,6 +428,8 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     local lot = count ~= false and english and article == "indefinite" and quantity == "lot"
         and P.key(document, index + 1, limit) == "of"
     local lots = quantifierStart and english and quantity == "lots" and P.key(document, index + 1, limit) == "of"
+    local abundance = quantifierStart and (english and quantity == "plenty" and P.key(document, index + 1, limit) == "of"
+        or not english and quantity == "вдосталь")
     local many = lot or lots or quantifierStart and not english and quantity == "багато"
     local moreKey = english and "more" or "більше"
     local evenMore = quantifierStart and quantity == (english and "even" or "ще")
@@ -448,8 +450,8 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     local collective = not english and grammar.collectiveUk and grammar.collectiveUk[quantity]
     local cardinal = collective or cardinals and cardinals[quantity] or caseCardinals and caseCardinals[quantity]
     if cardinal then quantity = tostring(cardinal) end
-    if many or more then
-        index, article, quantity = index + ((lot or lots or evenMore) and 2 or 1), nil, nil
+    if many or more or abundance then
+        index, article, quantity = index + ((lot or lots or evenMore or abundance and english) and 2 or 1), nil, nil
         if not english then case = "genitive" end
     elseif few or sufficient or some then
         index, article, quantity = index + 1, nil, nil
@@ -618,6 +620,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     best.article, best.quantity, best.demonstrative = article, quantity, demonstrative
     best.emphatic, best.few = emphatic, few or nil
     best.sufficient, best.additional, best.many = sufficient or nil, additional or nil, many or nil
+    best.abundance = abundance or nil
     best.more, best.evenMore = more or nil, evenMore or nil
     best.some = some or nil
     if nextIndex == headIndex + 1 and (best.entry or best.term) then best.headIndex = headIndex end
@@ -729,7 +732,8 @@ function P.preposition(document, first, limit, motion, displacement, context)
         local rule = ns.Linguistics.grammar.prepositions[id]
         local case = english and displacement and rule.id == "in" and "accusative" or rule.case
         local object, ending
-        if (not rule.requiresMotion or motion) and (not rule.directional or english or motion or displacement)
+        if (not rule.requiresMotion or motion) and (not rule.excludesMotion or not motion)
+            and (not rule.directional or english or motion or displacement)
             and (not rule.context or rule.context == context) then
             local spatial = rule.requiresSpatialContainer or displacement and rule.id == "in"
             local locationOnly = rule.requiresSpatialContainer
@@ -744,20 +748,33 @@ function P.preposition(document, first, limit, motion, displacement, context)
         local class = P.semanticClass(object)
         if object and (not rule.requiresCategory or (object.term and object.term.category == rule.requiresCategory))
             and (not rule.requiresClass or class == rule.requiresClass)
+            and (not rule.requiresClasses or rule.requiresClasses[class])
             and (not rule.requiresTrait or P.hasTrait(object, rule.requiresTrait))
             and (not rule.requiresResource or P.isResource(object))
             and (not rule.requiresSpatialContainer or P.spatialContainer(object))
             and (not rule.requiresLexicalLocative or (frame and frame.locativePreposition == rule.targetUk))
             and (not rule.requiresNearLandmark or (frame and frame.atNearLandmark)) then
             local rank = (rule.requiresLexicalLocative or rule.requiresNearLandmark or rule.requiresCategory
-                or rule.requiresClass or rule.requiresTrait or rule.requiresResource or rule.requiresSpatialContainer) and 1 or 0
+                or rule.requiresClass or rule.requiresClasses or rule.requiresTrait or rule.requiresResource
+                or rule.requiresSpatialContainer) and 1 or 0
             if rule.context then rank = rank + 2 end
             if not priority or rank > priority then
                 selected, after, priority, ambiguous = {rule=rule, object=object, case=case}, ending, rank, false
             elseif rank == priority then ambiguous = true end
         end
     end
-    if not ambiguous then return selected, after end
+    if ambiguous or not selected then return nil end
+    local eventLemma = english and selected.rule.opponentEvent
+    if eventLemma and P.semanticClass(selected.object) == "opponent" then
+        local entry = L.choose(document, eventLemma, "noun")
+        local frame = entry and entry.lexeme.frame
+        local argument = frame and frame.nominalArguments and frame.nominalArguments[1]
+        if not argument then return nil end
+        local event = lexicalNoun(entry)
+        event.argument = {object=selected.object, form=argument}
+        selected.object = event
+    end
+    return selected, after
 end
 
 local nominalCases = {root="nominative", nsubj="nominative", obj="accusative",

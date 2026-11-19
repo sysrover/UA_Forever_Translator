@@ -30198,6 +30198,18 @@ ns.Linguistics = {
             ["sense"] = "recordable"
         },
         ["26167"] = {
+            ["nominalArguments"] = {
+                {
+                    ["argumentSense"] = "recordable",
+                    ["case"] = "instrumental",
+                    ["classes"] = {
+                        ["opponent"] = true
+                    },
+                    ["en"] = "with",
+                    ["uk"] = "з",
+                    ["ukAliases"] = { "із", "зі" }
+                }
+            },
             ["semanticClass"] = "encounter"
         },
         ["26168"] = {
@@ -47307,7 +47319,7 @@ ns.Linguistics = {
                     ["totally"] = { 1 }
                 },
                 ["prepositions"] = {
-                    ["about"] = { 45 },
+                    ["about"] = { 47 },
                     ["after"] = { 42, 43 },
                     ["as"] = { 18, 19 },
                     ["at"] = { 1, 5 },
@@ -47316,10 +47328,12 @@ ns.Linguistics = {
                     ["during"] = { 12, 13 },
                     ["for"] = { 32, 33, 34, 35, 36, 37, 38, 39 },
                     ["from"] = { 20, 22 },
+                    ["going into"] = { 46 },
+                    ["heading into"] = { 46 },
                     ["in"] = { 1, 2 },
                     ["into"] = { 3 },
                     ["near"] = { 40 },
-                    ["of"] = { 46 },
+                    ["of"] = { 48 },
                     ["on"] = { 6, 7, 8, 9, 10, 11, 12 },
                     ["out of"] = { 29, 30 },
                     ["outside"] = { 40 },
@@ -47329,7 +47343,7 @@ ns.Linguistics = {
                     ["through"] = { 31 },
                     ["to"] = { 14, 15, 27 },
                     ["under"] = { 41 },
-                    ["until"] = { 47 },
+                    ["until"] = { 49 },
                     ["with"] = { 23, 24, 25, 26, 27 },
                     ["without"] = { 28 }
                 },
@@ -47821,7 +47835,7 @@ ns.Linguistics = {
                     ["цілком"] = { 1 }
                 },
                 ["prepositions"] = {
-                    ["аж до"] = { 47 },
+                    ["аж до"] = { 49 },
                     ["без"] = { 28, 29 },
                     ["біля"] = { 8, 40 },
                     ["в"] = { 1, 2, 3 },
@@ -47829,7 +47843,7 @@ ns.Linguistics = {
                     ["від"] = { 20, 21, 22 },
                     ["далі за"] = { 17 },
                     ["для"] = { 11, 32, 35, 36 },
-                    ["до"] = { 14, 33 },
+                    ["до"] = { 14, 33, 45 },
                     ["з"] = { 10, 21, 23, 24, 27 },
                     ["з застосуванням"] = { 25 },
                     ["завдяки"] = { 31 },
@@ -47842,7 +47856,7 @@ ns.Linguistics = {
                     ["позначкою"] = { 26 },
                     ["поруч з"] = { 40 },
                     ["при"] = { 41 },
-                    ["про"] = { 45 },
+                    ["про"] = { 47 },
                     ["під час"] = { 12, 13 },
                     ["після"] = { 42, 43 },
                     ["у"] = { 1, 2, 3 },
@@ -48859,6 +48873,40 @@ ns.Linguistics = {
                 ["targetUk"] = "перед",
                 ["temporalAdjunct"] = true,
                 ["uk"] = { "перед" }
+            },
+            {
+                ["case"] = "genitive",
+                ["en"] = { "before" },
+                ["englishArticle"] = "definite",
+                ["excludesMotion"] = true,
+                ["id"] = "before-time-boundary",
+                ["requiresClasses"] = {
+                    ["encounter"] = true,
+                    ["performance"] = true,
+                    ["session"] = true,
+                    ["timeBoundary"] = true
+                },
+                ["sourceLanguage"] = "uk",
+                ["targetEn"] = "before",
+                ["temporalAdjunct"] = true,
+                ["uk"] = { "до" }
+            },
+            {
+                ["case"] = "instrumental",
+                ["en"] = { "going into", "heading into" },
+                ["id"] = "entering-event",
+                ["objectSense"] = "recordable",
+                ["opponentEvent"] = "fight",
+                ["requiresClasses"] = {
+                    ["encounter"] = true,
+                    ["opponent"] = true,
+                    ["performance"] = true,
+                    ["session"] = true
+                },
+                ["sourceLanguage"] = "en",
+                ["targetUk"] = "перед",
+                ["temporalAdjunct"] = true,
+                ["uk"] = {}
             },
             {
                 ["case"] = "accusative",
@@ -75574,7 +75622,7 @@ ns.Linguistics = {
                 ["expandedSha256"] = "ea3cff8d44ed0a7aa4500024a2d85a060a88484d5a00e8150a5ee4b1a4ead1a6"
             }
         },
-        ["authoredSha256"] = "0ab8cf852701be0f189a9a85036cbc2203b425944bf9014d7b9af04d7db33240",
+        ["authoredSha256"] = "12f271cbf66b976ccab25b8b2393608f9b16e3b4299c6c3e22d88be44be90110",
         ["englishDate"] = "2026.09.21",
         ["englishForms"] = 34793,
         ["englishSha256"] = "2e5dfd0b86e5d9a8dd3d5f6eff932285829a5d3ef8d2cc6e8c6558d7e06583e3",

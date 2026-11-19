@@ -191,7 +191,7 @@ local function noun(node, english, case, article, compoundModifier, owner)
     local number, requested = compoundModifier and "singular" or targetNumber(node, english), case
     if not english and case == "accusative" and node.partitive then requested = "genitive" end
     if node.few and not english and (case == "nominative" or case == "accusative") then requested = "genitive" end
-    if not english and (node.sufficient or node.some or node.many or node.more) then requested = "genitive" end
+    if not english and (node.sufficient or node.some or node.many or node.more or node.abundance) then requested = "genitive" end
     if node.quantity then
         if english then
             number = tonumber(node.quantity) == 1 and "singular" or "plural"
@@ -322,6 +322,7 @@ local function noun(node, english, case, article, compoundModifier, owner)
     end
     if node.sufficient then return (english and "enough " or "достатньо ") .. value end
     if node.many then return (english and "lots of " or "багато ") .. value end
+    if node.abundance then return (english and "plenty of " or "вдосталь ") .. value end
     if node.more then
         local emphasis = node.evenMore and (english and "even " or "ще ") or ""
         return emphasis .. (english and "more " or "більше ") .. value
