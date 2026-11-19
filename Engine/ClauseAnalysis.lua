@@ -860,7 +860,7 @@ local function prepositionContext(tree, frame)
         or frame.prepositionContext
 end
 local controlledTemporal = {
-    before={en={"before"}, uk={"перш ніж"}, temporal=true},
+    before={en={"before"}, uk={"перш ніж"}, temporal=true, prospectiveEvent=true},
     after={en={"after"}, uk={"після того як"}, temporal=true},
 }
 
@@ -1771,7 +1771,10 @@ local function predicate(document, tree, index, limit, depth)
     local subjectClass = P.semanticClass(tree.subject)
     local function contextualAdjective(candidate)
         local frame = lexemeFrame(candidate)
-        return frame.predicateHead and frame.headClasses[subjectClass] and adjectiveAllowed(candidate)
+        if not frame.predicateHead or not adjectiveAllowed(candidate) then return false end
+        if frame.headClasses[subjectClass] then return true end
+        local reading = subjectReading(document, tree.subject, frame)
+        return reading and frame.headClasses[lexemeFrame(reading).semanticClass]
     end
     local nominative = {case="nominative"}
     local adjective = subjectClass and L.genderPair(document, index, limit, "adj", nominative, "nounModifier", contextualAdjective)
@@ -1783,6 +1786,9 @@ local function predicate(document, tree, index, limit, depth)
         adjective = subjectClass and L.choose(document, index, "adj", nil, "nounModifier", contextualAdjective)
             or stateSense and L.choose(document, index, "adj", nil, stateSense, adjectiveAllowed)
             or L.choose(document, index, "adj", nil, nil, adjectiveAllowed)
+    end
+    if adjective and lexemeFrame(adjective).predicateHead and not lexemeFrame(adjective).headClasses[subjectClass] then
+        refineSubject(document, tree.subject, lexemeFrame(adjective))
     end
     local object, nextIndex
     if adjective and (paired or intensity or adjective.lexeme.frame and adjective.lexeme.frame.ukExperiencer) then
@@ -3349,6 +3355,13 @@ local function supportEllipsis(document, first, limit, antecedent)
     return {kind="clause", subject=subject, verb=antecedent.verb, tense=aux.tense, negative=negative}, index
 end
 
+local function prospectiveEvent(tree)
+    if tree.verb and lexemeFrame(tree.verb).futureEventLemma and tree.tense == "present"
+        and not (tree.aspect or tree.modal or tree.negative) then
+        tree.tense, tree.sequencedEvent = "future", true
+    end
+end
+
 local function parse(document, first, limit)
     local trees, joins = {}, {}
     local prefix, prefixEnd = clauseConnector(document, first, limit)
@@ -3475,10 +3488,8 @@ local function parse(document, first, limit)
         elseif join.rule and (join.rule.id == "when" and action.imperative or join.rule.id == "whenever"
             or join.rule.id == "if" and (action.modal or action.tense == "future")) then
             followup.temporalDependent = true
-            if document.direction == "en-uk" and join.rule.id == "if" and action.priceComparison
-                and followup.verb and lexemeFrame(followup.verb).futureEventLemma and followup.tense == "present"
-                and not (followup.aspect or followup.modal or followup.negative) then
-                followup.tense, followup.sequencedEvent = "future", true
+            if document.direction == "en-uk" and join.rule.id == "if" and action.priceComparison then
+                prospectiveEvent(followup)
             end
         end
     end
@@ -3775,6 +3786,7 @@ local function joined(document, left, right, junction, prefix, tail, dependency)
     for _, tree in ipairs(subordinate.trees) do
         tree.temporalDependent = true
         if rule and rule.prospective and tree.tense == "present" then tree.tense = "future" end
+        if english and rule and rule.prospectiveEvent and futureAction then prospectiveEvent(tree) end
         if english and rule and rule.futureLocation and futureAction and locativeState(tree) and tree.tense == "present" then
             tree.tense = "future"
         end

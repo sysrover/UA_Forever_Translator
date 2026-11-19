@@ -52,7 +52,7 @@ function U.create()
     if U.frame then return end
     local f = C.frame("Frame", UIParent, "BackdropTemplate")
     f:Hide()
-    f:SetSize(360, 160); f:SetPoint("CENTER"); f:SetFrameStrata("DIALOG")
+    f:SetSize(360, 184); f:SetPoint("CENTER"); f:SetFrameStrata("DIALOG")
     f:SetClampedToScreen(true); f:EnableMouse(true); f:SetMovable(true); f:RegisterForDrag("LeftButton")
     f:SetScript("OnDragStart", function(self) if not C.combat() then self:StartMoving() end end)
     f:SetScript("OnDragStop", function(self) self:StopMovingOrSizing() end)
@@ -64,12 +64,27 @@ function U.create()
     U.source = edit(f, -53)
     U.draftLabel = label(f, L.draft, 16, -79, 328)
     U.draft = edit(f, -94)
+    local destination = "current"
+    local checkboxes = {}
+    for index, mode in ipairs({"say", "group", "yell", "current"}) do
+        local check = C.frame("CheckButton", f, "UICheckButtonTemplate")
+        check:SetSize(20, 20)
+        check:SetPoint("TOPLEFT", 16 + (index - 1) * 85, -119)
+        check:SetHitRectInsets(0, -60, 0, 0)
+        check.Text:SetText(L.chatDestinations[mode])
+        check:SetChecked(mode == destination)
+        checkboxes[mode] = check
+        check:SetScript("OnClick", function()
+            destination = mode
+            for key, option in pairs(checkboxes) do option:SetChecked(key == destination) end
+        end)
+    end
     button(f, L.translate, "BOTTOMLEFT", 16, 130, preview)
     local clickedChat
     local insert = button(f, L.insert, "BOTTOMRIGHT", -16, 150, function()
         local context = clickedChat
         clickedChat = nil
-        local ok, reason = ns.Composer.insert(C.read(U.draft, "GetText"), C.read(U.source, "GetText"), context)
+        local ok, reason = ns.Composer.insert(C.read(U.draft, "GetText"), C.read(U.source, "GetText"), context, destination)
         if not ok then C.print(L[reason]) end
     end)
     insert:RegisterForClicks("LeftButtonDown")
