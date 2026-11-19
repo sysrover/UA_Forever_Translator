@@ -76,6 +76,7 @@ end
 
 local function acceptsCategory(category, locationOnly, sense)
     if sense == "ability" then return category == "abilities" and not locationOnly end
+    if sense == "barAction" then return (category == "abilities" or category == "professions") and not locationOnly end
     return semanticNouns[category] and (not locationOnly or category == "places")
 end
 
@@ -96,6 +97,14 @@ local function curated(document, first, last, requiredCase, locationOnly, agrees
         local contextual = raw and category == "places" and not locationOnly
             and #raw == #document.tokens[first].key and #raw <= 3 and not raw:match("^[A-Z][A-Z]+$")
         if not locationOnly and category == "places" and not raw then contextual = true end
+        local aliasSense = term.features and term.features.contextAliasSense
+        if raw and aliasSense and sense ~= aliasSense then
+            local language = document.direction == "en-uk" and "en" or "uk"
+            local key = ns.Engine.Normalize.key(raw)
+            for _, alias in ipairs(term.contextAliases and term.contextAliases[language] or {}) do
+                if key == ns.Engine.Normalize.key(alias) then contextual = true; break end
+            end
+        end
         local caseSensitive = document.direction == "en-uk" and term.features and term.features.caseSensitiveEnglish
         if raw and (not caseSensitive or raw == term.en) and acceptsCategory(category, locationOnly, sense)
             and (not requiredCase or not candidate.features.case or requiredCase == candidate.features.case)
@@ -124,8 +133,9 @@ function P.semanticClass(noun)
 end
 
 function P.hasTrait(noun, trait)
+    local frame = noun and noun.entry and noun.entry.lexeme.frame
     local term = noun and noun.term
-    return term and term.features and term.features[trait] == true
+    return frame and frame[trait] == true or term and term.features and term.features[trait] == true
 end
 
 function P.spatialContainer(noun)
@@ -754,10 +764,12 @@ function P.preposition(document, first, limit, motion, displacement, context, se
             local spatial = rule.requiresSpatialContainer or displacement and rule.id == "in"
             local locationOnly = rule.requiresSpatialContainer
                 or not displacement and (rule.id == "in" or rule.id == "to" or rule.id == "from")
+            local sense = (not rule.bareContextAlias or P.key(document, last + 1, limit) == rule.bareContextAlias)
+                and rule.objectSense or nil
             object, ending = P.noun(document, last + 1, limit, case, locationOnly, nil, nil,
-                rule.objectSense, spatial and P.spatialContainer)
+                sense, spatial and P.spatialContainer)
             if not object and spatial and not rule.requiresSpatialContainer then
-                object, ending = P.noun(document, last + 1, limit, case, locationOnly, nil, nil, rule.objectSense)
+                object, ending = P.noun(document, last + 1, limit, case, locationOnly, nil, nil, sense)
             end
         end
         local frame = object and object.entry and object.entry.lexeme.frame

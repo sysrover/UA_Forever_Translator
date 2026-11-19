@@ -163,6 +163,11 @@ ns.Data = {
             ["ab"] = {
                 ["_id"] = "place.arathi_basin"
             },
+            ["action"] = {
+                ["bar"] = {
+                    ["_id"] = "game.action_bar"
+                }
+            },
             ["adds"] = {
                 ["_id"] = "slang.combat.adds",
                 ["inc"] = {
@@ -1322,7 +1327,7 @@ ns.Data = {
                 ["_plural"] = {
                     ["id"] = "class.druid",
                     ["sourceRefs"] = { "ua-forever:class.druid" },
-                    ["text"] = "друїдів"
+                    ["text"] = "друїди"
                 }
             },
             ["dung"] = {
@@ -1576,6 +1581,21 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "знайди",
                     ["weak"] = false
+                },
+                ["herbs"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.find_herbs"
+                    }
+                },
+                ["minerals"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.find_minerals"
+                    }
+                }
+            },
+            ["fireball"] = {
+                ["_byCategory"] = {
+                    ["abilities"] = "ability.fireball"
                 }
             },
             ["first"] = {
@@ -2049,7 +2069,13 @@ ns.Data = {
                 ["_byCategory"] = {
                     ["places"] = "place.hall_of_thanes"
                 },
-                ["_id"] = "slang.combat.hot"
+                ["_id"] = "slang.combat.hot",
+                ["bar"] = {
+                    ["_id"] = "game.action_bar"
+                }
+            },
+            ["hotbar"] = {
+                ["_id"] = "game.action_bar"
             },
             ["hots"] = {
                 ["_literal"] = {
@@ -2116,7 +2142,7 @@ ns.Data = {
                 ["_plural"] = {
                     ["id"] = "class.hunter",
                     ["sourceRefs"] = { "ua-forever:class.hunter" },
-                    ["text"] = "мисливців"
+                    ["text"] = "мисливці"
                 }
             },
             ["hurry"] = {
@@ -2627,7 +2653,7 @@ ns.Data = {
                 ["_plural"] = {
                     ["id"] = "class.mage",
                     ["sourceRefs"] = { "ua-forever:class.mage" },
-                    ["text"] = "магів"
+                    ["text"] = "маги"
                 }
             },
             ["mageweave"] = {
@@ -3264,7 +3290,7 @@ ns.Data = {
                 ["_plural"] = {
                     ["id"] = "class.paladin",
                     ["sourceRefs"] = { "ua-forever:class.paladin" },
-                    ["text"] = "паладинів"
+                    ["text"] = "паладини"
                 }
             },
             ["party"] = {
@@ -3409,7 +3435,7 @@ ns.Data = {
                 ["_plural"] = {
                     ["id"] = "class.priest",
                     ["sourceRefs"] = { "ua-forever:class.priest" },
-                    ["text"] = "жерців"
+                    ["text"] = "жерці"
                 }
             },
             ["proc"] = {
@@ -3684,7 +3710,7 @@ ns.Data = {
                 ["_plural"] = {
                     ["id"] = "class.rogue",
                     ["sourceRefs"] = { "ua-forever:class.rogue" },
-                    ["text"] = "розбійників"
+                    ["text"] = "розбійники"
                 }
             },
             ["roll"] = {
@@ -3831,7 +3857,7 @@ ns.Data = {
                 ["_plural"] = {
                     ["id"] = "class.shaman",
                     ["sourceRefs"] = { "ua-forever:class.shaman" },
-                    ["text"] = "шаманів"
+                    ["text"] = "шамани"
                 }
             },
             ["shaper's"] = {
@@ -4582,6 +4608,14 @@ ns.Data = {
                     ["_id"] = "slang.trade.vendor-trash"
                 }
             },
+            ["voice"] = {
+                ["_byCategory"] = {
+                    ["game"] = "game.voice_chat"
+                },
+                ["chat"] = {
+                    ["_id"] = "game.voice_chat"
+                }
+            },
             ["wailing"] = {
                 ["caverns"] = {
                     ["_id"] = "place.wailing_caverns",
@@ -4676,7 +4710,7 @@ ns.Data = {
                 ["_plural"] = {
                     ["id"] = "class.warlock",
                     ["sourceRefs"] = { "ua-forever:class.warlock" },
-                    ["text"] = "чорнокнижників"
+                    ["text"] = "чорнокнижники"
                 }
             },
             ["warrior"] = {
@@ -4686,7 +4720,7 @@ ns.Data = {
                 ["_plural"] = {
                     ["id"] = "class.warrior",
                     ["sourceRefs"] = { "ua-forever:class.warrior" },
-                    ["text"] = "воїнів"
+                    ["text"] = "воїни"
                 }
             },
             ["warsong"] = {
@@ -5149,7 +5183,16 @@ ns.Data = {
                     ["weak"] = true
                 }
             },
+            ["алхімію"] = {
+                ["_id"] = "profession.alchemy"
+            },
             ["алхімія"] = {
+                ["_id"] = "profession.alchemy"
+            },
+            ["алхімією"] = {
+                ["_id"] = "profession.alchemy"
+            },
+            ["алхімії"] = {
                 ["_id"] = "profession.alchemy"
             },
             ["альт"] = {
@@ -5945,6 +5988,41 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["вогняна"] = {
+                ["куля"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.fireball"
+                    }
+                }
+            },
+            ["вогняною"] = {
+                ["кулею"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.fireball"
+                    }
+                }
+            },
+            ["вогняної"] = {
+                ["кулі"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.fireball"
+                    }
+                }
+            },
+            ["вогняну"] = {
+                ["кулю"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.fireball"
+                    }
+                }
+            },
+            ["вогняній"] = {
+                ["кулі"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.fireball"
+                    }
+                }
+            },
             ["вода"] = {
                 ["_id"] = "game.water",
                 ["_literal"] = {
@@ -6089,6 +6167,14 @@ ns.Data = {
             },
             ["воїна"] = {
                 ["_id"] = "class.warrior"
+            },
+            ["воїни"] = {
+                ["_id"] = "class.warrior",
+                ["_plural"] = {
+                    ["id"] = "class.warrior",
+                    ["sourceRefs"] = { "ua-forever:class.warrior" },
+                    ["text"] = "warriors"
+                }
             },
             ["воїнів"] = {
                 ["_id"] = "class.warrior",
@@ -6537,6 +6623,29 @@ ns.Data = {
                         ["accusative"] = true,
                         ["genitive"] = true
                     }
+                }
+            },
+            ["голосовий"] = {
+                ["чат"] = {
+                    ["_id"] = "game.voice_chat"
+                }
+            },
+            ["голосовим"] = {
+                ["чатом"] = {
+                    ["_id"] = "game.voice_chat"
+                }
+            },
+            ["голосового"] = {
+                ["чату"] = {
+                    ["_id"] = "game.voice_chat"
+                }
+            },
+            ["голосовому"] = {
+                ["чатові"] = {
+                    ["_id"] = "game.voice_chat"
+                },
+                ["чаті"] = {
+                    ["_id"] = "game.voice_chat"
                 }
             },
             ["горлати"] = {
@@ -7290,6 +7399,14 @@ ns.Data = {
             ["друїда"] = {
                 ["_id"] = "class.druid"
             },
+            ["друїди"] = {
+                ["_id"] = "class.druid",
+                ["_plural"] = {
+                    ["id"] = "class.druid",
+                    ["sourceRefs"] = { "ua-forever:class.druid" },
+                    ["text"] = "druids"
+                }
+            },
             ["друїдів"] = {
                 ["_id"] = "class.druid",
                 ["_plural"] = {
@@ -7377,6 +7494,14 @@ ns.Data = {
             },
             ["жерця"] = {
                 ["_id"] = "class.priest"
+            },
+            ["жерці"] = {
+                ["_id"] = "class.priest",
+                ["_plural"] = {
+                    ["id"] = "class.priest",
+                    ["sourceRefs"] = { "ua-forever:class.priest" },
+                    ["text"] = "priests"
+                }
             },
             ["жерців"] = {
                 ["_id"] = "class.priest",
@@ -7705,6 +7830,9 @@ ns.Data = {
                     }
                 }
             },
+            ["зачаруванням"] = {
+                ["_id"] = "profession.enchanting"
+            },
             ["зачекай"] = {
                 ["_literal"] = {
                     ["id"] = "literal.wait",
@@ -7877,6 +8005,11 @@ ns.Data = {
                 }
             },
             ["зняття"] = {
+                ["шкур"] = {
+                    ["_id"] = "profession.skinning"
+                }
+            },
+            ["зняттям"] = {
                 ["шкур"] = {
                     ["_id"] = "profession.skinning"
                 }
@@ -8208,7 +8341,13 @@ ns.Data = {
             ["кнурилові"] = {
                 ["_id"] = "npc.hogger"
             },
+            ["ковальства"] = {
+                ["_id"] = "profession.blacksmithing"
+            },
             ["ковальство"] = {
+                ["_id"] = "profession.blacksmithing"
+            },
+            ["ковальством"] = {
                 ["_id"] = "profession.blacksmithing"
             },
             ["коли"] = {
@@ -8278,7 +8417,13 @@ ns.Data = {
                     }
                 }
             },
+            ["кравецтва"] = {
+                ["_id"] = "profession.tailoring"
+            },
             ["кравецтво"] = {
+                ["_id"] = "profession.tailoring"
+            },
+            ["кравецтвом"] = {
                 ["_id"] = "profession.tailoring"
             },
             ["крижана"] = {
@@ -8326,6 +8471,9 @@ ns.Data = {
                     ["text"] = "where to",
                     ["weak"] = false
                 }
+            },
+            ["кулінарію"] = {
+                ["_id"] = "profession.cooking"
             },
             ["кулінарія"] = {
                 ["_id"] = "profession.cooking"
@@ -8524,6 +8672,14 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "shop",
                     ["weak"] = false
+                }
+            },
+            ["маги"] = {
+                ["_id"] = "class.mage",
+                ["_plural"] = {
+                    ["id"] = "class.mage",
+                    ["sourceRefs"] = { "ua-forever:class.mage" },
+                    ["text"] = "mages"
                 }
             },
             ["маготкане"] = {
@@ -8781,6 +8937,14 @@ ns.Data = {
             },
             ["мисливця"] = {
                 ["_id"] = "class.hunter"
+            },
+            ["мисливці"] = {
+                ["_id"] = "class.hunter",
+                ["_plural"] = {
+                    ["id"] = "class.hunter",
+                    ["sourceRefs"] = { "ua-forever:class.hunter" },
+                    ["text"] = "hunters"
+                }
             },
             ["мисливців"] = {
                 ["_id"] = "class.hunter",
@@ -10192,6 +10356,14 @@ ns.Data = {
             ["паладина"] = {
                 ["_id"] = "class.paladin"
             },
+            ["паладини"] = {
+                ["_id"] = "class.paladin",
+                ["_plural"] = {
+                    ["id"] = "class.paladin",
+                    ["sourceRefs"] = { "ua-forever:class.paladin" },
+                    ["text"] = "paladins"
+                }
+            },
             ["паладинів"] = {
                 ["_id"] = "class.paladin",
                 ["_plural"] = {
@@ -10224,6 +10396,21 @@ ns.Data = {
             ["палаючому"] = {
                 ["степу"] = {
                     ["_id"] = "place.burning_steppes"
+                }
+            },
+            ["панеллю"] = {
+                ["дій"] = {
+                    ["_id"] = "game.action_bar"
+                }
+            },
+            ["панель"] = {
+                ["дій"] = {
+                    ["_id"] = "game.action_bar"
+                }
+            },
+            ["панелі"] = {
+                ["дій"] = {
+                    ["_id"] = "game.action_bar"
                 }
             },
             ["пані"] = {
@@ -10694,6 +10881,54 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "quickly",
                     ["weak"] = false
+                }
+            },
+            ["пошук"] = {
+                ["мінералів"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.find_minerals"
+                    }
+                },
+                ["трав"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.find_herbs"
+                    }
+                }
+            },
+            ["пошукові"] = {
+                ["мінералів"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.find_minerals"
+                    }
+                },
+                ["трав"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.find_herbs"
+                    }
+                }
+            },
+            ["пошуком"] = {
+                ["мінералів"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.find_minerals"
+                    }
+                },
+                ["трав"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.find_herbs"
+                    }
+                }
+            },
+            ["пошуку"] = {
+                ["мінералів"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.find_minerals"
+                    }
+                },
+                ["трав"] = {
+                    ["_byCategory"] = {
+                        ["abilities"] = "ability.find_herbs"
+                    }
                 }
             },
             ["праворуч"] = {
@@ -11540,6 +11775,14 @@ ns.Data = {
             },
             ["розбійника"] = {
                 ["_id"] = "class.rogue"
+            },
+            ["розбійники"] = {
+                ["_id"] = "class.rogue",
+                ["_plural"] = {
+                    ["id"] = "class.rogue",
+                    ["sourceRefs"] = { "ua-forever:class.rogue" },
+                    ["text"] = "rogues"
+                }
             },
             ["розбійників"] = {
                 ["_id"] = "class.rogue",
@@ -12722,11 +12965,17 @@ ns.Data = {
                 ["_id"] = "class.warlock"
             },
             ["чорнокнижники"] = {
+                ["_id"] = "class.warlock",
                 ["_literal"] = {
                     ["id"] = "literal.class.warlocks",
                     ["sourceRefs"] = { "ua-forever:class.warlock" },
                     ["text"] = "warlocks",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "class.warlock",
+                    ["sourceRefs"] = { "ua-forever:class.warlock" },
+                    ["text"] = "warlocks"
                 }
             },
             ["чорнокнижників"] = {
@@ -12779,11 +13028,17 @@ ns.Data = {
                 ["_id"] = "class.shaman"
             },
             ["шамани"] = {
+                ["_id"] = "class.shaman",
                 ["_literal"] = {
                     ["id"] = "literal.class.shamans",
                     ["sourceRefs"] = { "ua-forever:class.shaman" },
                     ["text"] = "shamans",
                     ["weak"] = false
+                },
+                ["_plural"] = {
+                    ["id"] = "class.shaman",
+                    ["sourceRefs"] = { "ua-forever:class.shaman" },
+                    ["text"] = "shamans"
                 }
             },
             ["шаманів"] = {
@@ -12812,7 +13067,13 @@ ns.Data = {
                     ["stats"] = "stat.damage"
                 }
             },
+            ["шкірництва"] = {
+                ["_id"] = "profession.leatherworking"
+            },
             ["шкірництво"] = {
+                ["_id"] = "profession.leatherworking"
+            },
+            ["шкірництвом"] = {
                 ["_id"] = "profession.leatherworking"
             },
             ["шпигунство"] = {
@@ -13174,7 +13435,16 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["інженерію"] = {
+                ["_id"] = "profession.engineering"
+            },
             ["інженерія"] = {
+                ["_id"] = "profession.engineering"
+            },
+            ["інженерією"] = {
+                ["_id"] = "profession.engineering"
+            },
+            ["інженерії"] = {
                 ["_id"] = "profession.engineering"
             },
             ["інкам"] = {
@@ -15556,6 +15826,25 @@ ns.Data = {
                         }
                     }
                 },
+                ["action"] = {
+                    ["bar"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["semanticClass"] = "actionBar"
+                                },
+                                ["id"] = "game.action_bar",
+                                ["lemma"] = "Action Bar",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.action_bar",
+                                ["sourceRefs"] = { "ua-forever:ui.Action Bar" }
+                            }
+                        }
+                    }
+                },
                 ["adds"] = {
                     ["_analyses"] = {
                         {
@@ -17498,7 +17787,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.druid",
                             ["lemma"] = "Druid",
@@ -17514,7 +17804,8 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.druid",
                             ["lemma"] = "Druid",
@@ -17946,6 +18237,56 @@ ns.Data = {
                                 ["sense"] = "character.fellow_elves",
                                 ["sourceRefs"] = { "project-authored:chat-0.1" }
                             }
+                        }
+                    }
+                },
+                ["find"] = {
+                    ["herbs"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_herbs",
+                                ["lemma"] = "Find Herbs",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_herbs",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    },
+                    ["minerals"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_minerals",
+                                ["lemma"] = "Find Minerals",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_minerals",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    }
+                },
+                ["fireball"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "ability.fireball",
+                            ["lemma"] = "Fireball",
+                            ["pos"] = "noun",
+                            ["sense"] = "ability.fireball",
+                            ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
                         }
                     }
                 },
@@ -18928,6 +19269,40 @@ ns.Data = {
                             ["sense"] = "slang.combat.hot",
                             ["sourceRefs"] = { "wow-community:classic" }
                         }
+                    },
+                    ["bar"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["semanticClass"] = "actionBar"
+                                },
+                                ["id"] = "game.action_bar",
+                                ["lemma"] = "Action Bar",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.action_bar",
+                                ["sourceRefs"] = { "ua-forever:ui.Action Bar" }
+                            }
+                        }
+                    }
+                },
+                ["hotbar"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
+                                ["gender"] = "feminine",
+                                ["semanticClass"] = "actionBar"
+                            },
+                            ["id"] = "game.action_bar",
+                            ["lemma"] = "Action Bar",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.action_bar",
+                            ["sourceRefs"] = { "ua-forever:ui.Action Bar" }
+                        }
                     }
                 },
                 ["hp"] = {
@@ -18971,7 +19346,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.hunter",
                             ["lemma"] = "Hunter",
@@ -18987,7 +19363,8 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.hunter",
                             ["lemma"] = "Hunter",
@@ -19680,7 +20057,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.mage",
                             ["lemma"] = "Mage",
@@ -19696,7 +20074,8 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.mage",
                             ["lemma"] = "Mage",
@@ -20524,7 +20903,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.paladin",
                             ["lemma"] = "Paladin",
@@ -20540,7 +20920,8 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.paladin",
                             ["lemma"] = "Paladin",
@@ -20734,7 +21115,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.priest",
                             ["lemma"] = "Priest",
@@ -20750,7 +21132,8 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.priest",
                             ["lemma"] = "Priest",
@@ -21565,7 +21948,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.rogue",
                             ["lemma"] = "Rogue",
@@ -21581,7 +21965,8 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.rogue",
                             ["lemma"] = "Rogue",
@@ -21833,7 +22218,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.shaman",
                             ["lemma"] = "Shaman",
@@ -21849,7 +22235,8 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.shaman",
                             ["lemma"] = "Shaman",
@@ -22928,6 +23315,42 @@ ns.Data = {
                         }
                     }
                 },
+                ["voice"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["contextAliasSense"] = "voiceChannel",
+                                ["englishCommon"] = true,
+                                ["gender"] = "masculine",
+                                ["semanticClass"] = "voiceChannel"
+                            },
+                            ["id"] = "game.voice_chat",
+                            ["lemma"] = "Voice Chat",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.voice_chat",
+                            ["sourceRefs"] = { "ua-forever:ui.Voice Chat" }
+                        }
+                    },
+                    ["chat"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["contextAliasSense"] = "voiceChannel",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["semanticClass"] = "voiceChannel"
+                                },
+                                ["id"] = "game.voice_chat",
+                                ["lemma"] = "Voice Chat",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.voice_chat",
+                                ["sourceRefs"] = { "ua-forever:ui.Voice Chat" }
+                            }
+                        }
+                    }
+                },
                 ["wailing"] = {
                     ["caverns"] = {
                         ["_analyses"] = {
@@ -23147,7 +23570,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warlock",
                             ["lemma"] = "Warlock",
@@ -23163,7 +23587,8 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warlock",
                             ["lemma"] = "Warlock",
@@ -23178,7 +23603,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warrior",
                             ["lemma"] = "Warrior",
@@ -23194,7 +23620,8 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warrior",
                             ["lemma"] = "Warrior",
@@ -24063,10 +24490,55 @@ ns.Data = {
                         }
                     }
                 },
+                ["алхімію"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.alchemy",
+                            ["lemma"] = "Алхімія",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.alchemy",
+                            ["sourceRefs"] = { "ua-forever:profession.alchemy" }
+                        }
+                    }
+                },
                 ["алхімія"] = {
                     ["_analyses"] = {
                         {
                             ["features"] = {},
+                            ["id"] = "profession.alchemy",
+                            ["lemma"] = "Алхімія",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.alchemy",
+                            ["sourceRefs"] = { "ua-forever:profession.alchemy" }
+                        }
+                    }
+                },
+                ["алхімією"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "instrumental",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.alchemy",
+                            ["lemma"] = "Алхімія",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.alchemy",
+                            ["sourceRefs"] = { "ua-forever:profession.alchemy" }
+                        }
+                    }
+                },
+                ["алхімії"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
                             ["id"] = "profession.alchemy",
                             ["lemma"] = "Алхімія",
                             ["pos"] = "noun",
@@ -24830,7 +25302,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warrior",
                             ["lemma"] = "Воїн",
@@ -25385,6 +25858,132 @@ ns.Data = {
                         }
                     }
                 },
+                ["вогняна"] = {
+                    ["куля"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.fireball",
+                                ["lemma"] = "Вогняна куля",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.fireball",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.fireball",
+                                ["lemma"] = "Вогняна куля",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.fireball",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    }
+                },
+                ["вогняною"] = {
+                    ["кулею"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.fireball",
+                                ["lemma"] = "Вогняна куля",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.fireball",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    }
+                },
+                ["вогняної"] = {
+                    ["кулі"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.fireball",
+                                ["lemma"] = "Вогняна куля",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.fireball",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    }
+                },
+                ["вогняну"] = {
+                    ["кулю"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.fireball",
+                                ["lemma"] = "Вогняна куля",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.fireball",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    }
+                },
+                ["вогняній"] = {
+                    ["кулі"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.fireball",
+                                ["lemma"] = "Вогняна куля",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.fireball",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.fireball",
+                                ["lemma"] = "Вогняна куля",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.fireball",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    }
+                },
                 ["вода"] = {
                     ["_analyses"] = {
                         {
@@ -25554,7 +26153,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warrior",
                             ["lemma"] = "Воїн",
@@ -25571,7 +26171,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warrior",
                             ["lemma"] = "Воїн",
@@ -25584,7 +26185,26 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "class.warrior",
+                            ["lemma"] = "Воїн",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warrior",
+                            ["sourceRefs"] = { "ua-forever:class.warrior" }
+                        }
+                    }
+                },
+                ["воїни"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warrior",
                             ["lemma"] = "Воїн",
@@ -25601,7 +26221,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warrior",
                             ["lemma"] = "Воїн",
@@ -25614,7 +26235,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warrior",
                             ["lemma"] = "Воїн",
@@ -26793,6 +27415,144 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "race.gnome.base.plural",
                             ["sourceRefs"] = { "ua-forever:race.gnome", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["голосовий"] = {
+                    ["чат"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["contextAliasSense"] = "voiceChannel",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["semanticClass"] = "voiceChannel"
+                                },
+                                ["id"] = "game.voice_chat",
+                                ["lemma"] = "Голосовий чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.voice_chat",
+                                ["sourceRefs"] = { "ua-forever:ui.Voice Chat" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["contextAliasSense"] = "voiceChannel",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "voiceChannel"
+                                },
+                                ["id"] = "game.voice_chat",
+                                ["lemma"] = "Голосовий чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.voice_chat",
+                                ["sourceRefs"] = { "ua-forever:ui.Voice Chat" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["contextAliasSense"] = "voiceChannel",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "voiceChannel"
+                                },
+                                ["id"] = "game.voice_chat",
+                                ["lemma"] = "Голосовий чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.voice_chat",
+                                ["sourceRefs"] = { "ua-forever:ui.Voice Chat" }
+                            }
+                        }
+                    }
+                },
+                ["голосовим"] = {
+                    ["чатом"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["contextAliasSense"] = "voiceChannel",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "voiceChannel"
+                                },
+                                ["id"] = "game.voice_chat",
+                                ["lemma"] = "Голосовий чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.voice_chat",
+                                ["sourceRefs"] = { "ua-forever:ui.Voice Chat" }
+                            }
+                        }
+                    }
+                },
+                ["голосового"] = {
+                    ["чату"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["contextAliasSense"] = "voiceChannel",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "voiceChannel"
+                                },
+                                ["id"] = "game.voice_chat",
+                                ["lemma"] = "Голосовий чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.voice_chat",
+                                ["sourceRefs"] = { "ua-forever:ui.Voice Chat" }
+                            }
+                        }
+                    }
+                },
+                ["голосовому"] = {
+                    ["чатові"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["contextAliasSense"] = "voiceChannel",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "voiceChannel"
+                                },
+                                ["id"] = "game.voice_chat",
+                                ["lemma"] = "Голосовий чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.voice_chat",
+                                ["sourceRefs"] = { "ua-forever:ui.Voice Chat" }
+                            }
+                        }
+                    },
+                    ["чаті"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["contextAliasSense"] = "voiceChannel",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "voiceChannel"
+                                },
+                                ["id"] = "game.voice_chat",
+                                ["lemma"] = "Голосовий чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.voice_chat",
+                                ["sourceRefs"] = { "ua-forever:ui.Voice Chat" }
+                            }
                         }
                     }
                 },
@@ -28462,7 +29222,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.druid",
                             ["lemma"] = "Друїд",
@@ -28660,7 +29421,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.druid",
                             ["lemma"] = "Друїд",
@@ -28677,7 +29439,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.druid",
                             ["lemma"] = "Друїд",
@@ -28690,7 +29453,26 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "class.druid",
+                            ["lemma"] = "Друїд",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.druid",
+                            ["sourceRefs"] = { "ua-forever:class.druid" }
+                        }
+                    }
+                },
+                ["друїди"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.druid",
                             ["lemma"] = "Друїд",
@@ -28707,7 +29489,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.druid",
                             ["lemma"] = "Друїд",
@@ -28720,7 +29503,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.druid",
                             ["lemma"] = "Друїд",
@@ -28839,7 +29623,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.priest",
                             ["lemma"] = "Жрець",
@@ -28852,7 +29637,26 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "class.priest",
+                            ["lemma"] = "Жрець",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.priest",
+                            ["sourceRefs"] = { "ua-forever:class.priest" }
+                        }
+                    }
+                },
+                ["жерці"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.priest",
                             ["lemma"] = "Жрець",
@@ -28869,7 +29673,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.priest",
                             ["lemma"] = "Жрець",
@@ -28882,7 +29687,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.priest",
                             ["lemma"] = "Жрець",
@@ -28933,7 +29739,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.priest",
                             ["lemma"] = "Жрець",
@@ -28948,7 +29755,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.priest",
                             ["lemma"] = "Жрець",
@@ -29611,6 +30419,17 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "profession.enchanting",
                             ["sourceRefs"] = { "ua-forever:profession.enchanting" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.enchanting",
+                            ["lemma"] = "Зачарування",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.enchanting",
+                            ["sourceRefs"] = { "ua-forever:profession.enchanting" }
                         }
                     },
                     ["дворучної"] = {
@@ -29629,6 +30448,21 @@ ns.Data = {
                                     }
                                 }
                             }
+                        }
+                    }
+                },
+                ["зачаруванням"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "instrumental",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.enchanting",
+                            ["lemma"] = "Зачарування",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.enchanting",
+                            ["sourceRefs"] = { "ua-forever:profession.enchanting" }
                         }
                     }
                 },
@@ -29869,6 +30703,34 @@ ns.Data = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {},
+                                ["id"] = "profession.skinning",
+                                ["lemma"] = "Зняття шкур",
+                                ["pos"] = "noun",
+                                ["sense"] = "profession.skinning",
+                                ["sourceRefs"] = { "ua-forever:profession.skinning" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "profession.skinning",
+                                ["lemma"] = "Зняття шкур",
+                                ["pos"] = "noun",
+                                ["sense"] = "profession.skinning",
+                                ["sourceRefs"] = { "ua-forever:profession.skinning" }
+                            }
+                        }
+                    }
+                },
+                ["зняттям"] = {
+                    ["шкур"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "instrumental",
+                                    ["number"] = "singular"
+                                },
                                 ["id"] = "profession.skinning",
                                 ["lemma"] = "Зняття шкур",
                                 ["pos"] = "noun",
@@ -30376,10 +31238,40 @@ ns.Data = {
                         }
                     }
                 },
+                ["ковальства"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.blacksmithing",
+                            ["lemma"] = "Ковальство",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.blacksmithing",
+                            ["sourceRefs"] = { "ua-forever:profession.blacksmithing" }
+                        }
+                    }
+                },
                 ["ковальство"] = {
                     ["_analyses"] = {
                         {
                             ["features"] = {},
+                            ["id"] = "profession.blacksmithing",
+                            ["lemma"] = "Ковальство",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.blacksmithing",
+                            ["sourceRefs"] = { "ua-forever:profession.blacksmithing" }
+                        }
+                    }
+                },
+                ["ковальством"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "instrumental",
+                                ["number"] = "singular"
+                            },
                             ["id"] = "profession.blacksmithing",
                             ["lemma"] = "Ковальство",
                             ["pos"] = "noun",
@@ -30428,10 +31320,40 @@ ns.Data = {
                         }
                     }
                 },
+                ["кравецтва"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.tailoring",
+                            ["lemma"] = "Кравецтво",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.tailoring",
+                            ["sourceRefs"] = { "ua-forever:profession.tailoring" }
+                        }
+                    }
+                },
                 ["кравецтво"] = {
                     ["_analyses"] = {
                         {
                             ["features"] = {},
+                            ["id"] = "profession.tailoring",
+                            ["lemma"] = "Кравецтво",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.tailoring",
+                            ["sourceRefs"] = { "ua-forever:profession.tailoring" }
+                        }
+                    }
+                },
+                ["кравецтвом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "instrumental",
+                                ["number"] = "singular"
+                            },
                             ["id"] = "profession.tailoring",
                             ["lemma"] = "Кравецтво",
                             ["pos"] = "noun",
@@ -30571,6 +31493,23 @@ ns.Data = {
                         }
                     }
                 },
+                ["кулінарію"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.cooking",
+                            ["lemma"] = "Кулінарія",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.cooking",
+                            ["sourceRefs"] = { "ua-forever:profession.cooking" }
+                        }
+                    }
+                },
                 ["кулінарія"] = {
                     ["_analyses"] = {
                         {
@@ -30625,7 +31564,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warlock",
                             ["lemma"] = "Чорнокнижник",
@@ -30789,7 +31729,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.mage",
                             ["lemma"] = "Маг",
@@ -30806,7 +31747,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.mage",
                             ["lemma"] = "Маг",
@@ -30819,7 +31761,26 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "class.mage",
+                            ["lemma"] = "Маг",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.mage",
+                            ["sourceRefs"] = { "ua-forever:class.mage" }
+                        }
+                    }
+                },
+                ["маги"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.mage",
                             ["lemma"] = "Маг",
@@ -30888,7 +31849,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.mage",
                             ["lemma"] = "Маг",
@@ -30901,7 +31863,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.mage",
                             ["lemma"] = "Маг",
@@ -31295,7 +32258,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.hunter",
                             ["lemma"] = "Мисливець",
@@ -31312,7 +32276,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.hunter",
                             ["lemma"] = "Мисливець",
@@ -31325,7 +32290,26 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "class.hunter",
+                            ["lemma"] = "Мисливець",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.hunter",
+                            ["sourceRefs"] = { "ua-forever:class.hunter" }
+                        }
+                    }
+                },
+                ["мисливці"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.hunter",
                             ["lemma"] = "Мисливець",
@@ -31342,7 +32326,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.hunter",
                             ["lemma"] = "Мисливець",
@@ -31355,7 +32340,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.hunter",
                             ["lemma"] = "Мисливець",
@@ -34404,7 +35390,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.paladin",
                             ["lemma"] = "Паладин",
@@ -34419,7 +35406,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.paladin",
                             ["lemma"] = "Паладин",
@@ -34436,7 +35424,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.paladin",
                             ["lemma"] = "Паладин",
@@ -34449,7 +35438,26 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "class.paladin",
+                            ["lemma"] = "Паладин",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.paladin",
+                            ["sourceRefs"] = { "ua-forever:class.paladin" }
+                        }
+                    }
+                },
+                ["паладини"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.paladin",
                             ["lemma"] = "Паладин",
@@ -34466,7 +35474,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.paladin",
                             ["lemma"] = "Паладин",
@@ -34479,7 +35488,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.paladin",
                             ["lemma"] = "Паладин",
@@ -34567,6 +35577,127 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.burning_steppes",
                                 ["sourceRefs"] = { "ua-forever:place.burning_steppes" }
+                            }
+                        }
+                    }
+                },
+                ["панеллю"] = {
+                    ["дій"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "actionBar"
+                                },
+                                ["id"] = "game.action_bar",
+                                ["lemma"] = "Панель дій",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.action_bar",
+                                ["sourceRefs"] = { "ua-forever:ui.Action Bar" }
+                            }
+                        }
+                    }
+                },
+                ["панель"] = {
+                    ["дій"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["semanticClass"] = "actionBar"
+                                },
+                                ["id"] = "game.action_bar",
+                                ["lemma"] = "Панель дій",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.action_bar",
+                                ["sourceRefs"] = { "ua-forever:ui.Action Bar" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "actionBar"
+                                },
+                                ["id"] = "game.action_bar",
+                                ["lemma"] = "Панель дій",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.action_bar",
+                                ["sourceRefs"] = { "ua-forever:ui.Action Bar" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "actionBar"
+                                },
+                                ["id"] = "game.action_bar",
+                                ["lemma"] = "Панель дій",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.action_bar",
+                                ["sourceRefs"] = { "ua-forever:ui.Action Bar" }
+                            }
+                        }
+                    }
+                },
+                ["панелі"] = {
+                    ["дій"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "actionBar"
+                                },
+                                ["id"] = "game.action_bar",
+                                ["lemma"] = "Панель дій",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.action_bar",
+                                ["sourceRefs"] = { "ua-forever:ui.Action Bar" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "actionBar"
+                                },
+                                ["id"] = "game.action_bar",
+                                ["lemma"] = "Панель дій",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.action_bar",
+                                ["sourceRefs"] = { "ua-forever:ui.Action Bar" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "actionBar"
+                                },
+                                ["id"] = "game.action_bar",
+                                ["lemma"] = "Панель дій",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.action_bar",
+                                ["sourceRefs"] = { "ua-forever:ui.Action Bar" }
                             }
                         }
                     }
@@ -35508,6 +36639,238 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "game.sense_of_humour",
                                 ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["пошук"] = {
+                    ["мінералів"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_minerals",
+                                ["lemma"] = "Пошук мінералів",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_minerals",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_minerals",
+                                ["lemma"] = "Пошук мінералів",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_minerals",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_minerals",
+                                ["lemma"] = "Пошук мінералів",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_minerals",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    },
+                    ["трав"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_herbs",
+                                ["lemma"] = "Пошук трав",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_herbs",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_herbs",
+                                ["lemma"] = "Пошук трав",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_herbs",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_herbs",
+                                ["lemma"] = "Пошук трав",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_herbs",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    }
+                },
+                ["пошукові"] = {
+                    ["мінералів"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_minerals",
+                                ["lemma"] = "Пошук мінералів",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_minerals",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    },
+                    ["трав"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_herbs",
+                                ["lemma"] = "Пошук трав",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_herbs",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    }
+                },
+                ["пошуком"] = {
+                    ["мінералів"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_minerals",
+                                ["lemma"] = "Пошук мінералів",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_minerals",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    },
+                    ["трав"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_herbs",
+                                ["lemma"] = "Пошук трав",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_herbs",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    }
+                },
+                ["пошуку"] = {
+                    ["мінералів"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_minerals",
+                                ["lemma"] = "Пошук мінералів",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_minerals",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_minerals",
+                                ["lemma"] = "Пошук мінералів",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_minerals",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            }
+                        }
+                    },
+                    ["трав"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_herbs",
+                                ["lemma"] = "Пошук трав",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_herbs",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "ability.find_herbs",
+                                ["lemma"] = "Пошук трав",
+                                ["pos"] = "noun",
+                                ["sense"] = "ability.find_herbs",
+                                ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" }
                             }
                         }
                     }
@@ -37590,7 +38953,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.rogue",
                             ["lemma"] = "Розбійник",
@@ -37605,7 +38969,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.rogue",
                             ["lemma"] = "Розбійник",
@@ -37622,7 +38987,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.rogue",
                             ["lemma"] = "Розбійник",
@@ -37635,7 +39001,26 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "class.rogue",
+                            ["lemma"] = "Розбійник",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.rogue",
+                            ["sourceRefs"] = { "ua-forever:class.rogue" }
+                        }
+                    }
+                },
+                ["розбійники"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.rogue",
                             ["lemma"] = "Розбійник",
@@ -37652,7 +39037,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.rogue",
                             ["lemma"] = "Розбійник",
@@ -37665,7 +39051,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.rogue",
                             ["lemma"] = "Розбійник",
@@ -39426,7 +40813,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.hunter",
                             ["lemma"] = "Мисливець",
@@ -40041,7 +41429,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warlock",
                             ["lemma"] = "Чорнокнижник",
@@ -40058,7 +41447,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warlock",
                             ["lemma"] = "Чорнокнижник",
@@ -40071,7 +41461,26 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "class.warlock",
+                            ["lemma"] = "Чорнокнижник",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.warlock",
+                            ["sourceRefs"] = { "ua-forever:class.warlock" }
+                        }
+                    }
+                },
+                ["чорнокнижники"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warlock",
                             ["lemma"] = "Чорнокнижник",
@@ -40088,7 +41497,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warlock",
                             ["lemma"] = "Чорнокнижник",
@@ -40101,7 +41511,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.warlock",
                             ["lemma"] = "Чорнокнижник",
@@ -40204,7 +41615,8 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine"
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.shaman",
                             ["lemma"] = "Шаман",
@@ -40221,7 +41633,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.shaman",
                             ["lemma"] = "Шаман",
@@ -40234,7 +41647,26 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "class.shaman",
+                            ["lemma"] = "Шаман",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.shaman",
+                            ["sourceRefs"] = { "ua-forever:class.shaman" }
+                        }
+                    }
+                },
+                ["шамани"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.shaman",
                             ["lemma"] = "Шаман",
@@ -40251,7 +41683,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.shaman",
                             ["lemma"] = "Шаман",
@@ -40264,7 +41697,8 @@ ns.Data = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
                                 ["gender"] = "masculine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["pos"] = "noun"
                             },
                             ["id"] = "class.shaman",
                             ["lemma"] = "Шаман",
@@ -40301,10 +41735,40 @@ ns.Data = {
                         }
                     }
                 },
+                ["шкірництва"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.leatherworking",
+                            ["lemma"] = "Шкірництво",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.leatherworking",
+                            ["sourceRefs"] = { "ua-forever:profession.leatherworking" }
+                        }
+                    }
+                },
                 ["шкірництво"] = {
                     ["_analyses"] = {
                         {
                             ["features"] = {},
+                            ["id"] = "profession.leatherworking",
+                            ["lemma"] = "Шкірництво",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.leatherworking",
+                            ["sourceRefs"] = { "ua-forever:profession.leatherworking" }
+                        }
+                    }
+                },
+                ["шкірництвом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "instrumental",
+                                ["number"] = "singular"
+                            },
                             ["id"] = "profession.leatherworking",
                             ["lemma"] = "Шкірництво",
                             ["pos"] = "noun",
@@ -40747,10 +42211,55 @@ ns.Data = {
                         }
                     }
                 },
+                ["інженерію"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.engineering",
+                            ["lemma"] = "Інженерія",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.engineering",
+                            ["sourceRefs"] = { "ua-forever:profession.engineering" }
+                        }
+                    }
+                },
                 ["інженерія"] = {
                     ["_analyses"] = {
                         {
                             ["features"] = {},
+                            ["id"] = "profession.engineering",
+                            ["lemma"] = "Інженерія",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.engineering",
+                            ["sourceRefs"] = { "ua-forever:profession.engineering" }
+                        }
+                    }
+                },
+                ["інженерією"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "instrumental",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "profession.engineering",
+                            ["lemma"] = "Інженерія",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.engineering",
+                            ["sourceRefs"] = { "ua-forever:profession.engineering" }
+                        }
+                    }
+                },
+                ["інженерії"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular"
+                            },
                             ["id"] = "profession.engineering",
                             ["lemma"] = "Інженерія",
                             ["pos"] = "noun",
@@ -41006,6 +42515,48 @@ ns.Data = {
                     ["instrumental"] = "Страхом",
                     ["locative"] = "Страху",
                     ["nominative"] = "Страх"
+                }
+            },
+            ["ability.find_herbs"] = {
+                ["en"] = {
+                    ["canonical"] = "Find Herbs"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Пошук трав",
+                    ["canonical"] = "Пошук трав",
+                    ["dativeSingular"] = "Пошукові трав",
+                    ["genitiveSingular"] = "Пошуку трав",
+                    ["instrumental"] = "Пошуком трав",
+                    ["locative"] = "Пошуку трав",
+                    ["nominative"] = "Пошук трав"
+                }
+            },
+            ["ability.find_minerals"] = {
+                ["en"] = {
+                    ["canonical"] = "Find Minerals"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Пошук мінералів",
+                    ["canonical"] = "Пошук мінералів",
+                    ["dativeSingular"] = "Пошукові мінералів",
+                    ["genitiveSingular"] = "Пошуку мінералів",
+                    ["instrumental"] = "Пошуком мінералів",
+                    ["locative"] = "Пошуку мінералів",
+                    ["nominative"] = "Пошук мінералів"
+                }
+            },
+            ["ability.fireball"] = {
+                ["en"] = {
+                    ["canonical"] = "Fireball"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Вогняну кулю",
+                    ["canonical"] = "Вогняна куля",
+                    ["dativeSingular"] = "Вогняній кулі",
+                    ["genitiveSingular"] = "Вогняної кулі",
+                    ["instrumental"] = "Вогняною кулею",
+                    ["locative"] = "Вогняній кулі",
+                    ["nominative"] = "Вогняна куля"
                 }
             },
             ["ability.freezing_trap"] = {
@@ -41283,7 +42834,8 @@ ns.Data = {
                     ["accusativePlural"] = "друїдів",
                     ["canonical"] = "Друїд",
                     ["genitivePlural"] = "друїдів",
-                    ["genitiveSingular"] = "друїда"
+                    ["genitiveSingular"] = "друїда",
+                    ["nominativePlural"] = "друїди"
                 }
             },
             ["class.hunter"] = {
@@ -41296,7 +42848,8 @@ ns.Data = {
                     ["accusativePlural"] = "мисливців",
                     ["canonical"] = "Мисливець",
                     ["genitivePlural"] = "мисливців",
-                    ["genitiveSingular"] = "мисливця"
+                    ["genitiveSingular"] = "мисливця",
+                    ["nominativePlural"] = "мисливці"
                 }
             },
             ["class.mage"] = {
@@ -41309,7 +42862,8 @@ ns.Data = {
                     ["accusativePlural"] = "магів",
                     ["canonical"] = "Маг",
                     ["genitivePlural"] = "магів",
-                    ["genitiveSingular"] = "мага"
+                    ["genitiveSingular"] = "мага",
+                    ["nominativePlural"] = "маги"
                 }
             },
             ["class.paladin"] = {
@@ -41322,7 +42876,8 @@ ns.Data = {
                     ["accusativePlural"] = "паладинів",
                     ["canonical"] = "Паладин",
                     ["genitivePlural"] = "паладинів",
-                    ["genitiveSingular"] = "паладина"
+                    ["genitiveSingular"] = "паладина",
+                    ["nominativePlural"] = "паладини"
                 }
             },
             ["class.priest"] = {
@@ -41335,7 +42890,8 @@ ns.Data = {
                     ["accusativePlural"] = "жерців",
                     ["canonical"] = "Жрець",
                     ["genitivePlural"] = "жерців",
-                    ["genitiveSingular"] = "жерця"
+                    ["genitiveSingular"] = "жерця",
+                    ["nominativePlural"] = "жерці"
                 }
             },
             ["class.rogue"] = {
@@ -41348,7 +42904,8 @@ ns.Data = {
                     ["accusativePlural"] = "розбійників",
                     ["canonical"] = "Розбійник",
                     ["genitivePlural"] = "розбійників",
-                    ["genitiveSingular"] = "розбійника"
+                    ["genitiveSingular"] = "розбійника",
+                    ["nominativePlural"] = "розбійники"
                 }
             },
             ["class.shaman"] = {
@@ -41361,7 +42918,8 @@ ns.Data = {
                     ["accusativePlural"] = "шаманів",
                     ["canonical"] = "Шаман",
                     ["genitivePlural"] = "шаманів",
-                    ["genitiveSingular"] = "шамана"
+                    ["genitiveSingular"] = "шамана",
+                    ["nominativePlural"] = "шамани"
                 }
             },
             ["class.warlock"] = {
@@ -41374,7 +42932,8 @@ ns.Data = {
                     ["accusativePlural"] = "чорнокнижників",
                     ["canonical"] = "Чорнокнижник",
                     ["genitivePlural"] = "чорнокнижників",
-                    ["genitiveSingular"] = "чорнокнижника"
+                    ["genitiveSingular"] = "чорнокнижника",
+                    ["nominativePlural"] = "чорнокнижники"
                 }
             },
             ["class.warrior"] = {
@@ -41387,7 +42946,8 @@ ns.Data = {
                     ["accusativePlural"] = "воїнів",
                     ["canonical"] = "Воїн",
                     ["genitivePlural"] = "воїнів",
-                    ["genitiveSingular"] = "воїна"
+                    ["genitiveSingular"] = "воїна",
+                    ["nominativePlural"] = "воїни"
                 }
             },
             ["creature.cyclonian"] = {
@@ -41451,6 +43011,20 @@ ns.Data = {
                     ["accusative"] = "рукавиці",
                     ["canonical"] = "рукавиці",
                     ["locative"] = "рукавицях"
+                }
+            },
+            ["game.action_bar"] = {
+                ["en"] = {
+                    ["canonical"] = "Action Bar"
+                },
+                ["uk"] = {
+                    ["accusative"] = "панель дій",
+                    ["canonical"] = "Панель дій",
+                    ["dativeSingular"] = "панелі дій",
+                    ["genitiveSingular"] = "панелі дій",
+                    ["instrumental"] = "панеллю дій",
+                    ["locative"] = "панелі дій",
+                    ["nominative"] = "панель дій"
                 }
             },
             ["game.aggro"] = {
@@ -41836,6 +43410,20 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Загроза"
+                }
+            },
+            ["game.voice_chat"] = {
+                ["en"] = {
+                    ["canonical"] = "Voice Chat"
+                },
+                ["uk"] = {
+                    ["accusative"] = "голосовий чат",
+                    ["canonical"] = "Голосовий чат",
+                    ["dativeSingular"] = "голосовому чатові",
+                    ["genitiveSingular"] = "голосового чату",
+                    ["instrumental"] = "голосовим чатом",
+                    ["locative"] = "голосовому чаті",
+                    ["nominative"] = "голосовий чат"
                 }
             },
             ["game.water"] = {
@@ -42716,7 +44304,10 @@ ns.Data = {
                     ["canonical"] = "Alchemy"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Алхімія"
+                    ["accusative"] = "алхімію",
+                    ["canonical"] = "Алхімія",
+                    ["genitiveSingular"] = "алхімії",
+                    ["instrumental"] = "алхімією"
                 }
             },
             ["profession.blacksmithing"] = {
@@ -42724,7 +44315,9 @@ ns.Data = {
                     ["canonical"] = "Blacksmithing"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Ковальство"
+                    ["canonical"] = "Ковальство",
+                    ["genitiveSingular"] = "ковальства",
+                    ["instrumental"] = "ковальством"
                 }
             },
             ["profession.cooking"] = {
@@ -42732,6 +44325,7 @@ ns.Data = {
                     ["canonical"] = "Cooking"
                 },
                 ["uk"] = {
+                    ["accusative"] = "кулінарію",
                     ["canonical"] = "Кулінарія",
                     ["genitiveSingular"] = "кулінарії",
                     ["instrumental"] = "кулінарією"
@@ -42742,7 +44336,9 @@ ns.Data = {
                     ["canonical"] = "Enchanting"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Зачарування"
+                    ["canonical"] = "Зачарування",
+                    ["genitiveSingular"] = "зачарування",
+                    ["instrumental"] = "зачаруванням"
                 }
             },
             ["profession.engineering"] = {
@@ -42750,7 +44346,10 @@ ns.Data = {
                     ["canonical"] = "Engineering"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Інженерія"
+                    ["accusative"] = "інженерію",
+                    ["canonical"] = "Інженерія",
+                    ["genitiveSingular"] = "інженерії",
+                    ["instrumental"] = "інженерією"
                 }
             },
             ["profession.first_aid"] = {
@@ -42789,7 +44388,9 @@ ns.Data = {
                     ["canonical"] = "Leatherworking"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Шкірництво"
+                    ["canonical"] = "Шкірництво",
+                    ["genitiveSingular"] = "шкірництва",
+                    ["instrumental"] = "шкірництвом"
                 }
             },
             ["profession.mining"] = {
@@ -42807,7 +44408,9 @@ ns.Data = {
                     ["canonical"] = "Skinning"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Зняття шкур"
+                    ["canonical"] = "Зняття шкур",
+                    ["genitiveSingular"] = "зняття шкур",
+                    ["instrumental"] = "зняттям шкур"
                 }
             },
             ["profession.tailoring"] = {
@@ -42815,7 +44418,9 @@ ns.Data = {
                     ["canonical"] = "Tailoring"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Кравецтво"
+                    ["canonical"] = "Кравецтво",
+                    ["genitiveSingular"] = "кравецтва",
+                    ["instrumental"] = "кравецтвом"
                 }
             },
             ["race.dwarf.base.plural"] = {
@@ -43998,7 +45603,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 268,
+        ["concepts"] = 273,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 85,
@@ -44017,7 +45622,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 89,
-        ["version"] = "ed8fb39dbdabd828d6c460697d9b3e4290cbe4573a004539f6fa397aba6af544"
+        ["version"] = "737d9eec44a0714a566ff9b112655c93801c00b6f93cd1a8925d328513f04b2f"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -52590,6 +54195,99 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Страх"
         },
+        ["ability.find_herbs"] = {
+            ["category"] = "abilities",
+            ["contextOnly"] = true,
+            ["en"] = "Find Herbs",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Пошук трав",
+                ["dativeSingular"] = "Пошукові трав",
+                ["genitiveSingular"] = "Пошуку трав",
+                ["instrumental"] = "Пошуком трав",
+                ["locative"] = "Пошуку трав",
+                ["nominative"] = "Пошук трав"
+            },
+            ["id"] = "ability.find_herbs",
+            ["provenance"] = {
+                ["context"] = "spell name",
+                ["file"] = "entries/forever/cliend_db/spell_names_uk.lua",
+                ["key"] = "Find Herbs",
+                ["line"] = 913,
+                ["sha256"] = "e59cfd49becd120305003b6662df159b9ff3b0fe907abde4b99e99d9b327fd79",
+                ["source"] = "ua-forever",
+                ["spellId"] = 2383
+            },
+            ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" },
+            ["status"] = "approved",
+            ["uk"] = "Пошук трав"
+        },
+        ["ability.find_minerals"] = {
+            ["category"] = "abilities",
+            ["contextOnly"] = true,
+            ["en"] = "Find Minerals",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Пошук мінералів",
+                ["dativeSingular"] = "Пошукові мінералів",
+                ["genitiveSingular"] = "Пошуку мінералів",
+                ["instrumental"] = "Пошуком мінералів",
+                ["locative"] = "Пошуку мінералів",
+                ["nominative"] = "Пошук мінералів"
+            },
+            ["id"] = "ability.find_minerals",
+            ["provenance"] = {
+                ["context"] = "spell name",
+                ["file"] = "entries/forever/cliend_db/spell_names_uk.lua",
+                ["key"] = "Find Minerals",
+                ["line"] = 993,
+                ["sha256"] = "e59cfd49becd120305003b6662df159b9ff3b0fe907abde4b99e99d9b327fd79",
+                ["source"] = "ua-forever",
+                ["spellId"] = 2580
+            },
+            ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" },
+            ["status"] = "approved",
+            ["uk"] = "Пошук мінералів"
+        },
+        ["ability.fireball"] = {
+            ["category"] = "abilities",
+            ["contextOnly"] = true,
+            ["en"] = "Fireball",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Вогняну кулю",
+                ["dativeSingular"] = "Вогняній кулі",
+                ["genitiveSingular"] = "Вогняної кулі",
+                ["instrumental"] = "Вогняною кулею",
+                ["locative"] = "Вогняній кулі",
+                ["nominative"] = "Вогняна куля"
+            },
+            ["id"] = "ability.fireball",
+            ["provenance"] = {
+                ["context"] = "spell name",
+                ["file"] = "entries/forever/cliend_db/spell_names_uk.lua",
+                ["key"] = "Fireball",
+                ["line"] = 102,
+                ["sha256"] = "e59cfd49becd120305003b6662df159b9ff3b0fe907abde4b99e99d9b327fd79",
+                ["source"] = "ua-forever",
+                ["spellId"] = 133
+            },
+            ["sourceRefs"] = { "ua-forever:spells:1.60.1.70959" },
+            ["status"] = "approved",
+            ["uk"] = "Вогняна куля"
+        },
         ["ability.freezing_trap"] = {
             ["category"] = "abilities",
             ["contextOnly"] = true,
@@ -53181,13 +54879,15 @@ ns.Data = {
             ["englishPlural"] = "druids",
             ["features"] = {
                 ["animacy"] = "animate",
-                ["gender"] = "masculine"
+                ["gender"] = "masculine",
+                ["pos"] = "noun"
             },
             ["forms"] = {
                 ["accusative"] = "друїда",
                 ["accusativePlural"] = "друїдів",
                 ["genitivePlural"] = "друїдів",
-                ["genitiveSingular"] = "друїда"
+                ["genitiveSingular"] = "друїда",
+                ["nominativePlural"] = "друїди"
             },
             ["id"] = "class.druid",
             ["priority"] = 100,
@@ -53217,13 +54917,15 @@ ns.Data = {
             ["englishPlural"] = "hunters",
             ["features"] = {
                 ["animacy"] = "animate",
-                ["gender"] = "masculine"
+                ["gender"] = "masculine",
+                ["pos"] = "noun"
             },
             ["forms"] = {
                 ["accusative"] = "мисливця",
                 ["accusativePlural"] = "мисливців",
                 ["genitivePlural"] = "мисливців",
-                ["genitiveSingular"] = "мисливця"
+                ["genitiveSingular"] = "мисливця",
+                ["nominativePlural"] = "мисливці"
             },
             ["id"] = "class.hunter",
             ["priority"] = 100,
@@ -53253,13 +54955,15 @@ ns.Data = {
             ["englishPlural"] = "mages",
             ["features"] = {
                 ["animacy"] = "animate",
-                ["gender"] = "masculine"
+                ["gender"] = "masculine",
+                ["pos"] = "noun"
             },
             ["forms"] = {
                 ["accusative"] = "мага",
                 ["accusativePlural"] = "магів",
                 ["genitivePlural"] = "магів",
-                ["genitiveSingular"] = "мага"
+                ["genitiveSingular"] = "мага",
+                ["nominativePlural"] = "маги"
             },
             ["id"] = "class.mage",
             ["priority"] = 100,
@@ -53289,13 +54993,15 @@ ns.Data = {
             ["englishPlural"] = "paladins",
             ["features"] = {
                 ["animacy"] = "animate",
-                ["gender"] = "masculine"
+                ["gender"] = "masculine",
+                ["pos"] = "noun"
             },
             ["forms"] = {
                 ["accusative"] = "паладина",
                 ["accusativePlural"] = "паладинів",
                 ["genitivePlural"] = "паладинів",
-                ["genitiveSingular"] = "паладина"
+                ["genitiveSingular"] = "паладина",
+                ["nominativePlural"] = "паладини"
             },
             ["id"] = "class.paladin",
             ["priority"] = 100,
@@ -53325,13 +55031,15 @@ ns.Data = {
             ["englishPlural"] = "priests",
             ["features"] = {
                 ["animacy"] = "animate",
-                ["gender"] = "masculine"
+                ["gender"] = "masculine",
+                ["pos"] = "noun"
             },
             ["forms"] = {
                 ["accusative"] = "жерця",
                 ["accusativePlural"] = "жерців",
                 ["genitivePlural"] = "жерців",
-                ["genitiveSingular"] = "жерця"
+                ["genitiveSingular"] = "жерця",
+                ["nominativePlural"] = "жерці"
             },
             ["id"] = "class.priest",
             ["priority"] = 100,
@@ -53361,13 +55069,15 @@ ns.Data = {
             ["englishPlural"] = "rogues",
             ["features"] = {
                 ["animacy"] = "animate",
-                ["gender"] = "masculine"
+                ["gender"] = "masculine",
+                ["pos"] = "noun"
             },
             ["forms"] = {
                 ["accusative"] = "розбійника",
                 ["accusativePlural"] = "розбійників",
                 ["genitivePlural"] = "розбійників",
-                ["genitiveSingular"] = "розбійника"
+                ["genitiveSingular"] = "розбійника",
+                ["nominativePlural"] = "розбійники"
             },
             ["id"] = "class.rogue",
             ["priority"] = 100,
@@ -53397,13 +55107,15 @@ ns.Data = {
             ["englishPlural"] = "shamans",
             ["features"] = {
                 ["animacy"] = "animate",
-                ["gender"] = "masculine"
+                ["gender"] = "masculine",
+                ["pos"] = "noun"
             },
             ["forms"] = {
                 ["accusative"] = "шамана",
                 ["accusativePlural"] = "шаманів",
                 ["genitivePlural"] = "шаманів",
-                ["genitiveSingular"] = "шамана"
+                ["genitiveSingular"] = "шамана",
+                ["nominativePlural"] = "шамани"
             },
             ["id"] = "class.shaman",
             ["priority"] = 100,
@@ -53433,13 +55145,15 @@ ns.Data = {
             ["englishPlural"] = "warlocks",
             ["features"] = {
                 ["animacy"] = "animate",
-                ["gender"] = "masculine"
+                ["gender"] = "masculine",
+                ["pos"] = "noun"
             },
             ["forms"] = {
                 ["accusative"] = "чорнокнижника",
                 ["accusativePlural"] = "чорнокнижників",
                 ["genitivePlural"] = "чорнокнижників",
-                ["genitiveSingular"] = "чорнокнижника"
+                ["genitiveSingular"] = "чорнокнижника",
+                ["nominativePlural"] = "чорнокнижники"
             },
             ["id"] = "class.warlock",
             ["priority"] = 100,
@@ -53469,13 +55183,15 @@ ns.Data = {
             ["englishPlural"] = "warriors",
             ["features"] = {
                 ["animacy"] = "animate",
-                ["gender"] = "masculine"
+                ["gender"] = "masculine",
+                ["pos"] = "noun"
             },
             ["forms"] = {
                 ["accusative"] = "воїна",
                 ["accusativePlural"] = "воїнів",
                 ["genitivePlural"] = "воїнів",
-                ["genitiveSingular"] = "воїна"
+                ["genitiveSingular"] = "воїна",
+                ["nominativePlural"] = "воїни"
             },
             ["id"] = "class.warrior",
             ["priority"] = 100,
@@ -53640,6 +55356,40 @@ ns.Data = {
             ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
             ["status"] = "approved",
             ["uk"] = "рукавиці"
+        },
+        ["game.action_bar"] = {
+            ["aliases"] = {
+                ["en"] = { "hotbar", "hot bar" },
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["en"] = "Action Bar",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["englishCommon"] = true,
+                ["gender"] = "feminine",
+                ["semanticClass"] = "actionBar"
+            },
+            ["forms"] = {
+                ["accusative"] = "панель дій",
+                ["dativeSingular"] = "панелі дій",
+                ["genitiveSingular"] = "панелі дій",
+                ["instrumental"] = "панеллю дій",
+                ["locative"] = "панелі дій",
+                ["nominative"] = "панель дій"
+            },
+            ["id"] = "game.action_bar",
+            ["provenance"] = {
+                ["context"] = "interface element",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Action Bar",
+                ["line"] = 3031,
+                ["sha256"] = "c900cecce15452becbd7c9bf1d0ba9d089137df5defbc98dfb9f6f9fef42c72c",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:ui.Action Bar" },
+            ["status"] = "approved",
+            ["uk"] = "Панель дій"
         },
         ["game.aggro"] = {
             ["aliases"] = {
@@ -54700,6 +56450,41 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:game.threat" },
             ["status"] = "approved",
             ["uk"] = "Загроза"
+        },
+        ["game.voice_chat"] = {
+            ["category"] = "game",
+            ["contextAliases"] = {
+                ["en"] = { "voice" },
+                ["uk"] = {}
+            },
+            ["en"] = "Voice Chat",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["contextAliasSense"] = "voiceChannel",
+                ["englishCommon"] = true,
+                ["gender"] = "masculine",
+                ["semanticClass"] = "voiceChannel"
+            },
+            ["forms"] = {
+                ["accusative"] = "голосовий чат",
+                ["dativeSingular"] = "голосовому чатові",
+                ["genitiveSingular"] = "голосового чату",
+                ["instrumental"] = "голосовим чатом",
+                ["locative"] = "голосовому чаті",
+                ["nominative"] = "голосовий чат"
+            },
+            ["id"] = "game.voice_chat",
+            ["provenance"] = {
+                ["context"] = "voice communication",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Voice Chat",
+                ["line"] = 19339,
+                ["sha256"] = "c900cecce15452becbd7c9bf1d0ba9d089137df5defbc98dfb9f6f9fef42c72c",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:ui.Voice Chat" },
+            ["status"] = "approved",
+            ["uk"] = "Голосовий чат"
         },
         ["game.water"] = {
             ["aliases"] = {
@@ -57093,7 +58878,11 @@ ns.Data = {
             ["contexts"] = { "professions" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Alchemy",
-            ["forms"] = {},
+            ["forms"] = {
+                ["accusative"] = "алхімію",
+                ["genitiveSingular"] = "алхімії",
+                ["instrumental"] = "алхімією"
+            },
             ["id"] = "profession.alchemy",
             ["priority"] = 100,
             ["provenance"] = {
@@ -57119,7 +58908,10 @@ ns.Data = {
             ["contexts"] = { "professions" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Blacksmithing",
-            ["forms"] = {},
+            ["forms"] = {
+                ["genitiveSingular"] = "ковальства",
+                ["instrumental"] = "ковальством"
+            },
             ["id"] = "profession.blacksmithing",
             ["priority"] = 100,
             ["provenance"] = {
@@ -57150,6 +58942,7 @@ ns.Data = {
                 ["gender"] = "feminine"
             },
             ["forms"] = {
+                ["accusative"] = "кулінарію",
                 ["genitiveSingular"] = "кулінарії",
                 ["instrumental"] = "кулінарією"
             },
@@ -57179,7 +58972,10 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Enchanting",
             ["englishPractitioner"] = "enchanter",
-            ["forms"] = {},
+            ["forms"] = {
+                ["genitiveSingular"] = "зачарування",
+                ["instrumental"] = "зачаруванням"
+            },
             ["id"] = "profession.enchanting",
             ["priority"] = 100,
             ["provenance"] = {
@@ -57209,7 +59005,11 @@ ns.Data = {
             ["contexts"] = { "professions" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Engineering",
-            ["forms"] = {},
+            ["forms"] = {
+                ["accusative"] = "інженерію",
+                ["genitiveSingular"] = "інженерії",
+                ["instrumental"] = "інженерією"
+            },
             ["id"] = "profession.engineering",
             ["priority"] = 100,
             ["provenance"] = {
@@ -57335,7 +59135,10 @@ ns.Data = {
             ["contexts"] = { "professions" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Leatherworking",
-            ["forms"] = {},
+            ["forms"] = {
+                ["genitiveSingular"] = "шкірництва",
+                ["instrumental"] = "шкірництвом"
+            },
             ["id"] = "profession.leatherworking",
             ["priority"] = 100,
             ["provenance"] = {
@@ -57394,7 +59197,10 @@ ns.Data = {
             ["contexts"] = { "professions" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Skinning",
-            ["forms"] = {},
+            ["forms"] = {
+                ["genitiveSingular"] = "зняття шкур",
+                ["instrumental"] = "зняттям шкур"
+            },
             ["id"] = "profession.skinning",
             ["priority"] = 100,
             ["provenance"] = {
@@ -57420,7 +59226,10 @@ ns.Data = {
             ["contexts"] = { "professions" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Tailoring",
-            ["forms"] = {},
+            ["forms"] = {
+                ["genitiveSingular"] = "кравецтва",
+                ["instrumental"] = "кравецтвом"
+            },
             ["id"] = "profession.tailoring",
             ["priority"] = 100,
             ["provenance"] = {

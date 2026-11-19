@@ -299,7 +299,15 @@ function L.choose(document, first, pos, requested, sense, compatible)
             and (not compatible or compatible(candidate)) then
             local rank=-(lexeme.preference or 0)
             if not score or rank>score then selected,score,ambiguous=candidate,rank,false
-            elseif rank==score and selected.lexeme[target]~=lexeme[target] then ambiguous=true end
+            elseif rank==score then
+                if selected.lexeme[target]~=lexeme[target] then
+                    ambiguous=true
+                elseif selected.id==candidate.id and pos=="verb" and candidate.head.aspect and form.aspect==candidate.head.aspect
+                    and selected.form.aspect and selected.form.aspect~=form.aspect and selected.form.tense~=form.tense then
+                    -- Conflicting analyses of the same surface can model the lemma as both aspects.
+                    selected=candidate
+                end
+            end
         end
     end
     -- An omitted reading can still tie or outrank the visible candidates.
