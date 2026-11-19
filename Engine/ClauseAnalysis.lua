@@ -835,6 +835,14 @@ local function coordinatedObject(document, first, limit, case, locationOnly, enu
 end
 
 local complements
+
+local function prepositionContext(tree, frame)
+    local objectClass = P.semanticClass(tree.object)
+    return tree.kind == "benefit" and objectClass
+        or tree.object and tree.object.sufficient and "supply"
+        or frame.objectPrepositionContexts and frame.objectPrepositionContexts[objectClass]
+        or frame.prepositionContext
+end
 local controlledTemporal = {
     before={en={"before"}, uk={"перш ніж"}, temporal=true},
     after={en={"after"}, uk={"після того як"}, temporal=true},
@@ -1261,11 +1269,7 @@ complements = function(document, tree, index, limit, depth)
     if tree.object and (frame.priceAdverb or frame.cashComplement) then
         tree.priceComplement, index = priceComplement(document, index, limit)
     end
-    local objectClass = P.semanticClass(tree.object)
-    local prepositionContext = tree.kind == "benefit" and objectClass
-        or tree.object and tree.object.sufficient and "supply"
-        or frame.objectPrepositionContexts and frame.objectPrepositionContexts[objectClass]
-        or frame.prepositionContext
+    local adjunctContext = prepositionContext(tree, frame)
     for _ = 1, 3 do
         local delay, delayed = P.delay(document, index, limit)
         if delay and not tree.delay then
@@ -1309,7 +1313,7 @@ complements = function(document, tree, index, limit, depth)
         local pp, last
         if not adverb or not adverb.temporalAdjunct then
             pp, last = P.preposition(document, index, limit, frame.motion, frame.displacesObject and tree.object ~= nil,
-                prepositionContext)
+                adjunctContext)
         end
         if pp then
             local entry = pp.object.entry
@@ -1552,6 +1556,12 @@ local function predicateTime(document, tree, index, limit, scheduled)
         tree.adverbs[#tree.adverbs + 1] = adverb
         return after
     end
+    local temporal, afterTemporal = P.preposition(document, index, limit)
+    if temporal and temporal.rule.temporalAdjunct and boundary(document, afterTemporal, limit) then
+        tree.prepositions = tree.prepositions or {}
+        tree.prepositions[#tree.prepositions + 1] = temporal
+        return afterTemporal
+    end
     return index
 end
 
@@ -1704,6 +1714,10 @@ local function predicate(document, tree, index, limit, depth)
     local function adjectiveAllowed(candidate)
         local frame = lexemeFrame(candidate)
         local pronoun = tree.subject and tree.subject.pronoun
+        if frame.enPredicateMarker and document.direction == "en-uk"
+            and not afterObjectMarker(document, index + 1, limit, frame.enPredicateMarker) then
+            return false
+        end
         return not frame.profileOnly and not (pronoun and pronoun.id == "someone" and frame.sense == "price")
     end
     local stateSense = personNoun(tree.subject) and "personalState"
@@ -3974,7 +3988,42 @@ local function unmarkedRelatives(document, first, limit, arcs)
     if parsed then parsed.dependency = true; return parsed end
 end
 
+local function frontedPreposition(document, first, limit, arcs, words)
+    local marker = arcs[1]
+    local noun = marker and marker.relation == "case" and marker.head > 1 and arcs[marker.head]
+    local governor = noun and noun.relation:match("^[^:]+") == "obl" and first + noun.head - 1
+    if not governor or governor > limit or noun.head <= marker.head then return nil end
+
+    local group = P.dependencyNominals(document, first, arcs, words, {}, true)[1]
+    if not group or group.first ~= first or not group.preposition or group.last >= governor then return nil end
+    local start = group.last + 1
+    if P.key(document, start, limit) == "," then start = start + 1 end
+    local core = parseWithRelatives(document, start, limit)
+    local tree = core and core.trees[1]
+    if not tree or tree.verbIndex ~= governor or not tree.verb then return nil end
+
+    -- Decode the same constituent with the governing predicate's actual valency.
+    local frame = lexemeFrame(tree.verb)
+    local adjunct, after = P.preposition(document, first, group.last, frame.motion,
+        frame.displacesObject and tree.object ~= nil, prepositionContext(tree, frame))
+    if not adjunct or after ~= group.last + 1 then return nil end
+    tree.prepositions = tree.prepositions or {}
+    table.insert(tree.prepositions, 1, adjunct)
+    core.dependency = true
+    return core
+end
+
 function A.parseDependencies(document, first, limit, arcs, words)
-    return unmarkedRelatives(document, first, limit, arcs)
-        or dependencySequence(document, first, limit, arcs, words)
+    local fronted = frontedPreposition(document, first, limit, arcs, words)
+    if fronted then return fronted end
+    local marker = arcs[1]
+    local noun = marker and marker.relation == "case" and arcs[marker.head]
+    local last = limit - first + 1
+    if noun and noun.relation == "root" and #arcs == last + 1 and words[last + 1].upos == "PUNCT" then
+        -- Terminal punctuation can make a fronted nominal look like the root of a fragment.
+        local alternate, tags = ns.Engine.UDPipe.analyzeDocumentWithTags(document, first, limit)
+        fronted = alternate and tags and frontedPreposition(document, first, limit, alternate, tags)
+        if fronted then return fronted end
+    end
+    return unmarkedRelatives(document, first, limit, arcs) or dependencySequence(document, first, limit, arcs, words)
 end

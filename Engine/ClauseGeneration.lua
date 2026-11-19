@@ -347,7 +347,7 @@ local function noun(node, english, case, article, compoundModifier, owner)
     if node.quoted then return "\"" .. value .. "\"" end
     if english and not node.possessor and not (node.nominalObject and node.nominalObject.possessor) then
         if node.article == "definite" then return "the " .. value end
-        if article and not node.article and frame and frame.englishArticle then article = frame.englishArticle end
+        if article and not node.article and frame and frame.englishArticle ~= nil then article = frame.englishArticle end
         if article == "bare-unmodified" then article = node.adjectives and #node.adjectives > 0 and "definite" or false end
         local proper = node.term and (node.term.category == "places" or node.term.features and node.term.features.proper)
         local uncountable = mass and not (frame and frame.englishCountable)

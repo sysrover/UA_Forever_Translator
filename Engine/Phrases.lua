@@ -79,6 +79,12 @@ local function acceptsCategory(category, locationOnly, sense)
     return semanticNouns[category] and (not locationOnly or category == "places")
 end
 
+local function curatedNoun(candidate)
+    local features = candidate.features
+    return {term=candidate.term, person=3, number=features.number or "singular",
+        gender=features.gender, animacy=features.animacy, sourceCase=features.case}
+end
+
 local function curated(document, first, last, requiredCase, locationOnly, agrees, sense)
     local selected
     for _, candidate in ipairs(document.spans[first] or {}) do
@@ -93,7 +99,7 @@ local function curated(document, first, last, requiredCase, locationOnly, agrees
         local caseSensitive = document.direction == "en-uk" and term.features and term.features.caseSensitiveEnglish
         if raw and (not caseSensitive or raw == term.en) and acceptsCategory(category, locationOnly, sense)
             and (not requiredCase or not candidate.features.case or requiredCase == candidate.features.case)
-            and (not agrees or agrees(candidate.features))
+            and (not agrees or agrees(curatedNoun(candidate)))
             and not contextual then
             if not selected or candidate.last > selected.last then selected = candidate
             elseif candidate.last == selected.last then
@@ -132,12 +138,6 @@ function P.mass(noun)
     local term, entry = noun.term, noun.entry
     return term and term.features and term.features.mass or entry and (entry.head.mass
         or entry.lexeme.frame and entry.lexeme.frame.mass)
-end
-
-local function curatedNoun(candidate)
-    local features = candidate.features
-    return {term=candidate.term, person=3, number=features.number or "singular",
-        gender=features.gender, animacy=features.animacy, sourceCase=features.case}
 end
 
 local function declinedCuratedNoun(document, first, case, locationOnly, agrees, sense)
@@ -719,7 +719,7 @@ local nominalModifiers = {
 -- Recover a complete, contiguous nominal group from the dependency graph.
 -- The weighted parse proposes the span and grammatical role. The phrase
 -- parser must independently consume the span before it can be rendered.
-function P.dependencyNominals(document, first, arcs, words, blocked)
+function P.dependencyNominals(document, first, arcs, words, blocked, motion)
     local children, groups = {}, {}
     for position, arc in ipairs(arcs) do
         if arc.head > 0 then
@@ -759,7 +759,7 @@ function P.dependencyNominals(document, first, arcs, words, blocked)
             end
             if usable then
                 local phrase, after
-                if adposition then phrase, after = P.preposition(document, start, finish)
+                if adposition then phrase, after = P.preposition(document, start, finish, motion)
                 else phrase, after = P.noun(document, start, finish, case) end
                 if phrase and after == finish + 1 then
                     groups[#groups + 1] = {first=start, last=finish, case=case, phrase=phrase, preposition=adposition ~= nil}
