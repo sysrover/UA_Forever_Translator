@@ -44,7 +44,8 @@ function T.scan(text)
     for _, segment in ipairs(ns.Engine.Markup.split(text)) do
         if segment.protected then
             tokens[#tokens + 1] = { first = segment.first, last = segment.last, key = "<protected>", protected = true,
-                linkKind = ns.Engine.Markup.linkKind(text:sub(segment.first, segment.last)) }
+                linkKind = ns.Engine.Markup.linkKind(text:sub(segment.first, segment.last)),
+                questReference = segment.questReference }
             if #tokens > ns.Limits.tokens then return nil end
         else
             local i = segment.first

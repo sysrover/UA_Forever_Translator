@@ -54,14 +54,15 @@ function M.isLink(text, kind)
 end
 function M.split(text)
     local segments, plain, i, length = {}, 1, 1, #text
-    local function protect(last)
+    local function protect(last, questReference)
         if plain < i then segments[#segments + 1] = { first = plain, last = i - 1 } end
-        segments[#segments + 1] = { first = i, last = last, protected = true }
+        segments[#segments + 1] = { first = i, last = last, protected = true, questReference = questReference }
         i, plain = last + 1, last + 1
     end
     while i <= length do
         local head = text:sub(i, i + 1)
         local last
+        local questReference
         if head == "|H" then
             local firstClose = findTag(text, "|h", i + 2)
             last = firstClose and findTag(text, "|h", firstClose + 2)
@@ -85,11 +86,14 @@ function M.split(text)
         elseif text:sub(i, i) == "{" then
             local close = text:find("}", i + 1, true)
             if close then last = close end
+        elseif head == "[[" then
+            local reference = text:sub(i, i + 255):match("^%[%[%d%d?%d?%] +[^%[%]|%c]+ %(%d+%)%]")
+            if reference then last, questReference = i + #reference - 1, true end
         elseif text:sub(i, i) == "<" and text:sub(i + 1, i + 1):match("[%a\128-\255]") then
             local close = text:find(">", i + 1, true)
             if close and close - i <= 64 and not text:sub(i + 1, close - 1):find("[<>|\r\n]") then last = close end
         end
-        if last then protect(last) else i = i + 1 end
+        if last then protect(last, questReference) else i = i + 1 end
     end
     if plain <= length then segments[#segments + 1] = { first = plain, last = length } end
     return segments

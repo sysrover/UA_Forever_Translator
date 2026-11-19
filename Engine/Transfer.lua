@@ -17,6 +17,9 @@ function T.render(tree, direction)
             return value .. (uk and ". Рівень: " or " L") .. s.level.raw
         end
         local function appendConditions(value)
+            if f.quests then
+                value = value .. (uk and " на завдання " or " for ") .. table.concat(f.quests, ", ")
+            end
             if s.preferred then
                 local class = G.render(uk and "{class:genitiveSingular}" or "{class}", {class=s.preferred}, direction)
                 if not class then return nil end

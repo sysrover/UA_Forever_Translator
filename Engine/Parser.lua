@@ -5,6 +5,7 @@ local category = {
     goods = "goods", goods2 = "goods", activity = "activities", address = "addresses",
     creature = "creatures", creaturePlural = "creatures", behavior = "behaviors", recipient = "recipients",
     equipment = "equipment", stat = "stats", country = "countries", nationality = "nationalities", territory = "territories",
+    craftService = "craftServices",
 }
 local requiredCase = { address = "vocative", creature = "accusative", creaturePlural = "nominative" }
 local requiredNumber = { creaturePlural = "plural" }
@@ -285,7 +286,8 @@ function P.translate(text, tokens, direction, first, last)
         local token = tokens[first]
         local bucket
         if token.protected then
-            bucket = node.leading.link
+            if token.linkKind == "item" or token.linkKind == "spell" then bucket = node.leading.item
+            else bucket = node.leading.link end
         else
             local byte = token.key:byte()
             if byte and byte >= 48 and byte <= 57 then bucket = node.leading.price end

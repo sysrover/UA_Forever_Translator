@@ -272,6 +272,19 @@ ns.Data = {
                     ["_id"] = "place.arathi_basin"
                 }
             },
+            ["arcanite"] = {
+                ["cd"] = {
+                    ["_id"] = "trade.arcanite_transmute_cooldown"
+                },
+                ["transmute"] = {
+                    ["cd"] = {
+                        ["_id"] = "trade.arcanite_transmute_cooldown"
+                    },
+                    ["cooldown"] = {
+                        ["_id"] = "trade.arcanite_transmute_cooldown"
+                    }
+                }
+            },
             ["are"] = {
                 ["available"] = {
                     ["_literal"] = {
@@ -735,6 +748,11 @@ ns.Data = {
                     ["id"] = "game.buff",
                     ["sourceRefs"] = { "ua-forever:ui.Buffs and Debuffs", "project-authored:apertium-pipeline-1" },
                     ["text"] = "підсилення"
+                }
+            },
+            ["burning"] = {
+                ["steppes"] = {
+                    ["_id"] = "place.burning_steppes"
                 }
             },
             ["but"] = {
@@ -1324,6 +1342,11 @@ ns.Data = {
                     }
                 }
             },
+            ["expert"] = {
+                ["fishing"] = {
+                    ["_id"] = "game.expert_fishing"
+                }
+            },
             ["fetch"] = {
                 ["_literal"] = {
                     ["id"] = "literal.bring",
@@ -1511,6 +1534,9 @@ ns.Data = {
             ["gnomer"] = {
                 ["_id"] = "place.gnomeregan"
             },
+            ["gnomeragan"] = {
+                ["_id"] = "place.gnomeregan"
+            },
             ["gnomeregan"] = {
                 ["_id"] = "place.gnomeregan",
                 ["_literal"] = {
@@ -1519,6 +1545,9 @@ ns.Data = {
                     ["text"] = "Гномреґан",
                     ["weak"] = false
                 }
+            },
+            ["gnomergan"] = {
+                ["_id"] = "place.gnomeregan"
             },
             ["gnomes"] = {
                 ["_morph"] = {
@@ -2449,6 +2478,16 @@ ns.Data = {
                     }
                 }
             },
+            ["mount"] = {
+                ["_id"] = "goods.mount"
+            },
+            ["mounts"] = {
+                ["_plural"] = {
+                    ["id"] = "goods.mount",
+                    ["sourceRefs"] = { "project-authored:chat-0.1" },
+                    ["text"] = "їздові тварини"
+                }
+            },
             ["move"] = {
                 ["_literal"] = {
                     ["id"] = "literal.move",
@@ -3206,6 +3245,14 @@ ns.Data = {
             ["resurrection"] = {
                 ["_id"] = "game.resurrection"
             },
+            ["ret"] = {
+                ["_byCategory"] = {
+                    ["specializations"] = "specialization.retribution"
+                }
+            },
+            ["retribution"] = {
+                ["_id"] = "specialization.retribution"
+            },
             ["return"] = {
                 ["_literal"] = {
                     ["id"] = "literal.come_back",
@@ -3304,6 +3351,11 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:place.scholomance" },
                     ["text"] = "Некроситет",
                     ["weak"] = false
+                }
+            },
+            ["searing"] = {
+                ["gorge"] = {
+                    ["_id"] = "place.searing_gorge"
                 }
             },
             ["sell"] = {
@@ -3525,6 +3577,13 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["steel"] = {
+                ["weapon"] = {
+                    ["chain"] = {
+                        ["_id"] = "goods.steel_weapon_chain"
+                    }
+                }
+            },
             ["still"] = {
                 ["_literal"] = {
                     ["id"] = "literal.still",
@@ -3556,6 +3615,11 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "магазин",
                     ["weak"] = false
+                }
+            },
+            ["stormshroud"] = {
+                ["armor"] = {
+                    ["_id"] = "goods.stormshroud_armor"
                 }
             },
             ["stormwind"] = {
@@ -3691,6 +3755,11 @@ ns.Data = {
                             ["weak"] = false
                         }
                     }
+                }
+            },
+            ["thanes"] = {
+                ["_byCategory"] = {
+                    ["places"] = "place.hall_of_thanes"
                 }
             },
             ["thank"] = {
@@ -3929,6 +3998,13 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "обмін",
                     ["weak"] = false
+                }
+            },
+            ["transmute"] = {
+                ["arcanite"] = {
+                    ["cd"] = {
+                        ["_id"] = "trade.arcanite_transmute_cooldown"
+                    }
                 }
             },
             ["trash"] = {
@@ -5154,6 +5230,26 @@ ns.Data = {
                     }
                 }
             },
+            ["випалена"] = {
+                ["ущелина"] = {
+                    ["_id"] = "place.searing_gorge"
+                }
+            },
+            ["випаленої"] = {
+                ["ущелини"] = {
+                    ["_id"] = "place.searing_gorge"
+                }
+            },
+            ["випалену"] = {
+                ["ущелину"] = {
+                    ["_id"] = "place.searing_gorge"
+                }
+            },
+            ["випаленій"] = {
+                ["ущелині"] = {
+                    ["_id"] = "place.searing_gorge"
+                }
+            },
             ["вирушай"] = {
                 ["_literal"] = {
                     ["id"] = "literal.go",
@@ -5410,6 +5506,9 @@ ns.Data = {
                     ["text"] = "from",
                     ["weak"] = true
                 }
+            },
+            ["відплата"] = {
+                ["_id"] = "specialization.retribution"
             },
             ["він"] = {
                 ["_literal"] = {
@@ -5693,6 +5792,9 @@ ns.Data = {
                     ["text"] = "Gnomeregan",
                     ["weak"] = false
                 }
+            },
+            ["гномреґані"] = {
+                ["_id"] = "place.gnomeregan"
             },
             ["гному"] = {
                 ["_morph"] = {
@@ -6446,6 +6548,11 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["експертне"] = {
+                ["рибальство"] = {
+                    ["_id"] = "game.expert_fishing"
+                }
+            },
             ["ельвиннський"] = {
                 ["ліс"] = {
                     ["_id"] = "place.elwynn_forest",
@@ -7069,6 +7176,11 @@ ns.Data = {
                 ["_id"] = "slang.combat.cd",
                 ["рейду"] = {
                     ["_id"] = "slang.groups.raid-lockout"
+                },
+                ["трансмутації"] = {
+                    ["арканіту"] = {
+                        ["_id"] = "trade.arcanite_transmute_cooldown"
+                    }
                 }
             },
             ["керівники"] = {
@@ -8470,6 +8582,21 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["обладунком"] = {
+                ["бурепокрову"] = {
+                    ["_id"] = "goods.stormshroud_armor"
+                }
+            },
+            ["обладунку"] = {
+                ["бурепокрову"] = {
+                    ["_id"] = "goods.stormshroud_armor"
+                }
+            },
+            ["обладунок"] = {
+                ["бурепокрову"] = {
+                    ["_id"] = "goods.stormshroud_armor"
+                }
+            },
             ["обмеження"] = {
                 ["на"] = {
                     ["повторне"] = {
@@ -8878,6 +9005,21 @@ ns.Data = {
                         ["text"] = "Molten Core",
                         ["weak"] = false
                     }
+                }
+            },
+            ["палаючий"] = {
+                ["степ"] = {
+                    ["_id"] = "place.burning_steppes"
+                }
+            },
+            ["палаючого"] = {
+                ["степу"] = {
+                    ["_id"] = "place.burning_steppes"
+                }
+            },
+            ["палаючому"] = {
+                ["степу"] = {
+                    ["_id"] = "place.burning_steppes"
                 }
             },
             ["патруль"] = {
@@ -10151,6 +10293,24 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["сталевий"] = {
+                ["ланцюг"] = {
+                    ["для"] = {
+                        ["зброї"] = {
+                            ["_id"] = "goods.steel_weapon_chain"
+                        }
+                    }
+                }
+            },
+            ["сталевого"] = {
+                ["ланцюга"] = {
+                    ["для"] = {
+                        ["зброї"] = {
+                            ["_id"] = "goods.steel_weapon_chain"
+                        }
+                    }
+                }
+            },
             ["стає"] = {
                 ["персональним"] = {
                     ["при"] = {
@@ -10837,7 +10997,12 @@ ns.Data = {
             },
             ["час"] = {
                 ["відновлення"] = {
-                    ["_id"] = "slang.combat.cd"
+                    ["_id"] = "slang.combat.cd",
+                    ["трансмутації"] = {
+                        ["арканіту"] = {
+                            ["_id"] = "trade.arcanite_transmute_cooldown"
+                        }
+                    }
                 }
             },
             ["чейнпул"] = {
@@ -11305,6 +11470,31 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "food",
                     ["weak"] = false
+                }
+            },
+            ["їздова"] = {
+                ["тварина"] = {
+                    ["_id"] = "goods.mount"
+                }
+            },
+            ["їздових"] = {
+                ["тварин"] = {
+                    ["_id"] = "goods.mount"
+                }
+            },
+            ["їздової"] = {
+                ["тварини"] = {
+                    ["_id"] = "goods.mount"
+                }
+            },
+            ["їздову"] = {
+                ["тварину"] = {
+                    ["_id"] = "goods.mount"
+                }
+            },
+            ["їздові"] = {
+                ["тварини"] = {
+                    ["_id"] = "goods.mount"
                 }
             },
             ["їй"] = {
@@ -12130,6 +12320,11 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Потрібен DPS"
             },
+            ["well"] = {
+                ["id"] = "well_discourse",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Ну"
+            },
             ["will you just stand around here"] = {
                 ["id"] = "stand_around_question",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -12576,6 +12771,11 @@ ns.Data = {
                 ["id"] = "oom",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Out of mana"
+            },
+            ["ну"] = {
+                ["id"] = "well_discourse",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Well"
             },
             ["ні"] = {
                 ["id"] = "no",
@@ -13745,6 +13945,46 @@ ns.Data = {
                         }
                     }
                 },
+                ["arcanite"] = {
+                    ["cd"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "trade.arcanite_transmute_cooldown",
+                                ["lemma"] = "Arcanite transmute cooldown",
+                                ["pos"] = "noun",
+                                ["sense"] = "trade.arcanite_transmute_cooldown",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["transmute"] = {
+                        ["cd"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "trade.arcanite_transmute_cooldown",
+                                    ["lemma"] = "Arcanite transmute cooldown",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "trade.arcanite_transmute_cooldown",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["cooldown"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "trade.arcanite_transmute_cooldown",
+                                    ["lemma"] = "Arcanite transmute cooldown",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "trade.arcanite_transmute_cooldown",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["area"] = {
                     ["of"] = {
                         ["effect"] = {
@@ -14513,6 +14753,23 @@ ns.Data = {
                         }
                     }
                 },
+                ["burning"] = {
+                    ["steppes"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine"
+                                },
+                                ["id"] = "place.burning_steppes",
+                                ["lemma"] = "Burning Steppes",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.burning_steppes",
+                                ["sourceRefs"] = { "ua-forever:place.burning_steppes" }
+                            }
+                        }
+                    }
+                },
                 ["bwl"] = {
                     ["_analyses"] = {
                         {
@@ -15200,6 +15457,24 @@ ns.Data = {
                         }
                     }
                 },
+                ["expert"] = {
+                    ["fishing"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "neuter",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "game.expert_fishing",
+                                ["lemma"] = "Expert Fishing",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.expert_fishing",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["first"] = {
                     ["aid"] = {
                         ["_analyses"] = {
@@ -15444,7 +15719,37 @@ ns.Data = {
                         }
                     }
                 },
+                ["gnomeragan"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Gnomeregan",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        }
+                    }
+                },
                 ["gnomeregan"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Gnomeregan",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        }
+                    }
+                },
+                ["gnomergan"] = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
@@ -16862,6 +17167,37 @@ ns.Data = {
                         }
                     }
                 },
+                ["mount"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "goods.mount",
+                            ["lemma"] = "mount",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.mount",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["mounts"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "feminine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "goods.mount",
+                            ["lemma"] = "mount",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.mount",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["mp"] = {
                     ["_analyses"] = {
                         {
@@ -18007,6 +18343,36 @@ ns.Data = {
                         }
                     }
                 },
+                ["ret"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["gender"] = "feminine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "specialization.retribution",
+                            ["lemma"] = "Retribution",
+                            ["pos"] = "noun",
+                            ["sense"] = "specialization.retribution",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["retribution"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["gender"] = "feminine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "specialization.retribution",
+                            ["lemma"] = "Retribution",
+                            ["pos"] = "noun",
+                            ["sense"] = "specialization.retribution",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["rez"] = {
                     ["_analyses"] = {
                         {
@@ -18239,6 +18605,23 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.scholomance",
                             ["sourceRefs"] = { "ua-forever:place.scholomance" }
+                        }
+                    }
+                },
+                ["searing"] = {
+                    ["gorge"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "place.searing_gorge",
+                                ["lemma"] = "Searing Gorge",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.searing_gorge",
+                                ["sourceRefs"] = { "ua-forever:place.searing_gorge" }
+                            }
                         }
                     }
                 },
@@ -18532,6 +18915,25 @@ ns.Data = {
                         }
                     }
                 },
+                ["steel"] = {
+                    ["weapon"] = {
+                        ["chain"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "masculine"
+                                    },
+                                    ["id"] = "goods.steel_weapon_chain",
+                                    ["lemma"] = "Steel Weapon Chain",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.steel_weapon_chain",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["stockade"] = {
                     ["_analyses"] = {
                         {
@@ -18565,6 +18967,23 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.the_stockade",
                             ["sourceRefs"] = { "ua-forever:place.the_stockade" }
+                        }
+                    }
+                },
+                ["stormshroud"] = {
+                    ["armor"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine"
+                                },
+                                ["id"] = "goods.stormshroud_armor",
+                                ["lemma"] = "Stormshroud Armor",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.stormshroud_armor",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
                         }
                     }
                 },
@@ -18815,6 +19234,21 @@ ns.Data = {
                         }
                     }
                 },
+                ["thanes"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "place.hall_of_thanes",
+                            ["lemma"] = "The Hall of Thanes",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.hall_of_thanes",
+                            ["sourceRefs"] = { "ua-forever:place.hall_of_thanes", "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["the"] = {
                     ["barrens"] = {
                         ["_analyses"] = {
@@ -18959,6 +19393,22 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.thunder_bluff",
                                 ["sourceRefs"] = { "ua-forever:place.thunder_bluff" }
+                            }
+                        }
+                    }
+                },
+                ["transmute"] = {
+                    ["arcanite"] = {
+                        ["cd"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "trade.arcanite_transmute_cooldown",
+                                    ["lemma"] = "Arcanite transmute cooldown",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "trade.arcanite_transmute_cooldown",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
                             }
                         }
                     }
@@ -20623,6 +21073,80 @@ ns.Data = {
                         }
                     }
                 },
+                ["випалена"] = {
+                    ["ущелина"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "place.searing_gorge",
+                                ["lemma"] = "Випалена ущелина",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.searing_gorge",
+                                ["sourceRefs"] = { "ua-forever:place.searing_gorge" }
+                            }
+                        }
+                    }
+                },
+                ["випаленої"] = {
+                    ["ущелини"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.searing_gorge",
+                                ["lemma"] = "Випалена ущелина",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.searing_gorge",
+                                ["sourceRefs"] = { "ua-forever:place.searing_gorge" }
+                            }
+                        }
+                    }
+                },
+                ["випалену"] = {
+                    ["ущелину"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.searing_gorge",
+                                ["lemma"] = "Випалена ущелина",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.searing_gorge",
+                                ["sourceRefs"] = { "ua-forever:place.searing_gorge" }
+                            }
+                        }
+                    }
+                },
+                ["випаленій"] = {
+                    ["ущелині"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.searing_gorge",
+                                ["lemma"] = "Випалена ущелина",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.searing_gorge",
+                                ["sourceRefs"] = { "ua-forever:place.searing_gorge" }
+                            }
+                        }
+                    }
+                },
                 ["витривалості"] = {
                     ["_analyses"] = {
                         {
@@ -20848,6 +21372,34 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.combat.wpvp",
                             ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["відплата"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["gender"] = "feminine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "specialization.retribution",
+                            ["lemma"] = "Відплата",
+                            ["pos"] = "noun",
+                            ["sense"] = "specialization.retribution",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "nominative",
+                                ["gender"] = "feminine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "specialization.retribution",
+                            ["lemma"] = "Відплата",
+                            ["pos"] = "noun",
+                            ["sense"] = "specialization.retribution",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -21566,6 +22118,19 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.gnomeregan",
                             ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Гномреґан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
                         }
                     }
                 },
@@ -21575,6 +22140,23 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.gnomeregan",
+                            ["lemma"] = "Гномреґан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.gnomeregan",
+                            ["sourceRefs"] = { "ua-forever:place.gnomeregan" }
+                        }
+                    }
+                },
+                ["гномреґані"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
                                 ["gender"] = "masculine",
                                 ["number"] = "singular"
                             },
@@ -23170,6 +23752,24 @@ ns.Data = {
                         }
                     }
                 },
+                ["експертне"] = {
+                    ["рибальство"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "neuter",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "game.expert_fishing",
+                                ["lemma"] = "Експертне рибальство",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.expert_fishing",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["ельвиннський"] = {
                     ["ліс"] = {
                         ["_analyses"] = {
@@ -24116,6 +24716,20 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "slang.groups.raid-lockout",
                                 ["sourceRefs"] = { "wow-community:wiki" }
+                            }
+                        }
+                    },
+                    ["трансмутації"] = {
+                        ["арканіту"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "trade.arcanite_transmute_cooldown",
+                                    ["lemma"] = "КД трансмутації арканіту",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "trade.arcanite_transmute_cooldown",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
                             }
                         }
                     }
@@ -26226,6 +26840,74 @@ ns.Data = {
                         }
                     }
                 },
+                ["обладунком"] = {
+                    ["бурепокрову"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.stormshroud_armor",
+                                ["lemma"] = "Обладунок бурепокрову",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.stormshroud_armor",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["обладунку"] = {
+                    ["бурепокрову"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.stormshroud_armor",
+                                ["lemma"] = "Обладунок бурепокрову",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.stormshroud_armor",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["обладунок"] = {
+                    ["бурепокрову"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine"
+                                },
+                                ["id"] = "goods.stormshroud_armor",
+                                ["lemma"] = "Обладунок бурепокрову",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.stormshroud_armor",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.stormshroud_armor",
+                                ["lemma"] = "Обладунок бурепокрову",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.stormshroud_armor",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["обмеження"] = {
                     ["на"] = {
                         ["повторне"] = {
@@ -27230,6 +27912,74 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.molten_core",
                                 ["sourceRefs"] = { "ua-forever:place.molten_core" }
+                            }
+                        }
+                    }
+                },
+                ["палаючий"] = {
+                    ["степ"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine"
+                                },
+                                ["id"] = "place.burning_steppes",
+                                ["lemma"] = "Палаючий степ",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.burning_steppes",
+                                ["sourceRefs"] = { "ua-forever:place.burning_steppes" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.burning_steppes",
+                                ["lemma"] = "Палаючий степ",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.burning_steppes",
+                                ["sourceRefs"] = { "ua-forever:place.burning_steppes" }
+                            }
+                        }
+                    }
+                },
+                ["палаючого"] = {
+                    ["степу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.burning_steppes",
+                                ["lemma"] = "Палаючий степ",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.burning_steppes",
+                                ["sourceRefs"] = { "ua-forever:place.burning_steppes" }
+                            }
+                        }
+                    }
+                },
+                ["палаючому"] = {
+                    ["степу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.burning_steppes",
+                                ["lemma"] = "Палаючий степ",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.burning_steppes",
+                                ["sourceRefs"] = { "ua-forever:place.burning_steppes" }
                             }
                         }
                     }
@@ -29465,6 +30215,63 @@ ns.Data = {
                         }
                     }
                 },
+                ["сталевий"] = {
+                    ["ланцюг"] = {
+                        ["для"] = {
+                            ["зброї"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["gender"] = "masculine"
+                                        },
+                                        ["id"] = "goods.steel_weapon_chain",
+                                        ["lemma"] = "Сталевий ланцюг для зброї",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "goods.steel_weapon_chain",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "accusative",
+                                            ["gender"] = "masculine",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "goods.steel_weapon_chain",
+                                        ["lemma"] = "Сталевий ланцюг для зброї",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "goods.steel_weapon_chain",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["сталевого"] = {
+                    ["ланцюга"] = {
+                        ["для"] = {
+                            ["зброї"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "genitive",
+                                            ["gender"] = "masculine",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "goods.steel_weapon_chain",
+                                        ["lemma"] = "Сталевий ланцюг для зброї",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "goods.steel_weapon_chain",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["стає"] = {
                     ["персональним"] = {
                         ["при"] = {
@@ -30548,6 +31355,20 @@ ns.Data = {
                                 ["sense"] = "slang.combat.cd",
                                 ["sourceRefs"] = { "wow-community:forum" }
                             }
+                        },
+                        ["трансмутації"] = {
+                            ["арканіту"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {},
+                                        ["id"] = "trade.arcanite_transmute_cooldown",
+                                        ["lemma"] = "КД трансмутації арканіту",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "trade.arcanite_transmute_cooldown",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -31074,6 +31895,99 @@ ns.Data = {
                         }
                     }
                 },
+                ["їздова"] = {
+                    ["тварина"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "goods.mount",
+                                ["lemma"] = "їздова тварина",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mount",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["їздових"] = {
+                    ["тварин"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.mount",
+                                ["lemma"] = "їздова тварина",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mount",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["їздової"] = {
+                    ["тварини"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.mount",
+                                ["lemma"] = "їздова тварина",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mount",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["їздову"] = {
+                    ["тварину"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.mount",
+                                ["lemma"] = "їздова тварина",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mount",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["їздові"] = {
+                    ["тварини"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.mount",
+                                ["lemma"] = "їздова тварина",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mount",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["їй"] = {
                     ["_analyses"] = {
                         {
@@ -31381,6 +32295,14 @@ ns.Data = {
                     ["canonical"] = "Підземелля"
                 }
             },
+            ["game.expert_fishing"] = {
+                ["en"] = {
+                    ["canonical"] = "Expert Fishing"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Експертне рибальство"
+                }
+            },
             ["game.food"] = {
                 ["en"] = {
                     ["canonical"] = "Food"
@@ -31654,6 +32576,40 @@ ns.Data = {
                     ["nominativePlural"] = "сумки з місячної тканини"
                 }
             },
+            ["goods.mount"] = {
+                ["en"] = {
+                    ["canonical"] = "mount",
+                    ["plural"] = "mounts"
+                },
+                ["uk"] = {
+                    ["accusative"] = "їздову тварину",
+                    ["canonical"] = "їздова тварина",
+                    ["genitivePlural"] = "їздових тварин",
+                    ["genitiveSingular"] = "їздової тварини",
+                    ["nominativePlural"] = "їздові тварини"
+                }
+            },
+            ["goods.steel_weapon_chain"] = {
+                ["en"] = {
+                    ["canonical"] = "Steel Weapon Chain"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Сталевий ланцюг для зброї",
+                    ["canonical"] = "Сталевий ланцюг для зброї",
+                    ["genitiveSingular"] = "Сталевого ланцюга для зброї"
+                }
+            },
+            ["goods.stormshroud_armor"] = {
+                ["en"] = {
+                    ["canonical"] = "Stormshroud Armor"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Обладунок бурепокрову",
+                    ["canonical"] = "Обладунок бурепокрову",
+                    ["genitiveSingular"] = "Обладунку бурепокрову",
+                    ["instrumental"] = "Обладунком бурепокрову"
+                }
+            },
             ["goods.sword"] = {
                 ["en"] = {
                     ["canonical"] = "sword",
@@ -31735,6 +32691,17 @@ ns.Data = {
                     ["canonical"] = "лігво Чорного Крила"
                 }
             },
+            ["place.burning_steppes"] = {
+                ["en"] = {
+                    ["canonical"] = "Burning Steppes"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Палаючий степ",
+                    ["canonical"] = "Палаючий степ",
+                    ["genitiveSingular"] = "Палаючого степу",
+                    ["locative"] = "Палаючому степу"
+                }
+            },
             ["place.darnassus"] = {
                 ["en"] = {
                     ["canonical"] = "Darnassus"
@@ -31803,8 +32770,10 @@ ns.Data = {
                     ["canonical"] = "Gnomeregan"
                 },
                 ["uk"] = {
+                    ["accusative"] = "Гномреґан",
                     ["canonical"] = "Гномреґан",
-                    ["genitiveSingular"] = "Гномреґана"
+                    ["genitiveSingular"] = "Гномреґана",
+                    ["locative"] = "Гномреґані"
                 }
             },
             ["place.hall_of_thanes"] = {
@@ -31949,6 +32918,17 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Некроситет"
+                }
+            },
+            ["place.searing_gorge"] = {
+                ["en"] = {
+                    ["canonical"] = "Searing Gorge"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Випалену ущелину",
+                    ["canonical"] = "Випалена ущелина",
+                    ["genitiveSingular"] = "Випаленої ущелини",
+                    ["locative"] = "Випаленій ущелині"
                 }
             },
             ["place.shadowfang_keep"] = {
@@ -33324,6 +34304,15 @@ ns.Data = {
                     ["canonical"] = "Твої матеріали"
                 }
             },
+            ["specialization.retribution"] = {
+                ["en"] = {
+                    ["canonical"] = "Retribution"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Відплата",
+                    ["nominative"] = "Відплата"
+                }
+            },
             ["stat.agility"] = {
                 ["en"] = {
                     ["canonical"] = "agility"
@@ -33368,15 +34357,23 @@ ns.Data = {
                     ["canonical"] = "Сила",
                     ["genitivePlural"] = "сили"
                 }
+            },
+            ["trade.arcanite_transmute_cooldown"] = {
+                ["en"] = {
+                    ["canonical"] = "Arcanite transmute cooldown"
+                },
+                ["uk"] = {
+                    ["canonical"] = "КД трансмутації арканіту"
+                }
             }
         },
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 212,
+        ["concepts"] = 220,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
-        ["phraseFamilies"] = 77,
+        ["phraseFamilies"] = 78,
         ["source"] = {
             ["approvalMeaning"] = "Editorially reviewed for this addon; not a claim of individual user approval.",
             ["catalogBuild"] = "1.60.1.70938",
@@ -33391,11 +34388,26 @@ ns.Data = {
             ["targetClient"] = "1.60.1.70959",
             ["version"] = "1.0.3"
         },
-        ["templateFamilies"] = 87,
-        ["version"] = "dc73df7df13f8c44be6d846b802e3a8b02d72132ff7fff933f3635af6f80534f"
+        ["templateFamilies"] = 89,
+        ["version"] = "6d2ed4472a393777609dde0ec16115e9a5254b1aa75e8609de990f678322050d"
     },
     ["rules"] = {
         ["en-uk"] = {
+            ["leading"] = {
+                ["item"] = {
+                    ["matches"] = {
+                        {
+                            ["id"] = "trade.sell",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 90,
+                            ["output"] = "Продам {item}.",
+                            ["pattern"] = { "{item}", "wts" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                }
+            },
             ["next"] = {
                 ["are"] = {
                     ["next"] = {
@@ -33408,7 +34420,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 534,
+                                                    ["order"] = 542,
                                                     ["output"] = "Підеш зі мною до {place:genitiveSingular}?",
                                                     ["pattern"] = { "{place}", "with", "me" },
                                                     ["priority"] = 100,
@@ -33425,7 +34437,7 @@ ns.Data = {
                                                                 {
                                                                     ["id"] = "travel.join_question",
                                                                     ["intent"] = "invitation",
-                                                                    ["order"] = 533,
+                                                                    ["order"] = 541,
                                                                     ["output"] = "Підеш зі мною до {place:genitiveSingular}?",
                                                                     ["pattern"] = { "{place}" },
                                                                     ["priority"] = 100,
@@ -33450,7 +34462,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.return",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 141,
+                                    ["order"] = 149,
                                     ["output"] = "Повернуся за {time}.",
                                     ["pattern"] = { "{time}" },
                                     ["priority"] = 100,
@@ -33459,7 +34471,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.return",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 143,
+                                    ["order"] = 151,
                                     ["output"] = "Повернуся за {time}.",
                                     ["pattern"] = { "{time}" },
                                     ["priority"] = 100,
@@ -33474,7 +34486,7 @@ ns.Data = {
                         {
                             ["id"] = "social.return",
                             ["intent"] = "social_reply",
-                            ["order"] = 142,
+                            ["order"] = 150,
                             ["output"] = "Повернуся за {time}.",
                             ["pattern"] = { "{time}" },
                             ["priority"] = 100,
@@ -33489,7 +34501,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring",
                                     ["intent"] = "errand",
-                                    ["order"] = 326,
+                                    ["order"] = 334,
                                     ["output"] = "Принеси мені {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -33498,7 +34510,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 334,
+                                    ["order"] = 342,
                                     ["output"] = "Принеси мені {goods:object} або {goods2:object}.",
                                     ["pattern"] = { "{goods}", "or", "{goods2}" },
                                     ["priority"] = 100,
@@ -33507,7 +34519,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 347,
+                                    ["order"] = 355,
                                     ["output"] = "Принеси мені {goods:object} і {goods2:object}.",
                                     ["pattern"] = { "{goods}", "and", "{goods2}" },
                                     ["priority"] = 100,
@@ -33516,7 +34528,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 365,
+                                    ["order"] = 373,
                                     ["output"] = "Принеси мені {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -33529,7 +34541,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us",
                                     ["intent"] = "errand",
-                                    ["order"] = 456,
+                                    ["order"] = 464,
                                     ["output"] = "Принеси нам {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -33538,7 +34550,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 460,
+                                    ["order"] = 468,
                                     ["output"] = "Принеси нам {goods:object} або {goods2:object}.",
                                     ["pattern"] = { "{goods}", "or", "{goods2}" },
                                     ["priority"] = 100,
@@ -33547,7 +34559,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 466,
+                                    ["order"] = 474,
                                     ["output"] = "Принеси нам {goods:object} і {goods2:object}.",
                                     ["pattern"] = { "{goods}", "and", "{goods2}" },
                                     ["priority"] = 100,
@@ -33564,7 +34576,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.buy",
                                     ["intent"] = "errand",
-                                    ["order"] = 373,
+                                    ["order"] = 381,
                                     ["output"] = "Купи мені {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -33573,7 +34585,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.buy_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 375,
+                                    ["order"] = 383,
                                     ["output"] = "Купи мені {goods:object} або {goods2:object}.",
                                     ["pattern"] = { "{goods}", "or", "{goods2}" },
                                     ["priority"] = 100,
@@ -33582,7 +34594,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.buy_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 378,
+                                    ["order"] = 386,
                                     ["output"] = "Купи мені {goods:object} і {goods2:object}.",
                                     ["pattern"] = { "{goods}", "and", "{goods2}" },
                                     ["priority"] = 100,
@@ -33591,7 +34603,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.buy_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 382,
+                                    ["order"] = 390,
                                     ["output"] = "Купи мені {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -33604,9 +34616,18 @@ ns.Data = {
                 ["buying"] = {
                     ["matches"] = {
                         {
+                            ["id"] = "trade.buy_crafting_service",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 105,
+                            ["output"] = "Куплю {craftService}.",
+                            ["pattern"] = { "{craftService}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
                             ["id"] = "trade.buy",
                             ["intent"] = "trade_buy",
-                            ["order"] = 100,
+                            ["order"] = 108,
                             ["output"] = "Куплю {item}.",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -33615,7 +34636,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 652,
+                            ["order"] = 660,
                             ["output"] = "Куплю {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "{price}", "each" },
                             ["priority"] = 100,
@@ -33624,7 +34645,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 653,
+                            ["order"] = 661,
                             ["output"] = "Куплю {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "{price}", "a", "piece" },
                             ["priority"] = 100,
@@ -33633,7 +34654,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 654,
+                            ["order"] = 662,
                             ["output"] = "Куплю {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "{price}", "per", "item" },
                             ["priority"] = 100,
@@ -33642,7 +34663,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 655,
+                            ["order"] = 663,
                             ["output"] = "Куплю {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "for", "{price}", "each" },
                             ["priority"] = 100,
@@ -33651,7 +34672,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 656,
+                            ["order"] = 664,
                             ["output"] = "Куплю {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "for", "{price}", "a", "piece" },
                             ["priority"] = 100,
@@ -33660,7 +34681,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 657,
+                            ["order"] = 665,
                             ["output"] = "Куплю {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "for", "{price}", "per", "item" },
                             ["priority"] = 100,
@@ -33675,7 +34696,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.recipe",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 133,
+                                    ["order"] = 141,
                                     ["output"] = "Можу виготовити {item}.",
                                     ["pattern"] = { "{item}" },
                                     ["priority"] = 100,
@@ -33684,7 +34705,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.recipe",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 134,
+                                    ["order"] = 142,
                                     ["output"] = "Можу виготовити {item}.",
                                     ["pattern"] = { "{item}" },
                                     ["priority"] = 100,
@@ -33693,7 +34714,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.craft_price",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 213,
+                                    ["order"] = 221,
                                     ["output"] = "Можу виготовити {item} за {price}.",
                                     ["pattern"] = { "{item}", "for", "{price}" },
                                     ["priority"] = 100,
@@ -33702,7 +34723,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.craft_price",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 214,
+                                    ["order"] = 222,
                                     ["output"] = "Можу виготовити {item} за {price}.",
                                     ["pattern"] = { "{item}", "for", "{price}" },
                                     ["priority"] = 100,
@@ -33719,7 +34740,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "errand.ask",
                                                     ["intent"] = "errand",
-                                                    ["order"] = 484,
+                                                    ["order"] = 492,
                                                     ["output"] = "Можеш принести мені {goods:object}?",
                                                     ["pattern"] = { "{goods}" },
                                                     ["priority"] = 100,
@@ -33740,7 +34761,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.come",
                                     ["intent"] = "travel",
-                                    ["order"] = 278,
+                                    ["order"] = 286,
                                     ["output"] = "Приходь до {place:genitiveSingular}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -33761,7 +34782,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "errand.ask",
                                                     ["intent"] = "errand",
-                                                    ["order"] = 485,
+                                                    ["order"] = 493,
                                                     ["output"] = "Можеш принести мені {goods:object}?",
                                                     ["pattern"] = { "{goods}" },
                                                     ["priority"] = 100,
@@ -33786,7 +34807,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "errand.no_bring",
                                                     ["intent"] = "errand",
-                                                    ["order"] = 475,
+                                                    ["order"] = 483,
                                                     ["output"] = "Не принось мені {goods:object}.",
                                                     ["pattern"] = { "{goods}" },
                                                     ["priority"] = 100,
@@ -33795,7 +34816,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "errand.no_bring_or",
                                                     ["intent"] = "errand",
-                                                    ["order"] = 479,
+                                                    ["order"] = 487,
                                                     ["output"] = "Не принось мені {goods:object} або {goods2:object}.",
                                                     ["pattern"] = { "{goods}", "or", "{goods2}" },
                                                     ["priority"] = 100,
@@ -33812,7 +34833,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.no_go",
                                                     ["intent"] = "travel",
-                                                    ["order"] = 304,
+                                                    ["order"] = 312,
                                                     ["output"] = "Не йди до {place:genitiveSingular}.",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -33829,7 +34850,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "combat.no_role",
                                                     ["intent"] = "combat_call",
-                                                    ["order"] = 164,
+                                                    ["order"] = 172,
                                                     ["output"] = "Не починайте бій без {role:genitiveSingular}.",
                                                     ["pattern"] = { "{role}" },
                                                     ["priority"] = 100,
@@ -33838,7 +34859,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "combat.no_role",
                                                     ["intent"] = "combat_call",
-                                                    ["order"] = 166,
+                                                    ["order"] = 174,
                                                     ["output"] = "Не починайте бій без {role:genitiveSingular}.",
                                                     ["pattern"] = { "{role}" },
                                                     ["priority"] = 100,
@@ -33847,7 +34868,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "combat.no_class",
                                                     ["intent"] = "combat_call",
-                                                    ["order"] = 241,
+                                                    ["order"] = 249,
                                                     ["output"] = "Не починайте бій без {class:genitiveSingular}.",
                                                     ["pattern"] = { "{class}" },
                                                     ["priority"] = 100,
@@ -33856,7 +34877,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "combat.no_class",
                                                     ["intent"] = "combat_call",
-                                                    ["order"] = 243,
+                                                    ["order"] = 251,
                                                     ["output"] = "Не починайте бій без {class:genitiveSingular}.",
                                                     ["pattern"] = { "{class}" },
                                                     ["priority"] = 100,
@@ -33879,7 +34900,7 @@ ns.Data = {
                                         {
                                             ["id"] = "errand.no_bring",
                                             ["intent"] = "errand",
-                                            ["order"] = 474,
+                                            ["order"] = 482,
                                             ["output"] = "Не принось мені {goods:object}.",
                                             ["pattern"] = { "{goods}" },
                                             ["priority"] = 100,
@@ -33888,7 +34909,7 @@ ns.Data = {
                                         {
                                             ["id"] = "errand.no_bring_or",
                                             ["intent"] = "errand",
-                                            ["order"] = 478,
+                                            ["order"] = 486,
                                             ["output"] = "Не принось мені {goods:object} або {goods2:object}.",
                                             ["pattern"] = { "{goods}", "or", "{goods2}" },
                                             ["priority"] = 100,
@@ -33905,7 +34926,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.no_go",
                                             ["intent"] = "travel",
-                                            ["order"] = 305,
+                                            ["order"] = 313,
                                             ["output"] = "Не йди до {place:genitiveSingular}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -33922,7 +34943,7 @@ ns.Data = {
                                         {
                                             ["id"] = "combat.no_role",
                                             ["intent"] = "combat_call",
-                                            ["order"] = 165,
+                                            ["order"] = 173,
                                             ["output"] = "Не починайте бій без {role:genitiveSingular}.",
                                             ["pattern"] = { "{role}" },
                                             ["priority"] = 100,
@@ -33931,7 +34952,7 @@ ns.Data = {
                                         {
                                             ["id"] = "combat.no_class",
                                             ["intent"] = "combat_call",
-                                            ["order"] = 242,
+                                            ["order"] = 250,
                                             ["output"] = "Не починайте бій без {class:genitiveSingular}.",
                                             ["pattern"] = { "{class}" },
                                             ["priority"] = 100,
@@ -33950,7 +34971,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring",
                                     ["intent"] = "errand",
-                                    ["order"] = 328,
+                                    ["order"] = 336,
                                     ["output"] = "Принеси мені {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -33959,7 +34980,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 336,
+                                    ["order"] = 344,
                                     ["output"] = "Принеси мені {goods:object} або {goods2:object}.",
                                     ["pattern"] = { "{goods}", "or", "{goods2}" },
                                     ["priority"] = 100,
@@ -33968,7 +34989,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 349,
+                                    ["order"] = 357,
                                     ["output"] = "Принеси мені {goods:object} і {goods2:object}.",
                                     ["pattern"] = { "{goods}", "and", "{goods2}" },
                                     ["priority"] = 100,
@@ -33977,7 +34998,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 367,
+                                    ["order"] = 375,
                                     ["output"] = "Принеси мені {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -33994,7 +35015,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.fly",
                                     ["intent"] = "travel",
-                                    ["order"] = 494,
+                                    ["order"] = 502,
                                     ["output"] = "Лети до {place:genitiveSingular}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -34086,7 +35107,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring",
                                     ["intent"] = "errand",
-                                    ["order"] = 327,
+                                    ["order"] = 335,
                                     ["output"] = "Принеси мені {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -34095,7 +35116,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 335,
+                                    ["order"] = 343,
                                     ["output"] = "Принеси мені {goods:object} або {goods2:object}.",
                                     ["pattern"] = { "{goods}", "or", "{goods2}" },
                                     ["priority"] = 100,
@@ -34104,7 +35125,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 348,
+                                    ["order"] = 356,
                                     ["output"] = "Принеси мені {goods:object} і {goods2:object}.",
                                     ["pattern"] = { "{goods}", "and", "{goods2}" },
                                     ["priority"] = 100,
@@ -34113,7 +35134,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 366,
+                                    ["order"] = 374,
                                     ["output"] = "Принеси мені {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -34128,7 +35149,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.hurry",
                                             ["intent"] = "travel",
-                                            ["order"] = 266,
+                                            ["order"] = 274,
                                             ["output"] = "Гайни до {place:genitiveSingular}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -34143,7 +35164,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us",
                                     ["intent"] = "errand",
-                                    ["order"] = 457,
+                                    ["order"] = 465,
                                     ["output"] = "Принеси нам {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -34152,7 +35173,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 461,
+                                    ["order"] = 469,
                                     ["output"] = "Принеси нам {goods:object} або {goods2:object}.",
                                     ["pattern"] = { "{goods}", "or", "{goods2}" },
                                     ["priority"] = 100,
@@ -34161,7 +35182,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 467,
+                                    ["order"] = 475,
                                     ["output"] = "Принеси нам {goods:object} і {goods2:object}.",
                                     ["pattern"] = { "{goods}", "and", "{goods2}" },
                                     ["priority"] = 100,
@@ -34176,7 +35197,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.hurry",
                                             ["intent"] = "travel",
-                                            ["order"] = 267,
+                                            ["order"] = 275,
                                             ["output"] = "Гайни до {place:genitiveSingular}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -34195,7 +35216,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give",
                                     ["intent"] = "errand",
-                                    ["order"] = 384,
+                                    ["order"] = 392,
                                     ["output"] = "Дай мені {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -34204,7 +35225,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 390,
+                                    ["order"] = 398,
                                     ["output"] = "Дай мені {goods:object} або {goods2:object}.",
                                     ["pattern"] = { "{goods}", "or", "{goods2}" },
                                     ["priority"] = 100,
@@ -34213,7 +35234,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 399,
+                                    ["order"] = 407,
                                     ["output"] = "Дай мені {goods:object} і {goods2:object}.",
                                     ["pattern"] = { "{goods}", "and", "{goods2}" },
                                     ["priority"] = 100,
@@ -34222,7 +35243,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 411,
+                                    ["order"] = 419,
                                     ["output"] = "Дай мені {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -34239,7 +35260,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 246,
+                                    ["order"] = 254,
                                     ["output"] = "Іди до {place:genitiveSingular}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -34256,7 +35277,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.go",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 221,
+                                    ["order"] = 229,
                                     ["output"] = "Прямую до місця: {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -34265,7 +35286,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.go",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 222,
+                                    ["order"] = 230,
                                     ["output"] = "Прямую до місця: {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -34284,7 +35305,7 @@ ns.Data = {
                                         {
                                             ["id"] = "guild.role",
                                             ["intent"] = "guild_recruit",
-                                            ["order"] = 169,
+                                            ["order"] = 177,
                                             ["output"] = "Гільдія шукає {role:genitiveSingular}.",
                                             ["pattern"] = { "{role}" },
                                             ["priority"] = 100,
@@ -34293,7 +35314,7 @@ ns.Data = {
                                         {
                                             ["id"] = "guild.role",
                                             ["intent"] = "guild_recruit",
-                                            ["order"] = 171,
+                                            ["order"] = 179,
                                             ["output"] = "Гільдія шукає {role:genitiveSingular}.",
                                             ["pattern"] = { "{role}" },
                                             ["priority"] = 100,
@@ -34302,7 +35323,7 @@ ns.Data = {
                                         {
                                             ["id"] = "guild.class",
                                             ["intent"] = "guild_recruit",
-                                            ["order"] = 174,
+                                            ["order"] = 182,
                                             ["output"] = "Гільдія шукає {class:genitiveSingular}.",
                                             ["pattern"] = { "{class}" },
                                             ["priority"] = 100,
@@ -34311,7 +35332,7 @@ ns.Data = {
                                         {
                                             ["id"] = "guild.class",
                                             ["intent"] = "guild_recruit",
-                                            ["order"] = 175,
+                                            ["order"] = 183,
                                             ["output"] = "Гільдія шукає {class:genitiveSingular}.",
                                             ["pattern"] = { "{class}" },
                                             ["priority"] = 100,
@@ -34326,7 +35347,7 @@ ns.Data = {
                                 {
                                     ["id"] = "guild.role",
                                     ["intent"] = "guild_recruit",
-                                    ["order"] = 170,
+                                    ["order"] = 178,
                                     ["output"] = "Гільдія шукає {role:genitiveSingular}.",
                                     ["pattern"] = { "{role}" },
                                     ["priority"] = 100,
@@ -34341,7 +35362,7 @@ ns.Data = {
                                         {
                                             ["id"] = "guild.raid",
                                             ["intent"] = "guild_recruit",
-                                            ["order"] = 237,
+                                            ["order"] = 245,
                                             ["output"] = "Гільдія набирає гравців. Місце: {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -34350,7 +35371,7 @@ ns.Data = {
                                         {
                                             ["id"] = "guild.raid",
                                             ["intent"] = "guild_recruit",
-                                            ["order"] = 238,
+                                            ["order"] = 246,
                                             ["output"] = "Гільдія набирає гравців. Місце: {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -34369,7 +35390,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give",
                                     ["intent"] = "errand",
-                                    ["order"] = 386,
+                                    ["order"] = 394,
                                     ["output"] = "Дай мені {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -34378,7 +35399,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 392,
+                                    ["order"] = 400,
                                     ["output"] = "Дай мені {goods:object} або {goods2:object}.",
                                     ["pattern"] = { "{goods}", "or", "{goods2}" },
                                     ["priority"] = 100,
@@ -34387,7 +35408,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 401,
+                                    ["order"] = 409,
                                     ["output"] = "Дай мені {goods:object} і {goods2:object}.",
                                     ["pattern"] = { "{goods}", "and", "{goods2}" },
                                     ["priority"] = 100,
@@ -34396,7 +35417,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 413,
+                                    ["order"] = 421,
                                     ["output"] = "Дай мені {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -34413,7 +35434,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 247,
+                                    ["order"] = 255,
                                     ["output"] = "Іди до {place:genitiveSingular}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -34428,7 +35449,7 @@ ns.Data = {
                         {
                             ["id"] = "chat.vocative",
                             ["intent"] = "address",
-                            ["order"] = 525,
+                            ["order"] = 533,
                             ["output"] = "Гей, {address:vocative}",
                             ["pattern"] = { "{address}" },
                             ["priority"] = 100,
@@ -34441,7 +35462,7 @@ ns.Data = {
                                 {
                                     ["id"] = "chat.vocative",
                                     ["intent"] = "address",
-                                    ["order"] = 526,
+                                    ["order"] = 534,
                                     ["output"] = "Гей, {address:vocative}",
                                     ["pattern"] = { "{address}" },
                                     ["priority"] = 100,
@@ -34460,7 +35481,7 @@ ns.Data = {
                                         {
                                             ["id"] = "trade.price",
                                             ["intent"] = "trade_question",
-                                            ["order"] = 115,
+                                            ["order"] = 123,
                                             ["output"] = "Скільки коштує {item}?",
                                             ["pattern"] = { "{item}" },
                                             ["priority"] = 100,
@@ -34469,7 +35490,7 @@ ns.Data = {
                                         {
                                             ["id"] = "trade.price",
                                             ["intent"] = "trade_question",
-                                            ["order"] = 117,
+                                            ["order"] = 125,
                                             ["output"] = "Скільки коштує {item}?",
                                             ["pattern"] = { "{item}" },
                                             ["priority"] = 100,
@@ -34488,7 +35509,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.hurry",
                                     ["intent"] = "travel",
-                                    ["order"] = 268,
+                                    ["order"] = 276,
                                     ["output"] = "Гайни до {place:genitiveSingular}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -34511,7 +35532,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "activity.heading_to",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 506,
+                                                            ["order"] = 514,
                                                             ["output"] = "Я збираюся на {activity:activity}.",
                                                             ["pattern"] = { "{activity}" },
                                                             ["priority"] = 100,
@@ -34532,7 +35553,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "activity.heading_to",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 504,
+                                                            ["order"] = 512,
                                                             ["output"] = "Я збираюся на {activity:activity}.",
                                                             ["pattern"] = { "{activity}" },
                                                             ["priority"] = 100,
@@ -34549,7 +35570,7 @@ ns.Data = {
                                         {
                                             ["id"] = "social.at",
                                             ["intent"] = "social_reply",
-                                            ["order"] = 226,
+                                            ["order"] = 234,
                                             ["output"] = "Я тут. Місце: {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -34558,7 +35579,7 @@ ns.Data = {
                                         {
                                             ["id"] = "social.at",
                                             ["intent"] = "social_reply",
-                                            ["order"] = 228,
+                                            ["order"] = 236,
                                             ["output"] = "Я тут. Місце: {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -34577,7 +35598,7 @@ ns.Data = {
                                                                 {
                                                                     ["id"] = "complaint.fed_up_damn",
                                                                     ["intent"] = "complaint",
-                                                                    ["order"] = 598,
+                                                                    ["order"] = 606,
                                                                     ["output"] = "Мене дістало, що ці довбані {creaturePlural:nominative} {behavior:pluralVerb}.",
                                                                     ["pattern"] = { "{creaturePlural}", "{behavior}" },
                                                                     ["priority"] = 100,
@@ -34598,7 +35619,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need",
                                     ["intent"] = "errand",
-                                    ["order"] = 417,
+                                    ["order"] = 425,
                                     ["output"] = "Мені треба {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -34607,7 +35628,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 423,
+                                    ["order"] = 431,
                                     ["output"] = "Мені треба {goods:object} або {goods2:object}.",
                                     ["pattern"] = { "{goods}", "or", "{goods2}" },
                                     ["priority"] = 100,
@@ -34616,7 +35637,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 434,
+                                    ["order"] = 442,
                                     ["output"] = "Мені треба {goods:object} і {goods2:object}.",
                                     ["pattern"] = { "{goods}", "and", "{goods2}" },
                                     ["priority"] = 100,
@@ -34625,7 +35646,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 450,
+                                    ["order"] = 458,
                                     ["output"] = "Мені треба {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -34638,7 +35659,7 @@ ns.Data = {
                                 {
                                     ["id"] = "sight.creature",
                                     ["intent"] = "observation",
-                                    ["order"] = 591,
+                                    ["order"] = 599,
                                     ["output"] = "Бачу {creature:accusative}.",
                                     ["pattern"] = { "{creature}" },
                                     ["priority"] = 100,
@@ -34663,7 +35684,7 @@ ns.Data = {
                                                                 {
                                                                     ["id"] = "activity.heading_to",
                                                                     ["intent"] = "invitation",
-                                                                    ["order"] = 507,
+                                                                    ["order"] = 515,
                                                                     ["output"] = "Я збираюся на {activity:activity}.",
                                                                     ["pattern"] = { "{activity}" },
                                                                     ["priority"] = 100,
@@ -34688,7 +35709,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "activity.heading_to",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 505,
+                                                    ["order"] = 513,
                                                     ["output"] = "Я збираюся на {activity:activity}.",
                                                     ["pattern"] = { "{activity}" },
                                                     ["priority"] = 100,
@@ -34707,7 +35728,7 @@ ns.Data = {
                                         {
                                             ["id"] = "activity.heading_to",
                                             ["intent"] = "invitation",
-                                            ["order"] = 503,
+                                            ["order"] = 511,
                                             ["output"] = "Я збираюся на {activity:activity}.",
                                             ["pattern"] = { "{activity}" },
                                             ["priority"] = 100,
@@ -34720,7 +35741,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "activity.heading_to",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 502,
+                                                    ["order"] = 510,
                                                     ["output"] = "Я збираюся на {activity:activity}.",
                                                     ["pattern"] = { "{activity}" },
                                                     ["priority"] = 100,
@@ -34737,7 +35758,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.at",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 227,
+                                    ["order"] = 235,
                                     ["output"] = "Я тут. Місце: {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -34756,7 +35777,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "complaint.fed_up_damn",
                                                             ["intent"] = "complaint",
-                                                            ["order"] = 597,
+                                                            ["order"] = 605,
                                                             ["output"] = "Мене дістало, що ці довбані {creaturePlural:nominative} {behavior:pluralVerb}.",
                                                             ["pattern"] = { "{creaturePlural}", "{behavior}" },
                                                             ["priority"] = 100,
@@ -34777,7 +35798,7 @@ ns.Data = {
                         {
                             ["id"] = "recruit.invite_creature",
                             ["intent"] = "invitation",
-                            ["order"] = 594,
+                            ["order"] = 602,
                             ["output"] = "Запроси {creature:accusative}.",
                             ["pattern"] = { "{creature}" },
                             ["priority"] = 100,
@@ -34794,7 +35815,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.lets_go",
                                             ["intent"] = "travel",
-                                            ["order"] = 315,
+                                            ["order"] = 323,
                                             ["output"] = "Ходімо до {place:genitiveSingular}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -34815,7 +35836,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.lets_go",
                                             ["intent"] = "travel",
-                                            ["order"] = 316,
+                                            ["order"] = 324,
                                             ["output"] = "Ходімо до {place:genitiveSingular}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -35120,7 +36141,7 @@ ns.Data = {
                         {
                             ["id"] = "profession.need",
                             ["intent"] = "craft_service",
-                            ["order"] = 128,
+                            ["order"] = 136,
                             ["output"] = "Шукаю майстра. Професія: {profession}.",
                             ["pattern"] = { "{profession}" },
                             ["priority"] = 100,
@@ -35355,7 +36376,7 @@ ns.Data = {
                         {
                             ["id"] = "profession.offer",
                             ["intent"] = "craft_service",
-                            ["order"] = 122,
+                            ["order"] = 130,
                             ["output"] = "Пропоную послуги. Професія: {profession}.",
                             ["pattern"] = { "{profession}" },
                             ["priority"] = 100,
@@ -35388,7 +36409,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.need",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 127,
+                                    ["order"] = 135,
                                     ["output"] = "Шукаю майстра. Професія: {profession}.",
                                     ["pattern"] = { "{profession}" },
                                     ["priority"] = 100,
@@ -35397,7 +36418,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.need",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 129,
+                                    ["order"] = 137,
                                     ["output"] = "Шукаю майстра. Професія: {profession}.",
                                     ["pattern"] = { "{profession}" },
                                     ["priority"] = 100,
@@ -35406,7 +36427,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.need_place",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 209,
+                                    ["order"] = 217,
                                     ["output"] = "Шукаю майстра. Професія: {profession}. Місце: {place}.",
                                     ["pattern"] = { "{profession}", "in", "{place}" },
                                     ["priority"] = 100,
@@ -35415,7 +36436,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.need_place",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 210,
+                                    ["order"] = 218,
                                     ["output"] = "Шукаю майстра. Професія: {profession}. Місце: {place}.",
                                     ["pattern"] = { "{profession}", "in", "{place}" },
                                     ["priority"] = 100,
@@ -35462,7 +36483,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.meet",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 232,
+                                    ["order"] = 240,
                                     ["output"] = "Місце зустрічі: {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -35471,7 +36492,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.meet",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 233,
+                                    ["order"] = 241,
                                     ["output"] = "Місце зустрічі: {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -35486,7 +36507,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.meet",
                                             ["intent"] = "meet",
-                                            ["order"] = 288,
+                                            ["order"] = 296,
                                             ["output"] = "Зустріньмося в {place:locative}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -35499,7 +36520,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.meet",
                                             ["intent"] = "meet",
-                                            ["order"] = 289,
+                                            ["order"] = 297,
                                             ["output"] = "Зустріньмося в {place:locative}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -35551,7 +36572,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "profession.craft",
                                                     ["intent"] = "craft_service",
-                                                    ["order"] = 137,
+                                                    ["order"] = 145,
                                                     ["output"] = "Потрібно виготовити {item}.",
                                                     ["pattern"] = { "{item}" },
                                                     ["priority"] = 100,
@@ -35560,7 +36581,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "profession.craft",
                                                     ["intent"] = "craft_service",
-                                                    ["order"] = 138,
+                                                    ["order"] = 146,
                                                     ["output"] = "Потрібно виготовити {item}.",
                                                     ["pattern"] = { "{item}" },
                                                     ["priority"] = 100,
@@ -35569,7 +36590,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "profession.need_price",
                                                     ["intent"] = "craft_service",
-                                                    ["order"] = 217,
+                                                    ["order"] = 225,
                                                     ["output"] = "Потрібно виготовити {item} за {price}.",
                                                     ["pattern"] = { "{item}", "for", "{price}" },
                                                     ["priority"] = 100,
@@ -35578,7 +36599,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "profession.need_price",
                                                     ["intent"] = "craft_service",
-                                                    ["order"] = 218,
+                                                    ["order"] = 226,
                                                     ["output"] = "Потрібно виготовити {item} за {price}.",
                                                     ["pattern"] = { "{item}", "for", "{price}" },
                                                     ["priority"] = 100,
@@ -35597,7 +36618,7 @@ ns.Data = {
                         {
                             ["id"] = "profession.offer",
                             ["intent"] = "craft_service",
-                            ["order"] = 121,
+                            ["order"] = 129,
                             ["output"] = "Пропоную послуги. Професія: {profession}.",
                             ["pattern"] = { "{profession}" },
                             ["priority"] = 100,
@@ -35606,7 +36627,7 @@ ns.Data = {
                         {
                             ["id"] = "profession.offer",
                             ["intent"] = "craft_service",
-                            ["order"] = 123,
+                            ["order"] = 131,
                             ["output"] = "Пропоную послуги. Професія: {profession}.",
                             ["pattern"] = { "{profession}" },
                             ["priority"] = 100,
@@ -35615,7 +36636,7 @@ ns.Data = {
                         {
                             ["id"] = "profession.offer_place",
                             ["intent"] = "craft_service",
-                            ["order"] = 205,
+                            ["order"] = 213,
                             ["output"] = "Пропоную послуги. Професія: {profession}. Місце: {place}.",
                             ["pattern"] = { "{profession}", "in", "{place}" },
                             ["priority"] = 100,
@@ -35624,7 +36645,7 @@ ns.Data = {
                         {
                             ["id"] = "profession.offer_place",
                             ["intent"] = "craft_service",
-                            ["order"] = 206,
+                            ["order"] = 214,
                             ["output"] = "Пропоную послуги. Професія: {profession}. Місце: {place}.",
                             ["pattern"] = { "{profession}", "in", "{place}" },
                             ["priority"] = 100,
@@ -35637,7 +36658,7 @@ ns.Data = {
                         {
                             ["id"] = "chat.vocative",
                             ["intent"] = "address",
-                            ["order"] = 527,
+                            ["order"] = 535,
                             ["output"] = "Гей, {address:vocative}",
                             ["pattern"] = { "{address}" },
                             ["priority"] = 100,
@@ -35650,7 +36671,7 @@ ns.Data = {
                                 {
                                     ["id"] = "chat.vocative",
                                     ["intent"] = "address",
-                                    ["order"] = 528,
+                                    ["order"] = 536,
                                     ["output"] = "Гей, {address:vocative}",
                                     ["pattern"] = { "{address}" },
                                     ["priority"] = 100,
@@ -35715,7 +36736,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give",
                                     ["intent"] = "errand",
-                                    ["order"] = 385,
+                                    ["order"] = 393,
                                     ["output"] = "Дай мені {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -35724,7 +36745,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 391,
+                                    ["order"] = 399,
                                     ["output"] = "Дай мені {goods:object} або {goods2:object}.",
                                     ["pattern"] = { "{goods}", "or", "{goods2}" },
                                     ["priority"] = 100,
@@ -35733,7 +36754,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 400,
+                                    ["order"] = 408,
                                     ["output"] = "Дай мені {goods:object} і {goods2:object}.",
                                     ["pattern"] = { "{goods}", "and", "{goods2}" },
                                     ["priority"] = 100,
@@ -35742,7 +36763,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 412,
+                                    ["order"] = 420,
                                     ["output"] = "Дай мені {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -35789,7 +36810,7 @@ ns.Data = {
                                         {
                                             ["id"] = "errand.polite",
                                             ["intent"] = "errand",
-                                            ["order"] = 488,
+                                            ["order"] = 496,
                                             ["output"] = "Принеси мені {goods:object}, будь ласка.",
                                             ["pattern"] = { "{goods}" },
                                             ["priority"] = 100,
@@ -35806,7 +36827,7 @@ ns.Data = {
                                         {
                                             ["id"] = "errand.polite",
                                             ["intent"] = "errand",
-                                            ["order"] = 489,
+                                            ["order"] = 497,
                                             ["output"] = "Принеси мені {goods:object}, будь ласка.",
                                             ["pattern"] = { "{goods}" },
                                             ["priority"] = 100,
@@ -35825,7 +36846,7 @@ ns.Data = {
                                 {
                                     ["id"] = "trade.price",
                                     ["intent"] = "trade_question",
-                                    ["order"] = 116,
+                                    ["order"] = 124,
                                     ["output"] = "Скільки коштує {item}?",
                                     ["pattern"] = { "{item}" },
                                     ["priority"] = 100,
@@ -35842,7 +36863,7 @@ ns.Data = {
                                 {
                                     ["id"] = "combat.pull_count",
                                     ["intent"] = "combat_call",
-                                    ["order"] = 156,
+                                    ["order"] = 164,
                                     ["output"] = "Починаємо бій через {count}.",
                                     ["pattern"] = { "{count}" },
                                     ["priority"] = 100,
@@ -35851,7 +36872,7 @@ ns.Data = {
                                 {
                                     ["id"] = "combat.pull_count",
                                     ["intent"] = "combat_call",
-                                    ["order"] = 157,
+                                    ["order"] = 165,
                                     ["output"] = "Починаємо бій через {count}.",
                                     ["pattern"] = { "{count}" },
                                     ["priority"] = 100,
@@ -35868,7 +36889,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.run",
                                     ["intent"] = "travel",
-                                    ["order"] = 498,
+                                    ["order"] = 506,
                                     ["output"] = "Біжи до {place:genitiveSingular}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -35881,9 +36902,18 @@ ns.Data = {
                 ["selling"] = {
                     ["matches"] = {
                         {
+                            ["id"] = "trade.sell_with_offers",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 87,
+                            ["output"] = "Продам {item}. Пропозиції пишіть пошепки.",
+                            ["pattern"] = { "{item}", ",", "whisper", "offers" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
                             ["id"] = "trade.sell",
                             ["intent"] = "trade_sell",
-                            ["order"] = 86,
+                            ["order"] = 91,
                             ["output"] = "Продам {item}.",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -35892,7 +36922,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 93,
+                            ["order"] = 98,
                             ["output"] = "Продам {item} за {price}.",
                             ["pattern"] = { "{item}", "for", "{price}" },
                             ["priority"] = 100,
@@ -35901,7 +36931,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 632,
+                            ["order"] = 640,
                             ["output"] = "Продам {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "{price}", "each" },
                             ["priority"] = 100,
@@ -35910,7 +36940,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 633,
+                            ["order"] = 641,
                             ["output"] = "Продам {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "{price}", "a", "piece" },
                             ["priority"] = 100,
@@ -35919,7 +36949,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 634,
+                            ["order"] = 642,
                             ["output"] = "Продам {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "{price}", "per", "item" },
                             ["priority"] = 100,
@@ -35928,7 +36958,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 635,
+                            ["order"] = 643,
                             ["output"] = "Продам {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "for", "{price}", "each" },
                             ["priority"] = 100,
@@ -35937,7 +36967,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 636,
+                            ["order"] = 644,
                             ["output"] = "Продам {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "for", "{price}", "a", "piece" },
                             ["priority"] = 100,
@@ -35946,7 +36976,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 637,
+                            ["order"] = 645,
                             ["output"] = "Продам {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "for", "{price}", "per", "item" },
                             ["priority"] = 100,
@@ -35959,7 +36989,7 @@ ns.Data = {
                         {
                             ["id"] = "social.wait",
                             ["intent"] = "social_reply",
-                            ["order"] = 147,
+                            ["order"] = 155,
                             ["output"] = "Зачекайте {time}.",
                             ["pattern"] = { "{time}" },
                             ["priority"] = 100,
@@ -35968,7 +36998,7 @@ ns.Data = {
                         {
                             ["id"] = "social.wait",
                             ["intent"] = "social_reply",
-                            ["order"] = 148,
+                            ["order"] = 156,
                             ["output"] = "Зачекайте {time}.",
                             ["pattern"] = { "{time}" },
                             ["priority"] = 100,
@@ -35977,7 +37007,7 @@ ns.Data = {
                         {
                             ["id"] = "combat.wait_count",
                             ["intent"] = "combat_call",
-                            ["order"] = 160,
+                            ["order"] = 168,
                             ["output"] = "Зачекайте {count}.",
                             ["pattern"] = { "{count}" },
                             ["priority"] = 100,
@@ -35986,7 +37016,7 @@ ns.Data = {
                         {
                             ["id"] = "combat.wait_count",
                             ["intent"] = "combat_call",
-                            ["order"] = 161,
+                            ["order"] = 169,
                             ["output"] = "Зачекайте {count}.",
                             ["pattern"] = { "{count}" },
                             ["priority"] = 100,
@@ -36003,7 +37033,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.wait_at",
                                                     ["intent"] = "meet",
-                                                    ["order"] = 297,
+                                                    ["order"] = 305,
                                                     ["output"] = "Зачекай на мене в {place:locative}.",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -36016,7 +37046,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.wait_at",
                                                     ["intent"] = "meet",
-                                                    ["order"] = 296,
+                                                    ["order"] = 304,
                                                     ["output"] = "Зачекай на мене в {place:locative}.",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -36041,7 +37071,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "idiom.smack_to_stop",
                                                     ["intent"] = "complaint",
-                                                    ["order"] = 605,
+                                                    ["order"] = 613,
                                                     ["output"] = "Треба {recipient} з’їздити по морді, щоб {recipient:stopClause}.",
                                                     ["pattern"] = {
                                                         "{recipient}",
@@ -36072,7 +37102,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.where",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 152,
+                                    ["order"] = 160,
                                     ["output"] = "Де {place}?",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36081,7 +37111,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.where",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 153,
+                                    ["order"] = 161,
                                     ["output"] = "Де {place}?",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36102,7 +37132,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 536,
+                                                    ["order"] = 544,
                                                     ["output"] = "Підеш зі мною до {place:genitiveSingular}?",
                                                     ["pattern"] = { "{place}", "with", "me" },
                                                     ["priority"] = 100,
@@ -36119,7 +37149,7 @@ ns.Data = {
                                                                 {
                                                                     ["id"] = "travel.join_question",
                                                                     ["intent"] = "invitation",
-                                                                    ["order"] = 535,
+                                                                    ["order"] = 543,
                                                                     ["output"] = "Підеш зі мною до {place:genitiveSingular}?",
                                                                     ["pattern"] = { "{place}" },
                                                                     ["priority"] = 100,
@@ -36140,9 +37170,18 @@ ns.Data = {
                 ["wtb"] = {
                     ["matches"] = {
                         {
+                            ["id"] = "trade.buy_crafting_service",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 104,
+                            ["output"] = "Куплю {craftService}.",
+                            ["pattern"] = { "{craftService}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
                             ["id"] = "trade.buy",
                             ["intent"] = "trade_buy",
-                            ["order"] = 99,
+                            ["order"] = 107,
                             ["output"] = "Куплю {item}.",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -36151,7 +37190,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy",
                             ["intent"] = "trade_buy",
-                            ["order"] = 101,
+                            ["order"] = 109,
                             ["output"] = "Куплю {item}.",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -36160,7 +37199,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_price",
                             ["intent"] = "trade_buy",
-                            ["order"] = 105,
+                            ["order"] = 113,
                             ["output"] = "Куплю {item} за {price}.",
                             ["pattern"] = { "{item}", "{price}" },
                             ["priority"] = 100,
@@ -36169,7 +37208,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_price",
                             ["intent"] = "trade_buy",
-                            ["order"] = 106,
+                            ["order"] = 114,
                             ["output"] = "Куплю {item} за {price}.",
                             ["pattern"] = { "{item}", "for", "{price}" },
                             ["priority"] = 100,
@@ -36178,7 +37217,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_price",
                             ["intent"] = "trade_buy",
-                            ["order"] = 107,
+                            ["order"] = 115,
                             ["output"] = "Куплю {item} за {price}.",
                             ["pattern"] = { "{item}", "for", "{price}" },
                             ["priority"] = 100,
@@ -36187,7 +37226,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_count",
                             ["intent"] = "trade_buy",
-                            ["order"] = 187,
+                            ["order"] = 195,
                             ["output"] = "Куплю {count} {item}.",
                             ["pattern"] = { "{count}", "{item}" },
                             ["priority"] = 100,
@@ -36196,7 +37235,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_count",
                             ["intent"] = "trade_buy",
-                            ["order"] = 188,
+                            ["order"] = 196,
                             ["output"] = "Куплю {count} {item}.",
                             ["pattern"] = { "{count}", "{item}" },
                             ["priority"] = 100,
@@ -36205,7 +37244,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_count_price",
                             ["intent"] = "trade_buy",
-                            ["order"] = 191,
+                            ["order"] = 199,
                             ["output"] = "Куплю {count} {item} за {price}.",
                             ["pattern"] = { "{count}", "{item}", "for", "{price}" },
                             ["priority"] = 100,
@@ -36214,7 +37253,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_count_price",
                             ["intent"] = "trade_buy",
-                            ["order"] = 192,
+                            ["order"] = 200,
                             ["output"] = "Куплю {count} {item} за {price}.",
                             ["pattern"] = { "{count}", "{item}", "for", "{price}" },
                             ["priority"] = 100,
@@ -36223,7 +37262,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_place",
                             ["intent"] = "trade_buy",
-                            ["order"] = 200,
+                            ["order"] = 208,
                             ["output"] = "Куплю {item}. Місце: {place}.",
                             ["pattern"] = { "{item}", "in", "{place}" },
                             ["priority"] = 100,
@@ -36232,7 +37271,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_place",
                             ["intent"] = "trade_buy",
-                            ["order"] = 201,
+                            ["order"] = 209,
                             ["output"] = "Куплю {item}. Місце: {place}.",
                             ["pattern"] = { "{item}", "in", "{place}" },
                             ["priority"] = 100,
@@ -36241,7 +37280,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 646,
+                            ["order"] = 654,
                             ["output"] = "Куплю {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "{price}", "each" },
                             ["priority"] = 100,
@@ -36250,7 +37289,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 647,
+                            ["order"] = 655,
                             ["output"] = "Куплю {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "{price}", "a", "piece" },
                             ["priority"] = 100,
@@ -36259,7 +37298,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 648,
+                            ["order"] = 656,
                             ["output"] = "Куплю {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "{price}", "per", "item" },
                             ["priority"] = 100,
@@ -36268,7 +37307,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 649,
+                            ["order"] = 657,
                             ["output"] = "Куплю {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "for", "{price}", "each" },
                             ["priority"] = 100,
@@ -36277,7 +37316,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 650,
+                            ["order"] = 658,
                             ["output"] = "Куплю {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "for", "{price}", "a", "piece" },
                             ["priority"] = 100,
@@ -36286,7 +37325,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 651,
+                            ["order"] = 659,
                             ["output"] = "Куплю {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "for", "{price}", "per", "item" },
                             ["priority"] = 100,
@@ -36297,9 +37336,27 @@ ns.Data = {
                 ["wts"] = {
                     ["matches"] = {
                         {
-                            ["id"] = "trade.sell",
+                            ["id"] = "trade.sell_with_offers",
                             ["intent"] = "trade_sell",
                             ["order"] = 85,
+                            ["output"] = "Продам {item}. Пропозиції пишіть пошепки.",
+                            ["pattern"] = { "{item}", "/", "w", "offer" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell_with_offers",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 86,
+                            ["output"] = "Продам {item}. Пропозиції пишіть пошепки.",
+                            ["pattern"] = { "{item}", ",", "/", "w", "offer" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 89,
                             ["output"] = "Продам {item}.",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -36308,7 +37365,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell",
                             ["intent"] = "trade_sell",
-                            ["order"] = 87,
+                            ["order"] = 92,
                             ["output"] = "Продам {item}.",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -36317,7 +37374,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 91,
+                            ["order"] = 96,
                             ["output"] = "Продам {item} за {price}.",
                             ["pattern"] = { "{item}", "{price}" },
                             ["priority"] = 100,
@@ -36326,7 +37383,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 92,
+                            ["order"] = 97,
                             ["output"] = "Продам {item} за {price}.",
                             ["pattern"] = { "{item}", "for", "{price}" },
                             ["priority"] = 100,
@@ -36335,7 +37392,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 94,
+                            ["order"] = 99,
                             ["output"] = "Продам {item} за {price}.",
                             ["pattern"] = { "{item}", "for", "{price}" },
                             ["priority"] = 100,
@@ -36344,7 +37401,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_count",
                             ["intent"] = "trade_sell",
-                            ["order"] = 178,
+                            ["order"] = 186,
                             ["output"] = "Продам {count} {item}.",
                             ["pattern"] = { "{count}", "{item}" },
                             ["priority"] = 100,
@@ -36353,7 +37410,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_count",
                             ["intent"] = "trade_sell",
-                            ["order"] = 179,
+                            ["order"] = 187,
                             ["output"] = "Продам {count} {item}.",
                             ["pattern"] = { "{count}", "{item}" },
                             ["priority"] = 100,
@@ -36362,7 +37419,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_count_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 182,
+                            ["order"] = 190,
                             ["output"] = "Продам {count} {item} за {price}.",
                             ["pattern"] = { "{count}", "{item}", "for", "{price}" },
                             ["priority"] = 100,
@@ -36371,7 +37428,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_count_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 183,
+                            ["order"] = 191,
                             ["output"] = "Продам {count} {item} за {price}.",
                             ["pattern"] = { "{count}", "{item}", "{price}" },
                             ["priority"] = 100,
@@ -36380,7 +37437,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_count_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 184,
+                            ["order"] = 192,
                             ["output"] = "Продам {count} {item} за {price}.",
                             ["pattern"] = { "{count}", "{item}", "for", "{price}" },
                             ["priority"] = 100,
@@ -36389,7 +37446,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_place",
                             ["intent"] = "trade_sell",
-                            ["order"] = 195,
+                            ["order"] = 203,
                             ["output"] = "Продам {item}. Місце: {place}.",
                             ["pattern"] = { "{item}", "in", "{place}" },
                             ["priority"] = 100,
@@ -36398,7 +37455,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_place",
                             ["intent"] = "trade_sell",
-                            ["order"] = 196,
+                            ["order"] = 204,
                             ["output"] = "Продам {item}. Місце: {place}.",
                             ["pattern"] = { "{item}", "in", "{place}" },
                             ["priority"] = 100,
@@ -36407,7 +37464,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 626,
+                            ["order"] = 634,
                             ["output"] = "Продам {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "{price}", "each" },
                             ["priority"] = 100,
@@ -36416,7 +37473,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 627,
+                            ["order"] = 635,
                             ["output"] = "Продам {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "{price}", "a", "piece" },
                             ["priority"] = 100,
@@ -36425,7 +37482,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 628,
+                            ["order"] = 636,
                             ["output"] = "Продам {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "{price}", "per", "item" },
                             ["priority"] = 100,
@@ -36434,7 +37491,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 629,
+                            ["order"] = 637,
                             ["output"] = "Продам {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "for", "{price}", "each" },
                             ["priority"] = 100,
@@ -36443,7 +37500,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 630,
+                            ["order"] = 638,
                             ["output"] = "Продам {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "for", "{price}", "a", "piece" },
                             ["priority"] = 100,
@@ -36452,7 +37509,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 631,
+                            ["order"] = 639,
                             ["output"] = "Продам {item} — {price} за штуку.",
                             ["pattern"] = { "{item}", "for", "{price}", "per", "item" },
                             ["priority"] = 100,
@@ -36465,7 +37522,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.trade",
                             ["intent"] = "trade_exchange",
-                            ["order"] = 111,
+                            ["order"] = 119,
                             ["output"] = "Обміняю {item}.",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -36474,7 +37531,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.trade",
                             ["intent"] = "trade_exchange",
-                            ["order"] = 112,
+                            ["order"] = 120,
                             ["output"] = "Обміняю {item}.",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -36491,7 +37548,7 @@ ns.Data = {
                         {
                             ["id"] = "sight.creature",
                             ["intent"] = "observation",
-                            ["order"] = 592,
+                            ["order"] = 600,
                             ["output"] = "I see {creature:object}.",
                             ["pattern"] = { "{creature}" },
                             ["priority"] = 100,
@@ -36512,7 +37569,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "errand.polite",
                                                             ["intent"] = "errand",
-                                                            ["order"] = 492,
+                                                            ["order"] = 500,
                                                             ["output"] = "Please bring me {goods:object}.",
                                                             ["pattern"] = { "{goods}" },
                                                             ["priority"] = 100,
@@ -36531,7 +37588,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "errand.polite",
                                                     ["intent"] = "errand",
-                                                    ["order"] = 493,
+                                                    ["order"] = 501,
                                                     ["output"] = "Please bring me {goods:object}.",
                                                     ["pattern"] = { "{goods}" },
                                                     ["priority"] = 100,
@@ -36552,7 +37609,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.run",
                                     ["intent"] = "travel",
-                                    ["order"] = 499,
+                                    ["order"] = 507,
                                     ["output"] = "Run to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36565,7 +37622,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.run",
                                     ["intent"] = "travel",
-                                    ["order"] = 501,
+                                    ["order"] = 509,
                                     ["output"] = "Run to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36578,7 +37635,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.run",
                                     ["intent"] = "travel",
-                                    ["order"] = 500,
+                                    ["order"] = 508,
                                     ["output"] = "Run to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36595,7 +37652,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.hurry",
                                     ["intent"] = "travel",
-                                    ["order"] = 270,
+                                    ["order"] = 278,
                                     ["output"] = "Hurry to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36608,7 +37665,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.hurry",
                                     ["intent"] = "travel",
-                                    ["order"] = 269,
+                                    ["order"] = 277,
                                     ["output"] = "Hurry to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36621,7 +37678,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.hurry",
                                     ["intent"] = "travel",
-                                    ["order"] = 271,
+                                    ["order"] = 279,
                                     ["output"] = "Hurry to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36638,7 +37695,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 261,
+                                    ["order"] = 269,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36651,7 +37708,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 260,
+                                    ["order"] = 268,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36664,7 +37721,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 262,
+                                    ["order"] = 270,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36681,7 +37738,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.lets_go",
                                     ["intent"] = "travel",
-                                    ["order"] = 324,
+                                    ["order"] = 332,
                                     ["output"] = "Let's go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36694,7 +37751,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.lets_go",
                                     ["intent"] = "travel",
-                                    ["order"] = 323,
+                                    ["order"] = 331,
                                     ["output"] = "Let's go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36707,7 +37764,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.lets_go",
                                     ["intent"] = "travel",
-                                    ["order"] = 325,
+                                    ["order"] = 333,
                                     ["output"] = "Let's go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36724,7 +37781,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.hurry",
                                     ["intent"] = "travel",
-                                    ["order"] = 273,
+                                    ["order"] = 281,
                                     ["output"] = "Hurry to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36737,7 +37794,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.hurry",
                                     ["intent"] = "travel",
-                                    ["order"] = 272,
+                                    ["order"] = 280,
                                     ["output"] = "Hurry to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36750,7 +37807,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.hurry",
                                     ["intent"] = "travel",
-                                    ["order"] = 274,
+                                    ["order"] = 282,
                                     ["output"] = "Hurry to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -36765,7 +37822,7 @@ ns.Data = {
                         {
                             ["id"] = "chat.vocative",
                             ["intent"] = "address",
-                            ["order"] = 529,
+                            ["order"] = 537,
                             ["output"] = "Hey, {address:address}",
                             ["pattern"] = { "{address}" },
                             ["priority"] = 100,
@@ -36778,7 +37835,7 @@ ns.Data = {
                                 {
                                     ["id"] = "chat.vocative",
                                     ["intent"] = "address",
-                                    ["order"] = 530,
+                                    ["order"] = 538,
                                     ["output"] = "Hey, {address:address}",
                                     ["pattern"] = { "{address}" },
                                     ["priority"] = 100,
@@ -36803,7 +37860,7 @@ ns.Data = {
                                                                 {
                                                                     ["id"] = "guild.raid",
                                                                     ["intent"] = "guild_recruit",
-                                                                    ["order"] = 240,
+                                                                    ["order"] = 248,
                                                                     ["output"] = "Guild recruiting for {place}",
                                                                     ["pattern"] = { "{place}" },
                                                                     ["priority"] = 100,
@@ -36822,7 +37879,7 @@ ns.Data = {
                                         {
                                             ["id"] = "guild.raid",
                                             ["intent"] = "guild_recruit",
-                                            ["order"] = 239,
+                                            ["order"] = 247,
                                             ["output"] = "Guild recruiting for {place}",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -36837,7 +37894,7 @@ ns.Data = {
                                 {
                                     ["id"] = "guild.role",
                                     ["intent"] = "guild_recruit",
-                                    ["order"] = 172,
+                                    ["order"] = 180,
                                     ["output"] = "Guild looking for {role}",
                                     ["pattern"] = { "{role}" },
                                     ["priority"] = 100,
@@ -36846,7 +37903,7 @@ ns.Data = {
                                 {
                                     ["id"] = "guild.role",
                                     ["intent"] = "guild_recruit",
-                                    ["order"] = 173,
+                                    ["order"] = 181,
                                     ["output"] = "Guild looking for {role}",
                                     ["pattern"] = { "{role}" },
                                     ["priority"] = 100,
@@ -36855,7 +37912,7 @@ ns.Data = {
                                 {
                                     ["id"] = "guild.class",
                                     ["intent"] = "guild_recruit",
-                                    ["order"] = 176,
+                                    ["order"] = 184,
                                     ["output"] = "Guild looking for {class}",
                                     ["pattern"] = { "{class}" },
                                     ["priority"] = 100,
@@ -36864,7 +37921,7 @@ ns.Data = {
                                 {
                                     ["id"] = "guild.class",
                                     ["intent"] = "guild_recruit",
-                                    ["order"] = 177,
+                                    ["order"] = 185,
                                     ["output"] = "Guild looking for {class}",
                                     ["pattern"] = { "{class}" },
                                     ["priority"] = 100,
@@ -36879,7 +37936,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.give",
                             ["intent"] = "errand",
-                            ["order"] = 388,
+                            ["order"] = 396,
                             ["output"] = "Give me {goods:object}.",
                             ["pattern"] = { "{goods}" },
                             ["priority"] = 100,
@@ -36888,7 +37945,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.give_or",
                             ["intent"] = "errand",
-                            ["order"] = 395,
+                            ["order"] = 403,
                             ["output"] = "Give me {goods:object} or {goods2:object}.",
                             ["pattern"] = { "{goods}", "або", "{goods2}" },
                             ["priority"] = 100,
@@ -36897,7 +37954,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.give_or",
                             ["intent"] = "errand",
-                            ["order"] = 396,
+                            ["order"] = 404,
                             ["output"] = "Give me {goods:object} or {goods2:object}.",
                             ["pattern"] = { "{goods}", "чи", "{goods2}" },
                             ["priority"] = 100,
@@ -36906,7 +37963,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.give_and",
                             ["intent"] = "errand",
-                            ["order"] = 405,
+                            ["order"] = 413,
                             ["output"] = "Give me {goods:object} and {goods2:object}.",
                             ["pattern"] = { "{goods}", "і", "{goods2}" },
                             ["priority"] = 100,
@@ -36915,7 +37972,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.give_and",
                             ["intent"] = "errand",
-                            ["order"] = 406,
+                            ["order"] = 414,
                             ["output"] = "Give me {goods:object} and {goods2:object}.",
                             ["pattern"] = { "{goods}", "й", "{goods2}" },
                             ["priority"] = 100,
@@ -36924,7 +37981,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.give_and",
                             ["intent"] = "errand",
-                            ["order"] = 407,
+                            ["order"] = 415,
                             ["output"] = "Give me {goods:object} and {goods2:object}.",
                             ["pattern"] = { "{goods}", "та", "{goods2}" },
                             ["priority"] = 100,
@@ -36933,7 +37990,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.give_count",
                             ["intent"] = "errand",
-                            ["order"] = 415,
+                            ["order"] = 423,
                             ["output"] = "Give me {count} {goods:countedObject}.",
                             ["pattern"] = { "{count}", "{goods}" },
                             ["priority"] = 100,
@@ -36946,7 +38003,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give",
                                     ["intent"] = "errand",
-                                    ["order"] = 387,
+                                    ["order"] = 395,
                                     ["output"] = "Give me {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -36955,7 +38012,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 393,
+                                    ["order"] = 401,
                                     ["output"] = "Give me {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "або", "{goods2}" },
                                     ["priority"] = 100,
@@ -36964,7 +38021,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 394,
+                                    ["order"] = 402,
                                     ["output"] = "Give me {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                     ["priority"] = 100,
@@ -36973,7 +38030,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 402,
+                                    ["order"] = 410,
                                     ["output"] = "Give me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "і", "{goods2}" },
                                     ["priority"] = 100,
@@ -36982,7 +38039,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 403,
+                                    ["order"] = 411,
                                     ["output"] = "Give me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "й", "{goods2}" },
                                     ["priority"] = 100,
@@ -36991,7 +38048,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 404,
+                                    ["order"] = 412,
                                     ["output"] = "Give me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "та", "{goods2}" },
                                     ["priority"] = 100,
@@ -37000,7 +38057,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 414,
+                                    ["order"] = 422,
                                     ["output"] = "Give me {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -37015,7 +38072,7 @@ ns.Data = {
                         {
                             ["id"] = "social.where",
                             ["intent"] = "social_reply",
-                            ["order"] = 154,
+                            ["order"] = 162,
                             ["output"] = "Where is {place}?",
                             ["pattern"] = { "{place}" },
                             ["priority"] = 100,
@@ -37024,7 +38081,7 @@ ns.Data = {
                         {
                             ["id"] = "social.where",
                             ["intent"] = "social_reply",
-                            ["order"] = 155,
+                            ["order"] = 163,
                             ["output"] = "Where is {place}?",
                             ["pattern"] = { "{place}" },
                             ["priority"] = 100,
@@ -37039,7 +38096,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring",
                                     ["intent"] = "errand",
-                                    ["order"] = 333,
+                                    ["order"] = 341,
                                     ["output"] = "Bring me {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -37048,7 +38105,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 345,
+                                    ["order"] = 353,
                                     ["output"] = "Bring me {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "або", "{goods2}" },
                                     ["priority"] = 100,
@@ -37057,7 +38114,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 346,
+                                    ["order"] = 354,
                                     ["output"] = "Bring me {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                     ["priority"] = 100,
@@ -37066,7 +38123,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 362,
+                                    ["order"] = 370,
                                     ["output"] = "Bring me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "і", "{goods2}" },
                                     ["priority"] = 100,
@@ -37075,7 +38132,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 363,
+                                    ["order"] = 371,
                                     ["output"] = "Bring me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "й", "{goods2}" },
                                     ["priority"] = 100,
@@ -37084,7 +38141,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 364,
+                                    ["order"] = 372,
                                     ["output"] = "Bring me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "та", "{goods2}" },
                                     ["priority"] = 100,
@@ -37093,7 +38150,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 372,
+                                    ["order"] = 380,
                                     ["output"] = "Bring me {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -37106,7 +38163,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us",
                                     ["intent"] = "errand",
-                                    ["order"] = 459,
+                                    ["order"] = 467,
                                     ["output"] = "Bring us {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -37115,7 +38172,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 464,
+                                    ["order"] = 472,
                                     ["output"] = "Bring us {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "або", "{goods2}" },
                                     ["priority"] = 100,
@@ -37124,7 +38181,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 465,
+                                    ["order"] = 473,
                                     ["output"] = "Bring us {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                     ["priority"] = 100,
@@ -37133,7 +38190,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 471,
+                                    ["order"] = 479,
                                     ["output"] = "Bring us {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "і", "{goods2}" },
                                     ["priority"] = 100,
@@ -37142,7 +38199,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 472,
+                                    ["order"] = 480,
                                     ["output"] = "Bring us {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "й", "{goods2}" },
                                     ["priority"] = 100,
@@ -37151,7 +38208,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 473,
+                                    ["order"] = 481,
                                     ["output"] = "Bring us {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "та", "{goods2}" },
                                     ["priority"] = 100,
@@ -37166,7 +38223,7 @@ ns.Data = {
                         {
                             ["id"] = "chat.vocative",
                             ["intent"] = "address",
-                            ["order"] = 531,
+                            ["order"] = 539,
                             ["output"] = "Hey, {address:address}",
                             ["pattern"] = { "{address}" },
                             ["priority"] = 100,
@@ -37179,7 +38236,7 @@ ns.Data = {
                                 {
                                     ["id"] = "chat.vocative",
                                     ["intent"] = "address",
-                                    ["order"] = 532,
+                                    ["order"] = 540,
                                     ["output"] = "Hey, {address:address}",
                                     ["pattern"] = { "{address}" },
                                     ["priority"] = 100,
@@ -37194,7 +38251,7 @@ ns.Data = {
                         {
                             ["id"] = "recruit.invite_creature",
                             ["intent"] = "invitation",
-                            ["order"] = 595,
+                            ["order"] = 603,
                             ["output"] = "Invite {creature:object}.",
                             ["pattern"] = { "{creature}" },
                             ["priority"] = 100,
@@ -37207,7 +38264,7 @@ ns.Data = {
                         {
                             ["id"] = "recruit.invite_creature",
                             ["intent"] = "invitation",
-                            ["order"] = 596,
+                            ["order"] = 604,
                             ["output"] = "Invite {creature:object}.",
                             ["pattern"] = { "{creature}" },
                             ["priority"] = 100,
@@ -37220,7 +38277,7 @@ ns.Data = {
                         {
                             ["id"] = "social.wait",
                             ["intent"] = "social_reply",
-                            ["order"] = 150,
+                            ["order"] = 158,
                             ["output"] = "Wait {time}",
                             ["pattern"] = { "{time}" },
                             ["priority"] = 100,
@@ -37235,7 +38292,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.wait_at",
                                             ["intent"] = "meet",
-                                            ["order"] = 298,
+                                            ["order"] = 306,
                                             ["output"] = "Wait for me in {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -37248,7 +38305,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.wait_at",
                                             ["intent"] = "meet",
-                                            ["order"] = 299,
+                                            ["order"] = 307,
                                             ["output"] = "Wait for me in {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -37267,7 +38324,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.wait_at",
                                                     ["intent"] = "meet",
-                                                    ["order"] = 302,
+                                                    ["order"] = 310,
                                                     ["output"] = "Wait for me in {place}.",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -37280,7 +38337,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.wait_at",
                                                     ["intent"] = "meet",
-                                                    ["order"] = 303,
+                                                    ["order"] = 311,
                                                     ["output"] = "Wait for me in {place}.",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -37299,7 +38356,7 @@ ns.Data = {
                         {
                             ["id"] = "social.wait",
                             ["intent"] = "social_reply",
-                            ["order"] = 149,
+                            ["order"] = 157,
                             ["output"] = "Wait {time}",
                             ["pattern"] = { "{time}" },
                             ["priority"] = 100,
@@ -37308,7 +38365,7 @@ ns.Data = {
                         {
                             ["id"] = "social.wait",
                             ["intent"] = "social_reply",
-                            ["order"] = 151,
+                            ["order"] = 159,
                             ["output"] = "Wait {time}",
                             ["pattern"] = { "{time}" },
                             ["priority"] = 100,
@@ -37317,7 +38374,7 @@ ns.Data = {
                         {
                             ["id"] = "combat.wait_count",
                             ["intent"] = "combat_call",
-                            ["order"] = 162,
+                            ["order"] = 170,
                             ["output"] = "Wait {count}",
                             ["pattern"] = { "{count}" },
                             ["priority"] = 100,
@@ -37326,7 +38383,7 @@ ns.Data = {
                         {
                             ["id"] = "combat.wait_count",
                             ["intent"] = "combat_call",
-                            ["order"] = 163,
+                            ["order"] = 171,
                             ["output"] = "Wait {count}",
                             ["pattern"] = { "{count}" },
                             ["priority"] = 100,
@@ -37341,7 +38398,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.meet",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 235,
+                                    ["order"] = 243,
                                     ["output"] = "Meet in {place}",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37358,7 +38415,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.meet",
                                     ["intent"] = "meet",
-                                    ["order"] = 294,
+                                    ["order"] = 302,
                                     ["output"] = "Meet me in {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37371,7 +38428,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.meet",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 234,
+                                    ["order"] = 242,
                                     ["output"] = "Meet in {place}",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37380,7 +38437,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.meet",
                                     ["intent"] = "meet",
-                                    ["order"] = 295,
+                                    ["order"] = 303,
                                     ["output"] = "Meet me in {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37399,7 +38456,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.meet",
                                             ["intent"] = "meet",
-                                            ["order"] = 290,
+                                            ["order"] = 298,
                                             ["output"] = "Meet me in {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -37412,7 +38469,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.meet",
                                             ["intent"] = "meet",
-                                            ["order"] = 291,
+                                            ["order"] = 299,
                                             ["output"] = "Meet me in {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -37431,7 +38488,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.meet",
                                     ["intent"] = "meet",
-                                    ["order"] = 292,
+                                    ["order"] = 300,
                                     ["output"] = "Meet me in {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37444,7 +38501,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.meet",
                                     ["intent"] = "meet",
-                                    ["order"] = 293,
+                                    ["order"] = 301,
                                     ["output"] = "Meet me in {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37461,7 +38518,7 @@ ns.Data = {
                                 {
                                     ["id"] = "activity.heading_to",
                                     ["intent"] = "invitation",
-                                    ["order"] = 521,
+                                    ["order"] = 529,
                                     ["output"] = "I'm heading to {activity:activity}.",
                                     ["pattern"] = { "{activity}" },
                                     ["priority"] = 100,
@@ -37478,7 +38535,7 @@ ns.Data = {
                                 {
                                     ["id"] = "activity.heading_to",
                                     ["intent"] = "invitation",
-                                    ["order"] = 522,
+                                    ["order"] = 530,
                                     ["output"] = "I'm heading to {activity:activity}.",
                                     ["pattern"] = { "{activity}" },
                                     ["priority"] = 100,
@@ -37499,7 +38556,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.go",
                                                     ["intent"] = "travel",
-                                                    ["order"] = 255,
+                                                    ["order"] = 263,
                                                     ["output"] = "Go to {place}.",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -37512,7 +38569,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.go",
                                                     ["intent"] = "travel",
-                                                    ["order"] = 254,
+                                                    ["order"] = 262,
                                                     ["output"] = "Go to {place}.",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -37525,7 +38582,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.go",
                                                     ["intent"] = "travel",
-                                                    ["order"] = 256,
+                                                    ["order"] = 264,
                                                     ["output"] = "Go to {place}.",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -37542,7 +38599,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 252,
+                                    ["order"] = 260,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37555,7 +38612,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 251,
+                                    ["order"] = 259,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37568,7 +38625,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 253,
+                                    ["order"] = 261,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37585,7 +38642,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.go",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 224,
+                                    ["order"] = 232,
                                     ["output"] = "Going to {place}",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37598,7 +38655,7 @@ ns.Data = {
                                 {
                                     ["id"] = "activity.heading_to",
                                     ["intent"] = "invitation",
-                                    ["order"] = 524,
+                                    ["order"] = 532,
                                     ["output"] = "I'm heading to {activity:activity}.",
                                     ["pattern"] = { "{activity}" },
                                     ["priority"] = 100,
@@ -37615,7 +38672,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.buy",
                                     ["intent"] = "errand",
-                                    ["order"] = 374,
+                                    ["order"] = 382,
                                     ["output"] = "Buy me {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -37624,7 +38681,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.buy_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 376,
+                                    ["order"] = 384,
                                     ["output"] = "Buy me {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "або", "{goods2}" },
                                     ["priority"] = 100,
@@ -37633,7 +38690,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.buy_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 377,
+                                    ["order"] = 385,
                                     ["output"] = "Buy me {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                     ["priority"] = 100,
@@ -37642,7 +38699,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.buy_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 379,
+                                    ["order"] = 387,
                                     ["output"] = "Buy me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "і", "{goods2}" },
                                     ["priority"] = 100,
@@ -37651,7 +38708,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.buy_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 380,
+                                    ["order"] = 388,
                                     ["output"] = "Buy me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "й", "{goods2}" },
                                     ["priority"] = 100,
@@ -37660,7 +38717,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.buy_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 381,
+                                    ["order"] = 389,
                                     ["output"] = "Buy me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "та", "{goods2}" },
                                     ["priority"] = 100,
@@ -37669,7 +38726,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.buy_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 383,
+                                    ["order"] = 391,
                                     ["output"] = "Buy me {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -37682,9 +38739,18 @@ ns.Data = {
                 ["куплю"] = {
                     ["matches"] = {
                         {
+                            ["id"] = "trade.buy_crafting_service",
+                            ["intent"] = "trade_buy",
+                            ["order"] = 106,
+                            ["output"] = "WTB {craftService}",
+                            ["pattern"] = { "{craftService}" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
                             ["id"] = "trade.buy",
                             ["intent"] = "trade_buy",
-                            ["order"] = 102,
+                            ["order"] = 110,
                             ["output"] = "WTB {item}",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -37693,7 +38759,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy",
                             ["intent"] = "trade_buy",
-                            ["order"] = 104,
+                            ["order"] = 112,
                             ["output"] = "WTB {item}",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -37702,7 +38768,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_price",
                             ["intent"] = "trade_buy",
-                            ["order"] = 108,
+                            ["order"] = 116,
                             ["output"] = "WTB {item} for {price}",
                             ["pattern"] = { "{item}", "за", "{price}" },
                             ["priority"] = 100,
@@ -37711,7 +38777,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_price",
                             ["intent"] = "trade_buy",
-                            ["order"] = 109,
+                            ["order"] = 117,
                             ["output"] = "WTB {item} for {price}",
                             ["pattern"] = { "{item}", "{price}" },
                             ["priority"] = 100,
@@ -37720,7 +38786,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_price",
                             ["intent"] = "trade_buy",
-                            ["order"] = 110,
+                            ["order"] = 118,
                             ["output"] = "WTB {item} for {price}",
                             ["pattern"] = { "{item}", "за", "{price}" },
                             ["priority"] = 100,
@@ -37729,7 +38795,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_count",
                             ["intent"] = "trade_buy",
-                            ["order"] = 189,
+                            ["order"] = 197,
                             ["output"] = "WTB {count} {item}",
                             ["pattern"] = { "{count}", "{item}" },
                             ["priority"] = 100,
@@ -37738,7 +38804,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_count",
                             ["intent"] = "trade_buy",
-                            ["order"] = 190,
+                            ["order"] = 198,
                             ["output"] = "WTB {count} {item}",
                             ["pattern"] = { "{count}", "{item}" },
                             ["priority"] = 100,
@@ -37747,7 +38813,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_count_price",
                             ["intent"] = "trade_buy",
-                            ["order"] = 193,
+                            ["order"] = 201,
                             ["output"] = "WTB {count} {item} for {price}",
                             ["pattern"] = { "{count}", "{item}", "за", "{price}" },
                             ["priority"] = 100,
@@ -37756,7 +38822,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_count_price",
                             ["intent"] = "trade_buy",
-                            ["order"] = 194,
+                            ["order"] = 202,
                             ["output"] = "WTB {count} {item} for {price}",
                             ["pattern"] = { "{count}", "{item}", "за", "{price}" },
                             ["priority"] = 100,
@@ -37765,7 +38831,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_place",
                             ["intent"] = "trade_buy",
-                            ["order"] = 202,
+                            ["order"] = 210,
                             ["output"] = "WTB {item} in {place}",
                             ["pattern"] = { "{item}", "у", "{place}" },
                             ["priority"] = 100,
@@ -37774,7 +38840,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_place",
                             ["intent"] = "trade_buy",
-                            ["order"] = 203,
+                            ["order"] = 211,
                             ["output"] = "WTB {item} in {place}",
                             ["pattern"] = { "{item}", "в", "{place}" },
                             ["priority"] = 100,
@@ -37783,7 +38849,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_place",
                             ["intent"] = "trade_buy",
-                            ["order"] = 204,
+                            ["order"] = 212,
                             ["output"] = "WTB {item} in {place}",
                             ["pattern"] = { "{item}", ".", "місце", ":", "{place}" },
                             ["priority"] = 100,
@@ -37792,7 +38858,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 658,
+                            ["order"] = 666,
                             ["output"] = "WTB {item} for {price} each",
                             ["pattern"] = { "{item}", "за", "{price}", "за", "штуку" },
                             ["priority"] = 100,
@@ -37801,7 +38867,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 659,
+                            ["order"] = 667,
                             ["output"] = "WTB {item} for {price} each",
                             ["pattern"] = { "{item}", "за", "{price}", "за", "одиницю" },
                             ["priority"] = 100,
@@ -37810,7 +38876,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 662,
+                            ["order"] = 670,
                             ["output"] = "WTB {item} for {price} each",
                             ["pattern"] = { "{item}", "—", "{price}", "за", "штуку" },
                             ["priority"] = 100,
@@ -37819,7 +38885,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 663,
+                            ["order"] = 671,
                             ["output"] = "WTB {item} for {price} each",
                             ["pattern"] = { "{item}", "—", "{price}", "за", "одиницю" },
                             ["priority"] = 100,
@@ -37832,7 +38898,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy",
                             ["intent"] = "trade_buy",
-                            ["order"] = 103,
+                            ["order"] = 111,
                             ["output"] = "WTB {item}",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -37841,7 +38907,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 660,
+                            ["order"] = 668,
                             ["output"] = "WTB {item} for {price} each",
                             ["pattern"] = { "{item}", "за", "{price}", "за", "штуку" },
                             ["priority"] = 100,
@@ -37850,7 +38916,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 661,
+                            ["order"] = 669,
                             ["output"] = "WTB {item} for {price} each",
                             ["pattern"] = { "{item}", "за", "{price}", "за", "одиницю" },
                             ["priority"] = 100,
@@ -37859,7 +38925,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 664,
+                            ["order"] = 672,
                             ["output"] = "WTB {item} for {price} each",
                             ["pattern"] = { "{item}", "—", "{price}", "за", "штуку" },
                             ["priority"] = 100,
@@ -37868,7 +38934,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.buy_unit_price",
                             ["intent"] = "trade.buy_unit_price",
-                            ["order"] = 665,
+                            ["order"] = 673,
                             ["output"] = "WTB {item} for {price} each",
                             ["pattern"] = { "{item}", "—", "{price}", "за", "одиницю" },
                             ["priority"] = 100,
@@ -37883,7 +38949,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.fly",
                                     ["intent"] = "travel",
-                                    ["order"] = 495,
+                                    ["order"] = 503,
                                     ["output"] = "Fly to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37896,7 +38962,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.fly",
                                     ["intent"] = "travel",
-                                    ["order"] = 497,
+                                    ["order"] = 505,
                                     ["output"] = "Fly to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37909,7 +38975,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.fly",
                                     ["intent"] = "travel",
-                                    ["order"] = 496,
+                                    ["order"] = 504,
                                     ["output"] = "Fly to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -37926,7 +38992,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need",
                                     ["intent"] = "errand",
-                                    ["order"] = 419,
+                                    ["order"] = 427,
                                     ["output"] = "I need {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -37935,7 +39001,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 426,
+                                    ["order"] = 434,
                                     ["output"] = "I need {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "або", "{goods2}" },
                                     ["priority"] = 100,
@@ -37944,7 +39010,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 427,
+                                    ["order"] = 435,
                                     ["output"] = "I need {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                     ["priority"] = 100,
@@ -37953,7 +39019,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 438,
+                                    ["order"] = 446,
                                     ["output"] = "I need {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "і", "{goods2}" },
                                     ["priority"] = 100,
@@ -37962,7 +39028,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 439,
+                                    ["order"] = 447,
                                     ["output"] = "I need {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "й", "{goods2}" },
                                     ["priority"] = 100,
@@ -37971,7 +39037,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 440,
+                                    ["order"] = 448,
                                     ["output"] = "I need {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "та", "{goods2}" },
                                     ["priority"] = 100,
@@ -37980,7 +39046,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 452,
+                                    ["order"] = 460,
                                     ["output"] = "I need {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -37993,7 +39059,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need",
                                     ["intent"] = "errand",
-                                    ["order"] = 420,
+                                    ["order"] = 428,
                                     ["output"] = "I need {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -38002,7 +39068,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 428,
+                                    ["order"] = 436,
                                     ["output"] = "I need {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "або", "{goods2}" },
                                     ["priority"] = 100,
@@ -38011,7 +39077,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 429,
+                                    ["order"] = 437,
                                     ["output"] = "I need {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                     ["priority"] = 100,
@@ -38020,7 +39086,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 441,
+                                    ["order"] = 449,
                                     ["output"] = "I need {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "і", "{goods2}" },
                                     ["priority"] = 100,
@@ -38029,7 +39095,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 442,
+                                    ["order"] = 450,
                                     ["output"] = "I need {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "й", "{goods2}" },
                                     ["priority"] = 100,
@@ -38038,7 +39104,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 443,
+                                    ["order"] = 451,
                                     ["output"] = "I need {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "та", "{goods2}" },
                                     ["priority"] = 100,
@@ -38047,7 +39113,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 453,
+                                    ["order"] = 461,
                                     ["output"] = "I need {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -38060,7 +39126,141 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need",
                                     ["intent"] = "errand",
-                                    ["order"] = 422,
+                                    ["order"] = 430,
+                                    ["output"] = "I need {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 440,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 441,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 455,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 456,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 457,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 463,
+                                    ["output"] = "I need {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["потрібні"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.need",
+                                    ["intent"] = "errand",
+                                    ["order"] = 429,
+                                    ["output"] = "I need {goods:object}.",
+                                    ["pattern"] = { "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 438,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_or",
+                                    ["intent"] = "errand",
+                                    ["order"] = 439,
+                                    ["output"] = "I need {goods:object} or {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 452,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 453,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_and",
+                                    ["intent"] = "errand",
+                                    ["order"] = 454,
+                                    ["output"] = "I need {goods:object} and {goods2:object}.",
+                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["id"] = "errand.need_count",
+                                    ["intent"] = "errand",
+                                    ["order"] = 462,
+                                    ["output"] = "I need {count} {goods:countedObject}.",
+                                    ["pattern"] = { "{count}", "{goods}" },
+                                    ["priority"] = 100,
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["треба"] = {
+                            ["matches"] = {
+                                {
+                                    ["id"] = "errand.need",
+                                    ["intent"] = "errand",
+                                    ["order"] = 426,
                                     ["output"] = "I need {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -38087,67 +39287,9 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 447,
+                                    ["order"] = 443,
                                     ["output"] = "I need {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "і", "{goods2}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                },
-                                {
-                                    ["id"] = "errand.need_and",
-                                    ["intent"] = "errand",
-                                    ["order"] = 448,
-                                    ["output"] = "I need {goods:object} and {goods2:object}.",
-                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                },
-                                {
-                                    ["id"] = "errand.need_and",
-                                    ["intent"] = "errand",
-                                    ["order"] = 449,
-                                    ["output"] = "I need {goods:object} and {goods2:object}.",
-                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                },
-                                {
-                                    ["id"] = "errand.need_count",
-                                    ["intent"] = "errand",
-                                    ["order"] = 455,
-                                    ["output"] = "I need {count} {goods:countedObject}.",
-                                    ["pattern"] = { "{count}", "{goods}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                }
-                            }
-                        },
-                        ["потрібні"] = {
-                            ["matches"] = {
-                                {
-                                    ["id"] = "errand.need",
-                                    ["intent"] = "errand",
-                                    ["order"] = 421,
-                                    ["output"] = "I need {goods:object}.",
-                                    ["pattern"] = { "{goods}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                },
-                                {
-                                    ["id"] = "errand.need_or",
-                                    ["intent"] = "errand",
-                                    ["order"] = 430,
-                                    ["output"] = "I need {goods:object} or {goods2:object}.",
-                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                },
-                                {
-                                    ["id"] = "errand.need_or",
-                                    ["intent"] = "errand",
-                                    ["order"] = 431,
-                                    ["output"] = "I need {goods:object} or {goods2:object}.",
-                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                     ["priority"] = 100,
                                     ["sourceRefs"] = { "project-authored:chat-0.1" }
                                 },
@@ -38156,7 +39298,7 @@ ns.Data = {
                                     ["intent"] = "errand",
                                     ["order"] = 444,
                                     ["output"] = "I need {goods:object} and {goods2:object}.",
-                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
+                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
                                     ["priority"] = 100,
                                     ["sourceRefs"] = { "project-authored:chat-0.1" }
                                 },
@@ -38165,15 +39307,6 @@ ns.Data = {
                                     ["intent"] = "errand",
                                     ["order"] = 445,
                                     ["output"] = "I need {goods:object} and {goods2:object}.",
-                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                },
-                                {
-                                    ["id"] = "errand.need_and",
-                                    ["intent"] = "errand",
-                                    ["order"] = 446,
-                                    ["output"] = "I need {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "та", "{goods2}" },
                                     ["priority"] = 100,
                                     ["sourceRefs"] = { "project-authored:chat-0.1" }
@@ -38181,74 +39314,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.need_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 454,
-                                    ["output"] = "I need {count} {goods:countedObject}.",
-                                    ["pattern"] = { "{count}", "{goods}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                }
-                            }
-                        },
-                        ["треба"] = {
-                            ["matches"] = {
-                                {
-                                    ["id"] = "errand.need",
-                                    ["intent"] = "errand",
-                                    ["order"] = 418,
-                                    ["output"] = "I need {goods:object}.",
-                                    ["pattern"] = { "{goods}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                },
-                                {
-                                    ["id"] = "errand.need_or",
-                                    ["intent"] = "errand",
-                                    ["order"] = 424,
-                                    ["output"] = "I need {goods:object} or {goods2:object}.",
-                                    ["pattern"] = { "{goods}", "або", "{goods2}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                },
-                                {
-                                    ["id"] = "errand.need_or",
-                                    ["intent"] = "errand",
-                                    ["order"] = 425,
-                                    ["output"] = "I need {goods:object} or {goods2:object}.",
-                                    ["pattern"] = { "{goods}", "чи", "{goods2}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                },
-                                {
-                                    ["id"] = "errand.need_and",
-                                    ["intent"] = "errand",
-                                    ["order"] = 435,
-                                    ["output"] = "I need {goods:object} and {goods2:object}.",
-                                    ["pattern"] = { "{goods}", "і", "{goods2}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                },
-                                {
-                                    ["id"] = "errand.need_and",
-                                    ["intent"] = "errand",
-                                    ["order"] = 436,
-                                    ["output"] = "I need {goods:object} and {goods2:object}.",
-                                    ["pattern"] = { "{goods}", "й", "{goods2}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                },
-                                {
-                                    ["id"] = "errand.need_and",
-                                    ["intent"] = "errand",
-                                    ["order"] = 437,
-                                    ["output"] = "I need {goods:object} and {goods2:object}.",
-                                    ["pattern"] = { "{goods}", "та", "{goods2}" },
-                                    ["priority"] = 100,
-                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
-                                },
-                                {
-                                    ["id"] = "errand.need_count",
-                                    ["intent"] = "errand",
-                                    ["order"] = 451,
+                                    ["order"] = 459,
                                     ["output"] = "I need {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -38265,7 +39331,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.ask",
                                     ["intent"] = "errand",
-                                    ["order"] = 487,
+                                    ["order"] = 495,
                                     ["output"] = "Can you bring me {goods:object}?",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -38278,7 +39344,7 @@ ns.Data = {
                                         {
                                             ["id"] = "errand.ask",
                                             ["intent"] = "errand",
-                                            ["order"] = 486,
+                                            ["order"] = 494,
                                             ["output"] = "Can you bring me {goods:object}?",
                                             ["pattern"] = { "{goods}" },
                                             ["priority"] = 100,
@@ -38297,7 +39363,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.recipe",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 135,
+                                    ["order"] = 143,
                                     ["output"] = "Can craft {item}",
                                     ["pattern"] = { "{item}" },
                                     ["priority"] = 100,
@@ -38306,7 +39372,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.recipe",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 136,
+                                    ["order"] = 144,
                                     ["output"] = "Can craft {item}",
                                     ["pattern"] = { "{item}" },
                                     ["priority"] = 100,
@@ -38315,7 +39381,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.craft_price",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 215,
+                                    ["order"] = 223,
                                     ["output"] = "Can craft {item} for {price}",
                                     ["pattern"] = { "{item}", "за", "{price}" },
                                     ["priority"] = 100,
@@ -38324,7 +39390,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.craft_price",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 216,
+                                    ["order"] = 224,
                                     ["output"] = "Can craft {item} for {price}",
                                     ["pattern"] = { "{item}", "за", "{price}" },
                                     ["priority"] = 100,
@@ -38343,7 +39409,7 @@ ns.Data = {
                                         {
                                             ["id"] = "social.meet",
                                             ["intent"] = "social_reply",
-                                            ["order"] = 236,
+                                            ["order"] = 244,
                                             ["output"] = "Meet in {place}",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -38454,7 +39520,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.no_go",
                                             ["intent"] = "travel",
-                                            ["order"] = 307,
+                                            ["order"] = 315,
                                             ["output"] = "Do not go to {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -38467,7 +39533,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.no_go",
                                             ["intent"] = "travel",
-                                            ["order"] = 306,
+                                            ["order"] = 314,
                                             ["output"] = "Do not go to {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -38480,7 +39546,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.no_go",
                                             ["intent"] = "travel",
-                                            ["order"] = 308,
+                                            ["order"] = 316,
                                             ["output"] = "Do not go to {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -38497,7 +39563,7 @@ ns.Data = {
                                         {
                                             ["id"] = "errand.no_bring",
                                             ["intent"] = "errand",
-                                            ["order"] = 477,
+                                            ["order"] = 485,
                                             ["output"] = "Do not bring me {goods:negativeObject}.",
                                             ["pattern"] = { "{goods}" },
                                             ["priority"] = 100,
@@ -38506,7 +39572,7 @@ ns.Data = {
                                         {
                                             ["id"] = "errand.no_bring_or",
                                             ["intent"] = "errand",
-                                            ["order"] = 482,
+                                            ["order"] = 490,
                                             ["output"] = "Do not bring me {goods:negativeObject} or {goods2:negativeObject}.",
                                             ["pattern"] = { "{goods}", "або", "{goods2}" },
                                             ["priority"] = 100,
@@ -38515,7 +39581,7 @@ ns.Data = {
                                         {
                                             ["id"] = "errand.no_bring_or",
                                             ["intent"] = "errand",
-                                            ["order"] = 483,
+                                            ["order"] = 491,
                                             ["output"] = "Do not bring me {goods:negativeObject} or {goods2:negativeObject}.",
                                             ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                             ["priority"] = 100,
@@ -38534,7 +39600,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "combat.no_role",
                                                     ["intent"] = "combat_call",
-                                                    ["order"] = 167,
+                                                    ["order"] = 175,
                                                     ["output"] = "Do not pull without {role}",
                                                     ["pattern"] = { "{role}" },
                                                     ["priority"] = 100,
@@ -38543,7 +39609,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "combat.no_role",
                                                     ["intent"] = "combat_call",
-                                                    ["order"] = 168,
+                                                    ["order"] = 176,
                                                     ["output"] = "Do not pull without {role}",
                                                     ["pattern"] = { "{role}" },
                                                     ["priority"] = 100,
@@ -38552,7 +39618,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "combat.no_class",
                                                     ["intent"] = "combat_call",
-                                                    ["order"] = 244,
+                                                    ["order"] = 252,
                                                     ["output"] = "Do not pull without {class}",
                                                     ["pattern"] = { "{class}" },
                                                     ["priority"] = 100,
@@ -38561,7 +39627,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "combat.no_class",
                                                     ["intent"] = "combat_call",
-                                                    ["order"] = 245,
+                                                    ["order"] = 253,
                                                     ["output"] = "Do not pull without {class}",
                                                     ["pattern"] = { "{class}" },
                                                     ["priority"] = 100,
@@ -38580,7 +39646,7 @@ ns.Data = {
                                         {
                                             ["id"] = "errand.no_bring",
                                             ["intent"] = "errand",
-                                            ["order"] = 476,
+                                            ["order"] = 484,
                                             ["output"] = "Do not bring me {goods:negativeObject}.",
                                             ["pattern"] = { "{goods}" },
                                             ["priority"] = 100,
@@ -38589,7 +39655,7 @@ ns.Data = {
                                         {
                                             ["id"] = "errand.no_bring_or",
                                             ["intent"] = "errand",
-                                            ["order"] = 480,
+                                            ["order"] = 488,
                                             ["output"] = "Do not bring me {goods:negativeObject} or {goods2:negativeObject}.",
                                             ["pattern"] = { "{goods}", "або", "{goods2}" },
                                             ["priority"] = 100,
@@ -38598,7 +39664,7 @@ ns.Data = {
                                         {
                                             ["id"] = "errand.no_bring_or",
                                             ["intent"] = "errand",
-                                            ["order"] = 481,
+                                            ["order"] = 489,
                                             ["output"] = "Do not bring me {goods:negativeObject} or {goods2:negativeObject}.",
                                             ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                             ["priority"] = 100,
@@ -38615,7 +39681,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.no_go",
                                             ["intent"] = "travel",
-                                            ["order"] = 313,
+                                            ["order"] = 321,
                                             ["output"] = "Do not go to {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -38628,7 +39694,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.no_go",
                                             ["intent"] = "travel",
-                                            ["order"] = 312,
+                                            ["order"] = 320,
                                             ["output"] = "Do not go to {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -38641,7 +39707,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.no_go",
                                             ["intent"] = "travel",
-                                            ["order"] = 314,
+                                            ["order"] = 322,
                                             ["output"] = "Do not go to {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -38658,7 +39724,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.no_go",
                                             ["intent"] = "travel",
-                                            ["order"] = 310,
+                                            ["order"] = 318,
                                             ["output"] = "Do not go to {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -38671,7 +39737,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.no_go",
                                             ["intent"] = "travel",
-                                            ["order"] = 309,
+                                            ["order"] = 317,
                                             ["output"] = "Do not go to {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -38684,7 +39750,7 @@ ns.Data = {
                                         {
                                             ["id"] = "travel.no_go",
                                             ["intent"] = "travel",
-                                            ["order"] = 311,
+                                            ["order"] = 319,
                                             ["output"] = "Do not go to {place}.",
                                             ["pattern"] = { "{place}" },
                                             ["priority"] = 100,
@@ -38701,7 +39767,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.trade",
                             ["intent"] = "trade_exchange",
-                            ["order"] = 113,
+                            ["order"] = 121,
                             ["output"] = "WTT {item}",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -38710,7 +39776,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.trade",
                             ["intent"] = "trade_exchange",
-                            ["order"] = 114,
+                            ["order"] = 122,
                             ["output"] = "WTT {item}",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -38725,7 +39791,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give",
                                     ["intent"] = "errand",
-                                    ["order"] = 389,
+                                    ["order"] = 397,
                                     ["output"] = "Give me {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -38734,7 +39800,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 397,
+                                    ["order"] = 405,
                                     ["output"] = "Give me {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "або", "{goods2}" },
                                     ["priority"] = 100,
@@ -38743,7 +39809,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 398,
+                                    ["order"] = 406,
                                     ["output"] = "Give me {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                     ["priority"] = 100,
@@ -38752,7 +39818,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 408,
+                                    ["order"] = 416,
                                     ["output"] = "Give me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "і", "{goods2}" },
                                     ["priority"] = 100,
@@ -38761,7 +39827,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 409,
+                                    ["order"] = 417,
                                     ["output"] = "Give me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "й", "{goods2}" },
                                     ["priority"] = 100,
@@ -38770,7 +39836,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 410,
+                                    ["order"] = 418,
                                     ["output"] = "Give me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "та", "{goods2}" },
                                     ["priority"] = 100,
@@ -38779,7 +39845,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.give_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 416,
+                                    ["order"] = 424,
                                     ["output"] = "Give me {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -38796,7 +39862,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.return",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 145,
+                                    ["order"] = 153,
                                     ["output"] = "Back in {time}",
                                     ["pattern"] = { "{time}" },
                                     ["priority"] = 100,
@@ -38813,7 +39879,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.return",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 144,
+                                    ["order"] = 152,
                                     ["output"] = "Back in {time}",
                                     ["pattern"] = { "{time}" },
                                     ["priority"] = 100,
@@ -38822,7 +39888,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.return",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 146,
+                                    ["order"] = 154,
                                     ["output"] = "Back in {time}",
                                     ["pattern"] = { "{time}" },
                                     ["priority"] = 100,
@@ -38843,7 +39909,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 540,
+                                                    ["order"] = 548,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -38856,7 +39922,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 542,
+                                                    ["order"] = 550,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -38869,7 +39935,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 541,
+                                                    ["order"] = 549,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -38890,7 +39956,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 537,
+                                                    ["order"] = 545,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -38903,7 +39969,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 539,
+                                                    ["order"] = 547,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -38916,7 +39982,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 538,
+                                                    ["order"] = 546,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -38937,7 +40003,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 543,
+                                                    ["order"] = 551,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -38950,7 +40016,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 545,
+                                                    ["order"] = 553,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -38963,7 +40029,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 544,
+                                                    ["order"] = 552,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -38982,7 +40048,7 @@ ns.Data = {
                         {
                             ["id"] = "profession.offer",
                             ["intent"] = "craft_service",
-                            ["order"] = 125,
+                            ["order"] = 133,
                             ["output"] = "Offering {profession}",
                             ["pattern"] = { "{profession}" },
                             ["priority"] = 100,
@@ -39026,7 +40092,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.need",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 131,
+                                    ["order"] = 139,
                                     ["output"] = "Looking for {profession}",
                                     ["pattern"] = { "{profession}" },
                                     ["priority"] = 100,
@@ -39050,7 +40116,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 616,
+                            ["order"] = 624,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = { "{recipient}", "по", "морді", "з'їздити", "щоб", "{recipient:stopClause}" },
                             ["priority"] = 100,
@@ -39059,7 +40125,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 617,
+                            ["order"] = 625,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = {
                                 "{recipient}",
@@ -39076,7 +40142,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 618,
+                            ["order"] = 626,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = { "{recipient}", "по", "морді", "зїздити", "щоб", "{recipient:stopClause}" },
                             ["priority"] = 100,
@@ -39085,7 +40151,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 619,
+                            ["order"] = 627,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = {
                                 "{recipient}",
@@ -39102,7 +40168,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 620,
+                            ["order"] = 628,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = { "{recipient}", "з'їздити", "по", "морді", "щоб", "{recipient:stopClause}" },
                             ["priority"] = 100,
@@ -39111,7 +40177,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 621,
+                            ["order"] = 629,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = {
                                 "{recipient}",
@@ -39128,7 +40194,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 622,
+                            ["order"] = 630,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = { "{recipient}", "зїздити", "по", "морді", "щоб", "{recipient:stopClause}" },
                             ["priority"] = 100,
@@ -39137,7 +40203,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 623,
+                            ["order"] = 631,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = {
                                 "{recipient}",
@@ -39154,7 +40220,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 624,
+                            ["order"] = 632,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = { "{recipient}", "дати", "по", "морді", "щоб", "{recipient:stopClause}" },
                             ["priority"] = 100,
@@ -39163,7 +40229,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 625,
+                            ["order"] = 633,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = { "{recipient}", "дати", "по", "морді", ",", "щоб", "{recipient:stopClause}" },
                             ["priority"] = 100,
@@ -39176,7 +40242,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.craft",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 139,
+                                    ["order"] = 147,
                                     ["output"] = "Need someone to craft {item}",
                                     ["pattern"] = { "{item}" },
                                     ["priority"] = 100,
@@ -39185,7 +40251,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.craft",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 140,
+                                    ["order"] = 148,
                                     ["output"] = "Need someone to craft {item}",
                                     ["pattern"] = { "{item}" },
                                     ["priority"] = 100,
@@ -39194,7 +40260,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.need_price",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 219,
+                                    ["order"] = 227,
                                     ["output"] = "Need someone to craft {item} for {price}",
                                     ["pattern"] = { "{item}", "за", "{price}" },
                                     ["priority"] = 100,
@@ -39203,7 +40269,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.need_price",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 220,
+                                    ["order"] = 228,
                                     ["output"] = "Need someone to craft {item} for {price}",
                                     ["pattern"] = { "{item}", "за", "{price}" },
                                     ["priority"] = 100,
@@ -39250,7 +40316,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.wait_at",
                                                     ["intent"] = "meet",
-                                                    ["order"] = 300,
+                                                    ["order"] = 308,
                                                     ["output"] = "Wait for me in {place}.",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -39263,7 +40329,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.wait_at",
                                                     ["intent"] = "meet",
-                                                    ["order"] = 301,
+                                                    ["order"] = 309,
                                                     ["output"] = "Wait for me in {place}.",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -39286,7 +40352,7 @@ ns.Data = {
                                         {
                                             ["id"] = "combat.pull_count",
                                             ["intent"] = "combat_call",
-                                            ["order"] = 158,
+                                            ["order"] = 166,
                                             ["output"] = "Pull in {count}",
                                             ["pattern"] = { "{count}" },
                                             ["priority"] = 100,
@@ -39295,7 +40361,7 @@ ns.Data = {
                                         {
                                             ["id"] = "combat.pull_count",
                                             ["intent"] = "combat_call",
-                                            ["order"] = 159,
+                                            ["order"] = 167,
                                             ["output"] = "Pull in {count}",
                                             ["pattern"] = { "{count}" },
                                             ["priority"] = 100,
@@ -39318,7 +40384,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 558,
+                                                    ["order"] = 566,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -39331,7 +40397,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 560,
+                                                    ["order"] = 568,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -39344,7 +40410,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 559,
+                                                    ["order"] = 567,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -39365,7 +40431,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 555,
+                                                    ["order"] = 563,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -39378,7 +40444,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 557,
+                                                    ["order"] = 565,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -39391,7 +40457,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 556,
+                                                    ["order"] = 564,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -39412,7 +40478,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 561,
+                                                    ["order"] = 569,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -39425,7 +40491,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 563,
+                                                    ["order"] = 571,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -39438,7 +40504,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 562,
+                                                    ["order"] = 570,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -39459,7 +40525,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.come",
                                     ["intent"] = "travel",
-                                    ["order"] = 283,
+                                    ["order"] = 291,
                                     ["output"] = "Come to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -39472,7 +40538,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.come",
                                     ["intent"] = "travel",
-                                    ["order"] = 282,
+                                    ["order"] = 290,
                                     ["output"] = "Come to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -39485,7 +40551,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.come",
                                     ["intent"] = "travel",
-                                    ["order"] = 284,
+                                    ["order"] = 292,
                                     ["output"] = "Come to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -39500,7 +40566,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring",
                             ["intent"] = "errand",
-                            ["order"] = 330,
+                            ["order"] = 338,
                             ["output"] = "Bring me {goods:object}.",
                             ["pattern"] = { "{goods}" },
                             ["priority"] = 100,
@@ -39509,7 +40575,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring_or",
                             ["intent"] = "errand",
-                            ["order"] = 339,
+                            ["order"] = 347,
                             ["output"] = "Bring me {goods:object} or {goods2:object}.",
                             ["pattern"] = { "{goods}", "або", "{goods2}" },
                             ["priority"] = 100,
@@ -39518,7 +40584,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring_or",
                             ["intent"] = "errand",
-                            ["order"] = 340,
+                            ["order"] = 348,
                             ["output"] = "Bring me {goods:object} or {goods2:object}.",
                             ["pattern"] = { "{goods}", "чи", "{goods2}" },
                             ["priority"] = 100,
@@ -39527,7 +40593,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring_and",
                             ["intent"] = "errand",
-                            ["order"] = 353,
+                            ["order"] = 361,
                             ["output"] = "Bring me {goods:object} and {goods2:object}.",
                             ["pattern"] = { "{goods}", "і", "{goods2}" },
                             ["priority"] = 100,
@@ -39536,7 +40602,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring_and",
                             ["intent"] = "errand",
-                            ["order"] = 354,
+                            ["order"] = 362,
                             ["output"] = "Bring me {goods:object} and {goods2:object}.",
                             ["pattern"] = { "{goods}", "й", "{goods2}" },
                             ["priority"] = 100,
@@ -39545,7 +40611,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring_and",
                             ["intent"] = "errand",
-                            ["order"] = 355,
+                            ["order"] = 363,
                             ["output"] = "Bring me {goods:object} and {goods2:object}.",
                             ["pattern"] = { "{goods}", "та", "{goods2}" },
                             ["priority"] = 100,
@@ -39554,7 +40620,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring_count",
                             ["intent"] = "errand",
-                            ["order"] = 369,
+                            ["order"] = 377,
                             ["output"] = "Bring me {count} {goods:countedObject}.",
                             ["pattern"] = { "{count}", "{goods}" },
                             ["priority"] = 100,
@@ -39567,7 +40633,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring",
                                     ["intent"] = "errand",
-                                    ["order"] = 329,
+                                    ["order"] = 337,
                                     ["output"] = "Bring me {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -39576,7 +40642,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 337,
+                                    ["order"] = 345,
                                     ["output"] = "Bring me {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "або", "{goods2}" },
                                     ["priority"] = 100,
@@ -39585,7 +40651,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 338,
+                                    ["order"] = 346,
                                     ["output"] = "Bring me {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                     ["priority"] = 100,
@@ -39594,7 +40660,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 350,
+                                    ["order"] = 358,
                                     ["output"] = "Bring me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "і", "{goods2}" },
                                     ["priority"] = 100,
@@ -39603,7 +40669,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 351,
+                                    ["order"] = 359,
                                     ["output"] = "Bring me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "й", "{goods2}" },
                                     ["priority"] = 100,
@@ -39612,7 +40678,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 352,
+                                    ["order"] = 360,
                                     ["output"] = "Bring me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "та", "{goods2}" },
                                     ["priority"] = 100,
@@ -39621,7 +40687,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 368,
+                                    ["order"] = 376,
                                     ["output"] = "Bring me {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -39630,7 +40696,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.polite",
                                     ["intent"] = "errand",
-                                    ["order"] = 490,
+                                    ["order"] = 498,
                                     ["output"] = "Please bring me {goods:object}.",
                                     ["pattern"] = { "{goods}", "будь", "ласка" },
                                     ["priority"] = 100,
@@ -39639,7 +40705,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.polite",
                                     ["intent"] = "errand",
-                                    ["order"] = 491,
+                                    ["order"] = 499,
                                     ["output"] = "Please bring me {goods:object}.",
                                     ["pattern"] = { "{goods}", ",", "будь", "ласка" },
                                     ["priority"] = 100,
@@ -39652,7 +40718,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us",
                                     ["intent"] = "errand",
-                                    ["order"] = 458,
+                                    ["order"] = 466,
                                     ["output"] = "Bring us {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -39661,7 +40727,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 462,
+                                    ["order"] = 470,
                                     ["output"] = "Bring us {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "або", "{goods2}" },
                                     ["priority"] = 100,
@@ -39670,7 +40736,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 463,
+                                    ["order"] = 471,
                                     ["output"] = "Bring us {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                     ["priority"] = 100,
@@ -39679,7 +40745,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 468,
+                                    ["order"] = 476,
                                     ["output"] = "Bring us {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "і", "{goods2}" },
                                     ["priority"] = 100,
@@ -39688,7 +40754,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 469,
+                                    ["order"] = 477,
                                     ["output"] = "Bring us {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "й", "{goods2}" },
                                     ["priority"] = 100,
@@ -39697,7 +40763,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_us_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 470,
+                                    ["order"] = 478,
                                     ["output"] = "Bring us {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "та", "{goods2}" },
                                     ["priority"] = 100,
@@ -39712,7 +40778,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring",
                             ["intent"] = "errand",
-                            ["order"] = 332,
+                            ["order"] = 340,
                             ["output"] = "Bring me {goods:object}.",
                             ["pattern"] = { "{goods}" },
                             ["priority"] = 100,
@@ -39721,7 +40787,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring_or",
                             ["intent"] = "errand",
-                            ["order"] = 343,
+                            ["order"] = 351,
                             ["output"] = "Bring me {goods:object} or {goods2:object}.",
                             ["pattern"] = { "{goods}", "або", "{goods2}" },
                             ["priority"] = 100,
@@ -39730,7 +40796,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring_or",
                             ["intent"] = "errand",
-                            ["order"] = 344,
+                            ["order"] = 352,
                             ["output"] = "Bring me {goods:object} or {goods2:object}.",
                             ["pattern"] = { "{goods}", "чи", "{goods2}" },
                             ["priority"] = 100,
@@ -39739,7 +40805,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring_and",
                             ["intent"] = "errand",
-                            ["order"] = 359,
+                            ["order"] = 367,
                             ["output"] = "Bring me {goods:object} and {goods2:object}.",
                             ["pattern"] = { "{goods}", "і", "{goods2}" },
                             ["priority"] = 100,
@@ -39748,7 +40814,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring_and",
                             ["intent"] = "errand",
-                            ["order"] = 360,
+                            ["order"] = 368,
                             ["output"] = "Bring me {goods:object} and {goods2:object}.",
                             ["pattern"] = { "{goods}", "й", "{goods2}" },
                             ["priority"] = 100,
@@ -39757,7 +40823,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring_and",
                             ["intent"] = "errand",
-                            ["order"] = 361,
+                            ["order"] = 369,
                             ["output"] = "Bring me {goods:object} and {goods2:object}.",
                             ["pattern"] = { "{goods}", "та", "{goods2}" },
                             ["priority"] = 100,
@@ -39766,7 +40832,7 @@ ns.Data = {
                         {
                             ["id"] = "errand.bring_count",
                             ["intent"] = "errand",
-                            ["order"] = 371,
+                            ["order"] = 379,
                             ["output"] = "Bring me {count} {goods:countedObject}.",
                             ["pattern"] = { "{count}", "{goods}" },
                             ["priority"] = 100,
@@ -39779,7 +40845,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring",
                                     ["intent"] = "errand",
-                                    ["order"] = 331,
+                                    ["order"] = 339,
                                     ["output"] = "Bring me {goods:object}.",
                                     ["pattern"] = { "{goods}" },
                                     ["priority"] = 100,
@@ -39788,7 +40854,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 341,
+                                    ["order"] = 349,
                                     ["output"] = "Bring me {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "або", "{goods2}" },
                                     ["priority"] = 100,
@@ -39797,7 +40863,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_or",
                                     ["intent"] = "errand",
-                                    ["order"] = 342,
+                                    ["order"] = 350,
                                     ["output"] = "Bring me {goods:object} or {goods2:object}.",
                                     ["pattern"] = { "{goods}", "чи", "{goods2}" },
                                     ["priority"] = 100,
@@ -39806,7 +40872,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 356,
+                                    ["order"] = 364,
                                     ["output"] = "Bring me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "і", "{goods2}" },
                                     ["priority"] = 100,
@@ -39815,7 +40881,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 357,
+                                    ["order"] = 365,
                                     ["output"] = "Bring me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "й", "{goods2}" },
                                     ["priority"] = 100,
@@ -39824,7 +40890,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_and",
                                     ["intent"] = "errand",
-                                    ["order"] = 358,
+                                    ["order"] = 366,
                                     ["output"] = "Bring me {goods:object} and {goods2:object}.",
                                     ["pattern"] = { "{goods}", "та", "{goods2}" },
                                     ["priority"] = 100,
@@ -39833,7 +40899,7 @@ ns.Data = {
                                 {
                                     ["id"] = "errand.bring_count",
                                     ["intent"] = "errand",
-                                    ["order"] = 370,
+                                    ["order"] = 378,
                                     ["output"] = "Bring me {count} {goods:countedObject}.",
                                     ["pattern"] = { "{count}", "{goods}" },
                                     ["priority"] = 100,
@@ -39850,7 +40916,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.come",
                                     ["intent"] = "travel",
-                                    ["order"] = 280,
+                                    ["order"] = 288,
                                     ["output"] = "Come to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -39863,7 +40929,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.come",
                                     ["intent"] = "travel",
-                                    ["order"] = 279,
+                                    ["order"] = 287,
                                     ["output"] = "Come to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -39876,7 +40942,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.come",
                                     ["intent"] = "travel",
-                                    ["order"] = 281,
+                                    ["order"] = 289,
                                     ["output"] = "Come to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -39889,9 +40955,18 @@ ns.Data = {
                 ["продам"] = {
                     ["matches"] = {
                         {
-                            ["id"] = "trade.sell",
+                            ["id"] = "trade.sell_with_offers",
                             ["intent"] = "trade_sell",
                             ["order"] = 88,
+                            ["output"] = "WTS {item}, whisper offers.",
+                            ["pattern"] = { "{item}", ".", "пропозиції", "пишіть", "пошепки" },
+                            ["priority"] = 100,
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["id"] = "trade.sell",
+                            ["intent"] = "trade_sell",
+                            ["order"] = 93,
                             ["output"] = "WTS {item}",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -39900,7 +40975,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell",
                             ["intent"] = "trade_sell",
-                            ["order"] = 90,
+                            ["order"] = 95,
                             ["output"] = "WTS {item}",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -39909,7 +40984,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 95,
+                            ["order"] = 100,
                             ["output"] = "WTS {item} for {price}",
                             ["pattern"] = { "{item}", "за", "{price}" },
                             ["priority"] = 100,
@@ -39918,7 +40993,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 96,
+                            ["order"] = 101,
                             ["output"] = "WTS {item} for {price}",
                             ["pattern"] = { "{item}", "{price}" },
                             ["priority"] = 100,
@@ -39927,7 +41002,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 98,
+                            ["order"] = 103,
                             ["output"] = "WTS {item} for {price}",
                             ["pattern"] = { "{item}", "за", "{price}" },
                             ["priority"] = 100,
@@ -39936,7 +41011,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_count",
                             ["intent"] = "trade_sell",
-                            ["order"] = 180,
+                            ["order"] = 188,
                             ["output"] = "WTS {count} {item}",
                             ["pattern"] = { "{count}", "{item}" },
                             ["priority"] = 100,
@@ -39945,7 +41020,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_count",
                             ["intent"] = "trade_sell",
-                            ["order"] = 181,
+                            ["order"] = 189,
                             ["output"] = "WTS {count} {item}",
                             ["pattern"] = { "{count}", "{item}" },
                             ["priority"] = 100,
@@ -39954,7 +41029,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_count_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 185,
+                            ["order"] = 193,
                             ["output"] = "WTS {count} {item} for {price}",
                             ["pattern"] = { "{count}", "{item}", "за", "{price}" },
                             ["priority"] = 100,
@@ -39963,7 +41038,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_count_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 186,
+                            ["order"] = 194,
                             ["output"] = "WTS {count} {item} for {price}",
                             ["pattern"] = { "{count}", "{item}", "за", "{price}" },
                             ["priority"] = 100,
@@ -39972,7 +41047,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_place",
                             ["intent"] = "trade_sell",
-                            ["order"] = 197,
+                            ["order"] = 205,
                             ["output"] = "WTS {item} in {place}",
                             ["pattern"] = { "{item}", "у", "{place}" },
                             ["priority"] = 100,
@@ -39981,7 +41056,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_place",
                             ["intent"] = "trade_sell",
-                            ["order"] = 198,
+                            ["order"] = 206,
                             ["output"] = "WTS {item} in {place}",
                             ["pattern"] = { "{item}", "в", "{place}" },
                             ["priority"] = 100,
@@ -39990,7 +41065,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_place",
                             ["intent"] = "trade_sell",
-                            ["order"] = 199,
+                            ["order"] = 207,
                             ["output"] = "WTS {item} in {place}",
                             ["pattern"] = { "{item}", ".", "місце", ":", "{place}" },
                             ["priority"] = 100,
@@ -39999,7 +41074,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 638,
+                            ["order"] = 646,
                             ["output"] = "WTS {item} for {price} each",
                             ["pattern"] = { "{item}", "за", "{price}", "за", "штуку" },
                             ["priority"] = 100,
@@ -40008,7 +41083,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 639,
+                            ["order"] = 647,
                             ["output"] = "WTS {item} for {price} each",
                             ["pattern"] = { "{item}", "за", "{price}", "за", "одиницю" },
                             ["priority"] = 100,
@@ -40017,7 +41092,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 642,
+                            ["order"] = 650,
                             ["output"] = "WTS {item} for {price} each",
                             ["pattern"] = { "{item}", "—", "{price}", "за", "штуку" },
                             ["priority"] = 100,
@@ -40026,7 +41101,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 643,
+                            ["order"] = 651,
                             ["output"] = "WTS {item} for {price} each",
                             ["pattern"] = { "{item}", "—", "{price}", "за", "одиницю" },
                             ["priority"] = 100,
@@ -40039,7 +41114,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell",
                             ["intent"] = "trade_sell",
-                            ["order"] = 89,
+                            ["order"] = 94,
                             ["output"] = "WTS {item}",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -40048,7 +41123,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_price",
                             ["intent"] = "trade_sell",
-                            ["order"] = 97,
+                            ["order"] = 102,
                             ["output"] = "WTS {item} for {price}",
                             ["pattern"] = { "{item}", "за", "{price}" },
                             ["priority"] = 100,
@@ -40057,7 +41132,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 640,
+                            ["order"] = 648,
                             ["output"] = "WTS {item} for {price} each",
                             ["pattern"] = { "{item}", "за", "{price}", "за", "штуку" },
                             ["priority"] = 100,
@@ -40066,7 +41141,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 641,
+                            ["order"] = 649,
                             ["output"] = "WTS {item} for {price} each",
                             ["pattern"] = { "{item}", "за", "{price}", "за", "одиницю" },
                             ["priority"] = 100,
@@ -40075,7 +41150,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 644,
+                            ["order"] = 652,
                             ["output"] = "WTS {item} for {price} each",
                             ["pattern"] = { "{item}", "—", "{price}", "за", "штуку" },
                             ["priority"] = 100,
@@ -40084,7 +41159,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.sell_unit_price",
                             ["intent"] = "trade.sell_unit_price",
-                            ["order"] = 645,
+                            ["order"] = 653,
                             ["output"] = "WTS {item} for {price} each",
                             ["pattern"] = { "{item}", "—", "{price}", "за", "одиницю" },
                             ["priority"] = 100,
@@ -40097,7 +41172,7 @@ ns.Data = {
                         {
                             ["id"] = "profession.offer",
                             ["intent"] = "craft_service",
-                            ["order"] = 124,
+                            ["order"] = 132,
                             ["output"] = "Offering {profession}",
                             ["pattern"] = { "{profession}" },
                             ["priority"] = 100,
@@ -40106,7 +41181,7 @@ ns.Data = {
                         {
                             ["id"] = "profession.offer_place",
                             ["intent"] = "craft_service",
-                            ["order"] = 207,
+                            ["order"] = 215,
                             ["output"] = "Offering {profession} in {place}",
                             ["pattern"] = { "{profession}", "у", "{place}" },
                             ["priority"] = 100,
@@ -40125,7 +41200,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "profession.offer",
                                                             ["intent"] = "craft_service",
-                                                            ["order"] = 126,
+                                                            ["order"] = 134,
                                                             ["output"] = "Offering {profession}",
                                                             ["pattern"] = { "{profession}" },
                                                             ["priority"] = 100,
@@ -40134,7 +41209,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "profession.offer_place",
                                                             ["intent"] = "craft_service",
-                                                            ["order"] = 208,
+                                                            ["order"] = 216,
                                                             ["output"] = "Offering {profession} in {place}",
                                                             ["pattern"] = {
                                                                 "{profession}",
@@ -40167,7 +41242,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "social.go",
                                                     ["intent"] = "social_reply",
-                                                    ["order"] = 225,
+                                                    ["order"] = 233,
                                                     ["output"] = "Going to {place}",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -40192,7 +41267,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 549,
+                                                    ["order"] = 557,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -40205,7 +41280,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 551,
+                                                    ["order"] = 559,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -40218,7 +41293,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 550,
+                                                    ["order"] = 558,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -40239,7 +41314,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 546,
+                                                    ["order"] = 554,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -40252,7 +41327,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 548,
+                                                    ["order"] = 556,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -40265,7 +41340,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 547,
+                                                    ["order"] = 555,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -40286,7 +41361,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 552,
+                                                    ["order"] = 560,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -40299,7 +41374,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 554,
+                                                    ["order"] = 562,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -40312,7 +41387,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "travel.join_question",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 553,
+                                                    ["order"] = 561,
                                                     ["output"] = "Are you coming with me to {place}?",
                                                     ["pattern"] = { "{place}" },
                                                     ["priority"] = 100,
@@ -40333,7 +41408,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 258,
+                                    ["order"] = 266,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -40346,7 +41421,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 257,
+                                    ["order"] = 265,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -40359,7 +41434,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 259,
+                                    ["order"] = 267,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -40376,7 +41451,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.come",
                                     ["intent"] = "travel",
-                                    ["order"] = 286,
+                                    ["order"] = 294,
                                     ["output"] = "Come to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -40389,7 +41464,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.come",
                                     ["intent"] = "travel",
-                                    ["order"] = 285,
+                                    ["order"] = 293,
                                     ["output"] = "Come to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -40402,7 +41477,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.come",
                                     ["intent"] = "travel",
-                                    ["order"] = 287,
+                                    ["order"] = 295,
                                     ["output"] = "Come to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -40419,7 +41494,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.lets_go",
                                     ["intent"] = "travel",
-                                    ["order"] = 321,
+                                    ["order"] = 329,
                                     ["output"] = "Let's go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -40432,7 +41507,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.lets_go",
                                     ["intent"] = "travel",
-                                    ["order"] = 320,
+                                    ["order"] = 328,
                                     ["output"] = "Let's go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -40445,7 +41520,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.lets_go",
                                     ["intent"] = "travel",
-                                    ["order"] = 322,
+                                    ["order"] = 330,
                                     ["output"] = "Let's go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -40462,7 +41537,7 @@ ns.Data = {
                                 {
                                     ["id"] = "trade.price",
                                     ["intent"] = "trade_question",
-                                    ["order"] = 118,
+                                    ["order"] = 126,
                                     ["output"] = "How much for {item}?",
                                     ["pattern"] = { "{item}" },
                                     ["priority"] = 100,
@@ -40471,7 +41546,7 @@ ns.Data = {
                                 {
                                     ["id"] = "trade.price",
                                     ["intent"] = "trade_question",
-                                    ["order"] = 120,
+                                    ["order"] = 128,
                                     ["output"] = "How much for {item}?",
                                     ["pattern"] = { "{item}" },
                                     ["priority"] = 100,
@@ -40488,7 +41563,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 264,
+                                    ["order"] = 272,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -40501,7 +41576,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 263,
+                                    ["order"] = 271,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -40514,7 +41589,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 265,
+                                    ["order"] = 273,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -40537,7 +41612,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 567,
+                                                            ["order"] = 575,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40550,7 +41625,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 569,
+                                                            ["order"] = 577,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40563,7 +41638,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 568,
+                                                            ["order"] = 576,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40584,7 +41659,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 564,
+                                                            ["order"] = 572,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40597,7 +41672,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 566,
+                                                            ["order"] = 574,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40610,7 +41685,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 565,
+                                                            ["order"] = 573,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40631,7 +41706,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 570,
+                                                            ["order"] = 578,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40644,7 +41719,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 572,
+                                                            ["order"] = 580,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40657,7 +41732,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 571,
+                                                            ["order"] = 579,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40682,7 +41757,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 585,
+                                                            ["order"] = 593,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40695,7 +41770,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 587,
+                                                            ["order"] = 595,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40708,7 +41783,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 586,
+                                                            ["order"] = 594,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40729,7 +41804,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 582,
+                                                            ["order"] = 590,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40742,7 +41817,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 584,
+                                                            ["order"] = 592,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40755,7 +41830,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 583,
+                                                            ["order"] = 591,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40776,7 +41851,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 588,
+                                                            ["order"] = 596,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40789,7 +41864,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 590,
+                                                            ["order"] = 598,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40802,7 +41877,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 589,
+                                                            ["order"] = 597,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40827,7 +41902,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 576,
+                                                            ["order"] = 584,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40840,7 +41915,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 578,
+                                                            ["order"] = 586,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40853,7 +41928,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 577,
+                                                            ["order"] = 585,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40874,7 +41949,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 573,
+                                                            ["order"] = 581,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40887,7 +41962,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 575,
+                                                            ["order"] = 583,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40900,7 +41975,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 574,
+                                                            ["order"] = 582,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40921,7 +41996,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 579,
+                                                            ["order"] = 587,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40934,7 +42009,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 581,
+                                                            ["order"] = 589,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40947,7 +42022,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "travel.join_question",
                                                             ["intent"] = "invitation",
-                                                            ["order"] = 580,
+                                                            ["order"] = 588,
                                                             ["output"] = "Are you coming with me to {place}?",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -40968,7 +42043,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 606,
+                            ["order"] = 614,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = { "{recipient}", "по", "морді", "з'їздити", "щоб", "{recipient:stopClause}" },
                             ["priority"] = 100,
@@ -40977,7 +42052,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 607,
+                            ["order"] = 615,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = {
                                 "{recipient}",
@@ -40994,7 +42069,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 608,
+                            ["order"] = 616,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = { "{recipient}", "по", "морді", "зїздити", "щоб", "{recipient:stopClause}" },
                             ["priority"] = 100,
@@ -41003,7 +42078,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 609,
+                            ["order"] = 617,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = {
                                 "{recipient}",
@@ -41020,7 +42095,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 610,
+                            ["order"] = 618,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = { "{recipient}", "з'їздити", "по", "морді", "щоб", "{recipient:stopClause}" },
                             ["priority"] = 100,
@@ -41029,7 +42104,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 611,
+                            ["order"] = 619,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = {
                                 "{recipient}",
@@ -41046,7 +42121,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 612,
+                            ["order"] = 620,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = { "{recipient}", "зїздити", "по", "морді", "щоб", "{recipient:stopClause}" },
                             ["priority"] = 100,
@@ -41055,7 +42130,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 613,
+                            ["order"] = 621,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = {
                                 "{recipient}",
@@ -41072,7 +42147,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 614,
+                            ["order"] = 622,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = { "{recipient}", "дати", "по", "морді", "щоб", "{recipient:stopClause}" },
                             ["priority"] = 100,
@@ -41081,7 +42156,7 @@ ns.Data = {
                         {
                             ["id"] = "idiom.smack_to_stop",
                             ["intent"] = "complaint",
-                            ["order"] = 615,
+                            ["order"] = 623,
                             ["output"] = "We need to smack {recipient} in the face to get {recipient} to stop.",
                             ["pattern"] = { "{recipient}", "дати", "по", "морді", ",", "щоб", "{recipient:stopClause}" },
                             ["priority"] = 100,
@@ -41096,7 +42171,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.lets_go",
                                     ["intent"] = "travel",
-                                    ["order"] = 318,
+                                    ["order"] = 326,
                                     ["output"] = "Let's go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -41109,7 +42184,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.lets_go",
                                     ["intent"] = "travel",
-                                    ["order"] = 317,
+                                    ["order"] = 325,
                                     ["output"] = "Let's go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -41122,7 +42197,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.lets_go",
                                     ["intent"] = "travel",
-                                    ["order"] = 319,
+                                    ["order"] = 327,
                                     ["output"] = "Let's go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -41139,7 +42214,7 @@ ns.Data = {
                                 {
                                     ["id"] = "complaint.fed_up_damn",
                                     ["intent"] = "complaint",
-                                    ["order"] = 599,
+                                    ["order"] = 607,
                                     ["output"] = "I'm sick of these damn {creaturePlural} {behavior}.",
                                     ["pattern"] = { "{creaturePlural}", "задовбали", "{behavior}" },
                                     ["priority"] = 100,
@@ -41148,7 +42223,7 @@ ns.Data = {
                                 {
                                     ["id"] = "complaint.fed_up_damn",
                                     ["intent"] = "complaint",
-                                    ["order"] = 600,
+                                    ["order"] = 608,
                                     ["output"] = "I'm sick of these damn {creaturePlural} {behavior}.",
                                     ["pattern"] = { "{creaturePlural}", "дістали", "{behavior}" },
                                     ["priority"] = 100,
@@ -41161,7 +42236,7 @@ ns.Data = {
                                 {
                                     ["id"] = "complaint.fed_up_damn",
                                     ["intent"] = "complaint",
-                                    ["order"] = 601,
+                                    ["order"] = 609,
                                     ["output"] = "I'm sick of these damn {creaturePlural} {behavior}.",
                                     ["pattern"] = { "{creaturePlural}", "задовбали", "{behavior}" },
                                     ["priority"] = 100,
@@ -41170,7 +42245,7 @@ ns.Data = {
                                 {
                                     ["id"] = "complaint.fed_up_damn",
                                     ["intent"] = "complaint",
-                                    ["order"] = 602,
+                                    ["order"] = 610,
                                     ["output"] = "I'm sick of these damn {creaturePlural} {behavior}.",
                                     ["pattern"] = { "{creaturePlural}", "дістали", "{behavior}" },
                                     ["priority"] = 100,
@@ -41183,7 +42258,7 @@ ns.Data = {
                                 {
                                     ["id"] = "complaint.fed_up_damn",
                                     ["intent"] = "complaint",
-                                    ["order"] = 603,
+                                    ["order"] = 611,
                                     ["output"] = "I'm sick of these damn {creaturePlural} {behavior}.",
                                     ["pattern"] = { "{creaturePlural}", "задовбали", "{behavior}" },
                                     ["priority"] = 100,
@@ -41192,7 +42267,7 @@ ns.Data = {
                                 {
                                     ["id"] = "complaint.fed_up_damn",
                                     ["intent"] = "complaint",
-                                    ["order"] = 604,
+                                    ["order"] = 612,
                                     ["output"] = "I'm sick of these damn {creaturePlural} {behavior}.",
                                     ["pattern"] = { "{creaturePlural}", "дістали", "{behavior}" },
                                     ["priority"] = 100,
@@ -41207,7 +42282,7 @@ ns.Data = {
                         {
                             ["id"] = "trade.price",
                             ["intent"] = "trade_question",
-                            ["order"] = 119,
+                            ["order"] = 127,
                             ["output"] = "How much for {item}?",
                             ["pattern"] = { "{item}" },
                             ["priority"] = 100,
@@ -41222,7 +42297,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.hurry",
                                     ["intent"] = "travel",
-                                    ["order"] = 276,
+                                    ["order"] = 284,
                                     ["output"] = "Hurry to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -41235,7 +42310,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.hurry",
                                     ["intent"] = "travel",
-                                    ["order"] = 275,
+                                    ["order"] = 283,
                                     ["output"] = "Hurry to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -41248,7 +42323,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.hurry",
                                     ["intent"] = "travel",
-                                    ["order"] = 277,
+                                    ["order"] = 285,
                                     ["output"] = "Hurry to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -41332,7 +42407,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.need",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 130,
+                                    ["order"] = 138,
                                     ["output"] = "Looking for {profession}",
                                     ["pattern"] = { "{profession}" },
                                     ["priority"] = 100,
@@ -41341,7 +42416,7 @@ ns.Data = {
                                 {
                                     ["id"] = "profession.need_place",
                                     ["intent"] = "craft_service",
-                                    ["order"] = 211,
+                                    ["order"] = 219,
                                     ["output"] = "Looking for {profession} in {place}",
                                     ["pattern"] = { "{profession}", "у", "{place}" },
                                     ["priority"] = 100,
@@ -41358,7 +42433,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "profession.need",
                                                             ["intent"] = "craft_service",
-                                                            ["order"] = 132,
+                                                            ["order"] = 140,
                                                             ["output"] = "Looking for {profession}",
                                                             ["pattern"] = { "{profession}" },
                                                             ["priority"] = 100,
@@ -41367,7 +42442,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "profession.need_place",
                                                             ["intent"] = "craft_service",
-                                                            ["order"] = 212,
+                                                            ["order"] = 220,
                                                             ["output"] = "Looking for {profession} in {place}",
                                                             ["pattern"] = {
                                                                 "{profession}",
@@ -41496,7 +42571,7 @@ ns.Data = {
                                 {
                                     ["id"] = "sight.creature",
                                     ["intent"] = "observation",
-                                    ["order"] = 593,
+                                    ["order"] = 601,
                                     ["output"] = "I see {creature:object}.",
                                     ["pattern"] = { "{creature}" },
                                     ["priority"] = 100,
@@ -41509,7 +42584,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.at",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 230,
+                                    ["order"] = 238,
                                     ["output"] = "I am in {place}",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -41524,7 +42599,7 @@ ns.Data = {
                                         {
                                             ["id"] = "activity.heading_to",
                                             ["intent"] = "invitation",
-                                            ["order"] = 513,
+                                            ["order"] = 521,
                                             ["output"] = "I'm heading to {activity:activity}.",
                                             ["pattern"] = { "{activity}" },
                                             ["priority"] = 100,
@@ -41541,7 +42616,7 @@ ns.Data = {
                                         {
                                             ["id"] = "activity.heading_to",
                                             ["intent"] = "invitation",
-                                            ["order"] = 519,
+                                            ["order"] = 527,
                                             ["output"] = "I'm heading to {activity:activity}.",
                                             ["pattern"] = { "{activity}" },
                                             ["priority"] = 100,
@@ -41554,7 +42629,7 @@ ns.Data = {
                                         {
                                             ["id"] = "activity.heading_to",
                                             ["intent"] = "invitation",
-                                            ["order"] = 512,
+                                            ["order"] = 520,
                                             ["output"] = "I'm heading to {activity:activity}.",
                                             ["pattern"] = { "{activity}" },
                                             ["priority"] = 100,
@@ -41571,7 +42646,7 @@ ns.Data = {
                                         {
                                             ["id"] = "activity.heading_to",
                                             ["intent"] = "invitation",
-                                            ["order"] = 517,
+                                            ["order"] = 525,
                                             ["output"] = "I'm heading to {activity:activity}.",
                                             ["pattern"] = { "{activity}" },
                                             ["priority"] = 100,
@@ -41584,7 +42659,7 @@ ns.Data = {
                                         {
                                             ["id"] = "activity.heading_to",
                                             ["intent"] = "invitation",
-                                            ["order"] = 510,
+                                            ["order"] = 518,
                                             ["output"] = "I'm heading to {activity:activity}.",
                                             ["pattern"] = { "{activity}" },
                                             ["priority"] = 100,
@@ -41601,7 +42676,7 @@ ns.Data = {
                                         {
                                             ["id"] = "activity.heading_to",
                                             ["intent"] = "invitation",
-                                            ["order"] = 518,
+                                            ["order"] = 526,
                                             ["output"] = "I'm heading to {activity:activity}.",
                                             ["pattern"] = { "{activity}" },
                                             ["priority"] = 100,
@@ -41614,7 +42689,7 @@ ns.Data = {
                                         {
                                             ["id"] = "activity.heading_to",
                                             ["intent"] = "invitation",
-                                            ["order"] = 511,
+                                            ["order"] = 519,
                                             ["output"] = "I'm heading to {activity:activity}.",
                                             ["pattern"] = { "{activity}" },
                                             ["priority"] = 100,
@@ -41631,7 +42706,7 @@ ns.Data = {
                                         {
                                             ["id"] = "activity.heading_to",
                                             ["intent"] = "invitation",
-                                            ["order"] = 520,
+                                            ["order"] = 528,
                                             ["output"] = "I'm heading to {activity:activity}.",
                                             ["pattern"] = { "{activity}" },
                                             ["priority"] = 100,
@@ -41644,7 +42719,7 @@ ns.Data = {
                                         {
                                             ["id"] = "activity.heading_to",
                                             ["intent"] = "invitation",
-                                            ["order"] = 514,
+                                            ["order"] = 522,
                                             ["output"] = "I'm heading to {activity:activity}.",
                                             ["pattern"] = { "{activity}" },
                                             ["priority"] = 100,
@@ -41665,7 +42740,7 @@ ns.Data = {
                                                         {
                                                             ["id"] = "social.at",
                                                             ["intent"] = "social_reply",
-                                                            ["order"] = 231,
+                                                            ["order"] = 239,
                                                             ["output"] = "I am in {place}",
                                                             ["pattern"] = { "{place}" },
                                                             ["priority"] = 100,
@@ -41684,7 +42759,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "activity.heading_to",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 515,
+                                                    ["order"] = 523,
                                                     ["output"] = "I'm heading to {activity:activity}.",
                                                     ["pattern"] = { "{activity}" },
                                                     ["priority"] = 100,
@@ -41697,7 +42772,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "activity.heading_to",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 508,
+                                                    ["order"] = 516,
                                                     ["output"] = "I'm heading to {activity:activity}.",
                                                     ["pattern"] = { "{activity}" },
                                                     ["priority"] = 100,
@@ -41714,7 +42789,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "activity.heading_to",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 516,
+                                                    ["order"] = 524,
                                                     ["output"] = "I'm heading to {activity:activity}.",
                                                     ["pattern"] = { "{activity}" },
                                                     ["priority"] = 100,
@@ -41727,7 +42802,7 @@ ns.Data = {
                                                 {
                                                     ["id"] = "activity.heading_to",
                                                     ["intent"] = "invitation",
-                                                    ["order"] = 509,
+                                                    ["order"] = 517,
                                                     ["output"] = "I'm heading to {activity:activity}.",
                                                     ["pattern"] = { "{activity}" },
                                                     ["priority"] = 100,
@@ -41744,7 +42819,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.at",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 229,
+                                    ["order"] = 237,
                                     ["output"] = "I am in {place}",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -41761,7 +42836,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 249,
+                                    ["order"] = 257,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -41774,7 +42849,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 248,
+                                    ["order"] = 256,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -41787,7 +42862,7 @@ ns.Data = {
                                 {
                                     ["id"] = "travel.go",
                                     ["intent"] = "travel",
-                                    ["order"] = 250,
+                                    ["order"] = 258,
                                     ["output"] = "Go to {place}.",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -41804,7 +42879,7 @@ ns.Data = {
                                 {
                                     ["id"] = "social.go",
                                     ["intent"] = "social_reply",
-                                    ["order"] = 223,
+                                    ["order"] = 231,
                                     ["output"] = "Going to {place}",
                                     ["pattern"] = { "{place}" },
                                     ["priority"] = 100,
@@ -41817,7 +42892,7 @@ ns.Data = {
                                 {
                                     ["id"] = "activity.heading_to",
                                     ["intent"] = "invitation",
-                                    ["order"] = 523,
+                                    ["order"] = 531,
                                     ["output"] = "I'm heading to {activity:activity}.",
                                     ["pattern"] = { "{activity}" },
                                     ["priority"] = 100,
@@ -42596,6 +43671,24 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Підземелля"
         },
+        ["game.expert_fishing"] = {
+            ["category"] = "game",
+            ["en"] = "Expert Fishing",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter",
+                ["proper"] = true
+            },
+            ["id"] = "game.expert_fishing",
+            ["provenance"] = {
+                ["context"] = "profession rank from the unified WoW Forever dictionary",
+                ["key"] = "Expert Fishing",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Експертне рибальство"
+        },
         ["game.food"] = {
             ["aliases"] = {
                 ["en"] = {},
@@ -43348,6 +44441,73 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Сумка з місячної тканини"
         },
+        ["goods.mount"] = {
+            ["category"] = "goods",
+            ["en"] = "mount",
+            ["englishPlural"] = "mounts",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "їздову тварину",
+                ["genitivePlural"] = "їздових тварин",
+                ["genitiveSingular"] = "їздової тварини",
+                ["nominativePlural"] = "їздові тварини"
+            },
+            ["id"] = "goods.mount",
+            ["provenance"] = {
+                ["context"] = "riding animal, terminology used by the UA_Forever UI catalog",
+                ["key"] = "mount",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "їздова тварина"
+        },
+        ["goods.steel_weapon_chain"] = {
+            ["category"] = "goods",
+            ["en"] = "Steel Weapon Chain",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine"
+            },
+            ["forms"] = {
+                ["accusative"] = "Сталевий ланцюг для зброї",
+                ["genitiveSingular"] = "Сталевого ланцюга для зброї"
+            },
+            ["id"] = "goods.steel_weapon_chain",
+            ["provenance"] = {
+                ["context"] = "item 6041, Ukrainian name from the unified WoW Forever dictionary",
+                ["key"] = "Steel Weapon Chain",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Сталевий ланцюг для зброї"
+        },
+        ["goods.stormshroud_armor"] = {
+            ["category"] = "goods",
+            ["en"] = "Stormshroud Armor",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine"
+            },
+            ["forms"] = {
+                ["accusative"] = "Обладунок бурепокрову",
+                ["genitiveSingular"] = "Обладунку бурепокрову",
+                ["instrumental"] = "Обладунком бурепокрову"
+            },
+            ["id"] = "goods.stormshroud_armor",
+            ["provenance"] = {
+                ["context"] = "item set 142, Ukrainian name from the unified WoW Forever dictionary",
+                ["key"] = "Stormshroud Armor",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Обладунок бурепокрову"
+        },
         ["goods.sword"] = {
             ["aliases"] = {
                 ["en"] = { "swords" },
@@ -43577,6 +44737,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "лігво Чорного Крила"
         },
+        ["place.burning_steppes"] = {
+            ["category"] = "places",
+            ["en"] = "Burning Steppes",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine"
+            },
+            ["forms"] = {
+                ["accusative"] = "Палаючий степ",
+                ["genitiveSingular"] = "Палаючого степу",
+                ["locative"] = "Палаючому степу"
+            },
+            ["id"] = "place.burning_steppes",
+            ["provenance"] = {
+                ["context"] = "zone name",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Burning Steppes",
+                ["line"] = 422,
+                ["sha256"] = "60e2b63a679cf5abd0931237b1be7a11b9145ed00b240d04076189c7bc5c04d0",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.burning_steppes" },
+            ["status"] = "approved",
+            ["uk"] = "Палаючий степ"
+        },
         ["place.darnassus"] = {
             ["aliases"] = {
                 ["en"] = {},
@@ -43772,7 +44957,7 @@ ns.Data = {
         },
         ["place.gnomeregan"] = {
             ["aliases"] = {
-                ["en"] = { "gnomer" },
+                ["en"] = { "gnomer", "gnomergan", "gnomeragan" },
                 ["uk"] = { "гномериган", "гномереган", "гномереґан", "гномерегана", "гномеригaн" }
             },
             ["category"] = "places",
@@ -43784,7 +44969,9 @@ ns.Data = {
                 ["gender"] = "masculine"
             },
             ["forms"] = {
-                ["genitiveSingular"] = "Гномреґана"
+                ["accusative"] = "Гномреґан",
+                ["genitiveSingular"] = "Гномреґана",
+                ["locative"] = "Гномреґані"
             },
             ["id"] = "place.gnomeregan",
             ["priority"] = 100,
@@ -43809,7 +44996,7 @@ ns.Data = {
             },
             ["category"] = "places",
             ["contextAliases"] = {
-                ["en"] = { "HoT" },
+                ["en"] = { "HoT", "Thanes" },
                 ["uk"] = {}
             },
             ["en"] = "The Hall of Thanes",
@@ -44265,6 +45452,31 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.scholomance" },
             ["status"] = "approved",
             ["uk"] = "Некроситет"
+        },
+        ["place.searing_gorge"] = {
+            ["category"] = "places",
+            ["en"] = "Searing Gorge",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "Випалену ущелину",
+                ["genitiveSingular"] = "Випаленої ущелини",
+                ["locative"] = "Випаленій ущелині"
+            },
+            ["id"] = "place.searing_gorge",
+            ["provenance"] = {
+                ["context"] = "zone name",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Searing Gorge",
+                ["line"] = 2348,
+                ["sha256"] = "60e2b63a679cf5abd0931237b1be7a11b9145ed00b240d04076189c7bc5c04d0",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.searing_gorge" },
+            ["status"] = "approved",
+            ["uk"] = "Випалена ущелина"
         },
         ["place.shadowfang_keep"] = {
             ["aliases"] = {
@@ -48050,6 +49262,29 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Твої матеріали"
         },
+        ["specialization.retribution"] = {
+            ["category"] = "specializations",
+            ["contextAliases"] = {
+                ["en"] = { "ret" }
+            },
+            ["en"] = "Retribution",
+            ["features"] = {
+                ["gender"] = "feminine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["nominative"] = "Відплата"
+            },
+            ["id"] = "specialization.retribution",
+            ["provenance"] = {
+                ["context"] = "paladin specialization from the unified WoW Forever dictionary",
+                ["key"] = "Retribution",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Відплата"
+        },
         ["stat.agility"] = {
             ["aliases"] = {
                 ["en"] = { "agi" }
@@ -48162,6 +49397,23 @@ ns.Data = {
             ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
             ["status"] = "approved",
             ["uk"] = "Сила"
+        },
+        ["trade.arcanite_transmute_cooldown"] = {
+            ["aliases"] = {
+                ["en"] = { "Arcanite transmute CD", "Arcanite CD", "transmute Arcanite CD" },
+                ["uk"] = { "час відновлення трансмутації арканіту" }
+            },
+            ["category"] = "craftServices",
+            ["en"] = "Arcanite transmute cooldown",
+            ["id"] = "trade.arcanite_transmute_cooldown",
+            ["provenance"] = {
+                ["context"] = "chat shorthand for purchasing the use of Transmute: Arcanite",
+                ["key"] = "Arcanite transmute cooldown",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "КД трансмутації арканіту"
         }
     }
 }

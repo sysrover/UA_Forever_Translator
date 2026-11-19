@@ -59,6 +59,13 @@ local function addClause(matched, refs, seen, rule, slots)
 end
 local function grammarClause(document, first, last)
     if last - first >= 64 then return nil end
+    local tail, colon = document.tokens[last], document.tokens[last - 1]
+    local emote
+    if last > first and colon.key == ":" and tail.first == colon.last + 1
+        and (tail.key == ")" or tail.key == "(" or tail.key == "d") then
+        emote = document.text:sub(colon.first, tail.last)
+        last = last - 2
+    end
     local punctuation
     while last >= first and document.tokens[last].key:match("^[.!?]$") do
         local key = document.tokens[last].key
@@ -69,6 +76,7 @@ local function grammarClause(document, first, last)
     local parsed = ns.Engine.ClauseAnalysis.parse(document, first, last)
     if not parsed then return nil end
     local output = ns.Engine.ClauseGeneration.render(parsed, document.direction, punctuation)
+    if output and emote then output = output .. " " .. emote end
     if output then return output, {intent=parsed.trees[1].kind, imperative=parsed.trees[1].imperative == true,
         sourceRefs=ns.Linguistics.manifest.sourceRefs} end
 end

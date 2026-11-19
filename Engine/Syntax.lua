@@ -83,7 +83,7 @@ function State:role(name, countKey)
 end
 function State:link(name, kind)
     local token = self.tokens[self.i]
-    if self.i <= self.limit and token.linkKind == kind then
+    if self.i <= self.limit and (token.linkKind == kind or kind == "quest" and token.questReference) then
         self.slots[name] = {raw=self.document.text:sub(token.first, token.last), kind=kind}
         self.i = self.i + 1; return true
     end
@@ -181,10 +181,12 @@ local function recruit(p, direction)
         if not p:any("шукаємо", "потрібно", "потрібен", "потрібні") then return end
         p:word("ще")
         p:word("гравців")
-    elseif not p:any("lfm", "lf", "looking for", "need") then
+    elseif p:any("lfm", "lf") then
+        p:word("for")
+    elseif not p:any("looking for", "lookng for", "need") then
         if not p:noun("place", "places") then return end
         p:word(",")
-        if not p:any("lfm", "lf", "looking for", "need") then return end
+        if not p:any("lfm", "lf", "looking for", "lookng for", "need") then return end
         leadingPlace = true
     end
     local count = p:count()
@@ -222,7 +224,9 @@ local function recruit(p, direction)
             local introduced = p:any("for", "для", "у", "в", "місце :")
             if p:noun("place", "places") then place = true
             else
-                if introduced and p.limit == #p.tokens then
+                local token = p.tokens[p.i]
+                local quest = token and (token.linkKind == "quest" or token.questReference)
+                if introduced and not quest and p.limit == #p.tokens then
                     p.document.preserve = p.document.preserve or {}
                     local unresolved = p.i <= p.limit and p.i or start
                     p.document.preserve[unresolved] = {last=p.limit, reason="unresolved-destination"}
@@ -235,13 +239,27 @@ local function recruit(p, direction)
         if p.i < p.limit and p.tokens[p.i].key == "!" then p.i = p.i + 1 end
     end
     p:word(",")
+    local start, quests = p.i, {}
+    local questMarker = p:any("for", "на завдання")
+    if questMarker or not place then
+        for n = 1, 8 do
+            local previous = p.i
+            if n > 1 then p:word(",") end
+            local slot = "quest" .. n
+            if not p:link(slot, "quest") then p.i = previous; break end
+            quests[n] = p.slots[slot].raw
+        end
+    end
+    if #quests == 0 then p.i = start end
     if p:any("last spot", "last slot", "останнє місце") then lastSpot = true end
+    local vacancies = p.slots.total or p.slots.count
+    if vacancies and tonumber(vacancies.raw) == 1 and #roleJoins == 0 and p:phrase("full group") then lastSpot = true end
     local run
     if p:any("full run", "повне проходження", ". повне проходження") then run = "full"
     elseif p:any("fresh run", "проходження з початку", ". проходження з початку") then run = "fresh" end
     p:word(",")
     local summon = p:any("can summon", "можемо прикликати", ". можемо прикликати")
-    if p:any("and go", "then go", "і йдемо", "і вирушаємо", ". і вирушаємо") then go = true end
+    if p:any("and go", "then go", "n go", "n ' go", "і йдемо", "і вирушаємо", ". і вирушаємо") then go = true end
     if not role and not (place and (p.slots.count or p.slots.total or p.slots.level)) then return end
     if lastSpot then
         local total = p.slots.total
@@ -252,7 +270,7 @@ local function recruit(p, direction)
         end
     end
     return p:finish("recruit", {lastSpot=lastSpot, go=go, roleJoins=roleJoins, classJoins=p.classJoins,
-        run=run, summon=summon})
+        run=run, summon=summon, quests=#quests > 0 and quests or nil})
 end
 
 local function enhancementItem(p, suffix, english, allowOption)

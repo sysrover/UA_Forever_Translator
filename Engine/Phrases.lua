@@ -8,7 +8,8 @@ local demonstratives = {this="near", these="near", that="far", those="far",
     ["цей"]="near", ["ця"]="near", ["це"]="near", ["ці"]="near", ["цю"]="near", ["цих"]="near",
     ["того"]="far", ["той"]="far", ["та"]="far", ["те"]="far", ["ті"]="far", ["ту"]="far"}
 local semanticNouns = {roles=true, classes=true, places=true, creatures=true, goods=true, game=true,
-    professions=true, activities=true, equipment=true, stats=true, countries=true, territories=true}
+    professions=true, activities=true, equipment=true, stats=true, countries=true, territories=true, specializations=true}
+local allForms = {nominative="усі", accusative="усі", genitive="усіх", dative="усім", instrumental="усіма", locative="усіх"}
 local groupNouns = {group=true, party=true, team=true, raid=true}
 local timeUnits = {
     min="хвилина", mins="хвилина", minute="хвилина", minutes="хвилина",
@@ -107,7 +108,7 @@ local function nounHead(document, first, limit, case, locationOnly)
     local token = document.tokens[first]
     if token.protected then
         local raw = P.raw(document, first, first)
-        if token.linkKind or raw:match("^<.+>$") or raw:sub(1, 1) == "@" then
+        if token.linkKind or token.questReference or raw:match("^<.+>$") or raw:sub(1, 1) == "@" then
             return {raw=raw, number="singular", person=3}, first + 1
         end
         return nil
@@ -164,6 +165,11 @@ end
 function P.noun(document, first, limit, case, locationOnly, count, simple)
     local index = first
     local key = P.key(document, index, limit)
+    local english = document.direction == "en-uk"
+    local allForm = allForms[case]
+    local all = english and key == "all"
+        or not english and allForm and (key == allForm or key == "в" .. allForm:sub(3))
+    if all then index = index + 1; key = P.key(document, index, limit) end
     if key == "\"" then
         if P.key(document, first + 1, limit) == "\"" then return nil end
         local quoted, after = P.noun(document, first + 1, limit, case, locationOnly, count)
@@ -218,6 +224,8 @@ function P.noun(document, first, limit, case, locationOnly, count, simple)
         if owner then return nounHead(document, first, limit, case, locationOnly) end
         return nil
     end
+    if all and (best.pronoun or best.number ~= "plural") then return nil end
+    best.all = all or nil
     local en = document.direction == "en-uk"
     if owner then
         if best.raw or best.pronoun or quantity then return nil end
@@ -294,9 +302,10 @@ function P.preposition(document, first, limit, motion)
         local object, ending = P.noun(document, last + 1, limit, case,
             rule.id == "in" or rule.id == "to" or rule.id == "from")
         local frame = object and object.entry and object.entry.lexeme.frame
-        if object and (not rule.requiresLexicalLocative or (frame and frame.locativePreposition == rule.targetUk))
+        if object and (not rule.requiresCategory or (object.term and object.term.category == rule.requiresCategory))
+            and (not rule.requiresLexicalLocative or (frame and frame.locativePreposition == rule.targetUk))
             and (not rule.requiresNearLandmark or (frame and frame.atNearLandmark)) then
-            local rank = (rule.requiresLexicalLocative or rule.requiresNearLandmark) and 1 or 0
+            local rank = (rule.requiresLexicalLocative or rule.requiresNearLandmark or rule.requiresCategory) and 1 or 0
             if not priority or rank > priority then
                 selected, after, priority, ambiguous = {rule=rule, object=object, case=case}, ending, rank, false
             elseif rank == priority then ambiguous = true end
