@@ -95,6 +95,52 @@ function P.raw(document, first, last)
     return document.text:sub(document.tokens[first].first, document.tokens[last].last)
 end
 
+function P.calendar(document, first, limit)
+    local english = document.direction == "en-uk"
+    local marker = P.key(document, first, limit)
+    local preposition = english and marker == "on" or not english and (marker == "у" or marker == "в")
+    local start = first + (preposition and 1 or 0)
+    local choices, last = L.functional(document, "calendarDays", start, limit)
+    if not choices or #choices ~= 1 then return nil end
+    local day = ns.Linguistics.grammar.calendarDays[choices[1]]
+    local repeated = P.key(document, start, limit) == (english and day.en[2] or day.uk[2])
+    if not english and not (preposition or repeated) then return nil end
+    local phases, finish = L.functional(document, "calendarPhases", last + 1, limit)
+    local phase = phases and #phases == 1 and ns.Linguistics.grammar.calendarPhases[phases[1]] or nil
+    if phase then
+        repeated = repeated or english and P.key(document, last + 1, limit) == phase.en[2]
+        last = finish
+    end
+    return {day=day, phase=phase, repeated=repeated}, last + 1
+end
+
+local clockSeparators = {["-"]=true, ["–"]=true, ["—"]=true, ["‐"]=true, ["‑"]=true}
+local clockZones = {utc=true, gmt=true, cet=true, cest=true, est=true, edt=true, pst=true, pdt=true}
+
+local function clockAt(document, first, limit)
+    local hour = P.key(document, first, limit)
+    local minute = P.key(document, first + 2, limit)
+    if not hour or not hour:match("^%d%d?$") or tonumber(hour) > 23
+        or P.key(document, first + 1, limit) ~= ":" or not minute or not minute:match("^%d%d$") or tonumber(minute) > 59 then
+        return nil
+    end
+    return hour .. ":" .. minute, first + 3
+end
+
+function P.clockRange(document, first, limit)
+    local english = document.direction == "en-uk"
+    local marker = P.key(document, first, limit)
+    local from = english and marker == "from" or not english and (marker == "з" or marker == "із" or marker == "зі")
+    local start, after = clockAt(document, first + (from and 1 or 0), limit)
+    if not start then return nil end
+    local separator = P.key(document, after, limit)
+    if not (clockSeparators[separator] or from and separator == (english and "to" or "до")) then return nil end
+    local ending, finish = clockAt(document, after + 1, limit)
+    if not ending then return nil end
+    local zone = clockZones[P.key(document, finish, limit)] and P.raw(document, finish, finish) or nil
+    return {start=start, ending=ending, zone=zone}, finish + (zone and 1 or 0)
+end
+
 local function acceptsCategory(term, locationOnly, sense)
     local category = term.category
     if sense == "ability" then return category == "abilities" and not locationOnly end
@@ -872,6 +918,9 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
                 local session, sessionEnd
                 if place and not locationOnly then
                     session, sessionEnd = nounHead(document, following, limit, case, false, "iteration")
+                    if not session then
+                        session, sessionEnd = nounHead(document, following, limit, case, false, "locationGroup")
+                    end
                 end
                 if prefixArgument then
                     part.argument = {object=prefix, form=prefixArgument}
@@ -879,6 +928,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
                 elseif session and session.entry and session.entry.lexeme.frame and session.entry.lexeme.frame.placeCompound then
                     session.genitive = prefix
                     head, after = session, sessionEnd
+                    if session.entry.lexeme.frame.placeCompoundTitle then compoundHead = sessionEnd - 1 end
                 elseif #adjectives == 0 and (not definitePlace or owner) and relation and relation.spatialPart then
                     if relation.pathTo then part.pathTo = prefix
                     else part.genitive = prefix end

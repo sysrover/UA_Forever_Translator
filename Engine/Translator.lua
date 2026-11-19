@@ -87,9 +87,20 @@ local function grammarClause(document, first, last)
         first = first + 3
     end
     if last < first then return nil end
+    local aside = first + 2 <= last and document.tokens[first].key == "(" and document.tokens[last].key == ")"
+    local innerPunctuation
+    if aside then
+        first, last = first + 1, last - 1
+        local inner = document.tokens[last].key
+        if inner:match("^[.!?]$") then innerPunctuation, last = inner, last - 1 end
+    end
+    if last < first then return nil end
     local parsed = ns.Engine.ClauseAnalysis.parse(document, first, last)
     if not parsed then return nil end
-    local output = ns.Engine.ClauseGeneration.render(parsed, document.direction, punctuation)
+    local output = ns.Engine.ClauseGeneration.render(parsed, document.direction, innerPunctuation or punctuation)
+    if output and aside then
+        output = "(" .. output:gsub("[.!?]+$", "") .. (innerPunctuation or "") .. ")" .. (punctuation or "")
+    end
     if output and prefix then output = prefix .. output end
     if output and emote then output = output .. " " .. emote end
     if output then

@@ -151,6 +151,7 @@ local function targetNumber(node, english)
     if node.entry then
         local frame = node.entry.lexeme.frame
         if english and frame and frame.englishNumber then return frame.englishNumber end
+        if not english and frame and frame.ukNumber and not node.quantity then return frame.ukNumber end
         if not english and node.entry.head.number == "plural" then return "plural" end
     end
     return node.number
@@ -275,6 +276,9 @@ local function noun(node, english, case, article, compoundModifier, owner)
         local place = G.noun(node.genitive, true, "genitive")
         if not place then return nil end
         append(parts, (place:gsub("^The ", "")))
+        if frame.placeCompoundTitle then
+            value = value:gsub("%a+", function(word) return ns.Engine.Normalize.upperStart(word) end)
+        end
     end
     local argumentCompound = english and node.argument and node.argument.form.englishCompound
     if argumentCompound then
@@ -1106,8 +1110,15 @@ local inferredPossessives = {I="my", you="your", we="our", they="their", he="his
 
 renderTree = function(tree, english, controller)
     if tree.kind == "welcoming" then
-        local recipient = G.noun(tree.recipient, english, english and "nominative" or "dative")
+        local recipient = G.noun(tree.recipient, english, english and "nominative" or "dative", english)
         if not recipient then return nil end
+        if tree.interests then
+            local interests, marker = G.preposition(tree.interests, english)
+            if not interests then return nil end
+            local audience = recipient .. " " .. marker .. " " .. interests
+            return english and (audience .. " " .. presentBe(tree.recipient.person, tree.recipient.number) .. " welcome")
+                or ("раді " .. audience)
+        end
         local adverb = tree.welcomeAdverb
         local parts
         if english then
@@ -1384,6 +1395,10 @@ renderTree = function(tree, english, controller)
     end
     if tree.kind == "social" then
         local rule = tree.social
+        if rule.audience then
+            local audience = G.noun(tree.object, english, english and "accusative" or rule.ukCase)
+            return audience and (english and rule.targetEn or rule.targetUk) .. " " .. audience
+        end
         local standalone = not tree.object and not tree.action
         local head = english and (standalone and not tree.everyone and rule.standaloneEn or rule.en[1]) or rule.uk[1]
         if tree.everyone then
@@ -1827,6 +1842,23 @@ renderTree = function(tree, english, controller)
     if tree.scheduleTime then
         local time = (english and tree.scheduleTime.en or tree.scheduleTime.uk)[1]
         append(parts, (english and "for " or "на ") .. time)
+    end
+    if tree.calendar then
+        local day, phase, repeated = tree.calendar.day, tree.calendar.phase, tree.calendar.repeated
+        if english then
+            local name = "on " .. day.name
+            if phase then name = name .. " " .. phase.en[repeated and 2 or 1]
+            elseif repeated then name = name .. "s" end
+            append(parts, name)
+        else
+            append(parts, repeated and day.uk[2] or day.onUk)
+            if phase then append(parts, phase.uk[1]) end
+        end
+    end
+    if tree.clockRange then
+        local range = tree.clockRange
+        local time = (english and "from " or "з ") .. range.start .. (english and " to " or " до ") .. range.ending
+        append(parts, range.zone and time .. " " .. range.zone or time)
     end
     if tree.delay then
         if tree.delay.soon then append(parts, english and "soon" or "незабаром")
