@@ -13835,6 +13835,11 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Немає мани"
             },
+            ["pst"] = {
+                ["id"] = "pst.request",
+                ["sourceRefs"] = { "wow-community:forum" },
+                ["text"] = "Напиши пошепки."
+            },
             ["pull"] = {
                 ["id"] = "pull",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -14456,6 +14461,11 @@ ns.Data = {
                 ["id"] = "buff",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Buff please"
+            },
+            ["напиши пошепки"] = {
+                ["id"] = "pst.request",
+                ["sourceRefs"] = { "wow-community:forum" },
+                ["text"] = "PST"
             },
             ["наша гільдія набирає гравців"] = {
                 ["id"] = "guild_recruit",
@@ -43544,7 +43554,7 @@ ns.Data = {
         ["concepts"] = 268,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
-        ["phraseFamilies"] = 84,
+        ["phraseFamilies"] = 85,
         ["source"] = {
             ["approvalMeaning"] = "Editorially reviewed for this addon; not a claim of individual user approval.",
             ["catalogBuild"] = "1.60.1.70938",
@@ -43560,7 +43570,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 89,
-        ["version"] = "501b3a2203f216288b76eac12e39e38d19d25847eec58e2ff896995c72df4a50"
+        ["version"] = "32aca8385152daa65130dfc0c0dceb8ead27163062abac8790b8c1bf248c5909"
     },
     ["rules"] = {
         ["en-uk"] = {

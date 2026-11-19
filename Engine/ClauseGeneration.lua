@@ -17,6 +17,13 @@ local function append(parts, value)
     if value and value ~= "" then parts[#parts + 1] = value end
 end
 
+local function euphonicZ(marker, value)
+    if marker ~= "з" then return marker end
+    local initial = ns.Engine.Normalize.word(value):sub(1, 2)
+    if initial == "з" or initial == "с" or initial == "ш" or initial == "щ" then return "зі" end
+    return marker
+end
+
 local function countedCase(amount, case, animate)
     local number = tonumber((amount:gsub(",", ".")))
     if not number or number % 1 ~= 0 then return "genitive", "singular" end
@@ -274,7 +281,8 @@ local function noun(node, english, case, article, compoundModifier, owner)
         local argument, form = node.argument.object, node.argument.form
         local object = G.noun(argument, english, english and "accusative" or form.case, true, nil, owner)
         if not object then return nil end
-        value = value .. " " .. (english and form.en or form.uk) .. " " .. object
+        local marker = english and form.en or euphonicZ(form.uk, object)
+        value = value .. " " .. marker .. " " .. object
     end
     if node.nominalAction then
         local action = render(node.nominalAction, english, owner)
@@ -647,13 +655,6 @@ local function englishVerb(tree, subject)
     local form = not tree.imperative and tree.tense == "past" and "past"
         or not tree.imperative and tree.tense ~= "infinitive" and third and "third" or "base"
     return (subject and subject .. " " or "") .. adverb .. englishForm(lemma, form, "verb")
-end
-
-local function euphonicZ(marker, value)
-    if marker ~= "з" then return marker end
-    local initial = ns.Engine.Normalize.word(value):sub(1, 2)
-    if initial == "з" or initial == "с" or initial == "ш" or initial == "щ" then return "зі" end
-    return marker
 end
 
 function G.preposition(complement, english, owner)
