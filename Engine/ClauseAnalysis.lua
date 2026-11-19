@@ -1908,6 +1908,13 @@ end
 
 local function predicate(document, tree, index, limit, depth)
     local head = P.key(document, index, limit)
+    if tree.subject then
+        local grounded, after = P.groundedState(document, tree.subject, index, limit, "nominative")
+        if grounded then
+            tree.adjective, tree.prepositions, tree.predicateIndex = grounded, {grounded.complement}, index
+            return after
+        end
+    end
     if tree.subject and tree.subject.number == "plural" and index < limit
         and (document.direction == "en-uk" and head == "all"
             or document.direction == "uk-en" and (head == "усі" or head == "всі")) then
@@ -2294,7 +2301,7 @@ end
 
 local function persistenceAt(document, index, limit)
     local modifier, following = adverbAt(document, index, limit, "existence")
-    if modifier and modifier.context == "existence" then return modifier, following end
+    if modifier and (modifier.context == "existence" or modifier.existentialPersistence) then return modifier, following end
 end
 
 local function existential(document, first, limit, depth)
@@ -2308,7 +2315,7 @@ local function existential(document, first, limit, depth)
     local key, index, copulaNumber = P.key(document, first, limit), first
     local nextKey = P.key(document, first + 1, limit)
     local interrogative = document.tokens[limit + 1] and document.tokens[limit + 1].key == "?"
-    local nearby, possessor, bareIndefinite, location, persistence
+    local nearby, possessor, bareIndefinite, location, persistence, leadingPlace
     local question = true
     if english then
         if key == "there's" or key == "there" and (nextKey == "is" or nextKey == "are") then
@@ -2330,6 +2337,8 @@ local function existential(document, first, limit, depth)
         else return end
     else
         local marker = (key == "чи") and first + 1 or first
+        local place, placeEnd = P.preposition(document, marker, limit)
+        if place and spatialAdjuncts[place.rule.id] then leadingPlace, marker = place, placeEnd end
         local modifier, following = persistenceAt(document, marker, limit)
         if modifier then persistence, marker = modifier, following end
         local at, following = adverbAt(document, marker, limit)
@@ -2357,9 +2366,9 @@ local function existential(document, first, limit, depth)
     local capacity
     if not subject or not (subject.article or subject.adjectives or subject.possessor or subject.quantity or subject.demonstrative) then
         local marker = P.key(document, index + 1, limit)
-        local beneficiary
-        if marker == (english and "for" or "для") then beneficiary = P.preposition(document, index + 1, limit) end
-        if not marker or beneficiary and P.relativeAnimate(beneficiary.object) then
+        local following = marker and P.preposition(document, index + 1, limit, nil, nil, "roomCapacity")
+        if not marker or leadingPlace or following and (spatialAdjuncts[following.rule.id]
+            or following.rule.id == "for" and P.relativeAnimate(following.object)) then
             capacity = L.choose(document, index, "noun", not english and {case="nominative"} or nil, nil,
                 function(candidate)
                     return lexemeFrame(candidate).capacity and candidate.form.number ~= "plural"
@@ -2370,6 +2379,7 @@ local function existential(document, first, limit, depth)
             after = index + 1
         end
     end
+    if leadingPlace and not capacity then return nil end
     if not subject or (copulaNumber and subject.number ~= copulaNumber) then return end
     local adverb, finish = adverbAt(document, after, limit)
     local here = P.key(document, after, limit)
@@ -2378,13 +2388,17 @@ local function existential(document, first, limit, depth)
     elseif here == "around" or here == "here" or here == "тут" then nearby, after = true, after + 1 end
     local tree = {kind="existential", subject=subject, question=question or reason, why=reason,
         nearby=nearby, possessor=possessor,
-        capacity=capacity ~= nil, locationAdverb=location, persistence=persistence}
+        capacity=capacity ~= nil, locationAdverb=location, persistence=persistence, locationPreposition=leadingPlace}
     after = attachNominalAction(document, subject, after, limit, depth)
     for _ = 1, 2 do
-        local pp, finish = P.preposition(document, after, limit)
+        local pp, finish = P.preposition(document, after, limit, nil, nil, capacity and "roomCapacity")
         if not pp or not (spatialAdjuncts[pp.rule.id] or pp.rule.id == "for" and not subject.pronoun) then break end
-        tree.prepositions = tree.prepositions or {}
-        tree.prepositions[#tree.prepositions + 1] = pp
+        if capacity and not tree.question and not (tree.locationPreposition or tree.prepositions)
+            and spatialAdjuncts[pp.rule.id] then tree.locationPreposition = pp
+        else
+            tree.prepositions = tree.prepositions or {}
+            tree.prepositions[#tree.prepositions + 1] = pp
+        end
         after = finish
     end
     adverb, finish = adverbAt(document, after, limit)
@@ -2923,6 +2937,18 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap)
     local english = document.direction == "en-uk"
     local key = P.key(document, first, limit)
     if not previous and not indirect then
+        local token = document.tokens[first]
+        if token and token.protected and not token.linkKind then
+            local label = P.raw(document, first, first)
+            if label:match("^<[^<>]+>$") then
+                local separator = P.key(document, first + 1, limit)
+                local opening = first + ((separator == "—" or separator == ":") and 2 or 1)
+                local description, ending = P.noun(document, opening, limit, "nominative")
+                if description and description.term and description.term.id == "game.guild" and boundary(document, ending, limit) then
+                    return {kind="nounPhrase", subject=description, descriptionLabel=label}, ending
+                end
+            end
+        end
         local greeting, afterGreeting = adverbAt(document, first, limit, nil, function(candidate)
             return candidate.salutation
         end)
@@ -4000,7 +4026,8 @@ local function parse(document, first, limit)
                     if time and time.nominalTime and following > limit then
                         tree, after = {kind="nounPhrase", subject=noun, adverbs={time}}, following
                     elseif pp or ((noun.same or noun.adjectives or noun.possessor or noun.nominalObject or noun.genitive or noun.inclusion or noun.many or noun.more or noun.abundance
-                        or noun.destination or noun.term and noun.term.features and noun.term.features.canStandAlone)
+                        or noun.destination or noun.activityMode or noun.groundedState
+                        or noun.term and noun.term.features and noun.term.features.canStandAlone)
                         and ending > limit) then
                         tree, after = {kind="nounPhrase", subject=noun, prepositions=pp and {pp}}, finish or ending
                     end
@@ -4669,9 +4696,48 @@ local function temporalAttachment(document, first, limit)
     end
 end
 
+local function frontedRange(document, first, limit)
+    local english = document.direction == "en-uk"
+    if P.key(document, first, limit) ~= (english and "from" or "від")
+        or limit - first >= 32 or not ns.UDPipeModels then return nil end
+    local origin, nextAt = P.preposition(document, first, limit)
+    if not origin or origin.rule.id ~= "from" or not origin.object.headIndex then return nil end
+    local endpoint, body = P.preposition(document, nextAt, limit)
+    if not endpoint or endpoint.rule.id ~= "to" or not endpoint.object.headIndex then return nil end
+    local landmark, after = P.preposition(document, body, limit)
+    if landmark and landmark.rule.id == "near" and landmark.object.headIndex then body = after
+    else landmark = nil end
+    local comma = P.key(document, body, limit) == ","
+    if english and not comma then return nil end
+    local core = parseWithRelatives(document, body + (comma and 1 or 0), limit)
+    local tree = core and not core.prefix and core.trees[1]
+    local governor = tree and tree.verbIndex
+    if not governor or not tree.subject then return nil end
+    local originHead, endpointHead = origin.object.headIndex, endpoint.object.headIndex
+    local tags = {[originHead]="NOUN", [endpointHead]="NOUN", [governor]="VERB"}
+    local arcs = ns.Engine.UDPipe.analyzeDocument(document, first, limit, nil, nil, tags)
+    if not arcs then return nil end
+    local offset = first - 1
+    local startMarker, endMarker = arcs[1], arcs[nextAt - offset]
+    local startArc, endArc = arcs[originHead - offset], arcs[endpointHead - offset]
+    if startMarker.relation ~= "case" or startMarker.head + offset ~= originHead
+        or endMarker.relation ~= "case" or endMarker.head + offset ~= endpointHead
+        or startArc.relation ~= "obl" or startArc.head + offset ~= governor then return nil end
+    if not (endArc.relation == "nmod" and endArc.head + offset == originHead
+        or endArc.relation == "obl" and endArc.head + offset == governor) then return nil end
+    if landmark then
+        local site = arcs[landmark.object.headIndex - offset]
+        if not (site.relation == "nmod" and site.head + offset == endpointHead
+            or not english and site.relation == "obl" and site.head + offset == governor) then return nil end
+    end
+    origin.targetUk = origin.rule.literalTargetUk
+    core.openingPrepositions, core.dependency = {origin, endpoint, landmark}, true
+    return core
+end
+
 local function parseGroup(document, first, limit)
     return parseWithRelatives(document, first, limit) or parseWithParticiples(document, first, limit)
-        or frontedControlledTime(document, first, limit)
+        or frontedRange(document, first, limit) or frontedControlledTime(document, first, limit)
         or temporalAttachment(document, first, limit)
 end
 

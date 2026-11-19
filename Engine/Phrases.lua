@@ -275,7 +275,8 @@ function P.pronoun(document, first, limit, case, personOnly, headlessQuantity)
     end
     if selected then
         local number = document.direction == "uk-en" and selected.ukNumber or selected.number
-        return {pronoun=selected, person=selected.person, gender=selected.gender, number=number}, last + 1
+        local animacy = selected.headlessQuantity and not selected.inanimate and "animate" or nil
+        return {pronoun=selected, person=selected.person, gender=selected.gender, number=number, animacy=animacy}, last + 1
     end
 end
 
@@ -550,6 +551,54 @@ local function nominalArcs(document, first, limit, ampersand)
     return memo[key], first - 1
 end
 
+function P.groundedState(document, noun, first, limit, case, attributive)
+    local english = document.direction == "en-uk"
+    local comma = attributive and P.key(document, first, limit) == ","
+    if not english and attributive and not comma then return nil end
+    local start = first + (comma and 1 or 0)
+    if P.key(document, start + 1, limit) ~= (english and "on" or "на") then return nil end
+    local requested = not english and {case=case, number=noun.number,
+        gender=noun.number == "singular" and noun.gender or nil} or nil
+    local sense = P.spatialContainer(noun) and "groundedStructure" or "groundedState"
+    local modifier = L.choose(document, start, "adj", requested, sense)
+    if not modifier then return nil end
+    local basis, finish = P.preposition(document, start + 1, limit, nil, nil, "foundation")
+    if not basis or basis.rule.id ~= "on-foundation" then return nil end
+    if english and attributive then
+        local terminal = P.key(document, limit + 1, #document.tokens)
+        local through = terminal and terminal:match("^[.!?]$") and limit + 1 or limit
+        local arcs, offset = nominalArcs(document, start, through)
+        local arc = arcs and arcs[start - offset]
+        if not arc or not noun.headIndex then return nil end
+        local attached = arc.relation == "acl" and arc.head + offset == noun.headIndex
+        if not attached then
+            local head = basis.object.members and basis.object.members[1] or basis.object
+            local dependency = head.headIndex and arcs[head.headIndex - offset]
+            local nominal = arcs[noun.headIndex - offset]
+            attached = dependency and (arc.relation == "case" and arc.head + offset == head.headIndex
+                and dependency.relation == "nmod" and dependency.head + offset == noun.headIndex
+                or arc.relation == "root" and nominal.relation == "nsubj" and nominal.head + offset == start
+                    and dependency.relation == "obl" and dependency.head + offset == start)
+        end
+        if not attached then return nil end
+    end
+    return {entry=modifier, complement=basis}, finish
+end
+
+local modeSymbols = {rp="RP", pvp="PvP", pve="PvE"}
+local function modePrefix(document, index, limit)
+    local label = modeSymbols[P.key(document, index, limit)]
+    if not label then return nil end
+    local after = index + 1
+    if P.key(document, after, limit) == "/" then
+        local second = modeSymbols[P.key(document, after + 1, limit)]
+        if not second or second == label then return nil end
+        label, after = label .. "/" .. second, after + 2
+    end
+    if P.key(document, after, limit) == "-" then after = after + 1 end
+    return label, after
+end
+
 local function attachedCoordination(document, owner, limit, start, dependent, after, case, sense, adposition)
     local marker = P.key(document, after, limit)
     if marker ~= "," and marker ~= "&" and not L.functional(document, "connectors", after, limit) then return nil end
@@ -782,6 +831,17 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         local compoundHead
         if contextual then head, after = lexicalNoun(contextual), index + 1
         else head, after = nounHead(document, index, limit, case, locationOnly, nounSense, required) end
+        if not locationOnly then
+            local mode, modeEnd = modePrefix(document, index, limit)
+            if mode then
+                local group, finish = nounHead(document, modeEnd, limit, case, false, nounSense, required)
+                local groupLemma = group and group.entry and group.entry.lexeme.en
+                if group and (group.term and group.term.id == "game.guild" or groupNouns[groupLemma]) then
+                    group.activityMode = mode
+                    head, after, compoundHead = group, finish, modeEnd
+                end
+            end
+        end
         if english and not simple and not locationOnly then
             local audience, ending, anchor = audienceWithTopics(document, index, limit, head, required)
             if audience then head, after, compoundHead = audience, ending, anchor end
@@ -1022,6 +1082,10 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             if reading then modifier.entry = reading end
         end
     end
+    if not simple and best.headIndex and nextIndex < limit then
+        local state, finish = P.groundedState(document, best, nextIndex, limit, case, true)
+        if state then best.groundedState, nextIndex = state, finish end
+    end
     if document.relativeBudget and not simple and not best.raw
         and (not best.pronoun or best.pronoun.id == "someone") and nextIndex <= limit then
         local dependent = best.genitive
@@ -1054,10 +1118,17 @@ function P.preposition(document, first, limit, motion, displacement, context, se
                 or not displacement and (rule.id == "in" or rule.id == "to" or rule.id == "from")
             local sense = (not rule.bareContextAlias or P.key(document, last + 1, limit) == rule.bareContextAlias)
                 and rule.objectSense or nil
-            object, ending = P.noun(document, last + 1, limit, case, locationOnly, nil, nil,
-                sense, spatial and P.spatialContainer)
+            if rule.enumeratedObject then
+                object, ending = P.coordinated(document, last + 1, limit, case, nil, nil, true, sense, nil, true)
+            else
+                object, ending = P.noun(document, last + 1, limit, case, locationOnly, nil, nil,
+                    sense, spatial and P.spatialContainer)
+            end
             if not object and spatial and not rule.requiresSpatialContainer then
                 object, ending = P.noun(document, last + 1, limit, case, locationOnly, nil, nil, sense)
+            end
+            if not object and context == "roomCapacity" and rule.id == "for" then
+                object, ending = P.pronoun(document, last + 1, limit, case, true, true)
             end
         end
         local frame = object and object.entry and object.entry.lexeme.frame

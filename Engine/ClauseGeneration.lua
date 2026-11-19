@@ -283,6 +283,9 @@ local function noun(node, english, case, article, compoundModifier, owner)
         append(parts, argument)
         if article == true and not node.article then article = node.argument.form.englishCompoundArticle or "definite" end
     end
+    if node.activityMode then
+        value = node.activityMode .. (english and " " or "-") .. value
+    end
     append(parts, value)
     value = table.concat(parts, " ")
     if node.characterLevel then
@@ -431,7 +434,7 @@ local function noun(node, english, case, article, compoundModifier, owner)
         if article == "definite" and not proper and not uncountable and number == "singular" then return "the " .. value end
         if (article or node.article == "indefinite") and not proper and not uncountable and number == "singular" then
             local indefinite = frame and not node.adjectives and not argumentCompound and frame.englishIndefiniteArticle
-                or value:match("^[AEIOUaeiou]") and "an" or "a"
+                or (value:match("^[AEIOUaeiou]") or value:match("^RP[/ ]")) and "an" or "a"
             return indefinite .. " " .. value
         end
     end
@@ -442,6 +445,14 @@ function G.noun(node, english, case, article, compoundModifier, owner)
     local relative = node.relative
     if english and relative and not article and not relative.nonrestrictive then article = "definite" end
     local value = noun(node, english, case, article, compoundModifier, owner)
+    if value and node.groundedState then
+        local state = node.groundedState
+        local adjectiveValue = adjective(state, english, case, targetNumber(node, english), node.gender, node.animacy)
+        local basis, marker = G.preposition(state.complement, english, owner)
+        if not adjectiveValue or not basis then return nil end
+        local description = adjectiveValue .. " " .. marker .. " " .. basis
+        value = english and value .. " " .. description or withComma(value) .. " " .. withComma(description)
+    end
     if not value or not relative then return value end
     local clause = render(relative.clause, english)
     if not clause then return nil end
@@ -1094,6 +1105,10 @@ end
 local inferredPossessives = {I="my", you="your", we="our", they="their", he="his", she="her", it="its"}
 
 renderTree = function(tree, english, controller)
+    if tree.descriptionLabel then
+        local description = G.noun(tree.subject, english, "nominative", english)
+        return description and tree.descriptionLabel .. (english and " is " or " — ") .. description
+    end
     if tree.locationAvailability then
         local availability = tree.locationAvailability
         local place = {object=tree.subject, case=availability.rule.case, rule=availability.rule}
@@ -1263,6 +1278,11 @@ renderTree = function(tree, english, controller)
         if profession then subject = ns.Engine.Normalize.word(subject) end
         local indefinite = noun.pronoun and noun.pronoun.id == "someone"
         local parts
+        local locationValue, locationMarker
+        if tree.locationPreposition then
+            locationValue, locationMarker = G.preposition(tree.locationPreposition, english)
+            if not locationValue then return nil end
+        end
         local frontedLocation = not english and (not tree.question or tree.why) and tree.locationAdverb and not tree.possessor
         if english then
             if indefinite and tree.question then subject = "anyone" end
@@ -1277,9 +1297,13 @@ renderTree = function(tree, english, controller)
             if tree.persistence then append(parts, tree.persistence.en[1]) end
             append(parts, subject)
             if tree.nearby then append(parts, "around") end
+            append(parts, locationMarker)
+            append(parts, locationValue)
         else
             parts = {}
             if tree.why then append(parts, "Чому") end
+            append(parts, locationMarker)
+            append(parts, locationValue)
             if frontedLocation then append(parts, tree.locationAdverb.uk[1]) end
             if tree.question and not tree.why then append(parts, "чи") end
             if tree.persistence and tree.nearby and not tree.possessor then append(parts, "тут") end
@@ -1829,6 +1853,10 @@ local subordinateConnectors = {because=true, ["if"]=true, ["in-case"]=true, unle
 function G.render(parse, direction, punctuation)
     local english = direction == "uk-en"
     local parts, last = {}, nil
+    if parse.openingPrepositions then
+        if not addPrepositions(parts, {prepositions=parse.openingPrepositions}, english) then return nil end
+        if english then parts[#parts] = withComma(parts[#parts]) end
+    end
     if english and punctuation == "?" then
         local question = parse.trees[#parse.trees]
         for i = #parse.trees, 1, -1 do
