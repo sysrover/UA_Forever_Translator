@@ -20,6 +20,20 @@ local function serviceTerms(output, features, uk)
     return output .. (uk and "." or "")
 end
 
+local function practitionerLabel(term, uk, nominative)
+    if not uk then return term.englishPractitioner end
+    local forms = term.renderForms
+    return forms and forms[nominative and "practitionerNominative" or "practitioner"]
+end
+
+local function practitionerRequest(term, uk, article)
+    local profession = practitionerLabel(term, uk)
+    if not profession then return nil end
+    if uk then return "Шукаю " .. profession end
+    local determiner = article and (profession:match("^[AEIOUaeiou]") and "an " or "a ") or ""
+    return "Looking for " .. determiner .. profession
+end
+
 function T.render(tree, direction)
     local s, f, uk = tree.slots, tree.features, direction == "en-uk"
     local function render(template) return G.render(template, s, direction) end
@@ -167,11 +181,14 @@ function T.render(tree, direction)
         return "Any " .. skill .. " " .. profession .. " " .. place
     elseif tree.kind == "service" then
         if s.recipe then
-            local profession = uk and s.profession.term.renderForms and s.profession.term.renderForms.practitioner
-                or not uk and s.profession.term.englishPractitioner
-            if not profession then return end
-            return (uk and "Шукаю " or "Looking for ") .. profession
-                .. (uk and " із рецептом «" or " with ") .. render("{recipe}") .. (uk and "»." or ".")
+            local request = practitionerRequest(s.profession.term, uk, not f.withRecipe)
+            local forms = s.recipe.term and s.recipe.term.renderForms
+            local recipe = forms and forms[uk and "serviceUk" or "serviceEn"] or render("{recipe}")
+            if not request or not recipe then return end
+            local marker = f.withRecipe and (uk and " із рецептом " or " with ") or (uk and " для чарів " or " for ")
+            local output = request .. marker .. (uk and "«" .. recipe .. "»" or recipe)
+            if f.mats then output = output .. (uk and ", матеріали є" or ", got mats") end
+            return output .. "."
         end
         local subject = s.trade and s.trade.raw or M.generate(s.profession.term, direction)
         if not subject then return end
@@ -180,8 +197,9 @@ function T.render(tree, direction)
             if not link then break end
             subject = subject .. ", " .. link.raw
         end
-        local output = (uk and (f.demand and "Шукаю послуги: " or "Пропоную послуги: ")
-            or (f.demand and "Looking for " or "Offering ")) .. subject
+        local output = f.demand and f.practitioner and practitionerRequest(s.profession.term, uk, true)
+            or (uk and (f.demand and "Шукаю послуги: " or "Пропоную послуги: ")
+                or (f.demand and "Looking for " or "Offering ")) .. subject
         if f.priced then output = output .. (uk and " за " or " for ") .. s.price.raw end
         if f.free then output = output .. (uk and " безкоштовно" or " for free") end
         if f.materials then
@@ -224,9 +242,7 @@ function T.render(tree, direction)
         end
         local output = table.concat(items)
         if f.demand then
-            local professionForm = f.inquiry and "practitionerNominative" or "practitioner"
-            local profession = uk and s.profession.term.renderForms and s.profession.term.renderForms[professionForm]
-                or (not uk and s.profession.term.englishPractitioner)
+            local profession = practitionerLabel(s.profession.term, uk, f.inquiry)
             if not profession then return end
             local separator = uk and (#f.joins > 0 and " — " or " для ") or " for "
             local lead = uk and (f.inquiry and "Чи є " or "Шукаю ") or (f.inquiry and "Any " or "Looking for ")

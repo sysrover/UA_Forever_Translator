@@ -1106,6 +1106,11 @@ ns.Data = {
                     ["_id"] = "slang.combat.cc"
                 }
             },
+            ["crusader"] = {
+                ["_byCategory"] = {
+                    ["craftServices"] = "recipe.crusader"
+                }
+            },
             ["cyclonian"] = {
                 ["_id"] = "creature.cyclonian"
             },
@@ -1473,6 +1478,21 @@ ns.Data = {
                             }
                         }
                     }
+                },
+                ["weapon"] = {
+                    ["-"] = {
+                        ["crusader"] = {
+                            ["_id"] = "recipe.crusader"
+                        },
+                        ["fiery"] = {
+                            ["weapon"] = {
+                                ["_id"] = "recipe.fiery_weapon"
+                            }
+                        },
+                        ["lifestealing"] = {
+                            ["_id"] = "recipe.lifestealing"
+                        }
+                    }
                 }
             },
             ["enchanter"] = {
@@ -1598,6 +1618,14 @@ ns.Data = {
                         ["text"] = "принеси мені",
                         ["weak"] = false
                     }
+                }
+            },
+            ["fiery"] = {
+                ["_byCategory"] = {
+                    ["craftServices"] = "recipe.fiery_weapon"
+                },
+                ["weapon"] = {
+                    ["_id"] = "recipe.fiery_weapon"
                 }
             },
             ["find"] = {
@@ -2519,6 +2547,11 @@ ns.Data = {
                         ["sourceRefs"] = { "project-authored:chat-0.1" },
                         ["text"] = "життєві рішення"
                     }
+                }
+            },
+            ["lifestealing"] = {
+                ["_byCategory"] = {
+                    ["craftServices"] = "recipe.lifestealing"
                 }
             },
             ["light"] = {
@@ -5882,6 +5915,13 @@ ns.Data = {
                     }
                 }
             },
+            ["викрадення"] = {
+                ["життя"] = {
+                    ["_byCategory"] = {
+                        ["craftServices"] = "recipe.lifestealing"
+                    }
+                }
+            },
             ["вимани"] = {
                 ["ворогів"] = {
                     ["за"] = {
@@ -6037,6 +6077,9 @@ ns.Data = {
                 }
             },
             ["вогняна"] = {
+                ["зброя"] = {
+                    ["_id"] = "recipe.fiery_weapon"
+                },
                 ["куля"] = {
                     ["_byCategory"] = {
                         ["abilities"] = "ability.fireball"
@@ -7941,6 +7984,23 @@ ns.Data = {
                             ["удар"] = {
                                 ["_id"] = "recipe.two_hand_impact"
                             }
+                        }
+                    }
+                },
+                ["зброї"] = {
+                    ["—"] = {
+                        ["викрадення"] = {
+                            ["життя"] = {
+                                ["_id"] = "recipe.lifestealing"
+                            }
+                        },
+                        ["вогняна"] = {
+                            ["зброя"] = {
+                                ["_id"] = "recipe.fiery_weapon"
+                            }
+                        },
+                        ["хрестоносець"] = {
+                            ["_id"] = "recipe.crusader"
                         }
                     }
                 }
@@ -12909,6 +12969,11 @@ ns.Data = {
                     }
                 }
             },
+            ["хрестоносець"] = {
+                ["_byCategory"] = {
+                    ["craftServices"] = "recipe.crusader"
+                }
+            },
             ["хіба"] = {
                 ["що"] = {
                     ["_literal"] = {
@@ -17611,6 +17676,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["crusader"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["serviceProfession"] = "profession.enchanting"
+                            },
+                            ["id"] = "recipe.crusader",
+                            ["lemma"] = "Enchant Weapon - Crusader",
+                            ["pos"] = "noun",
+                            ["sense"] = "recipe.crusader",
+                            ["sourceRefs"] = { "ua-forever:recipe.crusader" }
+                        }
+                    }
+                },
                 ["cyclonian"] = {
                     ["_analyses"] = {
                         {
@@ -18223,7 +18302,9 @@ ns.Data = {
                                 ["impact"] = {
                                     ["_analyses"] = {
                                         {
-                                            ["features"] = {},
+                                            ["features"] = {
+                                                ["serviceProfession"] = "profession.enchanting"
+                                            },
                                             ["id"] = "recipe.two_hand_impact",
                                             ["lemma"] = "Enchant 2H Weapon - Impact",
                                             ["pos"] = "noun",
@@ -18237,7 +18318,9 @@ ns.Data = {
                                 ["impact"] = {
                                     ["_analyses"] = {
                                         {
-                                            ["features"] = {},
+                                            ["features"] = {
+                                                ["serviceProfession"] = "profession.enchanting"
+                                            },
                                             ["id"] = "recipe.two_hand_impact",
                                             ["lemma"] = "Enchant 2H Weapon - Impact",
                                             ["pos"] = "noun",
@@ -18257,7 +18340,9 @@ ns.Data = {
                                         ["impact"] = {
                                             ["_analyses"] = {
                                                 {
-                                                    ["features"] = {},
+                                                    ["features"] = {
+                                                        ["serviceProfession"] = "profession.enchanting"
+                                                    },
                                                     ["id"] = "recipe.two_hand_impact",
                                                     ["lemma"] = "Enchant 2H Weapon - Impact",
                                                     ["pos"] = "noun",
@@ -18266,6 +18351,54 @@ ns.Data = {
                                                 }
                                             }
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["weapon"] = {
+                        ["-"] = {
+                            ["crusader"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["serviceProfession"] = "profession.enchanting"
+                                        },
+                                        ["id"] = "recipe.crusader",
+                                        ["lemma"] = "Enchant Weapon - Crusader",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "recipe.crusader",
+                                        ["sourceRefs"] = { "ua-forever:recipe.crusader" }
+                                    }
+                                }
+                            },
+                            ["fiery"] = {
+                                ["weapon"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["serviceProfession"] = "profession.enchanting"
+                                            },
+                                            ["id"] = "recipe.fiery_weapon",
+                                            ["lemma"] = "Fiery Weapon",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "recipe.fiery_weapon",
+                                            ["sourceRefs"] = { "ua-forever:recipe.fiery_weapon" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["lifestealing"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["serviceProfession"] = "profession.enchanting"
+                                        },
+                                        ["id"] = "recipe.lifestealing",
+                                        ["lemma"] = "Enchant Weapon - Lifestealing",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "recipe.lifestealing",
+                                        ["sourceRefs"] = { "ua-forever:recipe.lifestealing" }
                                     }
                                 }
                             }
@@ -18423,6 +18556,34 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "character.fellow_elves",
                                 ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["fiery"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["serviceProfession"] = "profession.enchanting"
+                            },
+                            ["id"] = "recipe.fiery_weapon",
+                            ["lemma"] = "Fiery Weapon",
+                            ["pos"] = "noun",
+                            ["sense"] = "recipe.fiery_weapon",
+                            ["sourceRefs"] = { "ua-forever:recipe.fiery_weapon" }
+                        }
+                    },
+                    ["weapon"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["serviceProfession"] = "profession.enchanting"
+                                },
+                                ["id"] = "recipe.fiery_weapon",
+                                ["lemma"] = "Fiery Weapon",
+                                ["pos"] = "noun",
+                                ["sense"] = "recipe.fiery_weapon",
+                                ["sourceRefs"] = { "ua-forever:recipe.fiery_weapon" }
                             }
                         }
                     }
@@ -19923,6 +20084,20 @@ ns.Data = {
                                 ["sense"] = "game.life_choice",
                                 ["sourceRefs"] = { "project-authored:chat-0.1" }
                             }
+                        }
+                    }
+                },
+                ["lifestealing"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["serviceProfession"] = "profession.enchanting"
+                            },
+                            ["id"] = "recipe.lifestealing",
+                            ["lemma"] = "Enchant Weapon - Lifestealing",
+                            ["pos"] = "noun",
+                            ["sense"] = "recipe.lifestealing",
+                            ["sourceRefs"] = { "ua-forever:recipe.lifestealing" }
                         }
                     }
                 },
@@ -25747,6 +25922,22 @@ ns.Data = {
                         }
                     }
                 },
+                ["викрадення"] = {
+                    ["життя"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["serviceProfession"] = "profession.enchanting"
+                                },
+                                ["id"] = "recipe.lifestealing",
+                                ["lemma"] = "Зачарування зброї — викрадення життя",
+                                ["pos"] = "noun",
+                                ["sense"] = "recipe.lifestealing",
+                                ["sourceRefs"] = { "ua-forever:recipe.lifestealing" }
+                            }
+                        }
+                    }
+                },
                 ["вимани"] = {
                     ["ворогів"] = {
                         ["за"] = {
@@ -26116,6 +26307,20 @@ ns.Data = {
                     }
                 },
                 ["вогняна"] = {
+                    ["зброя"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["serviceProfession"] = "profession.enchanting"
+                                },
+                                ["id"] = "recipe.fiery_weapon",
+                                ["lemma"] = "Вогняна зброя",
+                                ["pos"] = "noun",
+                                ["sense"] = "recipe.fiery_weapon",
+                                ["sourceRefs"] = { "ua-forever:recipe.fiery_weapon" }
+                            }
+                        }
+                    },
                     ["куля"] = {
                         ["_analyses"] = {
                             {
@@ -30860,13 +31065,65 @@ ns.Data = {
                                 ["удар"] = {
                                     ["_analyses"] = {
                                         {
-                                            ["features"] = {},
+                                            ["features"] = {
+                                                ["serviceProfession"] = "profession.enchanting"
+                                            },
                                             ["id"] = "recipe.two_hand_impact",
                                             ["lemma"] = "Зачарування дворучної зброї — удар",
                                             ["pos"] = "noun",
                                             ["sense"] = "recipe.two_hand_impact",
                                             ["sourceRefs"] = { "ua-forever:recipe.two_hand_impact" }
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["зброї"] = {
+                        ["—"] = {
+                            ["викрадення"] = {
+                                ["життя"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["serviceProfession"] = "profession.enchanting"
+                                            },
+                                            ["id"] = "recipe.lifestealing",
+                                            ["lemma"] = "Зачарування зброї — викрадення життя",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "recipe.lifestealing",
+                                            ["sourceRefs"] = { "ua-forever:recipe.lifestealing" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["вогняна"] = {
+                                ["зброя"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["serviceProfession"] = "profession.enchanting"
+                                            },
+                                            ["id"] = "recipe.fiery_weapon",
+                                            ["lemma"] = "Вогняна зброя",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "recipe.fiery_weapon",
+                                            ["sourceRefs"] = { "ua-forever:recipe.fiery_weapon" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["хрестоносець"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["serviceProfession"] = "profession.enchanting"
+                                        },
+                                        ["id"] = "recipe.crusader",
+                                        ["lemma"] = "Зачарування зброї — хрестоносець",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "recipe.crusader",
+                                        ["sourceRefs"] = { "ua-forever:recipe.crusader" }
                                     }
                                 }
                             }
@@ -41448,6 +41705,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["хрестоносець"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["serviceProfession"] = "profession.enchanting"
+                            },
+                            ["id"] = "recipe.crusader",
+                            ["lemma"] = "Зачарування зброї — хрестоносець",
+                            ["pos"] = "noun",
+                            ["sense"] = "recipe.crusader",
+                            ["sourceRefs"] = { "ua-forever:recipe.crusader" }
+                        }
+                    }
+                },
                 ["хіл"] = {
                     ["_analyses"] = {
                         {
@@ -45281,6 +45552,30 @@ ns.Data = {
                     ["vocative"] = "протоорку"
                 }
             },
+            ["recipe.crusader"] = {
+                ["en"] = {
+                    ["canonical"] = "Enchant Weapon - Crusader"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зачарування зброї — хрестоносець"
+                }
+            },
+            ["recipe.fiery_weapon"] = {
+                ["en"] = {
+                    ["canonical"] = "Fiery Weapon"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Вогняна зброя"
+                }
+            },
+            ["recipe.lifestealing"] = {
+                ["en"] = {
+                    ["canonical"] = "Enchant Weapon - Lifestealing"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зачарування зброї — викрадення життя"
+                }
+            },
             ["recipe.two_hand_impact"] = {
                 ["en"] = {
                     ["canonical"] = "Enchant 2H Weapon - Impact"
@@ -46071,7 +46366,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 274,
+        ["concepts"] = 277,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 85,
@@ -46090,7 +46385,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "e84d8054d6b2b11b56f688b5375d1183e3c958bd6a4f4f29229c08094fbf7080"
+        ["version"] = "a9569f5980c37ede23a419404e9f8044f3e90a618521bde35f337e99ee086787"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -60580,6 +60875,86 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" },
             ["uk"] = "протоорк"
         },
+        ["recipe.crusader"] = {
+            ["category"] = "craftServices",
+            ["contextAliases"] = {
+                ["en"] = { "Crusader" },
+                ["uk"] = { "Хрестоносець" }
+            },
+            ["en"] = "Enchant Weapon - Crusader",
+            ["features"] = {
+                ["serviceProfession"] = "profession.enchanting"
+            },
+            ["id"] = "recipe.crusader",
+            ["provenance"] = {
+                ["context"] = "short name of enchanting recipe 20034",
+                ["file"] = "entries/forever/cliend_db/spell_names_uk.lua",
+                ["key"] = "Enchant Weapon - Crusader",
+                ["line"] = 10512,
+                ["sha256"] = "e59cfd49becd120305003b6662df159b9ff3b0fe907abde4b99e99d9b327fd79",
+                ["source"] = "ua-forever"
+            },
+            ["renderForms"] = {
+                ["serviceEn"] = "Crusader",
+                ["serviceUk"] = "Хрестоносець"
+            },
+            ["sourceRefs"] = { "ua-forever:recipe.crusader" },
+            ["status"] = "approved",
+            ["uk"] = "Зачарування зброї — хрестоносець"
+        },
+        ["recipe.fiery_weapon"] = {
+            ["aliases"] = {
+                ["en"] = { "Enchant Weapon - Fiery Weapon" },
+                ["uk"] = { "Зачарування зброї — вогняна зброя" }
+            },
+            ["category"] = "craftServices",
+            ["contextAliases"] = {
+                ["en"] = { "fiery" }
+            },
+            ["en"] = "Fiery Weapon",
+            ["features"] = {
+                ["serviceProfession"] = "profession.enchanting"
+            },
+            ["id"] = "recipe.fiery_weapon",
+            ["provenance"] = {
+                ["context"] = "spell 13897 and enchanting recipe 13898",
+                ["file"] = "entries/forever/cliend_db/spell_names_uk.lua",
+                ["key"] = "Fiery Weapon",
+                ["line"] = 6772,
+                ["sha256"] = "e59cfd49becd120305003b6662df159b9ff3b0fe907abde4b99e99d9b327fd79",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:recipe.fiery_weapon" },
+            ["status"] = "approved",
+            ["uk"] = "Вогняна зброя"
+        },
+        ["recipe.lifestealing"] = {
+            ["category"] = "craftServices",
+            ["contextAliases"] = {
+                ["en"] = { "Lifestealing" },
+                ["uk"] = { "Викрадення життя" }
+            },
+            ["en"] = "Enchant Weapon - Lifestealing",
+            ["features"] = {
+                ["serviceProfession"] = "profession.enchanting"
+            },
+            ["id"] = "recipe.lifestealing",
+            ["provenance"] = {
+                ["context"] = "short name of enchanting recipe 20032",
+                ["file"] = "entries/forever/cliend_db/spell_names_uk.lua",
+                ["key"] = "Enchant Weapon - Lifestealing",
+                ["line"] = 10510,
+                ["sha256"] = "e59cfd49becd120305003b6662df159b9ff3b0fe907abde4b99e99d9b327fd79",
+                ["source"] = "ua-forever"
+            },
+            ["renderForms"] = {
+                ["serviceEn"] = "Lifestealing",
+                ["serviceUk"] = "Викрадення життя"
+            },
+            ["sourceRefs"] = { "ua-forever:recipe.lifestealing" },
+            ["status"] = "approved",
+            ["uk"] = "Зачарування зброї — викрадення життя"
+        },
         ["recipe.two_hand_impact"] = {
             ["aliases"] = {
                 ["en"] = { "enchant 2h weapon – impact", "enchant two-handed weapon - impact" },
@@ -60587,6 +60962,9 @@ ns.Data = {
             },
             ["category"] = "craftServices",
             ["en"] = "Enchant 2H Weapon - Impact",
+            ["features"] = {
+                ["serviceProfession"] = "profession.enchanting"
+            },
             ["id"] = "recipe.two_hand_impact",
             ["provenance"] = {
                 ["context"] = "enchanting recipe",

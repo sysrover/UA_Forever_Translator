@@ -228,7 +228,20 @@ local function possessive(candidate)
     return frame and frame.possessive
 end
 
-function P.pronoun(document, first, limit, case, personOnly)
+local function possessiveReading(document, index, case, noun)
+    local number = noun.number
+    local gender = number ~= "plural" and noun.gender or nil
+    local requested = {case=case, number=number, gender=gender}
+    return L.choose(document, index, "pron", nil, nil, function(candidate)
+        if not possessive(candidate) then return false end
+        if candidate.lexeme.frame.invariable or L.matches(candidate.form, requested) then return true end
+        return case == "accusative" and noun.animacy == "animate"
+            and (number == "plural" or gender == "masculine")
+            and L.matches(candidate.form, {case="genitive", number=number, gender=gender})
+    end)
+end
+
+function P.pronoun(document, first, limit, case, personOnly, headlessQuantity)
     local choices, last = L.functional(document, "pronouns", first, limit)
     if not choices then return nil end
     local selected
@@ -236,7 +249,8 @@ function P.pronoun(document, first, limit, case, personOnly)
         local valid = case == match.case or (case ~= "nominative" and match.case ~= "nominative"
             and match.case ~= "possessive" and document.direction == "en-uk")
         local candidate = ns.Linguistics.grammar.pronouns[match.id]
-        if valid and (not personOnly or candidate.id ~= "it" and not candidate.inanimate) then
+        if valid and candidate.headlessQuantity == headlessQuantity
+            and (not personOnly or candidate.id ~= "it" and not candidate.inanimate) then
             if selected and selected ~= candidate then return false end
             selected = candidate
         end
@@ -520,11 +534,15 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     local lots = quantifierStart and english and quantity == "lots" and P.key(document, index + 1, limit) == "of"
     local abundance = quantifierStart and (english and quantity == "plenty" and P.key(document, index + 1, limit) == "of"
         or not english and quantity == "вдосталь")
-    local many = lot or lots or quantifierStart and not english and quantity == "багато"
     local moreKey = english and "more" or "більше"
-    local evenMore = quantifierStart and quantity == (english and "even" or "ще")
-        and P.key(document, index + 1, limit) == moreKey
-    local more = quantifierStart and (evenMore or quantity == moreKey)
+    local followedByMore = quantifierStart and P.key(document, index + 1, limit) == moreKey
+    local evenMore = followedByMore and quantity == (english and "even" or "ще")
+    local degreeMore = followedByMore and (english and (quantity == "many" or quantity == "much")
+        or not english and (quantity == "значно" or quantity == "набагато"))
+    local countOnly = english and quantifierStart and quantity == "many"
+    local massOnly = english and degreeMore and quantity == "much"
+    local many = lot or lots or countOnly and not degreeMore or quantifierStart and not english and quantity == "багато"
+    local more = quantifierStart and (evenMore or degreeMore or quantity == moreKey)
     local grammar = ns.Linguistics.grammar
     local cardinals = english and grammar.cardinalEn or grammar.cardinalUk
     local caseCardinals = not english and grammar.cardinalUkByCase and grammar.cardinalUkByCase[case]
@@ -541,7 +559,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     local cardinal = collective or cardinals and cardinals[quantity] or caseCardinals and caseCardinals[quantity]
     if cardinal then quantity = tostring(cardinal) end
     if many or more or abundance then
-        index, article, quantity = index + ((lot or lots or evenMore or abundance and english) and 2 or 1), nil, nil
+        index, article, quantity = index + ((lot or lots or evenMore or degreeMore or abundance and english) and 2 or 1), nil, nil
         if not english then case = "genitive" end
     elseif few or sufficient or some then
         index, article, quantity = index + 1, nil, nil
@@ -554,10 +572,11 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         if collective then case = "genitive" end
     else quantity = nil end
     local agrees = headFilter
-    if not english and (sameAt or pointerForms) then
+    if not english and (sameAt or pointerForms or owner) then
         local counted = quantity and (tonumber(quantity) == 1 and "singular" or "plural")
         agrees = function(head)
             if headFilter and not headFilter(head) then return false end
+            if owner and not possessiveReading(document, ownerIndex, case, head) then return false end
             local number = counted or head.number or "singular"
             local features = {case=case, number=number, gender=number ~= "plural" and head.gender or nil}
             if pointerForms and not determinerMatches(pointerForms, features, head.animacy) then return false end
@@ -566,6 +585,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             return L.choose(document, sameAt, "adj", features, "identityDeterminer") ~= nil
         end
     end
+    local nounSense = sense or (english and owner and "possessedNoun" or nil)
     local adjectives, best, nextIndex, headIndex = {}
     local degree = P.key(document, index, limit)
     local intensity
@@ -609,7 +629,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         end
         local head, after
         if contextual then head, after = lexicalNoun(contextual), index + 1
-        else head, after = nounHead(document, index, limit, case, locationOnly, sense, required) end
+        else head, after = nounHead(document, index, limit, case, locationOnly, nounSense, required) end
         if english and not simple then
             local prefix, following = head, after
             local definitePlace = P.key(document, index, limit) == "the"
@@ -678,7 +698,8 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         if owner then return nounHead(document, first, limit, case, locationOnly, nil, headFilter) end
         return nil
     end
-    if more and english and (not P.mass(best) and best.number ~= "plural" or best.adjectives) then
+    if countOnly and best.number ~= "plural" or massOnly and not P.mass(best) then return nil end
+    if more and english and (not P.mass(best) and best.number ~= "plural" or best.adjectives and not degreeMore) then
         return P.noun(document, first, limit, case, locationOnly, false, simple, sense, headFilter)
     end
     if some and english then
@@ -708,14 +729,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             end
         end
         if not en then
-            local requested = {case=case, number=best.number, gender=best.number ~= "plural" and best.gender or nil}
-            owner = L.choose(document, ownerIndex, "pron", nil, nil, function(candidate)
-                if not possessive(candidate) then return false end
-                if candidate.lexeme.frame.invariable or L.matches(candidate.form, requested) then return true end
-                return requested.case == "accusative" and best.animacy == "animate"
-                    and (requested.number == "plural" or requested.gender == "masculine")
-                    and L.matches(candidate.form, {case="genitive", number=requested.number, gender=requested.gender})
-            end)
+            owner = possessiveReading(document, ownerIndex, case, best)
             if not owner then return nil end
         end
         if best.nominalObject then best.nominalObject.possessor = owner
@@ -727,7 +741,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     best.emphatic, best.few = emphatic, few or nil
     best.sufficient, best.additional, best.many = sufficient or nil, additional or nil, many or nil
     best.abundance = abundance or nil
-    best.more, best.evenMore = more or nil, evenMore or nil
+    best.more, best.evenMore, best.degreeMore = more or nil, evenMore or nil, degreeMore or nil
     best.some = some or nil
     if best.argument and best.argument.form.englishCompound and en then
         best.headIndex = nextIndex - 1

@@ -449,6 +449,20 @@ local function gratuity(p, free)
     p.i = start
 end
 
+local function takeProfession(p, english, demand)
+    if english and demand then p:any("a", "an") end
+    local first = p.i
+    if not p:noun("profession", "professions") then
+        if english or not demand or not p:word("майстра") or not p:noun("profession", "professions") then return end
+    end
+    local term = p.slots.profession.term
+    local forms = term.renderForms
+    local name = english and term.englishPractitioner or not english and forms and forms.practitioner
+    local normalize = ns.Engine.Normalize.key
+    local person = name and normalize(ns.Engine.Phrases.raw(p.document, first, p.i - 1)) == normalize(name)
+    return true, person
+end
+
 local function enhancement(p, direction)
     local english = direction == "en-uk"
     local offer, header = enhancementOffer(p, english)
@@ -461,7 +475,7 @@ local function enhancement(p, direction)
         demand = inquiry or p:any("шукаю", "потрібен")
     end
     if demand then
-        if not p:noun("profession", "professions") then return end
+        if not takeProfession(p, english, true) then return end
         if not p:any("for", "with", "для", "з", "—") then return end
     end
     if not enhancementItem(p, "", english, demand or offer, offer) then return end
@@ -493,30 +507,59 @@ local function enhancement(p, direction)
 end
 
 local function service(p, direction)
+    local english = direction == "en-uk"
     local demand, offer
-    if direction == "en-uk" then
+    if english then
         demand = p:any("wtb", "lf", "looking for")
         if not demand then offer = p:any("wts", "lfw", "offering", "selling", "crafting") end
     else
-        demand = p:any("шукаю послуги", "шукаю майстра", "шукаю")
+        demand = p:any("шукаю послуги", "шукаю")
         if not demand then offer = p:any("пропоную послуги", "пропоную", "послуги") end
     end
     p:word(":")
     local linked = p:link("trade", "trade") or p:link("trade", "enchant")
+    local practitioner
     if linked then
         for index = 2, 4 do
             local previous = p.i
             p:word(",")
             if not p:link("trade" .. index, "enchant") then p.i = previous; break end
         end
-    elseif not p:noun("profession", "professions") then return end
+    else
+        local qualified = english and demand and p:noun("recipe", "craftServices")
+        local found
+        found, practitioner = takeProfession(p, english, demand)
+        if not found or qualified and not practitioner then return end
+    end
     if not demand and not offer then offer = p:any("lfw", "приймаю замовлення") end
-    if demand and not linked and p:any("with", "зі", "із") then
-        p:word("рецептом")
-        local quoted = p:word("«")
-        if not p:noun("recipe", "craftServices") then return end
-        if quoted and not p:word("»") then return end
-        return p:finish("service", {demand=true})
+    if demand and not linked then
+        local withRecipe
+        if not p.slots.recipe then
+            local start = p.i
+            withRecipe = p:any("with recipe", "with", "із рецептом", "з рецептом")
+            local specified = withRecipe or p:any("for", "для чарів", "для зачарування", "із зачаруванням", "з зачаруванням")
+            if not specified then withRecipe = p:any("зі", "із") end
+            if specified or withRecipe then
+                local quoted = p:word("«")
+                if p:noun("recipe", "craftServices") or p:link("recipe", "enchant") then
+                    if quoted and not p:word("»") then return end
+                else
+                    p.i = start
+                end
+            end
+        end
+        local recipe = p.slots.recipe
+        if recipe and recipe.term then
+            local features = recipe.term.features
+            if not features or features.serviceProfession ~= p.slots.profession.term.id then return end
+        end
+        if recipe then
+            local before = p.i
+            p:word(",")
+            local mats = p:any("got mats", "have mats", "i have mats", "матеріали є", "маю матеріали")
+            if not mats then p.i = before end
+            return p:finish("service", {demand=true, practitioner=true, withRecipe=withRecipe, mats=mats})
+        end
     end
     local free = p:any("for free", "free", "безкоштовно")
     local priceIntroduced = not free and p:any("for", "за")
@@ -545,7 +588,7 @@ local function service(p, direction)
             places[index], p.i = place, after
         end
     end
-    return p:finish("service", {demand=demand, priced=priced, free=free, materials=materials, promise=promise,
+    return p:finish("service", {demand=demand, practitioner=practitioner, priced=priced, free=free, materials=materials, promise=promise,
         tips=tips, places=places})
 end
 

@@ -350,6 +350,10 @@ local function noun(node, english, case, article, compoundModifier, owner)
     if node.many then return (english and "lots of " or "багато ") .. value end
     if node.abundance then return (english and "plenty of " or "вдосталь ") .. value end
     if node.more then
+        if node.degreeMore then
+            local quantifier = english and (number == "plural" and "many more " or "much more ") or "значно більше "
+            return quantifier .. value
+        end
         local emphasis = node.evenMore and (english and "even " or "ще ") or ""
         return emphasis .. (english and "more " or "більше ") .. value
     end
@@ -559,7 +563,7 @@ local function ukrainianVerb(tree)
             end
         end
         form = tree.purposeClause and frame.purposeLemma
-            or tree.difficultyClause and frame.indirectInfinitiveLemma
+            or tree.difficultyClause and (frame.indirectInfinitiveLemma or frame.purposeLemma)
             or tree.intendedEvent and not tree.negative
                 and (frame.purposeLemma or frame.infinitiveLemma or frame.imperative or frame.modalLemma)
             or tree.contentClause and tree.tense == "infinitive" and not tree.negative and frame.indirectInfinitiveLemma
@@ -577,8 +581,10 @@ local function ukrainianVerb(tree)
             {tense="future", mood="indicative", person=person, number=number})
     elseif tree.tense == "past" then
         local ongoingNegation = tree.negative and tree.since and tree.aspect == "perfect"
-        local completed = not ongoingNegation and (frame.pastLemma or (tree.aspect == "perfect" and frame.completed))
-        if frame.pastByMeans then
+        local progressive = tree.aspect == "continuous"
+        local completed = not (progressive or ongoingNegation)
+            and (frame.pastLemma or (tree.aspect == "perfect" and frame.completed))
+        if frame.pastByMeans and not progressive then
             for _, complement in ipairs(tree.prepositions or {}) do
                 if complement.rule.id == "on" then
                     local variant = frame.pastByMeans[P.semanticClass(complement.object)]
@@ -681,6 +687,8 @@ local function englishVerb(tree, subject)
     elseif tree.tense == "present" and (tree.aspect == "continuous" or frame.englishProgressiveWithPurpose and tree.purpose
         or frame.englishProgressiveStill and leading and leading.en[1] == "still") then
         prefix, lemma = presentBe(person, number), englishForm(lemma, "ing", "verb")
+    elseif tree.tense == "past" and tree.aspect == "continuous" then
+        prefix, lemma = (number == "plural" or person == 2) and "were" or "was", englishForm(lemma, "ing", "verb")
     elseif tree.tense == "future" and not tree.temporalDependent then
         prefix = "will"
         if tree.aspect == "continuous" then lemma = "be " .. englishForm(lemma, "ing", "verb") end
@@ -794,7 +802,9 @@ local function subjectText(tree, english)
                 end
             end
         end
-        value = value or G.noun(tree.subject, english, "nominative", article)
+        local fragment = tree.kind == "nounPhrase" and tree.negative
+        local case = english and fragment and pronoun and "accusative" or "nominative"
+        value = value or G.noun(tree.subject, english, case, article or fragment)
         if not value or not tree.subjectLocation then return value end
         local parts = {value}
         if addPrepositions(parts, tree.subjectLocation, english) then return table.concat(parts, " ") end
@@ -1310,7 +1320,9 @@ renderTree = function(tree, english, controller)
     local verbFrame = tree.verb and tree.verb.lexeme.frame
     local measuredPredicate = english and verbFrame and verbFrame.measuredPredicate
     if tree.wh and not question then return nil end
-    if tree.kind == "nounPhrase" then append(parts, subject)
+    if tree.kind == "nounPhrase" then
+        if tree.negative then append(parts, english and "not" or "не") end
+        append(parts, subject)
     elseif tree.elliptic then
         append(parts, question)
         if english then
