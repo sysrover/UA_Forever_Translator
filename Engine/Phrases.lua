@@ -312,6 +312,20 @@ local function determinerMatches(options, requested, animacy)
     return false
 end
 
+local function nominalMarkerEnd(document, first, limit, rule, english)
+    if first > limit then return nil end
+    if P.key(document, first, limit) == (english and rule.en or rule.uk) then return first + 1 end
+    local aliases = english and rule.enAliases or not english and rule.ukAliases
+    for _, alias in ipairs(aliases or {}) do
+        local index = first
+        for word in alias:gmatch("%S+") do
+            if P.key(document, index, limit) ~= word then index = nil; break end
+            index = index + 1
+        end
+        if index then return index end
+    end
+end
+
 local fewForms = {nominative="кілька", accusative="кілька", genitive="кількох",
     dative="кільком", instrumental="кількома", locative="кількох"}
 P.fewForms = fewForms
@@ -611,8 +625,10 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             if goal then best.pathTo, nextIndex = goal, after end
         end
         for _, governed in ipairs(frame and frame.nominalArguments or {}) do
-            if marker == (en and governed.en or governed.uk) then
-                local argument, after = P.noun(document, nextIndex + 1, limit, governed.case, false, nil, true)
+            local start = nominalMarkerEnd(document, nextIndex, limit, governed, en)
+            if start then
+                local argument, after = P.noun(document, start, limit, governed.case, false, nil, true,
+                    governed.argumentSense)
                 local class = P.semanticClass(argument)
                 local targetFrame = argument and argument.entry and argument.entry.lexeme.frame
                 local spatial = class == "places" or targetFrame and (targetFrame.spatialContainer or targetFrame.spatialPart)
