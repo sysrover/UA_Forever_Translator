@@ -3779,12 +3779,33 @@ ns.Data = {
                     ["text"] = "розбійники"
                 }
             },
+            ["role"] = {
+                ["-"] = {
+                    ["play"] = {
+                        ["_id"] = "activity.roleplay"
+                    },
+                    ["playing"] = {
+                        ["_id"] = "activity.roleplay"
+                    }
+                }
+            },
+            ["roleplay"] = {
+                ["_id"] = "activity.roleplay"
+            },
+            ["roleplaying"] = {
+                ["_id"] = "activity.roleplay"
+            },
             ["roll"] = {
                 ["greed"] = {
                     ["_id"] = "slang.loot.greed-roll"
                 },
                 ["need"] = {
                     ["_id"] = "slang.loot.need-roll"
+                }
+            },
+            ["rp"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.roleplay"
                 }
             },
             ["ruins"] = {
@@ -4983,6 +5004,9 @@ ns.Data = {
                 ["_id"] = "place.western_plaguelands"
             },
             ["wpvp"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.world_pvp"
+                },
                 ["_id"] = "slang.combat.wpvp"
             },
             ["wsg"] = {
@@ -11986,6 +12010,31 @@ ns.Data = {
                     ["нід"] = {
                         ["_id"] = "slang.loot.need-roll"
                     }
+                }
+            },
+            ["рольова"] = {
+                ["гра"] = {
+                    ["_id"] = "activity.roleplay"
+                }
+            },
+            ["рольовою"] = {
+                ["грою"] = {
+                    ["_id"] = "activity.roleplay"
+                }
+            },
+            ["рольової"] = {
+                ["гри"] = {
+                    ["_id"] = "activity.roleplay"
+                }
+            },
+            ["рольову"] = {
+                ["гру"] = {
+                    ["_id"] = "activity.roleplay"
+                }
+            },
+            ["рольовій"] = {
+                ["грі"] = {
+                    ["_id"] = "activity.roleplay"
                 }
             },
             ["рукавицях"] = {
@@ -21364,7 +21413,8 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
-                                ["englishCommon"] = true
+                                ["englishCommon"] = true,
+                                ["nominalPartnership"] = true
                             },
                             ["id"] = "game.party",
                             ["lemma"] = "Party",
@@ -21881,7 +21931,9 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
                                 ["animacy"] = "inanimate",
+                                ["englishUncountable"] = true,
                                 ["gender"] = "neuter"
                             },
                             ["id"] = "activity.pvp",
@@ -22405,6 +22457,78 @@ ns.Data = {
                         }
                     }
                 },
+                ["role"] = {
+                    ["-"] = {
+                        ["play"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["englishUncountable"] = true,
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "activity.roleplay",
+                                    ["lemma"] = "roleplay",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "activity.roleplay",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["playing"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["englishUncountable"] = true,
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "activity.roleplay",
+                                    ["lemma"] = "roleplay",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "activity.roleplay",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["roleplay"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["activityTopic"] = true,
+                                ["animacy"] = "inanimate",
+                                ["englishUncountable"] = true,
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "activity.roleplay",
+                            ["lemma"] = "roleplay",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.roleplay",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["roleplaying"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["activityTopic"] = true,
+                                ["animacy"] = "inanimate",
+                                ["englishUncountable"] = true,
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "activity.roleplay",
+                            ["lemma"] = "roleplay",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.roleplay",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["roll"] = {
                     ["greed"] = {
                         ["_analyses"] = {
@@ -22428,6 +22552,23 @@ ns.Data = {
                                 ["sense"] = "slang.loot.need-roll",
                                 ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need" }
                             }
+                        }
+                    }
+                },
+                ["rp"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["activityTopic"] = true,
+                                ["animacy"] = "inanimate",
+                                ["englishUncountable"] = true,
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "activity.roleplay",
+                            ["lemma"] = "roleplay",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.roleplay",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -24246,6 +24387,7 @@ ns.Data = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {
+                                    ["activityTopic"] = true,
                                     ["englishUncountable"] = true,
                                     ["pvpActivity"] = true,
                                     ["worldPvP"] = true
@@ -24281,6 +24423,19 @@ ns.Data = {
                 },
                 ["wpvp"] = {
                     ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["activityTopic"] = true,
+                                ["englishUncountable"] = true,
+                                ["pvpActivity"] = true,
+                                ["worldPvP"] = true
+                            },
+                            ["id"] = "activity.world_pvp",
+                            ["lemma"] = "World PvP",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.world_pvp",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
                         {
                             ["features"] = {},
                             ["id"] = "slang.combat.wpvp",
@@ -24688,7 +24843,9 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
                                 ["animacy"] = "inanimate",
+                                ["englishUncountable"] = true,
                                 ["gender"] = "neuter"
                             },
                             ["id"] = "activity.pvp",
@@ -24699,8 +24856,10 @@ ns.Data = {
                         },
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
                                 ["animacy"] = "inanimate",
                                 ["case"] = "nominative",
+                                ["englishUncountable"] = true,
                                 ["gender"] = "neuter",
                                 ["number"] = "singular"
                             },
@@ -24712,8 +24871,25 @@ ns.Data = {
                         },
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
                                 ["animacy"] = "inanimate",
                                 ["case"] = "accusative",
+                                ["englishUncountable"] = true,
+                                ["gender"] = "neuter",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "activity.pvp",
+                            ["lemma"] = "PvP",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.pvp",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["activityTopic"] = true,
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["englishUncountable"] = true,
                                 ["gender"] = "neuter",
                                 ["number"] = "singular"
                             },
@@ -24730,6 +24906,7 @@ ns.Data = {
                                 ["_analyses"] = {
                                     {
                                         ["features"] = {
+                                            ["activityTopic"] = true,
                                             ["englishUncountable"] = true,
                                             ["pvpActivity"] = true,
                                             ["worldPvP"] = true
@@ -24742,6 +24919,7 @@ ns.Data = {
                                     },
                                     {
                                         ["features"] = {
+                                            ["activityTopic"] = true,
                                             ["case"] = "instrumental",
                                             ["englishUncountable"] = true,
                                             ["number"] = "singular",
@@ -24756,6 +24934,7 @@ ns.Data = {
                                     },
                                     {
                                         ["features"] = {
+                                            ["activityTopic"] = true,
                                             ["case"] = "genitive",
                                             ["englishUncountable"] = true,
                                             ["number"] = "singular",
@@ -24770,6 +24949,7 @@ ns.Data = {
                                     },
                                     {
                                         ["features"] = {
+                                            ["activityTopic"] = true,
                                             ["case"] = "locative",
                                             ["englishUncountable"] = true,
                                             ["number"] = "singular",
@@ -28345,7 +28525,8 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
-                                ["englishCommon"] = true
+                                ["englishCommon"] = true,
+                                ["nominalPartnership"] = true
                             },
                             ["id"] = "game.party",
                             ["lemma"] = "Група",
@@ -39911,6 +40092,124 @@ ns.Data = {
                         }
                     }
                 },
+                ["рольова"] = {
+                    ["гра"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["animacy"] = "inanimate",
+                                    ["englishUncountable"] = true,
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "activity.roleplay",
+                                ["lemma"] = "рольова гра",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.roleplay",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["рольовою"] = {
+                    ["грою"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["englishUncountable"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "activity.roleplay",
+                                ["lemma"] = "рольова гра",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.roleplay",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["рольової"] = {
+                    ["гри"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["englishUncountable"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "activity.roleplay",
+                                ["lemma"] = "рольова гра",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.roleplay",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["рольову"] = {
+                    ["гру"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["englishUncountable"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "activity.roleplay",
+                                ["lemma"] = "рольова гра",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.roleplay",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["рольовій"] = {
+                    ["грі"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["englishUncountable"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "activity.roleplay",
+                                ["lemma"] = "рольова гра",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.roleplay",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["englishUncountable"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "activity.roleplay",
+                                ["lemma"] = "рольова гра",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.roleplay",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["рукавицях"] = {
                     ["_analyses"] = {
                         {
@@ -43629,6 +43928,7 @@ ns.Data = {
                 ["uk"] = {
                     ["accusative"] = "PvP",
                     ["canonical"] = "PvP",
+                    ["genitiveSingular"] = "PvP",
                     ["nominative"] = "PvP"
                 }
             },
@@ -43644,6 +43944,19 @@ ns.Data = {
                     ["instrumental"] = "подією PvP",
                     ["locative"] = "події PvP",
                     ["nominative"] = "подія PvP"
+                }
+            },
+            ["activity.roleplay"] = {
+                ["en"] = {
+                    ["canonical"] = "roleplay"
+                },
+                ["uk"] = {
+                    ["accusative"] = "рольову гру",
+                    ["canonical"] = "рольова гра",
+                    ["dative"] = "рольовій грі",
+                    ["genitiveSingular"] = "рольової гри",
+                    ["instrumental"] = "рольовою грою",
+                    ["locative"] = "рольовій грі"
                 }
             },
             ["activity.world_pvp"] = {
@@ -46581,7 +46894,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 279,
+        ["concepts"] = 280,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 85,
@@ -46600,7 +46913,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "f8d1e71d3a0232c807ba8b3008d8841e2adde69c2d219aab0a7c4c5240f07e3e"
+        ["version"] = "ec1ce17800081f4d8dcb305e11eeb8ff70bda90aa592d7b80e14cf3841d4107c"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -55432,11 +55745,14 @@ ns.Data = {
             ["contextOnly"] = true,
             ["en"] = "PvP",
             ["features"] = {
+                ["activityTopic"] = true,
                 ["animacy"] = "inanimate",
+                ["englishUncountable"] = true,
                 ["gender"] = "neuter"
             },
             ["forms"] = {
                 ["accusative"] = "PvP",
+                ["genitiveSingular"] = "PvP",
                 ["nominative"] = "PvP"
             },
             ["id"] = "activity.pvp",
@@ -55475,11 +55791,48 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "подія PvP"
         },
+        ["activity.roleplay"] = {
+            ["aliases"] = {
+                ["en"] = { "role-play", "roleplaying", "role-playing" }
+            },
+            ["category"] = "activities",
+            ["contextAliases"] = {
+                ["en"] = { "RP" }
+            },
+            ["en"] = "roleplay",
+            ["features"] = {
+                ["activityTopic"] = true,
+                ["animacy"] = "inanimate",
+                ["englishUncountable"] = true,
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "рольову гру",
+                ["dative"] = "рольовій грі",
+                ["genitiveSingular"] = "рольової гри",
+                ["instrumental"] = "рольовою грою",
+                ["locative"] = "рольовій грі"
+            },
+            ["id"] = "activity.roleplay",
+            ["provenance"] = {
+                ["context"] = "RP as a gameplay activity",
+                ["key"] = "roleplay",
+                ["reference"] = "https://worldofwarcraft.blizzard.com/en-us/news/24315280",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "рольова гра"
+        },
         ["activity.world_pvp"] = {
             ["category"] = "activities",
+            ["contextAliases"] = {
+                ["en"] = { "WPvP" }
+            },
             ["contextOnly"] = true,
             ["en"] = "World PvP",
             ["features"] = {
+                ["activityTopic"] = true,
                 ["englishUncountable"] = true,
                 ["pvpActivity"] = true,
                 ["worldPvP"] = true
@@ -57051,7 +57404,8 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Party",
             ["features"] = {
-                ["englishCommon"] = true
+                ["englishCommon"] = true,
+                ["nominalPartnership"] = true
             },
             ["forms"] = {},
             ["id"] = "game.party",

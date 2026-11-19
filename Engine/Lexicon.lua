@@ -293,7 +293,7 @@ function L.choose(document, first, pos, requested, sense, compatible)
             and (not frame or frame.sense ~= "duration" or sense == "duration")
             and (not frame or not frame.headClasses or sense == "nounModifier")
             and (not frame or frame.sense ~= "identityDeterminer" or sense == "identityDeterminer")
-            and (not frame or not frame.contextOnly or sense ~= nil
+            and (not frame or sense ~= nil or document.direction == "en-uk" and not frame.contextOnly
                 or document.direction == "uk-en" and not frame.contextOnlyReverse)
             and (not sense or frame and frame.sense==sense)
             and (not compatible or compatible(candidate)) then

@@ -102,6 +102,7 @@ local function grammarClause(document, first, last)
             end
         end
         return output, {intent=parsed.trees[1].kind, imperative=parsed.trees[1].imperative == true,
+            initialWhen=parsed.prefix and parsed.prefix.id == "when" and #parsed.trees > 1,
             sourceRefs=ns.Linguistics.manifest.sourceRefs, dependency=parsed.dependency == true}, slots
     end
 end

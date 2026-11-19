@@ -170,6 +170,19 @@ local function possessiveText(entry, english, case, number, gender, animacy, own
     return adjective({entry=entry}, english, case, number, gender, animacy)
 end
 
+local function nounWithAction(node, value, english, owner)
+    if not value or not node.nominalAction then return value end
+    local action = render(node.nominalAction, english, owner)
+    if not action then return nil end
+    local partner = node.nominalAction.nominalPartner
+    if partner and english then return value .. " to " .. action .. " " .. partner.en[1] end
+    if partner then
+        local relative = P.relativePronoun(node, partner.case)
+        return relative and value .. ", " .. euphonicZ(partner.targetUk, relative) .. " " .. relative .. " можна " .. action
+    end
+    return value .. (english and " to " or node.nominalAction.nominalPurpose and ", щоб " or " ") .. action
+end
+
 local function noun(node, english, case, article, compoundModifier, owner)
     if node.subset then
         local group = node.subset
@@ -182,7 +195,7 @@ local function noun(node, english, case, article, compoundModifier, owner)
         local amount = count == 1 and (english and "one" or P.one(node.gender, case, node.animacy)) or tostring(count)
         local marker = english and "of" or count == 1 and ("ауеоєю"):find(amount:sub(-2), 1, true)
             and euphonicZ("з", value) or "із"
-        return amount .. " " .. marker .. " " .. value
+        return nounWithAction(node, amount .. " " .. marker .. " " .. value, english, owner)
     end
     if node.members then
         local values = {}
@@ -194,12 +207,12 @@ local function noun(node, english, case, article, compoundModifier, owner)
             if not value then return nil end
             append(values, value)
         end
-        return table.concat(values, " ")
+        return nounWithAction(node, table.concat(values, " "), english, owner)
     end
-    if node.raw then return node.raw end
+    if node.raw then return nounWithAction(node, node.raw, english, owner) end
     if node.pronoun then
         local forms = english and node.pronoun.en or node.pronoun.uk
-        return forms[case] or (english and forms.accusative)
+        return nounWithAction(node, forms[case] or (english and forms.accusative), english, owner)
     end
     local number, requested = compoundModifier and "singular" or targetNumber(node, english), case
     if not english and case == "accusative" and node.partitive then requested = "genitive" end
@@ -255,6 +268,7 @@ local function noun(node, english, case, article, compoundModifier, owner)
         end
         local word = adjective(modifier, english, requested, number, node.gender, node.animacy)
         if not word then return nil end
+        if modifier.comma then parts[#parts] = withComma(parts[#parts]) end
         append(parts, word)
     end
     if placeCompound then
@@ -267,7 +281,7 @@ local function noun(node, english, case, article, compoundModifier, owner)
         local argument = G.noun(node.argument.object, true, "nominative", false, true, owner)
         if not argument then return nil end
         append(parts, argument)
-        if article == true and not node.article then article = "definite" end
+        if article == true and not node.article then article = node.argument.form.englishCompoundArticle or "definite" end
     end
     append(parts, value)
     value = table.concat(parts, " ")
@@ -285,7 +299,7 @@ local function noun(node, english, case, article, compoundModifier, owner)
     if node.possessor then
         local possessive = possessiveText(node.possessor, english, requested, number, node.gender, node.animacy, owner)
         if not possessive then return nil end
-        value = possessive .. " " .. value
+        value = possessive .. (english and node.englishOwn and " own " or " ") .. value
     end
     if node.class then
         if english then
@@ -321,13 +335,19 @@ local function noun(node, english, case, article, compoundModifier, owner)
         local object = G.noun(argument, english, english and "accusative" or form.case, true, nil, owner)
         if not object then return nil end
         local marker = english and form.en or euphonicZ(form.uk, object)
-        value = value .. " " .. marker .. " " .. object
+        value = value .. (marker == "" and " " or " " .. marker .. " ") .. object
     end
-    if node.nominalAction then
-        local action = render(node.nominalAction, english, owner)
-        if not action then return nil end
-        value = value .. (english and " to " or node.nominalAction.nominalPurpose and ", щоб " or " ") .. action
+    if node.inclusion then
+        local inclusion = node.inclusion
+        local case = not english and inclusion.audience and "genitive" or "nominative"
+        local detail = G.noun(inclusion.object, english, case)
+        if not detail then return nil end
+        local marker = english and (inclusion.audience and "including for " or "including ")
+            or (inclusion.audience and "зокрема для " or "зокрема ")
+        value = value .. ", " .. marker .. detail
     end
+    value = nounWithAction(node, value, english, owner)
+    if not value then return nil end
     if node.ordinal then
         if english then value = value .. " " .. node.ordinal
         else value = node.ordinal .. "-" .. (P.ordinalSuffixes[requested] or "й") .. " " .. value end
@@ -425,6 +445,18 @@ function G.noun(node, english, case, article, compoundModifier, owner)
     if not value or not relative then return value end
     local clause = render(relative.clause, english)
     if not clause then return nil end
+    if relative.actions then
+        local parts = {clause}
+        for index = 2, #relative.actions do
+            local action = render(relative.actions[index], english)
+            if not action then return nil end
+            local connector = relative.joins[index - 1]
+            if connector then append(parts, (english and connector.en or connector.uk)[1])
+            else parts[#parts] = withComma(parts[#parts]) end
+            append(parts, action)
+        end
+        clause = table.concat(parts, " ")
+    end
     if english then
         local marker = P.relativeAnimate(node) and "who" or (relative.nonrestrictive and "which" or "that")
         if not relative.nonrestrictive then return value .. " " .. marker .. " " .. clause end
@@ -678,6 +710,7 @@ local function englishVerb(tree, subject)
                 or presentBe(person, number)
             lemma = "able to " .. lemma
         end
+    elseif frame.politeDesire then prefix = "would"
     elseif tree.modal then prefix = tree.modal
     elseif tree.reportedFuture then prefix = "would"
     elseif tree.reportedAnterior or tree.deadlineMain and tree.tense == "past" and tree.verb.head.aspect == "perfective" then
@@ -712,6 +745,24 @@ local function englishVerb(tree, subject)
     return (subject and subject .. " " or "") .. adverb .. englishForm(lemma, form, "verb")
 end
 
+local function paceObject(node, english, owner)
+    if not node.possessor or not owner then return node end
+    local own, modifiers = false, {}
+    for _, modifier in ipairs(node.adjectives or {}) do
+        if modifier.entry.lexeme.en == "own" then own = true
+        else modifiers[#modifiers + 1] = modifier end
+    end
+    local reflexive = node.possessor.lexeme.frame.reflexivePossessive
+    local removeOwn = not english and own and (reflexive or speechPossessives[owner] and owner == node.possessor.lexeme.en)
+    local addOwn = english and reflexive and not own
+    if not (removeOwn or addOwn) then return node end
+    local adapted = {}
+    for key, value in pairs(node) do adapted[key] = value end
+    if removeOwn then adapted.adjectives = modifiers end
+    if addOwn then adapted.englishOwn = true end
+    return adapted
+end
+
 function G.preposition(complement, english, owner)
     local rule = complement.rule
     local case = complement.case
@@ -719,7 +770,8 @@ function G.preposition(complement, english, owner)
     local marked = pronoun and (case == "genitive" or case == "accusative") and pronoun.ukGenitiveAfterPreposition
     local article = rule.englishArticle
     if article == nil then article = true end
-    local value = marked or G.noun(complement.object, english, case, article, nil, owner)
+    local object = rule.reflexivePace and paceObject(complement.object, english, owner) or complement.object
+    local value = marked or G.noun(object, english, case, article, nil, owner)
     if not value then return nil end
     local entry = complement.object.entry
     local frame = entry and entry.lexeme.frame
@@ -1609,6 +1661,11 @@ renderTree = function(tree, english, controller)
         elseif not (tree.wh and tree.wh.role == "object") then
             append(parts, english and postposeRecipient and frame.implicitTransferObject or english and frame.enImplicitObject
                 or not english and (tree.relativeImplicitUk or frame.ukImplicitObject))
+        end
+        if frame.selfChange then
+            local emphasis = P.selfChangeEmphasis(tree.subject, english)
+            if not emphasis then return nil end
+            append(parts, emphasis)
         end
         if postposeRecipient then
             if english then append(parts, frame.recipientMarker) end

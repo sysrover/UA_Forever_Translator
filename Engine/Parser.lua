@@ -17,6 +17,7 @@ local function joinAt(tokens, index, joins)
     local current = tokens[index]
     local wordJoin = joins[current.key] or dashJoins[current.key]
     if wordJoin then return wordJoin end
+    if current.key == "а" and tokens[index + 1].key == "коли" then return ", and " end
     if current.key == "!" or current.key == "?" then return sentenceJoins[current.key], true end
     -- A decimal separator is part of a number when followed without a gap.
     if tokens[index + 1].first <= current.last + 1 then return nil end
@@ -249,6 +250,8 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
                     local right = parseFrom(i + 1, depth - 1,
                         sharedPredicateJoins[tokens[i].key] and not matched.rule.imperative, needQuestion or alternativeQuestion)
                     if right then
+                        if direction == "en-uk" and tokens[i].key == "and" and matched.rule.imperative
+                            and right.match.rule.initialWhen then join = ", а " end
                         local result = {match=matched, join=join, sentence=sentence, alternative=alternativeQuestion, next=right}
                         states[state] = result
                         return result

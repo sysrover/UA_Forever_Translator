@@ -44,6 +44,12 @@ local function indefinitePerson(noun)
 end
 
 function P.relativeAnimate(noun)
+    if noun.members then
+        for _, member in ipairs(noun.members) do
+            if not P.relativeAnimate(member) then return false end
+        end
+        return true
+    end
     return noun.animacy == "animate" or indefinitePerson(noun)
         or noun.term and personalTerms[noun.term.category]
 end
@@ -60,6 +66,14 @@ function P.relativePronoun(noun, case)
         case = "genitive"
     end
     return forms and forms[case]
+end
+
+local selfEmphasisUk = {masculine="сам", feminine="сама", neuter="само"}
+function P.selfChangeEmphasis(subject, english)
+    if not subject or subject.person ~= 3 or P.relativeAnimate(subject) then return nil end
+    if subject.number == "plural" then return english and "themselves" or "самі" end
+    if english then return "itself" end
+    return selfEmphasisUk[subject.gender]
 end
 local timeUnits = {
     min="хвилина", mins="хвилина", minute="хвилина", minutes="хвилина",
@@ -372,6 +386,7 @@ end
 
 local function nominalMarkerEnd(document, first, limit, rule, english)
     if first > limit then return nil end
+    if not english and rule.uk == "" then return first end
     if P.key(document, first, limit) == (english and rule.en or rule.uk) then return first + 1 end
     local aliases = english and rule.enAliases or not english and rule.ukAliases
     for _, alias in ipairs(aliases or {}) do
@@ -382,6 +397,56 @@ local function nominalMarkerEnd(document, first, limit, rule, english)
         end
         if index then return index end
     end
+end
+
+local function activityTopic(noun)
+    return P.hasTrait(noun, "activityTopic")
+end
+
+local function activityAudience(noun)
+    return P.hasTrait(noun, "activityAudience") and noun.argument ~= nil
+end
+
+local function activityTopics(document, first, limit, case)
+    return P.coordinated(document, first, limit, case, nil, nil, true, nil, activityTopic, true)
+end
+
+local function audienceWithTopics(document, first, limit, prefix, required)
+    local topics, after
+    local beforeHead = activityTopic(prefix)
+    local anchor = first
+    if beforeHead then
+        topics, anchor = activityTopics(document, first, limit, "nominative")
+        if not topics then return end
+        after = anchor + 1
+    elseif P.key(document, first + 1, limit) ~= "of" then
+        return
+    end
+    local entry = L.choose(document, anchor, "noun", nil, "activityAudience",
+        required and function(candidate) return required(lexicalNoun(candidate)) end)
+    if not entry then return end
+    if not beforeHead then topics, after = activityTopics(document, first + 2, limit, "nominative") end
+    if not topics then return end
+    local noun = lexicalNoun(entry)
+    noun.argument = {object=topics, form=entry.lexeme.frame.nominalArguments[1]}
+    return noun, after, anchor
+end
+
+local function nominalInclusion(document, first, limit, english)
+    local start = first + (P.key(document, first, limit) == "," and 1 or 0)
+    if P.key(document, start, limit) ~= (english and "including" or "зокрема") then return end
+    local explicitAudience = P.key(document, start + 1, limit) == (english and "for" or "для")
+    local members, finish = P.coordinated(document, start + (explicitAudience and 2 or 1), limit,
+        explicitAudience and "genitive" or "nominative", nil, nil, true, nil, function(candidate)
+            return activityTopic(candidate) or P.hasTrait(candidate, "activityAudience")
+        end)
+    if not members then return end
+    local audience = activityAudience(members.members and members.members[1] or members)
+    if explicitAudience and not audience then return end
+    for _, member in ipairs(members.members or {members}) do
+        if audience and not activityAudience(member) or not audience and not activityTopic(member) then return end
+    end
+    return {object=members, audience=audience}, finish
 end
 
 local fewForms = {nominative="кілька", accusative="кілька", genitive="кількох",
@@ -464,6 +529,59 @@ local function bracketedGuildSubject(document, first, limit)
             return
         end
     end
+end
+
+local function nominalArcs(document, first, limit, ampersand)
+    local parser = ns.Engine.UDPipe
+    if not parser or not ns.UDPipeModels then return nil end
+    local tokens = document.tokens
+    while first > 1 and not tokens[first - 1].key:match("^[.!?;]$") do first = first - 1 end
+    local finish = first
+    while finish < limit and not tokens[finish].key:match("^[.!?;]$") do finish = finish + 1 end
+    if finish - first >= 32 then return nil end
+    local memo = document.nominalArcs or {attempts=0}
+    document.nominalArcs = memo
+    local key = first .. ":" .. finish .. ":" .. (ampersand or 0)
+    if memo[key] == nil and memo.attempts < 3 then
+        memo.attempts = memo.attempts + 1
+        memo[key] = parser.analyzeDocument(document, first, finish, ampersand, ampersand, nil,
+            ampersand and {"CCONJ"}) or false
+    end
+    return memo[key], first - 1
+end
+
+local function attachedCoordination(document, owner, limit, start, dependent, after, case, sense, adposition)
+    local marker = P.key(document, after, limit)
+    if marker ~= "," and marker ~= "&" and not L.functional(document, "connectors", after, limit) then return nil end
+    local list, finish = P.coordinated(document, start, limit, case, nil, nil, true, sense, nil, true)
+    if not list or not list.members then return nil end
+    local english = document.direction == "en-uk"
+    if english and P.key(document, finish, limit) == "of" then return nil end
+    for _, member in ipairs(list.members) do
+        if member.pronoun or (english and member.article and not dependent.article)
+            or (not english and member.sourceCase ~= case) then return nil end
+    end
+    if not english then return list, finish end
+    local ampersand
+    for index = after, finish - 1 do
+        if document.tokens[index].key == "&" then
+            if ampersand then return nil end
+            ampersand = index
+        end
+    end
+    local arcs, offset = nominalArcs(document, owner, limit, ampersand)
+    if not arcs or not dependent.headIndex then return nil end
+    local head = dependent.headIndex - offset
+    local attachment = arcs[adposition and owner - offset or head]
+    local target = adposition and head or owner - offset
+    local relation = adposition and "case" or "nmod"
+    if not attachment or attachment.head ~= target or attachment.relation:match("^[^:]+") ~= relation then return nil end
+    for index = 2, #list.members do
+        local member = list.members[index]
+        local arc = member.headIndex and arcs[member.headIndex - offset]
+        if not arc or arc.relation ~= "conj" or arc.head ~= head then return nil end
+    end
+    return list, finish
 end
 
 function P.noun(document, first, limit, case, locationOnly, count, simple, sense, headFilter)
@@ -601,7 +719,11 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         if collective then case = "genitive" end
     else quantity = nil end
     local agrees = headFilter
-    if not english and (sameAt or pointerForms or owner) then
+    if english and (article == "indefinite" or quantity) then
+        agrees = function(head)
+            return not P.hasTrait(head, "uncountableOnly") and (not headFilter or headFilter(head))
+        end
+    elseif not english and (sameAt or pointerForms or owner) then
         local counted = quantity and (tonumber(quantity) == 1 and "singular" or "plural")
         agrees = function(head)
             if headFilter and not headFilter(head) then return false end
@@ -657,8 +779,13 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             end)
         end
         local head, after
+        local compoundHead
         if contextual then head, after = lexicalNoun(contextual), index + 1
         else head, after = nounHead(document, index, limit, case, locationOnly, nounSense, required) end
+        if english and not simple and not locationOnly then
+            local audience, ending, anchor = audienceWithTopics(document, index, limit, head, required)
+            if audience then head, after, compoundHead = audience, ending, anchor end
+        end
         if english and not simple then
             local prefix, following = head, after
             local definitePlace = P.key(document, index, limit) == "the"
@@ -707,16 +834,19 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             and (not few or head.number == "plural")
             and (not head.pronoun or index == first) and (not intensity or #adjectives > 0)
             and (not best or after > nextIndex or (after == nextIndex and head.term and not best.term)) then
-            best, nextIndex, headIndex = head, after, index
+            best, nextIndex, headIndex = head, after, compoundHead or index
             if #adjectives > 0 then best.adjectives = {unpack(adjectives)} end
         end
         if index > limit then break end
+        local comma = #adjectives > 0 and P.key(document, index, limit) == ","
+        if comma then index = index + 1 end
         local adjective = L.choose(document, index, "adj", nil, nil, function(candidate)
             if candidate.lexeme.frame and candidate.lexeme.frame.profileOnly then return false end
             return document.direction == "en-uk" or candidate.form.case == case
         end)
         if not adjective then break end
-        adjectives[#adjectives + 1] = {entry=adjective, index=index, intensity=#adjectives == 0 and intensity or nil}
+        adjectives[#adjectives + 1] = {entry=adjective, index=index, comma=comma,
+            intensity=#adjectives == 0 and intensity or nil}
         index = index + 1
     end
     if not best then
@@ -822,10 +952,12 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             if goal then best.pathTo, nextIndex = goal, after end
         end
         for _, governed in ipairs(frame and frame.nominalArguments or {}) do
+            if best.argument then break end
             local start = nominalMarkerEnd(document, nextIndex, limit, governed, en)
             if start then
-                local argument, after = P.noun(document, start, limit, governed.case, false, nil, true,
-                    governed.argumentSense)
+                local argument, after
+                if governed.activityTopics then argument, after = activityTopics(document, start, limit, governed.case)
+                else argument, after = P.noun(document, start, limit, governed.case, false, nil, true, governed.argumentSense) end
                 local class = P.semanticClass(argument)
                 if not class and argument and argument.raw and ns.Engine.Markup.isLink(argument.raw, "item") then
                     class = "equipment"
@@ -853,20 +985,29 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         if not best.destination and not best.pathTo and not best.argument and not best.genitive and (not en or marker == "of") then
             local contextual = en and L.choose(document, headIndex, "noun", nil, "genitiveComplement")
             local context = contextual and contextual.lexeme.frame
-            local dependent, after = P.noun(document, nextIndex + (en and 1 or 0), limit,
+            local dependentStart = nextIndex + (en and 1 or 0)
+            local dependent, after = P.noun(document, dependentStart, limit,
                 "genitive", false, false, true, context and context.complementSense)
             if dependent and not dependent.pronoun and (en or dependent.sourceCase == "genitive") then
                 local dependentFrame = dependent.entry and dependent.entry.lexeme.frame
                 if not best.characterLevel and assignedRole(best) and dependent.ordinal
                     and dependentFrame and dependentFrame.postposedNumber then
                     best.characterLevel = dependent.ordinal
-                else best.genitive = dependent end
+                else
+                    local list, finish = attachedCoordination(document, headIndex, limit, dependentStart,
+                        dependent, after, "genitive", context and context.complementSense)
+                    best.genitive, after = list or dependent, finish or after
+                end
                 nextIndex = after
                 if best.genitive and context and context.complementClasses and context.complementClasses[P.semanticClass(dependent)] then
                     best.entry, best.term = contextual, nil
                     best.gender, best.animacy = contextual.head.gender, contextual.head.animacy
                 end
             end
+        end
+        if frame and frame.nominalInclusion then
+            local included, after = nominalInclusion(document, nextIndex, limit, en)
+            if included then best.inclusion, nextIndex = included, after end
         end
     end
     local class = best.adjectives and P.semanticClass(best)
@@ -883,8 +1024,14 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     end
     if document.relativeBudget and not simple and not best.raw
         and (not best.pronoun or best.pronoun.id == "someone") and nextIndex <= limit then
-        local relative, finish = ns.Engine.ClauseAnalysis.relative(document, best, nextIndex, limit)
-        if relative then best.relative, nextIndex = relative, finish end
+        local dependent = best.genitive
+        local antecedent = dependent and dependent.members and dependent or best
+        local relative, finish = ns.Engine.ClauseAnalysis.relative(document, antecedent, nextIndex, limit)
+        if not relative and antecedent ~= best then
+            antecedent = best
+            relative, finish = ns.Engine.ClauseAnalysis.relative(document, best, nextIndex, limit)
+        end
+        if relative then antecedent.relative, nextIndex = relative, finish end
     end
     return best, nextIndex
 end
@@ -933,6 +1080,11 @@ function P.preposition(document, first, limit, motion, displacement, context, se
         end
     end
     if ambiguous or not selected then return nil end
+    if priority == 0 and not selected.rule.targetEnByClass and not selected.rule.objectSense then
+        local group, finish = attachedCoordination(document, first, limit, last + 1, selected.object,
+            after, selected.case, nil, true)
+        if group then selected.object, after = group, finish end
+    end
     local eventLemma = english and selected.rule.opponentEvent
     if eventLemma and P.semanticClass(selected.object) == "opponent" then
         local entry = L.choose(document, eventLemma, "noun")
@@ -1015,8 +1167,8 @@ end
 
 local listingComma = {id="and", comma=true}
 local listingAnd = {id="and", en={"and"}, uk={"і"}}
-function P.coordinated(document, first, limit, case, startsPredicate, locationOnly, enumeration, sense, headFilter)
-    local head, index = P.noun(document, first, limit, case, locationOnly, nil, nil, sense, headFilter)
+function P.coordinated(document, first, limit, case, startsPredicate, locationOnly, enumeration, sense, headFilter, simple)
+    local head, index = P.noun(document, first, limit, case, locationOnly, nil, simple, sense, headFilter)
     if not head then return nil end
     local members, joins = {head}, {}
     for _ = 2, enumeration and 6 or 4 do
@@ -1027,7 +1179,7 @@ function P.coordinated(document, first, limit, case, startsPredicate, locationOn
         if enumeration and P.key(document, start, limit) == "&" then connector, last = listingAnd, start
         elseif comma and not connector then connector, last = listingComma, index end
         if not connector or (connector.id ~= "and" and connector.id ~= "or") then break end
-        local member, after = P.noun(document, last + 1, limit, case, locationOnly, nil, nil, sense, headFilter)
+        local member, after = P.noun(document, last + 1, limit, case, locationOnly, nil, simple, sense, headFilter)
         if not member or (startsPredicate and startsPredicate(last + 1)) then break end
         members[#members + 1] = member
         joins[#joins + 1] = connector
@@ -1045,7 +1197,7 @@ function P.coordinated(document, first, limit, case, startsPredicate, locationOn
             if person ~= member.person or number ~= member.number then return nil end
         end
     end
-    return {members=members, joins=joins, person=person, number=number}, index
+    return {members=members, joins=joins, person=person, number=number, headIndex=head.headIndex}, index
 end
 
 function P.quantity(document, first, limit)
