@@ -160,9 +160,9 @@ end
 local speechPossessives = {my=true, our=true, your=true}
 local reflexiveEn = {my="myself", your="yourself", our="ourselves", his="himself", her="herself",
     its="itself", their="themselves"}
-local function possessiveText(entry, english, case, number, gender, animacy, owner)
+local function possessiveText(entry, english, case, number, gender, animacy, owner, emphaticOwner)
     if english and entry.lexeme.frame.reflexivePossessive and owner then return owner end
-    if not english and owner and speechPossessives[owner] and owner == entry.lexeme.en then
+    if not english and owner and (speechPossessives[owner] or emphaticOwner) and owner == entry.lexeme.en then
         local features = {case=adjectiveCase(case, number, gender, animacy), number=number,
             gender=number ~= "plural" and gender or nil}
         local reflexive = L.inflectLemma("свій", "det", features) or L.inflectLemma("свій", "pron", features)
@@ -304,7 +304,8 @@ local function noun(node, english, case, article, compoundModifier, owner)
         value = english and (object .. " " .. value) or (value .. " " .. object)
     end
     if node.possessor then
-        local possessive = possessiveText(node.possessor, english, requested, number, node.gender, node.animacy, owner)
+        local possessive = possessiveText(node.possessor, english, requested, number, node.gender, node.animacy,
+            owner, node.emphaticOwner)
         if not possessive then return nil end
         value = possessive .. (english and node.englishOwn and " own " or " ") .. value
     end
@@ -447,7 +448,7 @@ end
 
 function G.noun(node, english, case, article, compoundModifier, owner)
     local relative = node.relative
-    if english and relative and not article and not relative.nonrestrictive then article = "definite" end
+    if english and relative and not article and not (relative.nonrestrictive or relative.locative) then article = "definite" end
     local value = noun(node, english, case, article, compoundModifier, owner)
     if value and node.groundedState then
         local state = node.groundedState
@@ -456,6 +457,13 @@ function G.noun(node, english, case, article, compoundModifier, owner)
         if not adjectiveValue or not basis then return nil end
         local description = adjectiveValue .. " " .. marker .. " " .. basis
         value = english and value .. " " .. description or withComma(value) .. " " .. withComma(description)
+    end
+    if value and node.prepositions then
+        for _, phrase in ipairs(node.prepositions) do
+            local object, marker = G.preposition(phrase, english, owner)
+            if not object or not marker then return nil end
+            value = value .. " " .. marker .. " " .. object
+        end
     end
     if not value or not relative then return value end
     local clause = render(relative.clause, english)
@@ -473,11 +481,12 @@ function G.noun(node, english, case, article, compoundModifier, owner)
         clause = table.concat(parts, " ")
     end
     if english then
-        local marker = P.relativeAnimate(node) and "who" or (relative.nonrestrictive and "which" or "that")
+        local marker = relative.locative and P.locativeRelativeMarker["en-uk"]
+            or P.relativeAnimate(node) and "who" or (relative.nonrestrictive and "which" or "that")
         if not relative.nonrestrictive then return value .. " " .. marker .. " " .. clause end
         return withComma(value) .. " " .. marker .. " " .. withComma(clause)
     end
-    local marker = P.relativePronoun(node, relative.case)
+    local marker = relative.locative and P.locativeRelativeMarker["uk-en"] or P.relativePronoun(node, relative.case)
     if not marker then return nil end
     if relative.clause.relativeMarkerUk then marker = relative.clause.relativeMarkerUk .. " " .. marker end
     return withComma(value) .. " " .. marker .. " " .. withComma(clause)
@@ -768,12 +777,13 @@ local function paceObject(node, english, owner)
         else modifiers[#modifiers + 1] = modifier end
     end
     local reflexive = node.possessor.lexeme.frame.reflexivePossessive
-    local removeOwn = not english and own and (reflexive or speechPossessives[owner] and owner == node.possessor.lexeme.en)
+    local sameOwner = owner == node.possessor.lexeme.en
+    local removeOwn = not english and own and (reflexive or sameOwner)
     local addOwn = english and reflexive and not own
     if not (removeOwn or addOwn) then return node end
     local adapted = {}
     for key, value in pairs(node) do adapted[key] = value end
-    if removeOwn then adapted.adjectives = modifiers end
+    if removeOwn then adapted.adjectives, adapted.emphaticOwner = modifiers, sameOwner end
     if addOwn then adapted.englishOwn = true end
     return adapted
 end
@@ -1397,7 +1407,10 @@ renderTree = function(tree, english, controller)
         local rule = tree.social
         if rule.audience then
             local audience = G.noun(tree.object, english, english and "accusative" or rule.ukCase)
-            return audience and (english and rule.targetEn or rule.targetUk) .. " " .. audience
+            if not audience then return nil end
+            local signal = tree.audienceSignal
+            local prefix = signal and (english and signal.en[1] or signal.uk[1]) .. ", " or ""
+            return prefix .. (english and rule.targetEn or rule.targetUk) .. " " .. audience
         end
         local standalone = not tree.object and not tree.action
         local head = english and (standalone and not tree.everyone and rule.standaloneEn or rule.en[1]) or rule.uk[1]

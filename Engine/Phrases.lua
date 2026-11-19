@@ -33,6 +33,7 @@ local relativeDeclension = {
 }
 local indefiniteRelative = {nominative="хто", genitive="кого", dative="кому", accusative="кого", instrumental="ким"}
 P.relativeMarkers = {["en-uk"]={who=true, whom=true, which=true, that=true}, ["uk-en"]={}}
+P.locativeRelativeMarker = {["en-uk"]="where", ["uk-en"]="де"}
 for _, forms in pairs({relativeDeclension.masculine, relativeDeclension.feminine, relativeDeclension.neuter,
     relativeDeclension.plural, indefiniteRelative}) do
     for _, word in pairs(forms) do P.relativeMarkers["uk-en"][word] = true end
@@ -578,7 +579,7 @@ local function bracketedGuildSubject(document, first, limit)
     end
 end
 
-local function nominalArcs(document, first, limit, ampersand)
+local function nominalArcs(document, first, limit, marker, tag)
     local parser = ns.Engine.UDPipe
     if not parser or not ns.UDPipeModels then return nil end
     local tokens = document.tokens
@@ -588,13 +589,88 @@ local function nominalArcs(document, first, limit, ampersand)
     if finish - first >= 32 then return nil end
     local memo = document.nominalArcs or {attempts=0}
     document.nominalArcs = memo
-    local key = first .. ":" .. finish .. ":" .. (ampersand or 0)
+    local key = first .. ":" .. finish .. ":" .. (marker or 0) .. ":" .. (tag or "")
     if memo[key] == nil and memo.attempts < 3 then
         memo.attempts = memo.attempts + 1
-        memo[key] = parser.analyzeDocument(document, first, finish, ampersand, ampersand, nil,
-            ampersand and {"CCONJ"}) or false
+        memo[key] = parser.analyzeDocument(document, first, finish, marker, marker, nil,
+            marker and {tag or "CCONJ"}) or false
     end
     return memo[key], first - 1
+end
+
+local function nominalSentenceArcs(document, first, limit, marker, tag)
+    local terminal = P.key(document, limit + 1, #document.tokens)
+    local through = terminal and terminal:match("^[.!?]$") and limit + 1 or limit
+    return nominalArcs(document, first, through, marker, tag)
+end
+
+local function nominalAdpositions(document, noun, first, limit)
+    local choices = L.functional(document, "prepositions", first, limit)
+    if not choices then return nil end
+    local rules = ns.Linguistics.grammar.prepositions
+    for _, id in ipairs(choices) do
+        if rules[id].nominalAdjunct then
+            local arcs, offset = nominalSentenceArcs(document, noun.headIndex, limit)
+            local marker = arcs and arcs[first - offset]
+            local modifier = marker and marker.relation == "case" and arcs[marker.head]
+            if not modifier or modifier.head + offset ~= noun.headIndex
+                or modifier.relation:match("^[^:]+") ~= "nmod" then return nil end
+            local phrase, after = P.preposition(document, first, limit, nil, nil, nil, nil, true)
+            if phrase and phrase.object.headIndex == marker.head + offset then return phrase, after end
+            return nil
+        end
+    end
+end
+
+function P.locativeRelativeHead(document, noun, markerIndex, limit)
+    if not noun.headIndex then return nil end
+    local arcs, offset = nominalSentenceArcs(document, noun.headIndex, limit)
+    local marker = arcs and arcs[markerIndex - offset]
+    if not marker or (marker.relation ~= "mark" and marker.relation ~= "advmod") then return nil end
+    local predicate = arcs[marker.head]
+    if not predicate or predicate.head + offset ~= noun.headIndex then return nil end
+    local relation = predicate.relation
+    if relation == "acl" or relation == "acl:relcl" or relation == "advcl" then
+        return marker.head + offset, arcs, offset
+    end
+    if relation == "parataxis" and marker.relation == "advmod" and document.direction == "en-uk"
+        and P.key(document, markerIndex - 1, limit) ~= "," then
+        -- Compare the subordinating reading without changing the proposed heads.
+        local alternate = nominalSentenceArcs(document, noun.headIndex, limit, markerIndex, "SCONJ")
+        local link = alternate and alternate[markerIndex - offset]
+        local dependent = link and alternate[link.head]
+        if dependent and link.relation == "mark" and link.head == marker.head
+            and dependent.head == predicate.head and dependent.relation == "advcl" then
+            return link.head + offset, alternate, offset
+        end
+    end
+end
+
+local function nominalAbsence(document, first, limit, case, sense, agrees, determined)
+    if P.key(document, first, limit) ~= "no" then return nil end
+    local hyphen = P.key(document, first + 1, limit) == "-"
+    if not (hyphen or determined) then return nil end
+    local absentIndex = first + (hyphen and 2 or 1)
+    if absentIndex >= limit then return nil end
+    local arcs, offset = nominalSentenceArcs(document, first, limit)
+    local modifier = arcs and arcs[absentIndex - offset]
+    if not modifier or modifier.relation ~= "compound" or modifier.head + offset ~= absentIndex + 1 then return nil end
+    local marker = arcs[first - offset]
+    if not marker or not ((marker.relation == "advmod" or marker.relation == "det")
+        and (marker.head == absentIndex - offset or marker.head == modifier.head)) then return nil end
+    local grammar = ns.Linguistics.grammar
+    local ids = grammar.index.en.prepositions.without
+    local rule = ids and grammar.prepositions[ids[1]]
+    if not rule then return nil end
+    local object, headAt = nounHead(document, absentIndex, absentIndex, rule.case, false, nil,
+        function(noun) return not (noun.pronoun or noun.raw) end)
+    if not object then return nil end
+    local head, after = nounHead(document, headAt, limit, case, false, sense, agrees)
+    if not head or head.pronoun or head.raw then return nil end
+    local frame = object.entry and object.entry.lexeme.frame
+    if frame and frame.absenceNumber then object.number = frame.absenceNumber end
+    head.prepositions = {{rule=rule, object=object, case=rule.case}}
+    return head, after, headAt
 end
 
 function P.groundedState(document, noun, first, limit, case, attributive)
@@ -877,6 +953,10 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         local compoundHead
         if contextual then head, after = lexicalNoun(contextual), index + 1
         else head, after = nounHead(document, index, limit, case, locationOnly, nounSense, required) end
+        if english and not (head or simple or locationOnly) then
+            head, after, compoundHead = nominalAbsence(document, index, limit, case, nounSense, required,
+                article or demonstrative or owner)
+        end
         if not locationOnly then
             local mode, modeEnd = modePrefix(document, index, limit)
             if mode then
@@ -1136,6 +1216,14 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         local state, finish = P.groundedState(document, best, nextIndex, limit, case, true)
         if state then best.groundedState, nextIndex = state, finish end
     end
+    if not simple and best.headIndex and not best.raw then
+        while nextIndex < limit do
+            local phrase, after = nominalAdpositions(document, best, nextIndex, limit)
+            if not phrase then break end
+            best.prepositions = best.prepositions or {}
+            best.prepositions[#best.prepositions + 1], nextIndex = phrase, after
+        end
+    end
     if document.relativeBudget and not simple and not best.raw
         and (not best.pronoun or best.pronoun.id == "someone") and nextIndex <= limit then
         local dependent = best.genitive
@@ -1150,7 +1238,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     return best, nextIndex
 end
 
-function P.preposition(document, first, limit, motion, displacement, context, secondaryContext)
+function P.preposition(document, first, limit, motion, displacement, context, secondaryContext, nominal)
     local english = document.direction == "en-uk"
     if english and P.key(document, first, limit) == "of" then return nil end
     local choices, last = L.functional(document, "prepositions", first, limit)
@@ -1160,7 +1248,7 @@ function P.preposition(document, first, limit, motion, displacement, context, se
         local rule = ns.Linguistics.grammar.prepositions[id]
         local case = english and displacement and rule.id == "in" and "accusative" or rule.case
         local object, ending
-        if (not rule.requiresMotion or motion) and (not rule.excludesMotion or not motion)
+        if (not nominal or rule.nominalAdjunct) and (not rule.requiresMotion or motion) and (not rule.excludesMotion or not motion)
             and (not rule.directional or english or motion or displacement)
             and (not rule.context or rule.context == context or rule.context == secondaryContext)
             and (not rule.contexts or rule.contexts[context] or rule.contexts[secondaryContext]) then

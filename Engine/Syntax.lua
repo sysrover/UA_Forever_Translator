@@ -700,7 +700,7 @@ local function availability(p, direction)
     elseif not p:any("чи є", "є") then return end
     local P = ns.Engine.Phrases
     if english and (not p:count("skill") or not p:word("+")) then return end
-    local occupation, after = P.noun(p.document, p.i, p.limit, "nominative")
+    local occupation, after = P.noun(p.document, p.i, p.limit, "nominative", nil, nil, true)
     if P.semanticClass(occupation) ~= "occupation" then return end
     p.i = after
     if not english and (not p:phrase("із навичкою") or not p:count("skill") or not p:word("+")) then return end
