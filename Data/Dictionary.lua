@@ -5228,6 +5228,27 @@ ns.Data = {
                     ["_id"] = "game.auction_house"
                 }
             },
+            ["аукціонним"] = {
+                ["домом"] = {
+                    ["_id"] = "game.auction_house"
+                }
+            },
+            ["аукціонного"] = {
+                ["дому"] = {
+                    ["_id"] = "game.auction_house"
+                }
+            },
+            ["аукціонному"] = {
+                ["дому"] = {
+                    ["_id"] = "game.auction_house"
+                },
+                ["домі"] = {
+                    ["_id"] = "game.auction_house"
+                }
+            },
+            ["аукціоні"] = {
+                ["_id"] = "game.auction_house"
+            },
             ["багряний"] = {
                 ["монастир"] = {
                     ["_id"] = "place.scarlet_monastery",
@@ -15629,7 +15650,13 @@ ns.Data = {
                 ["ah"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
+                                ["gender"] = "masculine",
+                                ["nominalArgumentPrefix"] = true,
+                                ["semanticClass"] = "auctionVenue"
+                            },
                             ["id"] = "game.auction_house",
                             ["lemma"] = "Auction House",
                             ["pos"] = "noun",
@@ -15976,7 +16003,13 @@ ns.Data = {
                     ["house"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["nominalArgumentPrefix"] = true,
+                                    ["semanticClass"] = "auctionVenue"
+                                },
                                 ["id"] = "game.auction_house",
                                 ["lemma"] = "Auction House",
                                 ["pos"] = "noun",
@@ -24165,7 +24198,13 @@ ns.Data = {
                 ["аук"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
+                                ["gender"] = "masculine",
+                                ["nominalArgumentPrefix"] = true,
+                                ["semanticClass"] = "auctionVenue"
+                            },
                             ["id"] = "game.auction_house",
                             ["lemma"] = "Аукціонний дім",
                             ["pos"] = "noun",
@@ -24178,13 +24217,157 @@ ns.Data = {
                     ["дім"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["nominalArgumentPrefix"] = true,
+                                    ["semanticClass"] = "auctionVenue"
+                                },
+                                ["id"] = "game.auction_house",
+                                ["lemma"] = "Аукціонний дім",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.auction_house",
+                                ["sourceRefs"] = { "ua-forever:game.auction_house" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["nominalArgumentPrefix"] = true,
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "auctionVenue"
+                                },
+                                ["id"] = "game.auction_house",
+                                ["lemma"] = "Аукціонний дім",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.auction_house",
+                                ["sourceRefs"] = { "ua-forever:game.auction_house" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["nominalArgumentPrefix"] = true,
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "auctionVenue"
+                                },
                                 ["id"] = "game.auction_house",
                                 ["lemma"] = "Аукціонний дім",
                                 ["pos"] = "noun",
                                 ["sense"] = "game.auction_house",
                                 ["sourceRefs"] = { "ua-forever:game.auction_house" }
                             }
+                        }
+                    }
+                },
+                ["аукціонним"] = {
+                    ["домом"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["nominalArgumentPrefix"] = true,
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "auctionVenue"
+                                },
+                                ["id"] = "game.auction_house",
+                                ["lemma"] = "Аукціонний дім",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.auction_house",
+                                ["sourceRefs"] = { "ua-forever:game.auction_house" }
+                            }
+                        }
+                    }
+                },
+                ["аукціонного"] = {
+                    ["дому"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["nominalArgumentPrefix"] = true,
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "auctionVenue"
+                                },
+                                ["id"] = "game.auction_house",
+                                ["lemma"] = "Аукціонний дім",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.auction_house",
+                                ["sourceRefs"] = { "ua-forever:game.auction_house" }
+                            }
+                        }
+                    }
+                },
+                ["аукціонному"] = {
+                    ["дому"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["nominalArgumentPrefix"] = true,
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "auctionVenue"
+                                },
+                                ["id"] = "game.auction_house",
+                                ["lemma"] = "Аукціонний дім",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.auction_house",
+                                ["sourceRefs"] = { "ua-forever:game.auction_house" }
+                            }
+                        }
+                    },
+                    ["домі"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["nominalArgumentPrefix"] = true,
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "auctionVenue"
+                                },
+                                ["id"] = "game.auction_house",
+                                ["lemma"] = "Аукціонний дім",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.auction_house",
+                                ["sourceRefs"] = { "ua-forever:game.auction_house" }
+                            }
+                        }
+                    }
+                },
+                ["аукціоні"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["englishCommon"] = true,
+                                ["gender"] = "masculine",
+                                ["nominalArgumentPrefix"] = true,
+                                ["number"] = "singular",
+                                ["semanticClass"] = "auctionVenue"
+                            },
+                            ["id"] = "game.auction_house",
+                            ["lemma"] = "Аукціонний дім",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.auction_house",
+                            ["sourceRefs"] = { "ua-forever:game.auction_house" }
                         }
                     }
                 },
@@ -41313,7 +41496,14 @@ ns.Data = {
                     ["canonical"] = "Auction House"
                 },
                 ["uk"] = {
-                    ["canonical"] = "Аукціонний дім"
+                    ["accusative"] = "аукціонний дім",
+                    ["canonical"] = "Аукціонний дім",
+                    ["dative"] = "аукціонному дому",
+                    ["genitive"] = "аукціонного дому",
+                    ["instrumental"] = "аукціонним домом",
+                    ["locative"] = "аукціонному домі",
+                    ["locativeSingular"] = "аукціоні",
+                    ["nominative"] = "аукціонний дім"
                 }
             },
             ["game.bag"] = {
@@ -43827,7 +44017,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 89,
-        ["version"] = "7b913e935d54717253bb616c12fa146aad6906a61e60ed4afd9945131c97fe36"
+        ["version"] = "ed8fb39dbdabd828d6c460697d9b3e4290cbe4573a004539f6fa397aba6af544"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -53568,7 +53758,22 @@ ns.Data = {
             ["contexts"] = { "game" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Auction House",
-            ["forms"] = {},
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["englishCommon"] = true,
+                ["gender"] = "masculine",
+                ["nominalArgumentPrefix"] = true,
+                ["semanticClass"] = "auctionVenue"
+            },
+            ["forms"] = {
+                ["accusative"] = "аукціонний дім",
+                ["dative"] = "аукціонному дому",
+                ["genitive"] = "аукціонного дому",
+                ["instrumental"] = "аукціонним домом",
+                ["locative"] = "аукціонному домі",
+                ["locativeSingular"] = "аукціоні",
+                ["nominative"] = "аукціонний дім"
+            },
             ["id"] = "game.auction_house",
             ["priority"] = 100,
             ["provenance"] = {

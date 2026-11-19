@@ -248,6 +248,13 @@ local function noun(node, english, case, article, compoundModifier, owner)
         if not place then return nil end
         append(parts, (place:gsub("^The ", "")))
     end
+    local argumentCompound = english and node.argument and node.argument.form.englishCompound
+    if argumentCompound then
+        local argument = G.noun(node.argument.object, true, "nominative", false, true, owner)
+        if not argument then return nil end
+        append(parts, argument)
+        if article == true and not node.article then article = "definite" end
+    end
     append(parts, value)
     value = table.concat(parts, " ")
     if node.nominalObject then
@@ -289,7 +296,7 @@ local function noun(node, english, case, article, compoundModifier, owner)
         if not goal then return nil end
         value = value .. (english and " to " or " до ") .. goal
     end
-    if node.argument then
+    if node.argument and not argumentCompound then
         local argument, form = node.argument.object, node.argument.form
         local object = G.noun(argument, english, english and "accusative" or form.case, true, nil, owner)
         if not object then return nil end
@@ -1553,6 +1560,14 @@ renderTree = function(tree, english, controller)
         append(parts, tree.adverbComplement[language][1])
     end
     if not addPrepositions(parts, tree, english, owner) then return nil end
+    local defaultAdjunct = not english and verbFrame and verbFrame.ukDefaultAdjunct
+    if defaultAdjunct then
+        local present
+        for _, adjunct in ipairs(tree.prepositions or {}) do
+            if defaultAdjunct.skipWith[adjunct.rule.id] then present = true; break end
+        end
+        if not present then append(parts, defaultAdjunct.text) end
+    end
     if tree.priceComplement then
         local price = tree.priceComplement
         if price.manner then

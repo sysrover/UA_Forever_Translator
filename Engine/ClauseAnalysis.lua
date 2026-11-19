@@ -358,6 +358,10 @@ local function verb(document, index, limit, subject, base, imperative, sense, as
         local required = not english and requiredUkComplement(frame)
         if required and not afterObjectMarker(document, after, limit, required) then return false end
         if frame.requiresSharedSubject and not (previous and previous.subject) then return false end
+        if frame.requiresBarePredicate and after <= limit then
+            local key = P.key(document, after, limit)
+            if not key or not key:match("^[,.;!?]$") then return false end
+        end
         if english and frame.subjectPronouns
             and not (subject and subject.pronoun and frame.subjectPronouns[subject.pronoun.id]) then return false end
         local context = frame.coordinatedAfter
@@ -395,15 +399,20 @@ local function verb(document, index, limit, subject, base, imperative, sense, as
             local class = P.semanticClass(object)
             if not class and object and object.raw and ns.Engine.Markup.isLink(object.raw, "item") then class = "equipment" end
             local pronoun = object and object.pronoun
+            local contextualClass = frame.adjunctObjectClasses and frame.adjunctObjectClasses[class]
+            local required = frame.reverseAdjunct
+            local hasAdjunct
+            if contextualClass or not english and required then
+                local adjunct = object and P.preposition(document, objectEnd, limit, false, false, frame.prepositionContext)
+                hasAdjunct = adjunct and (required == adjunct.rule.id or type(required) == "table" and required[adjunct.rule.id])
+                if not english and required and not hasAdjunct then return false end
+            end
             if typedObject and not (frame.objectClasses and frame.objectClasses[class]
+                or contextualClass and hasAdjunct
                 or frame.objectTrait and P.hasTrait(object, frame.objectTrait)
                 or frame.objectPronouns and pronoun and frame.objectPronouns[pronoun.id]
                 or frame.animateObject and personNoun(object)
                 or frame.requiresSpatialContainer and P.spatialContainer(object)) then return false end
-            if not english and frame.reverseAdjunct then
-                local adjunct = object and P.preposition(document, objectEnd, limit, false, false, frame.prepositionContext)
-                if not adjunct or adjunct.rule.id ~= frame.reverseAdjunct then return false end
-            end
             if frame.scheduleObject and (not object or not scheduleTimeAt(document, objectEnd, limit, true)) then
                 return false
             end
@@ -861,7 +870,7 @@ local function prepositionContext(tree, frame)
     return context, frame.durationBoundary and "duration"
 end
 local controlledTemporal = {
-    before={en={"before"}, uk={"перш ніж"}, temporal=true, prospectiveEvent=true},
+    before={en={"before"}, uk={"перш ніж"}, temporal=true, prospectiveEvent=true, reverseAttachment=true},
     after={en={"after"}, uk={"після того як"}, temporal=true},
 }
 
@@ -3364,6 +3373,13 @@ local function prospectiveEvent(tree)
     end
 end
 
+local function auctionListing(tree)
+    for _, phrase in ipairs(tree and tree.prepositions or {}) do
+        if phrase.rule.id == "at-auction" then return true end
+    end
+    return false
+end
+
 local function parse(document, first, limit)
     local trees, joins = {}, {}
     local prefix, prefixEnd = clauseConnector(document, first, limit)
@@ -3381,7 +3397,12 @@ local function parse(document, first, limit)
             and (precedingJoin.rule.id == "and" or precedingJoin.rule.id == "or" or precedingJoin.rule.id == "then") then
             previous = trees[#trees]
         end
+        local domain = document.transferDomain
+        if precedingJoin and precedingJoin.rule and precedingJoin.rule.id == "if" and auctionListing(trees[#trees]) then
+            document.transferDomain = "auction"
+        end
         local tree, after = simple(document, index, limit, previous, 0)
+        document.transferDomain = domain
         if not tree and document.direction == "en-uk" and precedingJoin and precedingJoin.rule
             and precedingJoin.rule.predicateEllipsis then
             tree, after = supportEllipsis(document, index, limit, trees[#trees])
@@ -3463,6 +3484,11 @@ local function parse(document, first, limit)
             or token.key == "-" and token.first > document.tokens[index - 1].last + 1
                 and index < limit and document.tokens[index + 1].first > token.last + 1
         local found, last = clauseConnector(document, index + ((comma or dash) and 1 or 0), limit)
+        if found and found.id == "or" and prefix and comma and #trees == 1 and document.direction == "uk-en"
+            and P.key(document, index + 1, limit) == "чи" then
+            local question, ending = simple(document, index + 1, limit, nil, 0)
+            if question and question.question and boundary(document, ending, limit) then found = nil end
+        end
         if found and last < limit then
             joins[#joins + 1] = {rule=found, comma=comma, dash=dash}
             index = last + 1
@@ -3484,6 +3510,17 @@ local function parse(document, first, limit)
     if #trees == 0 or #joins >= #trees or index <= limit then return nil end
     for i, join in ipairs(joins) do
         local action, followup = trees[i], trees[i + 1]
+        if join.rule and join.rule.id == "if" and followup.verb and lexemeFrame(followup.verb).sense == "auctionInterest" then
+            local actor = action.subject and action.subject.pronoun
+            if document.direction == "uk-en" and followup.tense == "present" then
+                followup.aspect = "continuous"
+            elseif document.direction == "en-uk" and (action.imperative or action.tense == "present" and actor and actor.id == "i")
+                and not action.negative and action.verb and lexemeFrame(action.verb).unmarkedPast
+                and action.leadingAdverb and action.leadingAdverb.pastUk then
+                action.imperative, action.tense = nil, "past"
+                action.subject = action.subject or personalSubject("i")
+            end
+        end
         if join.rule and join.rule.id == "then" and action.tense == "future"
             and followup.tense == "future" and followup.inherited then
             action.sequencedEvent, followup.sequencedEvent = true, true
@@ -3513,7 +3550,14 @@ local function parse(document, first, limit)
         for _, tree in ipairs(trees) do
             if tree.tense == "past" or explicitTime(tree) == "past" then pastContext = true; break end
         end
-        for _, tree in ipairs(trees) do chooseModalSense(tree, pastContext) end
+        for _, tree in ipairs(trees) do
+            local frame = tree.verb and lexemeFrame(tree.verb)
+            if frame and frame.auctionVerb and tree.object and auctionListing(tree) then
+                local reading = L.choose(document, frame.auctionVerb, "verb", nil, "saleListing")
+                if reading then tree.verb = reading end
+            end
+            chooseModalSense(tree, pastContext)
+        end
     end
     return {trees=trees, joins=joins, prefix=prefix}
 end
@@ -3726,9 +3770,12 @@ local function confirmedAttachment(arcs, offset, start, finish, subordinateFirst
             local parent = predicate.head + offset
             if rule.reverseAttachment and arc.relation == "mark" and predicate.head == 0
                 and dependent >= subordinateFirst and dependent <= subordinateLast then
+                -- An explicit multiword marker fixes the temporal role when the model reverses the link.
                 for index = mainFirst, mainLast do
                     local main = arcs[index - offset]
-                    if main.head + offset == dependent and main.relation == "advcl" then return true end
+                    local linked = main.relation == "advcl" or start < finish
+                        and (main.relation == "parataxis" or main.relation == "conj")
+                    if linked and main.head + offset == dependent then return true end
                 end
             end
             -- A complete multiword temporal marker identifies the relation.
@@ -3742,7 +3789,7 @@ local function confirmedAttachment(arcs, offset, start, finish, subordinateFirst
             end
             if dependent >= subordinateFirst and dependent <= subordinateLast and attached and predicate.head > 0 then
                 -- The relative clause in a nominal time expression may attach through its noun.
-                if rule.nominalHead then
+                if rule.nominalHead or rule.reverseAttachment and start < finish then
                     for _ = start, finish do
                         if parent < start or parent > finish then break end
                         local nextArc = arcs[parent - offset]
@@ -3788,7 +3835,11 @@ local function joined(document, left, right, junction, prefix, tail, dependency)
     for _, tree in ipairs(subordinate.trees) do
         tree.temporalDependent = true
         if rule and rule.prospective and tree.tense == "present" then tree.tense = "future" end
-        if english and rule and rule.prospectiveEvent and futureAction then prospectiveEvent(tree) end
+        local frame = tree.verb and lexemeFrame(tree.verb)
+        local speaker = tree.subject and tree.subject.pronoun
+        local plannedQuestion = prefix and action.question and speaker and speaker.id == "i"
+            and frame and frame.ukDefaultAdjunct
+        if english and rule and rule.prospectiveEvent and (futureAction or plannedQuestion) then prospectiveEvent(tree) end
         if english and rule and rule.futureLocation and futureAction and locativeState(tree) and tree.tense == "present" then
             tree.tense = "future"
         end

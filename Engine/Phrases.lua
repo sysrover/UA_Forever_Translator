@@ -529,14 +529,28 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             end
             local frame = prefix and prefix.entry and prefix.entry.lexeme.frame
             local place = prefix and prefix.term and prefix.term.category == "places"
-            if following and following <= limit and (place or frame and frame.spatialContainer) then
+            local nominalPrefix = prefix and prefix.term and prefix.term.features and prefix.term.features.nominalArgumentPrefix
+            if following and following <= limit and (place or nominalPrefix or frame and frame.spatialContainer) then
                 local part, ending = nounHead(document, following, limit, case, locationOnly)
                 local relation = part and part.entry and part.entry.lexeme.frame
+                local prefixArgument
+                if nominalPrefix then
+                    local class = P.semanticClass(prefix)
+                    for _, argument in ipairs(relation and relation.nominalArguments or {}) do
+                        if argument.englishCompound and argument.classes and argument.classes[class] then
+                            prefixArgument = argument
+                            break
+                        end
+                    end
+                end
                 local session, sessionEnd
                 if place and not locationOnly then
                     session, sessionEnd = nounHead(document, following, limit, case, false, "iteration")
                 end
-                if session and session.entry and session.entry.lexeme.frame and session.entry.lexeme.frame.placeCompound then
+                if prefixArgument then
+                    part.argument = {object=prefix, form=prefixArgument}
+                    head, after = part, ending
+                elseif session and session.entry and session.entry.lexeme.frame and session.entry.lexeme.frame.placeCompound then
                     session.genitive = prefix
                     head, after = session, sessionEnd
                 elseif #adjectives == 0 and (not definitePlace or owner) and relation and relation.spatialPart then
@@ -623,7 +637,9 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     best.abundance = abundance or nil
     best.more, best.evenMore = more or nil, evenMore or nil
     best.some = some or nil
-    if nextIndex == headIndex + 1 and (best.entry or best.term) then best.headIndex = headIndex end
+    if best.argument and best.argument.form.englishCompound and en then
+        best.headIndex = nextIndex - 1
+    elseif nextIndex == headIndex + 1 and (best.entry or best.term) then best.headIndex = headIndex end
     local frame = best.entry and best.entry.lexeme.frame
     if ordinal then
         if not frame or not frame.postposedNumber then return nil end
