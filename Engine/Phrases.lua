@@ -1112,7 +1112,8 @@ function P.preposition(document, first, limit, motion, displacement, context, se
         local object, ending
         if (not rule.requiresMotion or motion) and (not rule.excludesMotion or not motion)
             and (not rule.directional or english or motion or displacement)
-            and (not rule.context or rule.context == context or rule.context == secondaryContext) then
+            and (not rule.context or rule.context == context or rule.context == secondaryContext)
+            and (not rule.contexts or rule.contexts[context] or rule.contexts[secondaryContext]) then
             local spatial = rule.requiresSpatialContainer or displacement and rule.id == "in"
             local locationOnly = rule.requiresSpatialContainer
                 or not displacement and (rule.id == "in" or rule.id == "to" or rule.id == "from")
@@ -1144,7 +1145,7 @@ function P.preposition(document, first, limit, motion, displacement, context, se
             local rank = (rule.requiresLexicalLocative or rule.requiresNearLandmark or rule.requiresCategory
                 or rule.requiresClass or rule.requiresClasses or rule.requiresTrait or rule.requiresResource
                 or rule.requiresSpatialContainer) and 1 or 0
-            if rule.context then rank = rank + 2 end
+            if rule.context or rule.contexts then rank = rank + 2 end
             if not priority or rank > priority then
                 selected, after, priority, ambiguous = {rule=rule, object=object, case=case}, ending, rank, false
             elseif rank == priority then ambiguous = true end

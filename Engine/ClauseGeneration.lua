@@ -1105,6 +1105,28 @@ end
 local inferredPossessives = {I="my", you="your", we="our", they="their", he="his", she="her", it="its"}
 
 renderTree = function(tree, english, controller)
+    if tree.kind == "welcoming" then
+        local recipient = G.noun(tree.recipient, english, english and "nominative" or "dative")
+        if not recipient then return nil end
+        local adverb = tree.welcomeAdverb
+        local parts
+        if english then
+            parts = {recipient, presentBe(tree.recipient.person, tree.recipient.number)}
+            if adverb then append(parts, adverb.en[1]) end
+            if tree.negative then append(parts, "not") end
+            append(parts, "welcome")
+        else
+            parts = {recipient}
+            if adverb then append(parts, adverb.uk[1]) end
+            if tree.negative then append(parts, "не") end
+            append(parts, "раді")
+        end
+        return table.concat(parts, " ")
+    end
+    if tree.exclusion then
+        local items = G.noun(tree.subject, english, english and "nominative" or "genitive")
+        return items and (english and "no" or tree.exclusion) .. " " .. items
+    end
     if tree.descriptionLabel then
         local description = G.noun(tree.subject, english, "nominative", english)
         return description and tree.descriptionLabel .. (english and " is " or " — ") .. description

@@ -2937,6 +2937,35 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap)
     local english = document.direction == "en-uk"
     local key = P.key(document, first, limit)
     if not previous and not indirect then
+        local welcome = L.choose(document, limit, "adj", not english and {case="nominative", number="plural"} or nil,
+            "welcomingState")
+        if welcome then
+            local welcomeCase = english and "nominative" or "dative"
+            local welcomed, welcomeAt = P.pronoun(document, first, limit, welcomeCase, true, true)
+            if not welcomed then welcomed, welcomeAt = P.noun(document, first, limit, welcomeCase) end
+            if welcomed and (welcomed.pronoun or P.relativeAnimate(welcomed)) then
+                local marker = P.key(document, welcomeAt, limit)
+                local present = not english or marker == (welcomed.number == "plural" and "are"
+                    or welcomed.person == 1 and "am" or welcomed.person == 2 and "are" or "is")
+                if present then
+                    local at = welcomeAt + (english and 1 or 0)
+                    local adverb, nextAt = adverbAt(document, at, limit, nil, function(item) return item.recurring or item.location end)
+                    at = nextAt or at
+                    local negative = P.key(document, at, limit) == (english and "not" or "не")
+                    if at + (negative and 1 or 0) == limit then
+                        return {kind="welcoming", recipient=welcomed, welcomeAdverb=adverb, negative=negative}, limit + 1
+                    end
+                end
+            end
+        end
+        if key == "no" and english or not english and (key == "жодних" or key == "жодного" or key == "жодної") then
+            local items, after = P.coordinated(document, first + 1, limit, english and "nominative" or "genitive")
+            if items and after > limit then
+                local head = items.members and items.members[1] or items
+                local marker = head.number == "plural" and "жодних" or head.gender == "feminine" and "жодної" or "жодного"
+                if english or marker == key then return {kind="nounPhrase", subject=items, exclusion=marker}, after end
+            end
+        end
         local token = document.tokens[first]
         if token and token.protected and not token.linkKind then
             local label = P.raw(document, first, first)
@@ -2981,6 +3010,22 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap)
             local finish = complements(document, inquiry, start, limit, depth)
             if finish and inquiry.object and inquiry.object.nominalAction
                 and inquiry.object.nominalAction.nominalPartner then return inquiry, finish end
+        end
+    end
+    if english and not (previous or indirect or objectGap) and (key == "looking" or key == "seeking") then
+        local separator = P.key(document, limit + 1, #document.tokens)
+        local following = separator and separator:match("^[.!]$") and P.key(document, limit + 2, #document.tokens)
+        local actor = (following == "we" or following == "i") and personalSubject(following)
+        if actor then
+            local entry, start = verb(document, first, limit, actor, false, false, nil, "present")
+            if entry and lexemeFrame(entry).recruitmentSearch then
+                local request = {kind="clause", subject=actor, implicitSubject=true, verb=entry, verbIndex=first,
+                    tense="present", aspect="continuous"}
+                local finish = complements(document, request, start, limit, depth)
+                if finish and finish > limit and request.object and P.relativeAnimate(request.object) then
+                    return request, finish
+                end
+            end
         end
     end
     local tradeOpeners = ns.Linguistics.grammar.tradeOpeners
@@ -3682,6 +3727,11 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap)
     end
     if not english then agreeSubject(document, subject, tree.verb.form) end
     if english or frame.reverseSubjectSense then refineSubject(document, subject, frame) end
+    if not english and not (subject or inheritedSubject or tree.imperative)
+        and frame.recruitmentSearch and tree.verb.form.person == 1 and tree.verb.form.tense == "present" then
+        subject = personalSubject(tree.verb.form.number == "plural" and "we" or "i")
+        tree.aspect = "continuous"
+    end
     local implicit = frame.implicitSubject
     if implicit and not inheritedSubject and (not subject or subject.pronoun and subject.pronoun.id == implicit) then
         if not subject and not aux then tree.tense = frame.implicitTense or tree.tense end

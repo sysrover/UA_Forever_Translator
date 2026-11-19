@@ -1,9 +1,11 @@
 # Changelog
 
-## 0.1.0
+## 0.5.0
 
-- Added English-to-Ukrainian chat translations in selected channels, with the original message retained.
-- Added editable Ukrainian-to-English drafts with a channel and recipient preview.
-- Added an offline dictionary for group recruitment, trade, directions, combat calls, and loot-roll slang.
-- Added grammar for selected Ukrainian word forms and composition of supported clauses.
-- Added labeled literal suggestions for partially recognized messages, with support for preserving item links and mentions.
+First release of UA Forever Translator for World of Warcraft: Forever.
+
+- Translate English chat in selected channels. Show Ukrainian translations in the UA tab, the main chat tab, or both, while keeping the original messages visible.
+- Compose editable English drafts from Ukrainian text and insert them into the selected chat box for manual sending.
+- Look up group recruitment, trade, combat, and loot terms with `/uaft lookup`.
+- Translate supported clauses offline using bilingual dictionaries, word forms, and grammar. Partial translations are labeled and preserve unfamiliar text and in-game links.
+- Optionally keep a local per-character journal of translations and draft previews. The journal is off by default.

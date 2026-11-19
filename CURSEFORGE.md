@@ -5,26 +5,29 @@
 **Game:** World of Warcraft  
 **Class:** Addons  
 **Suggested category:** Chat & Communication  
-**Game version to select after in-game verification:** Forever, 1.60.1  
+**Target game version:** Forever 1.60.1 (`Interface: 16001`, `camelot`)  
+**Release type:** Release  
+**File display name:** UA Forever Translator 0.5.0  
+**Archive:** `UA_Forever_Translator-0.5.0.zip`  
 **Logo:** [CurseForgeIcon.png](CurseForgeIcon.png)  
 **Changelog:** [CHANGELOG.md](CHANGELOG.md)
 
 ## Description
 
-UA Forever Translator helps English- and Ukrainian-speaking players communicate in World of Warcraft: Forever. The UA chat tab shows Ukrainian translations. Standard chat tabs show the original messages. Use `/uaft tab` to open or select the UA tab.
+UA Forever Translator helps English- and Ukrainian-speaking players communicate in World of Warcraft: Forever. It translates English messages in selected channels into Ukrainian and keeps the originals visible. Use `/uaft tab` to open the UA tab and `/uaft config` to choose channels and where translations appear.
 
-Use `/uaft en <Ukrainian text>` to prepare an English draft. You can review and edit it, choose the current chat target, and insert it into the game chat box. You send the message yourself.
+Use `/uaft` to open the composer or `/uaft en <Ukrainian text>` to prepare an English draft. You can edit the draft, choose a chat target, and insert it into the game chat box. You send the message yourself.
 
-The built-in dictionary covers common group, trade, combat, and loot-roll phrases, along with selected regional names and Ukrainian word forms. Partial suggestions are labeled and retain unfamiliar text. The addon works offline and has no required addon dependencies. Use `/uaft config` to choose which chat channels to translate.
+The built-in dictionaries and grammar cover common group, trade, combat, and loot phrases. Partial translations are labeled and retain unfamiliar text. Translation runs offline without addon dependencies. An optional local journal can record translations and draft previews. The journal is off by default.
 
 ## Packaging
 
-After checking the addon's behavior in the supported client, run this from the repository root to create a ZIP from the committed addon files. Match the archive version to the TOC and changelog.
+From the addon Git repository root, create the ZIP from the commit tagged `0.5.0`. Use the same ZIP as the GitHub Release asset and the CurseForge file.
 
 ```powershell
-git archive --format=zip --prefix=UA_Forever_Translator/ --output=../UA_Forever_Translator-0.1.0.zip HEAD -- Core Data Engine Modules UI UA_Forever_Translator.toc README.md CHANGELOG.md
+git archive --format=zip --prefix=UA_Forever_Translator/ --output=../UA_Forever_Translator-0.5.0.zip 0.5.0 -- Core Data Engine Modules UI UA_Forever_Translator.toc README.md CHANGELOG.md THIRD_PARTY_NOTICES.md
 ```
 
 The archive root should contain the `UA_Forever_Translator` folder. [`.pkgmeta`](.pkgmeta) provides equivalent packaging metadata for [BigWigs Packager](https://github.com/BigWigsMods/packager). WoW Forever support is available in [version 2.6.0](https://github.com/BigWigsMods/packager/releases/tag/v2.6.0) and later.
 
-Before submitting, choose the project license and review upstream attribution and distribution terms. Follow the [CurseForge project submission guide](https://support.curseforge.com/support/solutions/articles/9000197241-creating-and-submitting-a-project) to create the project and submit the ZIP.
+Before publishing, settle the project license and the redistribution terms for the components listed in the [third-party notices](THIRD_PARTY_NOTICES.md), and confirm the supported game version in the client. Follow the [CurseForge project submission guide](https://support.curseforge.com/support/solutions/articles/9000197241-creating-and-submitting-a-project) to create the project and submit the ZIP.

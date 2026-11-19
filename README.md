@@ -2,11 +2,11 @@
 
 Перекладач ігрового чату для **World of Warcraft: Forever 1.60.1**. Показує український переклад в окремій вкладці **UA** і готує англійські чернетки з українського тексту. Звичайні вкладки чату показують оригінальні повідомлення. Аддон працює локально й не потребує інших аддонів.
 
-**English:** Offline English–Ukrainian chat translation and editable English drafts for WoW Forever. The addon uses a built-in dictionary and grammar patterns for common game chat. [CurseForge project description](CURSEFORGE.md)
+**English:** Offline English–Ukrainian chat translation and editable English drafts for WoW Forever. The addon uses a built-in dictionary and grammar patterns for common game chat.
 
 ## Встановлення
 
-Помістіть файли цього репозиторію в папку `World of Warcraft/_forever_/Interface/AddOns/UA_Forever_Translator/`. Файл `UA_Forever_Translator.toc` має лежати безпосередньо в ній. Увімкніть аддон у грі. Для оновлення вже встановленого аддона скористайтеся `/reload`.
+Розпакуйте `UA_Forever_Translator-0.5.0.zip` у `World of Warcraft/_forever_/Interface/AddOns/`. Файл `UA_Forever_Translator.toc` має лежати безпосередньо в папці `AddOns/UA_Forever_Translator/`. Увімкніть аддон у грі. Для оновлення вже встановленого аддона скористайтеся `/reload`.
 
 ## Команди
 
@@ -37,8 +37,6 @@
 
 Після `/reload` або виходу з гри записи доступні в таблиці `UA_Forever_TranslatorLog` у файлі `WTF/Account/<обліковий запис>/<сервер>/<персонаж>/SavedVariables/UA_Forever_Translator.lua` всередині папки `_forever_`. Кількість записів **не обмежена**: `entries` зберігає пари від найдавнішої до найновішої, а `nextIndex` вказує на наступне вільне місце. Під час першого нового запису старий кільцевий журнал переноситься в `schema=2` зі збереженням наявних пар та їхнього порядку. Вимкнення прапорця зупиняє нові записи й залишає збережену історію.
 
-## Розробка
+## Реліз 0.5.0
 
-Перший знімок має версію **0.1.0**. Окремі фрази проганялися через Lua-рушій. Повний прогін тестів і сумісність у грі ще не підтверджені.
-
-Ігрові назви звірено з UA Forever. [Журнал змін](CHANGELOG.md) · [Підготовка для CurseForge](CURSEFORGE.md)
+Ігрові назви звірено з UA Forever. [Журнал змін](CHANGELOG.md) · [Джерела та ліцензії](THIRD_PARTY_NOTICES.md)
