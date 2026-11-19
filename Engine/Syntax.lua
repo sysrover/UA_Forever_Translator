@@ -1,11 +1,6 @@
 local _, ns = ...
 local S = {}; ns.Engine.Syntax = S
 local M = ns.Engine.Morphology
-local currency = {
-    ["золоту монету"]="g", ["золоті монети"]="g", ["золотих монет"]="g", ["золотої монети"]="g",
-    ["срібну монету"]="s", ["срібні монети"]="s", ["срібних монет"]="s", ["срібної монети"]="s",
-    ["мідну монету"]="c", ["мідні монети"]="c", ["мідних монет"]="c", ["мідної монети"]="c",
-}
 
 local State = {}; State.__index = State
 function State:word(key)
@@ -90,31 +85,27 @@ function State:link(name, kind)
     return false
 end
 function State:money()
-    local start = self.i
-    if start > self.limit then return false end
-    for last = math.min(self.limit, start + 4), start, -1 do
-        local raw = self.document.text:sub(self.tokens[start].first, self.tokens[last].last)
-        local amount, unit = raw:match("^(%d+[%.,]?%d*)%s*([gsc])$")
-        if not amount and self.document.direction == "uk-en" then
-            local number, name = raw:match("^(%d+[%.,]?%d*)%s+(.+)$")
-            if number and currency[name] then amount, unit = number, currency[name] end
-        end
-        if amount then
-            self.slots.price = {raw=amount .. unit, sourceRaw=raw, amount=amount, unit=unit}
-            self.i = last + 1; return true
-        end
-    end
-    return false
+    local price, after = ns.Engine.Grammar.moneyAt(self.document, self.i, self.limit)
+    if not price then return false end
+    self.slots.price, self.i = price, after
+    return true
 end
 function State:finish(kind, extra)
     extra = extra or {}
-    if self.tokens[self.limit].key == "?" then extra.question = true end
-    while self.i <= self.limit and self.tokens[self.i].key:match("^[.!?]$") do self.i = self.i + 1 end
-    if self.i <= self.limit or self.ambiguous then return nil end
-    return {kind=kind, slots=self.slots, features=extra, first=1, last=self.limit}
+    local ending = self.limit
+    local smile, colon = self.tokens[ending], self.tokens[ending - 1]
+    if ending > self.first and colon.key == ":" and smile.first == colon.last + 1
+        and (smile.key == "d" or smile.key == "p" or smile.key == ")" or smile.key == "(") then
+        extra.emote = self.document.text:sub(colon.first, smile.last)
+        ending = ending - 2
+    end
+    if self.tokens[ending] and self.tokens[ending].key == "?" then extra.question = true end
+    while self.i <= ending and self.tokens[self.i].key:match("^[.!?]$") do self.i = self.i + 1 end
+    if self.i <= ending or self.ambiguous then return nil end
+    return {kind=kind, slots=self.slots, features=extra, first=self.first, last=self.limit}
 end
-local function state(document, limit)
-    return setmetatable({document=document, tokens=document.tokens, i=1, limit=limit, slots={}}, State)
+local function state(document, limit, first)
+    return setmetatable({document=document, tokens=document.tokens, i=first, first=first, limit=limit, slots={}}, State)
 end
 
 local function recruitLevel(p, uk)
@@ -176,20 +167,27 @@ end
 
 local function recruit(p, direction)
     local uk = direction == "uk-en"
-    local leadingPlace
+    local leadingPlace, countDirect, additional
+    local groupRequest = not uk and p:word("lfm")
     if uk then
         if not p:any("шукаємо", "потрібно", "потрібен", "потрібні") then return end
-        p:word("ще")
-        p:word("гравців")
-    elseif p:any("lfm", "lf") then
+        additional = p:word("ще")
+        groupRequest = p:word("гравців")
+    elseif groupRequest or p:word("lf") then
         p:word("for")
-    elseif not p:any("looking for", "lookng for", "need") then
-        if not p:noun("place", "places") then return end
-        p:word(",")
-        if not p:any("lfm", "lf", "looking for", "lookng for", "need") then return end
-        leadingPlace = true
+    elseif not p:any("looking for", "lookng for", "need", "we're looking for", "we are looking for", "we need") then
+        local start = p.i
+        if p:count() and p:word("more") then countDirect = true
+        else
+            p.i, p.slots.count = start, nil
+            if not p:noun("place", "places") then return end
+            p:word(",")
+            if not p:any("lfm", "lf", "looking for", "lookng for", "need") then return end
+            leadingPlace = true
+        end
     end
-    local count = p:count()
+    local count = countDirect or p:count()
+    additional = additional or countDirect or count and not uk and p:word("more")
     local compact = count and (p:word("m") or (uk and p:any("гравця :", "гравців :", "гравця", "гравців")))
     if compact then p.slots.total, p.slots.count = p.slots.count, nil end
     local lastSpot = p:any("last spot", "last slot", "останнє місце")
@@ -256,11 +254,13 @@ local function recruit(p, direction)
     if vacancies and tonumber(vacancies.raw) == 1 and #roleJoins == 0 and p:phrase("full group") then lastSpot = true end
     local run
     if p:any("full run", "повне проходження", ". повне проходження") then run = "full"
-    elseif p:any("fresh run", "проходження з початку", ". проходження з початку") then run = "fresh" end
+    elseif p:any("fresh run", "проходження з початку", ". проходження з початку") then run = "fresh"
+    elseif p:any("quest run", "проходження із завданнями", ". проходження із завданнями") then run = "quest" end
     p:word(",")
+    local urgent = p:any("fast", "quick", "quickly", "терміново", ". терміново")
     local summon = p:any("can summon", "можемо прикликати", ". можемо прикликати")
     if p:any("and go", "then go", "n go", "n ' go", "і йдемо", "і вирушаємо", ". і вирушаємо") then go = true end
-    if not role and not (place and (p.slots.count or p.slots.total or p.slots.level)) then return end
+    if not role and not (place and (p.slots.count or p.slots.total or p.slots.level or run == "quest" and groupRequest)) then return end
     if lastSpot then
         local total = p.slots.total
         if total and tonumber(total.raw) > 1 then return end
@@ -270,7 +270,19 @@ local function recruit(p, direction)
         end
     end
     return p:finish("recruit", {lastSpot=lastSpot, go=go, roleJoins=roleJoins, classJoins=p.classJoins,
-        run=run, summon=summon, quests=#quests > 0 and quests or nil})
+        run=run, urgent=urgent, additional=additional, summon=summon, quests=#quests > 0 and quests or nil})
+end
+
+local function search(p, direction)
+    if not ns.Linguistics or p.document.truncated or p.document.ambiguities then return end
+    if direction == "en-uk" then
+        if not p:any("lf", "looking for", "i'm looking for") then return nil end
+    elseif not p:any("шукаю", "підшукую") then return nil end
+    local object, after = ns.Engine.Phrases.coordinated(p.document, p.i, p.limit, "accusative")
+    if not object then return nil end
+    if object.term then p.slots.object = {term=object.term} end
+    p.i = after
+    return p:finish("search", {object=object})
 end
 
 local function enhancementItem(p, suffix, english, allowOption)
@@ -307,12 +319,17 @@ end
 
 local function enhancement(p, direction)
     local english = direction == "en-uk"
-    local demand
-    if english then demand = p:any("lf", "looking for")
-    else demand = p:any("шукаю", "потрібен") end
+    local demand, inquiry
+    if english then
+        inquiry = p:any("any", "is there an", "is there a")
+        demand = inquiry or p:any("lf", "looking for")
+    else
+        inquiry = p:any("чи є", "є")
+        demand = inquiry or p:any("шукаю", "потрібен")
+    end
     if demand then
         if not p:noun("profession", "professions") then return end
-        if not p:any("for", "для", "—") then return end
+        if not p:any("for", "with", "для", "з", "—") then return end
     end
     if not enhancementItem(p, "", english, demand) then return end
     local joins, mats = {}
@@ -323,10 +340,21 @@ local function enhancement(p, direction)
         local join = p:any("and", "і", "й", "та") and "and"
             or p:any("or", "або") and "or" or comma and "comma"
         if not join then break end
-        if not enhancementItem(p, tostring(#joins + 2), english, true) then return end
+        local before = p.i
+        if not enhancementItem(p, tostring(#joins + 2), english, true) then
+            if join ~= "comma" then return end
+            p.i = before
+            break
+        end
         joins[#joins + 1] = join
     end
-    return p:finish("enhancement", {demand=demand, mats=mats, joins=joins})
+    local free = p:any("for free", "free", "безкоштовно")
+    local beforeTips = p.i
+    p:any(",", ".", "|", "i", "—")
+    local tips = p:any("tips are appreciated", "буду вдячний за чайові", "дякую за чайові")
+    if not tips then p.i = beforeTips end
+    return p:finish("enhancement", {demand=demand, inquiry=inquiry, question=inquiry, mats=mats,
+        free=free, tips=tips, joins=joins})
 end
 
 local function service(p, direction)
@@ -350,6 +378,13 @@ local function service(p, direction)
     if not demand and not offer then
         if not p:any("lfw", "приймаю замовлення") then return end
     end
+    if demand and not linked and p:any("with", "зі", "із") then
+        p:word("рецептом")
+        local quoted = p:word("«")
+        if not p:noun("recipe", "craftServices") then return end
+        if quoted and not p:word("»") then return end
+        return p:finish("service", {demand=true})
+    end
     local free = p:any("for free", "free", "безкоштовно")
     local priceIntroduced = not free and p:any("for", "за")
     local priced = not free and p:money()
@@ -361,6 +396,34 @@ local function service(p, direction)
     if not materials then p.i = previous end
     local promise = materials and p:any("and i make for you", "and i'll make it", "і я виготовлю", ", і я виготовлю")
     return p:finish("service", {demand=demand, priced=priced, free=free, materials=materials, promise=promise})
+end
+
+local function availability(p, direction)
+    if not ns.Linguistics or p.document.truncated or p.document.ambiguities then return end
+    local english = direction == "en-uk"
+    if english then
+        if not p:any("any", "is there a", "is there an") then return end
+    elseif not p:any("чи є", "є") then return end
+    local P = ns.Engine.Phrases
+    if english and (not p:count("skill") or not p:word("+")) then return end
+    local occupation, after = P.noun(p.document, p.i, p.limit, "nominative")
+    if P.semanticClass(occupation) ~= "occupation" then return end
+    p.i = after
+    if not english and (not p:phrase("із навичкою") or not p:count("skill") or not p:word("+")) then return end
+    if not p:any("online", "around", "here", "онлайн", "у мережі", "поблизу", "тут") then return end
+    local place = p.tokens[p.i - 1].key
+    if place == "мережі" then place = "online" end
+    return p:finish("availability", {question=true, place=place, occupation=occupation})
+end
+
+local function price(p)
+    local linked = p:link("item", "item")
+    local introduced = linked and p:any("for", "за")
+    local only = p:any("only", "лише")
+    if not p:money() then return end
+    local each = p:any("a bottle", "per bottle", "за пляшку") and "bottle"
+        or p:any("each", "per item", "за штуку") and "unit"
+    return p:finish("price", {only=only, linked=linked, each=each, introduced=introduced})
 end
 
 local function reward(p, direction)
@@ -411,27 +474,33 @@ local function statement(p, direction)
     return p:finish("statement", {negative=negative, question=question, modal=modal, conjunction=conjunction})
 end
 
-local parsers = {recruit, enhancement, service, reward, questNeed, statement}
-function S.parse(document, limit)
+local parsers = {recruit, enhancement, availability, service, reward, questNeed, statement, price, search}
+function S.parse(document, limit, first)
     for _, parse in ipairs(parsers) do
-        local result = parse(state(document, limit or #document.tokens), document.direction)
+        local result = parse(state(document, limit or #document.tokens, first or 1), document.direction)
         if result then return result end
     end
 end
 
-function S.translate(document)
-    local tree = S.parse(document)
+function S.translateRange(document, first, last)
+    local tree = S.parse(document, last, first)
     if tree then
         local output = ns.Engine.Transfer.render(tree, document.direction)
         if output and tree.features.question then output = output:gsub("[.!?]+$", "") .. "?" end
+        if output and tree.features.emote then output = output:gsub("%.$", "") .. " " .. tree.features.emote end
         if output and not document.truncated then return output, tree end
     end
+end
+
+function S.translate(document)
+    local output, tree = S.translateRange(document, 1, #document.tokens)
+    if output then return output, tree end
     -- Preserve the original remainder, including unknown conditions and links.
     -- No unbounded chart search and no reconstruction of the input from words.
     local minimum = math.max(1, #document.tokens - 24)
     for last = #document.tokens - 1, minimum, -1 do
         tree = S.parse(document, last)
-        if tree then
+        if tree and tree.kind ~= "price" and tree.kind ~= "search" then
             local output = ns.Engine.Transfer.render(tree, document.direction)
             if output then
                 return nil, nil, {[1]={text=output:gsub("[.!]+$", ""), last=last,

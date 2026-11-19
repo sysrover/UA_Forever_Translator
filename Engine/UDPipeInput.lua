@@ -9,6 +9,14 @@ local parts = {
 }
 local lexicalParts = {noun="NOUN", verb="VERB", adj="ADJ", adv="ADV", pron="PRON", num="NUM"}
 local ranks = {NOUN=5, VERB=4, ADJ=3, ADV=3, SCONJ=4, ADP=6, AUX=6, PROPN=5}
+local auxiliaryClitics = {
+    is={"is","be","present"}, are={"are","be","present"},
+    was={"was","be","past"}, were={"were","be","past"},
+    ["do"]={"do","do","present"}, does={"does","do","present"}, did={"did","do","past"},
+    have={"have","have","present"}, has={"has","have","present"}, had={"had","have","past"},
+    ca={"can","can"}, could={"could","could"}, wo={"will","will"},
+    would={"would","would"}, should={"should","should"}, must={"must","must"}, might={"might","might"},
+}
 local dimensions = {
     case={nominative="Nom", genitive="Gen", dative="Dat", accusative="Acc",
         instrumental="Ins", locative="Loc", vocative="Voc"},
@@ -33,6 +41,7 @@ local function udFeatures(candidate, lang)
         put("Gender", dimensions.gender[form.gender])
     end
     if pos == "VERB" or pos == "AUX" then
+        if tags.neg then put("Polarity", "Neg") end
         put("Aspect", lang == "uk" and dimensions.aspect[form.aspect])
         if form.mood == "infinitive" or tags.inf then put("VerbForm", "Inf")
         elseif form.verbalForm == "participle" or tags.ger then
@@ -112,7 +121,7 @@ end
 
 local function fixedTag(token, index, marker, markerEnd, markerTags)
     if token.protected then return "NOUN" end
-    if index >= marker and index <= markerEnd then
+    if marker and index >= marker and index <= markerEnd then
         return markerTags and markerTags[index - marker + 1] or "SCONJ"
     end
     if token.key:match("^%d+$") then return "NUM" end
@@ -132,6 +141,12 @@ end
 local function englishCandidates(document, index, raw, weights)
     local tagIds = weights.ids
     local key = document.tokens[index].key
+    local contraction = auxiliaryClitics[key:match("^(%a+)n't$")]
+    if contraction then
+        local surface, lemma, tense = unpack(contraction)
+        return {[tagIds.AUX]={lemma=lemma, pos="AUX", modelForm=surface,
+            form={tense=tense}, tags={neg=true}}}
+    end
     local candidates = {}
     lexicalCandidates(document, index, "en", function(lemma, pos, form, tags, weight, reading)
         local id = tagIds[pos]
@@ -190,7 +205,7 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
             end
             candidate.score = best + (candidate.emission or 0)
             candidate.previous = previous[from]
-            candidate.raw = raw
+            candidate.raw = candidate.modelForm or raw
         end
         previous = candidates
     end
@@ -211,7 +226,7 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
     return words
 end
 
-function U.analyzeDocument(document, first, last, marker, markerEnd, hints, markerTags, alternatives, commaBefore)
+local function analyzeDocument(document, first, last, marker, markerEnd, hints, markerTags, alternatives, commaBefore)
     local lang = document.direction == "en-uk" and "en" or "uk"
     local model = ns.UDPipeModels and ns.UDPipeModels[lang]
     if not model or last < first or last - first >= 32 then return end
@@ -261,7 +276,7 @@ function U.analyzeDocument(document, first, last, marker, markerEnd, hints, mark
         end
     end
     local arcs = U.parse(model, words, 1)
-    if not arcs or not original then return arcs end
+    if not arcs or not original then return arcs, words end
     -- Keep source token positions when the model sees an inserted comma or one of two verb forms.
     local expanded, previousOffset = {}, 0
     for compact, arc in ipairs(arcs) do
@@ -280,4 +295,13 @@ function U.analyzeDocument(document, first, last, marker, markerEnd, hints, mark
         expanded[alternative] = {head=previousOffset, relation="dep"}
     end
     return expanded
+end
+
+function U.analyzeDocument(...)
+    local arcs = analyzeDocument(...)
+    return arcs
+end
+
+function U.analyzeDocumentWithTags(document, first, last)
+    return analyzeDocument(document, first, last)
 end

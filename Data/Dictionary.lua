@@ -666,6 +666,11 @@ ns.Data = {
             ["bounties"] = {
                 ["_id"] = "activity.bounty_contracts"
             },
+            ["bracer"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.bracers"
+                }
+            },
             ["bracers"] = {
                 ["_byCategory"] = {
                     ["equipment"] = "equipment.bracers"
@@ -898,6 +903,16 @@ ns.Data = {
             ["chest"] = {
                 ["_byCategory"] = {
                     ["equipment"] = "equipment.chest"
+                },
+                ["piece"] = {
+                    ["_byCategory"] = {
+                        ["equipment"] = "equipment.chest"
+                    }
+                }
+            },
+            ["chestpiece"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.chest"
                 }
             },
             ["city"] = {
@@ -1045,6 +1060,12 @@ ns.Data = {
                 ["control"] = {
                     ["_id"] = "slang.combat.cc"
                 }
+            },
+            ["cyclonian"] = {
+                ["_id"] = "creature.cyclonian"
+            },
+            ["dalaran"] = {
+                ["_id"] = "place.dalaran"
             },
             ["damage"] = {
                 ["_byCategory"] = {
@@ -1373,12 +1394,39 @@ ns.Data = {
                 }
             },
             ["enchant"] = {
+                ["2h"] = {
+                    ["weapon"] = {
+                        ["-"] = {
+                            ["impact"] = {
+                                ["_id"] = "recipe.two_hand_impact"
+                            }
+                        },
+                        ["–"] = {
+                            ["impact"] = {
+                                ["_id"] = "recipe.two_hand_impact"
+                            }
+                        }
+                    }
+                },
                 ["services"] = {
                     ["_literal"] = {
                         ["id"] = "literal.trade.enchanting-services",
                         ["sourceRefs"] = { "ua-forever:profession.enchanting", "project-authored:chat-0.1" },
                         ["text"] = "послуги із зачарування",
                         ["weak"] = false
+                    }
+                },
+                ["two"] = {
+                    ["-"] = {
+                        ["handed"] = {
+                            ["weapon"] = {
+                                ["-"] = {
+                                    ["impact"] = {
+                                        ["_id"] = "recipe.two_hand_impact"
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1769,6 +1817,14 @@ ns.Data = {
             },
             ["guild"] = {
                 ["_id"] = "game.guild",
+                ["for"] = {
+                    ["leveling"] = {
+                        ["_id"] = "guild.leveling"
+                    },
+                    ["levelling"] = {
+                        ["_id"] = "guild.leveling"
+                    }
+                },
                 ["meeting"] = {
                     ["_id"] = "activity.guild_meeting"
                 },
@@ -2317,6 +2373,9 @@ ns.Data = {
                 }
             },
             ["leveling"] = {
+                ["guild"] = {
+                    ["_id"] = "guild.leveling"
+                },
                 ["lock"] = {
                     ["pick"] = {
                         ["_literal"] = {
@@ -2345,6 +2404,9 @@ ns.Data = {
                 }
             },
             ["levelling"] = {
+                ["guild"] = {
+                    ["_id"] = "guild.leveling"
+                },
                 ["lockpicking"] = {
                     ["_literal"] = {
                         ["id"] = "literal.trade.leveling_lockpicking",
@@ -2886,7 +2948,17 @@ ns.Data = {
                 ["_id"] = "slang.trade.obo"
             },
             ["off"] = {
+                ["-"] = {
+                    ["spec"] = {
+                        ["_byCategory"] = {
+                            ["specializations"] = "specialization.off_spec"
+                        }
+                    }
+                },
                 ["spec"] = {
+                    ["_byCategory"] = {
+                        ["specializations"] = "specialization.off_spec"
+                    },
                     ["_literal"] = {
                         ["id"] = "literal.slang.off-spec",
                         ["sourceRefs"] = { "wow-community:loot" },
@@ -2907,6 +2979,9 @@ ns.Data = {
                 }
             },
             ["offspec"] = {
+                ["_byCategory"] = {
+                    ["specializations"] = "specialization.off_spec"
+                },
                 ["_literal"] = {
                     ["id"] = "literal.slang.off-spec",
                     ["sourceRefs"] = { "wow-community:loot" },
@@ -3466,6 +3541,11 @@ ns.Data = {
                     ["_id"] = "slang.groups.raid-lockout"
                 }
             },
+            ["razorfang"] = {
+                ["downs"] = {
+                    ["_id"] = "place.razorfen_downs"
+                }
+            },
             ["razorfen"] = {
                 ["downs"] = {
                     ["_id"] = "place.razorfen_downs",
@@ -3610,6 +3690,9 @@ ns.Data = {
                             ["text"] = "руїни Ан'Кіражу",
                             ["weak"] = false
                         }
+                    },
+                    ["lordaeron"] = {
+                        ["_id"] = "place.ruins_of_lordaeron"
                     }
                 }
             },
@@ -3663,6 +3746,13 @@ ns.Data = {
             ["searing"] = {
                 ["gorge"] = {
                     ["_id"] = "place.searing_gorge"
+                }
+            },
+            ["secondary"] = {
+                ["specialization"] = {
+                    ["_byCategory"] = {
+                        ["specializations"] = "specialization.off_spec"
+                    }
                 }
             },
             ["sell"] = {
@@ -4161,6 +4251,23 @@ ns.Data = {
                 ["promised"] = {
                     ["island"] = {
                         ["_id"] = "place.promised_island"
+                    }
+                },
+                ["razorfang"] = {
+                    ["downs"] = {
+                        ["_id"] = "place.razorfen_downs"
+                    }
+                },
+                ["razorfen"] = {
+                    ["downs"] = {
+                        ["_id"] = "place.razorfen_downs"
+                    }
+                },
+                ["ruins"] = {
+                    ["of"] = {
+                        ["lordaeron"] = {
+                            ["_id"] = "place.ruins_of_lordaeron"
+                        }
                     }
                 },
                 ["shaper's"] = {
@@ -6487,6 +6594,11 @@ ns.Data = {
                     ["covenant"] = {
                         ["_id"] = "game.firstborn_covenant"
                     }
+                },
+                ["для"] = {
+                    ["прокачування"] = {
+                        ["_id"] = "guild.leveling"
+                    }
                 }
             },
             ["гільдія"] = {
@@ -6494,6 +6606,11 @@ ns.Data = {
                 ["firstborn"] = {
                     ["covenant"] = {
                         ["_id"] = "game.firstborn_covenant"
+                    }
+                },
+                ["для"] = {
+                    ["прокачування"] = {
+                        ["_id"] = "guild.leveling"
                     }
                 }
             },
@@ -6560,6 +6677,21 @@ ns.Data = {
                         }
                     }
                 }
+            },
+            ["даларан"] = {
+                ["_id"] = "place.dalaran"
+            },
+            ["даларана"] = {
+                ["_id"] = "place.dalaran"
+            },
+            ["далараном"] = {
+                ["_id"] = "place.dalaran"
+            },
+            ["даларану"] = {
+                ["_id"] = "place.dalaran"
+            },
+            ["даларані"] = {
+                ["_id"] = "place.dalaran"
             },
             ["данж"] = {
                 ["_id"] = "game.dungeon"
@@ -6848,12 +6980,43 @@ ns.Data = {
             },
             ["додаткова"] = {
                 ["спеціалізація"] = {
+                    ["_byCategory"] = {
+                        ["specializations"] = "specialization.off_spec"
+                    },
                     ["_id"] = "slang.loot.os"
+                }
+            },
+            ["додатковою"] = {
+                ["спеціалізацією"] = {
+                    ["_byCategory"] = {
+                        ["specializations"] = "specialization.off_spec"
+                    }
+                }
+            },
+            ["додаткової"] = {
+                ["спеціалізації"] = {
+                    ["_byCategory"] = {
+                        ["specializations"] = "specialization.off_spec"
+                    }
+                }
+            },
+            ["додаткову"] = {
+                ["спеціалізацію"] = {
+                    ["_byCategory"] = {
+                        ["specializations"] = "specialization.off_spec"
+                    }
                 }
             },
             ["додаткові"] = {
                 ["вороги"] = {
                     ["_id"] = "slang.combat.adds"
+                }
+            },
+            ["додатковій"] = {
+                ["спеціалізації"] = {
+                    ["_byCategory"] = {
+                        ["specializations"] = "specialization.off_spec"
+                    }
                 }
             },
             ["доки"] = {
@@ -7385,7 +7548,16 @@ ns.Data = {
                 }
             },
             ["зачарування"] = {
-                ["_id"] = "profession.enchanting"
+                ["_id"] = "profession.enchanting",
+                ["дворучної"] = {
+                    ["зброї"] = {
+                        ["—"] = {
+                            ["удар"] = {
+                                ["_id"] = "recipe.two_hand_impact"
+                            }
+                        }
+                    }
+                }
             },
             ["зачекай"] = {
                 ["_literal"] = {
@@ -11136,6 +11308,26 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["руїн"] = {
+                ["лордерона"] = {
+                    ["_id"] = "place.ruins_of_lordaeron"
+                }
+            },
+            ["руїнам"] = {
+                ["лордерона"] = {
+                    ["_id"] = "place.ruins_of_lordaeron"
+                }
+            },
+            ["руїнами"] = {
+                ["лордерона"] = {
+                    ["_id"] = "place.ruins_of_lordaeron"
+                }
+            },
+            ["руїнах"] = {
+                ["лордерона"] = {
+                    ["_id"] = "place.ruins_of_lordaeron"
+                }
+            },
             ["руїни"] = {
                 ["ан'кіражу"] = {
                     ["_id"] = "place.ruins_of_ahn_qiraj",
@@ -11145,6 +11337,9 @@ ns.Data = {
                         ["text"] = "Ruins of Ahn'Qiraj",
                         ["weak"] = false
                     }
+                },
+                ["лордерона"] = {
+                    ["_id"] = "place.ruins_of_lordaeron"
                 }
             },
             ["сила"] = {
@@ -12061,6 +12256,24 @@ ns.Data = {
             ["хілку"] = {
                 ["_id"] = "goods.health_potion"
             },
+            ["циклоніан"] = {
+                ["_id"] = "creature.cyclonian"
+            },
+            ["циклоніана"] = {
+                ["_id"] = "creature.cyclonian"
+            },
+            ["циклоніане"] = {
+                ["_id"] = "creature.cyclonian"
+            },
+            ["циклоніаном"] = {
+                ["_id"] = "creature.cyclonian"
+            },
+            ["циклоніану"] = {
+                ["_id"] = "creature.cyclonian"
+            },
+            ["циклоніані"] = {
+                ["_id"] = "creature.cyclonian"
+            },
             ["цілитель"] = {
                 ["_id"] = "role.healer"
             },
@@ -12672,13 +12885,17 @@ ns.Data = {
             },
             ["prefixes"] = {
                 ["ah right"] = "А, так, ",
+                ["damn"] = "От халепа, ",
+                ["inshallah"] = "Як Бог дасть, ",
                 ["never mind"] = "Та байдуже, ",
                 ["nvm"] = "Та байдуже, ",
+                ["of course"] = "Звісно, ",
                 ["oh right"] = "О, так, ",
                 ["ok"] = "Гаразд, ",
                 ["okay"] = "Гаразд, ",
                 ["right"] = "Так, ",
-                ["yeah"] = "Так, "
+                ["yeah"] = "Так, ",
+                ["yes"] = "Так, "
             }
         },
         ["uk-en"] = {
@@ -13122,20 +13339,10 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Зробімо перерву"
             },
-            ["let's go"] = {
-                ["id"] = "lets_go",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Ходімо"
-            },
             ["let's take a break"] = {
                 ["id"] = "take_break",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Зробімо перерву"
-            },
-            ["lets go"] = {
-                ["id"] = "lets_go",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Ходімо"
             },
             ["lf guild"] = {
                 ["id"] = "guild",
@@ -13422,26 +13629,6 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Викличте мене"
             },
-            ["thank you"] = {
-                ["id"] = "thanks",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Дякую"
-            },
-            ["thanks"] = {
-                ["id"] = "thanks",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Дякую"
-            },
-            ["thanks all"] = {
-                ["id"] = "thanks_group",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Дякую за групу"
-            },
-            ["thanks for the group"] = {
-                ["id"] = "thanks_group",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Дякую за групу"
-            },
             ["that's the name"] = {
                 ["id"] = "thats_the_name",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -13451,21 +13638,6 @@ ns.Data = {
                 ["id"] = "full",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Група заповнена"
-            },
-            ["thx"] = {
-                ["id"] = "thanks",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Дякую"
-            },
-            ["ty"] = {
-                ["id"] = "thanks",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Дякую"
-            },
-            ["ty all"] = {
-                ["id"] = "thanks_group",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Дякую за групу"
             },
             ["vagabond par excellans"] = {
                 ["id"] = "vagabond_par_excellence",
@@ -13763,16 +13935,6 @@ ns.Data = {
                 ["id"] = "help",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Help me"
-            },
-            ["дякую"] = {
-                ["id"] = "thanks",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Thank you"
-            },
-            ["дякую за групу"] = {
-                ["id"] = "thanks_group",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Thanks for the group"
             },
             ["за подробицями пишіть пошепки"] = {
                 ["id"] = "guild_whisper_for_details",
@@ -14164,11 +14326,6 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "That's the name"
             },
-            ["спасибі"] = {
-                ["id"] = "thanks",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Thank you"
-            },
             ["справжнісінький волоцюга"] = {
                 ["id"] = "vagabond_par_excellence",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -14238,11 +14395,6 @@ ns.Data = {
                 ["id"] = "omw",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "On my way"
-            },
-            ["ходімо"] = {
-                ["id"] = "lets_go",
-                ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Let's go"
             },
             ["хочеш зі мною"] = {
                 ["id"] = "come_with_me_question",
@@ -16064,6 +16216,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["bracer"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "equipment.bracers",
+                            ["lemma"] = "bracers",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.bracers",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["bracers"] = {
                     ["_analyses"] = {
                         {
@@ -16093,7 +16259,11 @@ ns.Data = {
                 ["bread"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["gender"] = "masculine",
+                                ["mass"] = true,
+                                ["semanticClass"] = "resource"
+                            },
                             ["id"] = "goods.bread",
                             ["lemma"] = "bread",
                             ["pos"] = "noun",
@@ -16327,6 +16497,38 @@ ns.Data = {
                             ["sense"] = "equipment.chest",
                             ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
                         }
+                    },
+                    ["piece"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "equipment.chest",
+                                ["lemma"] = "chest",
+                                ["pos"] = "noun",
+                                ["sense"] = "equipment.chest",
+                                ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                            }
+                        }
+                    }
+                },
+                ["chestpiece"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.chest",
+                            ["lemma"] = "chest",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.chest",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
                     }
                 },
                 ["cod"] = {
@@ -16473,6 +16675,38 @@ ns.Data = {
                                 ["sense"] = "slang.combat.cc",
                                 ["sourceRefs"] = { "wow-community:forum" }
                             }
+                        }
+                    }
+                },
+                ["cyclonian"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "creature.cyclonian",
+                            ["lemma"] = "Cyclonian",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.cyclonian",
+                            ["sourceRefs"] = { "ua-forever:creature.cyclonian" }
+                        }
+                    }
+                },
+                ["dalaran"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
+                            ["id"] = "place.dalaran",
+                            ["lemma"] = "Dalaran",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.dalaran",
+                            ["sourceRefs"] = { "ua-forever:place.dalaran" }
                         }
                     }
                 },
@@ -17046,6 +17280,62 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.elwynn_forest",
                                 ["sourceRefs"] = { "ua-forever:place.elwynn_forest" }
+                            }
+                        }
+                    }
+                },
+                ["enchant"] = {
+                    ["2h"] = {
+                        ["weapon"] = {
+                            ["-"] = {
+                                ["impact"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "recipe.two_hand_impact",
+                                            ["lemma"] = "Enchant 2H Weapon - Impact",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "recipe.two_hand_impact",
+                                            ["sourceRefs"] = { "ua-forever:recipe.two_hand_impact" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["–"] = {
+                                ["impact"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "recipe.two_hand_impact",
+                                            ["lemma"] = "Enchant 2H Weapon - Impact",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "recipe.two_hand_impact",
+                                            ["sourceRefs"] = { "ua-forever:recipe.two_hand_impact" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["two"] = {
+                        ["-"] = {
+                            ["handed"] = {
+                                ["weapon"] = {
+                                    ["-"] = {
+                                        ["impact"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {},
+                                                    ["id"] = "recipe.two_hand_impact",
+                                                    ["lemma"] = "Enchant 2H Weapon - Impact",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "recipe.two_hand_impact",
+                                                    ["sourceRefs"] = { "ua-forever:recipe.two_hand_impact" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -17720,6 +18010,40 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "game.guild",
                             ["sourceRefs"] = { "ua-forever:game.guild" }
+                        }
+                    },
+                    ["for"] = {
+                        ["leveling"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["englishCommon"] = true,
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "guild.leveling",
+                                    ["lemma"] = "leveling guild",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "guild.leveling",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        },
+                        ["levelling"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["englishCommon"] = true,
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "guild.leveling",
+                                    ["lemma"] = "leveling guild",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "guild.leveling",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
                         }
                     },
                     ["meeting"] = {
@@ -18517,6 +18841,42 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "profession.leatherworking",
                             ["sourceRefs"] = { "ua-forever:profession.leatherworking" }
+                        }
+                    }
+                },
+                ["leveling"] = {
+                    ["guild"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "guild.leveling",
+                                ["lemma"] = "leveling guild",
+                                ["pos"] = "noun",
+                                ["sense"] = "guild.leveling",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["levelling"] = {
+                    ["guild"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "guild.leveling",
+                                ["lemma"] = "leveling guild",
+                                ["pos"] = "noun",
+                                ["sense"] = "guild.leveling",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
                         }
                     }
                 },
@@ -19420,7 +19780,39 @@ ns.Data = {
                     }
                 },
                 ["off"] = {
+                    ["-"] = {
+                        ["spec"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["englishCommon"] = true,
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "specialization.off_spec",
+                                    ["lemma"] = "off-spec",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "specialization.off_spec",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "wow-community:loot" }
+                                }
+                            }
+                        }
+                    },
                     ["spec"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "specialization.off_spec",
+                                ["lemma"] = "off-spec",
+                                ["pos"] = "noun",
+                                ["sense"] = "specialization.off_spec",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "wow-community:loot" }
+                            }
+                        },
                         ["roll"] = {
                             ["_analyses"] = {
                                 {
@@ -19436,6 +19828,20 @@ ns.Data = {
                     }
                 },
                 ["offspec"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "specialization.off_spec",
+                            ["lemma"] = "off-spec",
+                            ["pos"] = "noun",
+                            ["sense"] = "specialization.off_spec",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "wow-community:loot" }
+                        }
+                    },
                     ["roll"] = {
                         ["_analyses"] = {
                             {
@@ -20409,6 +20815,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["razorfang"] = {
+                    ["downs"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {},
+                                ["id"] = "place.razorfen_downs",
+                                ["lemma"] = "Razorfen Downs",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.razorfen_downs",
+                                ["sourceRefs"] = { "ua-forever:place.razorfen_downs" }
+                            }
+                        }
+                    }
+                },
                 ["razorfen"] = {
                     ["downs"] = {
                         ["_analyses"] = {
@@ -20778,6 +21198,22 @@ ns.Data = {
                                     ["sourceRefs"] = { "ua-forever:place.ruins_of_ahn_qiraj" }
                                 }
                             }
+                        },
+                        ["lordaeron"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "feminine",
+                                        ["number"] = "plural"
+                                    },
+                                    ["id"] = "place.ruins_of_lordaeron",
+                                    ["lemma"] = "Ruins of Lordaeron",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.ruins_of_lordaeron",
+                                    ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" }
+                                }
+                            }
                         }
                     }
                 },
@@ -20878,6 +21314,24 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.searing_gorge",
                                 ["sourceRefs"] = { "ua-forever:place.searing_gorge" }
+                            }
+                        }
+                    }
+                },
+                ["secondary"] = {
+                    ["specialization"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "specialization.off_spec",
+                                ["lemma"] = "off-spec",
+                                ["pos"] = "noun",
+                                ["sense"] = "specialization.off_spec",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "wow-community:loot" }
                             }
                         }
                     }
@@ -21140,7 +21594,11 @@ ns.Data = {
                     ["bread"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["gender"] = "masculine",
+                                    ["mass"] = true,
+                                    ["semanticClass"] = "resource"
+                                },
                                 ["id"] = "goods.bread",
                                 ["lemma"] = "bread",
                                 ["pos"] = "noun",
@@ -21752,6 +22210,54 @@ ns.Data = {
                                     ["pos"] = "noun",
                                     ["sense"] = "place.promised_island",
                                     ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    },
+                    ["razorfang"] = {
+                        ["downs"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.razorfen_downs",
+                                    ["lemma"] = "Razorfen Downs",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.razorfen_downs",
+                                    ["sourceRefs"] = { "ua-forever:place.razorfen_downs" }
+                                }
+                            }
+                        }
+                    },
+                    ["razorfen"] = {
+                        ["downs"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {},
+                                    ["id"] = "place.razorfen_downs",
+                                    ["lemma"] = "Razorfen Downs",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.razorfen_downs",
+                                    ["sourceRefs"] = { "ua-forever:place.razorfen_downs" }
+                                }
+                            }
+                        }
+                    },
+                    ["ruins"] = {
+                        ["of"] = {
+                            ["lordaeron"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["gender"] = "feminine",
+                                            ["number"] = "plural"
+                                        },
+                                        ["id"] = "place.ruins_of_lordaeron",
+                                        ["lemma"] = "Ruins of Lordaeron",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.ruins_of_lordaeron",
+                                        ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" }
+                                    }
                                 }
                             }
                         }
@@ -25878,6 +26384,26 @@ ns.Data = {
                                 }
                             }
                         }
+                    },
+                    ["для"] = {
+                        ["прокачування"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "accusative",
+                                        ["englishCommon"] = true,
+                                        ["gender"] = "feminine",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "guild.leveling",
+                                    ["lemma"] = "гільдія для прокачування",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "guild.leveling",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
                     }
                 },
                 ["гільдія"] = {
@@ -25921,6 +26447,38 @@ ns.Data = {
                                     ["lemma"] = "гільдія Firstborn Covenant",
                                     ["pos"] = "noun",
                                     ["sense"] = "game.firstborn_covenant",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    },
+                    ["для"] = {
+                        ["прокачування"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["englishCommon"] = true,
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "guild.leveling",
+                                    ["lemma"] = "гільдія для прокачування",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "guild.leveling",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "nominative",
+                                        ["englishCommon"] = true,
+                                        ["gender"] = "feminine",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "guild.leveling",
+                                    ["lemma"] = "гільдія для прокачування",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "guild.leveling",
                                     ["sourceRefs"] = { "project-authored:chat-0.1" }
                                 }
                             }
@@ -26044,6 +26602,115 @@ ns.Data = {
                                     }
                                 }
                             }
+                        }
+                    }
+                },
+                ["даларан"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine"
+                            },
+                            ["id"] = "place.dalaran",
+                            ["lemma"] = "Даларан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.dalaran",
+                            ["sourceRefs"] = { "ua-forever:place.dalaran" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.dalaran",
+                            ["lemma"] = "Даларан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.dalaran",
+                            ["sourceRefs"] = { "ua-forever:place.dalaran" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.dalaran",
+                            ["lemma"] = "Даларан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.dalaran",
+                            ["sourceRefs"] = { "ua-forever:place.dalaran" }
+                        }
+                    }
+                },
+                ["даларана"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.dalaran",
+                            ["lemma"] = "Даларан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.dalaran",
+                            ["sourceRefs"] = { "ua-forever:place.dalaran" }
+                        }
+                    }
+                },
+                ["далараном"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.dalaran",
+                            ["lemma"] = "Даларан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.dalaran",
+                            ["sourceRefs"] = { "ua-forever:place.dalaran" }
+                        }
+                    }
+                },
+                ["даларану"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.dalaran",
+                            ["lemma"] = "Даларан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.dalaran",
+                            ["sourceRefs"] = { "ua-forever:place.dalaran" }
+                        }
+                    }
+                },
+                ["даларані"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.dalaran",
+                            ["lemma"] = "Даларан",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.dalaran",
+                            ["sourceRefs"] = { "ua-forever:place.dalaran" }
                         }
                     }
                 },
@@ -26819,6 +27486,92 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "slang.loot.os",
                                 ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Secondary Specialization" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "specialization.off_spec",
+                                ["lemma"] = "додаткова спеціалізація",
+                                ["pos"] = "noun",
+                                ["sense"] = "specialization.off_spec",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "wow-community:loot" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "specialization.off_spec",
+                                ["lemma"] = "додаткова спеціалізація",
+                                ["pos"] = "noun",
+                                ["sense"] = "specialization.off_spec",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["додатковою"] = {
+                    ["спеціалізацією"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "specialization.off_spec",
+                                ["lemma"] = "додаткова спеціалізація",
+                                ["pos"] = "noun",
+                                ["sense"] = "specialization.off_spec",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["додаткової"] = {
+                    ["спеціалізації"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "specialization.off_spec",
+                                ["lemma"] = "додаткова спеціалізація",
+                                ["pos"] = "noun",
+                                ["sense"] = "specialization.off_spec",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "wow-community:loot" }
+                            }
+                        }
+                    }
+                },
+                ["додаткову"] = {
+                    ["спеціалізацію"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "specialization.off_spec",
+                                ["lemma"] = "додаткова спеціалізація",
+                                ["pos"] = "noun",
+                                ["sense"] = "specialization.off_spec",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "wow-community:loot" }
                             }
                         }
                     }
@@ -26833,6 +27586,40 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "slang.combat.adds",
                                 ["sourceRefs"] = { "wow-community:classic" }
+                            }
+                        }
+                    }
+                },
+                ["додатковій"] = {
+                    ["спеціалізації"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "specialization.off_spec",
+                                ["lemma"] = "додаткова спеціалізація",
+                                ["pos"] = "noun",
+                                ["sense"] = "specialization.off_spec",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "wow-community:loot" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "specialization.off_spec",
+                                ["lemma"] = "додаткова спеціалізація",
+                                ["pos"] = "noun",
+                                ["sense"] = "specialization.off_spec",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "wow-community:loot" }
                             }
                         }
                     }
@@ -28019,6 +28806,24 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "profession.enchanting",
                             ["sourceRefs"] = { "ua-forever:profession.enchanting" }
+                        }
+                    },
+                    ["дворучної"] = {
+                        ["зброї"] = {
+                            ["—"] = {
+                                ["удар"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {},
+                                            ["id"] = "recipe.two_hand_impact",
+                                            ["lemma"] = "Зачарування дворучної зброї — удар",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "recipe.two_hand_impact",
+                                            ["sourceRefs"] = { "ua-forever:recipe.two_hand_impact" }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -35997,6 +36802,82 @@ ns.Data = {
                         }
                     }
                 },
+                ["руїн"] = {
+                    ["лордерона"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "place.ruins_of_lordaeron",
+                                ["lemma"] = "руїни Лордерона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ruins_of_lordaeron",
+                                ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" }
+                            }
+                        }
+                    }
+                },
+                ["руїнам"] = {
+                    ["лордерона"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "place.ruins_of_lordaeron",
+                                ["lemma"] = "руїни Лордерона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ruins_of_lordaeron",
+                                ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" }
+                            }
+                        }
+                    }
+                },
+                ["руїнами"] = {
+                    ["лордерона"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "place.ruins_of_lordaeron",
+                                ["lemma"] = "руїни Лордерона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ruins_of_lordaeron",
+                                ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" }
+                            }
+                        }
+                    }
+                },
+                ["руїнах"] = {
+                    ["лордерона"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "place.ruins_of_lordaeron",
+                                ["lemma"] = "руїни Лордерона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ruins_of_lordaeron",
+                                ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" }
+                            }
+                        }
+                    }
+                },
                 ["руїни"] = {
                     ["ан'кіражу"] = {
                         ["_analyses"] = {
@@ -36007,6 +36888,48 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.ruins_of_ahn_qiraj",
                                 ["sourceRefs"] = { "ua-forever:place.ruins_of_ahn_qiraj" }
+                            }
+                        }
+                    },
+                    ["лордерона"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "place.ruins_of_lordaeron",
+                                ["lemma"] = "руїни Лордерона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ruins_of_lordaeron",
+                                ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "place.ruins_of_lordaeron",
+                                ["lemma"] = "руїни Лордерона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ruins_of_lordaeron",
+                                ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "place.ruins_of_lordaeron",
+                                ["lemma"] = "руїни Лордерона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ruins_of_lordaeron",
+                                ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" }
                             }
                         }
                     }
@@ -37612,7 +38535,25 @@ ns.Data = {
                 ["хліб"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["gender"] = "masculine",
+                                ["mass"] = true,
+                                ["semanticClass"] = "resource"
+                            },
+                            ["id"] = "goods.bread",
+                            ["lemma"] = "Хліб",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.bread",
+                            ["sourceRefs"] = { "project-authored:chat-0.1:goods.bread" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["mass"] = true,
+                                ["number"] = "singular",
+                                ["semanticClass"] = "resource"
+                            },
                             ["id"] = "goods.bread",
                             ["lemma"] = "Хліб",
                             ["pos"] = "noun",
@@ -37625,8 +38566,11 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
-                                ["case"] = "accusative",
-                                ["number"] = "singular"
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["mass"] = true,
+                                ["number"] = "singular",
+                                ["semanticClass"] = "resource"
                             },
                             ["id"] = "goods.bread",
                             ["lemma"] = "Хліб",
@@ -37639,7 +38583,11 @@ ns.Data = {
                 ["хлібець"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["gender"] = "masculine",
+                                ["mass"] = true,
+                                ["semanticClass"] = "resource"
+                            },
                             ["id"] = "goods.bread",
                             ["lemma"] = "Хліб",
                             ["pos"] = "noun",
@@ -37651,7 +38599,11 @@ ns.Data = {
                 ["хлібця"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["gender"] = "masculine",
+                                ["mass"] = true,
+                                ["semanticClass"] = "resource"
+                            },
                             ["id"] = "goods.bread",
                             ["lemma"] = "Хліб",
                             ["pos"] = "noun",
@@ -37765,6 +38717,141 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "goods.health_potion",
                             ["sourceRefs"] = { "ua-forever:goods.health_potion" }
+                        }
+                    }
+                },
+                ["циклоніан"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "creature.cyclonian",
+                            ["lemma"] = "Циклоніан",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.cyclonian",
+                            ["sourceRefs"] = { "ua-forever:creature.cyclonian" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "creature.cyclonian",
+                            ["lemma"] = "Циклоніан",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.cyclonian",
+                            ["sourceRefs"] = { "ua-forever:creature.cyclonian" }
+                        }
+                    }
+                },
+                ["циклоніана"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "creature.cyclonian",
+                            ["lemma"] = "Циклоніан",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.cyclonian",
+                            ["sourceRefs"] = { "ua-forever:creature.cyclonian" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "creature.cyclonian",
+                            ["lemma"] = "Циклоніан",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.cyclonian",
+                            ["sourceRefs"] = { "ua-forever:creature.cyclonian" }
+                        }
+                    }
+                },
+                ["циклоніане"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "creature.cyclonian",
+                            ["lemma"] = "Циклоніан",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.cyclonian",
+                            ["sourceRefs"] = { "ua-forever:creature.cyclonian" }
+                        }
+                    }
+                },
+                ["циклоніаном"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "creature.cyclonian",
+                            ["lemma"] = "Циклоніан",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.cyclonian",
+                            ["sourceRefs"] = { "ua-forever:creature.cyclonian" }
+                        }
+                    }
+                },
+                ["циклоніану"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "creature.cyclonian",
+                            ["lemma"] = "Циклоніан",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.cyclonian",
+                            ["sourceRefs"] = { "ua-forever:creature.cyclonian" }
+                        }
+                    }
+                },
+                ["циклоніані"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "creature.cyclonian",
+                            ["lemma"] = "Циклоніан",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.cyclonian",
+                            ["sourceRefs"] = { "ua-forever:creature.cyclonian" }
                         }
                     }
                 },
@@ -39300,6 +40387,21 @@ ns.Data = {
                     ["genitiveSingular"] = "воїна"
                 }
             },
+            ["creature.cyclonian"] = {
+                ["en"] = {
+                    ["canonical"] = "Cyclonian"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Циклоніана",
+                    ["canonical"] = "Циклоніан",
+                    ["dative"] = "Циклоніану",
+                    ["genitive"] = "Циклоніана",
+                    ["instrumental"] = "Циклоніаном",
+                    ["locative"] = "Циклоніані",
+                    ["nominative"] = "Циклоніан",
+                    ["vocative"] = "Циклоніане"
+                }
+            },
             ["enhancement.unspecified"] = {
                 ["en"] = {
                     ["canonical"] = "something"
@@ -39773,8 +40875,9 @@ ns.Data = {
                     ["canonical"] = "bread"
                 },
                 ["uk"] = {
-                    ["accusative"] = "хліба",
-                    ["canonical"] = "Хліб"
+                    ["accusative"] = "хліб",
+                    ["canonical"] = "Хліб",
+                    ["genitiveSingular"] = "хліба"
                 }
             },
             ["goods.greater_healing_potion"] = {
@@ -39914,6 +41017,16 @@ ns.Data = {
                     ["locativePlural"] = "мечах"
                 }
             },
+            ["guild.leveling"] = {
+                ["en"] = {
+                    ["canonical"] = "leveling guild"
+                },
+                ["uk"] = {
+                    ["accusative"] = "гільдію для прокачування",
+                    ["canonical"] = "гільдія для прокачування",
+                    ["nominative"] = "гільдія для прокачування"
+                }
+            },
             ["lighting.moonlight"] = {
                 ["en"] = {
                     ["canonical"] = "moonlight"
@@ -40020,6 +41133,20 @@ ns.Data = {
                     ["canonical"] = "Палаючий степ",
                     ["genitiveSingular"] = "Палаючого степу",
                     ["locative"] = "Палаючому степу"
+                }
+            },
+            ["place.dalaran"] = {
+                ["en"] = {
+                    ["canonical"] = "Dalaran"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Даларан",
+                    ["canonical"] = "Даларан",
+                    ["dative"] = "Даларану",
+                    ["genitive"] = "Даларана",
+                    ["instrumental"] = "Далараном",
+                    ["locative"] = "Даларані",
+                    ["nominative"] = "Даларан"
                 }
             },
             ["place.darkshore"] = {
@@ -40280,6 +41407,20 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "руїни Ан'Кіражу"
+                }
+            },
+            ["place.ruins_of_lordaeron"] = {
+                ["en"] = {
+                    ["canonical"] = "Ruins of Lordaeron"
+                },
+                ["uk"] = {
+                    ["accusative"] = "руїни Лордерона",
+                    ["canonical"] = "руїни Лордерона",
+                    ["dative"] = "руїнам Лордерона",
+                    ["genitive"] = "руїн Лордерона",
+                    ["instrumental"] = "руїнами Лордерона",
+                    ["locative"] = "руїнах Лордерона",
+                    ["nominative"] = "руїни Лордерона"
                 }
             },
             ["place.scarlet_monastery"] = {
@@ -41031,6 +42172,14 @@ ns.Data = {
                     ["vocative"] = "протоорку"
                 }
             },
+            ["recipe.two_hand_impact"] = {
+                ["en"] = {
+                    ["canonical"] = "Enchant 2H Weapon - Impact"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Зачарування дворучної зброї — удар"
+                }
+            },
             ["recipient.her"] = {
                 ["en"] = {
                     ["canonical"] = "her"
@@ -41731,6 +42880,20 @@ ns.Data = {
                     ["canonical"] = "Твої матеріали"
                 }
             },
+            ["specialization.off_spec"] = {
+                ["en"] = {
+                    ["canonical"] = "off-spec"
+                },
+                ["uk"] = {
+                    ["accusative"] = "додаткову спеціалізацію",
+                    ["canonical"] = "додаткова спеціалізація",
+                    ["dative"] = "додатковій спеціалізації",
+                    ["genitive"] = "додаткової спеціалізації",
+                    ["instrumental"] = "додатковою спеціалізацією",
+                    ["locative"] = "додатковій спеціалізації",
+                    ["nominative"] = "додаткова спеціалізація"
+                }
+            },
             ["specialization.retribution"] = {
                 ["en"] = {
                     ["canonical"] = "Retribution"
@@ -41797,10 +42960,10 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 261,
+        ["concepts"] = 267,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
-        ["phraseFamilies"] = 87,
+        ["phraseFamilies"] = 84,
         ["source"] = {
             ["approvalMeaning"] = "Editorially reviewed for this addon; not a claim of individual user approval.",
             ["catalogBuild"] = "1.60.1.70938",
@@ -41816,7 +42979,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 89,
-        ["version"] = "53e8f02ff16408794cd1376e02ea99c39e689037b40080e139616949083b570b"
+        ["version"] = "652f61e1f8092fb47bb649f8dfd06800c21bec1c77820cc5ebd739887ba40674"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -51289,6 +52452,37 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Воїн"
         },
+        ["creature.cyclonian"] = {
+            ["category"] = "creatures",
+            ["en"] = "Cyclonian",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["number"] = "singular",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Циклоніана",
+                ["dative"] = "Циклоніану",
+                ["genitive"] = "Циклоніана",
+                ["instrumental"] = "Циклоніаном",
+                ["locative"] = "Циклоніані",
+                ["nominative"] = "Циклоніан",
+                ["vocative"] = "Циклоніане"
+            },
+            ["id"] = "creature.cyclonian",
+            ["provenance"] = {
+                ["context"] = "NPC",
+                ["file"] = "entries/forever/cliend_db/npcs.lua",
+                ["key"] = "Cyclonian",
+                ["line"] = 7211,
+                ["sha256"] = "78525db0f6317e679846e7a97166482c328be9b1302516baaafe8e50be75adec",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:creature.cyclonian" },
+            ["status"] = "approved",
+            ["uk"] = "Циклоніан"
+        },
         ["enhancement.unspecified"] = {
             ["aliases"] = {
                 ["en"] = { "somethig" }
@@ -51328,7 +52522,7 @@ ns.Data = {
         },
         ["equipment.bracers"] = {
             ["aliases"] = {
-                ["en"] = {},
+                ["en"] = { "bracer" },
                 ["uk"] = {}
             },
             ["category"] = "equipment",
@@ -51354,7 +52548,7 @@ ns.Data = {
         },
         ["equipment.chest"] = {
             ["aliases"] = {
-                ["en"] = {},
+                ["en"] = { "chest piece", "chestpiece" },
                 ["uk"] = {}
             },
             ["category"] = "equipment",
@@ -52577,8 +53771,14 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "bread",
             ["englishObject"] = "some bread",
+            ["features"] = {
+                ["gender"] = "masculine",
+                ["mass"] = true,
+                ["semanticClass"] = "resource"
+            },
             ["forms"] = {
-                ["accusative"] = "хліба"
+                ["accusative"] = "хліб",
+                ["genitiveSingular"] = "хліба"
             },
             ["id"] = "goods.bread",
             ["priority"] = 100,
@@ -52586,6 +53786,9 @@ ns.Data = {
                 ["context"] = "goods",
                 ["key"] = "bread",
                 ["source"] = "project-authored"
+            },
+            ["renderForms"] = {
+                ["accusative"] = "хліба"
             },
             ["sourceRefs"] = { "project-authored:chat-0.1:goods.bread" },
             ["status"] = "approved",
@@ -52875,6 +54078,32 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Меч"
         },
+        ["guild.leveling"] = {
+            ["aliases"] = {
+                ["en"] = { "levelling guild", "guild for leveling", "guild for levelling" },
+                ["uk"] = {}
+            },
+            ["category"] = "guildTypes",
+            ["en"] = "leveling guild",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["englishCommon"] = true,
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "гільдію для прокачування",
+                ["nominative"] = "гільдія для прокачування"
+            },
+            ["id"] = "guild.leveling",
+            ["provenance"] = {
+                ["context"] = "finding a guild while gaining levels",
+                ["key"] = "leveling guild",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "гільдія для прокачування"
+        },
         ["lighting.moonlight"] = {
             ["category"] = "lighting",
             ["en"] = "moonlight",
@@ -53153,6 +54382,34 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.burning_steppes" },
             ["status"] = "approved",
             ["uk"] = "Палаючий степ"
+        },
+        ["place.dalaran"] = {
+            ["category"] = "places",
+            ["en"] = "Dalaran",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine"
+            },
+            ["forms"] = {
+                ["accusative"] = "Даларан",
+                ["dative"] = "Даларану",
+                ["genitive"] = "Даларана",
+                ["instrumental"] = "Далараном",
+                ["locative"] = "Даларані",
+                ["nominative"] = "Даларан"
+            },
+            ["id"] = "place.dalaran",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Dalaran",
+                ["line"] = 632,
+                ["sha256"] = "60e2b63a679cf5abd0931237b1be7a11b9145ed00b240d04076189c7bc5c04d0",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.dalaran" },
+            ["status"] = "approved",
+            ["uk"] = "Даларан"
         },
         ["place.darkshore"] = {
             ["aliases"] = {
@@ -53836,7 +55093,7 @@ ns.Data = {
         },
         ["place.razorfen_downs"] = {
             ["aliases"] = {
-                ["en"] = { "rfd" },
+                ["en"] = { "rfd", "razorfang downs", "the razorfang downs", "the razorfen downs" },
                 ["uk"] = {}
             },
             ["category"] = "places",
@@ -53945,6 +55202,39 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.ruins_of_ahn_qiraj" },
             ["status"] = "approved",
             ["uk"] = "руїни Ан'Кіражу"
+        },
+        ["place.ruins_of_lordaeron"] = {
+            ["aliases"] = {
+                ["en"] = { "the ruins of lordaeron" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["en"] = "Ruins of Lordaeron",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine",
+                ["number"] = "plural"
+            },
+            ["forms"] = {
+                ["accusative"] = "руїни Лордерона",
+                ["dative"] = "руїнам Лордерона",
+                ["genitive"] = "руїн Лордерона",
+                ["instrumental"] = "руїнами Лордерона",
+                ["locative"] = "руїнах Лордерона",
+                ["nominative"] = "руїни Лордерона"
+            },
+            ["id"] = "place.ruins_of_lordaeron",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Ruins of Lordaeron",
+                ["line"] = 2224,
+                ["sha256"] = "60e2b63a679cf5abd0931237b1be7a11b9145ed00b240d04076189c7bc5c04d0",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" },
+            ["status"] = "approved",
+            ["uk"] = "руїни Лордерона"
         },
         ["place.scarlet_monastery"] = {
             ["aliases"] = {
@@ -54779,7 +56069,8 @@ ns.Data = {
                 ["version"] = "1.0.3"
             },
             ["renderForms"] = {
-                ["practitioner"] = "майстра зачарування"
+                ["practitioner"] = "майстра зачарування",
+                ["practitionerNominative"] = "майстер зачарування"
             },
             ["sourceRefs"] = { "ua-forever:profession.enchanting" },
             ["status"] = "approved",
@@ -55983,6 +57274,26 @@ ns.Data = {
             },
             ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" },
             ["uk"] = "протоорк"
+        },
+        ["recipe.two_hand_impact"] = {
+            ["aliases"] = {
+                ["en"] = { "enchant 2h weapon – impact", "enchant two-handed weapon - impact" },
+                ["uk"] = {}
+            },
+            ["category"] = "craftServices",
+            ["en"] = "Enchant 2H Weapon - Impact",
+            ["id"] = "recipe.two_hand_impact",
+            ["provenance"] = {
+                ["context"] = "enchanting recipe",
+                ["file"] = "entries/forever/cliend_db/spell_names_uk.lua",
+                ["key"] = "Enchant 2H Weapon - Impact",
+                ["line"] = 6680,
+                ["sha256"] = "e59cfd49becd120305003b6662df159b9ff3b0fe907abde4b99e99d9b327fd79",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:recipe.two_hand_impact" },
+            ["status"] = "approved",
+            ["uk"] = "Зачарування дворучної зброї — удар"
         },
         ["recipient.her"] = {
             ["aliases"] = {
@@ -57899,6 +59210,37 @@ ns.Data = {
             ["sourceRefs"] = { "wow-community:craft" },
             ["status"] = "approved",
             ["uk"] = "Твої матеріали"
+        },
+        ["specialization.off_spec"] = {
+            ["aliases"] = {
+                ["en"] = { "off spec", "offspec", "secondary specialization" },
+                ["uk"] = {}
+            },
+            ["category"] = "specializations",
+            ["contextOnly"] = true,
+            ["en"] = "off-spec",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["englishCommon"] = true,
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "додаткову спеціалізацію",
+                ["dative"] = "додатковій спеціалізації",
+                ["genitive"] = "додаткової спеціалізації",
+                ["instrumental"] = "додатковою спеціалізацією",
+                ["locative"] = "додатковій спеціалізації",
+                ["nominative"] = "додаткова спеціалізація"
+            },
+            ["id"] = "specialization.off_spec",
+            ["provenance"] = {
+                ["context"] = "secondary character specialization",
+                ["key"] = "off-spec",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1", "wow-community:loot" },
+            ["status"] = "approved",
+            ["uk"] = "додаткова спеціалізація"
         },
         ["specialization.retribution"] = {
             ["category"] = "specializations",

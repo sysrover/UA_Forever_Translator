@@ -214,6 +214,8 @@ local function available(lexeme, document, sense)
     local frame = lexeme.frame
     local domain = frame and frame.contextDomain
     return not domain or domain == document.transferDomain or sense ~= nil and frame.sense == sense
+        or document.relativeClass and frame.relativeObjectClasses and frame.relativeObjectClasses[document.relativeClass]
+            and (document.direction == "en-uk" or document.relativeMarker == frame.relativeMarkerUk)
 end
 
 function L.derivedLiteral(document, word)

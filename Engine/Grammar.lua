@@ -1,12 +1,34 @@
 local _, ns = ...
 local G = {}; ns.Engine.Grammar = G
 local moneyForms = {
-    g = {"золоту монету", "золоті монети", "золотих монет", "золотої монети"},
-    s = {"срібну монету", "срібні монети", "срібних монет", "срібної монети"},
-    c = {"мідну монету", "мідні монети", "мідних монет", "мідної монети"},
+    g = {"золоту монету", "золоті монети", "золотих монет", "золотої монети", "золота монета"},
+    s = {"срібну монету", "срібні монети", "срібних монет", "срібної монети", "срібна монета"},
+    c = {"мідну монету", "мідні монети", "мідних монет", "мідної монети", "мідна монета"},
 }
+local currency = {}
+for name, unit in pairs({gold="g", silver="s", copper="c"}) do
+    currency[name] = unit
+    currency[name .. " coin"], currency[name .. " coins"] = unit, unit
+    for _, form in ipairs(moneyForms[unit]) do currency[form] = unit end
+end
 
-local function renderMoney(slot)
+function G.moneyAt(document, first, limit)
+    local tokens = document.tokens
+    local opening = tokens[first]
+    if first > limit or not opening or opening.protected or not opening.key:match("^%d") then return nil end
+    for last = math.min(limit, first + 4), first, -1 do
+        local raw = document.text:sub(opening.first, tokens[last].last)
+        local normalized = ns.Engine.Normalize.word(raw)
+        local amount, unit = normalized:match("^(%d+[%.,]?%d*)%s*([gsc])$")
+        if not amount then
+            local number, name = ns.Engine.Normalize.key(raw):match("^(%d+[%.,]?%d*)%s+(.+)$")
+            if number and currency[name] then amount, unit = number, currency[name] end
+        end
+        if amount then return {raw=amount .. unit, sourceRaw=raw, amount=amount, unit=unit}, last + 1 end
+    end
+end
+
+function G.moneyText(slot, nominative)
     local amount, forms = slot.amount, moneyForms[slot.unit]
     if not amount or not forms then return slot.raw end
     local numeric = tonumber((amount:gsub(",", ".")))
@@ -14,7 +36,7 @@ local function renderMoney(slot)
     local last, pair = numeric % 10, numeric % 100
     local form = 3
     if numeric % 1 ~= 0 then form = 4
-    elseif last == 1 and pair ~= 11 then form = 1
+    elseif last == 1 and pair ~= 11 then form = nominative and 5 or 1
     elseif last >= 2 and last <= 4 and (pair < 12 or pair > 14) then form = 2 end
     return amount .. " " .. forms[form]
 end
@@ -77,7 +99,8 @@ function G.render(template, slots, direction)
             end
             return slot.term.uk
         end
-        return form == "money" and renderMoney(slot) or slot.raw
+        if form == "money" or form == "moneyNominative" then return G.moneyText(slot, form == "moneyNominative") end
+        return slot.raw
     end)
     if failed then return nil end
     return output

@@ -26,7 +26,9 @@ function T.render(tree, direction)
                 value = value .. (uk and ". Бажано " .. class or ", preferably " .. class:lower())
             end
             if f.run == "full" then value = value .. (uk and ". Повне проходження" or ", full run")
-            elseif f.run == "fresh" then value = value .. (uk and ". Проходження з початку" or ", fresh run") end
+            elseif f.run == "fresh" then value = value .. (uk and ". Проходження з початку" or ", fresh run")
+            elseif f.run == "quest" then value = value .. (uk and ". Проходження із завданнями" or ", quest run") end
+            if f.urgent then value = value .. (uk and ". Терміново" or ", quick") end
             if f.summon then value = value .. (uk and ". Можемо прикликати" or ", can summon") end
             if f.go then value = value .. (uk and ". І вирушаємо" or " and go") end
             return value .. (f.question and "?" or uk and "." or "")
@@ -96,7 +98,7 @@ function T.render(tree, direction)
                 elseif total then
                     output = render("Набір у групу: ще {total}; роль: {role}.")
                 elseif s.count then
-                    output = render("Шукаємо {count} {role:counted}.")
+                    output = render(f.additional and "Шукаємо ще {count} {role:counted}." or "Шукаємо {count} {role:counted}.")
                 else output = render("Шукаємо {role:genitiveSingular}.") end
             elseif total or s.count then
                 output = totalPlayers(total or s.count.raw) .. "."
@@ -116,7 +118,37 @@ function T.render(tree, direction)
             if f.lastSpot then output = output .. ", last spot" end
         end
         return appendConditions((output:gsub("%.$", "")))
+    elseif tree.kind == "search" then
+        local object = ns.Engine.ClauseGeneration.noun(f.object, not uk, "accusative", not uk)
+        if object then return (uk and "Шукаю " or "Looking for ") .. object .. "." end
+    elseif tree.kind == "price" then
+        local amount = render(uk and (f.introduced and "{price:money}" or "{price:moneyNominative}") or "{price}")
+        local only = f.linked and (uk and "лише " or "only ") or (uk and "Лише " or "Only ")
+        local value = (f.only and only or "") .. amount
+        if f.linked then
+            value = s.item.raw .. (f.introduced and (uk and " за " or " for ") or " — ") .. value
+        end
+        if f.each then
+            value = value .. (f.each == "bottle" and (uk and " за пляшку" or " a bottle") or (uk and " за штуку" or " each"))
+        end
+        return value
+    elseif tree.kind == "availability" then
+        local profession = ns.Engine.ClauseGeneration.noun(f.occupation, not uk, "nominative")
+        if not profession then return end
+        local places = {online={"онлайн","online"}, ["онлайн"]={"онлайн","online"},
+            around={"поблизу","around"}, ["поблизу"]={"поблизу","around"}, here={"тут","here"}, ["тут"]={"тут","here"}}
+        local place = places[f.place][uk and 1 or 2]
+        local skill = s.skill.raw .. "+"
+        if uk then return "Чи є " .. profession .. " із навичкою " .. skill .. " " .. place end
+        return "Any " .. skill .. " " .. profession .. " " .. place
     elseif tree.kind == "service" then
+        if s.recipe then
+            local profession = uk and s.profession.term.renderForms and s.profession.term.renderForms.practitioner
+                or not uk and s.profession.term.englishPractitioner
+            if not profession then return end
+            return (uk and "Шукаю " or "Looking for ") .. profession
+                .. (uk and " із рецептом «" or " with ") .. render("{recipe}") .. (uk and "»." or ".")
+        end
         local subject = s.trade and s.trade.raw or M.generate(s.profession.term, direction)
         if not subject then return end
         for index = 2, 4 do
@@ -162,13 +194,17 @@ function T.render(tree, direction)
         end
         local output = table.concat(items)
         if f.demand then
-            local profession = uk and s.profession.term.renderForms and s.profession.term.renderForms.practitioner
+            local professionForm = f.inquiry and "practitionerNominative" or "practitioner"
+            local profession = uk and s.profession.term.renderForms and s.profession.term.renderForms[professionForm]
                 or (not uk and s.profession.term.englishPractitioner)
             if not profession then return end
             local separator = uk and (#f.joins > 0 and " — " or " для ") or " for "
-            output = (uk and "Шукаю " or "Looking for ") .. profession .. separator .. output
+            local lead = uk and (f.inquiry and "Чи є " or "Шукаю ") or (f.inquiry and "Any " or "Looking for ")
+            output = lead .. profession .. separator .. output
         end
         if f.mats then output = output .. (uk and ", матеріали є" or ", got mats") end
+        if f.free then output = output .. (uk and " безкоштовно" or " for free") end
+        if f.tips then output = output .. (uk and ". Буду вдячний за чайові" or ". Tips are appreciated") end
         return output .. (uk and "." or "")
     elseif tree.kind == "statement" then
         local function noun(slot)

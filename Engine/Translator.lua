@@ -92,8 +92,18 @@ local function grammarClause(document, first, last)
     local output = ns.Engine.ClauseGeneration.render(parsed, document.direction, punctuation)
     if output and prefix then output = prefix .. output end
     if output and emote then output = output .. " " .. emote end
-    if output then return output, {intent=parsed.trees[1].kind, imperative=parsed.trees[1].imperative == true,
-        sourceRefs=ns.Linguistics.manifest.sourceRefs, dependency=parsed.dependency == true} end
+    if output then
+        local slots
+        for _, tree in ipairs(parsed.trees) do
+            local address = tree.addressee or tree.recipient
+            if address and address.term then
+                slots = slots or {}
+                slots[#slots + 1] = address
+            end
+        end
+        return output, {intent=parsed.trees[1].kind, imperative=parsed.trees[1].imperative == true,
+            sourceRefs=ns.Linguistics.manifest.sourceRefs, dependency=parsed.dependency == true}, slots
+    end
 end
 local function placePhrase(document, first, fragments)
     local phrase, after = ns.Engine.Phrases.preposition(document, first, #document.tokens)
@@ -105,6 +115,74 @@ local function placePhrase(document, first, fragments)
     phrase.targetUk = phrase.rule.literalTargetUk
     local value, marker = ns.Engine.ClauseGeneration.preposition(phrase, document.direction == "uk-en")
     if value and marker and marker ~= "" then return term, after - 1, marker .. " " .. value end
+end
+
+local function dependencyFragments(document, fragments)
+    local tokens = document.tokens
+    if not ns.Engine.UDPipe or not ns.Engine.UDPipe.analyzeDocumentWithTags then return fragments, false end
+    local blocked, lastFragment, first, attempts, used = {}, 0, 1, 0, false
+    for index = 1, #tokens do
+        local fragment = fragments and fragments[index] or document.preserve and document.preserve[index]
+        if fragment then lastFragment = math.max(lastFragment, fragment.last) end
+        if index <= lastFragment then blocked[index] = true end
+    end
+    local phrases, generation = ns.Engine.Phrases, ns.Engine.ClauseGeneration
+    local english = document.direction == "uk-en"
+    for ending = 1, #tokens do
+        local token = tokens[ending]
+        local sentenceEnd = not token.protected and token.key:match("^[.!?]$")
+            and (ending == #tokens or tokens[ending + 1].first > token.last + 1)
+        if sentenceEnd or ending == #tokens then
+            if ending - first >= 2 and ending - first < 32 and attempts < 3 then
+                local open = 0
+                for index = first, ending do
+                    if not blocked[index] and not tokens[index].protected then open = open + 1 end
+                end
+                if open >= 2 then
+                    attempts = attempts + 1
+                    local arcs, words = ns.Engine.UDPipe.analyzeDocumentWithTags(document, first, ending)
+                    if arcs and words and first == 1 and ending == #tokens then
+                        local marker = sentenceEnd and token.key or nil
+                        local limit = marker and ending - 1 or ending
+                        local parsed = ns.Engine.ClauseAnalysis.parseDependencies(document, first, limit, arcs, words)
+                        local output = parsed and generation.render(parsed, document.direction, marker)
+                        if output and N.key(output) ~= N.key(document.text) then
+                            local intent = #parsed.trees > 1 and "composition" or parsed.trees[1].kind
+                            return fragments, false, output, intent
+                        end
+                    end
+                    local groups = arcs and words and phrases.dependencyNominals(document, first, arcs, words, blocked) or {}
+                    local previous = 0
+                    for _, group in ipairs(groups) do
+                        if group.first > previous then
+                            local nominal = group.preposition and group.phrase.object or group.phrase
+                            local value
+                            if group.preposition then
+                                local object, marker = generation.preposition(group.phrase, english)
+                                if object and marker then value = marker == "" and object or marker .. " " .. object end
+                            else
+                                value = generation.noun(group.phrase, english, group.case)
+                            end
+                            local original = phrases.raw(document, group.first, group.last)
+                            if value and value ~= "" and N.key(original) ~= N.key(value) then
+                                local _, literalEnd = ns.Engine.Dictionary.literal(document, group.first, fragments, true)
+                                if not literalEnd or literalEnd <= group.last then
+                                    if group.first == first then value = N.upperStart(value) end
+                                    fragments = fragments or {}
+                                    fragments[group.first] = {text=value, last=group.last,
+                                        rule={sourceRefs=ns.Linguistics.manifest.sourceRefs},
+                                        slots=nominal.term and {object={term=nominal.term}} or nil}
+                                    previous, used = group.last, true
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+            first = ending + 1
+        end
+    end
+    return fragments, used
 end
 
 local function compute(text, direction)
@@ -126,17 +204,29 @@ local function compute(text, direction)
     local clauses, fragments
     local general
     local grammarEnabled = ns.Linguistics and not document.truncated and not document.ambiguities
-    if not output and grammarEnabled then
-        local rendered, grammarRule = grammarClause(document, 1, #tokens)
-        if rendered and N.key(rendered) ~= N.key(text) then
-            output, rule, general = rendered, grammarRule, true
+    local grammarFallback
+    if grammarEnabled then
+        grammarFallback = function(first, last)
+            local value, structure = ns.Engine.Syntax.translateRange(document, first, last)
+            if value then
+                return value, {intent=structure.kind, sourceRefs={"project-authored:apertium-pipeline-1"}}, structure.slots
+            end
+            return grammarClause(document, first, last)
         end
     end
-    if not output and not document.truncated and not document.ambiguities then
-        local grammarFallback
-        if grammarEnabled then
-            grammarFallback = function(first, last) return grammarClause(document, first, last) end
+    local composedOpening
+    if not output and not document.truncated and not document.ambiguities
+        and ns.Engine.Parser.hasExactOpening(text, tokens, direction) then
+        output, clauses, fragments = ns.Engine.Parser.compose(text, tokens, direction, grammarFallback)
+        composedOpening = true
+    end
+    if not output and grammarEnabled then
+        local rendered, grammarRule, grammarSlots = grammarClause(document, 1, #tokens)
+        if rendered and N.key(rendered) ~= N.key(text) then
+            output, rule, general, slots = rendered, grammarRule, true, grammarSlots
         end
+    end
+    if not output and not composedOpening and not document.truncated and not document.ambiguities then
         output, clauses, fragments = ns.Engine.Parser.compose(text, tokens, direction, grammarFallback)
     end
     if syntaxFragments and not output then
@@ -163,6 +253,16 @@ local function compute(text, direction)
             matchedTerms = matched, unknownSpans = {}, sourceRefs = refs,
             coverage = {complete=true, pipeline=clauses and "composition" or general and "grammar"
                 or tree and "structural" or "legacy", dependency=rule and rule.dependency == true or nil}}
+    end
+    local usedDependency
+    if grammarEnabled then
+        local rendered, intent
+        fragments, usedDependency, rendered, intent = dependencyFragments(document, fragments)
+        if rendered then
+            return {text=rendered, mode="template", intent=intent, matchedTerms={}, unknownSpans={},
+                sourceRefs=ns.Linguistics.manifest.sourceRefs,
+                coverage={complete=true, pipeline="grammar", dependency=true}}
+        end
     end
     local chunks, matched, unknown, refs, refSeen, i, cursor = {}, {}, {}, {}, {}, 1, 1
     local reason, reasonEnd
@@ -205,7 +305,8 @@ local function compute(text, direction)
     chunks[#chunks + 1] = text:sub(cursor)
     local translated = table.concat(chunks)
     if translated == text or N.key(translated) == N.key(text) then return unchanged(text, "identical") end
-    return {text = translated, mode = "partial", matchedTerms = matched, unknownSpans = unknown, sourceRefs = refs}
+    return {text = translated, mode = "partial", matchedTerms = matched, unknownSpans = unknown, sourceRefs = refs,
+        coverage = usedDependency and {complete=false, pipeline="dictionary", dependency=true} or nil}
 end
 function E.translate(text, direction, context)
     if C.secret(text) or C.secret(direction) then return nil end

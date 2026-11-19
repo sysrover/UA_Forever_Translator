@@ -73,6 +73,21 @@ local function lowerStart(value)
     return ns.Engine.Normalize.word(first) .. value:sub(#first + 1)
 end
 
+function P.hasExactOpening(text, tokens, direction)
+    local composition = ns.Data.composition and ns.Data.composition[direction]
+    local expressions = ns.Data.exact[direction]
+    if not composition or tokens[1].protected then return false end
+    for index = 2, math.min(12, #tokens - 1) do
+        local _, sentence = joinAt(tokens, index, composition.joins)
+        if sentence or composition.joins[tokens[index].key] then
+            local finish = tokens[index - 1].key == "," and index - 2 or index - 1
+            local key = finish > 0 and ns.Engine.Normalize.key(tokenText(text, tokens, 1, finish))
+            if expressions[key] then return true end
+        end
+    end
+    return false
+end
+
 function P.compose(text, tokens, direction, grammarFallback)
     local composition = ns.Data.composition and ns.Data.composition[direction]
     if not composition or #tokens == 0 or #tokens > 96 then return nil end
@@ -115,7 +130,7 @@ function P.compose(text, tokens, direction, grammarFallback)
             else
                 output, rule, slots = P.translate(text, tokens, direction, start, finish)
                 if not output then output, rule, slots = P.addressedExact(text, tokens, direction, start, finish) end
-                if not output and grammarFallback then output, rule = grammarFallback(start, finish) end
+                if not output and grammarFallback then output, rule, slots = grammarFallback(start, finish) end
             end
             if not output then
                 local last = trailingPunctuation(text, tokens, start, finish)
