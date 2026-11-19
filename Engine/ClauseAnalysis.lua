@@ -268,6 +268,14 @@ local function objectRecipientAt(document, index, limit, frame, objectCase)
 end
 
 local adverbAt
+local function scheduleTimeAt(document, index, limit, futureOnly)
+    local marker = document.direction == "en-uk" and "for" or "на"
+    if P.key(document, index, limit) ~= marker then return nil end
+    return adverbAt(document, index + 1, limit, nil, function(candidate)
+        return candidate.time and (not futureOnly or candidate.futureSchedule)
+    end)
+end
+
 local function measureAt(document, index, limit, frame)
     local english = document.direction == "en-uk"
     local marker = english and frame.measurePreposition
@@ -362,7 +370,7 @@ local function verb(document, index, limit, subject, base, imperative, sense, as
         local typedObject = (frame.objectClasses or frame.objectTrait or frame.objectPronouns
             or frame.animateObject or frame.requiresSpatialContainer)
             and (english or frame.reverseObjectClasses)
-        if typedObject or not english and frame.reverseAdjunct then
+        if typedObject or frame.scheduleObject or not english and frame.reverseAdjunct then
             local objectAt = after
             if frame.recipientCase then
                 local recipient, following = objectRecipientAt(document, objectAt, limit, frame, frame.objectCase)
@@ -395,6 +403,9 @@ local function verb(document, index, limit, subject, base, imperative, sense, as
             if not english and frame.reverseAdjunct then
                 local adjunct = object and P.preposition(document, objectEnd, limit, false, false, frame.prepositionContext)
                 if not adjunct or adjunct.rule.id ~= frame.reverseAdjunct then return false end
+            end
+            if frame.scheduleObject and (not object or not scheduleTimeAt(document, objectEnd, limit, true)) then
+                return false
             end
             if frame.measurePreposition and not measureAt(document, objectEnd, limit, frame) then return false end
         end
@@ -1258,6 +1269,11 @@ complements = function(document, tree, index, limit, depth)
         index = after
     end
     if tree.object then index = attachNominalAction(document, tree.object, index, limit, depth) end
+    if frame.scheduleObject then
+        tree.scheduleTime, after = scheduleTimeAt(document, index, limit, true)
+        if not tree.scheduleTime then return nil end
+        index = after
+    end
     if english and frame.particle and not tree.object and not occupiedObject then return nil end
     if english and tree.object and frame.objectResults and index <= limit then
         local class = P.semanticClass(tree.object)
@@ -1290,6 +1306,13 @@ complements = function(document, tree, index, limit, depth)
     if frame.requiredInfinitive and not tree.infinitive then return nil end
     if tree.object and (frame.priceAdverb or frame.cashComplement) then
         tree.priceComplement, index = priceComplement(document, index, limit)
+    end
+    if tree.object and frame.cashComplement then
+        local comma = P.key(document, index, limit) == ","
+        local price, finish = gradedAdverbAt(document, index + (comma and 1 or 0), limit, "tradePrice")
+        if price then
+            tree.priceComparison, tree.priceComma, index = price, comma, finish
+        end
     end
     local adjunctContext = prepositionContext(tree, frame)
     for _ = 1, 3 do
@@ -1559,10 +1582,9 @@ local function duration(document, first, limit)
 end
 
 local function predicateTime(document, tree, index, limit, scheduled)
-    local marker = document.direction == "en-uk" and "for" or "на"
-    if scheduled and P.key(document, index, limit) == marker then
-        local target, after = adverbAt(document, index + 1, limit)
-        if target and target.time then
+    if scheduled then
+        local target, after = scheduleTimeAt(document, index, limit)
+        if target then
             tree.scheduleTime = target
             return after
         end
@@ -1746,13 +1768,20 @@ local function predicate(document, tree, index, limit, depth)
         return not frame.profileOnly and not (pronoun and pronoun.id == "someone" and frame.sense == "price")
     end
     local stateSense = personNoun(tree.subject) and "personalState"
+    local subjectClass = P.semanticClass(tree.subject)
+    local function contextualAdjective(candidate)
+        local frame = lexemeFrame(candidate)
+        return frame.predicateHead and frame.headClasses[subjectClass] and adjectiveAllowed(candidate)
+    end
     local nominative = {case="nominative"}
-    local adjective = stateSense and L.genderPair(document, index, limit, "adj", nominative, stateSense, adjectiveAllowed)
+    local adjective = subjectClass and L.genderPair(document, index, limit, "adj", nominative, "nounModifier", contextualAdjective)
+        or stateSense and L.genderPair(document, index, limit, "adj", nominative, stateSense, adjectiveAllowed)
         or L.genderPair(document, index, limit, "adj", nominative, nil, adjectiveAllowed)
     local adjectiveEnd = index + (adjective and 3 or 1)
     local paired = adjective ~= nil
     if not paired and index <= limit then
-        adjective = stateSense and L.choose(document, index, "adj", nil, stateSense, adjectiveAllowed)
+        adjective = subjectClass and L.choose(document, index, "adj", nil, "nounModifier", contextualAdjective)
+            or stateSense and L.choose(document, index, "adj", nil, stateSense, adjectiveAllowed)
             or L.choose(document, index, "adj", nil, nil, adjectiveAllowed)
     end
     local object, nextIndex
@@ -2534,6 +2563,21 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap)
             return {kind="clause", subject=personalSubject("i"), implicitSubject=true, tense="future",
                 verb=returning, delay=delay}, finish
         end
+    end
+    local tradeOpeners = ns.Linguistics.grammar.tradeOpeners
+    local trade = english and not indirect and not objectGap and tradeOpeners and tradeOpeners[key]
+    if trade then
+        local at = first + (P.key(document, first + 1, limit) == ":" and 1 or 0)
+        local subject = personalSubject("i")
+        local entry, start = verb(document, at, limit, subject, true, nil, nil, nil, trade)
+        if not entry then return nil end
+        local tree = {kind="clause", subject=subject, implicitSubject=true, tense="future", verb=entry, sequencedEvent=true}
+        local finish = complements(document, tree, start, limit, depth)
+        if not finish or not tree.object then return nil end
+        for _, item in ipairs(tree.object.members or {tree.object}) do
+            if item.raw and not ns.Engine.Markup.isLink(item.raw, "item") then return nil end
+        end
+        return tree, finish
     end
     if depth < 3 and not indirect then
         local social, finish = socialComplement(document, first, limit, depth)
@@ -3431,6 +3475,11 @@ local function parse(document, first, limit)
         elseif join.rule and (join.rule.id == "when" and action.imperative or join.rule.id == "whenever"
             or join.rule.id == "if" and (action.modal or action.tense == "future")) then
             followup.temporalDependent = true
+            if document.direction == "en-uk" and join.rule.id == "if" and action.priceComparison
+                and followup.verb and lexemeFrame(followup.verb).futureEventLemma and followup.tense == "present"
+                and not (followup.aspect or followup.modal or followup.negative) then
+                followup.tense, followup.sequencedEvent = "future", true
+            end
         end
     end
     local main = trees[2]

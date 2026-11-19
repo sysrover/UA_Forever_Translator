@@ -1562,6 +1562,10 @@ renderTree = function(tree, english, controller)
         if english and price.only then append(parts, "only") end
         append(parts, english and price.amount.raw or ns.Engine.Grammar.moneyText(price.amount))
     end
+    if tree.priceComparison then
+        if tree.priceComma then parts[#parts] = withComma(parts[#parts]) end
+        append(parts, (english and tree.priceComparison.en or tree.priceComparison.uk)[1])
+    end
     local measureMarker = english and verbFrame and verbFrame.measurePreposition or not english and "на"
     if tree.measure and measureMarker then
         local amount = quantityText(tree.measure, english)

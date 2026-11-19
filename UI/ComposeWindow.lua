@@ -51,6 +51,7 @@ end
 function U.create()
     if U.frame then return end
     local f = C.frame("Frame", UIParent, "BackdropTemplate")
+    f:Hide()
     f:SetSize(360, 160); f:SetPoint("CENTER"); f:SetFrameStrata("DIALOG")
     f:SetClampedToScreen(true); f:EnableMouse(true); f:SetMovable(true); f:RegisterForDrag("LeftButton")
     f:SetScript("OnDragStart", function(self) if not C.combat() then self:StartMoving() end end)
@@ -64,14 +65,33 @@ function U.create()
     U.draftLabel = label(f, L.draft, 16, -79, 328)
     U.draft = edit(f, -94)
     button(f, L.translate, "BOTTOMLEFT", 16, 130, preview)
-    button(f, L.insert, "BOTTOMRIGHT", -16, 150, function()
-        local ok, reason = ns.Composer.insert(C.read(U.draft, "GetText"), C.read(U.source, "GetText"))
+    local clickedChat
+    local insert = button(f, L.insert, "BOTTOMRIGHT", -16, 150, function()
+        local context = clickedChat
+        clickedChat = nil
+        local ok, reason = ns.Composer.insert(C.read(U.draft, "GetText"), C.read(U.source, "GetText"), context)
         if not ok then C.print(L[reason]) end
+    end)
+    insert:RegisterForClicks("LeftButtonDown")
+    local function clearClickedChat() clickedChat = nil end
+    insert:HookScript("OnLeave", clearClickedChat)
+    insert:HookScript("OnMouseUp", clearClickedChat)
+    local focusLostEvent = "ChatFrame.OnEditBoxFocusLost"
+    f:SetScript("OnShow", function()
+        EventRegistry:RegisterCallback(focusLostEvent, function(_, editBox)
+            -- Blizzard emits this before closing an empty chat line on blur.
+            if C.combat() or C.read(insert, "IsMouseOver") ~= true or not IsMouseButtonDown("LeftButton")
+                or not C.public(editBox) or editBox ~= C.activeEdit() then return end
+            local context = C.context(editBox)
+            if context and context.text == "" then clickedChat = context end
+        end, f)
     end)
     U.source:SetScript("OnTextChanged", function(_, user)
         if user and ns.Composer.result then clearPreview() end
     end)
     f:SetScript("OnHide", function()
+        EventRegistry:UnregisterCallback(focusLostEvent, f)
+        clearClickedChat()
         U.source:SetText("")
         clearPreview()
     end)

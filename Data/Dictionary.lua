@@ -11259,6 +11259,34 @@ ns.Data = {
                     }
                 }
             },
+            ["прірви"] = {
+                ["лютого"] = {
+                    ["полум'я"] = {
+                        ["_id"] = "place.ragefire_chasm"
+                    }
+                }
+            },
+            ["прірвою"] = {
+                ["лютого"] = {
+                    ["полум'я"] = {
+                        ["_id"] = "place.ragefire_chasm"
+                    }
+                }
+            },
+            ["прірву"] = {
+                ["лютого"] = {
+                    ["полум'я"] = {
+                        ["_id"] = "place.ragefire_chasm"
+                    }
+                }
+            },
+            ["прірві"] = {
+                ["лютого"] = {
+                    ["полум'я"] = {
+                        ["_id"] = "place.ragefire_chasm"
+                    }
+                }
+            },
             ["пуг"] = {
                 ["_id"] = "slang.groups.pug"
             },
@@ -15049,7 +15077,12 @@ ns.Data = {
                     ["dungeon"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "neuter",
+                                    ["semanticClass"] = "session"
+                                },
                                 ["id"] = "game.dungeon",
                                 ["lemma"] = "Dungeon",
                                 ["pos"] = "noun",
@@ -16030,7 +16063,9 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
-                                ["gender"] = "feminine"
+                                ["englishCommon"] = true,
+                                ["gender"] = "feminine",
+                                ["semanticClass"] = "storageContainer"
                             },
                             ["id"] = "game.bag",
                             ["lemma"] = "Bag",
@@ -16045,8 +16080,10 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
                                 ["gender"] = "feminine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["semanticClass"] = "storageContainer"
                             },
                             ["id"] = "game.bag",
                             ["lemma"] = "Bag",
@@ -17457,7 +17494,12 @@ ns.Data = {
                 ["dung"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
+                                ["gender"] = "neuter",
+                                ["semanticClass"] = "session"
+                            },
                             ["id"] = "game.dungeon",
                             ["lemma"] = "Dungeon",
                             ["pos"] = "noun",
@@ -17469,7 +17511,12 @@ ns.Data = {
                 ["dungeon"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
+                                ["gender"] = "neuter",
+                                ["semanticClass"] = "session"
+                            },
                             ["id"] = "game.dungeon",
                             ["lemma"] = "Dungeon",
                             ["pos"] = "noun",
@@ -21029,6 +21076,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
                                 ["gender"] = "neuter",
                                 ["semanticClass"] = "objective"
                             },
@@ -21079,7 +21127,10 @@ ns.Data = {
                     ["chasm"] = {
                         ["_analyses"] = {
                             {
-                                ["features"] = {},
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
                                 ["id"] = "place.ragefire_chasm",
                                 ["lemma"] = "Ragefire Chasm",
                                 ["pos"] = "noun",
@@ -21428,7 +21479,10 @@ ns.Data = {
                 ["rfc"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
                             ["id"] = "place.ragefire_chasm",
                             ["lemma"] = "Ragefire Chasm",
                             ["pos"] = "noun",
@@ -27279,7 +27333,12 @@ ns.Data = {
                 ["данж"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
+                                ["gender"] = "neuter",
+                                ["semanticClass"] = "session"
+                            },
                             ["id"] = "game.dungeon",
                             ["lemma"] = "Підземелля",
                             ["pos"] = "noun",
@@ -28739,6 +28798,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
                                 ["gender"] = "neuter",
                                 ["semanticClass"] = "objective"
                             },
@@ -36740,7 +36800,120 @@ ns.Data = {
                         ["полум'я"] = {
                             ["_analyses"] = {
                                 {
-                                    ["features"] = {},
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "place.ragefire_chasm",
+                                    ["lemma"] = "прірва Лютого Полум'я",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.ragefire_chasm",
+                                    ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "nominative",
+                                        ["gender"] = "feminine",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "place.ragefire_chasm",
+                                    ["lemma"] = "прірва Лютого Полум'я",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.ragefire_chasm",
+                                    ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["прірви"] = {
+                    ["лютого"] = {
+                        ["полум'я"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "genitive",
+                                        ["gender"] = "feminine",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "place.ragefire_chasm",
+                                    ["lemma"] = "прірва Лютого Полум'я",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.ragefire_chasm",
+                                    ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["прірвою"] = {
+                    ["лютого"] = {
+                        ["полум'я"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "instrumental",
+                                        ["gender"] = "feminine",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "place.ragefire_chasm",
+                                    ["lemma"] = "прірва Лютого Полум'я",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.ragefire_chasm",
+                                    ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["прірву"] = {
+                    ["лютого"] = {
+                        ["полум'я"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "accusative",
+                                        ["gender"] = "feminine",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "place.ragefire_chasm",
+                                    ["lemma"] = "прірва Лютого Полум'я",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.ragefire_chasm",
+                                    ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["прірві"] = {
+                    ["лютого"] = {
+                        ["полум'я"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "dative",
+                                        ["gender"] = "feminine",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "place.ragefire_chasm",
+                                    ["lemma"] = "прірва Лютого Полум'я",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.ragefire_chasm",
+                                    ["sourceRefs"] = { "ua-forever:place.ragefire_chasm" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "locative",
+                                        ["gender"] = "feminine",
+                                        ["number"] = "singular"
+                                    },
                                     ["id"] = "place.ragefire_chasm",
                                     ["lemma"] = "прірва Лютого Полум'я",
                                     ["pos"] = "noun",
@@ -36778,7 +36951,12 @@ ns.Data = {
                 ["підземелля"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
+                                ["gender"] = "neuter",
+                                ["semanticClass"] = "session"
+                            },
                             ["id"] = "game.dungeon",
                             ["lemma"] = "Підземелля",
                             ["pos"] = "noun",
@@ -36787,8 +36965,12 @@ ns.Data = {
                         },
                         {
                             ["features"] = {
+                                ["animacy"] = "inanimate",
                                 ["case"] = "accusative",
-                                ["number"] = "singular"
+                                ["englishCommon"] = true,
+                                ["gender"] = "neuter",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "session"
                             },
                             ["id"] = "game.dungeon",
                             ["lemma"] = "Підземелля",
@@ -36801,7 +36983,12 @@ ns.Data = {
                 ["підземка"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
+                                ["gender"] = "neuter",
+                                ["semanticClass"] = "session"
+                            },
                             ["id"] = "game.dungeon",
                             ["lemma"] = "Підземелля",
                             ["pos"] = "noun",
@@ -36813,7 +37000,12 @@ ns.Data = {
                 ["підземку"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["englishCommon"] = true,
+                                ["gender"] = "neuter",
+                                ["semanticClass"] = "session"
+                            },
                             ["id"] = "game.dungeon",
                             ["lemma"] = "Підземелля",
                             ["pos"] = "noun",
@@ -38163,7 +38355,9 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
-                                ["gender"] = "feminine"
+                                ["englishCommon"] = true,
+                                ["gender"] = "feminine",
+                                ["semanticClass"] = "storageContainer"
                             },
                             ["id"] = "game.bag",
                             ["lemma"] = "Сумка",
@@ -38198,8 +38392,10 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "genitive",
+                                ["englishCommon"] = true,
                                 ["gender"] = "feminine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["semanticClass"] = "storageContainer"
                             },
                             ["id"] = "game.bag",
                             ["lemma"] = "Сумка",
@@ -38211,8 +38407,10 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "nominative",
+                                ["englishCommon"] = true,
                                 ["gender"] = "feminine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["semanticClass"] = "storageContainer"
                             },
                             ["id"] = "game.bag",
                             ["lemma"] = "Сумка",
@@ -38224,8 +38422,10 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "accusative",
+                                ["englishCommon"] = true,
                                 ["gender"] = "feminine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["semanticClass"] = "storageContainer"
                             },
                             ["id"] = "game.bag",
                             ["lemma"] = "Сумка",
@@ -38288,8 +38488,10 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "accusative",
+                                ["englishCommon"] = true,
                                 ["gender"] = "feminine",
-                                ["number"] = "singular"
+                                ["number"] = "singular",
+                                ["semanticClass"] = "storageContainer"
                             },
                             ["id"] = "game.bag",
                             ["lemma"] = "Сумка",
@@ -38326,8 +38528,10 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "genitive",
+                                ["englishCommon"] = true,
                                 ["gender"] = "feminine",
-                                ["number"] = "plural"
+                                ["number"] = "plural",
+                                ["semanticClass"] = "storageContainer"
                             },
                             ["id"] = "game.bag",
                             ["lemma"] = "Сумка",
@@ -42007,7 +42211,13 @@ ns.Data = {
                     ["canonical"] = "Ragefire Chasm"
                 },
                 ["uk"] = {
-                    ["canonical"] = "прірва Лютого Полум'я"
+                    ["accusative"] = "прірву Лютого Полум'я",
+                    ["canonical"] = "прірва Лютого Полум'я",
+                    ["dative"] = "прірві Лютого Полум'я",
+                    ["genitive"] = "прірви Лютого Полум'я",
+                    ["instrumental"] = "прірвою Лютого Полум'я",
+                    ["locative"] = "прірві Лютого Полум'я",
+                    ["nominative"] = "прірва Лютого Полум'я"
                 }
             },
             ["place.razorfen_downs"] = {
@@ -43617,7 +43827,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 89,
-        ["version"] = "33c5878d9f1e7cc9c05cc0297bb0e92750be1dd97d646c779fc0e7b676e1fc49"
+        ["version"] = "7b913e935d54717253bb616c12fa146aad6906a61e60ed4afd9945131c97fe36"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -53387,7 +53597,9 @@ ns.Data = {
             ["englishPlural"] = "bags",
             ["features"] = {
                 ["animacy"] = "inanimate",
-                ["gender"] = "feminine"
+                ["englishCommon"] = true,
+                ["gender"] = "feminine",
+                ["semanticClass"] = "storageContainer"
             },
             ["forms"] = {
                 ["accusative"] = "сумку",
@@ -53500,6 +53712,12 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Dungeon",
             ["englishActivity"] = "a dungeon",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["englishCommon"] = true,
+                ["gender"] = "neuter",
+                ["semanticClass"] = "session"
+            },
             ["forms"] = {
                 ["accusative"] = "підземелля"
             },
@@ -53978,6 +54196,7 @@ ns.Data = {
             ["en"] = "Quest",
             ["features"] = {
                 ["animacy"] = "inanimate",
+                ["englishCommon"] = true,
                 ["gender"] = "neuter",
                 ["semanticClass"] = "objective"
             },
@@ -55760,7 +55979,18 @@ ns.Data = {
             ["contexts"] = { "places" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Ragefire Chasm",
-            ["forms"] = {},
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "прірву Лютого Полум'я",
+                ["dative"] = "прірві Лютого Полум'я",
+                ["genitive"] = "прірви Лютого Полум'я",
+                ["instrumental"] = "прірвою Лютого Полум'я",
+                ["locative"] = "прірві Лютого Полум'я",
+                ["nominative"] = "прірва Лютого Полум'я"
+            },
             ["id"] = "place.ragefire_chasm",
             ["priority"] = 100,
             ["provenance"] = {
