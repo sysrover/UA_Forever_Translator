@@ -87,10 +87,10 @@ function State:link(name, kind)
     end
     return false
 end
-function State:money()
+function State:money(name)
     local price, after = ns.Engine.Grammar.moneyAt(self.document, self.i, self.limit)
     if not price then return false end
-    self.slots.price, self.i = price, after
+    self.slots[name or "price"], self.i = price, after
     return true
 end
 function State:finish(kind, extra)
@@ -328,8 +328,8 @@ local function search(p, direction)
     return p:finish("search", {object=object})
 end
 
-local function enhancementItem(p, suffix, english, allowOption)
-    local count, stat, equipment = "count" .. suffix, "stat" .. suffix, "equipment" .. suffix
+local function enhancementBonus(p, suffix, english, allowOption)
+    local count, stat = "count" .. suffix, "stat" .. suffix
     if p:word("+") then
         local token = p.i <= p.limit and p.tokens[p.i]
         local compact, amount
@@ -345,7 +345,10 @@ local function enhancementItem(p, suffix, english, allowOption)
     elseif not english and p:phrase("бонус до") then
         if not p:noun(stat, "stats") then return end
     elseif not allowOption or not p:noun("option" .. suffix, "enhancements") then return end
-    if not p:any("on", "на", "до") then return end
+    return true
+end
+
+local function enhancementEquipment(p, equipment, english)
     if english then p:any("a", "the") end
     local start = p.i
     local case = not english and "locative" or nil
@@ -357,7 +360,82 @@ local function enhancementItem(p, suffix, english, allowOption)
         noun.plural = key(ns.Engine.Phrases.raw(p.document, start, p.i - 1)) == key(noun.term.englishPlural)
     end
     noun.locative = noun.plural and "locativePlural" or "locative"
-    return noun.term.forms and noun.term.forms[noun.locative] ~= nil
+    if noun.term.forms and noun.term.forms[noun.locative] then return true end
+    p.i, p.slots[equipment] = start, nil
+end
+
+local function enhancementItem(p, suffix, english, allowOption, offer)
+    local equipment = "equipment" .. suffix
+    local equipmentFirst = offer and english and enhancementEquipment(p, equipment, english)
+    if not enhancementBonus(p, suffix, english, allowOption) then return end
+    if not equipmentFirst then
+        local marker = p:any("on", "на", "до")
+        if not (marker or offer and english) or not enhancementEquipment(p, equipment, english) then return end
+    end
+    if offer then
+        local beforePrice = p.i
+        p:any("for", "за", "-", "—", "–")
+        if not p:money("price" .. suffix) then p.i = beforePrice end
+    end
+    return true
+end
+
+local function enhancementOfferMarker(p, english)
+    if english then
+        if p:any("offering enchants", "selling enchants") then return "enchanting" end
+        if p:word("wts") then return "selling" end
+    else
+        if p:phrase("пропоную зачарування") then return "enchanting" end
+        if p:word("продам") then return "selling" end
+    end
+end
+
+local function enhancementOffer(p, english)
+    local offer = enhancementOfferMarker(p, english)
+    if offer then p:word(":"); return offer end
+    local first = p.i
+    local N, P = ns.Engine.Normalize, ns.Engine.Phrases
+    for separator = first, math.min(first + 6, p.limit - 1) do
+        local mark = p.tokens[separator]
+        if mark.protected then return end
+        if mark.key == "," or mark.key == ":" then
+            if separator < first + 2 then return end
+            local last = p.tokens[separator - 1]
+            p.i = separator + 1
+            offer = enhancementOfferMarker(p, english)
+            if offer then
+                local profession = compactTerm(last.key, "professions")
+                if not profession then
+                    local choice = M.select(p.document, separator - 1, "professions", separator - 1)
+                    profession = choice and choice.term
+                end
+                if profession then
+                    if profession.id == "profession.enchanting" then offer = "enchanting" end
+                    p:word(":")
+                    return offer, P.raw(p.document, first, separator - 1)
+                end
+            end
+            p.i = first
+            return
+        end
+        local word = P.raw(p.document, separator, separator)
+        if word == mark.key or word ~= N.upperStart(word) then return end
+    end
+end
+
+local function enhancementMaterials(p, english)
+    local before = p.i
+    p:word(",")
+    local marked = p:any("with", "з", "зі", "із")
+    local P = ns.Engine.Phrases
+    if not marked and not english then p.i = before; return end
+    local materials, after = P.noun(p.document, p.i, p.limit, english and "accusative" or "instrumental",
+        false, false, true)
+    if P.semanticClass(materials) == "craftingMaterials" and (marked or materials.possessor) then
+        p.i = after
+        return materials
+    end
+    p.i = before
 end
 
 local function gratuity(p, free)
@@ -373,11 +451,12 @@ end
 
 local function enhancement(p, direction)
     local english = direction == "en-uk"
+    local offer, header = enhancementOffer(p, english)
     local demand, inquiry
-    if english then
+    if not offer and english then
         inquiry = p:any("any", "is there an", "is there a")
         demand = inquiry or p:any("lf", "looking for")
-    else
+    elseif not offer then
         inquiry = p:any("чи є", "є")
         demand = inquiry or p:any("шукаю", "потрібен")
     end
@@ -385,7 +464,7 @@ local function enhancement(p, direction)
         if not p:noun("profession", "professions") then return end
         if not p:any("for", "with", "для", "з", "—") then return end
     end
-    if not enhancementItem(p, "", english, demand) then return end
+    if not enhancementItem(p, "", english, demand or offer, offer) then return end
     local joins, mats = {}
     while p.i <= p.limit do
         local comma = p:word(",")
@@ -395,17 +474,22 @@ local function enhancement(p, direction)
             or p:any("or", "або") and "or" or comma and "comma"
         if not join then break end
         local before = p.i
-        if not enhancementItem(p, tostring(#joins + 2), english, true) then
+        if not enhancementItem(p, tostring(#joins + 2), english, true, offer) then
             if join ~= "comma" then return end
             p.i = before
             break
         end
         joins[#joins + 1] = join
     end
+    local materials = offer and enhancementMaterials(p, english)
     local free = p:any("for free", "free", "безкоштовно")
     local tips = gratuity(p, free)
+    local beforeStock = p.i
+    if offer then p:any(",", ".", "-", "—", "–") end
+    local limited = offer and p:any("limited stock", "limited supply", "запас обмежений", "запаси обмежені")
+    if not limited then p.i = beforeStock end
     return p:finish("enhancement", {demand=demand, inquiry=inquiry, question=inquiry, mats=mats,
-        free=free, tips=tips, joins=joins})
+        free=free, tips=tips, joins=joins, offer=offer, header=header, materials=materials, limited=limited})
 end
 
 local function service(p, direction)

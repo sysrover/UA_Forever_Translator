@@ -38,13 +38,18 @@ for _, forms in pairs({relativeDeclension.masculine, relativeDeclension.feminine
     for _, word in pairs(forms) do P.relativeMarkers["uk-en"][word] = true end
 end
 
+local function indefinitePerson(noun)
+    local id = noun.pronoun and noun.pronoun.id
+    return id == "someone" or id == "everyone"
+end
+
 function P.relativeAnimate(noun)
-    return noun.animacy == "animate" or noun.pronoun and noun.pronoun.id == "someone"
+    return noun.animacy == "animate" or indefinitePerson(noun)
         or noun.term and personalTerms[noun.term.category]
 end
 
 function P.relativePronoun(noun, case)
-    if noun.pronoun and noun.pronoun.id == "someone" then return indefiniteRelative[case] end
+    if indefinitePerson(noun) then return indefiniteRelative[case] end
     local gender = noun.gender
     if not gender and noun.term then
         gender = L.head(ns.Engine.Normalize.word(noun.term.uk), "noun").gender
@@ -414,6 +419,13 @@ local function subsetAt(document, first, limit, case, sense, headFilter)
         gender=gender or "masculine", animacy=animacy, headIndex=first}, after
 end
 
+local function levelAreaAt(document, index, limit)
+    if index > limit then return nil end
+    return L.choose(document, index, "noun", nil, nil, function(candidate)
+        return candidate.lexeme.frame and candidate.lexeme.frame.semanticClass == "levelArea"
+    end)
+end
+
 function P.noun(document, first, limit, case, locationOnly, count, simple, sense, headFilter)
     local index = first
     local key = P.key(document, index, limit)
@@ -469,6 +481,32 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         pointerForms = determinerForms(determiner, demonstrative == "far" and "той" or "цей")
     end
     local quantity = P.key(document, index, limit)
+    local levelThreshold, freeChoice
+    if english then
+        local any = quantity == "any"
+        local thresholdAt = index + (any and 1 or 0)
+        local digits = any and P.key(document, thresholdAt, limit) or quantity
+        if digits and digits:match("^%d%d?%d?$") and P.key(document, thresholdAt + 1, limit) == "+"
+            and levelAreaAt(document, thresholdAt + 2, limit) then
+            levelThreshold, freeChoice, index = digits, any and "any" or nil, thresholdAt + 2
+            quantity = P.key(document, index, limit)
+        end
+    elseif quantity == "будь" and P.key(document, index + 1, limit) == "-" then
+        local form = P.key(document, index + 2, limit)
+        if P.relativeMarkers["uk-en"][form] and levelAreaAt(document, index + 3, limit) then
+            freeChoice, index = form, index + 3
+            quantity = P.key(document, index, limit)
+        end
+    end
+    local characterLevel
+    if english and not locationOnly and (quantity == "level" or quantity == "lvl") then
+        local level = P.key(document, index + 1, limit)
+        if level and level:match("^%d%d?%d?$") and tonumber(level) > 0
+            and curated(document, index + 2, limit, nil, false, assignedRole) then
+            characterLevel, index = level, index + 2
+            quantity = P.key(document, index, limit)
+        end
+    end
     local few = count ~= false and (english and article == "indefinite" and quantity == "few"
         or not english and (quantity and quantity == fewForms[case] or case == "accusative" and quantity == "кількох"))
     local sufficient = count ~= false and not (article or demonstrative or owner) and
@@ -683,7 +721,9 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         if best.nominalObject then best.nominalObject.possessor = owner
         else best.possessor = owner end
     end
+    if characterLevel and not assignedRole(best) then return nil end
     best.article, best.quantity, best.demonstrative = article, quantity, demonstrative
+    best.characterLevel = characterLevel
     best.emphatic, best.few = emphatic, few or nil
     best.sufficient, best.additional, best.many = sufficient or nil, additional or nil, many or nil
     best.abundance = abundance or nil
@@ -693,6 +733,17 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         best.headIndex = nextIndex - 1
     elseif nextIndex == headIndex + 1 and (best.entry or best.term) then best.headIndex = headIndex end
     local frame = best.entry and best.entry.lexeme.frame
+    if frame and frame.semanticClass == "levelArea" then
+        if not en and P.key(document, nextIndex, limit) == "від" then
+            local level, after = P.noun(document, nextIndex + 1, limit, "genitive", false, false, true)
+            local levelFrame = level and level.entry and level.entry.lexeme.frame
+            if levelFrame and levelFrame.postposedNumber and level.ordinal then
+                levelThreshold, nextIndex = level.ordinal, after
+            end
+        end
+        if freeChoice and not en and freeChoice ~= P.relativePronoun(best, case) then return nil end
+        best.levelThreshold, best.freeChoice = levelThreshold, freeChoice ~= nil
+    elseif levelThreshold or freeChoice then return nil end
     if ordinal then
         if not frame or not frame.postposedNumber then return nil end
         best.ordinal = ordinal
@@ -762,8 +813,13 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             local dependent, after = P.noun(document, nextIndex + (en and 1 or 0), limit,
                 "genitive", false, false, true, context and context.complementSense)
             if dependent and not dependent.pronoun and (en or dependent.sourceCase == "genitive") then
-                best.genitive, nextIndex = dependent, after
-                if context and context.complementClasses and context.complementClasses[P.semanticClass(dependent)] then
+                local dependentFrame = dependent.entry and dependent.entry.lexeme.frame
+                if not best.characterLevel and assignedRole(best) and dependent.ordinal
+                    and dependentFrame and dependentFrame.postposedNumber then
+                    best.characterLevel = dependent.ordinal
+                else best.genitive = dependent end
+                nextIndex = after
+                if best.genitive and context and context.complementClasses and context.complementClasses[P.semanticClass(dependent)] then
                     best.entry, best.term = contextual, nil
                     best.gender, best.animacy = contextual.head.gender, contextual.head.animacy
                 end

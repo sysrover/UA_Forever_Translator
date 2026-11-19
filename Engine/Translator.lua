@@ -240,12 +240,15 @@ local function compute(text, direction)
     end
     if syntaxFragments and not output then
         fragments = fragments or {}
-        -- Structural chunks take priority; discard overlapping legacy clauses.
         for first, fragment in pairs(syntaxFragments) do
-            for start, old in pairs(fragments) do
-                if start <= fragment.last and old.last >= first then fragments[start] = nil end
+            -- Keep a translated sentence that already covers this opening.
+            local sentence = fragments[first]
+            if not (sentence and sentence.text and sentence.last > fragment.last) then
+                for start, old in pairs(fragments) do
+                    if start <= fragment.last and old.last >= first then fragments[start] = nil end
+                end
+                fragments[first] = fragment
             end
-            fragments[first] = fragment
         end
     end
     if output then

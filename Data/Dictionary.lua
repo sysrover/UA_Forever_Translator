@@ -33,6 +33,16 @@ ns.Data = {
                     ["_id"] = "slang.loot.two-sr"
                 }
             },
+            ["2h"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.two_handed_weapon"
+                },
+                ["weapon"] = {
+                    ["_byCategory"] = {
+                        ["equipment"] = "equipment.two_handed_weapon"
+                    }
+                }
+            },
             ["2sr"] = {
                 ["_id"] = "slang.loot.two-sr"
             },
@@ -4115,6 +4125,11 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["str"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.strength"
+                }
+            },
             ["stranglethorn"] = {
                 ["_id"] = "place.stranglethorn_vale",
                 ["vale"] = {
@@ -4535,6 +4550,24 @@ ns.Data = {
             },
             ["twinks"] = {
                 ["_id"] = "slang.combat.twink"
+            },
+            ["two"] = {
+                ["-"] = {
+                    ["handed"] = {
+                        ["weapon"] = {
+                            ["_byCategory"] = {
+                                ["equipment"] = "equipment.two_handed_weapon"
+                            }
+                        }
+                    }
+                },
+                ["hand"] = {
+                    ["weapon"] = {
+                        ["_byCategory"] = {
+                            ["equipment"] = "equipment.two_handed_weapon"
+                        }
+                    }
+                }
             },
             ["ty"] = {
                 ["_literal"] = {
@@ -6970,6 +7003,27 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:place.darnassus" },
                     ["text"] = "Darnassus",
                     ["weak"] = false
+                }
+            },
+            ["дворучна"] = {
+                ["зброя"] = {
+                    ["_byCategory"] = {
+                        ["equipment"] = "equipment.two_handed_weapon"
+                    }
+                }
+            },
+            ["дворучну"] = {
+                ["зброю"] = {
+                    ["_byCategory"] = {
+                        ["equipment"] = "equipment.two_handed_weapon"
+                    }
+                }
+            },
+            ["дворучній"] = {
+                ["зброї"] = {
+                    ["_byCategory"] = {
+                        ["equipment"] = "equipment.two_handed_weapon"
+                    }
                 }
             },
             ["дворф"] = {
@@ -15312,6 +15366,36 @@ ns.Data = {
                         }
                     }
                 },
+                ["2h"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "equipment.two_handed_weapon",
+                            ["lemma"] = "two-handed weapon",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.two_handed_weapon",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    },
+                    ["weapon"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "equipment.two_handed_weapon",
+                                ["lemma"] = "two-handed weapon",
+                                ["pos"] = "noun",
+                                ["sense"] = "equipment.two_handed_weapon",
+                                ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                            }
+                        }
+                    }
+                },
                 ["2sr"] = {
                     ["_analyses"] = {
                         {
@@ -22751,6 +22835,18 @@ ns.Data = {
                         }
                     }
                 },
+                ["str"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.strength",
+                            ["lemma"] = "strength",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.strength",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["stranglethorn"] = {
                     ["_analyses"] = {
                         {
@@ -23310,6 +23406,44 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.combat.twink",
                             ["sourceRefs"] = { "wow-community:wiki" }
+                        }
+                    }
+                },
+                ["two"] = {
+                    ["-"] = {
+                        ["handed"] = {
+                            ["weapon"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["gender"] = "feminine"
+                                        },
+                                        ["id"] = "equipment.two_handed_weapon",
+                                        ["lemma"] = "two-handed weapon",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "equipment.two_handed_weapon",
+                                        ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["hand"] = {
+                        ["weapon"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "equipment.two_handed_weapon",
+                                    ["lemma"] = "two-handed weapon",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "equipment.two_handed_weapon",
+                                    ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                                }
+                            }
                         }
                     }
                 },
@@ -28475,6 +28609,61 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.darnassus",
                             ["sourceRefs"] = { "ua-forever:place.darnassus" }
+                        }
+                    }
+                },
+                ["дворучна"] = {
+                    ["зброя"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "equipment.two_handed_weapon",
+                                ["lemma"] = "дворучна зброя",
+                                ["pos"] = "noun",
+                                ["sense"] = "equipment.two_handed_weapon",
+                                ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                            }
+                        }
+                    }
+                },
+                ["дворучну"] = {
+                    ["зброю"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "equipment.two_handed_weapon",
+                                ["lemma"] = "дворучна зброя",
+                                ["pos"] = "noun",
+                                ["sense"] = "equipment.two_handed_weapon",
+                                ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                            }
+                        }
+                    }
+                },
+                ["дворучній"] = {
+                    ["зброї"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "equipment.two_handed_weapon",
+                                ["lemma"] = "дворучна зброя",
+                                ["pos"] = "noun",
+                                ["sense"] = "equipment.two_handed_weapon",
+                                ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                            }
                         }
                     }
                 },
@@ -43275,6 +43464,16 @@ ns.Data = {
                     ["locative"] = "рукавицях"
                 }
             },
+            ["equipment.two_handed_weapon"] = {
+                ["en"] = {
+                    ["canonical"] = "two-handed weapon"
+                },
+                ["uk"] = {
+                    ["accusative"] = "дворучну зброю",
+                    ["canonical"] = "дворучна зброя",
+                    ["locative"] = "дворучній зброї"
+                }
+            },
             ["game.action_bar"] = {
                 ["en"] = {
                     ["canonical"] = "Action Bar"
@@ -45872,7 +46071,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 273,
+        ["concepts"] = 274,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 85,
@@ -45891,7 +46090,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "916a10f1cb4b598df2bbaab3d0a8c94075e08f076d5cf8caaca7ec816ebd9bf3"
+        ["version"] = "e84d8054d6b2b11b56f688b5375d1183e3c958bd6a4f4f29229c08094fbf7080"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -55489,6 +55688,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "рукавиці"
         },
+        ["equipment.two_handed_weapon"] = {
+            ["aliases"] = {
+                ["en"] = { "2h", "2h weapon", "two hand weapon" }
+            },
+            ["category"] = "equipment",
+            ["contextOnly"] = true,
+            ["en"] = "two-handed weapon",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "дворучну зброю",
+                ["locative"] = "дворучній зброї"
+            },
+            ["id"] = "equipment.two_handed_weapon",
+            ["provenance"] = {
+                ["context"] = "equipment enhancement",
+                ["key"] = "two-handed weapon",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
+            ["status"] = "approved",
+            ["uk"] = "дворучна зброя"
+        },
         ["game.action_bar"] = {
             ["aliases"] = {
                 ["en"] = { "hotbar", "hot bar" },
@@ -62441,7 +62665,7 @@ ns.Data = {
         },
         ["stat.strength"] = {
             ["aliases"] = {
-                ["en"] = {},
+                ["en"] = { "str" },
                 ["uk"] = {}
             },
             ["category"] = "stats",

@@ -215,6 +215,12 @@ function T.render(tree, direction)
                     or (uk and (join == "and" and " та " or " або ") or " " .. join .. " ")
             end
             items[#items + 1] = bonus .. (uk and " на " or " on ") .. item
+            local price = s["price" .. suffix]
+            if price then
+                local value = G.render(uk and " за {price:money}" or " for {price}", {price=price}, direction)
+                if not value then return nil end
+                items[#items + 1] = value
+            end
         end
         local output = table.concat(items)
         if f.demand then
@@ -225,10 +231,22 @@ function T.render(tree, direction)
             local separator = uk and (#f.joins > 0 and " — " or " для ") or " for "
             local lead = uk and (f.inquiry and "Чи є " or "Шукаю ") or (f.inquiry and "Any " or "Looking for ")
             output = lead .. profession .. separator .. output
+        elseif f.offer then
+            local lead = f.offer == "enchanting" and (uk and "Пропоную зачарування: " or "Offering enchants: ")
+                or (uk and "Продам: " or "WTS ")
+            output = lead .. output
+            if f.header then output = f.header .. ", " .. output end
         end
         if f.mats then output = output .. (uk and ", матеріали є" or ", got mats") end
+        if f.materials then
+            local materials = ns.Engine.ClauseGeneration.noun(f.materials, not uk, uk and "instrumental" or "accusative")
+            if not materials then return nil end
+            output = output .. (uk and ", з " or ", with ") .. materials
+        end
         if f.free then output = output .. (uk and " безкоштовно" or " for free") end
-        return serviceTerms(output, f, uk)
+        local value = serviceTerms(output, f, uk)
+        if value and f.limited then return value .. (uk and " Запас обмежений." or ". Limited stock") end
+        return value
     elseif tree.kind == "statement" then
         local function noun(slot)
             local object = slot.term
