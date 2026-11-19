@@ -1428,13 +1428,20 @@ renderTree = function(tree, english, controller)
             if not value then return nil end
             append(parts, value)
         end
+        local postposeRecipient = tree.recipient and not tree.recipient.reflexive and frame.recipientMarker
+            and (tree.recipientAfterObject or english and not tree.object and frame.implicitTransferObject)
+        local recipient
         if tree.recipient and not tree.recipient.reflexive then
             local article = (frame.contentRecipientCase or frame.possessorRecipient) and "definite" or true
+            if english and postposeRecipient and tree.recipient.term and tree.recipient.term.category == "roles" then
+                article = "definite"
+            end
             local reflexive = not english and tree.possessiveRecipient and speechPossessives[owner]
                 and tree.recipient.pronoun.en.possessive == owner
-            local value = reflexive and "собі" or G.noun(tree.recipient, english, "dative", article, nil, owner)
-            if not value then return nil end
-            append(parts, value)
+            recipient = reflexive and "собі" or G.noun(tree.recipient, english,
+                english and "accusative" or frame.recipientCase or "dative", article, nil, owner)
+            if not recipient then return nil end
+            if not postposeRecipient then append(parts, recipient) end
         end
         if tree.object then
             local requested = english and "accusative"
@@ -1460,8 +1467,12 @@ renderTree = function(tree, english, controller)
             end
             if english and (tree.object.pronoun or frame.objectBeforeParticle) then append(parts, frame.particle) end
         elseif not (tree.wh and tree.wh.role == "object") then
-            append(parts, english and frame.enImplicitObject
+            append(parts, english and postposeRecipient and frame.implicitTransferObject or english and frame.enImplicitObject
                 or not english and (tree.relativeImplicitUk or frame.ukImplicitObject))
+        end
+        if postposeRecipient then
+            if english then append(parts, frame.recipientMarker) end
+            append(parts, recipient)
         end
         if tree.separation then
             local removed = G.noun(tree.separation, english, "genitive", nil, nil, owner)

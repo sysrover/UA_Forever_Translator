@@ -1176,6 +1176,11 @@ complements = function(document, tree, index, limit, depth)
                 local sense = english and frame.recipientObjectSenses and frame.recipientObjectSenses[P.semanticClass(object)]
                 local reading = sense and L.choose(document, tree.verb.lexeme.en, "verb", nil, sense)
                 if reading then tree.verb = reading end
+            elseif frame.implicitTransferObject and personNoun(recipient) and boundary(document, after, limit)
+                and (not english or tree.imperative
+                    and (recipient.pronoun or recipient.term and
+                        (recipient.term.category == "roles" or recipient.term.category == "classes"))) then
+                tree.recipient, index = recipient, after
             end
         end
     end
@@ -1229,6 +1234,15 @@ complements = function(document, tree, index, limit, depth)
             end
             tree.object, index = object, nextIndex
         elseif preposition then return nil end
+    end
+    if tree.object and not tree.recipient and frame.recipientMarker then
+        local marked = english and P.key(document, index, limit) == frame.recipientMarker
+        if marked or not english then
+            recipient, after = objectRecipientAt(document, marked and index + 1 or index, limit, frame, objectCase)
+            if recipient and (not english or personNoun(recipient)) then
+                tree.recipient, tree.recipientAfterObject, index = recipient, true, after
+            end
+        end
     end
     if frame.separation and tree.object and P.key(document, index, limit) == (english and "of" or "від") then
         tree.separation, after = P.noun(document, index + 1, limit, "genitive")

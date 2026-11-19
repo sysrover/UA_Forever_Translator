@@ -134,24 +134,31 @@ local function dependencyFragments(document, fragments)
             and (ending == #tokens or tokens[ending + 1].first > token.last + 1)
         if sentenceEnd or ending == #tokens then
             if ending - first >= 2 and ending - first < 32 and attempts < 3 then
-                local open = 0
+                local open, occupied = 0, false
                 for index = first, ending do
+                    if blocked[index] then occupied = true end
                     if not blocked[index] and not tokens[index].protected then open = open + 1 end
                 end
                 if open >= 2 then
                     attempts = attempts + 1
                     local arcs, words = ns.Engine.UDPipe.analyzeDocumentWithTags(document, first, ending)
-                    if arcs and words and first == 1 and ending == #tokens then
+                    local rendered
+                    if arcs and words and not occupied then
                         local marker = sentenceEnd and token.key or nil
                         local limit = marker and ending - 1 or ending
                         local parsed = ns.Engine.ClauseAnalysis.parseDependencies(document, first, limit, arcs, words)
                         local output = parsed and generation.render(parsed, document.direction, marker)
-                        if output and N.key(output) ~= N.key(document.text) then
+                        local original = phrases.raw(document, first, ending)
+                        if output and N.key(output) ~= N.key(original) then
                             local intent = #parsed.trees > 1 and "composition" or parsed.trees[1].kind
-                            return fragments, false, output, intent
+                            if first == 1 and ending == #tokens then return fragments, false, output, intent end
+                            fragments = fragments or {}
+                            fragments[first] = {text=output, last=ending, rule={sourceRefs=ns.Linguistics.manifest.sourceRefs}}
+                            used, rendered = true, true
                         end
                     end
-                    local groups = arcs and words and phrases.dependencyNominals(document, first, arcs, words, blocked) or {}
+                    local groups = not rendered and arcs and words
+                        and phrases.dependencyNominals(document, first, arcs, words, blocked) or {}
                     local previous = 0
                     for _, group in ipairs(groups) do
                         if group.first > previous then
@@ -165,7 +172,7 @@ local function dependencyFragments(document, fragments)
                             end
                             local original = phrases.raw(document, group.first, group.last)
                             if value and value ~= "" and N.key(original) ~= N.key(value) then
-                                local _, literalEnd = ns.Engine.Dictionary.literal(document, group.first, fragments, true)
+                                local _, literalEnd = ns.Engine.Dictionary.literal(document, group.first, fragments)
                                 if not literalEnd or literalEnd <= group.last then
                                     if group.first == first then value = N.upperStart(value) end
                                     fragments = fragments or {}
@@ -198,8 +205,7 @@ local function compute(text, direction)
     if tree then
         rule, slots = {intent=tree.kind, sourceRefs={"project-authored:apertium-pipeline-1"}}, tree.slots
     elseif not document.truncated and not document.ambiguities then
-        output, rule, slots = ns.Engine.Parser.translate(text, tokens, direction)
-        if not output then output, rule, slots = ns.Engine.Parser.addressedExact(text, tokens, direction) end
+        output, rule, slots = ns.Engine.Parser.addressedExact(text, tokens, direction)
     end
     local clauses, fragments
     local general
@@ -225,6 +231,9 @@ local function compute(text, direction)
         if rendered and N.key(rendered) ~= N.key(text) then
             output, rule, general, slots = rendered, grammarRule, true, grammarSlots
         end
+    end
+    if not output and not document.truncated and not document.ambiguities then
+        output, rule, slots = ns.Engine.Parser.translate(text, tokens, direction)
     end
     if not output and not composedOpening and not document.truncated and not document.ambiguities then
         output, clauses, fragments = ns.Engine.Parser.compose(text, tokens, direction, grammarFallback)
@@ -284,6 +293,7 @@ local function compute(text, direction)
                 local place, finish, value = placePhrase(document, i, fragments)
                 if place then term, last, replacement = place, finish, value end
             end
+            if not term then term, last = ns.Engine.Dictionary.general(document, i) end
             if term then
                 replacement = replacement or term.features and term.features.verbatim and text:sub(token.first, tokens[last].last)
                     or term.text or (direction == "en-uk" and term.uk or term.en)

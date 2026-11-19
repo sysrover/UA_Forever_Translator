@@ -986,6 +986,21 @@ ns.Data = {
             ["complaining"] = {
                 ["_id"] = "behavior.complain"
             },
+            ["consumable"] = {
+                ["_id"] = "goods.consumable"
+            },
+            ["consumables"] = {
+                ["_plural"] = {
+                    ["id"] = "goods.consumable",
+                    ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" },
+                    ["text"] = "витратники"
+                }
+            },
+            ["consumes"] = {
+                ["_byCategory"] = {
+                    ["goods"] = "goods.consumable"
+                }
+            },
             ["cooking"] = {
                 ["_id"] = "profession.cooking"
             },
@@ -5793,6 +5808,36 @@ ns.Data = {
                     ["text"] = "go",
                     ["weak"] = false
                 }
+            },
+            ["витратник"] = {
+                ["_id"] = "goods.consumable"
+            },
+            ["витратника"] = {
+                ["_id"] = "goods.consumable"
+            },
+            ["витратникам"] = {
+                ["_id"] = "goods.consumable"
+            },
+            ["витратниками"] = {
+                ["_id"] = "goods.consumable"
+            },
+            ["витратниках"] = {
+                ["_id"] = "goods.consumable"
+            },
+            ["витратники"] = {
+                ["_id"] = "goods.consumable"
+            },
+            ["витратникові"] = {
+                ["_id"] = "goods.consumable"
+            },
+            ["витратником"] = {
+                ["_id"] = "goods.consumable"
+            },
+            ["витратнику"] = {
+                ["_id"] = "goods.consumable"
+            },
+            ["витратників"] = {
+                ["_id"] = "goods.consumable"
             },
             ["витривалості"] = {
                 ["_byCategory"] = {
@@ -12274,10 +12319,16 @@ ns.Data = {
             ["циклоніані"] = {
                 ["_id"] = "creature.cyclonian"
             },
+            ["цілителеві"] = {
+                ["_id"] = "role.healer"
+            },
             ["цілитель"] = {
                 ["_id"] = "role.healer"
             },
             ["цілителя"] = {
+                ["_id"] = "role.healer"
+            },
+            ["цілителям"] = {
                 ["_id"] = "role.healer"
             },
             ["цілителі"] = {
@@ -15538,14 +15589,6 @@ ns.Data = {
                 ["arrows"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
-                            ["id"] = "goods.arrow",
-                            ["lemma"] = "arrow",
-                            ["pos"] = "noun",
-                            ["sense"] = "goods.arrow",
-                            ["sourceRefs"] = { "ua-forever:goods.arrow" }
-                        },
-                        {
                             ["features"] = {
                                 ["number"] = "plural"
                             },
@@ -15640,14 +15683,6 @@ ns.Data = {
                 },
                 ["axes"] = {
                     ["_analyses"] = {
-                        {
-                            ["features"] = {},
-                            ["id"] = "goods.axe",
-                            ["lemma"] = "axe",
-                            ["pos"] = "noun",
-                            ["sense"] = "goods.axe",
-                            ["sourceRefs"] = { "ua-forever:goods.axe" }
-                        },
                         {
                             ["features"] = {
                                 ["number"] = "plural"
@@ -16569,6 +16604,60 @@ ns.Data = {
                         }
                     }
                 },
+                ["consumable"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "consumable",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["consumables"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "consumable",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["consumes"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "consumable",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
                 ["cooking"] = {
                     ["_analyses"] = {
                         {
@@ -16974,19 +17063,6 @@ ns.Data = {
                 },
                 ["dps"] = {
                     ["_analyses"] = {
-                        {
-                            ["features"] = {
-                                ["animacy"] = "animate",
-                                ["gender"] = "masculine",
-                                ["number"] = "singular",
-                                ["pos"] = "noun"
-                            },
-                            ["id"] = "role.damage",
-                            ["lemma"] = "DPS",
-                            ["pos"] = "noun",
-                            ["sense"] = "role.damage",
-                            ["sourceRefs"] = { "ua-forever:role.damage" }
-                        },
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
@@ -18178,6 +18254,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
+                                ["englishCommon"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular",
                                 ["pos"] = "noun"
@@ -18195,6 +18272,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
+                                ["englishCommon"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular",
                                 ["pos"] = "noun"
@@ -18212,19 +18290,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
-                                ["gender"] = "masculine",
-                                ["number"] = "singular",
-                                ["pos"] = "noun"
-                            },
-                            ["id"] = "role.healer",
-                            ["lemma"] = "Healer",
-                            ["pos"] = "noun",
-                            ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
-                        },
-                        {
-                            ["features"] = {
-                                ["animacy"] = "animate",
+                                ["englishCommon"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "plural",
                                 ["pos"] = "noun"
@@ -18282,6 +18348,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
+                                ["englishCommon"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular",
                                 ["pos"] = "noun"
@@ -18319,14 +18386,6 @@ ns.Data = {
                     },
                     ["potions"] = {
                         ["_analyses"] = {
-                            {
-                                ["features"] = {},
-                                ["id"] = "goods.health_potion",
-                                ["lemma"] = "health potion",
-                                ["pos"] = "noun",
-                                ["sense"] = "goods.health_potion",
-                                ["sourceRefs"] = { "ua-forever:goods.health_potion" }
-                            },
                             {
                                 ["features"] = {
                                     ["number"] = "plural"
@@ -20209,18 +20268,6 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["gender"] = "masculine",
-                                ["number"] = "singular"
-                            },
-                            ["id"] = "role.player",
-                            ["lemma"] = "Player",
-                            ["pos"] = "noun",
-                            ["sense"] = "role.player",
-                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
-                        },
-                        {
-                            ["features"] = {
-                                ["animacy"] = "animate",
-                                ["gender"] = "masculine",
                                 ["number"] = "plural"
                             },
                             ["id"] = "role.player",
@@ -21459,14 +21506,6 @@ ns.Data = {
                 ["shields"] = {
                     ["_analyses"] = {
                         {
-                            ["features"] = {},
-                            ["id"] = "game.shield",
-                            ["lemma"] = "Shield",
-                            ["pos"] = "noun",
-                            ["sense"] = "game.shield",
-                            ["sourceRefs"] = { "ua-forever:game.shield" }
-                        },
-                        {
                             ["features"] = {
                                 ["number"] = "plural"
                             },
@@ -21980,17 +22019,6 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
-                                ["gender"] = "masculine"
-                            },
-                            ["id"] = "goods.sword",
-                            ["lemma"] = "sword",
-                            ["pos"] = "noun",
-                            ["sense"] = "goods.sword",
-                            ["sourceRefs"] = { "ua-forever:goods.sword" }
-                        },
-                        {
-                            ["features"] = {
-                                ["animacy"] = "inanimate",
                                 ["gender"] = "masculine",
                                 ["number"] = "plural"
                             },
@@ -22045,19 +22073,6 @@ ns.Data = {
                 },
                 ["tanks"] = {
                     ["_analyses"] = {
-                        {
-                            ["features"] = {
-                                ["animacy"] = "animate",
-                                ["gender"] = "masculine",
-                                ["number"] = "singular",
-                                ["pos"] = "noun"
-                            },
-                            ["id"] = "role.tank",
-                            ["lemma"] = "Tank",
-                            ["pos"] = "noun",
-                            ["sense"] = "role.tank",
-                            ["sourceRefs"] = { "ua-forever:role.tank" }
-                        },
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
@@ -24556,6 +24571,225 @@ ns.Data = {
                                 ["sense"] = "place.searing_gorge",
                                 ["sourceRefs"] = { "ua-forever:place.searing_gorge" }
                             }
+                        }
+                    }
+                },
+                ["витратник"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "витратник",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "витратник",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["витратника"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "витратник",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["витратникам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "витратник",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["витратниками"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "витратник",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["витратниках"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "витратник",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["витратники"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "витратник",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "витратник",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["витратникові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "витратник",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["витратником"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "витратник",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["витратнику"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "витратник",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["витратників"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["pos"] = "noun",
+                                ["semanticClass"] = "consumables"
+                            },
+                            ["id"] = "goods.consumable",
+                            ["lemma"] = "витратник",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.consumable",
+                            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" }
                         }
                     }
                 },
@@ -38679,6 +38913,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
+                                ["englishCommon"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular",
                                 ["pos"] = "noun"
@@ -38696,6 +38931,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
+                                ["englishCommon"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular",
                                 ["pos"] = "noun"
@@ -38855,11 +39091,31 @@ ns.Data = {
                         }
                     }
                 },
+                ["цілителеві"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["englishCommon"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Цілитель",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        }
+                    }
+                },
                 ["цілитель"] = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
                                 ["animacy"] = "animate",
+                                ["englishCommon"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular",
                                 ["pos"] = "noun"
@@ -38878,6 +39134,7 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
+                                ["englishCommon"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular",
                                 ["pos"] = "noun"
@@ -38892,8 +39149,28 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["case"] = "accusative",
+                                ["englishCommon"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Цілитель",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                        }
+                    }
+                },
+                ["цілителям"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["englishCommon"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
                                 ["pos"] = "noun"
                             },
                             ["id"] = "role.healer",
@@ -38910,6 +39187,7 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["case"] = "nominative",
+                                ["englishCommon"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "plural",
                                 ["pos"] = "noun"
@@ -38928,6 +39206,7 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "animate",
                                 ["case"] = "genitive",
+                                ["englishCommon"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "plural",
                                 ["pos"] = "noun"
@@ -40880,6 +41159,26 @@ ns.Data = {
                     ["genitiveSingular"] = "хліба"
                 }
             },
+            ["goods.consumable"] = {
+                ["en"] = {
+                    ["canonical"] = "consumable",
+                    ["plural"] = "consumables"
+                },
+                ["uk"] = {
+                    ["accusative"] = "витратник",
+                    ["accusativePlural"] = "витратники",
+                    ["canonical"] = "витратник",
+                    ["dativePlural"] = "витратникам",
+                    ["dativeSingular"] = "витратникові",
+                    ["genitivePlural"] = "витратників",
+                    ["genitiveSingular"] = "витратника",
+                    ["instrumentalPlural"] = "витратниками",
+                    ["instrumentalSingular"] = "витратником",
+                    ["locativePlural"] = "витратниках",
+                    ["locativeSingular"] = "витратнику",
+                    ["nominativePlural"] = "витратники"
+                }
+            },
             ["goods.greater_healing_potion"] = {
                 ["en"] = {
                     ["canonical"] = "Greater Healing Potion",
@@ -42225,6 +42524,8 @@ ns.Data = {
                 ["uk"] = {
                     ["accusative"] = "цілителя",
                     ["canonical"] = "Цілитель",
+                    ["dativePlural"] = "цілителям",
+                    ["dativeSingular"] = "цілителеві",
                     ["genitivePlural"] = "цілителів",
                     ["genitiveSingular"] = "цілителя",
                     ["nominativePlural"] = "цілителі"
@@ -42960,7 +43261,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 267,
+        ["concepts"] = 268,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 84,
@@ -42979,7 +43280,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 89,
-        ["version"] = "652f61e1f8092fb47bb649f8dfd06800c21bec1c77820cc5ebd739887ba40674"
+        ["version"] = "501b3a2203f216288b76eac12e39e38d19d25847eec58e2ff896995c72df4a50"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -53794,6 +54095,45 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Хліб"
         },
+        ["goods.consumable"] = {
+            ["category"] = "goods",
+            ["contextAliases"] = {
+                ["en"] = { "consumes" }
+            },
+            ["en"] = "consumable",
+            ["englishPlural"] = "consumables",
+            ["englishPluralAliases"] = { "consumes" },
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["number"] = "singular",
+                ["pos"] = "noun",
+                ["semanticClass"] = "consumables"
+            },
+            ["forms"] = {
+                ["accusative"] = "витратник",
+                ["accusativePlural"] = "витратники",
+                ["dativePlural"] = "витратникам",
+                ["dativeSingular"] = "витратникові",
+                ["genitivePlural"] = "витратників",
+                ["genitiveSingular"] = "витратника",
+                ["instrumentalPlural"] = "витратниками",
+                ["instrumentalSingular"] = "витратником",
+                ["locativePlural"] = "витратниках",
+                ["locativeSingular"] = "витратнику",
+                ["nominativePlural"] = "витратники"
+            },
+            ["id"] = "goods.consumable",
+            ["provenance"] = {
+                ["context"] = "single-use items; the plural chat alias consumes is editorial",
+                ["files"] = { "Dict.lua", "Nouns.lua" },
+                ["key"] = "consumable",
+                ["source"] = "chattranslatorua:1.1.0"
+            },
+            ["sourceRefs"] = { "chattranslatorua:1.1.0", "project-authored:general-grammar-1" },
+            ["status"] = "approved",
+            ["uk"] = "витратник"
+        },
         ["goods.greater_healing_potion"] = {
             ["category"] = "goods",
             ["en"] = "Greater Healing Potion",
@@ -57417,12 +57757,15 @@ ns.Data = {
             ["englishPlural"] = "Healers",
             ["features"] = {
                 ["animacy"] = "animate",
+                ["englishCommon"] = true,
                 ["gender"] = "masculine",
                 ["number"] = "singular",
                 ["pos"] = "noun"
             },
             ["forms"] = {
                 ["accusative"] = "цілителя",
+                ["dativePlural"] = "цілителям",
+                ["dativeSingular"] = "цілителеві",
                 ["genitivePlural"] = "цілителів",
                 ["genitiveSingular"] = "цілителя",
                 ["nominativePlural"] = "цілителі"

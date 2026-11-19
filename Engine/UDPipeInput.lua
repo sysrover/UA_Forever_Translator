@@ -105,6 +105,13 @@ local function lexicalCandidates(document, index, lang, offer)
             end
         end
     end
+    for _, entry in ipairs(document.spans[index] or {}) do
+        local features = entry.features
+        if entry.last == index and features.pos == "noun" and not features.verbatim then
+            local lemma = ns.Engine.Normalize.word(entry.lemma)
+            offer(lemma, "NOUN", features, {}, 0, "curated:" .. entry.id)
+        end
+    end
 end
 
 local function choose(document, index, lang, previous, following, hint)

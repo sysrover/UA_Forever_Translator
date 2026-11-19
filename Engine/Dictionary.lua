@@ -50,7 +50,7 @@ function D.lookup(text, direction)
     if #tokens == 1 then return generalTerm(tokens[1], direction) end
 end
 
-function D.literal(document, first, fragments, curatedOnly)
+function D.literal(document, first, fragments)
     local tokens, direction = document.tokens, document.direction
     if tokens[first].protected then return nil end
     local node = ns.Data.aliases[direction]
@@ -73,9 +73,13 @@ function D.literal(document, first, fragments, curatedOnly)
             if derived then entry, last = derived, i end
         end
     end
-    if entry then return entry, last end
-    if curatedOnly then return nil end
+    return entry, last
+end
+
+function D.general(document, first)
+    local direction, tokens = document.direction, document.tokens
     local token = tokens[first]
+    if token.protected then return nil end
     local single = ns.Data.aliases[direction][token.key]
     local contextual = single and single._id and ns.Data.terms[single._id]
     if direction == "en-uk" and contextual and contextual.englishLookupOnly then

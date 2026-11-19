@@ -128,9 +128,9 @@ function P.compose(text, tokens, direction, grammarFallback)
             local exact = ns.Data.exact[direction][key]
             if exact then output, rule = exact.text, exact
             else
-                output, rule, slots = P.translate(text, tokens, direction, start, finish)
-                if not output then output, rule, slots = P.addressedExact(text, tokens, direction, start, finish) end
+                output, rule, slots = P.addressedExact(text, tokens, direction, start, finish)
                 if not output and grammarFallback then output, rule, slots = grammarFallback(start, finish) end
+                if not output then output, rule, slots = P.translate(text, tokens, direction, start, finish) end
             end
             if not output then
                 local last = trailingPunctuation(text, tokens, start, finish)

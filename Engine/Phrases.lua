@@ -377,8 +377,10 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         sameForms = determinerForms(P.key(document, index, limit), "самий")
         if sameForms or not ns.ApertiumData and L.choose(document, index, "adj", {case=case}, "identityDeterminer") then
             sameAt, index = index, index + 1
-            pointerForms = determinerForms(determiner, "той")
         end
+    end
+    if not english and determiner then
+        pointerForms = determinerForms(determiner, demonstrative == "far" and "той" or "цей")
     end
     local quantity = P.key(document, index, limit)
     local few = count ~= false and (english and article == "indefinite" and quantity == "few"
@@ -422,16 +424,15 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         if collective then case = "genitive" end
     else quantity = nil end
     local agrees = headFilter
-    if not english and sameAt then
+    if not english and (sameAt or pointerForms) then
         local counted = quantity and (tonumber(quantity) == 1 and "singular" or "plural")
         agrees = function(head)
             if headFilter and not headFilter(head) then return false end
             local number = counted or head.number or "singular"
             local features = {case=case, number=number, gender=number ~= "plural" and head.gender or nil}
-            if sameForms then
-                return determinerMatches(sameForms, features, head.animacy)
-                    and determinerMatches(pointerForms, features, head.animacy)
-            end
+            if pointerForms and not determinerMatches(pointerForms, features, head.animacy) then return false end
+            if not sameAt then return true end
+            if sameForms then return determinerMatches(sameForms, features, head.animacy) end
             return L.choose(document, sameAt, "adj", features, "identityDeterminer") ~= nil
         end
     end

@@ -83,8 +83,8 @@ function G.render(template, slots, direction)
                     form = slot.term.forms.countTwoToFour and "countTwoToFour" or "accusativePlural"
                 else form = "genitivePlural" end
             end
-            if form == "counted" then form = G.numberForm(slots.count and slots.count.raw or "1") end
-            if form == "genitiveSingular" and slot.plural then form = "genitivePlural" end
+            if form == "counted" then form = G.numberForm(slots.count and slots.count.raw or "1")
+            elseif form == "genitiveSingular" and slot.plural then form = "genitivePlural" end
             if form ~= "" and form ~= "canonical" then
                 local value = slot.term.renderForms and slot.term.renderForms[form]
                     or slot.term.forms and slot.term.forms[form]
