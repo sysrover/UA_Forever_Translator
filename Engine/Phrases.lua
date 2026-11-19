@@ -122,6 +122,12 @@ function P.isResource(noun)
     return classes and classes[P.semanticClass(noun)] == true
 end
 
+function P.mass(noun)
+    local term, entry = noun.term, noun.entry
+    return term and term.features and term.features.mass or entry and (entry.head.mass
+        or entry.lexeme.frame and entry.lexeme.frame.mass)
+end
+
 local function curatedNoun(candidate)
     local features = candidate.features
     return {term=candidate.term, person=3, number=features.number or "singular",
@@ -428,9 +434,30 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
                 return allowed and allowed[adjectives[#adjectives].entry.lexeme.en]
             end)
         end
+        local required = agrees
+        if not english and #adjectives > 0 then
+            required = function(head)
+                if agrees and not agrees(head) then return false end
+                local number = head.number or "singular"
+                local gender = number == "singular" and head.gender
+                for _, modifier in ipairs(adjectives) do
+                    local matches
+                    for _, reading in ipairs(L.at(document, modifier.index)) do
+                        if reading.id == modifier.entry.id and reading.form.case == case
+                            and (not reading.form.number or reading.form.number == number)
+                            and (not gender or not reading.form.gender or reading.form.gender == gender) then
+                            matches = true
+                            break
+                        end
+                    end
+                    if not matches then return false end
+                end
+                return true
+            end
+        end
         local head, after
         if contextual then head, after = lexicalNoun(contextual), index + 1
-        else head, after = nounHead(document, index, limit, case, locationOnly, sense, agrees) end
+        else head, after = nounHead(document, index, limit, case, locationOnly, sense, required) end
         if english and not simple and #adjectives == 0 then
             local prefix, following = head, after
             if owner and P.key(document, index, limit) == "the" then
@@ -452,7 +479,8 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
                 end
             end
         end
-        if head and (not demonstrativeNumber or head.number == demonstrativeNumber)
+        if head and (not demonstrativeNumber or head.number == demonstrativeNumber
+            or demonstrativeNumber == "plural" and head.number == "singular" and P.mass(head))
             and (not few or head.number == "plural")
             and (not head.pronoun or index == first) and (not intensity or #adjectives > 0)
             and (not best or after > nextIndex or (after == nextIndex and head.term and not best.term)) then
@@ -477,10 +505,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     if some and english then
         if best.number == "plural" then few, some = true, nil
         else
-            local entry = best.entry
-            local mass = best.term and best.term.features and best.term.features.mass
-                or entry and (entry.head.mass or entry.lexeme.frame and entry.lexeme.frame.mass)
-            if not mass then return P.noun(document, first, limit, case, locationOnly, false, simple, sense) end
+            if not P.mass(best) then return P.noun(document, first, limit, case, locationOnly, false, simple, sense) end
         end
     end
     if oneSurface and P.one(best.gender, case, best.animacy) ~= oneSurface then return nil end

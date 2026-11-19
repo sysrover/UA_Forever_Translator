@@ -3412,7 +3412,17 @@ ns.Data = {
                 }
             },
             ["quest"] = {
-                ["_id"] = "game.quest"
+                ["_id"] = "game.quest",
+                ["item"] = {
+                    ["_id"] = "game.quest_item"
+                },
+                ["items"] = {
+                    ["_plural"] = {
+                        ["id"] = "game.quest_item",
+                        ["sourceRefs"] = { "project-authored:chat-0.1" },
+                        ["text"] = "предмети завдання"
+                    }
+                }
             },
             ["quickly"] = {
                 ["_literal"] = {
@@ -10317,6 +10327,9 @@ ns.Data = {
                 }
             },
             ["предмет"] = {
+                ["завдання"] = {
+                    ["_id"] = "game.quest_item"
+                },
                 ["закріплено"] = {
                     ["за"] = {
                         ["гравцем"] = {
@@ -10336,6 +10349,51 @@ ns.Data = {
                             }
                         }
                     }
+                }
+            },
+            ["предмета"] = {
+                ["завдання"] = {
+                    ["_id"] = "game.quest_item"
+                }
+            },
+            ["предметам"] = {
+                ["завдання"] = {
+                    ["_id"] = "game.quest_item"
+                }
+            },
+            ["предметами"] = {
+                ["завдання"] = {
+                    ["_id"] = "game.quest_item"
+                }
+            },
+            ["предметах"] = {
+                ["завдання"] = {
+                    ["_id"] = "game.quest_item"
+                }
+            },
+            ["предмети"] = {
+                ["завдання"] = {
+                    ["_id"] = "game.quest_item"
+                }
+            },
+            ["предметом"] = {
+                ["завдання"] = {
+                    ["_id"] = "game.quest_item"
+                }
+            },
+            ["предмету"] = {
+                ["завдання"] = {
+                    ["_id"] = "game.quest_item"
+                }
+            },
+            ["предметі"] = {
+                ["завдання"] = {
+                    ["_id"] = "game.quest_item"
+                }
+            },
+            ["предметів"] = {
+                ["завдання"] = {
+                    ["_id"] = "game.quest_item"
                 }
             },
             ["премейд"] = {
@@ -20228,6 +20286,41 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "game.quest",
                             ["sourceRefs"] = { "ua-forever:game.quest" }
+                        }
+                    },
+                    ["item"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "quest item",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["items"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "quest item",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
                         }
                     }
                 },
@@ -33806,6 +33899,53 @@ ns.Data = {
                     }
                 },
                 ["предмет"] = {
+                    ["завдання"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
                     ["закріплено"] = {
                         ["за"] = {
                             ["гравцем"] = {
@@ -33844,6 +33984,210 @@ ns.Data = {
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                },
+                ["предмета"] = {
+                    ["завдання"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["предметам"] = {
+                    ["завдання"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["предметами"] = {
+                    ["завдання"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["предметах"] = {
+                    ["завдання"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["предмети"] = {
+                    ["завдання"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["предметом"] = {
+                    ["завдання"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["предмету"] = {
+                    ["завдання"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["предметі"] = {
+                    ["завдання"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["предметів"] = {
+                    ["завдання"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "questItem"
+                                },
+                                ["id"] = "game.quest_item",
+                                ["lemma"] = "предмет завдання",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.quest_item",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
                             }
                         }
                     }
@@ -39271,6 +39615,27 @@ ns.Data = {
                     ["canonical"] = "Завдання"
                 }
             },
+            ["game.quest_item"] = {
+                ["en"] = {
+                    ["canonical"] = "quest item",
+                    ["plural"] = "quest items"
+                },
+                ["uk"] = {
+                    ["accusative"] = "предмет завдання",
+                    ["accusativePlural"] = "предмети завдання",
+                    ["canonical"] = "предмет завдання",
+                    ["dative"] = "предмету завдання",
+                    ["dativePlural"] = "предметам завдання",
+                    ["genitive"] = "предмета завдання",
+                    ["genitivePlural"] = "предметів завдання",
+                    ["instrumental"] = "предметом завдання",
+                    ["instrumentalPlural"] = "предметами завдання",
+                    ["locative"] = "предметі завдання",
+                    ["locativePlural"] = "предметах завдання",
+                    ["nominative"] = "предмет завдання",
+                    ["nominativePlural"] = "предмети завдання"
+                }
+            },
             ["game.raid"] = {
                 ["en"] = {
                     ["canonical"] = "Raid"
@@ -41432,7 +41797,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 260,
+        ["concepts"] = 261,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 87,
@@ -41451,7 +41816,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 89,
-        ["version"] = "2d433ebc7d340421a886c69163af0525b778c5066188be0eb73ba4d554e2f44a"
+        ["version"] = "53e8f02ff16408794cd1376e02ea99c39e689037b40080e139616949083b570b"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -51797,6 +52162,40 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:game.quest" },
             ["status"] = "approved",
             ["uk"] = "Завдання"
+        },
+        ["game.quest_item"] = {
+            ["category"] = "game",
+            ["en"] = "quest item",
+            ["englishPlural"] = "quest items",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["englishCommon"] = true,
+                ["gender"] = "masculine",
+                ["semanticClass"] = "questItem"
+            },
+            ["forms"] = {
+                ["accusative"] = "предмет завдання",
+                ["accusativePlural"] = "предмети завдання",
+                ["dative"] = "предмету завдання",
+                ["dativePlural"] = "предметам завдання",
+                ["genitive"] = "предмета завдання",
+                ["genitivePlural"] = "предметів завдання",
+                ["instrumental"] = "предметом завдання",
+                ["instrumentalPlural"] = "предметами завдання",
+                ["locative"] = "предметі завдання",
+                ["locativePlural"] = "предметах завдання",
+                ["nominative"] = "предмет завдання",
+                ["nominativePlural"] = "предмети завдання"
+            },
+            ["id"] = "game.quest_item",
+            ["provenance"] = {
+                ["context"] = "an item required for a quest",
+                ["key"] = "quest item",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "предмет завдання"
         },
         ["game.raid"] = {
             ["aliases"] = {
