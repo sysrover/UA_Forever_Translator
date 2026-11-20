@@ -1096,8 +1096,9 @@ local function durationQuery(tree, english)
     return table.concat(parts, " ")
 end
 
-local function quantityText(quantity, english, omitApproximation)
-    local approximation = quantity.approximate and not omitApproximation and (english and "about " or "приблизно ") or ""
+local function quantityText(quantity, english, context)
+    local approximation = quantity.approximate and (english or context ~= "delay")
+        and (english and "about " or "приблизно ") or ""
     if quantity.half then
         if english then
             local unit = P.englishUnits[quantity.unit]
@@ -1119,7 +1120,7 @@ local function quantityText(quantity, english, omitApproximation)
         word = L.inflectLemma(quantity.unit, "noun", {case=case, number=number})
     end
     if not word then return nil end
-    if quantity.indefinite and not quantity.few then
+    if quantity.indefinite and not quantity.few and (quantity.approximate or context == "elapsed") then
         if english then return approximation .. (word == "hour" and "an " or "a ") .. word end
         return approximation .. word
     end
@@ -1950,7 +1951,7 @@ renderTree = function(tree, english, controller)
     if span then
         local value
         if span.expression then value = (english and span.expression.en or span.expression.uk)[1]
-        elseif span.quantity then value = quantityText(span.quantity, english)
+        elseif span.quantity then value = quantityText(span.quantity, english, "elapsed")
         else value = G.noun(span.noun, english, "accusative", true) end
         if not value then return nil end
         if english and not span.expression then append(parts, "for") end
@@ -1997,7 +1998,7 @@ renderTree = function(tree, english, controller)
     if tree.delay then
         if tree.delay.soon then append(parts, english and "soon" or "незабаром")
         else
-            local value = quantityText(tree.delay, english, not english)
+            local value = quantityText(tree.delay, english, "delay")
             if not value then return nil end
             if not english and tree.delay.approximate then append(parts, "приблизно") end
             append(parts, (english and "in " or "за ") .. value)
