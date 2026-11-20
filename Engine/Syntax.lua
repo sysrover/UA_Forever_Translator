@@ -25,6 +25,11 @@ function State:any(...)
 end
 function State:noun(name, category, case)
     local candidate, reason = M.select(self.document, self.i, category, self.limit, case)
+    local token = self.tokens[self.i]
+    if not (candidate or reason) and category == "places" and self.document.direction == "en-uk"
+        and self.i < self.limit and token.key == "the" then
+        candidate, reason = M.select(self.document, self.i + 1, category, self.limit, case)
+    end
     if reason == "ambiguous" then self.ambiguous = true end
     if not candidate then return false end
     self.slots[name] = {term=candidate.term, analysis=candidate,
@@ -32,13 +37,18 @@ function State:noun(name, category, case)
     self.i = candidate.last + 1
     return true
 end
-function State:count(slot)
+function State:count(slot, words)
     local token = self.tokens[self.i]
-    if self.i <= self.limit and token.key:match("^%d+$") and #token.key <= 3
-        and tonumber(token.key) > 0 then
-        self.slots[slot or "count"] = {raw=token.key}; self.i = self.i + 1; return true
+    if self.i > self.limit or token.protected then return false end
+    local amount = #token.key <= 3 and token.key:match("^%d+$")
+    if not amount and words then
+        local cardinal = ns.Engine.Phrases.cardinal(self.document, token.key, "genitive")
+        if cardinal then amount = tostring(cardinal) end
     end
-    return false
+    if not amount or tonumber(amount) == 0 then return false end
+    self.slots[slot or "count"] = {raw=amount}
+    self.i = self.i + 1
+    return true
 end
 local function compactTerm(alias, category)
     local index = ns.Data.linguistics and ns.Data.linguistics.analysis["en-uk"]
@@ -60,10 +70,10 @@ local function compactCountedTerm(token, category)
     if not amount or tonumber(amount) == 0 then return end
     return compactTerm(alias, category), amount
 end
-function State:role(name, countKey)
+function State:role(name, countKey, words)
     local start, count = self.i, self.slots[countKey]
     local english = self.document.direction == "en-uk"
-    if not count then self:count(countKey) end
+    if not count then self:count(countKey, words) end
     if english and not self.slots[countKey] then self:any("a", "an") end
     if self:noun(name, "roles") then return true end
     local token = self.i <= self.limit and self.tokens[self.i]
@@ -189,13 +199,15 @@ end
 
 local function recruit(p, direction)
     local uk = direction == "uk-en"
+    local countWords = uk
     local leadingPlace, countDirect, additional
     local groupRequest = not uk and p:word("lfm")
     if uk then
-        if not p:any("шукаємо", "потрібно", "потрібен", "потрібні") then return end
+        if not p:any("шукаємо", "потрібно", "потрібен", "потрібна", "потрібне", "потрібні") then return end
         additional = p:word("ще")
         groupRequest = p:word("гравців")
     elseif groupRequest or p:word("lf") or compactRecruitRole(p) then
+        countWords = true
         p:word("for")
     elseif not p:any("looking for", "lookng for", "need", "we're looking for", "we are looking for", "we need") then
         local start = p.i
@@ -205,10 +217,10 @@ local function recruit(p, direction)
             if not p:noun("place", "places") then return end
             p:word(",")
             if not (p:any("lfm", "lf", "looking for", "lookng for", "need") or compactRecruitRole(p)) then return end
-            leadingPlace = true
+            leadingPlace, countWords = true, true
         end
     end
-    local count = countDirect or not p.slots.role and p:count()
+    local count = countDirect or not p.slots.role and p:count(nil, countWords)
     additional = additional or countDirect or count and not uk and p:word("more")
     local compact = count and (p:word("m") or (uk and p:any("гравця :", "гравців :", "гравця", "гравців")))
     if compact then p.slots.total, p.slots.count = p.slots.count, nil end
@@ -218,14 +230,14 @@ local function recruit(p, direction)
     for _ = 1, 4 do
         local separator = p:any(",", ".")
         if not role and place and separator then p:any("need", "потрібно", "потрібні") end
-        if not role and (p.slots.role or p:role("role", "count")) then
+        if not role and (p.slots.role or p:role("role", "count", countWords)) then
             role = true
             for n = 2, 4 do
                 local start = p.i
                 local join = p:any("and", "&", "+", "та", "і", "й") and "and" or p:any("or", "/", "або") and "or"
                 if not join then p:word(",") end
                 local suffix = tostring(n)
-                if p:role("role" .. suffix, "count" .. suffix) and (join or p.slots["count" .. suffix]) then
+                if p:role("role" .. suffix, "count" .. suffix, countWords) and (join or p.slots["count" .. suffix]) then
                     roleJoins[#roleJoins + 1] = join or "and"
                 else
                     p.i = start
@@ -241,7 +253,7 @@ local function recruit(p, direction)
             -- The level belongs to the recruitment regardless of its position.
         elseif not place then
             local start = p.i
-            local introduced = p:any("for", "для", "у", "в", "місце :")
+            local introduced = p:any("for", "для", "до", "у", "в", "місце :")
             if p:noun("place", "places") then place = true
             else
                 local token = p.tokens[p.i]
@@ -323,6 +335,7 @@ end
 local function search(p, direction)
     if not ns.Linguistics or p.document.truncated or p.document.ambiguities then return end
     if direction == "en-uk" then
+        if p.tokens[p.limit].key == "?" and p:phrase("looking for") then return nil end
         if not p:any("lf", "looking for", "i'm looking for") then return nil end
     elseif not p:any("шукаю", "підшукую") then return nil end
     local object, after = ns.Engine.Phrases.coordinated(p.document, p.i, p.limit, "accusative")
@@ -606,6 +619,40 @@ local function enhancement(p, direction)
         free=free, tips=tips, joins=joins, offer=offer, header=header, materials=materials, limited=limited})
 end
 
+local function enchantmentSlot(p, case)
+    local start = p.i
+    if p:noun("equipment", "equipment", case) then
+        local equipment = p.slots.equipment.term
+        if equipment.features and equipment.features.enchantmentSlot then return true end
+    end
+    p.i, p.slots.equipment = start, nil
+end
+
+local function enchantmentTrade(p, direction)
+    if not ns.Linguistics then return nil end
+    local english = direction == "en-uk"
+    local buy = p:word(english and "wtb" or "куплю")
+    if not (buy or p:word(english and "wts" or "продам")) then return nil end
+    p:word(":")
+    if english then
+        p:any("a", "an", "the")
+        enchantmentSlot(p)
+        p:noun("stat", "stats")
+    end
+    local phrases = ns.Engine.Phrases
+    local noun, after = phrases.noun(p.document, p.i, p.limit, "accusative", nil, nil, true, nil,
+        function(head) return phrases.hasTrait(head, "enchantment") end)
+    if not noun then return nil end
+    p.i = after
+    if not english and p:word("на") and not p:noun("stat", "stats", "accusative") then return nil end
+    if not p.slots.equipment then
+        local marker = english and p:any("for", "on") or not english and p:word("для")
+        if marker and not enchantmentSlot(p, not english and "genitive" or nil) then return nil end
+    end
+    if not (p.slots.stat or p.slots.equipment) then return nil end
+    return p:finish("enchantmentTrade", {buy=buy, enchantment=noun})
+end
+
 local function service(p, direction)
     local english = direction == "en-uk"
     local demand, offer
@@ -768,7 +815,7 @@ local function statement(p, direction)
     return p:finish("statement", {negative=negative, question=question, modal=modal, conjunction=conjunction})
 end
 
-local parsers = {recruit, enhancement, availability, service, enchantmentList, gratuityNote, reward, questNeed,
+local parsers = {recruit, enhancement, availability, enchantmentTrade, service, enchantmentList, gratuityNote, reward, questNeed,
     statement, price, groupSearch, search}
 function S.parse(document, limit, first)
     for _, parse in ipairs(parsers) do

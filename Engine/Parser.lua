@@ -28,6 +28,25 @@ local function tokenText(text, tokens, first, last)
     return text:sub(tokens[first].first, tokens[last].last)
 end
 
+local function inferredStarts(text, tokens, direction)
+    local starts
+    local normalize = ns.Engine.Normalize
+    for i = 3, #tokens - 1 do
+        local token, previous = tokens[i], tokens[i - 1]
+        local intrinsicCapital = direction == "en-uk" and (token.key == "i" or token.key:sub(1, 2) == "i'")
+        if not (token.protected or intrinsicCapital) and token.first > previous.last + 1
+            and (previous.protected or not previous.key:match("^%p$")) and not sentenceJoins[previous.key] then
+            local capitalized = normalize.upperStart(token.key)
+            local first = capitalized:match("^[A-Z]") or capitalized:sub(1, 2)
+            if capitalized ~= token.key and text:sub(token.first, token.first + #first - 1) == first then
+                starts = starts or {}
+                starts[i] = true
+            end
+        end
+    end
+    return starts
+end
+
 local function trailingPunctuation(text, tokens, start, finish)
     local last = finish
     while last > start and sentenceJoins[tokens[last].key] do last = last - 1 end
@@ -93,6 +112,7 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
     local composition = ns.Data.composition and ns.Data.composition[direction]
     if not composition or #tokens == 0 or #tokens > 96 then return nil end
     local prefixes, joins = composition.prefixes, composition.joins
+    local inferred = grammarFallback and inferredStarts(text, tokens, direction)
     local function prefixAt(start, limit)
         local ending, prefix = start, prefixes[tokens[start].key]
         local second = tokens[start + 1] and tokens[start + 1].key == "," and start + 2 or start + 1
@@ -112,7 +132,7 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
         for i = 2, #tokens - 1 do
             if joinAt(tokens, i, joins) or tokens[i].key == "," then found = true; break end
         end
-        if not found then return nil end
+        if not found and not inferred then return nil end
     end
     local attempts, memo = 24, {}
     local function translateClause(start, finish)
@@ -214,11 +234,16 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
     end
     local paragraph, sentences, sentenceFragments = composeSentences()
     if paragraph then return paragraph, sentences end
+    local function independentStart(match, start)
+        local unit = match and match.rule.sentenceUnit
+        -- A title such as “No Rules” is also a nominal exclusion in isolation.
+        return unit and (unit ~= "exclusion" or not inferred[start + 1])
+    end
     local chart = {}
-    local function parseFrom(start, depth, noCommand, needQuestion)
+    local function parseFrom(start, depth, noCommand, needQuestion, allowInference)
         local states = chart[start]
         if not states then states = {}; chart[start] = states end
-        local state = depth * 4 + (noCommand and 2 or 0) + (needQuestion and 1 or 0)
+        local state = depth * 8 + (allowInference and 4 or 0) + (noCommand and 2 or 0) + (needQuestion and 1 or 0)
         if states[state] ~= nil then return states[state] or nil end
         local match = translateClause(start, #tokens)
         if match and (not noCommand or not match.rule.imperative) and (not needQuestion or match.text:sub(-1) == "?") then
@@ -229,9 +254,11 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
         if depth == 1 then states[state] = false; return nil end
         for i = start + 1, #tokens - 1 do
             local join, sentence = joinAt(tokens, i, joins)
+            local inferredJoin = not join and allowInference and inferred[i + 1]
+            if inferredJoin then join, sentence = ". ", true end
             if join then
-                local finish = endBefore(i)
-                if sentence then
+                local finish = inferredJoin and i or endBefore(i)
+                if sentence and not inferredJoin then
                     local punctuation = i
                     while punctuation > start + 1 and sentenceJoins[tokens[punctuation - 1].key]
                         and tokens[punctuation].first == tokens[punctuation - 1].last + 1 do punctuation = punctuation - 1 end
@@ -245,11 +272,13 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
                 local sourceHasEnd = sourceEnd == "?" or sourceEnd == "!"
                 local alternativeQuestion = left and not sourceHasEnd and alternatives[tokens[i].key]
                     and left:sub(-1) == "?"
-                if left and (not noCommand or not matched.rule.imperative)
+                if left and (not inferredJoin or matched.rule.sentenceUnit) and (not noCommand or not matched.rule.imperative)
                     and (sentence or alternativeQuestion or (not sourceHasEnd and not left:match("[?!]$"))) then
                     local right = parseFrom(i + 1, depth - 1,
-                        sharedPredicateJoins[tokens[i].key] and not matched.rule.imperative, needQuestion or alternativeQuestion)
-                    if right then
+                        not inferredJoin and sharedPredicateJoins[tokens[i].key] and not matched.rule.imperative,
+                        needQuestion or alternativeQuestion, allowInference)
+                    if right and (not inferredJoin or independentStart(right.match, i + 1)) then
+                        if inferredJoin and left:match("[!?]$") then join = left:sub(-1) .. " " end
                         if direction == "en-uk" and tokens[i].key == "and" and matched.rule.imperative
                             and right.match.rule.initialWhen then join = ", а " end
                         local result = {match=matched, join=join, sentence=sentence, alternative=alternativeQuestion, next=right}
@@ -261,7 +290,7 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
         end
         states[state] = false
     end
-    local path = parseFrom(first, 8)
+    local path = parseFrom(first, 8) or inferred and parseFrom(first, 8, nil, nil, true)
     if path then
         local parts, matches, sentenceStart = {}, {}, true
         while path do
@@ -282,11 +311,33 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
     -- A failed composition can still contribute complete clauses to a preview.
     -- Keep their original boundaries so the caller can preserve every gap.
     local starts, ends, sentenceEnds, linked = {first}, {}, {}, {}
+    local inferredEnds, inferredBeginnings, fragments = {}, {}, {}
     local sentenceStart = 1
     for i = first + 1, #tokens - 1 do
         local join, sentence = joinAt(tokens, i, joins)
+        local inferredJoin
+        if not join and inferred and inferred[i + 1] then
+            local complete = translateClause(starts[sentenceStart], i)
+            if complete and complete.rule.sentenceUnit then
+                for last = i + 2, math.min(i + 4, #tokens) do
+                    local following = translateClause(i + 1, last)
+                    local nextToken = tokens[last + 1]
+                    local repeatExclusion = nextToken and ns.Engine.Phrases.exclusionMarker(direction, nextToken.key)
+                    if following and following.rule.sentenceUnit == "exclusion" and independentStart(following, i + 1)
+                        and (not nextToken or sentenceJoins[nextToken.key] or repeatExclusion) then
+                        inferredJoin, join, sentence = true, ". ", true
+                        inferredEnds[i], inferredBeginnings[i + 1] = true, true
+                        if repeatExclusion then
+                            fragments[i + 1] = {text=withoutSentenceEnd(following.text) .. ",", last=last,
+                                rule=following.rule, slots=following.slots}
+                        end
+                        break
+                    end
+                end
+            end
+        end
         if join then
-            ends[#ends + 1] = endBefore(i)
+            ends[#ends + 1] = inferredJoin and i or endBefore(i)
             if sharedPredicateJoins[tokens[i].key] then linked[i + 1] = starts[#starts] end
             starts[#starts + 1] = i + 1
             if sentence then
@@ -297,7 +348,6 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
     end
     if #starts < 2 then return nil, nil, sentenceFragments end
     ends[#ends + 1] = #tokens
-    local fragments = {}
     local segment, accepted = 1, 0
     while segment <= #starts and accepted < 4 and attempts > 0 do
         local start = starts[segment]
@@ -317,8 +367,9 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
                 end
                 local sourceEnd = tokens[last + 1]
                 local hasEnd = sourceEnd and sentenceJoins[sourceEnd.key]
-                local replacement = match.text:gsub(hasEnd and "[.!?]+$" or "[.!]+$", "")
-                if start ~= 1 then
+                local replacement = inferredEnds[last] and match.text:gsub("([^.!?])$", "%1.")
+                    or match.text:gsub(hasEnd and "[.!?]+$" or "[.!]+$", "")
+                if start ~= 1 and not inferredBeginnings[start] then
                     local before = tokens[start - 1]
                     if not sentenceJoins[before.key] then replacement = lowerStart(replacement)
                     elseif before.last + 1 == tokens[start].first then replacement = " " .. replacement end

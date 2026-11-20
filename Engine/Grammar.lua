@@ -7,7 +7,7 @@ local moneyForms = {
 }
 local currency = {}
 for name, unit in pairs({gold="g", silver="s", copper="c"}) do
-    currency[name] = unit
+    currency[name], currency[name .. "s"] = unit, unit
     currency[name .. " coin"], currency[name .. " coins"] = unit, unit
     for _, form in ipairs(moneyForms[unit]) do currency[form] = unit end
 end

@@ -255,6 +255,7 @@ ns.Data = {
                 }
             },
             ["alterac"] = {
+                ["_id"] = "place.alterac",
                 ["valley"] = {
                     ["_id"] = "place.alterac_valley"
                 }
@@ -499,8 +500,18 @@ ns.Data = {
             ["bank"] = {
                 ["_id"] = "game.bank"
             },
+            ["bar"] = {
+                ["_byCategory"] = {
+                    ["goods"] = "goods.ingot"
+                }
+            },
             ["barrens"] = {
                 ["_id"] = "place.the_barrens"
+            },
+            ["bars"] = {
+                ["_byCategory"] = {
+                    ["goods"] = "goods.ingot"
+                }
             },
             ["battle"] = {
                 ["res"] = {
@@ -624,6 +635,9 @@ ns.Data = {
                         ["weak"] = false
                     }
                 },
+                ["mountain"] = {
+                    ["_id"] = "place.blackrock_mountain"
+                },
                 ["spire"] = {
                     ["_id"] = "place.blackrock_spire",
                     ["_literal"] = {
@@ -655,6 +669,12 @@ ns.Data = {
             },
             ["boe"] = {
                 ["_id"] = "slang.trade.boe"
+            },
+            ["bolvar"] = {
+                ["_id"] = "character.bolvar_short",
+                ["fordragon"] = {
+                    ["_id"] = "character.highlord_bolvar_fordragon"
+                }
             },
             ["boots"] = {
                 ["_id"] = "equipment.boots"
@@ -951,6 +971,11 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "місто",
                     ["weak"] = false
+                }
+            },
+            ["cloak"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.cloak"
                 }
             },
             ["cod"] = {
@@ -1993,7 +2018,7 @@ ns.Data = {
                 ["_id"] = "role.healer",
                 ["_plural"] = {
                     ["id"] = "role.healer",
-                    ["sourceRefs"] = { "ua-forever:role.healer" },
+                    ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" },
                     ["text"] = "цілителі"
                 }
             },
@@ -2099,6 +2124,13 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "привіт",
                     ["weak"] = false
+                }
+            },
+            ["highlord"] = {
+                ["bolvar"] = {
+                    ["fordragon"] = {
+                        ["_id"] = "character.highlord_bolvar_fordragon"
+                    }
                 }
             },
             ["him"] = {
@@ -2277,6 +2309,16 @@ ns.Data = {
             ["inc"] = {
                 ["_id"] = "slang.combat.inc"
             },
+            ["ingot"] = {
+                ["_id"] = "goods.ingot"
+            },
+            ["ingots"] = {
+                ["_plural"] = {
+                    ["id"] = "goods.ingot",
+                    ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" },
+                    ["text"] = "злитки"
+                }
+            },
             ["inn"] = {
                 ["_literal"] = {
                     ["id"] = "literal.inn",
@@ -2291,6 +2333,16 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "усередині",
                     ["weak"] = false
+                }
+            },
+            ["int"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.intellect"
+                }
+            },
+            ["intellect"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.intellect"
                 }
             },
             ["interrupt"] = {
@@ -3396,6 +3448,22 @@ ns.Data = {
                     ["_id"] = "slang.groups.pug"
                 }
             },
+            ["pipe"] = {
+                ["-"] = {
+                    ["weed"] = {
+                        ["_id"] = "goods.pipe_tobacco"
+                    }
+                },
+                ["tobacco"] = {
+                    ["_id"] = "goods.pipe_tobacco"
+                },
+                ["weed"] = {
+                    ["_id"] = "goods.pipe_tobacco"
+                }
+            },
+            ["pipeweed"] = {
+                ["_id"] = "goods.pipe_tobacco"
+            },
             ["player"] = {
                 ["_id"] = "role.player",
                 ["_literal"] = {
@@ -4374,6 +4442,11 @@ ns.Data = {
                         ["_id"] = "place.drowned_city"
                     }
                 },
+                ["frostwolf"] = {
+                    ["artichoke"] = {
+                        ["_id"] = "goods.frostwolf_artichoke"
+                    }
+                },
                 ["hall"] = {
                     ["of"] = {
                         ["thanes"] = {
@@ -4415,6 +4488,15 @@ ns.Data = {
                         ["sourceRefs"] = { "ua-forever:place.the_stockade" },
                         ["text"] = "В'язниця",
                         ["weak"] = false
+                    }
+                },
+                ["story"] = {
+                    ["of"] = {
+                        ["morgan"] = {
+                            ["ladimore"] = {
+                                ["_id"] = "goods.story_of_morgan_ladimore"
+                            }
+                        }
                     }
                 },
                 ["temple"] = {
@@ -5143,6 +5225,17 @@ ns.Data = {
             }
         },
         ["uk-en"] = {
+            ["\""] = {
+                ["історія"] = {
+                    ["моргана"] = {
+                        ["ладімора"] = {
+                            ["\""] = {
+                                ["_id"] = "goods.story_of_morgan_ladimore"
+                            }
+                        }
+                    }
+                }
+            },
             ["1"] = {
                 ["резерв"] = {
                     ["для"] = {
@@ -5317,6 +5410,15 @@ ns.Data = {
             ["альта"] = {
                 ["_id"] = "game.alt"
             },
+            ["альтерак"] = {
+                ["_id"] = "place.alterac"
+            },
+            ["альтерака"] = {
+                ["_id"] = "place.alterac"
+            },
+            ["альтераку"] = {
+                ["_id"] = "place.alterac"
+            },
             ["альтерацька"] = {
                 ["долина"] = {
                     ["_id"] = "place.alterac_valley"
@@ -5332,6 +5434,9 @@ ns.Data = {
                     ["_id"] = "place.alterac_valley"
                 }
             },
+            ["альтераці"] = {
+                ["_id"] = "place.alterac"
+            },
             ["альянс"] = {
                 ["_id"] = "game.alliance"
             },
@@ -5346,6 +5451,13 @@ ns.Data = {
             },
             ["аое"] = {
                 ["_id"] = "slang.combat.aoe"
+            },
+            ["артишок"] = {
+                ["морозних"] = {
+                    ["вовків"] = {
+                        ["_id"] = "goods.frostwolf_artichoke"
+                    }
+                }
             },
             ["атакувати"] = {
                 ["_literal"] = {
@@ -5541,6 +5653,27 @@ ns.Data = {
                 ["рес"] = {
                     ["_id"] = "slang.combat.brez"
                 }
+            },
+            ["болвар"] = {
+                ["_id"] = "character.bolvar_short",
+                ["фордраґон"] = {
+                    ["_id"] = "character.highlord_bolvar_fordragon"
+                }
+            },
+            ["болвара"] = {
+                ["_id"] = "character.bolvar_short"
+            },
+            ["болваре"] = {
+                ["_id"] = "character.bolvar_short"
+            },
+            ["болварові"] = {
+                ["_id"] = "character.bolvar_short"
+            },
+            ["болваром"] = {
+                ["_id"] = "character.bolvar_short"
+            },
+            ["болварі"] = {
+                ["_id"] = "character.bolvar_short"
             },
             ["боп"] = {
                 ["-"] = {
@@ -5857,6 +5990,15 @@ ns.Data = {
                     ["чорноскельного"] = {
                         ["шпиля"] = {
                             ["_id"] = "place.upper_blackrock_spire"
+                        }
+                    }
+                }
+            },
+            ["верховний"] = {
+                ["лорд"] = {
+                    ["болвар"] = {
+                        ["фордраґон"] = {
+                            ["_id"] = "character.highlord_bolvar_fordragon"
                         }
                     }
                 }
@@ -8131,11 +8273,18 @@ ns.Data = {
                 }
             },
             ["злитка"] = {
+                ["_id"] = "goods.ingot",
                 ["мітрилу"] = {
                     ["_id"] = "goods.mithril_bar"
                 }
             },
             ["злитки"] = {
+                ["_id"] = "goods.ingot",
+                ["_plural"] = {
+                    ["id"] = "goods.ingot",
+                    ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" },
+                    ["text"] = "ingots"
+                },
                 ["мітрилу"] = {
                     ["_id"] = "goods.mithril_bar",
                     ["_plural"] = {
@@ -8146,6 +8295,12 @@ ns.Data = {
                 }
             },
             ["злитків"] = {
+                ["_id"] = "goods.ingot",
+                ["_plural"] = {
+                    ["id"] = "goods.ingot",
+                    ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" },
+                    ["text"] = "ingots"
+                },
                 ["мітрилу"] = {
                     ["_id"] = "goods.mithril_bar",
                     ["_plural"] = {
@@ -8156,6 +8311,7 @@ ns.Data = {
                 }
             },
             ["злиток"] = {
+                ["_id"] = "goods.ingot",
                 ["мітрилу"] = {
                     ["_id"] = "goods.mithril_bar"
                 }
@@ -9443,6 +9599,11 @@ ns.Data = {
                     ["equipment"] = "equipment.chest"
                 }
             },
+            ["нагрудника"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.chest"
+                }
+            },
             ["нагруднику"] = {
                 ["_byCategory"] = {
                     ["equipment"] = "equipment.chest"
@@ -9538,6 +9699,11 @@ ns.Data = {
                 }
             },
             ["наручі"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.bracers"
+                }
+            },
+            ["наручів"] = {
                 ["_byCategory"] = {
                     ["equipment"] = "equipment.bracers"
                 }
@@ -10797,6 +10963,21 @@ ns.Data = {
                     }
                 }
             },
+            ["плащ"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.cloak"
+                }
+            },
+            ["плаща"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.cloak"
+                }
+            },
+            ["плащі"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.cloak"
+                }
+            },
             ["пліз"] = {
                 ["_literal"] = {
                     ["id"] = "literal.please",
@@ -12037,6 +12218,11 @@ ns.Data = {
                     ["_id"] = "activity.roleplay"
                 }
             },
+            ["рукавиць"] = {
+                ["_byCategory"] = {
+                    ["equipment"] = "equipment.gloves"
+                }
+            },
             ["рукавицях"] = {
                 ["_byCategory"] = {
                     ["equipment"] = "equipment.gloves"
@@ -12095,6 +12281,11 @@ ns.Data = {
                 }
             },
             ["сили"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.strength"
+                }
+            },
+            ["силу"] = {
                 ["_byCategory"] = {
                     ["stats"] = "stat.strength"
                 }
@@ -12798,6 +12989,34 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["тютюн"] = {
+                ["для"] = {
+                    ["люльки"] = {
+                        ["_id"] = "goods.pipe_tobacco"
+                    }
+                }
+            },
+            ["тютюном"] = {
+                ["для"] = {
+                    ["люльки"] = {
+                        ["_id"] = "goods.pipe_tobacco"
+                    }
+                }
+            },
+            ["тютюну"] = {
+                ["для"] = {
+                    ["люльки"] = {
+                        ["_id"] = "goods.pipe_tobacco"
+                    }
+                }
+            },
+            ["тютюні"] = {
+                ["для"] = {
+                    ["люльки"] = {
+                        ["_id"] = "goods.pipe_tobacco"
+                    }
+                }
+            },
             ["тікай"] = {
                 ["_literal"] = {
                     ["id"] = "literal.run",
@@ -13077,6 +13296,12 @@ ns.Data = {
             ["цілитель"] = {
                 ["_id"] = "role.healer"
             },
+            ["цілителька"] = {
+                ["_id"] = "role.healer"
+            },
+            ["цілительку"] = {
+                ["_id"] = "role.healer"
+            },
             ["цілителя"] = {
                 ["_id"] = "role.healer"
             },
@@ -13084,7 +13309,7 @@ ns.Data = {
                 ["_id"] = "role.healer",
                 ["_plural"] = {
                     ["id"] = "role.healer",
-                    ["sourceRefs"] = { "ua-forever:role.healer" },
+                    ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" },
                     ["text"] = "Healers"
                 }
             },
@@ -13092,7 +13317,7 @@ ns.Data = {
                 ["_id"] = "role.healer",
                 ["_plural"] = {
                     ["id"] = "role.healer",
-                    ["sourceRefs"] = { "ua-forever:role.healer" },
+                    ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" },
                     ["text"] = "Healers"
                 }
             },
@@ -13100,7 +13325,7 @@ ns.Data = {
                 ["_id"] = "role.healer",
                 ["_plural"] = {
                     ["id"] = "role.healer",
-                    ["sourceRefs"] = { "ua-forever:role.healer" },
+                    ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" },
                     ["text"] = "Healers"
                 }
             },
@@ -13179,6 +13404,9 @@ ns.Data = {
             ["чоботях"] = {
                 ["_id"] = "equipment.boots"
             },
+            ["чобіт"] = {
+                ["_id"] = "equipment.boots"
+            },
             ["чому"] = {
                 ["_literal"] = {
                     ["id"] = "literal.why",
@@ -13226,6 +13454,11 @@ ns.Data = {
                     ["text"] = "warlocks"
                 }
             },
+            ["чорноскельна"] = {
+                ["гора"] = {
+                    ["_id"] = "place.blackrock_mountain"
+                }
+            },
             ["чорноскельний"] = {
                 ["шпиль"] = {
                     ["_id"] = "place.blackrock_spire",
@@ -13250,6 +13483,16 @@ ns.Data = {
                     ["_id"] = "place.blackrock_depths"
                 }
             },
+            ["чорноскельної"] = {
+                ["гори"] = {
+                    ["_id"] = "place.blackrock_mountain"
+                }
+            },
+            ["чорноскельну"] = {
+                ["гору"] = {
+                    ["_id"] = "place.blackrock_mountain"
+                }
+            },
             ["чорноскельні"] = {
                 ["надра"] = {
                     ["_id"] = "place.blackrock_depths",
@@ -13259,6 +13502,11 @@ ns.Data = {
                         ["text"] = "Blackrock Depths",
                         ["weak"] = false
                     }
+                }
+            },
+            ["чорноскельній"] = {
+                ["горі"] = {
+                    ["_id"] = "place.blackrock_mountain"
                 }
             },
             ["шаман"] = {
@@ -13318,6 +13566,11 @@ ns.Data = {
                 }
             },
             ["шкоди"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.damage"
+                }
+            },
+            ["шкоду"] = {
                 ["_byCategory"] = {
                     ["stats"] = "stat.damage"
                 }
@@ -13704,6 +13957,23 @@ ns.Data = {
             },
             ["інкам"] = {
                 ["_id"] = "slang.combat.inc"
+            },
+            ["інтелект"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.intellect"
+                }
+            },
+            ["інтелекту"] = {
+                ["_byCategory"] = {
+                    ["stats"] = "stat.intellect"
+                }
+            },
+            ["історія"] = {
+                ["моргана"] = {
+                    ["ладімора"] = {
+                        ["_id"] = "goods.story_of_morgan_ladimore"
+                    }
+                }
             },
             ["їжа"] = {
                 ["_id"] = "game.food",
@@ -16299,6 +16569,20 @@ ns.Data = {
                     }
                 },
                 ["alterac"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["locativePreposition"] = "в"
+                            },
+                            ["id"] = "place.alterac",
+                            ["lemma"] = "Alterac",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.alterac",
+                            ["sourceRefs"] = { "ua-forever:place.alterac" }
+                        }
+                    },
                     ["valley"] = {
                         ["_analyses"] = {
                             {
@@ -16759,6 +17043,24 @@ ns.Data = {
                         }
                     }
                 },
+                ["bar"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["contextAliasSense"] = "physicalObject",
+                                ["gender"] = "masculine",
+                                ["proseCommonNoun"] = true,
+                                ["semanticClass"] = "craftingMaterials"
+                            },
+                            ["id"] = "goods.ingot",
+                            ["lemma"] = "Ingot",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.ingot",
+                            ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["barrens"] = {
                     ["_analyses"] = {
                         {
@@ -16770,6 +17072,25 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.the_barrens",
                             ["sourceRefs"] = { "ua-forever:place.the_barrens" }
+                        }
+                    }
+                },
+                ["bars"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["contextAliasSense"] = "physicalObject",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["proseCommonNoun"] = true,
+                                ["semanticClass"] = "craftingMaterials"
+                            },
+                            ["id"] = "goods.ingot",
+                            ["lemma"] = "Ingot",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.ingot",
+                            ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -17072,6 +17393,21 @@ ns.Data = {
                             }
                         }
                     },
+                    ["mountain"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "place.blackrock_mountain",
+                                ["lemma"] = "Blackrock Mountain",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.blackrock_mountain",
+                                ["sourceRefs"] = { "ua-forever:place.blackrock_mountain" }
+                            }
+                        }
+                    },
                     ["spire"] = {
                         ["_analyses"] = {
                             {
@@ -17134,6 +17470,40 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.trade.boe",
                             ["sourceRefs"] = { "wow-community:forum", "ua-forever:ui.Binds when equipped" }
+                        }
+                    }
+                },
+                ["bolvar"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.bolvar_short",
+                            ["lemma"] = "Bolvar",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.bolvar_short",
+                            ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
+                        }
+                    },
+                    ["fordragon"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "character.highlord_bolvar_fordragon",
+                                ["lemma"] = "Highlord Bolvar Fordragon",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.highlord_bolvar_fordragon",
+                                ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
+                            }
                         }
                     }
                 },
@@ -17553,6 +17923,23 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "equipment.chest",
                             ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["cloak"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["enchantmentSlot"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.cloak",
+                            ["lemma"] = "Cloak",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.cloak",
+                            ["sourceRefs"] = { "ua-forever:equipment.cloak" }
                         }
                     }
                 },
@@ -19429,7 +19816,7 @@ ns.Data = {
                             ["lemma"] = "Healer",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -19447,7 +19834,7 @@ ns.Data = {
                             ["lemma"] = "Healer",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -19465,7 +19852,7 @@ ns.Data = {
                             ["lemma"] = "Healer",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -19523,7 +19910,7 @@ ns.Data = {
                             ["lemma"] = "Healer",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -19640,6 +20027,27 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "profession.herbalism",
                             ["sourceRefs"] = { "ua-forever:profession.herbalism" }
+                        }
+                    }
+                },
+                ["highlord"] = {
+                    ["bolvar"] = {
+                        ["fordragon"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "character.highlord_bolvar_fordragon",
+                                    ["lemma"] = "Highlord Bolvar Fordragon",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "character.highlord_bolvar_fordragon",
+                                    ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
+                                }
+                            }
                         }
                     }
                 },
@@ -19845,6 +20253,67 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.combat.inc",
                             ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["ingot"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["contextAliasSense"] = "physicalObject",
+                                ["gender"] = "masculine",
+                                ["proseCommonNoun"] = true,
+                                ["semanticClass"] = "craftingMaterials"
+                            },
+                            ["id"] = "goods.ingot",
+                            ["lemma"] = "Ingot",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.ingot",
+                            ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["ingots"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["contextAliasSense"] = "physicalObject",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["proseCommonNoun"] = true,
+                                ["semanticClass"] = "craftingMaterials"
+                            },
+                            ["id"] = "goods.ingot",
+                            ["lemma"] = "Ingot",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.ingot",
+                            ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["int"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.intellect",
+                            ["lemma"] = "Intellect",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.intellect",
+                            ["sourceRefs"] = { "ua-forever:stat.intellect" }
+                        }
+                    }
+                },
+                ["intellect"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.intellect",
+                            ["lemma"] = "Intellect",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.intellect",
+                            ["sourceRefs"] = { "ua-forever:stat.intellect" }
                         }
                     }
                 },
@@ -21481,6 +21950,82 @@ ns.Data = {
                                 ["sense"] = "slang.groups.pug",
                                 ["sourceRefs"] = { "wow-community:forum" }
                             }
+                        }
+                    }
+                },
+                ["pipe"] = {
+                    ["-"] = {
+                        ["weed"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "masculine",
+                                        ["mass"] = true,
+                                        ["proseCommonNoun"] = true
+                                    },
+                                    ["id"] = "goods.pipe_tobacco",
+                                    ["lemma"] = "Pipe Tobacco",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.pipe_tobacco",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "kaikki:uk:2026-10-01" }
+                                }
+                            }
+                        }
+                    },
+                    ["tobacco"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["mass"] = true,
+                                    ["proseCommonNoun"] = true
+                                },
+                                ["id"] = "goods.pipe_tobacco",
+                                ["lemma"] = "Pipe Tobacco",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.pipe_tobacco",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "kaikki:uk:2026-10-01" }
+                            }
+                        }
+                    },
+                    ["weed"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["mass"] = true,
+                                    ["proseCommonNoun"] = true
+                                },
+                                ["id"] = "goods.pipe_tobacco",
+                                ["lemma"] = "Pipe Tobacco",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.pipe_tobacco",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "kaikki:uk:2026-10-01" }
+                            }
+                        }
+                    }
+                },
+                ["pipeweed"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["activityTopic"] = true,
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["mass"] = true,
+                                ["proseCommonNoun"] = true
+                            },
+                            ["id"] = "goods.pipe_tobacco",
+                            ["lemma"] = "Pipe Tobacco",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.pipe_tobacco",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -23555,6 +24100,24 @@ ns.Data = {
                             }
                         }
                     },
+                    ["frostwolf"] = {
+                        ["artichoke"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "masculine",
+                                        ["titleDescriptionClass"] = "publication"
+                                    },
+                                    ["id"] = "goods.frostwolf_artichoke",
+                                    ["lemma"] = "The Frostwolf Artichoke",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.frostwolf_artichoke",
+                                    ["sourceRefs"] = { "ua-forever:goods.frostwolf_artichoke" }
+                                }
+                            }
+                        }
+                    },
                     ["hall"] = {
                         ["of"] = {
                             ["thanes"] = {
@@ -23668,6 +24231,28 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.the_stockade",
                                 ["sourceRefs"] = { "ua-forever:place.the_stockade" }
+                            }
+                        }
+                    },
+                    ["story"] = {
+                        ["of"] = {
+                            ["morgan"] = {
+                                ["ladimore"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["animacy"] = "inanimate",
+                                                ["gender"] = "feminine",
+                                                ["titleDescriptionClass"] = "publication"
+                                            },
+                                            ["id"] = "goods.story_of_morgan_ladimore",
+                                            ["lemma"] = "The Story of Morgan Ladimore",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "goods.story_of_morgan_ladimore",
+                                            ["sourceRefs"] = { "ua-forever:goods.story_of_morgan_ladimore" }
+                                        }
+                                    }
+                                }
                             }
                         }
                     },
@@ -24592,6 +25177,30 @@ ns.Data = {
                 }
             },
             ["uk-en"] = {
+                ["\""] = {
+                    ["історія"] = {
+                        ["моргана"] = {
+                            ["ладімора"] = {
+                                ["\""] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["animacy"] = "inanimate",
+                                                ["gender"] = "feminine",
+                                                ["titleDescriptionClass"] = "publication"
+                                            },
+                                            ["id"] = "goods.story_of_morgan_ladimore",
+                                            ["lemma"] = "\"Історія Моргана Ладімора\"",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "goods.story_of_morgan_ladimore",
+                                            ["sourceRefs"] = { "ua-forever:goods.story_of_morgan_ladimore" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["1"] = {
                     ["резерв"] = {
                         ["для"] = {
@@ -25307,6 +25916,72 @@ ns.Data = {
                         }
                     }
                 },
+                ["альтерак"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["locativePreposition"] = "в"
+                            },
+                            ["id"] = "place.alterac",
+                            ["lemma"] = "Альтерак",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.alterac",
+                            ["sourceRefs"] = { "ua-forever:place.alterac" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["locativePreposition"] = "в",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.alterac",
+                            ["lemma"] = "Альтерак",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.alterac",
+                            ["sourceRefs"] = { "ua-forever:place.alterac" }
+                        }
+                    }
+                },
+                ["альтерака"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["locativePreposition"] = "в",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.alterac",
+                            ["lemma"] = "Альтерак",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.alterac",
+                            ["sourceRefs"] = { "ua-forever:place.alterac" }
+                        }
+                    }
+                },
+                ["альтераку"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["locativePreposition"] = "в",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.alterac",
+                            ["lemma"] = "Альтерак",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.alterac",
+                            ["sourceRefs"] = { "ua-forever:place.alterac" }
+                        }
+                    }
+                },
                 ["альтерацька"] = {
                     ["долина"] = {
                         ["_analyses"] = {
@@ -25359,6 +26034,22 @@ ns.Data = {
                         }
                     }
                 },
+                ["альтераці"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["locativePreposition"] = "в"
+                            },
+                            ["id"] = "place.alterac",
+                            ["lemma"] = "Альтерак",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.alterac",
+                            ["sourceRefs"] = { "ua-forever:place.alterac" }
+                        }
+                    }
+                },
                 ["альянс"] = {
                     ["_analyses"] = {
                         {
@@ -25392,6 +26083,40 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.combat.aoe",
                             ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["артишок"] = {
+                    ["морозних"] = {
+                        ["вовків"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "masculine",
+                                        ["titleDescriptionClass"] = "publication"
+                                    },
+                                    ["id"] = "goods.frostwolf_artichoke",
+                                    ["lemma"] = "Артишок Морозних Вовків",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.frostwolf_artichoke",
+                                    ["sourceRefs"] = { "ua-forever:goods.frostwolf_artichoke" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "accusative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["titleDescriptionClass"] = "publication"
+                                    },
+                                    ["id"] = "goods.frostwolf_artichoke",
+                                    ["lemma"] = "Артишок Морозних Вовків",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.frostwolf_artichoke",
+                                    ["sourceRefs"] = { "ua-forever:goods.frostwolf_artichoke" }
+                                }
+                            }
                         }
                     }
                 },
@@ -25857,6 +26582,158 @@ ns.Data = {
                         }
                     }
                 },
+                ["болвар"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.bolvar_short",
+                            ["lemma"] = "Болвар",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.bolvar_short",
+                            ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.bolvar_short",
+                            ["lemma"] = "Болвар",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.bolvar_short",
+                            ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
+                        }
+                    },
+                    ["фордраґон"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "character.highlord_bolvar_fordragon",
+                                ["lemma"] = "Верховний лорд Болвар Фордраґон",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.highlord_bolvar_fordragon",
+                                ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
+                            }
+                        }
+                    }
+                },
+                ["болвара"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.bolvar_short",
+                            ["lemma"] = "Болвар",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.bolvar_short",
+                            ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.bolvar_short",
+                            ["lemma"] = "Болвар",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.bolvar_short",
+                            ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
+                        }
+                    }
+                },
+                ["болваре"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.bolvar_short",
+                            ["lemma"] = "Болвар",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.bolvar_short",
+                            ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
+                        }
+                    }
+                },
+                ["болварові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.bolvar_short",
+                            ["lemma"] = "Болвар",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.bolvar_short",
+                            ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
+                        }
+                    }
+                },
+                ["болваром"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.bolvar_short",
+                            ["lemma"] = "Болвар",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.bolvar_short",
+                            ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
+                        }
+                    }
+                },
+                ["болварі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.bolvar_short",
+                            ["lemma"] = "Болвар",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.bolvar_short",
+                            ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
+                        }
+                    }
+                },
                 ["боп"] = {
                     ["-"] = {
                         ["предмет"] = {
@@ -26201,6 +27078,29 @@ ns.Data = {
                                             "ua-forever:place.upper_blackrock_spire",
                                             "wow-community:dungeons"
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["верховний"] = {
+                    ["лорд"] = {
+                        ["болвар"] = {
+                            ["фордраґон"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "animate",
+                                            ["gender"] = "masculine",
+                                            ["number"] = "singular",
+                                            ["proper"] = true
+                                        },
+                                        ["id"] = "character.highlord_bolvar_fordragon",
+                                        ["lemma"] = "Верховний лорд Болвар Фордраґон",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "character.highlord_bolvar_fordragon",
+                                        ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" }
                                     }
                                 }
                             }
@@ -26603,6 +27503,17 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {},
+                            ["id"] = "stat.stamina",
+                            ["lemma"] = "Витривалість",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.stamina",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
                             ["id"] = "stat.stamina",
                             ["lemma"] = "Витривалість",
                             ["pos"] = "noun",
@@ -31526,6 +32437,24 @@ ns.Data = {
                     }
                 },
                 ["злитка"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["contextAliasSense"] = "physicalObject",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proseCommonNoun"] = true,
+                                ["semanticClass"] = "craftingMaterials"
+                            },
+                            ["id"] = "goods.ingot",
+                            ["lemma"] = "Злиток",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.ingot",
+                            ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" }
+                        }
+                    },
                     ["мітрилу"] = {
                         ["_analyses"] = {
                             {
@@ -31545,6 +32474,40 @@ ns.Data = {
                     }
                 },
                 ["злитки"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "nominative",
+                                ["contextAliasSense"] = "physicalObject",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["proseCommonNoun"] = true,
+                                ["semanticClass"] = "craftingMaterials"
+                            },
+                            ["id"] = "goods.ingot",
+                            ["lemma"] = "Злиток",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.ingot",
+                            ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["contextAliasSense"] = "physicalObject",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["proseCommonNoun"] = true,
+                                ["semanticClass"] = "craftingMaterials"
+                            },
+                            ["id"] = "goods.ingot",
+                            ["lemma"] = "Злиток",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.ingot",
+                            ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" }
+                        }
+                    },
                     ["мітрилу"] = {
                         ["_analyses"] = {
                             {
@@ -31577,6 +32540,24 @@ ns.Data = {
                     }
                 },
                 ["злитків"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["contextAliasSense"] = "physicalObject",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["proseCommonNoun"] = true,
+                                ["semanticClass"] = "craftingMaterials"
+                            },
+                            ["id"] = "goods.ingot",
+                            ["lemma"] = "Злиток",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.ingot",
+                            ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" }
+                        }
+                    },
                     ["мітрилу"] = {
                         ["_analyses"] = {
                             {
@@ -31596,6 +32577,38 @@ ns.Data = {
                     }
                 },
                 ["злиток"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["contextAliasSense"] = "physicalObject",
+                                ["gender"] = "masculine",
+                                ["proseCommonNoun"] = true,
+                                ["semanticClass"] = "craftingMaterials"
+                            },
+                            ["id"] = "goods.ingot",
+                            ["lemma"] = "Злиток",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.ingot",
+                            ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["contextAliasSense"] = "physicalObject",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proseCommonNoun"] = true,
+                                ["semanticClass"] = "craftingMaterials"
+                            },
+                            ["id"] = "goods.ingot",
+                            ["lemma"] = "Злиток",
+                            ["pos"] = "noun",
+                            ["sense"] = "goods.ingot",
+                            ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" }
+                        }
+                    },
                     ["мітрилу"] = {
                         ["_analyses"] = {
                             {
@@ -33700,6 +34713,24 @@ ns.Data = {
                         }
                     }
                 },
+                ["нагрудника"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["enchantmentSlot"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.chest",
+                            ["lemma"] = "нагрудник",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.chest",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["нагруднику"] = {
                     ["_analyses"] = {
                         {
@@ -33866,6 +34897,22 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["case"] = "accusative",
+                                ["enchantmentSlot"] = true,
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "equipment.bracers",
+                            ["lemma"] = "наручі",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.bracers",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["наручів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
                                 ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
@@ -37134,6 +38181,73 @@ ns.Data = {
                         }
                     }
                 },
+                ["плащ"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["enchantmentSlot"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.cloak",
+                            ["lemma"] = "Плащ",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.cloak",
+                            ["sourceRefs"] = { "ua-forever:equipment.cloak" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["enchantmentSlot"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.cloak",
+                            ["lemma"] = "Плащ",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.cloak",
+                            ["sourceRefs"] = { "ua-forever:equipment.cloak" }
+                        }
+                    }
+                },
+                ["плаща"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["enchantmentSlot"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.cloak",
+                            ["lemma"] = "Плащ",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.cloak",
+                            ["sourceRefs"] = { "ua-forever:equipment.cloak" }
+                        }
+                    }
+                },
+                ["плащі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["enchantmentSlot"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.cloak",
+                            ["lemma"] = "Плащ",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.cloak",
+                            ["sourceRefs"] = { "ua-forever:equipment.cloak" }
+                        }
+                    }
+                },
                 ["побратими"] = {
                     ["-"] = {
                         ["ельфи"] = {
@@ -40210,6 +41324,22 @@ ns.Data = {
                         }
                     }
                 },
+                ["рукавиць"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["enchantmentSlot"] = true,
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "equipment.gloves",
+                            ["lemma"] = "рукавиці",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.gloves",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
                 ["рукавицях"] = {
                     ["_analyses"] = {
                         {
@@ -40403,6 +41533,21 @@ ns.Data = {
                             ["features"] = {
                                 ["case"] = "genitive",
                                 ["number"] = "plural"
+                            },
+                            ["id"] = "stat.strength",
+                            ["lemma"] = "Сила",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.strength",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["силу"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
                             },
                             ["id"] = "stat.strength",
                             ["lemma"] = "Сила",
@@ -40626,6 +41771,17 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {},
+                            ["id"] = "stat.agility",
+                            ["lemma"] = "Спритність",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.agility",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
                             ["id"] = "stat.agility",
                             ["lemma"] = "Спритність",
                             ["pos"] = "noun",
@@ -41772,6 +42928,132 @@ ns.Data = {
                         }
                     }
                 },
+                ["тютюн"] = {
+                    ["для"] = {
+                        ["люльки"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "masculine",
+                                        ["mass"] = true,
+                                        ["proseCommonNoun"] = true
+                                    },
+                                    ["id"] = "goods.pipe_tobacco",
+                                    ["lemma"] = "Тютюн для люльки",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.pipe_tobacco",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "kaikki:uk:2026-10-01" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "accusative",
+                                        ["gender"] = "masculine",
+                                        ["mass"] = true,
+                                        ["number"] = "singular",
+                                        ["proseCommonNoun"] = true
+                                    },
+                                    ["id"] = "goods.pipe_tobacco",
+                                    ["lemma"] = "Тютюн для люльки",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.pipe_tobacco",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "kaikki:uk:2026-10-01" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["тютюном"] = {
+                    ["для"] = {
+                        ["люльки"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "instrumental",
+                                        ["gender"] = "masculine",
+                                        ["mass"] = true,
+                                        ["number"] = "singular",
+                                        ["proseCommonNoun"] = true
+                                    },
+                                    ["id"] = "goods.pipe_tobacco",
+                                    ["lemma"] = "Тютюн для люльки",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.pipe_tobacco",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "kaikki:uk:2026-10-01" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["тютюну"] = {
+                    ["для"] = {
+                        ["люльки"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "genitive",
+                                        ["gender"] = "masculine",
+                                        ["mass"] = true,
+                                        ["number"] = "singular",
+                                        ["proseCommonNoun"] = true
+                                    },
+                                    ["id"] = "goods.pipe_tobacco",
+                                    ["lemma"] = "Тютюн для люльки",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.pipe_tobacco",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "kaikki:uk:2026-10-01" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "dative",
+                                        ["gender"] = "masculine",
+                                        ["mass"] = true,
+                                        ["number"] = "singular",
+                                        ["proseCommonNoun"] = true
+                                    },
+                                    ["id"] = "goods.pipe_tobacco",
+                                    ["lemma"] = "Тютюн для люльки",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.pipe_tobacco",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "kaikki:uk:2026-10-01" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["тютюні"] = {
+                    ["для"] = {
+                        ["люльки"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "locative",
+                                        ["gender"] = "masculine",
+                                        ["mass"] = true,
+                                        ["number"] = "singular",
+                                        ["proseCommonNoun"] = true
+                                    },
+                                    ["id"] = "goods.pipe_tobacco",
+                                    ["lemma"] = "Тютюн для люльки",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.pipe_tobacco",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "kaikki:uk:2026-10-01" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["тіснина"] = {
                     ["пісні"] = {
                         ["війни"] = {
@@ -42170,7 +43452,7 @@ ns.Data = {
                             ["lemma"] = "Цілитель",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -42188,7 +43470,7 @@ ns.Data = {
                             ["lemma"] = "Цілитель",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -42354,7 +43636,7 @@ ns.Data = {
                             ["lemma"] = "Цілитель",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -42372,7 +43654,45 @@ ns.Data = {
                             ["lemma"] = "Цілитель",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
+                        }
+                    }
+                },
+                ["цілителька"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["englishCommon"] = true,
+                                ["gender"] = "feminine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Цілитель",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
+                        }
+                    }
+                },
+                ["цілительку"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["englishCommon"] = true,
+                                ["gender"] = "feminine",
+                                ["number"] = "singular",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "role.healer",
+                            ["lemma"] = "Цілитель",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.healer",
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -42391,7 +43711,7 @@ ns.Data = {
                             ["lemma"] = "Цілитель",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         },
                         {
                             ["features"] = {
@@ -42406,7 +43726,7 @@ ns.Data = {
                             ["lemma"] = "Цілитель",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -42425,7 +43745,7 @@ ns.Data = {
                             ["lemma"] = "Цілитель",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -42444,7 +43764,7 @@ ns.Data = {
                             ["lemma"] = "Цілитель",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -42463,7 +43783,7 @@ ns.Data = {
                             ["lemma"] = "Цілитель",
                             ["pos"] = "noun",
                             ["sense"] = "role.healer",
-                            ["sourceRefs"] = { "ua-forever:role.healer" }
+                            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" }
                         }
                     }
                 },
@@ -42539,6 +43859,22 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["case"] = "locative",
+                                ["enchantmentSlot"] = true,
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "equipment.boots",
+                            ["lemma"] = "чоботи",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.boots",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["чобіт"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
                                 ["enchantmentSlot"] = true,
                                 ["number"] = "plural"
                             },
@@ -42662,6 +43998,23 @@ ns.Data = {
                         }
                     }
                 },
+                ["чорноскельна"] = {
+                    ["гора"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "place.blackrock_mountain",
+                                ["lemma"] = "Чорноскельна гора",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.blackrock_mountain",
+                                ["sourceRefs"] = { "ua-forever:place.blackrock_mountain" }
+                            }
+                        }
+                    }
+                },
                 ["чорноскельний"] = {
                     ["шпиль"] = {
                         ["_analyses"] = {
@@ -42725,6 +44078,44 @@ ns.Data = {
                         }
                     }
                 },
+                ["чорноскельної"] = {
+                    ["гори"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.blackrock_mountain",
+                                ["lemma"] = "Чорноскельна гора",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.blackrock_mountain",
+                                ["sourceRefs"] = { "ua-forever:place.blackrock_mountain" }
+                            }
+                        }
+                    }
+                },
+                ["чорноскельну"] = {
+                    ["гору"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.blackrock_mountain",
+                                ["lemma"] = "Чорноскельна гора",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.blackrock_mountain",
+                                ["sourceRefs"] = { "ua-forever:place.blackrock_mountain" }
+                            }
+                        }
+                    }
+                },
                 ["чорноскельні"] = {
                     ["надра"] = {
                         ["_analyses"] = {
@@ -42746,6 +44137,25 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.blackrock_depths",
                                 ["sourceRefs"] = { "ua-forever:place.blackrock_depths" }
+                            }
+                        }
+                    }
+                },
+                ["чорноскельній"] = {
+                    ["горі"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "place.blackrock_mountain",
+                                ["lemma"] = "Чорноскельна гора",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.blackrock_mountain",
+                                ["sourceRefs"] = { "ua-forever:place.blackrock_mountain" }
                             }
                         }
                     }
@@ -42898,6 +44308,20 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "equipment.neck",
                             ["sourceRefs"] = { "ua-forever:equipment.neck" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["enchantmentSlot"] = true,
+                                ["gender"] = "feminine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "equipment.neck",
+                            ["lemma"] = "шия",
+                            ["pos"] = "noun",
+                            ["sense"] = "equipment.neck",
+                            ["sourceRefs"] = { "ua-forever:equipment.neck" }
                         }
                     }
                 },
@@ -42919,6 +44343,21 @@ ns.Data = {
                             ["features"] = {
                                 ["case"] = "genitive",
                                 ["number"] = "plural"
+                            },
+                            ["id"] = "stat.damage",
+                            ["lemma"] = "Шкода",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.damage",
+                            ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["шкоду"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
                             },
                             ["id"] = "stat.damage",
                             ["lemma"] = "Шкода",
@@ -43495,6 +44934,64 @@ ns.Data = {
                         }
                     }
                 },
+                ["інтелект"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {},
+                            ["id"] = "stat.intellect",
+                            ["lemma"] = "Інтелект",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.intellect",
+                            ["sourceRefs"] = { "ua-forever:stat.intellect" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "stat.intellect",
+                            ["lemma"] = "Інтелект",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.intellect",
+                            ["sourceRefs"] = { "ua-forever:stat.intellect" }
+                        }
+                    }
+                },
+                ["інтелекту"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "stat.intellect",
+                            ["lemma"] = "Інтелект",
+                            ["pos"] = "noun",
+                            ["sense"] = "stat.intellect",
+                            ["sourceRefs"] = { "ua-forever:stat.intellect" }
+                        }
+                    }
+                },
+                ["історія"] = {
+                    ["моргана"] = {
+                        ["ладімора"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "feminine",
+                                        ["titleDescriptionClass"] = "publication"
+                                    },
+                                    ["id"] = "goods.story_of_morgan_ladimore",
+                                    ["lemma"] = "\"Історія Моргана Ладімора\"",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.story_of_morgan_ladimore",
+                                    ["sourceRefs"] = { "ua-forever:goods.story_of_morgan_ladimore" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["їжа"] = {
                     ["_analyses"] = {
                         {
@@ -44018,6 +45515,21 @@ ns.Data = {
                     ["nominativePlural"] = "шукачі пригод"
                 }
             },
+            ["character.bolvar_short"] = {
+                ["en"] = {
+                    ["canonical"] = "Bolvar"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Болвара",
+                    ["canonical"] = "Болвар",
+                    ["dative"] = "Болварові",
+                    ["genitive"] = "Болвара",
+                    ["instrumental"] = "Болваром",
+                    ["locative"] = "Болварі",
+                    ["nominative"] = "Болвар",
+                    ["vocative"] = "Болваре"
+                }
+            },
             ["character.dandelion_ragstallion"] = {
                 ["en"] = {
                     ["canonical"] = "Dandelion Ragstallion"
@@ -44043,6 +45555,14 @@ ns.Data = {
                     ["canonical"] = "побратими-ельфи",
                     ["nominativePlural"] = "побратими-ельфи",
                     ["vocativePlural"] = "побратими-ельфи"
+                }
+            },
+            ["character.highlord_bolvar_fordragon"] = {
+                ["en"] = {
+                    ["canonical"] = "Highlord Bolvar Fordragon"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Верховний лорд Болвар Фордраґон"
                 }
             },
             ["character.ragstallion"] = {
@@ -44209,6 +45729,7 @@ ns.Data = {
                 ["uk"] = {
                     ["accusative"] = "чоботи",
                     ["canonical"] = "чоботи",
+                    ["genitivePlural"] = "чобіт",
                     ["locative"] = "чоботях"
                 }
             },
@@ -44219,6 +45740,7 @@ ns.Data = {
                 ["uk"] = {
                     ["accusative"] = "наручі",
                     ["canonical"] = "наручі",
+                    ["genitivePlural"] = "наручів",
                     ["locative"] = "наручах"
                 }
             },
@@ -44229,7 +45751,19 @@ ns.Data = {
                 ["uk"] = {
                     ["accusative"] = "нагрудник",
                     ["canonical"] = "нагрудник",
+                    ["genitive"] = "нагрудника",
                     ["locative"] = "нагруднику"
+                }
+            },
+            ["equipment.cloak"] = {
+                ["en"] = {
+                    ["canonical"] = "Cloak"
+                },
+                ["uk"] = {
+                    ["accusative"] = "плащ",
+                    ["canonical"] = "Плащ",
+                    ["genitive"] = "плаща",
+                    ["locative"] = "плащі"
                 }
             },
             ["equipment.gloves"] = {
@@ -44239,6 +45773,7 @@ ns.Data = {
                 ["uk"] = {
                     ["accusative"] = "рукавиці",
                     ["canonical"] = "рукавиці",
+                    ["genitivePlural"] = "рукавиць",
                     ["locative"] = "рукавицях"
                 }
             },
@@ -44249,6 +45784,7 @@ ns.Data = {
                 ["uk"] = {
                     ["accusative"] = "шию",
                     ["canonical"] = "шия",
+                    ["genitive"] = "шиї",
                     ["locative"] = "шиї"
                 }
             },
@@ -44765,6 +46301,15 @@ ns.Data = {
                     ["nominativePlural"] = "витратники"
                 }
             },
+            ["goods.frostwolf_artichoke"] = {
+                ["en"] = {
+                    ["canonical"] = "The Frostwolf Artichoke"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Артишок Морозних Вовків",
+                    ["canonical"] = "Артишок Морозних Вовків"
+                }
+            },
             ["goods.greater_healing_potion"] = {
                 ["en"] = {
                     ["canonical"] = "Greater Healing Potion",
@@ -44813,6 +46358,20 @@ ns.Data = {
                     ["accusative"] = "важку шкіру",
                     ["canonical"] = "Важка шкіра",
                     ["genitiveSingular"] = "важкої шкіри"
+                }
+            },
+            ["goods.ingot"] = {
+                ["en"] = {
+                    ["canonical"] = "Ingot",
+                    ["plural"] = "ingots"
+                },
+                ["uk"] = {
+                    ["accusative"] = "злиток",
+                    ["accusativePlural"] = "злитки",
+                    ["canonical"] = "Злиток",
+                    ["genitivePlural"] = "злитків",
+                    ["genitiveSingular"] = "злитка",
+                    ["nominativePlural"] = "злитки"
                 }
             },
             ["goods.mageweave_cloth"] = {
@@ -44867,6 +46426,19 @@ ns.Data = {
                     ["nominativePlural"] = "їздові тварини"
                 }
             },
+            ["goods.pipe_tobacco"] = {
+                ["en"] = {
+                    ["canonical"] = "Pipe Tobacco"
+                },
+                ["uk"] = {
+                    ["accusative"] = "тютюн для люльки",
+                    ["canonical"] = "Тютюн для люльки",
+                    ["dative"] = "тютюну для люльки",
+                    ["genitiveSingular"] = "тютюну для люльки",
+                    ["instrumental"] = "тютюном для люльки",
+                    ["locative"] = "тютюні для люльки"
+                }
+            },
             ["goods.steel_weapon_chain"] = {
                 ["en"] = {
                     ["canonical"] = "Steel Weapon Chain"
@@ -44886,6 +46458,14 @@ ns.Data = {
                     ["canonical"] = "Обладунок бурепокрову",
                     ["genitiveSingular"] = "Обладунку бурепокрову",
                     ["instrumental"] = "Обладунком бурепокрову"
+                }
+            },
+            ["goods.story_of_morgan_ladimore"] = {
+                ["en"] = {
+                    ["canonical"] = "The Story of Morgan Ladimore"
+                },
+                ["uk"] = {
+                    ["canonical"] = "\"Історія Моргана Ладімора\""
                 }
             },
             ["goods.sword"] = {
@@ -44931,6 +46511,17 @@ ns.Data = {
                     ["canonical"] = "Кнурило",
                     ["dative"] = "Кнурилові",
                     ["genitiveSingular"] = "Кнурила"
+                }
+            },
+            ["place.alterac"] = {
+                ["en"] = {
+                    ["canonical"] = "Alterac"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Альтерак",
+                    ["canonical"] = "Альтерак",
+                    ["genitiveSingular"] = "Альтерака",
+                    ["locative"] = "Альтераку"
                 }
             },
             ["place.alterac_valley"] = {
@@ -44991,6 +46582,17 @@ ns.Data = {
                     ["genitiveSingular"] = "Чорноскельних надр",
                     ["instrumental"] = "Чорноскельними надрами",
                     ["locative"] = "Чорноскельних надрах"
+                }
+            },
+            ["place.blackrock_mountain"] = {
+                ["en"] = {
+                    ["canonical"] = "Blackrock Mountain"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Чорноскельну гору",
+                    ["canonical"] = "Чорноскельна гора",
+                    ["genitiveSingular"] = "Чорноскельної гори",
+                    ["locative"] = "Чорноскельній горі"
                 }
             },
             ["place.blackrock_spire"] = {
@@ -46842,6 +48444,7 @@ ns.Data = {
                     ["canonical"] = "agility"
                 },
                 ["uk"] = {
+                    ["accusative"] = "спритність",
                     ["canonical"] = "Спритність",
                     ["genitivePlural"] = "спритності"
                 }
@@ -46860,8 +48463,19 @@ ns.Data = {
                     ["canonical"] = "damage"
                 },
                 ["uk"] = {
+                    ["accusative"] = "шкоду",
                     ["canonical"] = "Шкода",
                     ["genitivePlural"] = "шкоди"
+                }
+            },
+            ["stat.intellect"] = {
+                ["en"] = {
+                    ["canonical"] = "Intellect"
+                },
+                ["uk"] = {
+                    ["accusative"] = "інтелект",
+                    ["canonical"] = "Інтелект",
+                    ["genitivePlural"] = "інтелекту"
                 }
             },
             ["stat.stamina"] = {
@@ -46869,6 +48483,7 @@ ns.Data = {
                     ["canonical"] = "stamina"
                 },
                 ["uk"] = {
+                    ["accusative"] = "витривалість",
                     ["canonical"] = "Витривалість",
                     ["genitivePlural"] = "витривалості"
                 }
@@ -46878,6 +48493,7 @@ ns.Data = {
                     ["canonical"] = "strength"
                 },
                 ["uk"] = {
+                    ["accusative"] = "силу",
                     ["canonical"] = "Сила",
                     ["genitivePlural"] = "сили"
                 }
@@ -46894,7 +48510,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 280,
+        ["concepts"] = 290,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 85,
@@ -46913,7 +48529,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "ec1ce17800081f4d8dcb305e11eeb8ff70bda90aa592d7b80e14cf3841d4107c"
+        ["version"] = "545ea82227bec937a83d90f0322afc8175e3bf37ef4c15cb8da38959153e070f"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -55974,6 +57590,35 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "шукач пригод"
         },
+        ["character.bolvar_short"] = {
+            ["category"] = "characters",
+            ["en"] = "Bolvar",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["number"] = "singular",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Болвара",
+                ["dative"] = "Болварові",
+                ["genitive"] = "Болвара",
+                ["instrumental"] = "Болваром",
+                ["locative"] = "Болварі",
+                ["nominative"] = "Болвар",
+                ["vocative"] = "Болваре"
+            },
+            ["id"] = "character.bolvar_short",
+            ["provenance"] = {
+                ["context"] = "first name of Bolvar Fordragon used in chat",
+                ["derivedFrom"] = "character.highlord_bolvar_fordragon",
+                ["key"] = "Bolvar",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" },
+            ["status"] = "approved",
+            ["uk"] = "Болвар"
+        },
         ["character.dandelion_ragstallion"] = {
             ["aliases"] = {
                 ["en"] = { "Dandelion... Dandelion Ragstallion" },
@@ -56040,6 +57685,32 @@ ns.Data = {
             ["sourceRefs"] = { "project-authored:chat-0.1" },
             ["status"] = "approved",
             ["uk"] = "побратими-ельфи"
+        },
+        ["character.highlord_bolvar_fordragon"] = {
+            ["aliases"] = {
+                ["en"] = { "Bolvar Fordragon" },
+                ["uk"] = { "Болвар Фордраґон" }
+            },
+            ["category"] = "characters",
+            ["en"] = "Highlord Bolvar Fordragon",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["number"] = "singular",
+                ["proper"] = true
+            },
+            ["id"] = "character.highlord_bolvar_fordragon",
+            ["provenance"] = {
+                ["context"] = "Stormwind NPC name",
+                ["file"] = "entries/forever/cliend_db/npcs.lua",
+                ["key"] = "Highlord Bolvar Fordragon",
+                ["line"] = 3309,
+                ["sha256"] = "6f4006281d1464a42a7005cca8ea0e989118122c900578126e38ef29ff6c285e",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" },
+            ["status"] = "approved",
+            ["uk"] = "Верховний лорд Болвар Фордраґон"
         },
         ["character.ragstallion"] = {
             ["category"] = "characters",
@@ -56460,6 +58131,7 @@ ns.Data = {
             },
             ["forms"] = {
                 ["accusative"] = "чоботи",
+                ["genitivePlural"] = "чобіт",
                 ["locative"] = "чоботях"
             },
             ["id"] = "equipment.boots",
@@ -56486,6 +58158,7 @@ ns.Data = {
             },
             ["forms"] = {
                 ["accusative"] = "наручі",
+                ["genitivePlural"] = "наручів",
                 ["locative"] = "наручах"
             },
             ["id"] = "equipment.bracers",
@@ -56515,6 +58188,7 @@ ns.Data = {
             },
             ["forms"] = {
                 ["accusative"] = "нагрудник",
+                ["genitive"] = "нагрудника",
                 ["locative"] = "нагруднику"
             },
             ["id"] = "equipment.chest",
@@ -56527,6 +58201,34 @@ ns.Data = {
             ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
             ["status"] = "approved",
             ["uk"] = "нагрудник"
+        },
+        ["equipment.cloak"] = {
+            ["category"] = "equipment",
+            ["contextOnly"] = true,
+            ["en"] = "Cloak",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["enchantmentSlot"] = true,
+                ["gender"] = "masculine",
+                ["number"] = "singular"
+            },
+            ["forms"] = {
+                ["accusative"] = "плащ",
+                ["genitive"] = "плаща",
+                ["locative"] = "плащі"
+            },
+            ["id"] = "equipment.cloak",
+            ["provenance"] = {
+                ["context"] = "equipment slot in an enhancement",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Cloak",
+                ["line"] = 5685,
+                ["sha256"] = "6d342e302bedc4b9db59e10c9a28060d9260b0ca3e17818bece81ae67aa7b603",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:equipment.cloak" },
+            ["status"] = "approved",
+            ["uk"] = "Плащ"
         },
         ["equipment.gloves"] = {
             ["aliases"] = {
@@ -56542,6 +58244,7 @@ ns.Data = {
             },
             ["forms"] = {
                 ["accusative"] = "рукавиці",
+                ["genitivePlural"] = "рукавиць",
                 ["locative"] = "рукавицях"
             },
             ["id"] = "equipment.gloves",
@@ -56567,6 +58270,7 @@ ns.Data = {
             },
             ["forms"] = {
                 ["accusative"] = "шию",
+                ["genitive"] = "шиї",
                 ["locative"] = "шиї"
             },
             ["id"] = "equipment.neck",
@@ -57973,6 +59677,34 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "витратник"
         },
+        ["goods.frostwolf_artichoke"] = {
+            ["category"] = "goods",
+            ["en"] = "The Frostwolf Artichoke",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["titleDescriptionClass"] = "publication"
+            },
+            ["forms"] = {
+                ["accusative"] = "Артишок Морозних Вовків"
+            },
+            ["id"] = "goods.frostwolf_artichoke",
+            ["provenance"] = {
+                ["build"] = "1.60.1.70959",
+                ["context"] = "goods",
+                ["englishFile"] = "entries/forever/cliend_db/item_names.lua",
+                ["englishLine"] = 13225,
+                ["file"] = "entries/forever/cliend_db/item_names_uk.lua",
+                ["itemId"] = 19484,
+                ["key"] = "The Frostwolf Artichoke",
+                ["line"] = 13257,
+                ["sha256"] = "ffc4e41b02185a9a33c993f5b4c1e29aeecab3a093c9a7344e23c41de4238aa7",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:goods.frostwolf_artichoke" },
+            ["status"] = "approved",
+            ["uk"] = "Артишок Морозних Вовків"
+        },
         ["goods.greater_healing_potion"] = {
             ["category"] = "goods",
             ["en"] = "Greater Healing Potion",
@@ -58078,6 +59810,38 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Важка шкіра"
         },
+        ["goods.ingot"] = {
+            ["category"] = "goods",
+            ["contextAliases"] = {
+                ["en"] = { "bar", "bars" }
+            },
+            ["en"] = "Ingot",
+            ["englishPlural"] = "ingots",
+            ["englishPluralAliases"] = { "bars" },
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["contextAliasSense"] = "physicalObject",
+                ["gender"] = "masculine",
+                ["proseCommonNoun"] = true,
+                ["semanticClass"] = "craftingMaterials"
+            },
+            ["forms"] = {
+                ["accusative"] = "злиток",
+                ["accusativePlural"] = "злитки",
+                ["genitivePlural"] = "злитків",
+                ["genitiveSingular"] = "злитка",
+                ["nominativePlural"] = "злитки"
+            },
+            ["id"] = "goods.ingot",
+            ["provenance"] = {
+                ["context"] = "Metal-bar noun and forms attested in Forever item names and quest text",
+                ["key"] = "Ingot",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Злиток"
+        },
         ["goods.mageweave_cloth"] = {
             ["category"] = "goods",
             ["en"] = "Mageweave Cloth",
@@ -58176,6 +59940,36 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "їздова тварина"
         },
+        ["goods.pipe_tobacco"] = {
+            ["aliases"] = {
+                ["en"] = { "pipe weed", "pipe-weed", "pipeweed" }
+            },
+            ["category"] = "goods",
+            ["en"] = "Pipe Tobacco",
+            ["features"] = {
+                ["activityTopic"] = true,
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["mass"] = true,
+                ["proseCommonNoun"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "тютюн для люльки",
+                ["dative"] = "тютюну для люльки",
+                ["genitiveSingular"] = "тютюну для люльки",
+                ["instrumental"] = "тютюном для люльки",
+                ["locative"] = "тютюні для люльки"
+            },
+            ["id"] = "goods.pipe_tobacco",
+            ["provenance"] = {
+                ["context"] = "Ukrainian tobacco and tobacco pipe lemmas verified in the Kaikki snapshot. Pipe-weed sense checked against J. R. R. Tolkien, The Fellowship of the Ring, Prologue, Concerning Pipe-weed.",
+                ["key"] = "Pipe Tobacco",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1", "kaikki:uk:2026-10-01" },
+            ["status"] = "approved",
+            ["uk"] = "Тютюн для люльки"
+        },
         ["goods.steel_weapon_chain"] = {
             ["category"] = "goods",
             ["en"] = "Steel Weapon Chain",
@@ -58218,6 +60012,34 @@ ns.Data = {
             ["sourceRefs"] = { "project-authored:chat-0.1" },
             ["status"] = "approved",
             ["uk"] = "Обладунок бурепокрову"
+        },
+        ["goods.story_of_morgan_ladimore"] = {
+            ["aliases"] = {
+                ["uk"] = { "Історія Моргана Ладімора" }
+            },
+            ["category"] = "goods",
+            ["en"] = "The Story of Morgan Ladimore",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine",
+                ["titleDescriptionClass"] = "publication"
+            },
+            ["id"] = "goods.story_of_morgan_ladimore",
+            ["provenance"] = {
+                ["build"] = "1.60.1.70959",
+                ["context"] = "goods",
+                ["englishFile"] = "entries/forever/cliend_db/item_names.lua",
+                ["englishLine"] = 1166,
+                ["file"] = "entries/forever/cliend_db/item_names_uk.lua",
+                ["itemId"] = 2154,
+                ["key"] = "The Story of Morgan Ladimore",
+                ["line"] = 1302,
+                ["sha256"] = "ffc4e41b02185a9a33c993f5b4c1e29aeecab3a093c9a7344e23c41de4238aa7",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:goods.story_of_morgan_ladimore" },
+            ["status"] = "approved",
+            ["uk"] = "\"Історія Моргана Ладімора\""
         },
         ["goods.sword"] = {
             ["aliases"] = {
@@ -58328,6 +60150,35 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:npc.448" },
             ["status"] = "approved",
             ["uk"] = "Кнурило"
+        },
+        ["place.alterac"] = {
+            ["aliases"] = {
+                ["uk"] = { "Альтераці" }
+            },
+            ["category"] = "places",
+            ["en"] = "Alterac",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["locativePreposition"] = "в"
+            },
+            ["forms"] = {
+                ["accusative"] = "Альтерак",
+                ["genitiveSingular"] = "Альтерака",
+                ["locative"] = "Альтераку"
+            },
+            ["id"] = "place.alterac",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Alterac",
+                ["line"] = 77,
+                ["sha256"] = "60e2b63a679cf5abd0931237b1be7a11b9145ed00b240d04076189c7bc5c04d0",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.alterac" },
+            ["status"] = "approved",
+            ["uk"] = "Альтерак"
         },
         ["place.alterac_valley"] = {
             ["aliases"] = {
@@ -58491,6 +60342,31 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.blackrock_depths" },
             ["status"] = "approved",
             ["uk"] = "Чорноскельні надра"
+        },
+        ["place.blackrock_mountain"] = {
+            ["category"] = "places",
+            ["en"] = "Blackrock Mountain",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "Чорноскельну гору",
+                ["genitiveSingular"] = "Чорноскельної гори",
+                ["locative"] = "Чорноскельній горі"
+            },
+            ["id"] = "place.blackrock_mountain",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Blackrock Mountain",
+                ["line"] = 269,
+                ["sha256"] = "60e2b63a679cf5abd0931237b1be7a11b9145ed00b240d04076189c7bc5c04d0",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.blackrock_mountain" },
+            ["status"] = "approved",
+            ["uk"] = "Чорноскельна гора"
         },
         ["place.blackrock_spire"] = {
             ["aliases"] = {
@@ -61713,9 +63589,23 @@ ns.Data = {
             ["uk"] = "DPS"
         },
         ["role.healer"] = {
+            ["aliasFeatures"] = {
+                ["uk"] = {
+                    ["цілителька"] = {
+                        ["case"] = "nominative",
+                        ["gender"] = "feminine",
+                        ["number"] = "singular"
+                    },
+                    ["цілительку"] = {
+                        ["case"] = "accusative",
+                        ["gender"] = "feminine",
+                        ["number"] = "singular"
+                    }
+                }
+            },
             ["aliases"] = {
                 ["en"] = { "heal", "heals", "Healers" },
-                ["uk"] = { "хіл", "хілер" }
+                ["uk"] = { "хіл", "хілер", "цілителька", "цілительку" }
             },
             ["category"] = "roles",
             ["contexts"] = { "roles" },
@@ -61749,7 +63639,7 @@ ns.Data = {
                 ["source"] = "ua-forever",
                 ["version"] = "1.0.3"
             },
-            ["sourceRefs"] = { "ua-forever:role.healer" },
+            ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" },
             ["status"] = "approved",
             ["uk"] = "Цілитель"
         },
@@ -63583,6 +65473,7 @@ ns.Data = {
             ["contextOnly"] = true,
             ["en"] = "agility",
             ["forms"] = {
+                ["accusative"] = "спритність",
                 ["genitivePlural"] = "спритності"
             },
             ["id"] = "stat.agility",
@@ -63630,6 +65521,7 @@ ns.Data = {
             ["contextOnly"] = true,
             ["en"] = "damage",
             ["forms"] = {
+                ["accusative"] = "шкоду",
                 ["genitivePlural"] = "шкоди"
             },
             ["id"] = "stat.damage",
@@ -63642,6 +65534,30 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Шкода"
         },
+        ["stat.intellect"] = {
+            ["aliases"] = {
+                ["en"] = { "int" }
+            },
+            ["category"] = "stats",
+            ["contextOnly"] = true,
+            ["en"] = "Intellect",
+            ["forms"] = {
+                ["accusative"] = "інтелект",
+                ["genitivePlural"] = "інтелекту"
+            },
+            ["id"] = "stat.intellect",
+            ["provenance"] = {
+                ["context"] = "equipment stat",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Intellect",
+                ["line"] = 10108,
+                ["sha256"] = "6d342e302bedc4b9db59e10c9a28060d9260b0ca3e17818bece81ae67aa7b603",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:stat.intellect" },
+            ["status"] = "approved",
+            ["uk"] = "Інтелект"
+        },
         ["stat.stamina"] = {
             ["aliases"] = {
                 ["en"] = {},
@@ -63652,6 +65568,7 @@ ns.Data = {
             ["en"] = "stamina",
             ["features"] = {},
             ["forms"] = {
+                ["accusative"] = "витривалість",
                 ["genitivePlural"] = "витривалості"
             },
             ["id"] = "stat.stamina",
@@ -63675,6 +65592,7 @@ ns.Data = {
             ["en"] = "strength",
             ["features"] = {},
             ["forms"] = {
+                ["accusative"] = "силу",
                 ["genitivePlural"] = "сили"
             },
             ["id"] = "stat.strength",

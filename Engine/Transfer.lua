@@ -231,6 +231,24 @@ function T.render(tree, direction)
         return "Any " .. skill .. " " .. profession .. " " .. place
     elseif tree.kind == "enchantmentList" then
         return enchantmentList(s, f, direction)
+    elseif tree.kind == "enchantmentTrade" then
+        local name = ns.Engine.ClauseGeneration.noun(f.enchantment, not uk, "accusative")
+        if not name then return nil end
+        local normalize = ns.Engine.Normalize
+        if s.stat then
+            local stat = M.generate(s.stat.term, direction, uk and "accusative" or nil)
+            if not stat then return nil end
+            stat = normalize.word(stat)
+            name = uk and name .. " на " .. stat or stat .. " " .. name
+        end
+        if s.equipment then
+            local case = uk and (s.equipment.plural and "genitivePlural" or "genitive") or nil
+            local equipment = M.generate(s.equipment.term, direction, case)
+            if not equipment then return nil end
+            name = name .. (uk and " для " or " for ") .. normalize.word(equipment)
+        end
+        local lead = uk and (f.buy and "Куплю " or "Продам ") or (f.buy and "WTB " or "WTS ")
+        return lead .. name .. (uk and "." or "")
     elseif tree.kind == "gratuityNote" then
         local tips = gratuities[f.tips]
         local output = (uk and tips.uk or tips.en):sub(3)

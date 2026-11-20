@@ -81,10 +81,13 @@ local function grammarClause(document, first, last)
     if first + 1 <= last and lead.key == "…" then
         prefix = document.text:sub(lead.first, document.tokens[first + 1].first - 1)
         first = first + 1
-    elseif first + 3 <= last and lead.key == "." and document.tokens[first + 1].key == "."
-        and document.tokens[first + 2].key == "." and document.tokens[first + 2].last == lead.first + 2 then
-        prefix = document.text:sub(lead.first, document.tokens[first + 3].first - 1)
-        first = first + 3
+    elseif first + 2 <= last and lead.key == "." and document.tokens[first + 1].key == "."
+        and document.tokens[first + 1].first == lead.last + 1 then
+        local ending = first + 2
+        if ending < last and document.tokens[ending].key == "."
+            and document.tokens[ending].last == lead.first + 2 then ending = ending + 1 end
+        prefix = document.text:sub(lead.first, document.tokens[ending].first - 1)
+        first = ending
     end
     if last < first then return nil end
     local aside = first + 2 <= last and document.tokens[first].key == "(" and document.tokens[last].key == ")"
@@ -112,7 +115,10 @@ local function grammarClause(document, first, last)
                 slots[#slots + 1] = address
             end
         end
-        return output, {intent=parsed.trees[1].kind, imperative=parsed.trees[1].imperative == true,
+        local firstTree = parsed.trees[1]
+        local sentenceUnit = firstTree.exclusion and "exclusion" or
+            ((firstTree.kind == "clause" or firstTree.kind == "need") and "clause")
+        return output, {intent=firstTree.kind, imperative=firstTree.imperative == true, sentenceUnit=sentenceUnit,
             initialWhen=parsed.prefix and parsed.prefix.id == "when" and #parsed.trees > 1,
             sourceRefs=ns.Linguistics.manifest.sourceRefs, dependency=parsed.dependency == true}, slots
     end
@@ -160,12 +166,19 @@ local function dependencyFragments(document, fragments)
                         local limit = marker and ending - 1 or ending
                         local parsed = ns.Engine.ClauseAnalysis.parseDependencies(document, first, limit, arcs, words)
                         local output = parsed and generation.render(parsed, document.direction, marker)
+                        if not output then
+                            parsed = ns.Engine.ClauseAnalysis.parseWithUntranslatedModifiers(document, first, limit, arcs, words)
+                            output = parsed and generation.render(parsed, document.direction, marker)
+                        end
                         local original = phrases.raw(document, first, ending)
                         if output and N.key(output) ~= N.key(original) then
                             local intent = #parsed.trees > 1 and "composition" or parsed.trees[1].kind
-                            if first == 1 and ending == #tokens then return fragments, false, output, intent end
+                            if first == 1 and ending == #tokens and not parsed.untranslated then
+                                return fragments, false, output, intent
+                            end
                             fragments = fragments or {}
-                            fragments[first] = {text=output, last=ending, rule={sourceRefs=ns.Linguistics.manifest.sourceRefs}}
+                            fragments[first] = {text=output, last=ending, untranslated=parsed.untranslated,
+                                rule={sourceRefs=ns.Linguistics.manifest.sourceRefs}}
                             used, rendered = true, true
                         end
                     end
@@ -302,6 +315,11 @@ local function compute(text, direction)
         if fragment then
             last, replacement = fragment.last, fragment.text
             addClause(matched, refs, refSeen, fragment.rule, fragment.slots)
+            for _, index in ipairs(fragment.untranslated or {}) do
+                local modifier = tokens[index]
+                unknown[#unknown + 1] = {first=modifier.first, last=modifier.last, protected=false,
+                    reason="untranslated-modifier"}
+            end
         elseif not token.protected then
             term, last = ns.Engine.Dictionary.literal(document, i, fragments)
             if grammarEnabled and not (reasonEnd and i <= reasonEnd) and (not last or last == i) then
