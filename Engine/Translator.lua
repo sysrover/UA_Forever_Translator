@@ -1,6 +1,7 @@
 local _, ns = ...
 local E = {}; ns.Translator = E
 local C, N = ns.Compat, ns.Engine.Normalize
+local contextFields = {"event", "line", "author", "sender", "language", "target"}
 local cache, queue, head, tail, bytes, count = {}, {}, 1, 0, 0, 0
 function E.clearCache()
     cache, queue, head, tail, bytes, count = {}, {}, 1, 0, 0, 0
@@ -9,7 +10,7 @@ local function cachedKey(text, direction, context)
     if not context or not C.public(context.event, context.line, context.author, context.sender, context.language, context.target) then return nil end
     if type(context.line) ~= "number" or context.line <= 0 or context.line % 1 ~= 0 then return nil end
     local parts = {direction, ns.Data.manifest.version, tostring(ns.Database.revision or 0), text}
-    for _, name in ipairs({"event", "line", "author", "sender", "language", "target"}) do
+    for _, name in ipairs(contextFields) do
         local value = context[name]
         if value ~= nil and type(value) ~= "string" and type(value) ~= "number" then return nil end
         local raw = value == nil and "" or tostring(value)
@@ -257,8 +258,9 @@ local function dependencyFragments(document, fragments)
     return fragments, used
 end
 
-local function compute(text, direction, tokens)
-    local exact = ns.Data.exact[direction][N.key(text)]
+local function compute(text, direction, tokens, normalized)
+    normalized = normalized or N.key(text)
+    local exact = ns.Data.exact[direction][normalized]
     if exact then
         return {text = exact.text, mode = "exact", intent = exact.id, matchedTerms = {}, unknownSpans = {}, sourceRefs = exact.sourceRefs}
     end
@@ -291,7 +293,7 @@ local function compute(text, direction, tokens)
     end
     if not output and grammarEnabled then
         local rendered, grammarRule, grammarSlots = grammarClause(document, 1, #tokens)
-        if rendered and N.key(rendered) ~= N.key(text) then
+        if rendered and N.key(rendered) ~= normalized then
             output, rule, general, slots = rendered, grammarRule, true, grammarSlots
         end
     end
@@ -315,7 +317,7 @@ local function compute(text, direction, tokens)
         end
     end
     if output then
-        if clauses and N.key(output) == N.key(text) then return unchanged(text, "identical") end
+        if clauses and N.key(output) == normalized then return unchanged(text, "identical") end
         local matched, refs, seen = {}, {}, {}
         if clauses then
             for _, clause in ipairs(clauses) do addClause(matched, refs, seen, clause.rule, clause.slots) end
@@ -385,7 +387,7 @@ local function compute(text, direction, tokens)
     if #chunks == 0 then return unchanged(text, "unsupported") end
     chunks[#chunks + 1] = text:sub(cursor)
     local translated = table.concat(chunks)
-    if translated == text or N.key(translated) == N.key(text) then return unchanged(text, "identical") end
+    if translated == text or N.key(translated) == normalized then return unchanged(text, "identical") end
     return {text = translated, mode = "partial", matchedTerms = matched, unknownSpans = unknown, sourceRefs = refs,
         coverage = usedDependency and {complete=false, pipeline="dictionary", dependency=true} or nil}
 end
@@ -450,7 +452,9 @@ local function translateText(text, direction)
     local tokens = ns.Engine.Tokenizer.scan(text)
     if not tokens or #tokens == 0 then return unchanged(text, "token-limit-or-empty") end
     local foreign = ns.Engine.SourceLanguage.foreignRanges(tokens)
-    if foreign and not ns.Data.exact[direction][N.key(text)] then
+    if foreign then
+        local normalized = N.key(text)
+        if ns.Data.exact[direction][normalized] then return compute(text, direction, tokens, normalized) end
         return translateMixed(text, direction, tokens, foreign)
     end
     return compute(text, direction, tokens)

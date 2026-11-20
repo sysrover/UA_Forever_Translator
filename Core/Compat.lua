@@ -52,9 +52,6 @@ function C.sameContext(a, b)
     return a and b and a.edit == b.edit and a.chatType == b.chatType
         and a.target == b.target and a.channel == b.channel and a.text == b.text
 end
-function C.utf8Length(text)
-    return select(2, text:gsub("[^\128-\191]", ""))
-end
 local capacityField
 function C.withinLimit(edit, text)
     local bytes = C.read(edit, "GetMaxBytes")

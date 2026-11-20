@@ -58,10 +58,23 @@ local function wordSymbols(graph, word)
     if #symbols > 0 then return symbols end
 end
 
-function A.analyze(word, lang)
+local function analyze(word, lang)
     local graph = ns.ApertiumData and ns.ApertiumData.analysis[lang]
     local symbols = wordSymbols(graph, word)
     if symbols then return run(graph, symbols) end
+end
+
+function A.analyze(word, lang, document)
+    if not document then return analyze(word, lang) end
+    local analyses = document.apertiumAnalyses
+    if not analyses then analyses = {}; document.apertiumAnalyses = analyses end
+    local language = analyses[lang]
+    if not language then language = {}; analyses[lang] = language end
+    local result = language[word]
+    if result then return result.values, result.reason end
+    local values, reason = analyze(word, lang)
+    language[word] = {values=values, reason=reason}
+    return values, reason
 end
 
 local parts = {n="noun", adj="adj", det="det", adv="adv", vblex="verb"}

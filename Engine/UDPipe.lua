@@ -110,8 +110,8 @@ local function activate(value, kind)
     return 2 / (1 + exp(-2 * adjusted)) - 1
 end
 
-local function classify(model, matrix, stack, buffer, nodes, memo)
-    local width, scores, hidden = model.hiddenSize, {}, {}
+local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidden)
+    local width = model.hiddenSize
     local bias = #model.selectors * model.dimension * width
     for index = 1, width do hidden[index] = matrix.hidden[bias + index] end
     for index, slot in ipairs(model.selectors) do
@@ -136,6 +136,7 @@ local function classify(model, matrix, stack, buffer, nodes, memo)
                             accumulate(vector, matrix.hidden, (row + dimension) * width, value, width)
                         end
                         cache[id] = vector
+                        memo.count = memo.count + 1
                     end
                     accumulate(hidden, vector, 0, 1, width)
                 end
@@ -148,7 +149,6 @@ local function classify(model, matrix, stack, buffer, nodes, memo)
     for index = 1, width do
         accumulate(scores, matrix.output, (index - 1) * count, activate(hidden[index], model.activation), count)
     end
-    return scores
 end
 
 local function transitions(model, stack, buffer, visit)
@@ -210,6 +210,24 @@ local function finish(state)
     return #state.stack <= 1 and #state.buffer == 0
 end
 
+local function searchGreedy(model, matrix, memo, state)
+    local scores, hidden = {}, {}
+    local best, bestCost
+    local function visit(transition)
+        local cost = state.cost + scores[transition]
+        if not best or cost > bestCost then best, bestCost = transition, cost end
+    end
+    while not finish(state) do
+        classify(model, matrix, state.stack, state.buffer, state.nodes, memo, scores, hidden)
+        best, bestCost = nil, nil
+        transitions(model, state.stack, state.buffer, visit)
+        if not best then return nil end
+        state.cost = bestCost
+        apply(model, state, best)
+    end
+    return state.nodes
+end
+
 local function normalizedLoss(scores)
     local maximum = scores[1]
     for index = 2, #scores do maximum = math.max(maximum, scores[index]) end
@@ -218,13 +236,14 @@ local function normalizedLoss(scores)
     return math.log(total) + maximum
 end
 
-local function search(model, matrix, memo, initial, beam)
+local function searchBeam(model, matrix, memo, initial, beam)
     local states = {initial}
+    local scores, hidden = {}, {}
     while not finish(states[1]) do
         local candidates = {}
         for _, state in ipairs(states) do
-            local scores = classify(model, matrix, state.stack, state.buffer, state.nodes, memo)
-            local norm = beam > 1 and normalizedLoss(scores) or 0
+            classify(model, matrix, state.stack, state.buffer, state.nodes, memo, scores, hidden)
+            local norm = normalizedLoss(scores)
             transitions(model, state.stack, state.buffer, function(transition)
                 local cost = state.cost + scores[transition] - norm
                 local at = #candidates + 1
@@ -238,7 +257,7 @@ local function search(model, matrix, memo, initial, beam)
         if #candidates == 0 then return nil end
         states = {}
         for _, selected in ipairs(candidates) do
-            local state = beam == 1 and selected.state or branch(selected.state)
+            local state = branch(selected.state)
             state.cost = selected.cost
             apply(model, state, selected.transition)
             states[#states + 1] = state
@@ -250,11 +269,11 @@ end
 
 -- The caller supplies the same UD features consumed by the native parser.
 -- Head zero denotes the root.
-function U.parse(model, words, beam)
+function U.parse(model, words, beam, workspace)
     beam = beam or 5
     if not model or #words == 0 or #words > 64 or beam < 1 or beam > 5 or beam % 1 ~= 0 then return nil end
     local matrix = cacheModel(model)
-    local stack, buffer, memo = {0}, {}, {}
+    local stack, buffer = {0}, {}
     local nodes = {[0]={form="<root>", lemma="<root>", upos="<root>", xpos="<root>",
         feats="<root>", children={}, relation=""}}
     for index, word in ipairs(words) do
@@ -263,12 +282,21 @@ function U.parse(model, words, beam)
             feats=word.feats or "", misc=word.misc, children={}, relation=""}
         buffer[#words - index + 1] = index
     end
-    for index = 1, #model.selectors do
-        memo[index] = {}
-        for feature = 1, #model.features do memo[index][feature] = {} end
+    local memo = workspace and workspace[model]
+    -- Reuse projections for this message and model. Retain at most one parse's
+    -- growth above the reuse threshold before resetting on the next range.
+    if not memo or memo.count >= 512 then
+        memo = {count=0}
+        for index = 1, #model.selectors do
+            memo[index] = {}
+            for feature = 1, #model.features do memo[index][feature] = {} end
+        end
+        if workspace then workspace[model] = memo end
     end
 
-    nodes = search(model, matrix, memo, {stack=stack, buffer=buffer, nodes=nodes, cost=0}, beam)
+    local initial = {stack=stack, buffer=buffer, nodes=nodes, cost=0}
+    if beam == 1 then nodes = searchGreedy(model, matrix, memo, initial)
+    else nodes = searchBeam(model, matrix, memo, initial, beam) end
     if not nodes then return nil end
     local arcs = {}
     for index = 1, #words do arcs[index] = {head=nodes[index].head, relation=nodes[index].relation} end

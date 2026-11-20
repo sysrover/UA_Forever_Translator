@@ -95,7 +95,7 @@ end
 
 local function lexicalCandidates(document, index, lang, offer)
     local token = document.tokens[index]
-    local readings = A.analyze(token.key, lang) or {}
+    local readings = A.analyze(token.key, lang, document) or {}
     local found
     for raw, weight in pairs(readings) do
         local lemma, kind, suffix = raw:match("^([^<+/#]+)<(%w+)>(.*)$")
@@ -373,7 +373,9 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
             end
         end
     end
-    local arcs = U.parse(model, words, 1)
+    local projections = document.udpipeProjections
+    if not projections then projections = {}; document.udpipeProjections = projections end
+    local arcs = U.parse(model, words, 1, projections)
     if not arcs or not original then return arcs, words end
     -- Keep source positions after adding a contraction's auxiliary, adding a comma, or compacting verb alternatives.
     local expanded, previousOffset = {}, 0

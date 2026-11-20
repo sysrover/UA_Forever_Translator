@@ -651,10 +651,10 @@ local function nounHead(document, first, limit, case, locationOnly, sense, agree
     end
 end
 
-local function determinerForms(key, lemma)
+local function determinerForms(document, key, lemma)
     if not key or not ns.ApertiumData then return nil end
     local options
-    for raw in pairs(A.analyze(key, "uk") or {}) do
+    for raw in pairs(A.analyze(key, "uk", document) or {}) do
         local base, pos, form = A.read(raw, "uk")
         if base == lemma and pos == "det" then
             options = options or {}
@@ -1392,13 +1392,13 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     if english and not demonstrative and not owner and P.key(document, index, limit) == "same" then
         sameAt, index = index, index + 1
     elseif not english and demonstrative == "far" then
-        sameForms = determinerForms(P.key(document, index, limit), "самий")
+        sameForms = determinerForms(document, P.key(document, index, limit), "самий")
         if sameForms or not ns.ApertiumData and L.choose(document, index, "adj", {case=case}, "identityDeterminer") then
             sameAt, index = index, index + 1
         end
     end
     if not english and determiner then
-        pointerForms = determinerForms(determiner, demonstrative == "far" and "той" or "цей")
+        pointerForms = determinerForms(document, determiner, demonstrative == "far" and "той" or "цей")
     end
     local quantity = P.key(document, index, limit)
     local audience = sense == "audienceFacet"
@@ -1445,7 +1445,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         quantity == (english and "some" or "трохи")
     local quantifierStart = count ~= false and not (article or demonstrative or owner)
     local distributiveForms = not english and quantifierStart and quantity and quantity:sub(1, #"кож") == "кож"
-        and determinerForms(quantity, "кожний")
+        and determinerForms(document, quantity, "кожний")
     local distributive = quantifierStart and (english and (quantity == "every" or quantity == "each") and quantity
         or distributiveForms and "every")
     local another = quantifierStart and english and quantity == "another"

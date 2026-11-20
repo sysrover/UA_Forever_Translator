@@ -183,7 +183,7 @@ local function derived(document, word)
             end
         end
     end
-    local analyses = A and A.analyze(word, language)
+    local analyses = A and A.analyze(word, language, document)
     if analyses then
         local ordered = {}
         for analysis in pairs(analyses) do ordered[#ordered + 1] = analysis end
