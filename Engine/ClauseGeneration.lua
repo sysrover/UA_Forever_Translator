@@ -479,8 +479,8 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
 end
 
 function G.noun(node, english, case, article, compoundModifier, owner, commonHead)
-    if node.bracketedTitle then
-        local value = "[" .. (english and node.term.en or node.term.uk) .. "]"
+    if node.bracketedTitle or node.titleDescription then
+        local value = node.raw or "[" .. (english and node.term.en or node.term.uk) .. "]"
         if not node.titleDescription then return value end
         local detail = G.noun(node.titleDescription, english, case, english, nil, owner)
         return detail and value .. (english and ", " or " — ") .. detail
@@ -1096,8 +1096,8 @@ local function durationQuery(tree, english)
     return table.concat(parts, " ")
 end
 
-local function quantityText(quantity, english)
-    local approximation = quantity.approximate and (english and "about " or "приблизно ") or ""
+local function quantityText(quantity, english, omitApproximation)
+    local approximation = quantity.approximate and not omitApproximation and (english and "about " or "приблизно ") or ""
     if quantity.half then
         if english then
             local unit = P.englishUnits[quantity.unit]
@@ -1119,6 +1119,10 @@ local function quantityText(quantity, english)
         word = L.inflectLemma(quantity.unit, "noun", {case=case, number=number})
     end
     if not word then return nil end
+    if quantity.indefinite and not quantity.few then
+        if english then return approximation .. (word == "hour" and "an " or "a ") .. word end
+        return approximation .. word
+    end
     local amount = quantity.few and (english and "a few" or "кілька") or quantity.amount
     return approximation .. amount .. " " .. word
 end
@@ -1944,10 +1948,12 @@ renderTree = function(tree, english, controller)
     if not addPriceComparison(parts, tree, english, owner) then return nil end
     local span = tree.durationSpan
     if span then
-        local value = span.expression and (english and span.expression.en or span.expression.uk)[1]
-            or G.noun(span.noun, english, "accusative", true)
+        local value
+        if span.expression then value = (english and span.expression.en or span.expression.uk)[1]
+        elseif span.quantity then value = quantityText(span.quantity, english)
+        else value = G.noun(span.noun, english, "accusative", true) end
         if not value then return nil end
-        if english and span.noun then append(parts, "for") end
+        if english and not span.expression then append(parts, "for") end
         if not english and tree.perfectProgressive and not (tree.leadingAdverb and tree.leadingAdverb.en[1] == "already") then
             append(parts, "вже")
         end
@@ -1991,8 +1997,9 @@ renderTree = function(tree, english, controller)
     if tree.delay then
         if tree.delay.soon then append(parts, english and "soon" or "незабаром")
         else
-            local value = quantityText(tree.delay, english)
+            local value = quantityText(tree.delay, english, not english)
             if not value then return nil end
+            if not english and tree.delay.approximate then append(parts, "приблизно") end
             append(parts, (english and "in " or "за ") .. value)
         end
     end

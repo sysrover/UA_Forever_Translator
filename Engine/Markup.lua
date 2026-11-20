@@ -48,6 +48,12 @@ function M.linkKind(text)
     local first, last = linkBounds(text)
     if first then return text:sub(first, last):match("^([%w_]+):") end
 end
+function M.itemId(text)
+    local first, last = linkBounds(text)
+    if not first then return nil end
+    local payload = text:sub(first, last)
+    return payload:match("^item:(%d+):") or payload:match("^item:(%d+)$")
+end
 function M.isLink(text, kind)
     local actual = M.linkKind(text)
     return actual ~= nil and (kind == nil or kind == actual)

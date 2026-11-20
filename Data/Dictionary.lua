@@ -15683,6 +15683,10 @@ ns.Data = {
             }
         }
     },
+    ["itemTitleClasses"] = {
+        ["19484"] = "publication",
+        ["2154"] = "publication"
+    },
     ["linguisticSources"] = {
         {
             ["externalDataBundled"] = false,

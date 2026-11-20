@@ -439,7 +439,8 @@ local function verb(document, index, limit, subject, base, imperative, sense, as
             if P.key(document, marker, limit) ~= "що" then return false end
         end
         if frame.boundAdverb and not gradedAdverbAt(document, after, limit, frame.boundAdverb) then return false end
-        if english and frame.rejectDirectObject and P.noun(document, after, limit, "accusative", false, nil, true) then
+        if english and frame.rejectDirectObject and P.noun(document, after, limit, "accusative", false, nil, true)
+            and not (frame.elapsedDuration == true and P.durationSpan(document, after, limit, true)) then
             return false
         end
         if not english and frame.reverseComparison
@@ -1320,9 +1321,13 @@ complements = function(document, tree, index, limit, depth)
     depth = depth or 0
     local frame = lexemeFrame(tree.verb)
     local english = document.direction == "en-uk"
+    local duration = frame.elapsedDuration
+    local bareDuration = duration == true or not english and duration
     if not english and tree.durationSpan then
-        if not acceptsOngoingSpan(tree) then return nil end
-        tree.perfectProgressive = true
+        if tree.durationSpan.ongoing then
+            if not acceptsOngoingSpan(tree) then return nil end
+            tree.perfectProgressive = true
+        elseif not bareDuration then return nil end
     end
     local bareAdjunct = not english and bareAdjunctRule(frame.bareAdjunct)
     if frame.boundAdverb then
@@ -1373,8 +1378,10 @@ complements = function(document, tree, index, limit, depth)
             return nil
         end
     end
-    if english and frame.enObjectPreposition == "for" then
-        local span, after = P.durationSpan(document, index, limit)
+    if not tree.durationSpan and (bareDuration or english and frame.enObjectPreposition == "for") then
+        local span, after = P.durationSpan(document, index, limit, bareDuration)
+        if span and span.ongoing and not acceptsOngoingSpan(tree) then span = nil end
+        if span and span.ongoing then tree.perfectProgressive = true end
         if span then tree.durationSpan, index = span, after end
     end
     local preposition, governedCase = verbObjectMarker(document, index, limit, frame)
@@ -1747,10 +1754,12 @@ complements = function(document, tree, index, limit, depth)
     end
     local adjunctContext, temporalContext = prepositionContext(tree, frame)
     for _ = 1, 3 do
-        if not tree.durationSpan and (tree.perfectProgressive or not english and acceptsOngoingSpan(tree)) then
-            local span, after = P.durationSpan(document, index, limit)
-            if span then
-                tree.durationSpan, tree.perfectProgressive, index = span, true, after
+        local ongoing = not english and acceptsOngoingSpan(tree)
+        if not tree.durationSpan and (duration or tree.perfectProgressive or ongoing) then
+            local span, after = P.durationSpan(document, index, limit, bareDuration)
+            if span and (not span.ongoing or ongoing) then
+                tree.durationSpan, index = span, after
+                if span.ongoing then tree.perfectProgressive = true end
             end
         end
         local delay, delayed = P.delay(document, index, limit)
@@ -3769,7 +3778,7 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap)
     end
     if not english and subject then
         if not (aux or tree.copula) then
-            local span, afterSpan = P.durationSpan(document, index, limit)
+            local span, afterSpan = P.durationSpan(document, index, limit, true)
             if span then tree.durationSpan, index = span, afterSpan end
         end
         local time, after = adverbAt(document, index, limit)
@@ -5155,10 +5164,13 @@ local function frontedRange(document, first, limit)
     return core
 end
 
+local frontedTemporalPreposition
+
 local function parseGroup(document, first, limit)
     return parseWithRelatives(document, first, limit) or parseWithParticiples(document, first, limit)
         or frontedRange(document, first, limit) or frontedControlledTime(document, first, limit)
         or temporalAttachment(document, first, limit) or A.socialSequence(document, first, limit)
+        or frontedTemporalPreposition(document, first, limit)
 end
 
 function A.parse(document, first, limit)
@@ -5315,7 +5327,7 @@ local function frontedPrepositionGovernor(arcs, first)
     end
 end
 
-local function attachFrontedPreposition(document, core, first, ending, governor)
+local function attachFrontedPreposition(document, core, first, ending, governor, keepOpening)
     local tree = core and core.trees[1]
     if not tree or (tree.verbIndex or tree.predicateIndex) ~= governor then return nil end
     -- Decode the same constituent with the governing predicate's actual valency.
@@ -5323,8 +5335,12 @@ local function attachFrontedPreposition(document, core, first, ending, governor)
     local adjunct, after = P.preposition(document, first, ending, frame.motion,
         frame.displacesObject and tree.object ~= nil, prepositionContext(tree, frame))
     if not adjunct or after ~= ending + 1 then return nil end
-    tree.prepositions = tree.prepositions or {}
-    table.insert(tree.prepositions, 1, adjunct)
+    if keepOpening then
+        core.openingPrepositions = {adjunct}
+    else
+        tree.prepositions = tree.prepositions or {}
+        table.insert(tree.prepositions, 1, adjunct)
+    end
     core.dependency = true
     return core
 end
@@ -5341,11 +5357,12 @@ local function frontedPreposition(document, first, limit, arcs, words)
     return attachFrontedPreposition(document, core, first, group.last, governor)
 end
 
-local function frontedTemporalPreposition(document, first, limit)
+frontedTemporalPreposition = function(document, first, limit)
     local phrase, after = P.preposition(document, first, limit)
     local noun = phrase and phrase.rule.temporalAdjunct and phrase.object.headIndex
     if not noun or after > limit or after - first > 8 then return nil end
-    local start = after + (P.key(document, after, limit) == "," and 1 or 0)
+    local comma = P.key(document, after, limit) == ","
+    local start = after + (comma and 1 or 0)
     local core = parseWithRelatives(document, start, limit)
     local tree = core and not core.prefix and core.trees[1]
     local predicate = tree and (tree.verbIndex or tree.predicateIndex)
@@ -5354,8 +5371,25 @@ local function frontedTemporalPreposition(document, first, limit)
     local arcs = ns.Engine.UDPipe.analyzeDocument(document, first, limit, nil, nil, tags)
     if not arcs then return nil end
     local governor, attachedNoun = frontedPrepositionGovernor(arcs, first)
+    local nominalArc = arcs[noun - first + 1]
+    local infinitive = tree.infinitive
+    local restoredBoundary
+    if governor ~= predicate and not comma and nominalArc and nominalArc.relation == "root" and tree.subject then
+        -- The complete temporal phrase and the finite clause license a boundary
+        -- which chat spelling can leave unmarked. Parse it with the same weights.
+        if infinitive and infinitive.verbIndex then tags[infinitive.verbIndex] = "VERB" end
+        for _, step in ipairs(infinitive and infinitive.series or {}) do
+            tags[step.action.verbIndex] = "VERB"
+        end
+        local alternate = ns.Engine.UDPipe.analyzeDocument(document, first, limit, nil, nil, tags, nil, nil, start)
+        if alternate then
+            governor, attachedNoun = frontedPrepositionGovernor(alternate, first)
+            restoredBoundary = governor == predicate and attachedNoun == noun
+        end
+    end
     if governor ~= predicate or attachedNoun ~= noun then return nil end
-    return attachFrontedPreposition(document, core, first, after - 1, governor)
+    local keepOpening = restoredBoundary or infinitive and infinitive.series
+    return attachFrontedPreposition(document, core, first, after - 1, governor, keepOpening)
 end
 
 local function completeLocativeSubject(document, start, limit)
