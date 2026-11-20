@@ -44,6 +44,7 @@ local function udFeatures(candidate, lang)
         if tags.neg then put("Polarity", "Neg") end
         put("Aspect", lang == "uk" and dimensions.aspect[form.aspect])
         if form.mood == "infinitive" or tags.inf then put("VerbForm", "Inf")
+        elseif form.mood == "impersonal" then put("VerbForm", "Imps")
         elseif form.verbalForm == "participle" or tags.ger then
             put("Tense", dimensions.tense[form.tense])
             put("VerbForm", tags.ger and "Ger" or "Part")
@@ -61,9 +62,25 @@ local function udFeatures(candidate, lang)
         put("Definite", tags.def and "Def" or tags.ind and "Ind")
     elseif pos == "ADJ" or pos == "ADV" then
         put("Degree", dimensions.degree[form.degree] or (tags.sint and "Pos"))
+        if pos == "ADJ" and form.voice then
+            put("Aspect", dimensions.aspect[form.aspect])
+            put("VerbForm", "Part")
+            put("Voice", form.voice == "passive" and "Pass" or "Act")
+        end
     end
     table.sort(values)
     return table.concat(values, "|")
+end
+
+function U.ukNominalHint(node, case)
+    local pronoun = node.pronoun
+    local entry = node.entry
+    if not pronoun and not (entry and entry.lexeme.pos == "noun" and node.sourceCase == case) then return nil end
+    local pos = pronoun and "PRON" or "NOUN"
+    local form = {case=case, number=node.number, gender=node.gender, animacy=node.animacy,
+        person=pronoun and node.person or nil}
+    local lemma = pronoun and pronoun.uk.nominative or entry.lexeme.uk
+    return {pos=pos, lemma=lemma, feats=udFeatures({pos=pos, form=form, tags={}}, "uk")}
 end
 
 local function rank(pos, previous, following, tags)
@@ -85,14 +102,22 @@ local function lexicalCandidates(document, index, lang, offer)
         if kind and parts[kind] and not suffix:find("[+/#]") then
             local tags = {}
             for tag in suffix:gmatch("<(%w+)>") do tags[tag] = true end
+            local pos = parts[kind]
             local _, _, form = A.read(raw, lang)
+            -- Ukrainian UD uses ADJ for declined participles, including predicative ones.
+            if lang == "uk" and kind == "vblex" and (tags.pasv or tags.actv) then
+                local _, _, participle = A.readParticiple(raw)
+                if participle then
+                    pos, form = "ADJ", participle
+                end
+            end
             form = form or {}
             if not form.person then form.person = tags.p1 and 1 or tags.p2 and 2 or tags.p3 and 3 or nil end
             if not form.number then form.number = tags.sg and "singular" or tags.pl and "plural" or nil end
             if not form.case and lang == "en" and kind == "prn" then
                 form.case = tags.subj and "nominative" or tags.obj and "accusative" or nil
             end
-            offer(lemma, parts[kind], form, tags, weight, raw)
+            offer(lemma, pos, form, tags, weight, raw)
             found = true
         end
     end
@@ -114,15 +139,47 @@ local function lexicalCandidates(document, index, lang, offer)
     end
 end
 
-local function choose(document, index, lang, previous, following, hint)
-    local best, priority, order
+local function agrees(form, nominal)
+    return form.case == nominal.case and form.number == nominal.number
+        and (form.number == "plural" or form.gender == nominal.gender)
+        and (not form.animacy or not nominal.animacy or form.animacy == nominal.animacy)
+end
+
+local function followingNominals(document, index, lang)
+    local forms = {}
+    lexicalCandidates(document, index, lang, function(_, pos, candidate)
+        if pos == "NOUN" or pos == "PROPN" then forms[#forms + 1] = candidate end
+    end)
+    return forms
+end
+
+local function choose(document, index, lang, previous, following, hint, previousParticiple)
+    local best, priority, order, nominalForms
+    local nextKey = following and following.key or ""
     lexicalCandidates(document, index, lang, function(lemma, pos, form, tags, weight, key)
         if hint and pos ~= hint then return end
-        local score = rank(pos, previous, following, tags) - weight
+        local score = rank(pos, previous, nextKey, tags) - weight
+        if previousParticiple and (pos == "NOUN" or pos == "PROPN") and agrees(previousParticiple, form) then
+            score = score + 2
+        elseif pos == "ADJ" and form.voice and following and not following.protected then
+            nominalForms = nominalForms or followingNominals(document, index + 1, lang)
+            for _, nominal in ipairs(nominalForms) do
+                if agrees(form, nominal) then
+                    score = score + 2
+                    break
+                end
+            end
+        end
         if not best or score > priority or (score == priority and key < order) then
             best, priority, order = {lemma=lemma, pos=pos, form=form, tags=tags}, score, key
         end
     end)
+    if best and best.pos == "ADJ" and best.form.voice then
+        local form = best.form
+        best.lemma = A.generate(best.lemma, "uk", "participle", {
+            case="nominative", number="singular", gender="masculine", aspect=form.aspect, voice=form.voice,
+        }) or document.tokens[index].key
+    end
     return best
 end
 
@@ -185,12 +242,12 @@ local function englishCandidates(document, index, raw, weights)
     return candidates
 end
 
-local function tagEnglish(document, first, last, marker, markerEnd, weights, hints, markerTags)
+local function tagEnglish(document, first, last, marker, markerEnd, weights, hints, markerTags, readings)
     local tagIds = weights.ids
     local boundary = tagIds[""]
     local previous = {[boundary]={score=0}}
     local words = {}
-    local quantifiedHeads
+    local quantifiedHeads, hasAuxiliary
     -- Viterbi over the available readings, retaining one predecessor for each part of speech.
     for index = first, last do
         local token = document.tokens[index]
@@ -208,7 +265,17 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
             or englishCandidates(document, index, raw, weights)
         local hint = not pos and (hints and hints[index] or quantifiedHeads and quantifiedHeads[index])
         local hintedId = tagIds[hint == true and "VERB" or hint]
-        if hintedId then
+        local resolved = not pos and not hintedId and readings and readings[index]
+        if resolved then
+            local id = tagIds[resolved.pos]
+            local candidate = candidates[id] or {pos=resolved.pos, lemma=token.key}
+            candidate.lemma = resolved.lemma or candidate.lemma
+            candidate.feats = resolved.feats or candidate.feats
+            candidate.modelForm = resolved.modelForm or candidate.modelForm
+            candidate.auxiliary = resolved.auxiliary
+            hasAuxiliary = hasAuxiliary or resolved.auxiliary ~= nil
+            candidates = {[id]=candidate}
+        elseif hintedId then
             candidates = {[hintedId]=candidates[hintedId] or {pos=weights.tags[hintedId], lemma=token.key}}
         end
         for id, candidate in pairs(candidates) do
@@ -236,32 +303,46 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
     for index = last - first + 1, 1, -1 do
         local feats = candidate.feats
         if feats == nil and candidate.form then feats = udFeatures(candidate, "en") end
-        words[index] = {form=candidate.raw, lemma=candidate.lemma, upos=candidate.pos, feats=feats}
+        words[index] = {form=candidate.raw, lemma=candidate.lemma, upos=candidate.pos,
+            feats=feats, auxiliary=candidate.auxiliary}
         candidate = candidate.previous
     end
-    return words
+    return words, hasAuxiliary
 end
 
-local function analyzeDocument(document, first, last, marker, markerEnd, hints, markerTags, alternatives, commaBefore)
+local function analyzeDocument(document, first, last, marker, markerEnd, hints, markerTags, alternatives, commaBefore, readings)
     local lang = document.direction == "en-uk" and "en" or "uk"
     local model = ns.UDPipeModels and ns.UDPipeModels[lang]
     if not model or last < first or last - first >= 32 then return end
     local words
     local original = (alternatives or commaBefore) and {}
     if lang == "en" and ns.UDPipeTagWeights then
-        words = tagEnglish(document, first, last, marker, markerEnd, ns.UDPipeTagWeights, hints, markerTags)
+        local hasAuxiliary
+        words, hasAuxiliary = tagEnglish(document, first, last, marker, markerEnd, ns.UDPipeTagWeights, hints, markerTags, readings)
+        if hasAuxiliary then original = original or {} end
         if original then
             for offset = 1, #words do original[offset] = offset end
         end
+        if hasAuxiliary then
+            for offset = #words, 1, -1 do
+                local auxiliary = words[offset].auxiliary
+                if auxiliary then
+                    table.insert(words, offset + 1, auxiliary)
+                    table.insert(original, offset + 1, false)
+                end
+            end
+        end
     else
-        local previous
+        local previous, previousParticiple
         local index = first
         words = {}
         while index <= last do
             local token = document.tokens[index]
+            local nextIndex = (alternatives and alternatives[index] or index) + 1
+            local following = nextIndex == index + 1 and nextIndex <= last and document.tokens[nextIndex]
             local raw = document.text:sub(token.first,token.last)
             local pos = fixedTag(token, index, marker, markerEnd, markerTags)
-            local lemma, feats
+            local lemma, feats, participle
             if token.protected then raw = lang == "en" and "item" or "предмет" end
             if not pos then
                 local hint = hints and hints[index]
@@ -269,22 +350,23 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
                     pos, lemma, feats = hint.pos, hint.lemma, hint.feats
                 else
                     local candidate = (not hint or hint == "PRON") and pronounCandidate(document, index, lang)
-                        or choose(document, index, lang, previous, document.tokens[index + 1] and document.tokens[index + 1].key or "", hint)
+                        or choose(document, index, lang, previous, following, hint, previousParticiple)
                     if candidate then
                         pos, lemma, feats = candidate.pos, candidate.lemma, udFeatures(candidate,lang)
+                        if pos == "ADJ" and candidate.form.voice then participle = candidate.form end
                     else pos = hint or (raw ~= token.key and "PROPN" or "X") end
                 end
             end
             words[#words+1] = {form=raw,lemma=lemma or token.key,upos=pos,feats=feats}
             if original then original[#words] = index - first + 1 end
-            previous = pos
-            index = (alternatives and alternatives[index] or index) + 1
+            previous, previousParticiple = pos, following and participle
+            index = nextIndex
         end
     end
     if commaBefore then
         local separator = commaBefore - first + 1
         for compact, offset in ipairs(original) do
-            if offset >= separator then
+            if offset and offset >= separator then
                 table.insert(words, compact, {form=",", lemma=",", upos="PUNCT"})
                 table.insert(original, compact, false)
                 break
@@ -293,7 +375,7 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
     end
     local arcs = U.parse(model, words, 1)
     if not arcs or not original then return arcs, words end
-    -- Keep source token positions when the model sees an inserted comma or one of two verb forms.
+    -- Keep source positions after adding a contraction's auxiliary, adding a comma, or compacting verb alternatives.
     local expanded, previousOffset = {}, 0
     for compact, arc in ipairs(arcs) do
         local offset = original[compact]
@@ -318,6 +400,75 @@ function U.analyzeDocument(...)
     return arcs
 end
 
+local function attachedModifier(arcs, position, head)
+    for _ = 1, #arcs do
+        local arc = arcs[position]
+        if not arc then return false end
+        if arc.relation ~= "conj" then return arc.relation == "amod" and arc.head == head end
+        position = arc.head
+    end
+    return false
+end
+
+local function supportedAttachment(first, arcs, index, reading)
+    local position = index - first + 1
+    if reading.nominalHead then return attachedModifier(arcs, position, reading.nominalHead - first + 1) end
+    if not reading.governor then return true end
+    local arc = arcs[position]
+    return arc and arc.relation == reading.relation and arc.head == reading.governor - first + 1
+end
+
+local function missingReadings(document, first, arcs, words, readings)
+    local missing = {}
+    for index, reading in pairs(readings) do
+        local head = reading.nominalHead
+        local position = index - first + 1
+        local word = words[position]
+        local needsReading = not head and (word.upos ~= reading.pos or word.feats ~= reading.feats)
+        local needsAttachment = not supportedAttachment(first, arcs, index, reading)
+        if needsReading or needsAttachment then
+            missing[index] = reading
+            if head and not document.tokens[head].protected and not readings[head] then
+                missing[head] = {pos="NOUN"}
+            end
+        end
+    end
+    return next(missing) and missing or nil
+end
+
+local function normalizeAttachedModifiers(first, arcs, words, readings)
+    for index, reading in pairs(readings) do
+        if reading.nominalHead and supportedAttachment(first, arcs, index, reading) then
+            local word = words[index - first + 1]
+            word.upos, word.lemma, word.feats = reading.pos, reading.lemma, reading.feats
+        end
+    end
+end
+
 function U.analyzeDocumentWithTags(document, first, last)
-    return analyzeDocument(document, first, last)
+    local grammar = ns.Engine.ClauseAnalysis
+    if not grammar or not grammar.dependencyInputReadings or document.direction ~= "en-uk"
+        or last < first or last - first >= 32 then return analyzeDocument(document, first, last) end
+    local token = document.tokens[last]
+    local limit = token.key:match("^[.!?]$") and last - 1 or last
+    local readings = limit >= first and grammar.dependencyInputReadings(document, first, limit)
+    if not readings then return analyzeDocument(document, first, last) end
+    local arcs, words = analyzeDocument(document, first, last)
+    if not arcs or not words then return arcs, words end
+    local missing = missingReadings(document, first, arcs, words, readings)
+    if missing then
+        local guided, tagged = analyzeDocument(document, first, last, nil, nil, nil, nil, nil, nil, missing)
+        if guided and tagged then
+            local supported = true
+            for index, reading in pairs(readings) do
+                if not supportedAttachment(first, guided, index, reading) then
+                    supported = false
+                    break
+                end
+            end
+            if supported then arcs, words = guided, tagged end
+        end
+    end
+    normalizeAttachedModifiers(first, arcs, words, readings)
+    return arcs, words
 end

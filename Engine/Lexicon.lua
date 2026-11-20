@@ -213,9 +213,11 @@ end
 local function available(lexeme, document, sense)
     local frame = lexeme.frame
     local domain = frame and frame.contextDomain
+    local english = document.direction == "en-uk"
     return not domain or domain == document.transferDomain or sense ~= nil and frame.sense == sense
+        or frame.contextRole and (english and frame.requiredAdjunct or not english and frame.reverseAdjunct)
         or document.relativeClass and frame.relativeObjectClasses and frame.relativeObjectClasses[document.relativeClass]
-            and (document.direction == "en-uk" or document.relativeMarker == frame.relativeMarkerUk)
+            and (english or document.relativeMarker == frame.relativeMarkerUk)
 end
 
 function L.derivedLiteral(document, word)
@@ -250,7 +252,8 @@ function L.phraseAt(document, first, limit, partOfSpeech)
             for position = first, last do
                 local token = document.tokens[position]
                 if token.protected then break end
-                if previous and previous.last + 1 == token.first and (token.key == "-" or previous.key == "-") then
+                if previous and previous.last + 1 == token.first
+                    and (token.key == "-" or previous.key == "-" or token.key == "." or previous.key == ".") then
                     words[#words] = words[#words] .. token.key
                 else
                     words[#words + 1] = token.key
@@ -318,10 +321,11 @@ function L.choose(document, first, pos, requested, sense, compatible)
     return selected
 end
 
-function L.genderPair(document, first, limit, pos, requested, sense, compatible)
-    local separator = document.tokens[first + 1]
-    if document.direction ~= "uk-en" or first + 2 > limit or not separator or separator.key ~= "/" then return nil end
-    local second = L.at(document, first + 2)
+function L.genderPair(document, first, limit, pos, requested, sense, compatible, secondIndex)
+    secondIndex = secondIndex or first + 2
+    local separator = document.tokens[secondIndex - 1]
+    if document.direction ~= "uk-en" or secondIndex > limit or not separator or separator.key ~= "/" then return nil end
+    local second = L.at(document, secondIndex)
     return L.choose(document, first, pos, requested, sense, function(candidate)
         local form = candidate.form
         local opposite = form.gender == "masculine" and "feminine" or form.gender == "feminine" and "masculine"

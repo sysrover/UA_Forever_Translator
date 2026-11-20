@@ -94,6 +94,18 @@ local function readTags(raw)
     return tags, features
 end
 
+function A.readParticiple(analysis)
+    local base, raw = analysis:match("^([^<+/#]+)<vblex>(<[^+/#]+>)$")
+    if not raw then return nil end
+    local tags, form = readTags(raw)
+    if not (tags.pp or tags.pprs) or not form.case or not form.number then return nil end
+    if tags.pasv then form.voice = "passive"
+    elseif tags.actv then form.voice = "active"
+    else return nil end
+    form.verbalForm = "participle"
+    return base, "participle", form
+end
+
 function A.read(analysis, lang)
     local base, part, raw = analysis:match("^([^<+/#]+)<([%w]+)>(.+)$")
     local pos = part and parts[part]
@@ -129,7 +141,12 @@ function A.generate(lemma, lang, pos, requested, head)
     local symbols = wordSymbols(graph, lemma)
     if not symbols then return nil end
     local function compatible(tags)
-        local _, category, form = A.read(lemma .. tags, lang)
+        local _, category, form
+        if pos == "participle" and lang == "uk" then
+            _, category, form = A.readParticiple(lemma .. tags)
+        else
+            _, category, form = A.read(lemma .. tags, lang)
+        end
         if category ~= pos then return false end
         for key, value in pairs(requested or {}) do
             if key == "mood" and value == "indicative" then

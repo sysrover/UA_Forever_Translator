@@ -22,6 +22,7 @@ Data\UDPipeTagWeights.lua
 Engine\Markup.lua
 Engine\Normalize.lua
 Engine\Tokenizer.lua
+Engine\SourceLanguage.lua
 Engine\GeneralDictionary.lua
 Engine\Dictionary.lua
 Engine\Grammar.lua

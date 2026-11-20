@@ -270,6 +270,9 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
                 local left = matched and matched.text
                 local sourceEnd = tokens[finish] and tokens[finish].key
                 local sourceHasEnd = sourceEnd == "?" or sourceEnd == "!"
+                local questionBeforeComma = left and matched.rule.question and tokens[i].key == ","
+                    and not sourceHasEnd and left:sub(-1) == "?"
+                if questionBeforeComma then join, sentence = "? ", true end
                 local alternativeQuestion = left and not sourceHasEnd and alternatives[tokens[i].key]
                     and left:sub(-1) == "?"
                 if left and (not inferredJoin or matched.rule.sentenceUnit) and (not noCommand or not matched.rule.imperative)
@@ -279,6 +282,11 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
                         needQuestion or alternativeQuestion, allowInference)
                     if right and (not inferredJoin or independentStart(right.match, i + 1)) then
                         if inferredJoin and left:match("[!?]$") then join = left:sub(-1) .. " " end
+                        local unit = matched.rule.sentenceUnit
+                        if not sentence and tokens[i].key == "," and (unit == "clause" or unit == "restriction")
+                            and right.match.rule.sentenceUnit == "clause" and right.match.rule.earlierPhase then
+                            join, sentence = ". ", true
+                        end
                         if direction == "en-uk" and tokens[i].key == "and" and matched.rule.imperative
                             and right.match.rule.initialWhen then join = ", а " end
                         local result = {match=matched, join=join, sentence=sentence, alternative=alternativeQuestion, next=right}
@@ -369,6 +377,10 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
                 local hasEnd = sourceEnd and sentenceJoins[sourceEnd.key]
                 local replacement = inferredEnds[last] and match.text:gsub("([^.!?])$", "%1.")
                     or match.text:gsub(hasEnd and "[.!?]+$" or "[.!]+$", "")
+                if sourceEnd and sourceEnd.key == "," and match.rule.question and replacement:sub(-1) == "?" then
+                    last = last + 1
+                    inferredBeginnings[last + 1] = true
+                end
                 if start ~= 1 and not inferredBeginnings[start] then
                     local before = tokens[start - 1]
                     if not sentenceJoins[before.key] then replacement = lowerStart(replacement)

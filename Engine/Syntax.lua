@@ -23,6 +23,11 @@ function State:any(...)
     end
     return false
 end
+function State:coordination()
+    local comma = self:word(",")
+    return self:any("and", "&", "+", "та", "і", "й") and "and"
+        or self:any("or", "/", "або") and "or" or comma and "comma"
+end
 function State:noun(name, category, case)
     local candidate, reason = M.select(self.document, self.i, category, self.limit, case)
     local token = self.tokens[self.i]
@@ -70,15 +75,16 @@ local function compactCountedTerm(token, category)
     if not amount or tonumber(amount) == 0 then return end
     return compactTerm(alias, category), amount
 end
-function State:role(name, countKey, words)
+function State:role(name, countKey, words, allowClass)
     local start, count = self.i, self.slots[countKey]
     local english = self.document.direction == "en-uk"
     if not count then self:count(countKey, words) end
     if english and not self.slots[countKey] then self:any("a", "an") end
-    if self:noun(name, "roles") then return true end
+    if self:noun(name, "roles") or allowClass and self:noun(name, "classes") then return true end
     local token = self.i <= self.limit and self.tokens[self.i]
     if english and not self.slots[countKey] then
         local term, amount = compactCountedTerm(token, "roles")
+        if not term and allowClass then term, amount = compactCountedTerm(token, "classes") end
         if term then
             self.slots[name] = {term=term}
             self.slots[countKey] = {raw=amount}
@@ -197,6 +203,68 @@ local function compactRecruitRole(p)
     return true
 end
 
+local function groupRoster(p, direction, afterRecruitment)
+    local uk = direction == "uk-en"
+    local explicit, already
+    if uk then
+        if not p:any("у нас", "в нас") then return end
+        already = p:any("уже", "вже")
+        explicit = p:word("є")
+    elseif p:word("we've") then
+        already = p:word("already")
+        if not p:word("got") then return end
+        explicit = true
+    elseif afterRecruitment and p:any("have", "got") then
+        explicit = true
+    else
+        if not p:word("we") then return end
+        already = p:word("already")
+        explicit = p:any("have", "got")
+    end
+    local members = {}
+    for index = 1, 8 do
+        local join
+        if index > 1 then
+            local comma = p:word(",")
+            join = p:any("and", "&", "+", "та", "і", "й") or comma
+        end
+        local name, countKey = "member" .. index, "memberCount" .. index
+        if not p:role(name, countKey, true, true) then
+            if join then return end
+            break
+        end
+        local quantity = p.slots[countKey] and p.slots[countKey].raw
+        if (index > 1 and not join or not explicit and not uk and index == 1) and not quantity then return end
+        members[index] = {slot=name, quantity=quantity}
+    end
+    if #members == 0 then return end
+    local result = p:finish("groupRoster", {members=members, already=already})
+    if result and not result.features.question then return result end
+end
+
+local function groupVacancy(p, direction)
+    local uk = direction == "uk-en"
+    local identity
+    if uk then
+        identity = p:word("це")
+        if identity then
+            if not p:phrase("останнє місце") then return end
+        elseif not p:any("залишилося одне місце", "лишилося одне місце", "останнє місце") then return end
+    else
+        identity = p:any("it's", "that's", "it", "this", "that")
+        if identity then
+            p:word("is")
+            if not p:word("the") then return end
+        end
+        if not p:any("last spot", "last slot") and (identity or not p:any("one spot left", "one slot left")) then return end
+    end
+    local destination = uk and p:word("на") or not uk and p:word("for")
+    local located = not destination and (uk and p:any("у", "в") or not uk and p:any("in", "at"))
+    if not p:noun("place", "places", uk and (destination and "accusative" or located and "locative") or nil)
+        and (destination or located) then return end
+    return p:finish("groupVacancy", {identity=identity, destination=destination})
+end
+
 local function recruit(p, direction)
     local uk = direction == "uk-en"
     local countWords = uk
@@ -234,8 +302,7 @@ local function recruit(p, direction)
             role = true
             for n = 2, 4 do
                 local start = p.i
-                local join = p:any("and", "&", "+", "та", "і", "й") and "and" or p:any("or", "/", "або") and "or"
-                if not join then p:word(",") end
+                local join = p:coordination()
                 local suffix = tostring(n)
                 if p:role("role" .. suffix, "count" .. suffix, countWords) and (join or p.slots["count" .. suffix]) then
                     roleJoins[#roleJoins + 1] = join or "and"
@@ -303,13 +370,53 @@ local function recruit(p, direction)
             if amount and tonumber(amount.raw) > 1 then return end
         end
     end
+    local roster
+    if p.i <= p.limit then
+        local attached = state(p.document, p.limit, p.i)
+        attached:any(".", ";", ",", "—", "-")
+        roster = groupRoster(attached, direction, true)
+        if roster then
+            p.i = attached.i
+            for key, slot in pairs(roster.slots) do p.slots[key] = slot end
+        end
+    end
     return p:finish("recruit", {lastSpot=lastSpot, go=go, roleJoins=roleJoins, classJoins=p.classJoins,
-        run=run, urgent=urgent, additional=additional, summon=summon, quests=#quests > 0 and quests or nil})
+        run=run, urgent=urgent, additional=additional, summon=summon, quests=#quests > 0 and quests or nil,
+        roster=roster and roster.features})
 end
 
 local function groupSearchOpening(p, uk)
     if uk then return p:any("шукаю групу", "підшукую групу") end
     return p:any("lfg", "looking for group", "looking for a group", "i'm looking for group", "i'm looking for a group")
+end
+
+local function groupRoleOffer(p, uk)
+    local first = p.i
+    p:word(uk and "я" or "i")
+    local negative = uk and p:phrase("не можу") or not uk and p:any("can't", "cannot", "can not")
+    if not negative and not p:word(uk and "можу" or "can") then p.i = first; return end
+    if uk then
+        if not p:any("грати за", "зіграти за", "грати як") then p.i = first; return end
+    else
+        p:any("play as", "be")
+    end
+    local offer = {roles={}, joins={}, negative=negative}
+    for index = 1, 4 do
+        local start = p.i
+        local join = index > 1 and p:coordination()
+        if index > 1 and not join then break end
+        if not uk then p:any("a", "an") end
+        local role, reason = M.select(p.document, p.i, "roles", p.limit)
+        if reason == "ambiguous" then p.ambiguous = true end
+        if not role or (role.features.number == "plural" and not role.term.en:match("^[A-Z]+$")) then
+            p.i = start
+            break
+        end
+        if join then offer.joins[index - 1] = join end
+        offer.roles[index], p.i = role, role.last + 1
+    end
+    if #offer.roles > 0 then return offer end
+    p.i = first
 end
 
 local function groupSearch(p, direction)
@@ -321,6 +428,8 @@ local function groupSearch(p, direction)
         if not groupSearchOpening(p, uk) then return end
     end
     p:any(".", ",")
+    local offer = groupRoleOffer(p, uk)
+    if offer then p:any(".", ",") end
     if not uk and not p.slots.role then
         if p:noun("role", "roles") then p:word(",") end
     end
@@ -329,7 +438,11 @@ local function groupSearch(p, direction)
     p:any(".", ",")
     local role = uk and p:any("як", "роль :") or not uk and p:word("as")
     if role and (p.slots.role or not p:noun("role", "roles")) then return end
-    return p:finish("groupSearch")
+    if not offer then
+        p:any(".", ",", ";")
+        offer = groupRoleOffer(p, uk)
+    end
+    return p:finish("groupSearch", {roleOffer=offer})
 end
 
 local function search(p, direction)
@@ -458,11 +571,15 @@ end
 local function gratuity(p, free)
     local start = p.i
     p:any(",", ".", "|", "i", "—")
-    if p:any("tips are appreciated", "tips appreciated", "буду вдячний за чайові", "дякую за чайові") then
-        return "appreciated"
+    if p:any("tips", "gratuities") then
+        p:word("are")
+        if p:any("appreciated", "greatly appreciated", "welcome") then return "appreciated" end
+        if p:word("accepted") then return "accepted" end
+    else
+        if p:any("буду вдячний за чайові", "дякую за чайові") then return "appreciated" end
+        if p:any("приймаю чайові", "чайові приймаються") then return "accepted" end
+        if free and p:any("with tips", "з чайовими", "із чайовими") then return "with" end
     end
-    if p:any("tips accepted", "tips are accepted", "приймаю чайові", "чайові приймаються") then return "accepted" end
-    if free and p:any("with tips", "з чайовими", "із чайовими") then return "with" end
     p.i = start
 end
 
@@ -815,7 +932,7 @@ local function statement(p, direction)
     return p:finish("statement", {negative=negative, question=question, modal=modal, conjunction=conjunction})
 end
 
-local parsers = {recruit, enhancement, availability, enchantmentTrade, service, enchantmentList, gratuityNote, reward, questNeed,
+local parsers = {recruit, groupRoster, groupVacancy, enhancement, availability, enchantmentTrade, service, enchantmentList, gratuityNote, reward, questNeed,
     statement, price, groupSearch, search}
 function S.parse(document, limit, first)
     for _, parse in ipairs(parsers) do

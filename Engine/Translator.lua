@@ -60,11 +60,18 @@ end
 local function grammarClause(document, first, last)
     if last - first >= 64 then return nil end
     local tail, colon = document.tokens[last], document.tokens[last - 1]
-    local emote
+    local emote, chatReaction
     if last > first and colon.key == ":" and tail.first == colon.last + 1
         and (tail.key == ")" or tail.key == "(" or tail.key == "d") then
         emote = document.text:sub(colon.first, tail.last)
         last = last - 2
+    elseif last > first and not tail.protected and tail.key == "xd" and colon.key:match("^[.!?]$")
+        and tail.first > colon.last + 1 then
+        emote = document.text:sub(tail.first, tail.last)
+        last = last - 1
+    elseif last > first and not tail.protected and tail.key == "lol" and tail.first > colon.last + 1
+        and document.text:sub(tail.first, tail.last) == "lol" then
+        emote, chatReaction, last = "lol", true, last - 1
     end
     local punctuation, endToken = nil, last
     while last >= first and (document.tokens[last].key:match("^[.!?]$") or document.tokens[last].key == "…") do
@@ -100,12 +107,16 @@ local function grammarClause(document, first, last)
     if last < first then return nil end
     local parsed = ns.Engine.ClauseAnalysis.parse(document, first, last)
     if not parsed then return nil end
+    if chatReaction and not punctuation and not parsed.trees[#parsed.trees].content then return nil end
     local output = ns.Engine.ClauseGeneration.render(parsed, document.direction, innerPunctuation or punctuation)
     if output and aside then
         output = "(" .. output:gsub("[.!?]+$", "") .. (innerPunctuation or "") .. ")" .. (punctuation or "")
     end
     if output and prefix then output = prefix .. output end
-    if output and emote then output = output .. " " .. emote end
+    if output and emote then
+        if chatReaction and not punctuation then output = output:gsub("%.$", "") end
+        output = output .. " " .. emote
+    end
     if output then
         local slots
         for _, tree in ipairs(parsed.trees) do
@@ -116,9 +127,12 @@ local function grammarClause(document, first, last)
             end
         end
         local firstTree = parsed.trees[1]
-        local sentenceUnit = firstTree.exclusion and "exclusion" or
+        local sentenceUnit = firstTree.exclusion and "exclusion" or firstTree.restriction and "restriction" or
             ((firstTree.kind == "clause" or firstTree.kind == "need") and "clause")
-        return output, {intent=firstTree.kind, imperative=firstTree.imperative == true, sentenceUnit=sentenceUnit,
+        return output, {intent=firstTree.kind, imperative=firstTree.imperative == true, question=firstTree.question == true,
+            sentenceUnit=sentenceUnit,
+            earlierPhase=firstTree.sentenceAdverb and firstTree.sentenceAdverb.earlierPhase
+                or firstTree.predicateAdverb and firstTree.predicateAdverb.earlierPhase,
             initialWhen=parsed.prefix and parsed.prefix.id == "when" and #parsed.trees > 1,
             sourceRefs=ns.Linguistics.manifest.sourceRefs, dependency=parsed.dependency == true}, slots
     end
@@ -133,6 +147,23 @@ local function placePhrase(document, first, fragments)
     phrase.targetUk = phrase.rule.literalTargetUk
     local value, marker = ns.Engine.ClauseGeneration.preposition(phrase, document.direction == "uk-en")
     if value and marker and marker ~= "" then return term, after - 1, marker .. " " .. value end
+end
+
+local function clauseBeforeUnknownTail(document, first, ending)
+    local tokens = document.tokens
+    local punctuation = tokens[ending]
+    local tail, previous = tokens[ending - 1], tokens[ending - 2]
+    if not punctuation.key:match("^[.!?;]$") or tail.protected or previous.protected
+        or punctuation.first ~= tail.last + 1 or tail.first <= previous.last + 1
+        or not tail.key:match("^[%a\128-\255]+$") then return nil end
+    local index = ending - 1
+    local dictionary = ns.Engine.Dictionary
+    if #ns.Engine.Lexicon.at(document, index) > 0 or dictionary.literal(document, index)
+        or dictionary.general(document, index) then return nil end
+    local output, rule, slots = grammarClause(document, first, index - 1)
+    if output and rule.sentenceUnit == "clause" and not (rule.question or rule.imperative) then
+        return {text=output:gsub("%.$", ""), last=index - 1, rule=rule, slots=slots}
+    end
 end
 
 local function dependencyFragments(document, fragments)
@@ -181,6 +212,15 @@ local function dependencyFragments(document, fragments)
                                 rule={sourceRefs=ns.Linguistics.manifest.sourceRefs}}
                             used, rendered = true, true
                         end
+                        if not rendered then
+                            local prefix = clauseBeforeUnknownTail(document, first, ending)
+                            if prefix then
+                                fragments = fragments or {}
+                                fragments[first] = prefix
+                                rendered = true
+                                used = used or prefix.rule.dependency
+                            end
+                        end
                     end
                     local groups = not rendered and arcs and words
                         and phrases.dependencyNominals(document, first, arcs, words, blocked) or {}
@@ -217,9 +257,7 @@ local function dependencyFragments(document, fragments)
     return fragments, used
 end
 
-local function compute(text, direction)
-    local tokens = ns.Engine.Tokenizer.scan(text)
-    if not tokens or #tokens == 0 then return unchanged(text, "token-limit-or-empty") end
+local function compute(text, direction, tokens)
     local exact = ns.Data.exact[direction][N.key(text)]
     if exact then
         return {text = exact.text, mode = "exact", intent = exact.id, matchedTerms = {}, unknownSpans = {}, sourceRefs = exact.sourceRefs}
@@ -351,6 +389,73 @@ local function compute(text, direction)
     return {text = translated, mode = "partial", matchedTerms = matched, unknownSpans = unknown, sourceRefs = refs,
         coverage = usedDependency and {complete=false, pipeline="dictionary", dependency=true} or nil}
 end
+
+local function translateMixed(text, direction, tokens, ranges)
+    local chunks, matched, unknown, refs, seen = {}, {}, {}, {}, {}
+    local cursor, nextToken, changed = 1, 1, false
+    local separators = ns.Engine.SourceLanguage.clauseEnd
+    local function translatePart(first, last)
+        local clipped = last < #tokens and separators[tokens[last].key]
+        while first <= last and separators[tokens[first].key] do first = first + 1 end
+        if clipped then
+            while first <= last and separators[tokens[last].key] do last = last - 1 end
+        end
+        if first > last then return end
+        local offset = tokens[first].first - 1
+        local ending = tokens[last].last
+        local source = text:sub(offset + 1, ending)
+        local part = {}
+        for i = first, last do
+            local token = {}
+            for key, value in pairs(tokens[i]) do token[key] = value end
+            token.first, token.last = token.first - offset, token.last - offset
+            part[#part + 1] = token
+        end
+        local result = compute(source, direction, part)
+        local value = result.text
+        if clipped and value ~= source then value = (value:gsub("%.$", "")) end
+        chunks[#chunks + 1] = text:sub(cursor, offset)
+        chunks[#chunks + 1] = value
+        cursor = ending + 1
+        changed = changed or value ~= source
+        for _, term in ipairs(result.matchedTerms) do matched[#matched + 1] = term end
+        addRefs(refs, seen, result.sourceRefs)
+        for _, span in ipairs(result.unknownSpans) do
+            unknown[#unknown + 1] = {first=span.first + offset, last=span.last + offset,
+                protected=span.protected, reason=span.reason}
+        end
+    end
+    for _, range in ipairs(ranges) do
+        if range.first > nextToken then translatePart(nextToken, range.first - 1) end
+        for i = range.first, range.last do
+            local token = tokens[i]
+            unknown[#unknown + 1] = {first=token.first, last=token.last, protected=token.protected or false,
+                reason="unsupported-source-language"}
+        end
+        nextToken = range.last + 1
+    end
+    if nextToken <= #tokens then translatePart(nextToken, #tokens) end
+    if not changed then
+        local result = unchanged(text, "unsupported-source-language")
+        result.unknownSpans = unknown
+        return result
+    end
+    chunks[#chunks + 1] = text:sub(cursor)
+    table.sort(refs)
+    return {text=table.concat(chunks), mode="partial", matchedTerms=matched, unknownSpans=unknown, sourceRefs=refs,
+        coverage={complete=false, pipeline="composition"}}
+end
+
+local function translateText(text, direction)
+    local tokens = ns.Engine.Tokenizer.scan(text)
+    if not tokens or #tokens == 0 then return unchanged(text, "token-limit-or-empty") end
+    local foreign = ns.Engine.SourceLanguage.foreignRanges(tokens)
+    if foreign and not ns.Data.exact[direction][N.key(text)] then
+        return translateMixed(text, direction, tokens, foreign)
+    end
+    return compute(text, direction, tokens)
+end
+
 function E.translate(text, direction, context)
     if C.secret(text) or C.secret(direction) then return nil end
     if type(text) ~= "string" or (direction ~= "en-uk" and direction ~= "uk-en") then return nil end
@@ -358,7 +463,7 @@ function E.translate(text, direction, context)
     local key = cachedKey(text, direction, context)
     local entry = key and cache[key]
     if entry then return entry.result end
-    local result = compute(text, direction)
+    local result = translateText(text, direction)
     store(key, result)
     return result
 end

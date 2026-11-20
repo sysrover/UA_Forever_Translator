@@ -2,7 +2,7 @@ local _, ns = ...
 local T = {}; ns.Engine.Tokenizer = T
 local normalize = ns.Engine.Normalize
 local punctuation = {
-    ["—"]=true, ["–"]=true, ["…"]=true, ["«"]=true, ["»"]=true,
+    ["—"]=true, ["–"]=true, ["…"]=true, ["«"]=true, ["»"]=true, ["→"]=true, ["›"]=true,
     ["“"]=true, ["”"]=true, ["„"]=true, ["‐"]=true, ["‑"]=true,
     ["\226\128\141"]=true, ["\239\184\143"]=true,
 }

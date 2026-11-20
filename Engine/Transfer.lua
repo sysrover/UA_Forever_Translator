@@ -84,6 +84,31 @@ local function enchantmentList(slots, features, direction)
     return list .. (features.exclamation and "!" or ".")
 end
 
+local function groupRoster(slots, features, uk)
+    local parts = {}
+    for index, member in ipairs(features.members) do
+        local slot = slots[member.slot]
+        local term = slot.term
+        local grammatical = slot.analysis and slot.analysis.features or term.features or {}
+        local noun = {term=term, gender=grammatical.gender, animacy=grammatical.animacy,
+            number=slot.plural and "plural" or grammatical.number or "singular", quantity=member.quantity}
+        local common = not term.en:match("^[A-Z]+$")
+        local value = ns.Engine.ClauseGeneration.noun(noun, not uk, "nominative", not uk, nil, nil, common)
+        if not value then return nil end
+        if index > 1 then parts[#parts + 1] = index < #features.members and ", " or (uk and " і " or " and ") end
+        parts[#parts + 1] = value
+    end
+    local opening = uk and (features.already and "У нас уже є " or "У нас ")
+        or (features.already and "We already have " or "We have ")
+    return opening .. table.concat(parts) .. "."
+end
+
+local function recruitmentJoin(join, uk)
+    if join == "comma" then return ", " end
+    if uk then return join == "and" and " і " or " або " end
+    return " " .. join .. " "
+end
+
 function T.render(tree, direction)
     local s, f, uk = tree.slots, tree.features, direction == "en-uk"
     local function render(template) return G.render(template, s, direction) end
@@ -113,6 +138,10 @@ function T.render(tree, direction)
             if f.urgent then value = value .. (uk and ". Терміново" or ", quick") end
             if f.summon then value = value .. (uk and ". Можемо прикликати" or ", can summon") end
             if f.go then value = value .. (uk and ". І вирушаємо" or " and go") end
+            if f.roster then
+                local roster = groupRoster(s, f.roster, uk)
+                return roster and value .. (f.question and "? " or ". ") .. roster
+            end
             return value .. (f.question and "?" or uk and "." or "")
         end
         if f.classJoins then
@@ -123,8 +152,7 @@ function T.render(tree, direction)
                 if not class then return nil end
                 local join = f.classJoins[index - 1]
                 if join then
-                    classes[#classes + 1] = join == "comma" and ", "
-                        or uk and (join == "or" and " або " or " і ") or " " .. join .. " "
+                    classes[#classes + 1] = recruitmentJoin(join, uk)
                 end
                 classes[#classes + 1] = uk and class or class:lower()
             end
@@ -151,16 +179,16 @@ function T.render(tree, direction)
                     or (uk and "{role:genitiveSingular}" or "{role}")
                 local value = G.render(format, values, direction)
                 if not value then return nil end
-                if n > 1 then
-                    local isAnd = f.roleJoins[n - 1] == "and"
-                    roles[#roles + 1] = uk and (isAnd and "і" or "або") or f.roleJoins[n - 1]
+                local join = f.roleJoins[n - 1]
+                if join then
+                    roles[#roles + 1] = recruitmentJoin(join, uk)
                 end
                 roles[#roles + 1] = value
             end
             local prefix
             if uk then prefix = total and totalPlayers(total) .. ": " or "Шукаємо "
             else prefix = total and "LF" .. total .. "M " or "Looking for " end
-            output = appendLevel(prefix .. table.concat(roles, " "))
+            output = appendLevel(prefix .. table.concat(roles))
             if s.place then output = output .. (uk and ". Місце: " or " for ") .. render("{place}") end
             if f.lastSpot then output = output .. (uk and ". Залишилося одне місце" or ", last spot") end
             return appendConditions(output)
@@ -200,11 +228,41 @@ function T.render(tree, direction)
             if f.lastSpot then output = output .. ", last spot" end
         end
         return appendConditions((output:gsub("%.$", "")))
+    elseif tree.kind == "groupRoster" then
+        return groupRoster(s, f, uk)
+    elseif tree.kind == "groupVacancy" then
+        local output = uk and (f.identity and "Це останнє місце" or "Залишилося одне місце")
+            or (f.identity and "This is the last spot" or "Last spot")
+        if s.place then
+            local place = M.generate(s.place.term, direction, uk and (f.destination and "accusative" or "locative") or nil)
+            if not place then return nil end
+            local marker = uk and (f.destination and " на " or " в ") or (f.destination and " for " or " in ")
+            output = output .. marker .. place
+        end
+        return output .. "."
     elseif tree.kind == "groupSearch" then
-        if not uk and s.role and not s.place then return render("{role} LFG") end
+        if not uk and s.role and not s.place and not f.roleOffer then return render("{role} LFG") end
         local output = uk and "Шукаю групу" or "LFG"
         if s.place then output = output .. render(uk and ". Місце: {place}" or " {place}") end
         if s.role then output = output .. render(uk and ". Роль: {role}" or " as {role}") end
+        if f.roleOffer then
+            local offer = f.roleOffer
+            local opening = uk and (offer.negative and ". Не можу грати за " or ". Можу грати за ")
+                or (offer.negative and ". I cannot play as " or ". I can play as ")
+            local parts = {output, opening}
+            for index, role in ipairs(offer.roles) do
+                local term = role.term
+                local join = offer.joins[index - 1]
+                if join then parts[#parts + 1] = recruitmentJoin(join, uk) end
+                local common = not term.en:match("^[A-Z]+$")
+                local noun = {term=term, number="singular", gender=role.features.gender, animacy=role.features.animacy}
+                local value = ns.Engine.ClauseGeneration.noun(noun, not uk, uk and "accusative" or "nominative",
+                    not uk and common, nil, nil, common)
+                if not value then return nil end
+                parts[#parts + 1] = value
+            end
+            return table.concat(parts) .. "."
+        end
         return output .. (uk and "." or "")
     elseif tree.kind == "search" then
         local object = ns.Engine.ClauseGeneration.noun(f.object, not uk, "accusative", not uk)

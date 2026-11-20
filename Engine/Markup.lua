@@ -42,7 +42,7 @@ local function linkBounds(text)
     local label = findTag(text, "|h", first + 2)
     if not label or label <= first + 2 then return nil end
     local close = findTag(text, "|h", label + 2)
-    if close and close + 1 == last then return first + 2, label - 1 end
+    if close and close + 1 == last then return first + 2, label - 1, label + 2, close - 1 end
 end
 function M.linkKind(text)
     local first, last = linkBounds(text)
@@ -58,6 +58,17 @@ function M.isLink(text, kind)
     local actual = M.linkKind(text)
     return actual ~= nil and (kind == nil or kind == actual)
 end
+
+function M.bracketLabel(text)
+    local _, _, first, last = linkBounds(text)
+    if not first then
+        local color = colorEnd(text, 1)
+        if not color or text:sub(-2) ~= "|r" then return nil end
+        first, last = color + 1, #text - 2
+    end
+    return text:sub(first, last):match("^%[([^%[%]|%c]+)%]$")
+end
+
 function M.split(text)
     local segments, plain, i, length = {}, 1, 1, #text
     local function protect(last, questReference)
