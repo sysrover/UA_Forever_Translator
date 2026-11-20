@@ -1,8 +1,11 @@
 local _, ns = ...
 local I = {}; ns.Incoming = I
-local C, DB = ns.Compat, ns.Database
+local C, DB, Log = ns.Compat, ns.Database, ns.ChatLog
 local listener, ready, triedToOpen, wasShowingUA
 local registered = {}
+local sliceMilliseconds, queueCapacity = 4, 64
+local pending, first, count = {}, 1, 0
+local active, scheduled, deadline
 local function plain(value)
     return (value:gsub("|", "||"))
 end
@@ -23,6 +26,13 @@ end
 local function mainDestination(settings)
     local frame = settings.showInMain and DEFAULT_CHAT_FRAME
     if frame and type(frame.AddMessage) == "function" then return frame end
+end
+
+local function destinations(group)
+    local settings = DB.settings
+    if settings and settings.enabled and settings.channels[group] then
+        return settings.showInUA and ns.UI.ChatTab.current(), mainDestination(settings)
+    end
 end
 
 local function display(frame, message, r, g, b, id)
@@ -51,24 +61,23 @@ local function playerLink(author, chatType, channelIndex, line)
     return "|Hplayer:" .. author .. "|h" .. caption .. "|h"
 end
 
-local function addTranslation(tab, main, event, group, text, author, ...)
-    if not C.public(text, author, ...) then return end
-    if type(text) ~= "string" or type(author) ~= "string" then return end
-    if #text > ns.Limits.messageBytes then return end
-    local language, channel, target, flags = ...
-    local channelIndex = select(6, ...)
-    local line, sender = select(9, ...)
-    -- Match the client's cinematic, GM whisper and censored-line guards.
-    if select(14, ...) or (group == "whisper" and flags == "GM") then return end
+local function lineAllowed(line)
     if type(line) == "number" and line > 0 and C_ChatInfo and C_ChatInfo.IsChatLineCensored then
         local ok, censored = pcall(C_ChatInfo.IsChatLineCensored, line)
-        if not ok or C.secret(censored) or censored then return end
+        return ok and not C.secret(censored) and not censored
     end
-    if not DB.settings.own and ownMessage(author, sender) then return end
-    local result = ns.Translator.translate(text, "en-uk", {
-        event=event, line=line, author=author, sender=sender, language=language, target=target })
-    if not result or result.mode == "unchanged" then return end
+    return true
+end
 
+local function present(job, result, originalOnly, delayed)
+    if not originalOnly and (not result or result.mode == "unchanged") then return end
+    local group, context = job.group, job.context
+    local tab, main = destinations(group)
+    if not tab and (originalOnly or not main) then return end
+    local event, author, line = context.event, context.author, context.line
+    local channel, channelIndex = job.channel, job.channelIndex
+    if delayed and (not C.public(job.text, author, channel, channelIndex, line)
+        or not lineAllowed(line)) then return end
     local sourceName = ns.L.chatSources[group]
     local source = sourceName and "[" .. sourceName .. "]" or ""
     local chatType = event:sub(10)
@@ -82,16 +91,103 @@ local function addTranslation(tab, main, event, group, text, author, ...)
     end
     local info = ChatTypeInfo and ChatTypeInfo[infoType]
     local player = playerLink(author, chatType, channelIndex, line)
-    local message = (source ~= "" and source .. " " or "") .. player .. ": " .. result.text
+    local message = (source ~= "" and source .. " " or "") .. player .. ": "
+        .. (originalOnly and job.text or result.text)
     local r, g, b, id
-    local color = DB.settings.translationColor
+    local color = not originalOnly and DB.settings.translationColor
     if color then r, g, b = color.r, color.g, color.b
     elseif info and C.public(info.r, info.g, info.b, info.id) then r, g, b, id = info.r, info.g, info.b, info.id end
+    local logTranslation = not originalOnly and DB.settings.logTranslations
+    local elapsedMs = logTranslation and Log.duration(job.receivedAt)
     if tab then display(tab, message, r, g, b, id) end
-    if main and main ~= tab then display(main, message, r, g, b, id) end
-    if DB.settings.logTranslations then
-        ns.ChatLog.record(event, text, result, "en-uk")
+    if not originalOnly and main and main ~= tab then display(main, message, r, g, b, id) end
+    if logTranslation then
+        Log.record(event, job.text, result, "en-uk", job.translationMs, elapsedMs)
     end
+end
+
+local function checkpoint()
+    if debugprofilestop() >= deadline then coroutine.yield() end
+end
+
+local function removeFirst()
+    local job = pending[first]
+    pending[first], active = nil, nil
+    first, count = first % queueCapacity + 1, count - 1
+    return job
+end
+
+local function reportError(message)
+    local handler = type(geterrorhandler) == "function" and geterrorhandler()
+    if type(handler) == "function" then pcall(handler, message) end
+end
+
+local function presentDelayed(job, result, originalOnly)
+    local ok, message = pcall(present, job, result, originalOnly, true)
+    if not ok then reportError(message) end
+end
+
+local schedule
+local function drain()
+    scheduled, deadline = nil, debugprofilestop() + sliceMilliseconds
+    while count > 0 and debugprofilestop() < deadline do
+        local job = pending[first]
+        local tab, main = destinations(job.group)
+        if not (tab or main) or not active and not lineAllowed(job.context.line) then
+            removeFirst()
+        else
+            if not active then
+                active = coroutine.create(function()
+                    return ns.Translator.translate(job.text, "en-uk", job.context, checkpoint)
+                end)
+            end
+            -- Count only the time spent inside each resume, across any number of frames.
+            local startedAt = job.translationMs and Log.now()
+            local ok, result = coroutine.resume(active)
+            local sliceMs = Log.duration(startedAt)
+            job.translationMs = sliceMs and (job.translationMs + sliceMs)
+            if ok and coroutine.status(active) ~= "dead" then break end
+            removeFirst()
+            if ok then presentDelayed(job, result)
+            else reportError(result) end
+        end
+    end
+    if count > 0 then schedule() end
+end
+
+schedule = function()
+    if scheduled then return end
+    scheduled = true
+    C_Timer.After(0, drain)
+end
+
+local function addTranslation(event, group, text, author, ...)
+    if not C.public(text, author, ...) then return end
+    if type(text) ~= "string" or type(author) ~= "string" or #text > ns.Limits.messageBytes then return end
+    local language, channel, target, flags = ...
+    local channelIndex = select(6, ...)
+    local line, sender = select(9, ...)
+    -- Match the client's cinematic, GM whisper and censored-line guards.
+    if select(14, ...) or (group == "whisper" and flags == "GM") or not lineAllowed(line) then return end
+    if not DB.settings.own and ownMessage(author, sender) then return end
+    local receivedAt = Log.now()
+    local job = {text=text, group=group, channel=channel, channelIndex=channelIndex,
+        receivedAt=receivedAt, translationMs=receivedAt and 0,
+        context={event=event, line=line, author=author, sender=sender, language=language, target=target}}
+    if not C_Timer or type(C_Timer.After) ~= "function" or type(debugprofilestop) ~= "function" then
+        local startedAt = Log.now()
+        local result = ns.Translator.translate(text, "en-uk", job.context)
+        job.translationMs = Log.duration(startedAt)
+        present(job, result)
+        return
+    end
+    local overflow
+    -- Keep the original visible in the UA tab if the translation queue fills.
+    if count == queueCapacity then overflow = removeFirst() end
+    pending[(first + count - 1) % queueCapacity + 1] = job
+    count = count + 1
+    schedule()
+    if overflow then presentDelayed(overflow, nil, true) end
 end
 
 local function onEvent(_, event, ...)
@@ -101,13 +197,10 @@ local function onEvent(_, event, ...)
         I.configure()
         return
     end
-    local settings = DB.settings
     local group = DB.eventGroups[event]
-    if settings and settings.enabled and group and settings.channels[group] then
-        local tab = settings.showInUA and ns.UI.ChatTab.current()
-        local main = mainDestination(settings)
-        if tab or main then addTranslation(tab, main, event, group, ...) end
-    end
+    if not group then return end
+    local tab, main = destinations(group)
+    if tab or main then addTranslation(event, group, ...) end
 end
 
 local function eventFrame()
@@ -121,6 +214,7 @@ end
 function I.configure()
     if not ready or not DB.settings then return end
     local settings = DB.settings
+    if not settings.enabled and count > 0 then pending, first, count, active = {}, 1, 0, nil end
     if settings.showInUA and not wasShowingUA then triedToOpen = nil end
     wasShowingUA = settings.showInUA
     local tab = settings.showInUA and ns.UI.ChatTab.current()

@@ -1,6 +1,6 @@
 local _, ns = ...
 local U = {}; ns.UI.ComposeWindow = U
-local C, L = ns.Compat, ns.L
+local C, L, Log = ns.Compat, ns.L, ns.ChatLog
 local function label(parent, text, x, y, width)
     local f = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     C.font(f); f:SetPoint("TOPLEFT", x, y); f:SetWidth(width); f:SetJustifyH("LEFT"); f:SetText(text)
@@ -30,7 +30,10 @@ local function clearPreview()
 end
 local function preview()
     local original = C.read(U.source, "GetText")
+    local settings = ns.Database.settings
+    local startedAt = settings and settings.logTranslations and Log.now()
     local result, reason = ns.Composer.translate(original)
+    local translationMs = Log.duration(startedAt)
     if not result then
         clearPreview()
         C.print(L[reason])
@@ -46,7 +49,7 @@ local function preview()
     U.draftLabel:SetText(caption)
     U.source:ClearFocus()
     U.draft:ClearFocus()
-    ns.ChatLog.record("COMPOSER_PREVIEW", original, result, "uk-en")
+    Log.record("COMPOSER_PREVIEW", original, result, "uk-en", translationMs, translationMs)
 end
 function U.create()
     if U.frame then return end

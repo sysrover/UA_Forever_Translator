@@ -33,7 +33,22 @@ local function openJournal()
     return saved
 end
 
-function Log.record(event, original, result, direction)
+function Log.now()
+    if type(GetTimePreciseSec) == "function" then return GetTimePreciseSec() * 1000 end
+    if type(debugprofilestop) == "function" then return debugprofilestop() end
+end
+
+function Log.duration(startedAt)
+    if not startedAt then return end
+    local finishedAt = Log.now()
+    if finishedAt and finishedAt >= startedAt then return finishedAt - startedAt end
+end
+
+local function validDuration(value)
+    if ns.Compat.public(value) and type(value) == "number" and value >= 0 and value < math.huge then return value end
+end
+
+function Log.record(event, original, result, direction, translationMs, elapsedMs)
     local settings = ns.Database.settings
     if not settings or not settings.logTranslations then return end
     if not ns.Compat.public(event, original, result, direction) or type(result) ~= "table" then return end
@@ -52,6 +67,8 @@ function Log.record(event, original, result, direction)
         translation = translation,
         mode = mode,
         direction = direction,
+        translationMs = validDuration(translationMs),
+        elapsedMs = validDuration(elapsedMs),
     }
     journal.nextIndex = index + 1
 end

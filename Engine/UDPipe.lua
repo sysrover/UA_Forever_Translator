@@ -29,22 +29,27 @@ local function readFloat(block, position)
     return sign < 128 and value or -value
 end
 
-local function decode(blocks)
-    local values, index = {}, 0
+local function decode(blocks, checkpoint)
+    local values, index, nextCheckpoint = {}, 0, 256
     for _, block in ipairs(blocks) do
         for position = 1, #block, 5 do
             index = index + 1
             values[index] = readFloat(block, position)
+            if checkpoint and index == nextCheckpoint then
+                nextCheckpoint = nextCheckpoint + 256
+                checkpoint()
+            end
         end
     end
     return values
 end
 
-local function cacheModel(model)
+local function cacheModel(model, checkpoint)
     local matrix = matrices[model]
     if matrix then return matrix end
-    matrix = {hidden=decode(model.hidden), output=decode(model.output),
+    matrix = {hidden=decode(model.hidden, checkpoint), output=decode(model.output, checkpoint),
         projections={}, projectionOrder={}, nextProjection=1}
+    if matrices[model] then return matrices[model] end
     matrices[model] = matrix
     return matrix
 end
@@ -119,7 +124,7 @@ local function activate(value, kind)
     return 2 / (1 + exp(-2 * adjusted)) - 1
 end
 
-local function projection(model, matrix, selector, group, feature, id)
+local function projection(model, matrix, selector, group, feature, id, checkpoint)
     local groups = matrix.projections[selector]
     if not groups then groups = {}; matrix.projections[selector] = groups end
     local vectors = groups[group]
@@ -135,9 +140,11 @@ local function projection(model, matrix, selector, group, feature, id)
         local block = feature.weights[floor(offset / model.blockSize) + 1]
         local value = readFloat(block, (offset % model.blockSize) * 5 + 1)
         accumulate(vector, matrix.hidden, (row + dimension) * width, value, width)
+        if checkpoint then checkpoint() end
     end
 
     -- Numerical vectors depend only on the immutable model and embedding ID.
+    if vectors[id] then return vectors[id] end
     local nextProjection = matrix.nextProjection
     local slot = matrix.projectionOrder[nextProjection]
     if slot then slot.vectors[slot.id] = nil
@@ -148,7 +155,7 @@ local function projection(model, matrix, selector, group, feature, id)
     return vector
 end
 
-local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidden)
+local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidden, checkpoint)
     local width = model.hiddenSize
     local bias = #model.selectors * model.dimension * width
     for index = 1, width do hidden[index] = matrix.hidden[bias + index] end
@@ -162,7 +169,7 @@ local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidde
                     local cache = projected[group]
                     local vector = cache[id]
                     if not vector then
-                        vector = projection(model, matrix, index, group, feature, id)
+                        vector = projection(model, matrix, index, group, feature, id, checkpoint)
                         cache[id] = vector
                         memo.count = memo.count + 1
                     end
@@ -170,12 +177,14 @@ local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidde
                 end
             end
         end
+        if checkpoint then checkpoint() end
     end
 
     local count = #model.labels * 2 + 1
     for index = 1, count do scores[index] = matrix.output[width * count + index] end
     for index = 1, width do
         accumulate(scores, matrix.output, (index - 1) * count, activate(hidden[index], model.activation), count)
+        if checkpoint and index % 16 == 0 then checkpoint() end
     end
 end
 
@@ -238,7 +247,7 @@ local function finish(state)
     return #state.stack <= 1 and #state.buffer == 0
 end
 
-local function searchGreedy(model, matrix, memo, state)
+local function searchGreedy(model, matrix, memo, state, checkpoint)
     local scores, hidden = {}, {}
     local best, bestCost
     local function visit(transition)
@@ -246,7 +255,7 @@ local function searchGreedy(model, matrix, memo, state)
         if not best or cost > bestCost then best, bestCost = transition, cost end
     end
     while not finish(state) do
-        classify(model, matrix, state.stack, state.buffer, state.nodes, memo, scores, hidden)
+        classify(model, matrix, state.stack, state.buffer, state.nodes, memo, scores, hidden, checkpoint)
         best, bestCost = nil, nil
         transitions(model, state.stack, state.buffer, visit)
         if not best then return nil end
@@ -264,13 +273,13 @@ local function normalizedLoss(scores)
     return math.log(total) + maximum
 end
 
-local function searchBeam(model, matrix, memo, initial, beam)
+local function searchBeam(model, matrix, memo, initial, beam, checkpoint)
     local states = {initial}
     local scores, hidden = {}, {}
     while not finish(states[1]) do
         local candidates = {}
         for _, state in ipairs(states) do
-            classify(model, matrix, state.stack, state.buffer, state.nodes, memo, scores, hidden)
+            classify(model, matrix, state.stack, state.buffer, state.nodes, memo, scores, hidden, checkpoint)
             local norm = normalizedLoss(scores)
             transitions(model, state.stack, state.buffer, function(transition)
                 local cost = state.cost + scores[transition] - norm
@@ -297,10 +306,10 @@ end
 
 -- The caller supplies the same UD features consumed by the native parser.
 -- Head zero denotes the root.
-function U.parse(model, words, beam, workspace)
+function U.parse(model, words, beam, workspace, checkpoint)
     beam = beam or 5
     if not model or #words == 0 or #words > 64 or beam < 1 or beam > 5 or beam % 1 ~= 0 then return nil end
-    local matrix = cacheModel(model)
+    local matrix = cacheModel(model, checkpoint)
     local stack, buffer = {0}, {}
     local nodes = {[0]={form="<root>", lemma="<root>", upos="<root>", xpos="<root>",
         feats="<root>", children={}, relation=""}}
@@ -323,8 +332,8 @@ function U.parse(model, words, beam, workspace)
     end
 
     local initial = {stack=stack, buffer=buffer, nodes=nodes, cost=0}
-    if beam == 1 then nodes = searchGreedy(model, matrix, memo, initial)
-    else nodes = searchBeam(model, matrix, memo, initial, beam) end
+    if beam == 1 then nodes = searchGreedy(model, matrix, memo, initial, checkpoint)
+    else nodes = searchBeam(model, matrix, memo, initial, beam, checkpoint) end
     if not nodes then return nil end
     local arcs = {}
     for index = 1, #words do arcs[index] = {head=nodes[index].head, relation=nodes[index].relation} end

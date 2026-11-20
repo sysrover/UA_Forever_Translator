@@ -258,13 +258,14 @@ local function dependencyFragments(document, fragments)
     return fragments, used
 end
 
-local function compute(text, direction, tokens, normalized)
+local function compute(text, direction, tokens, normalized, checkpoint)
     normalized = normalized or N.key(text)
     local exact = ns.Data.exact[direction][normalized]
     if exact then
         return {text = exact.text, mode = "exact", intent = exact.id, matchedTerms = {}, unknownSpans = {}, sourceRefs = exact.sourceRefs}
     end
     local document = ns.Engine.Morphology.analyze(text, tokens, direction)
+    document.checkpoint = checkpoint
     local output, tree, syntaxFragments = ns.Engine.Syntax.translate(document)
     local rule, slots
     if tree then
@@ -392,7 +393,7 @@ local function compute(text, direction, tokens, normalized)
         coverage = usedDependency and {complete=false, pipeline="dictionary", dependency=true} or nil}
 end
 
-local function translateMixed(text, direction, tokens, ranges)
+local function translateMixed(text, direction, tokens, ranges, checkpoint)
     local chunks, matched, unknown, refs, seen = {}, {}, {}, {}, {}
     local cursor, nextToken, changed = 1, 1, false
     local separators = ns.Engine.SourceLanguage.clauseEnd
@@ -413,7 +414,8 @@ local function translateMixed(text, direction, tokens, ranges)
             token.first, token.last = token.first - offset, token.last - offset
             part[#part + 1] = token
         end
-        local result = compute(source, direction, part)
+        if checkpoint then checkpoint() end
+        local result = compute(source, direction, part, nil, checkpoint)
         local value = result.text
         if clipped and value ~= source then value = (value:gsub("%.$", "")) end
         chunks[#chunks + 1] = text:sub(cursor, offset)
@@ -448,26 +450,26 @@ local function translateMixed(text, direction, tokens, ranges)
         coverage={complete=false, pipeline="composition"}}
 end
 
-local function translateText(text, direction)
+local function translateText(text, direction, checkpoint)
     local tokens = ns.Engine.Tokenizer.scan(text)
     if not tokens or #tokens == 0 then return unchanged(text, "token-limit-or-empty") end
     local foreign = ns.Engine.SourceLanguage.foreignRanges(tokens)
     if foreign then
         local normalized = N.key(text)
-        if ns.Data.exact[direction][normalized] then return compute(text, direction, tokens, normalized) end
-        return translateMixed(text, direction, tokens, foreign)
+        if ns.Data.exact[direction][normalized] then return compute(text, direction, tokens, normalized, checkpoint) end
+        return translateMixed(text, direction, tokens, foreign, checkpoint)
     end
-    return compute(text, direction, tokens)
+    return compute(text, direction, tokens, nil, checkpoint)
 end
 
-function E.translate(text, direction, context)
+function E.translate(text, direction, context, checkpoint)
     if C.secret(text) or C.secret(direction) then return nil end
     if type(text) ~= "string" or (direction ~= "en-uk" and direction ~= "uk-en") then return nil end
     if #text > ns.Limits.messageBytes then return unchanged(text, "byte-limit") end
     local key = cachedKey(text, direction, context)
     local entry = key and cache[key]
     if entry then return entry.result end
-    local result = translateText(text, direction)
+    local result = translateText(text, direction, checkpoint)
     store(key, result)
     return result
 end

@@ -4162,6 +4162,7 @@ function A.modalPredicateAt(document, first, limit)
 end
 
 simple = function(document, first, limit, previous, depth, indirect, objectGap, sentenceQuestion)
+    if document.checkpoint then document.checkpoint() end
     local english = document.direction == "en-uk"
     local key = P.key(document, first, limit)
     if not english and not (indirect or objectGap) and previous and previous.analyticFuture and previous.subject then

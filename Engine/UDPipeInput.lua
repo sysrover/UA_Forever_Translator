@@ -329,7 +329,7 @@ local function parseModelInput(document, model, words)
 
     local projections = document.udpipeProjections
     if not projections then projections = {}; document.udpipeProjections = projections end
-    local arcs = U.parse(model, words, 1, projections)
+    local arcs = U.parse(model, words, 1, projections, document.checkpoint)
     if memo.count < 8 then
         memo[key] = arcs or false
         memo.count = memo.count + 1
