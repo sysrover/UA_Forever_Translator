@@ -98,11 +98,10 @@ local function present(job, result, originalOnly, delayed)
     if color then r, g, b = color.r, color.g, color.b
     elseif info and C.public(info.r, info.g, info.b, info.id) then r, g, b, id = info.r, info.g, info.b, info.id end
     local logTranslation = not originalOnly and DB.settings.logTranslations
-    local elapsedMs = logTranslation and Log.duration(job.receivedAt)
     if tab then display(tab, message, r, g, b, id) end
     if not originalOnly and main and main ~= tab then display(main, message, r, g, b, id) end
     if logTranslation then
-        Log.record(event, job.text, result, "en-uk", job.translationMs, elapsedMs)
+        Log.record(event, job.text, result, "en-uk", job.translationMs)
     end
 end
 
@@ -170,9 +169,8 @@ local function addTranslation(event, group, text, author, ...)
     -- Match the client's cinematic, GM whisper and censored-line guards.
     if select(14, ...) or (group == "whisper" and flags == "GM") or not lineAllowed(line) then return end
     if not DB.settings.own and ownMessage(author, sender) then return end
-    local receivedAt = Log.now()
     local job = {text=text, group=group, channel=channel, channelIndex=channelIndex,
-        receivedAt=receivedAt, translationMs=receivedAt and 0,
+        translationMs=0,
         context={event=event, line=line, author=author, sender=sender, language=language, target=target}}
     if not C_Timer or type(C_Timer.After) ~= "function" or type(debugprofilestop) ~= "function" then
         local startedAt = Log.now()

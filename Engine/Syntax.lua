@@ -321,6 +321,7 @@ local function recruit(p, direction)
         elseif not place then
             local start = p.i
             local introduced = p:any("for", "для", "до", "у", "в", "місце :")
+            if not introduced and not uk then p:word("to") end
             if p:noun("place", "places") then place = true
             else
                 local token = p.tokens[p.i]

@@ -49,7 +49,7 @@ local function preview()
     U.draftLabel:SetText(caption)
     U.source:ClearFocus()
     U.draft:ClearFocus()
-    Log.record("COMPOSER_PREVIEW", original, result, "uk-en", translationMs, translationMs)
+    Log.record("COMPOSER_PREVIEW", original, result, "uk-en", translationMs)
 end
 function U.create()
     if U.frame then return end

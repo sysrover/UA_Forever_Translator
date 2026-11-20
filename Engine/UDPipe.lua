@@ -59,7 +59,6 @@ local function valueOf(node, kind)
     elseif kind == "universal_tag" then return node.upos
     elseif kind == "tag" then return node.xpos
     elseif kind == "feats" then return node.feats
-    elseif kind == "deprel" then return node.relation
     elseif kind == "universal_tag_feats" then return node.upos .. node.feats
     elseif kind == "lemma_id" and node.misc then return node.misc:match("LId=([^|]+)") or node.lemma
     end
@@ -131,16 +130,23 @@ local function projection(model, matrix, selector, group, feature, id, checkpoin
     if not vectors then vectors = {}; groups[group] = vectors end
     if vectors[id] then return vectors[id] end
 
-    local width, vector = model.hiddenSize, {}
-    for column = 1, width do vector[column] = 0 end
+    local width, vector, embedding = model.hiddenSize, {}, {}
+    local weights, dimensionCount = matrix.hidden, feature.dimension
     local first = (id - 1) * feature.dimension
-    local row = (selector - 1) * model.dimension + feature.offset
-    for dimension = 0, feature.dimension - 1 do
+    local rowOffset = ((selector - 1) * model.dimension + feature.offset) * width
+    for dimension = 0, dimensionCount - 1 do
         local offset = first + dimension
         local block = feature.weights[floor(offset / model.blockSize) + 1]
-        local value = readFloat(block, (offset % model.blockSize) * 5 + 1)
-        accumulate(vector, matrix.hidden, (row + dimension) * width, value, width)
-        if checkpoint then checkpoint() end
+        embedding[dimension + 1] = readFloat(block, (offset % model.blockSize) * 5 + 1)
+    end
+    for column = 1, width do
+        local value, offset = 0, rowOffset + column
+        for dimension = 1, dimensionCount do
+            value = value + embedding[dimension] * weights[offset]
+            offset = offset + width
+        end
+        vector[column] = value
+        if checkpoint and column % 16 == 0 then checkpoint() end
     end
 
     -- Numerical vectors depend only on the immutable model and embedding ID.
@@ -155,6 +161,27 @@ local function projection(model, matrix, selector, group, feature, id, checkpoin
     return vector
 end
 
+function U.prepare(model)
+    if not model then return end
+    local matrix = cacheModel(model)
+    if matrix.prepared then return end
+    -- Seed the bounded projection cache with closed-class tags and default embeddings.
+    for selector = 1, #model.selectors do
+        for group, feature in ipairs(model.features) do
+            local function prepare(id)
+                if id then projection(model, matrix, selector, group, feature, id) end
+            end
+            prepare(feature.unknown)
+            prepare(feature.dictionary[""])
+            prepare(feature.dictionary["<root>"])
+            if feature.kind == "universal_tag" then
+                for _, id in pairs(feature.dictionary) do prepare(id) end
+            end
+        end
+    end
+    matrix.prepared = true
+end
+
 local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidden, checkpoint)
     local width = model.hiddenSize
     local bias = #model.selectors * model.dimension * width
@@ -164,7 +191,9 @@ local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidde
         if node then
             local projected = memo[index]
             for group, feature in ipairs(model.features) do
-                local id = embeddingID(feature, valueOf(node, feature.kind))
+                local id = node.embeddings[group]
+                -- Only dependency labels change as the parser applies arcs.
+                if feature.kind == "deprel" then id = embeddingID(feature, node.relation) end
                 if id then
                     local cache = projected[group]
                     local vector = cache[id]
@@ -180,11 +209,16 @@ local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidde
         if checkpoint then checkpoint() end
     end
 
-    local count = #model.labels * 2 + 1
-    for index = 1, count do scores[index] = matrix.output[width * count + index] end
-    for index = 1, width do
-        accumulate(scores, matrix.output, (index - 1) * count, activate(hidden[index], model.activation), count)
-        if checkpoint and index % 16 == 0 then checkpoint() end
+    local count, output = #model.labels * 2 + 1, matrix.output
+    for index = 1, width do hidden[index] = activate(hidden[index], model.activation) end
+    for index = 1, count do
+        local score, offset = output[width * count + index], index
+        for unit = 1, width do
+            score = score + hidden[unit] * output[offset]
+            offset = offset + count
+        end
+        scores[index] = score
+        if checkpoint and index % 8 == 0 then checkpoint() end
     end
 end
 
@@ -318,6 +352,15 @@ function U.parse(model, words, beam, workspace, checkpoint)
             upos=word.upos or "", xpos=word.xpos or "", 
             feats=word.feats or "", misc=word.misc, children={}, relation=""}
         buffer[#words - index + 1] = index
+    end
+    for index = 0, #words do
+        local node, embeddings = nodes[index], {}
+        for group, feature in ipairs(model.features) do
+            if feature.kind ~= "deprel" then
+                embeddings[group] = embeddingID(feature, valueOf(node, feature.kind))
+            end
+        end
+        node.embeddings = embeddings
     end
     local memo = workspace and workspace[model]
     -- Reuse projections for this message and model. Retain at most one parse's

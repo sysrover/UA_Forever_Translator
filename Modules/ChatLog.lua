@@ -48,7 +48,7 @@ local function validDuration(value)
     if ns.Compat.public(value) and type(value) == "number" and value >= 0 and value < math.huge then return value end
 end
 
-function Log.record(event, original, result, direction, translationMs, elapsedMs)
+function Log.record(event, original, result, direction, translationMs)
     local settings = ns.Database.settings
     if not settings or not settings.logTranslations then return end
     if not ns.Compat.public(event, original, result, direction) or type(result) ~= "table" then return end
@@ -68,7 +68,6 @@ function Log.record(event, original, result, direction, translationMs, elapsedMs
         mode = mode,
         direction = direction,
         translationMs = validDuration(translationMs),
-        elapsedMs = validDuration(elapsedMs),
     }
     journal.nextIndex = index + 1
 end

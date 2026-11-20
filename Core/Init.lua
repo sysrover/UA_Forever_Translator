@@ -9,6 +9,11 @@ frame:SetScript("OnEvent", function(_, event, addon)
         if addon == name and not loaded then
             loaded = true
             ns.Database.load(); ns.Commands.register()
+            local models = ns.UDPipeModels
+            if models then
+                ns.Engine.UDPipe.prepare(models.en)
+                ns.Engine.UDPipe.prepare(models.uk)
+            end
             if enteredWorld then ns.Incoming.start() end
             ns.UI.Settings.register()
         elseif loaded and addon == "Blizzard_ChatFrameBase" then
