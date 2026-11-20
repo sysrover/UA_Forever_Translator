@@ -6,7 +6,7 @@
 
 ## Встановлення
 
-Розпакуйте `UA_Forever_Translator-0.5.0.zip` у `World of Warcraft/_forever_/Interface/AddOns/`. Файл `UA_Forever_Translator.toc` має лежати безпосередньо в папці `AddOns/UA_Forever_Translator/`. Увімкніть аддон у грі. Для оновлення вже встановленого аддона скористайтеся `/reload`.
+Розпакуйте `UA_Forever_Translator-0.5.1.zip` у `World of Warcraft/_forever_/Interface/AddOns/`. Файл `UA_Forever_Translator.toc` має лежати безпосередньо в папці `AddOns/UA_Forever_Translator/`. Увімкніть аддон у грі. Для оновлення вже встановленого аддона скористайтеся `/reload`.
 
 ## Команди
 
@@ -37,6 +37,6 @@
 
 Після `/reload` або виходу з гри записи доступні в таблиці `UA_Forever_TranslatorLog` у файлі `WTF/Account/<обліковий запис>/<сервер>/<персонаж>/SavedVariables/UA_Forever_Translator.lua` всередині папки `_forever_`. Кількість записів **не обмежена**: `entries` зберігає пари від найдавнішої до найновішої, а `nextIndex` вказує на наступне вільне місце. Під час першого нового запису старий кільцевий журнал переноситься в `schema=2` зі збереженням наявних пар та їхнього порядку. Вимкнення прапорця зупиняє нові записи й залишає збережену історію.
 
-## Реліз 0.5.0
+## Реліз 0.5.1
 
-Ігрові назви звірено з UA Forever. [Журнал змін](CHANGELOG.md) · [Джерела та ліцензії](THIRD_PARTY_NOTICES.md)
+Ігрові назви звірено з UA Forever. [Журнал змін](CHANGELOG.md) · [Джерела та ліцензії релізу 0.5.0](https://github.com/sysrover/UA_Forever_Translator/blob/0.5.0/THIRD_PARTY_NOTICES.md)

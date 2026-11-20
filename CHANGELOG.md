@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.1
+
+- Improved translation of group rosters, recruitment and enchantment trade messages, chat reactions, and expressions for dates, times, durations, and approximate quantities.
+- Expanded the game dictionary and improved how the grammar and UDPipe models use sentence context. Mixed-language chat preserves text in unsupported languages.
+- Split incoming translation work across frames and prepare UDPipe models when the addon loads.
+- The optional translation journal now records processing time for incoming translations and outgoing draft previews.
+
 ## 0.5.0
 
 First release of UA Forever Translator for World of Warcraft: Forever.
