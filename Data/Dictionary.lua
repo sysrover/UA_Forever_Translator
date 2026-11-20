@@ -461,7 +461,12 @@ ns.Data = {
                 }
             },
             ["azeroth"] = {
-                ["_id"] = "place.azeroth"
+                ["_id"] = "place.azeroth",
+                ["commerce"] = {
+                    ["authority"] = {
+                        ["_id"] = "game.azeroth_commerce_authority"
+                    }
+                }
             },
             ["b"] = {
                 ["-"] = {
@@ -1123,6 +1128,19 @@ ns.Data = {
                     ["_id"] = "slang.trade.mats"
                 }
             },
+            ["crate"] = {
+                ["faction"] = {
+                    ["_id"] = "game.supply_faction"
+                },
+                ["factions"] = {
+                    ["_id"] = "game.supply_faction",
+                    ["_plural"] = {
+                        ["id"] = "game.supply_faction",
+                        ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" },
+                        ["text"] = "фракції постачальників"
+                    }
+                }
+            },
             ["cross"] = {
                 ["-"] = {
                     ["faction"] = {
@@ -1403,6 +1421,11 @@ ns.Data = {
                     ["text"] = "друїди"
                 }
             },
+            ["dun"] = {
+                ["algaz"] = {
+                    ["_id"] = "place.dun_algaz"
+                }
+            },
             ["dung"] = {
                 ["_id"] = "game.dungeon"
             },
@@ -1419,6 +1442,13 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:place.durotar" },
                     ["text"] = "Дуротар",
                     ["weak"] = false
+                },
+                ["supply"] = {
+                    ["and"] = {
+                        ["logistics"] = {
+                            ["_id"] = "game.durotar_supply_and_logistics"
+                        }
+                    }
                 }
             },
             ["duskwood"] = {
@@ -1603,6 +1633,13 @@ ns.Data = {
             },
             ["espionage"] = {
                 ["_id"] = "activity.espionage"
+            },
+            ["excavation"] = {
+                ["site"] = {
+                    ["_byCategory"] = {
+                        ["places"] = "place.wetlands_excavation_site"
+                    }
+                }
             },
             ["exit"] = {
                 ["_literal"] = {
@@ -4397,6 +4434,18 @@ ns.Data = {
                     ["_id"] = "place.the_temple_of_atal_hakkar"
                 }
             },
+            ["supply"] = {
+                ["faction"] = {
+                    ["_id"] = "game.supply_faction"
+                },
+                ["factions"] = {
+                    ["_plural"] = {
+                        ["id"] = "game.supply_faction",
+                        ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" },
+                        ["text"] = "фракції постачальників"
+                    }
+                }
+            },
             ["sw"] = {
                 ["_id"] = "place.stormwind"
             },
@@ -5084,6 +5133,22 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["wetland"] = {
+                ["dungeon"] = {
+                    ["_id"] = "place.wetlands_dungeon"
+                }
+            },
+            ["wetlands"] = {
+                ["_id"] = "place.wetlands",
+                ["dungeon"] = {
+                    ["_id"] = "place.wetlands_dungeon"
+                },
+                ["excavation"] = {
+                    ["site"] = {
+                        ["_id"] = "place.wetlands_excavation_site"
+                    }
+                }
+            },
             ["when"] = {
                 ["_literal"] = {
                     ["id"] = "literal.when",
@@ -5605,6 +5670,9 @@ ns.Data = {
                 ["_id"] = "place.alterac"
             },
             ["альянс"] = {
+                ["_id"] = "game.alliance"
+            },
+            ["альянсом"] = {
                 ["_id"] = "game.alliance"
             },
             ["альянсу"] = {
@@ -8098,6 +8166,19 @@ ns.Data = {
                     ["text"] = "druids"
                 }
             },
+            ["дун"] = {
+                ["-"] = {
+                    ["альґаз"] = {
+                        ["_id"] = "place.dun_algaz"
+                    },
+                    ["альґаза"] = {
+                        ["_id"] = "place.dun_algaz"
+                    },
+                    ["альґазі"] = {
+                        ["_id"] = "place.dun_algaz"
+                    }
+                }
+            },
             ["дуротар"] = {
                 ["_id"] = "place.durotar",
                 ["_literal"] = {
@@ -8238,6 +8319,12 @@ ns.Data = {
                         ["weak"] = false
                     }
                 }
+            },
+            ["заболоття"] = {
+                ["_id"] = "place.wetlands"
+            },
+            ["заболотті"] = {
+                ["_id"] = "place.wetlands"
             },
             ["забрати"] = {
                 ["здобич"] = {
@@ -11109,6 +11196,9 @@ ns.Data = {
             ["орди"] = {
                 ["_id"] = "game.horde"
             },
+            ["ордою"] = {
+                ["_id"] = "game.horde"
+            },
             ["орк"] = {
                 ["_morph"] = {
                     ["race.orc.base.singular"] = {
@@ -11838,6 +11928,52 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "hurry",
                     ["weak"] = false
+                }
+            },
+            ["постачанню"] = {
+                ["й"] = {
+                    ["логістиці"] = {
+                        ["дуротару"] = {
+                            ["_id"] = "game.durotar_supply_and_logistics"
+                        }
+                    }
+                }
+            },
+            ["постачання"] = {
+                ["й"] = {
+                    ["логістика"] = {
+                        ["дуротару"] = {
+                            ["_id"] = "game.durotar_supply_and_logistics"
+                        }
+                    },
+                    ["логістики"] = {
+                        ["дуротару"] = {
+                            ["_id"] = "game.durotar_supply_and_logistics"
+                        }
+                    },
+                    ["логістику"] = {
+                        ["дуротару"] = {
+                            ["_id"] = "game.durotar_supply_and_logistics"
+                        }
+                    }
+                }
+            },
+            ["постачанням"] = {
+                ["і"] = {
+                    ["логістикою"] = {
+                        ["дуротару"] = {
+                            ["_id"] = "game.durotar_supply_and_logistics"
+                        }
+                    }
+                }
+            },
+            ["постачанні"] = {
+                ["й"] = {
+                    ["логістиці"] = {
+                        ["дуротару"] = {
+                            ["_id"] = "game.durotar_supply_and_logistics"
+                        }
+                    }
                 }
             },
             ["пот"] = {
@@ -12661,7 +12797,19 @@ ns.Data = {
                 ["_id"] = "place.southshore"
             },
             ["підземелля"] = {
-                ["_id"] = "game.dungeon"
+                ["_id"] = "game.dungeon",
+                ["в"] = {
+                    ["заболотті"] = {
+                        ["_id"] = "place.wetlands_dungeon"
+                    }
+                }
+            },
+            ["підземеллі"] = {
+                ["в"] = {
+                    ["заболотті"] = {
+                        ["_id"] = "place.wetlands_dungeon"
+                    }
+                }
             },
             ["підземка"] = {
                 ["_id"] = "game.dungeon"
@@ -12877,6 +13025,27 @@ ns.Data = {
                     ["id"] = "class.rogue",
                     ["sourceRefs"] = { "ua-forever:class.rogue" },
                     ["text"] = "rogues"
+                }
+            },
+            ["розкопках"] = {
+                ["у"] = {
+                    ["заболотті"] = {
+                        ["_id"] = "place.wetlands_excavation_site"
+                    }
+                }
+            },
+            ["розкопки"] = {
+                ["в"] = {
+                    ["заболотті"] = {
+                        ["_id"] = "place.wetlands_excavation_site"
+                    }
+                }
+            },
+            ["розкопок"] = {
+                ["у"] = {
+                    ["заболотті"] = {
+                        ["_id"] = "place.wetlands_excavation_site"
+                    }
                 }
             },
             ["рол"] = {
@@ -13918,6 +14087,34 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["управлінню"] = {
+                ["торгівлі"] = {
+                    ["азероту"] = {
+                        ["_id"] = "game.azeroth_commerce_authority"
+                    }
+                }
+            },
+            ["управління"] = {
+                ["торгівлі"] = {
+                    ["азероту"] = {
+                        ["_id"] = "game.azeroth_commerce_authority"
+                    }
+                }
+            },
+            ["управлінням"] = {
+                ["торгівлі"] = {
+                    ["азероту"] = {
+                        ["_id"] = "game.azeroth_commerce_authority"
+                    }
+                }
+            },
+            ["управлінні"] = {
+                ["торгівлі"] = {
+                    ["азероту"] = {
+                        ["_id"] = "game.azeroth_commerce_authority"
+                    }
+                }
+            },
             ["усередині"] = {
                 ["_literal"] = {
                     ["id"] = "literal.inside",
@@ -13954,6 +14151,66 @@ ns.Data = {
                     ["ікла"] = {
                         ["_id"] = "place.shadowfang_keep"
                     }
+                }
+            },
+            ["фракцій"] = {
+                ["постачальників"] = {
+                    ["_id"] = "game.supply_faction",
+                    ["_plural"] = {
+                        ["id"] = "game.supply_faction",
+                        ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" },
+                        ["text"] = "supply factions"
+                    }
+                }
+            },
+            ["фракцію"] = {
+                ["постачальників"] = {
+                    ["_id"] = "game.supply_faction"
+                }
+            },
+            ["фракція"] = {
+                ["постачальників"] = {
+                    ["_id"] = "game.supply_faction"
+                }
+            },
+            ["фракціям"] = {
+                ["постачальників"] = {
+                    ["_id"] = "game.supply_faction",
+                    ["_plural"] = {
+                        ["id"] = "game.supply_faction",
+                        ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" },
+                        ["text"] = "supply factions"
+                    }
+                }
+            },
+            ["фракціями"] = {
+                ["постачальників"] = {
+                    ["_id"] = "game.supply_faction",
+                    ["_plural"] = {
+                        ["id"] = "game.supply_faction",
+                        ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" },
+                        ["text"] = "supply factions"
+                    }
+                }
+            },
+            ["фракціях"] = {
+                ["постачальників"] = {
+                    ["_id"] = "game.supply_faction",
+                    ["_plural"] = {
+                        ["id"] = "game.supply_faction",
+                        ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" },
+                        ["text"] = "supply factions"
+                    }
+                }
+            },
+            ["фракцією"] = {
+                ["постачальників"] = {
+                    ["_id"] = "game.supply_faction"
+                }
+            },
+            ["фракції"] = {
+                ["постачальників"] = {
+                    ["_id"] = "game.supply_faction"
                 }
             },
             ["фрірол"] = {
@@ -17436,6 +17693,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["englishDefinite"] = true,
                                 ["gender"] = "masculine",
                                 ["proper"] = true,
                                 ["semanticClass"] = "faction"
@@ -17888,6 +18146,26 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.azeroth",
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    },
+                    ["commerce"] = {
+                        ["authority"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "neuter",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "faction"
+                                    },
+                                    ["id"] = "game.azeroth_commerce_authority",
+                                    ["lemma"] = "Azeroth Commerce Authority",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.azeroth_commerce_authority",
+                                    ["sourceRefs"] = { "ua-forever:faction:2586" }
+                                }
+                            }
                         }
                     }
                 },
@@ -19073,6 +19351,45 @@ ns.Data = {
                         }
                     }
                 },
+                ["crate"] = {
+                    ["faction"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "supply faction",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            }
+                        }
+                    },
+                    ["factions"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "supply faction",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
                 ["cross"] = {
                     ["-"] = {
                         ["faction"] = {
@@ -19558,6 +19875,23 @@ ns.Data = {
                         }
                     }
                 },
+                ["dun"] = {
+                    ["algaz"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine"
+                                },
+                                ["id"] = "place.dun_algaz",
+                                ["lemma"] = "Dun Algaz",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dun_algaz",
+                                ["sourceRefs"] = { "ua-forever:place.dun_algaz" }
+                            }
+                        }
+                    }
+                },
                 ["dung"] = {
                     ["_analyses"] = {
                         {
@@ -19620,6 +19954,27 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.durotar",
                             ["sourceRefs"] = { "ua-forever:place.durotar" }
+                        }
+                    },
+                    ["supply"] = {
+                        ["and"] = {
+                            ["logistics"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["gender"] = "neuter",
+                                            ["proper"] = true,
+                                            ["semanticClass"] = "faction"
+                                        },
+                                        ["id"] = "game.durotar_supply_and_logistics",
+                                        ["lemma"] = "Durotar Supply and Logistics",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "game.durotar_supply_and_logistics",
+                                        ["sourceRefs"] = { "ua-forever:faction:2587" }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -19987,6 +20342,25 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "activity.espionage",
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["excavation"] = {
+                    ["site"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["clearableInstance"] = true,
+                                    ["contextAliasSense"] = "roleAvailability",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "place.wetlands_excavation_site",
+                                ["lemma"] = "Wetlands Excavation Site",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.wetlands_excavation_site",
+                                ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" }
+                            }
                         }
                     }
                 },
@@ -21125,6 +21499,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["englishDefinite"] = true,
                                 ["gender"] = "feminine",
                                 ["proper"] = true,
                                 ["semanticClass"] = "faction"
@@ -25255,6 +25630,45 @@ ns.Data = {
                         }
                     }
                 },
+                ["supply"] = {
+                    ["faction"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "supply faction",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            }
+                        }
+                    },
+                    ["factions"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "supply faction",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
                 ["sw"] = {
                     ["_analyses"] = {
                         {
@@ -26471,6 +26885,74 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.westfall",
                             ["sourceRefs"] = { "ua-forever:place.westfall" }
+                        }
+                    }
+                },
+                ["wetland"] = {
+                    ["dungeon"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["clearableInstance"] = true,
+                                    ["gender"] = "neuter"
+                                },
+                                ["id"] = "place.wetlands_dungeon",
+                                ["lemma"] = "Wetlands dungeon",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.wetlands_dungeon",
+                                ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" }
+                            }
+                        }
+                    }
+                },
+                ["wetlands"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter"
+                            },
+                            ["id"] = "place.wetlands",
+                            ["lemma"] = "Wetlands",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.wetlands",
+                            ["sourceRefs"] = { "ua-forever:place.wetlands" }
+                        }
+                    },
+                    ["dungeon"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["clearableInstance"] = true,
+                                    ["gender"] = "neuter"
+                                },
+                                ["id"] = "place.wetlands_dungeon",
+                                ["lemma"] = "Wetlands dungeon",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.wetlands_dungeon",
+                                ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" }
+                            }
+                        }
+                    },
+                    ["excavation"] = {
+                        ["site"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["clearableInstance"] = true,
+                                        ["contextAliasSense"] = "roleAvailability",
+                                        ["number"] = "plural"
+                                    },
+                                    ["id"] = "place.wetlands_excavation_site",
+                                    ["lemma"] = "Wetlands Excavation Site",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.wetlands_excavation_site",
+                                    ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" }
+                                }
+                            }
                         }
                     }
                 },
@@ -27899,7 +28381,28 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["englishDefinite"] = true,
                                 ["gender"] = "masculine",
+                                ["proper"] = true,
+                                ["semanticClass"] = "faction"
+                            },
+                            ["id"] = "game.alliance",
+                            ["lemma"] = "Альянс",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.alliance",
+                            ["sourceRefs"] = { "ua-forever:game.alliance" }
+                        }
+                    }
+                },
+                ["альянсом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "instrumental",
+                                ["englishDefinite"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
                                 ["proper"] = true,
                                 ["semanticClass"] = "faction"
                             },
@@ -27917,6 +28420,7 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "genitive",
+                                ["englishDefinite"] = true,
                                 ["gender"] = "masculine",
                                 ["number"] = "singular",
                                 ["proper"] = true,
@@ -34071,6 +34575,59 @@ ns.Data = {
                         }
                     }
                 },
+                ["дун"] = {
+                    ["-"] = {
+                        ["альґаз"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "masculine"
+                                    },
+                                    ["id"] = "place.dun_algaz",
+                                    ["lemma"] = "Дун-Альґаз",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dun_algaz",
+                                    ["sourceRefs"] = { "ua-forever:place.dun_algaz" }
+                                }
+                            }
+                        },
+                        ["альґаза"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "genitive",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "place.dun_algaz",
+                                    ["lemma"] = "Дун-Альґаз",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dun_algaz",
+                                    ["sourceRefs"] = { "ua-forever:place.dun_algaz" }
+                                }
+                            }
+                        },
+                        ["альґазі"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "locative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "place.dun_algaz",
+                                    ["lemma"] = "Дун-Альґаз",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dun_algaz",
+                                    ["sourceRefs"] = { "ua-forever:place.dun_algaz" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["дуротар"] = {
                     ["_analyses"] = {
                         {
@@ -34320,6 +34877,51 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "class.priest",
                             ["sourceRefs"] = { "ua-forever:class.priest" }
+                        }
+                    }
+                },
+                ["заболоття"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "neuter"
+                            },
+                            ["id"] = "place.wetlands",
+                            ["lemma"] = "Заболоття",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.wetlands",
+                            ["sourceRefs"] = { "ua-forever:place.wetlands" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.wetlands",
+                            ["lemma"] = "Заболоття",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.wetlands",
+                            ["sourceRefs"] = { "ua-forever:place.wetlands" }
+                        }
+                    }
+                },
+                ["заболотті"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "neuter",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "place.wetlands",
+                            ["lemma"] = "Заболоття",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.wetlands",
+                            ["sourceRefs"] = { "ua-forever:place.wetlands" }
                         }
                     }
                 },
@@ -40626,6 +41228,7 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
+                                ["englishDefinite"] = true,
                                 ["gender"] = "feminine",
                                 ["proper"] = true,
                                 ["semanticClass"] = "faction"
@@ -40644,6 +41247,27 @@ ns.Data = {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["case"] = "genitive",
+                                ["englishDefinite"] = true,
+                                ["gender"] = "feminine",
+                                ["number"] = "singular",
+                                ["proper"] = true,
+                                ["semanticClass"] = "faction"
+                            },
+                            ["id"] = "game.horde",
+                            ["lemma"] = "Орда",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.horde",
+                            ["sourceRefs"] = { "ua-forever:game.horde" }
+                        }
+                    }
+                },
+                ["ордою"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "instrumental",
+                                ["englishDefinite"] = true,
                                 ["gender"] = "feminine",
                                 ["number"] = "singular",
                                 ["proper"] = true,
@@ -42887,6 +43511,146 @@ ns.Data = {
                         }
                     }
                 },
+                ["постачанню"] = {
+                    ["й"] = {
+                        ["логістиці"] = {
+                            ["дуротару"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "dative",
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular",
+                                            ["proper"] = true,
+                                            ["semanticClass"] = "faction"
+                                        },
+                                        ["id"] = "game.durotar_supply_and_logistics",
+                                        ["lemma"] = "Постачання й логістика Дуротару",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "game.durotar_supply_and_logistics",
+                                        ["sourceRefs"] = { "ua-forever:faction:2587" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["постачання"] = {
+                    ["й"] = {
+                        ["логістика"] = {
+                            ["дуротару"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["gender"] = "neuter",
+                                            ["proper"] = true,
+                                            ["semanticClass"] = "faction"
+                                        },
+                                        ["id"] = "game.durotar_supply_and_logistics",
+                                        ["lemma"] = "Постачання й логістика Дуротару",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "game.durotar_supply_and_logistics",
+                                        ["sourceRefs"] = { "ua-forever:faction:2587" }
+                                    }
+                                }
+                            }
+                        },
+                        ["логістики"] = {
+                            ["дуротару"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "genitive",
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular",
+                                            ["proper"] = true,
+                                            ["semanticClass"] = "faction"
+                                        },
+                                        ["id"] = "game.durotar_supply_and_logistics",
+                                        ["lemma"] = "Постачання й логістика Дуротару",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "game.durotar_supply_and_logistics",
+                                        ["sourceRefs"] = { "ua-forever:faction:2587" }
+                                    }
+                                }
+                            }
+                        },
+                        ["логістику"] = {
+                            ["дуротару"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "accusative",
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular",
+                                            ["proper"] = true,
+                                            ["semanticClass"] = "faction"
+                                        },
+                                        ["id"] = "game.durotar_supply_and_logistics",
+                                        ["lemma"] = "Постачання й логістика Дуротару",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "game.durotar_supply_and_logistics",
+                                        ["sourceRefs"] = { "ua-forever:faction:2587" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["постачанням"] = {
+                    ["і"] = {
+                        ["логістикою"] = {
+                            ["дуротару"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "instrumental",
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular",
+                                            ["proper"] = true,
+                                            ["semanticClass"] = "faction"
+                                        },
+                                        ["id"] = "game.durotar_supply_and_logistics",
+                                        ["lemma"] = "Постачання й логістика Дуротару",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "game.durotar_supply_and_logistics",
+                                        ["sourceRefs"] = { "ua-forever:faction:2587" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["постачанні"] = {
+                    ["й"] = {
+                        ["логістиці"] = {
+                            ["дуротару"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "locative",
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular",
+                                            ["proper"] = true,
+                                            ["semanticClass"] = "faction"
+                                        },
+                                        ["id"] = "game.durotar_supply_and_logistics",
+                                        ["lemma"] = "Постачання й логістика Дуротару",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "game.durotar_supply_and_logistics",
+                                        ["sourceRefs"] = { "ua-forever:faction:2587" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["походом"] = {
                     ["гільдії"] = {
                         ["_analyses"] = {
@@ -45072,6 +45836,60 @@ ns.Data = {
                             ["sense"] = "game.dungeon",
                             ["sourceRefs"] = { "ua-forever:game.dungeon" }
                         }
+                    },
+                    ["в"] = {
+                        ["заболотті"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["clearableInstance"] = true,
+                                        ["gender"] = "neuter"
+                                    },
+                                    ["id"] = "place.wetlands_dungeon",
+                                    ["lemma"] = "підземелля в Заболотті",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.wetlands_dungeon",
+                                    ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "genitive",
+                                        ["clearableInstance"] = true,
+                                        ["gender"] = "neuter",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "place.wetlands_dungeon",
+                                    ["lemma"] = "підземелля в Заболотті",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.wetlands_dungeon",
+                                    ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["підземеллі"] = {
+                    ["в"] = {
+                        ["заболотті"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "locative",
+                                        ["clearableInstance"] = true,
+                                        ["gender"] = "neuter",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "place.wetlands_dungeon",
+                                    ["lemma"] = "підземелля в Заболотті",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.wetlands_dungeon",
+                                    ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" }
+                                }
+                            }
+                        }
                     }
                 },
                 ["підземка"] = {
@@ -45612,6 +46430,85 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "class.rogue",
                             ["sourceRefs"] = { "ua-forever:class.rogue" }
+                        }
+                    }
+                },
+                ["розкопках"] = {
+                    ["у"] = {
+                        ["заболотті"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "locative",
+                                        ["clearableInstance"] = true,
+                                        ["contextAliasSense"] = "roleAvailability",
+                                        ["number"] = "plural"
+                                    },
+                                    ["id"] = "place.wetlands_excavation_site",
+                                    ["lemma"] = "розкопки в Заболотті",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.wetlands_excavation_site",
+                                    ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["розкопки"] = {
+                    ["в"] = {
+                        ["заболотті"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["clearableInstance"] = true,
+                                        ["contextAliasSense"] = "roleAvailability",
+                                        ["number"] = "plural"
+                                    },
+                                    ["id"] = "place.wetlands_excavation_site",
+                                    ["lemma"] = "розкопки в Заболотті",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.wetlands_excavation_site",
+                                    ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "accusative",
+                                        ["clearableInstance"] = true,
+                                        ["contextAliasSense"] = "roleAvailability",
+                                        ["number"] = "plural"
+                                    },
+                                    ["id"] = "place.wetlands_excavation_site",
+                                    ["lemma"] = "розкопки в Заболотті",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.wetlands_excavation_site",
+                                    ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["розкопок"] = {
+                    ["у"] = {
+                        ["заболотті"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "genitive",
+                                        ["clearableInstance"] = true,
+                                        ["contextAliasSense"] = "roleAvailability",
+                                        ["number"] = "plural"
+                                    },
+                                    ["id"] = "place.wetlands_excavation_site",
+                                    ["lemma"] = "розкопки в Заболотті",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.wetlands_excavation_site",
+                                    ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" }
+                                }
+                            }
                         }
                     }
                 },
@@ -48100,6 +48997,132 @@ ns.Data = {
                         }
                     }
                 },
+                ["управлінню"] = {
+                    ["торгівлі"] = {
+                        ["азероту"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "dative",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "neuter",
+                                        ["number"] = "singular",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "faction"
+                                    },
+                                    ["id"] = "game.azeroth_commerce_authority",
+                                    ["lemma"] = "Управління торгівлі Азероту",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.azeroth_commerce_authority",
+                                    ["sourceRefs"] = { "ua-forever:faction:2586" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["управління"] = {
+                    ["торгівлі"] = {
+                        ["азероту"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "neuter",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "faction"
+                                    },
+                                    ["id"] = "game.azeroth_commerce_authority",
+                                    ["lemma"] = "Управління торгівлі Азероту",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.azeroth_commerce_authority",
+                                    ["sourceRefs"] = { "ua-forever:faction:2586" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "genitive",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "neuter",
+                                        ["number"] = "singular",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "faction"
+                                    },
+                                    ["id"] = "game.azeroth_commerce_authority",
+                                    ["lemma"] = "Управління торгівлі Азероту",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.azeroth_commerce_authority",
+                                    ["sourceRefs"] = { "ua-forever:faction:2586" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "accusative",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "neuter",
+                                        ["number"] = "singular",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "faction"
+                                    },
+                                    ["id"] = "game.azeroth_commerce_authority",
+                                    ["lemma"] = "Управління торгівлі Азероту",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.azeroth_commerce_authority",
+                                    ["sourceRefs"] = { "ua-forever:faction:2586" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["управлінням"] = {
+                    ["торгівлі"] = {
+                        ["азероту"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "instrumental",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "neuter",
+                                        ["number"] = "singular",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "faction"
+                                    },
+                                    ["id"] = "game.azeroth_commerce_authority",
+                                    ["lemma"] = "Управління торгівлі Азероту",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.azeroth_commerce_authority",
+                                    ["sourceRefs"] = { "ua-forever:faction:2586" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["управлінні"] = {
+                    ["торгівлі"] = {
+                        ["азероту"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "locative",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "neuter",
+                                        ["number"] = "singular",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "faction"
+                                    },
+                                    ["id"] = "game.azeroth_commerce_authority",
+                                    ["lemma"] = "Управління торгівлі Азероту",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "game.azeroth_commerce_authority",
+                                    ["sourceRefs"] = { "ua-forever:faction:2586" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["учасник"] = {
                     ["_analyses"] = {
                         {
@@ -48178,6 +49201,244 @@ ns.Data = {
                                     ["sense"] = "place.shadowfang_keep",
                                     ["sourceRefs"] = { "ua-forever:place.shadowfang_keep" }
                                 }
+                            }
+                        }
+                    }
+                },
+                ["фракцій"] = {
+                    ["постачальників"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "фракція постачальників",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["фракцію"] = {
+                    ["постачальників"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "фракція постачальників",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["фракція"] = {
+                    ["постачальників"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "фракція постачальників",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["фракціям"] = {
+                    ["постачальників"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "фракція постачальників",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["фракціями"] = {
+                    ["постачальників"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "фракція постачальників",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["фракціях"] = {
+                    ["постачальників"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "фракція постачальників",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["фракцією"] = {
+                    ["постачальників"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "фракція постачальників",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["фракції"] = {
+                    ["постачальників"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "фракція постачальників",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "фракція постачальників",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "фракція постачальників",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "фракція постачальників",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["englishCommon"] = true,
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["proseCommonNoun"] = true,
+                                    ["semanticClass"] = "faction"
+                                },
+                                ["id"] = "game.supply_faction",
+                                ["lemma"] = "фракція постачальників",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.supply_faction",
+                                ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" }
                             }
                         }
                     }
@@ -51298,7 +52559,8 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Альянс",
-                    ["genitive"] = "Альянсу"
+                    ["genitive"] = "Альянсу",
+                    ["instrumental"] = "Альянсом"
                 }
             },
             ["game.alt"] = {
@@ -51343,6 +52605,19 @@ ns.Data = {
                     ["locative"] = "аукціонному домі",
                     ["locativeSingular"] = "аукціоні",
                     ["nominative"] = "аукціонний дім"
+                }
+            },
+            ["game.azeroth_commerce_authority"] = {
+                ["en"] = {
+                    ["canonical"] = "Azeroth Commerce Authority"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Управління торгівлі Азероту",
+                    ["canonical"] = "Управління торгівлі Азероту",
+                    ["dative"] = "Управлінню торгівлі Азероту",
+                    ["genitive"] = "Управління торгівлі Азероту",
+                    ["instrumental"] = "Управлінням торгівлі Азероту",
+                    ["locative"] = "Управлінні торгівлі Азероту"
                 }
             },
             ["game.bag"] = {
@@ -51406,6 +52681,19 @@ ns.Data = {
                 ["uk"] = {
                     ["accusative"] = "підземелля",
                     ["canonical"] = "Підземелля"
+                }
+            },
+            ["game.durotar_supply_and_logistics"] = {
+                ["en"] = {
+                    ["canonical"] = "Durotar Supply and Logistics"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Постачання й логістику Дуротару",
+                    ["canonical"] = "Постачання й логістика Дуротару",
+                    ["dative"] = "Постачанню й логістиці Дуротару",
+                    ["genitive"] = "Постачання й логістики Дуротару",
+                    ["instrumental"] = "Постачанням і логістикою Дуротару",
+                    ["locative"] = "Постачанні й логістиці Дуротару"
                 }
             },
             ["game.elves_only_guild"] = {
@@ -51528,7 +52816,8 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Орда",
-                    ["genitive"] = "Орди"
+                    ["genitive"] = "Орди",
+                    ["instrumental"] = "Ордою"
                 }
             },
             ["game.interrupt"] = {
@@ -51749,6 +53038,26 @@ ns.Data = {
                     ["instrumental"] = "місцем появи",
                     ["locative"] = "місці появи",
                     ["nominative"] = "місце появи"
+                }
+            },
+            ["game.supply_faction"] = {
+                ["en"] = {
+                    ["canonical"] = "supply faction",
+                    ["plural"] = "supply factions"
+                },
+                ["uk"] = {
+                    ["accusative"] = "фракцію постачальників",
+                    ["accusativePlural"] = "фракції постачальників",
+                    ["canonical"] = "фракція постачальників",
+                    ["dative"] = "фракції постачальників",
+                    ["dativePlural"] = "фракціям постачальників",
+                    ["genitive"] = "фракції постачальників",
+                    ["genitivePlural"] = "фракцій постачальників",
+                    ["instrumental"] = "фракцією постачальників",
+                    ["instrumentalPlural"] = "фракціями постачальників",
+                    ["locative"] = "фракції постачальників",
+                    ["locativePlural"] = "фракціях постачальників",
+                    ["nominativePlural"] = "фракції постачальників"
                 }
             },
             ["game.threat"] = {
@@ -52302,6 +53611,16 @@ ns.Data = {
                     ["locative"] = "Затонулому місті"
                 }
             },
+            ["place.dun_algaz"] = {
+                ["en"] = {
+                    ["canonical"] = "Dun Algaz"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Дун-Альґаз",
+                    ["genitiveSingular"] = "Дун-Альґаза",
+                    ["locative"] = "Дун-Альґазі"
+                }
+            },
             ["place.durotar"] = {
                 ["en"] = {
                     ["canonical"] = "Durotar"
@@ -52841,6 +54160,37 @@ ns.Data = {
                     ["canonical"] = "Західний край",
                     ["genitiveSingular"] = "Західного краю",
                     ["locative"] = "Західному краї"
+                }
+            },
+            ["place.wetlands"] = {
+                ["en"] = {
+                    ["canonical"] = "Wetlands"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Заболоття",
+                    ["genitiveSingular"] = "Заболоття",
+                    ["locative"] = "Заболотті"
+                }
+            },
+            ["place.wetlands_dungeon"] = {
+                ["en"] = {
+                    ["canonical"] = "Wetlands dungeon"
+                },
+                ["uk"] = {
+                    ["canonical"] = "підземелля в Заболотті",
+                    ["genitiveSingular"] = "підземелля в Заболотті",
+                    ["locative"] = "підземеллі в Заболотті"
+                }
+            },
+            ["place.wetlands_excavation_site"] = {
+                ["en"] = {
+                    ["canonical"] = "Wetlands Excavation Site"
+                },
+                ["uk"] = {
+                    ["accusativePlural"] = "розкопки в Заболотті",
+                    ["canonical"] = "розкопки в Заболотті",
+                    ["genitivePlural"] = "розкопок у Заболотті",
+                    ["locativePlural"] = "розкопках у Заболотті"
                 }
             },
             ["place.winterspring"] = {
@@ -54221,7 +55571,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 302,
+        ["concepts"] = 309,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 85,
@@ -54240,7 +55590,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "46bb547967c184c22110e91ff5ea5010240871b8660806ed8c50e373f5f7a27b"
+        ["version"] = "c98dc7f600a51b5d0da174f8d7f3d1fc4ced5c1bc6126c21cbaedf803b353c61"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -64184,12 +65534,14 @@ ns.Data = {
             ["en"] = "Alliance",
             ["features"] = {
                 ["animacy"] = "inanimate",
+                ["englishDefinite"] = true,
                 ["gender"] = "masculine",
                 ["proper"] = true,
                 ["semanticClass"] = "faction"
             },
             ["forms"] = {
-                ["genitive"] = "Альянсу"
+                ["genitive"] = "Альянсу",
+                ["instrumental"] = "Альянсом"
             },
             ["id"] = "game.alliance",
             ["priority"] = 100,
@@ -64312,6 +65664,41 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:game.auction_house" },
             ["status"] = "approved",
             ["uk"] = "Аукціонний дім"
+        },
+        ["game.azeroth_commerce_authority"] = {
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Azeroth Commerce Authority",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["englishDefinite"] = true,
+                ["gender"] = "neuter",
+                ["proper"] = true,
+                ["semanticClass"] = "faction"
+            },
+            ["forms"] = {
+                ["accusative"] = "Управління торгівлі Азероту",
+                ["dative"] = "Управлінню торгівлі Азероту",
+                ["genitive"] = "Управління торгівлі Азероту",
+                ["instrumental"] = "Управлінням торгівлі Азероту",
+                ["locative"] = "Управлінні торгівлі Азероту"
+            },
+            ["id"] = "game.azeroth_commerce_authority",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "game",
+                ["factionId"] = 2586,
+                ["file"] = "entries/forever/cliend_db/factions_uk.lua",
+                ["key"] = "Azeroth Commerce Authority",
+                ["line"] = 202,
+                ["sha256"] = "7b5f0a29601b3a50500a40219ed2b8d5ca56bba0efa126c82368b9ee6293580a",
+                ["source"] = "ua-forever",
+                ["sourceBuild"] = "1.60.1.71037"
+            },
+            ["sourceRefs"] = { "ua-forever:faction:2586" },
+            ["status"] = "approved",
+            ["uk"] = "Управління торгівлі Азероту"
         },
         ["game.bag"] = {
             ["aliases"] = {
@@ -64488,6 +65875,40 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:game.dungeon" },
             ["status"] = "approved",
             ["uk"] = "Підземелля"
+        },
+        ["game.durotar_supply_and_logistics"] = {
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Durotar Supply and Logistics",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter",
+                ["proper"] = true,
+                ["semanticClass"] = "faction"
+            },
+            ["forms"] = {
+                ["accusative"] = "Постачання й логістику Дуротару",
+                ["dative"] = "Постачанню й логістиці Дуротару",
+                ["genitive"] = "Постачання й логістики Дуротару",
+                ["instrumental"] = "Постачанням і логістикою Дуротару",
+                ["locative"] = "Постачанні й логістиці Дуротару"
+            },
+            ["id"] = "game.durotar_supply_and_logistics",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "game",
+                ["factionId"] = 2587,
+                ["file"] = "entries/forever/cliend_db/factions_uk.lua",
+                ["key"] = "Durotar Supply and Logistics",
+                ["line"] = 203,
+                ["sha256"] = "7b5f0a29601b3a50500a40219ed2b8d5ca56bba0efa126c82368b9ee6293580a",
+                ["source"] = "ua-forever",
+                ["sourceBuild"] = "1.60.1.71037"
+            },
+            ["sourceRefs"] = { "ua-forever:faction:2587" },
+            ["status"] = "approved",
+            ["uk"] = "Постачання й логістика Дуротару"
         },
         ["game.elves_only_guild"] = {
             ["aliases"] = {
@@ -64795,12 +66216,14 @@ ns.Data = {
             ["en"] = "Horde",
             ["features"] = {
                 ["animacy"] = "inanimate",
+                ["englishDefinite"] = true,
                 ["gender"] = "feminine",
                 ["proper"] = true,
                 ["semanticClass"] = "faction"
             },
             ["forms"] = {
-                ["genitive"] = "Орди"
+                ["genitive"] = "Орди",
+                ["instrumental"] = "Ордою"
             },
             ["id"] = "game.horde",
             ["priority"] = 100,
@@ -65389,6 +66812,48 @@ ns.Data = {
             ["sourceRefs"] = { "project-authored:chat-0.1" },
             ["status"] = "approved",
             ["uk"] = "місце появи"
+        },
+        ["game.supply_faction"] = {
+            ["aliases"] = {
+                ["en"] = { "crate faction" },
+                ["uk"] = {}
+            },
+            ["category"] = "game",
+            ["contexts"] = { "game" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "supply faction",
+            ["englishPlural"] = "supply factions",
+            ["englishPluralAliases"] = { "crate factions" },
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["englishCommon"] = true,
+                ["gender"] = "feminine",
+                ["proseCommonNoun"] = true,
+                ["semanticClass"] = "faction"
+            },
+            ["forms"] = {
+                ["accusative"] = "фракцію постачальників",
+                ["accusativePlural"] = "фракції постачальників",
+                ["dative"] = "фракції постачальників",
+                ["dativePlural"] = "фракціям постачальників",
+                ["genitive"] = "фракції постачальників",
+                ["genitivePlural"] = "фракцій постачальників",
+                ["instrumental"] = "фракцією постачальників",
+                ["instrumentalPlural"] = "фракціями постачальників",
+                ["locative"] = "фракції постачальників",
+                ["locativePlural"] = "фракціях постачальників",
+                ["nominativePlural"] = "фракції постачальників"
+            },
+            ["id"] = "game.supply_faction",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "WoW Forever supply factions, client spell 1269600",
+                ["key"] = "supply faction",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:spell:1269600", "project-authored:general-grammar-1" },
+            ["status"] = "approved",
+            ["uk"] = "фракція постачальників"
         },
         ["game.threat"] = {
             ["aliases"] = {
@@ -66759,6 +68224,30 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.drowned_city" },
             ["status"] = "approved",
             ["uk"] = "Затонуле місто"
+        },
+        ["place.dun_algaz"] = {
+            ["category"] = "places",
+            ["en"] = "Dun Algaz",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine"
+            },
+            ["forms"] = {
+                ["genitiveSingular"] = "Дун-Альґаза",
+                ["locative"] = "Дун-Альґазі"
+            },
+            ["id"] = "place.dun_algaz",
+            ["provenance"] = {
+                ["context"] = "place",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Dun Algaz",
+                ["line"] = 828,
+                ["sha256"] = "60e2b63a679cf5abd0931237b1be7a11b9145ed00b240d04076189c7bc5c04d0",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.dun_algaz" },
+            ["status"] = "approved",
+            ["uk"] = "Дун-Альґаз"
         },
         ["place.durotar"] = {
             ["aliases"] = {
@@ -68381,6 +69870,82 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.westfall" },
             ["status"] = "approved",
             ["uk"] = "Західний край"
+        },
+        ["place.wetlands"] = {
+            ["category"] = "places",
+            ["en"] = "Wetlands",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["genitiveSingular"] = "Заболоття",
+                ["locative"] = "Заболотті"
+            },
+            ["id"] = "place.wetlands",
+            ["provenance"] = {
+                ["context"] = "place",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Wetlands",
+                ["line"] = 3491,
+                ["sha256"] = "60e2b63a679cf5abd0931237b1be7a11b9145ed00b240d04076189c7bc5c04d0",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.wetlands" },
+            ["status"] = "approved",
+            ["uk"] = "Заболоття"
+        },
+        ["place.wetlands_dungeon"] = {
+            ["aliases"] = {
+                ["en"] = { "Wetland dungeon" }
+            },
+            ["category"] = "places",
+            ["en"] = "Wetlands dungeon",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["clearableInstance"] = true,
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["genitiveSingular"] = "підземелля в Заболотті",
+                ["locative"] = "підземеллі в Заболотті"
+            },
+            ["id"] = "place.wetlands_dungeon",
+            ["provenance"] = {
+                ["context"] = "Descriptive instance destination with no specific dungeon ID",
+                ["key"] = "Wetlands dungeon",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" },
+            ["status"] = "approved",
+            ["uk"] = "підземелля в Заболотті"
+        },
+        ["place.wetlands_excavation_site"] = {
+            ["category"] = "places",
+            ["contextAliases"] = {
+                ["en"] = { "Excavation Site" }
+            },
+            ["en"] = "Wetlands Excavation Site",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["clearableInstance"] = true,
+                ["contextAliasSense"] = "roleAvailability",
+                ["number"] = "plural"
+            },
+            ["forms"] = {
+                ["accusativePlural"] = "розкопки в Заболотті",
+                ["genitivePlural"] = "розкопок у Заболотті",
+                ["locativePlural"] = "розкопках у Заболотті"
+            },
+            ["id"] = "place.wetlands_excavation_site",
+            ["provenance"] = {
+                ["context"] = "Descriptive instance name used in recruitment chat",
+                ["key"] = "Wetlands Excavation Site",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored", "ua-forever:place.wetlands" },
+            ["status"] = "approved",
+            ["uk"] = "розкопки в Заболотті"
         },
         ["place.winterspring"] = {
             ["aliases"] = {

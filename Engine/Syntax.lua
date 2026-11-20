@@ -103,6 +103,19 @@ function State:link(name, kind)
     end
     return false
 end
+function State:questList()
+    local token = self.i <= self.limit and self.tokens[self.i]
+    if not token or (token.linkKind ~= "quest" and not token.questReference) then return end
+    local quests = {}
+    for index = 1, 8 do
+        local before = self.i
+        if index > 1 then self:word(",") end
+        local slot = "quest" .. index
+        if not self:link(slot, "quest") then self.i = before; break end
+        quests[index] = self.slots[slot].raw
+    end
+    if #quests > 0 then return quests end
+end
 function State:money(name)
     local price, after = ns.Engine.Grammar.moneyAt(self.document, self.i, self.limit)
     if not price then return false end
@@ -227,6 +240,7 @@ local function groupRoster(p, direction, afterRecruitment)
         if index > 1 then
             local comma = p:word(",")
             join = p:any("and", "&", "+", "та", "і", "й") or comma
+            if join and not uk then p:any("have", "got") end
         end
         local name, countKey = "member" .. index, "memberCount" .. index
         if not p:role(name, countKey, true, true) then
@@ -293,7 +307,7 @@ local function recruit(p, direction)
     local compact = count and (p:word("m") or (uk and p:any("гравця :", "гравців :", "гравця", "гравців")))
     if compact then p.slots.total, p.slots.count = p.slots.count, nil end
     local lastSpot = p:any("last spot", "last slot", "останнє місце")
-    local role, place, go = nil, leadingPlace, nil
+    local role, place, go, destinationRun = nil, leadingPlace, nil, nil
     local roleJoins = {}
     for _ = 1, 4 do
         local separator = p:any(",", ".")
@@ -320,9 +334,13 @@ local function recruit(p, direction)
             -- The level belongs to the recruitment regardless of its position.
         elseif not place then
             local start = p.i
-            local introduced = p:any("for", "для", "до", "у", "в", "місце :")
+            local runMarker = uk and p:phrase("для проходження") or not uk and p:phrase("to run")
+            local introduced = runMarker or p:any("for", "для", "до", "у", "в", "місце :")
             if not introduced and not uk then p:word("to") end
-            if p:noun("place", "places") then place = true
+            if p:noun("place", "places", uk and runMarker and "genitive") then
+                local features = p.slots.place.term.features
+                if runMarker and not (features and features.clearableInstance) then return end
+                place, destinationRun = true, runMarker
             else
                 local token = p.tokens[p.i]
                 local quest = token and (token.linkKind == "quest" or token.questReference)
@@ -339,18 +357,10 @@ local function recruit(p, direction)
         if p.i < p.limit and p.tokens[p.i].key == "!" then p.i = p.i + 1 end
     end
     p:word(",")
-    local start, quests = p.i, {}
+    local start = p.i
     local questMarker = p:any("for", "на завдання")
-    if questMarker or not place then
-        for n = 1, 8 do
-            local previous = p.i
-            if n > 1 then p:word(",") end
-            local slot = "quest" .. n
-            if not p:link(slot, "quest") then p.i = previous; break end
-            quests[n] = p.slots[slot].raw
-        end
-    end
-    if #quests == 0 then p.i = start end
+    local quests = (questMarker or not place) and p:questList()
+    if not quests then p.i = start end
     if p:any("last spot", "last slot", "останнє місце") then lastSpot = true end
     local vacancies = p.slots.total or p.slots.count
     if vacancies and tonumber(vacancies.raw) == 1 and #roleJoins == 0 and p:phrase("full group") then lastSpot = true end
@@ -362,7 +372,8 @@ local function recruit(p, direction)
     local urgent = p:any("fast", "quick", "quickly", "терміново", ". терміново")
     local summon = p:any("can summon", "можемо прикликати", ". можемо прикликати")
     if p:any("and go", "then go", "n go", "n ' go", "і йдемо", "і вирушаємо", ". і вирушаємо") then go = true end
-    if not role and not (place and (p.slots.count or p.slots.total or p.slots.level or run == "quest" and groupRequest)) then return end
+    if not role and not (quests and (groupRequest or p.slots.total)
+        or place and (p.slots.count or p.slots.total or p.slots.level or run == "quest" and groupRequest)) then return end
     if lastSpot then
         local total = p.slots.total
         if total and tonumber(total.raw) > 1 then return end
@@ -382,8 +393,8 @@ local function recruit(p, direction)
         end
     end
     return p:finish("recruit", {lastSpot=lastSpot, go=go, roleJoins=roleJoins, classJoins=p.classJoins,
-        run=run, urgent=urgent, additional=additional, summon=summon, quests=#quests > 0 and quests or nil,
-        roster=roster and roster.features})
+        run=run, urgent=urgent, additional=additional, summon=summon, quests=quests,
+        roster=roster and roster.features, destinationRun=destinationRun})
 end
 
 local function groupSearchOpening(p, uk)
@@ -434,8 +445,11 @@ local function groupSearch(p, direction)
     if not uk and not p.slots.role then
         if p:noun("role", "roles") then p:word(",") end
     end
-    local destination = uk and p:any("для", "у", "в", "на", "місце :") or not uk and p:word("for")
-    if not p:noun("place", "places") and destination then return end
+    local questMarker = uk and p:phrase("на завдання")
+    local destination = questMarker or uk and p:any("для", "у", "в", "на", "місце :") or not uk and p:word("for")
+    local place = not questMarker and p:noun("place", "places")
+    local quests = not place and p:questList()
+    if destination and not (place or quests) then return end
     p:any(".", ",")
     local role = uk and p:any("як", "роль :") or not uk and p:word("as")
     if role and (p.slots.role or not p:noun("role", "roles")) then return end
@@ -443,7 +457,7 @@ local function groupSearch(p, direction)
         p:any(".", ",", ";")
         offer = groupRoleOffer(p, uk)
     end
-    return p:finish("groupSearch", {roleOffer=offer})
+    return p:finish("groupSearch", {roleOffer=offer, quests=quests})
 end
 
 local function search(p, direction)
@@ -909,6 +923,24 @@ local function questNeed(p, direction)
     return p:finish("questNeed", {question=true})
 end
 
+local function questAttendance(p, direction)
+    local quests
+    if direction == "en-uk" then
+        if p:any("anyone", "anybody") then
+            p:word("for")
+            quests = p:questList()
+        else
+            quests = p:questList()
+            if not quests then return end
+            p:word(",")
+            if not p:any("anyone", "anybody") then return end
+        end
+    elseif p:any("хтось іде на завдання", "хтось йде на завдання") then
+        quests = p:questList()
+    end
+    if quests then return p:finish("questAttendance", {quests=quests, question=true}) end
+end
+
 local function statement(p, direction)
     local negative, question, modal
     if direction == "en-uk" then
@@ -933,7 +965,7 @@ local function statement(p, direction)
     return p:finish("statement", {negative=negative, question=question, modal=modal, conjunction=conjunction})
 end
 
-local parsers = {recruit, groupRoster, groupVacancy, enhancement, availability, enchantmentTrade, service, enchantmentList, gratuityNote, reward, questNeed,
+local parsers = {recruit, groupRoster, groupVacancy, enhancement, availability, enchantmentTrade, service, enchantmentList, gratuityNote, reward, questNeed, questAttendance,
     statement, price, groupSearch, search}
 function S.parse(document, limit, first)
     for _, parse in ipairs(parsers) do

@@ -337,12 +337,12 @@ local function parseModelInput(document, model, words)
     return arcs
 end
 
-local function analyzeDocument(document, first, last, marker, markerEnd, hints, markerTags, alternatives, commaBefore, readings)
+local function analyzeDocument(document, first, last, marker, markerEnd, hints, markerTags, alternatives, commaBefore, readings, omitted)
     local lang = document.direction == "en-uk" and "en" or "uk"
     local model = ns.UDPipeModels and ns.UDPipeModels[lang]
     if not model or last < first or last - first >= 32 then return end
     local words
-    local original = (alternatives or commaBefore) and {}
+    local original = (alternatives or commaBefore or omitted) and {}
     if lang == "en" and ns.UDPipeTagWeights then
         local hasAuxiliary
         words, hasAuxiliary = tagEnglish(document, first, last, marker, markerEnd, ns.UDPipeTagWeights, hints, markerTags, readings)
@@ -390,6 +390,16 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
             index = nextIndex
         end
     end
+    if omitted then
+        for compact = #original, 1, -1 do
+            local offset = original[compact]
+            local index = offset and first + offset - 1
+            if index and index >= omitted.first and index <= omitted.last then
+                table.remove(words, compact)
+                table.remove(original, compact)
+            end
+        end
+    end
     if commaBefore then
         local separator = commaBefore - first + 1
         for compact, offset in ipairs(original) do
@@ -404,7 +414,7 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
     -- Cache compact arcs; each caller maps them back to its own source positions.
     local arcs = parseModelInput(document, model, words)
     if not arcs or not original then return arcs, words end
-    -- Keep source positions after adding a contraction's auxiliary, adding a comma, or compacting verb alternatives.
+    -- Restore source positions after inserting or compacting model tokens.
     local expanded, previousOffset = {}, 0
     for compact, arc in ipairs(arcs) do
         local offset = original[compact]
