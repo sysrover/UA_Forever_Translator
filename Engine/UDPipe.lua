@@ -10,6 +10,11 @@ local digit = {}
 for index = 1, #alphabet do digit[alphabet:byte(index)] = index - 1 end
 local floor, exp = math.floor, math.exp
 local matrices = setmetatable({}, {__mode="k"})
+local projectionLimit = 768
+local floatScale = {}
+for exponent = 0, 255 do
+    floatScale[exponent] = 2 ^ (exponent == 0 and -149 or exponent - 150)
+end
 
 local function readFloat(block, position)
     local a, b, c, d, e = block:byte(position, position + 4)
@@ -20,14 +25,17 @@ local function readFloat(block, position)
     local sign = encoded % 256
     local mantissa = (high % 128) * 65536 + middle * 256 + low
     local exponent = (sign % 128) * 2 + floor(high / 128)
-    local value = exponent == 0 and mantissa * 2 ^ -149 or (mantissa + 8388608) * 2 ^ (exponent - 150)
+    local value = (mantissa + (exponent == 0 and 0 or 8388608)) * floatScale[exponent]
     return sign < 128 and value or -value
 end
 
 local function decode(blocks)
-    local values = {}
+    local values, index = {}, 0
     for _, block in ipairs(blocks) do
-        for position = 1, #block, 5 do values[#values + 1] = readFloat(block, position) end
+        for position = 1, #block, 5 do
+            index = index + 1
+            values[index] = readFloat(block, position)
+        end
     end
     return values
 end
@@ -35,7 +43,8 @@ end
 local function cacheModel(model)
     local matrix = matrices[model]
     if matrix then return matrix end
-    matrix = {hidden=decode(model.hidden), output=decode(model.output)}
+    matrix = {hidden=decode(model.hidden), output=decode(model.output),
+        projections={}, projectionOrder={}, nextProjection=1}
     matrices[model] = matrix
     return matrix
 end
@@ -110,6 +119,35 @@ local function activate(value, kind)
     return 2 / (1 + exp(-2 * adjusted)) - 1
 end
 
+local function projection(model, matrix, selector, group, feature, id)
+    local groups = matrix.projections[selector]
+    if not groups then groups = {}; matrix.projections[selector] = groups end
+    local vectors = groups[group]
+    if not vectors then vectors = {}; groups[group] = vectors end
+    if vectors[id] then return vectors[id] end
+
+    local width, vector = model.hiddenSize, {}
+    for column = 1, width do vector[column] = 0 end
+    local first = (id - 1) * feature.dimension
+    local row = (selector - 1) * model.dimension + feature.offset
+    for dimension = 0, feature.dimension - 1 do
+        local offset = first + dimension
+        local block = feature.weights[floor(offset / model.blockSize) + 1]
+        local value = readFloat(block, (offset % model.blockSize) * 5 + 1)
+        accumulate(vector, matrix.hidden, (row + dimension) * width, value, width)
+    end
+
+    -- Numerical vectors depend only on the immutable model and embedding ID.
+    local nextProjection = matrix.nextProjection
+    local slot = matrix.projectionOrder[nextProjection]
+    if slot then slot.vectors[slot.id] = nil
+    else slot = {}; matrix.projectionOrder[nextProjection] = slot end
+    slot.vectors, slot.id = vectors, id
+    vectors[id] = vector
+    matrix.nextProjection = nextProjection == projectionLimit and 1 or nextProjection + 1
+    return vector
+end
+
 local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidden)
     local width = model.hiddenSize
     local bias = #model.selectors * model.dimension * width
@@ -117,7 +155,6 @@ local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidde
     for index, slot in ipairs(model.selectors) do
         local node = nodeAt(slot, stack, buffer, nodes)
         if node then
-            local slotBase = (index - 1) * model.dimension
             local projected = memo[index]
             for group, feature in ipairs(model.features) do
                 local id = embeddingID(feature, valueOf(node, feature.kind))
@@ -125,16 +162,7 @@ local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidde
                     local cache = projected[group]
                     local vector = cache[id]
                     if not vector then
-                        vector = {}
-                        for column = 1, width do vector[column] = 0 end
-                        local first = (id - 1) * feature.dimension
-                        local row = slotBase + feature.offset
-                        for dimension = 0, feature.dimension - 1 do
-                            local offset = first + dimension
-                            local block = feature.weights[floor(offset / model.blockSize) + 1]
-                            local value = readFloat(block, (offset % model.blockSize) * 5 + 1)
-                            accumulate(vector, matrix.hidden, (row + dimension) * width, value, width)
-                        end
+                        vector = projection(model, matrix, index, group, feature, id)
                         cache[id] = vector
                         memo.count = memo.count + 1
                     end
