@@ -310,6 +310,33 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
     return words, hasAuxiliary
 end
 
+local modelFields = {"form", "lemma", "upos", "xpos", "feats", "misc"}
+local function parseModelInput(document, model, words)
+    local parts = {}
+    for _, word in ipairs(words) do
+        for _, field in ipairs(modelFields) do
+            local value = word[field] or ""
+            parts[#parts + 1] = #value .. ":" .. value
+        end
+    end
+    local key = table.concat(parts)
+    local models = document.udpipeInferences
+    if not models then models = {}; document.udpipeInferences = models end
+    local memo = models[model]
+    if not memo then memo = {count=0}; models[model] = memo end
+    local cached = memo[key]
+    if cached ~= nil then return cached or nil end
+
+    local projections = document.udpipeProjections
+    if not projections then projections = {}; document.udpipeProjections = projections end
+    local arcs = U.parse(model, words, 1, projections)
+    if memo.count < 8 then
+        memo[key] = arcs or false
+        memo.count = memo.count + 1
+    end
+    return arcs
+end
+
 local function analyzeDocument(document, first, last, marker, markerEnd, hints, markerTags, alternatives, commaBefore, readings)
     local lang = document.direction == "en-uk" and "en" or "uk"
     local model = ns.UDPipeModels and ns.UDPipeModels[lang]
@@ -373,9 +400,9 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
             end
         end
     end
-    local projections = document.udpipeProjections
-    if not projections then projections = {}; document.udpipeProjections = projections end
-    local arcs = U.parse(model, words, 1, projections)
+    -- The same annotated words can be produced by the plain and guided attempts.
+    -- Cache compact arcs; each caller maps them back to its own source positions.
+    local arcs = parseModelInput(document, model, words)
     if not arcs or not original then return arcs, words end
     -- Keep source positions after adding a contraction's auxiliary, adding a comma, or compacting verb alternatives.
     local expanded, previousOffset = {}, 0
