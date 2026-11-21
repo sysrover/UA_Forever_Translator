@@ -181,7 +181,7 @@ local function dependencyFragments(document, fragments)
     for ending = 1, #tokens do
         local token = tokens[ending]
         local sentenceEnd = not token.protected and token.key:match("^[.!?]$")
-            and (ending == #tokens or tokens[ending + 1].first > token.last + 1)
+            and ns.Engine.Parser.sentenceBoundary(document.text, tokens, ending)
         if sentenceEnd or ending == #tokens then
             if ending - first >= 2 and ending - first < 32 and attempts < 3 then
                 local open, occupied = 0, false

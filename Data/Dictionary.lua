@@ -1855,6 +1855,11 @@ ns.Data = {
                     }
                 }
             },
+            ["frozen"] = {
+                ["throne"] = {
+                    ["_id"] = "place.frozen_throne"
+                }
+            },
             ["g2g"] = {
                 ["_id"] = "slang.social.gtg"
             },
@@ -2332,6 +2337,9 @@ ns.Data = {
                     }
                 }
             },
+            ["icecrown"] = {
+                ["_id"] = "place.icecrown"
+            },
             ["if"] = {
                 ["_id"] = "place.ironforge",
                 ["_literal"] = {
@@ -2466,6 +2474,14 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "приєднайся",
                     ["weak"] = false
+                }
+            },
+            ["kaldorei"] = {
+                ["_id"] = "game.kaldorei",
+                ["_plural"] = {
+                    ["id"] = "game.kaldorei",
+                    ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" },
+                    ["text"] = "калдораї"
                 }
             },
             ["key"] = {
@@ -3109,6 +3125,18 @@ ns.Data = {
                         ["sourceRefs"] = { "project-authored:chat-0.1" },
                         ["text"] = "біля",
                         ["weak"] = false
+                    }
+                }
+            },
+            ["night"] = {
+                ["elf"] = {
+                    ["_id"] = "game.night_elf"
+                },
+                ["elves"] = {
+                    ["_plural"] = {
+                        ["id"] = "game.night_elf",
+                        ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" },
+                        ["text"] = "нічні ельфи"
                     }
                 }
             },
@@ -4843,6 +4871,9 @@ ns.Data = {
                     ["_id"] = "slang.combat.trash-mobs"
                 }
             },
+            ["trp3"] = {
+                ["_id"] = "game.trp3"
+            },
             ["twink"] = {
                 ["_id"] = "slang.combat.twink"
             },
@@ -5534,6 +5565,9 @@ ns.Data = {
             },
             ["tel'abim"] = {
                 ["_id"] = "place.tel_abim"
+            },
+            ["trp3"] = {
+                ["_id"] = "game.trp3"
             },
             ["wotlk"] = {
                 ["_byCategory"] = {
@@ -8707,6 +8741,29 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["зледенілий"] = {
+                ["трон"] = {
+                    ["_id"] = "place.frozen_throne"
+                }
+            },
+            ["зледенілим"] = {
+                ["троном"] = {
+                    ["_id"] = "place.frozen_throne"
+                }
+            },
+            ["зледенілого"] = {
+                ["трону"] = {
+                    ["_id"] = "place.frozen_throne"
+                }
+            },
+            ["зледенілому"] = {
+                ["трону"] = {
+                    ["_id"] = "place.frozen_throne"
+                },
+                ["троні"] = {
+                    ["_id"] = "place.frozen_throne"
+                }
+            },
             ["злитка"] = {
                 ["_id"] = "goods.ingot",
                 ["мітрилу"] = {
@@ -9037,6 +9094,41 @@ ns.Data = {
             ["кайтити"] = {
                 ["_id"] = "slang.combat.kite"
             },
+            ["калдораям"] = {
+                ["_id"] = "game.kaldorei",
+                ["_plural"] = {
+                    ["id"] = "game.kaldorei",
+                    ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" },
+                    ["text"] = "Kaldorei"
+                }
+            },
+            ["калдораями"] = {
+                ["_id"] = "game.kaldorei",
+                ["_plural"] = {
+                    ["id"] = "game.kaldorei",
+                    ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" },
+                    ["text"] = "Kaldorei"
+                }
+            },
+            ["калдораях"] = {
+                ["_id"] = "game.kaldorei",
+                ["_plural"] = {
+                    ["id"] = "game.kaldorei",
+                    ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" },
+                    ["text"] = "Kaldorei"
+                }
+            },
+            ["калдораї"] = {
+                ["_id"] = "game.kaldorei"
+            },
+            ["калдораїв"] = {
+                ["_id"] = "game.kaldorei",
+                ["_plural"] = {
+                    ["id"] = "game.kaldorei",
+                    ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" },
+                    ["text"] = "Kaldorei"
+                }
+            },
             ["каменя"] = {
                 ["здоров'я"] = {
                     ["_id"] = "goods.healthstone"
@@ -9308,6 +9400,9 @@ ns.Data = {
                 ["_id"] = "profession.tailoring"
             },
             ["крижана"] = {
+                ["корона"] = {
+                    ["_id"] = "place.icecrown"
+                },
                 ["пастка"] = {
                     ["_byCategory"] = {
                         ["abilities"] = "ability.freezing_trap"
@@ -9315,6 +9410,9 @@ ns.Data = {
                 }
             },
             ["крижаною"] = {
+                ["короною"] = {
+                    ["_id"] = "place.icecrown"
+                },
                 ["пасткою"] = {
                     ["_byCategory"] = {
                         ["abilities"] = "ability.freezing_trap"
@@ -9322,6 +9420,9 @@ ns.Data = {
                 }
             },
             ["крижаної"] = {
+                ["корони"] = {
+                    ["_id"] = "place.icecrown"
+                },
                 ["пастки"] = {
                     ["_byCategory"] = {
                         ["abilities"] = "ability.freezing_trap"
@@ -9329,6 +9430,9 @@ ns.Data = {
                 }
             },
             ["крижану"] = {
+                ["корону"] = {
+                    ["_id"] = "place.icecrown"
+                },
                 ["пастку"] = {
                     ["_byCategory"] = {
                         ["abilities"] = "ability.freezing_trap"
@@ -9336,6 +9440,9 @@ ns.Data = {
                 }
             },
             ["крижаній"] = {
+                ["короні"] = {
+                    ["_id"] = "place.icecrown"
+                },
                 ["пастці"] = {
                     ["_byCategory"] = {
                         ["abilities"] = "ability.freezing_trap"
@@ -10891,6 +10998,75 @@ ns.Data = {
             ["нір"] = {
                 ["бритвоболотих"] = {
                     ["_id"] = "place.razorfen_downs"
+                }
+            },
+            ["нічний"] = {
+                ["ельф"] = {
+                    ["_id"] = "game.night_elf"
+                },
+                ["ельфе"] = {
+                    ["_id"] = "game.night_elf"
+                }
+            },
+            ["нічним"] = {
+                ["ельфам"] = {
+                    ["_id"] = "game.night_elf",
+                    ["_plural"] = {
+                        ["id"] = "game.night_elf",
+                        ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" },
+                        ["text"] = "Night Elves"
+                    }
+                },
+                ["ельфом"] = {
+                    ["_id"] = "game.night_elf"
+                }
+            },
+            ["нічними"] = {
+                ["ельфами"] = {
+                    ["_id"] = "game.night_elf",
+                    ["_plural"] = {
+                        ["id"] = "game.night_elf",
+                        ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" },
+                        ["text"] = "Night Elves"
+                    }
+                }
+            },
+            ["нічних"] = {
+                ["ельфах"] = {
+                    ["_id"] = "game.night_elf",
+                    ["_plural"] = {
+                        ["id"] = "game.night_elf",
+                        ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" },
+                        ["text"] = "Night Elves"
+                    }
+                },
+                ["ельфів"] = {
+                    ["_id"] = "game.night_elf",
+                    ["_plural"] = {
+                        ["id"] = "game.night_elf",
+                        ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" },
+                        ["text"] = "Night Elves"
+                    }
+                }
+            },
+            ["нічного"] = {
+                ["ельфа"] = {
+                    ["_id"] = "game.night_elf"
+                }
+            },
+            ["нічному"] = {
+                ["ельфові"] = {
+                    ["_id"] = "game.night_elf"
+                }
+            },
+            ["нічні"] = {
+                ["ельфи"] = {
+                    ["_id"] = "game.night_elf",
+                    ["_plural"] = {
+                        ["id"] = "game.night_elf",
+                        ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" },
+                        ["text"] = "Night Elves"
+                    }
                 }
             },
             ["нічого"] = {
@@ -20654,6 +20830,25 @@ ns.Data = {
                         }
                     }
                 },
+                ["frozen"] = {
+                    ["throne"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishDefinite"] = true,
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.frozen_throne",
+                                ["lemma"] = "Frozen Throne",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.frozen_throne",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:The Frozen Throne", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["g2g"] = {
                     ["_analyses"] = {
                         {
@@ -21639,6 +21834,22 @@ ns.Data = {
                         }
                     }
                 },
+                ["icecrown"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "feminine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.icecrown",
+                            ["lemma"] = "Icecrown",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.icecrown",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Icecrown", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["if"] = {
                     ["_analyses"] = {
                         {
@@ -21836,6 +22047,22 @@ ns.Data = {
                                 ["sense"] = "slang.loot.hard-reserve",
                                 ["sourceRefs"] = { "wow-community:loot" }
                             }
+                        }
+                    }
+                },
+                ["kaldorei"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "game.kaldorei",
+                            ["lemma"] = "Kaldorei",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.kaldorei",
+                            ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -22982,6 +23209,41 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "slang.loot.need-roll",
                                 ["sourceRefs"] = { "wow-community:loot", "ua-forever:ui.Need" }
+                            }
+                        }
+                    }
+                },
+                ["night"] = {
+                    ["elf"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "Night Elf",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["elves"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "Night Elf",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
                             }
                         }
                     }
@@ -26246,6 +26508,23 @@ ns.Data = {
                         }
                     }
                 },
+                ["trp3"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["caseSensitiveEnglish"] = true,
+                                ["gender"] = "masculine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "game.trp3",
+                            ["lemma"] = "TRP3",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.trp3",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["twink"] = {
                     ["_analyses"] = {
                         {
@@ -27935,6 +28214,98 @@ ns.Data = {
                             ["lemma"] = "Tel'Abim",
                             ["pos"] = "noun",
                             ["sense"] = "place.tel_abim",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["trp3"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["caseSensitiveEnglish"] = true,
+                                ["gender"] = "masculine",
+                                ["proper"] = true
+                            },
+                            ["id"] = "game.trp3",
+                            ["lemma"] = "TRP3",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.trp3",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["caseSensitiveEnglish"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "game.trp3",
+                            ["lemma"] = "TRP3",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.trp3",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "dative",
+                                ["caseSensitiveEnglish"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "game.trp3",
+                            ["lemma"] = "TRP3",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.trp3",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["caseSensitiveEnglish"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "game.trp3",
+                            ["lemma"] = "TRP3",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.trp3",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "instrumental",
+                                ["caseSensitiveEnglish"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "game.trp3",
+                            ["lemma"] = "TRP3",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.trp3",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["caseSensitiveEnglish"] = true,
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "game.trp3",
+                            ["lemma"] = "TRP3",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.trp3",
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
@@ -35755,6 +36126,122 @@ ns.Data = {
                         }
                     }
                 },
+                ["зледенілий"] = {
+                    ["трон"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["englishDefinite"] = true,
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.frozen_throne",
+                                ["lemma"] = "Зледенілий трон",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.frozen_throne",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:The Frozen Throne", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["englishDefinite"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.frozen_throne",
+                                ["lemma"] = "Зледенілий трон",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.frozen_throne",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:The Frozen Throne", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["зледенілим"] = {
+                    ["троном"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["englishDefinite"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.frozen_throne",
+                                ["lemma"] = "Зледенілий трон",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.frozen_throne",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:The Frozen Throne", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["зледенілого"] = {
+                    ["трону"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["englishDefinite"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.frozen_throne",
+                                ["lemma"] = "Зледенілий трон",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.frozen_throne",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:The Frozen Throne", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["зледенілому"] = {
+                    ["трону"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["englishDefinite"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.frozen_throne",
+                                ["lemma"] = "Зледенілий трон",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.frozen_throne",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:The Frozen Throne", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["троні"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["englishDefinite"] = true,
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.frozen_throne",
+                                ["lemma"] = "Зледенілий трон",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.frozen_throne",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:The Frozen Throne", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["злитка"] = {
                     ["_analyses"] = {
                         {
@@ -36379,6 +36866,129 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.combat.kite",
                             ["sourceRefs"] = { "wow-community:classic" }
+                        }
+                    }
+                },
+                ["калдораям"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "game.kaldorei",
+                            ["lemma"] = "калдораї",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.kaldorei",
+                            ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["калдораями"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "game.kaldorei",
+                            ["lemma"] = "калдораї",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.kaldorei",
+                            ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["калдораях"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "game.kaldorei",
+                            ["lemma"] = "калдораї",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.kaldorei",
+                            ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["калдораї"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "game.kaldorei",
+                            ["lemma"] = "калдораї",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.kaldorei",
+                            ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "game.kaldorei",
+                            ["lemma"] = "калдораї",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.kaldorei",
+                            ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "game.kaldorei",
+                            ["lemma"] = "калдораї",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.kaldorei",
+                            ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["калдораїв"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "game.kaldorei",
+                            ["lemma"] = "калдораї",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.kaldorei",
+                            ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "game.kaldorei",
+                            ["lemma"] = "калдораї",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.kaldorei",
+                            ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -37131,6 +37741,22 @@ ns.Data = {
                     }
                 },
                 ["крижана"] = {
+                    ["корона"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.icecrown",
+                                ["lemma"] = "Крижана Корона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.icecrown",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Icecrown", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
                     ["пастка"] = {
                         ["_analyses"] = {
                             {
@@ -37161,6 +37787,24 @@ ns.Data = {
                     }
                 },
                 ["крижаною"] = {
+                    ["короною"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.icecrown",
+                                ["lemma"] = "Крижана Корона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.icecrown",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Icecrown", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
                     ["пасткою"] = {
                         ["_analyses"] = {
                             {
@@ -37180,6 +37824,24 @@ ns.Data = {
                     }
                 },
                 ["крижаної"] = {
+                    ["корони"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.icecrown",
+                                ["lemma"] = "Крижана Корона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.icecrown",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Icecrown", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
                     ["пастки"] = {
                         ["_analyses"] = {
                             {
@@ -37199,6 +37861,24 @@ ns.Data = {
                     }
                 },
                 ["крижану"] = {
+                    ["корону"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.icecrown",
+                                ["lemma"] = "Крижана Корона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.icecrown",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Icecrown", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
                     ["пастку"] = {
                         ["_analyses"] = {
                             {
@@ -37218,6 +37898,38 @@ ns.Data = {
                     }
                 },
                 ["крижаній"] = {
+                    ["короні"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.icecrown",
+                                ["lemma"] = "Крижана Корона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.icecrown",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Icecrown", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.icecrown",
+                                ["lemma"] = "Крижана Корона",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.icecrown",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Icecrown", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
                     ["пастці"] = {
                         ["_analyses"] = {
                             {
@@ -40580,6 +41292,254 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.razorfen_downs",
                                 ["sourceRefs"] = { "chattranslatorua:1.1.0", "ua-forever:place.razorfen_downs" }
+                            }
+                        }
+                    }
+                },
+                ["нічний"] = {
+                    ["ельф"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["ельфе"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "vocative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["нічним"] = {
+                    ["ельфам"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["ельфом"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["нічними"] = {
+                    ["ельфами"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["нічних"] = {
+                    ["ельфах"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["ельфів"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["нічного"] = {
+                    ["ельфа"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["нічному"] = {
+                    ["ельфові"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["нічні"] = {
+                    ["ельфи"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "vocative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "game.night_elf",
+                                ["lemma"] = "нічний ельф",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.night_elf",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" }
                             }
                         }
                     }
@@ -52828,6 +53788,22 @@ ns.Data = {
                     ["canonical"] = "Переривання"
                 }
             },
+            ["game.kaldorei"] = {
+                ["en"] = {
+                    ["canonical"] = "Kaldorei",
+                    ["plural"] = "Kaldorei"
+                },
+                ["uk"] = {
+                    ["accusativePlural"] = "калдораїв",
+                    ["canonical"] = "калдораї",
+                    ["dativePlural"] = "калдораям",
+                    ["genitivePlural"] = "калдораїв",
+                    ["instrumentalPlural"] = "калдораями",
+                    ["locativePlural"] = "калдораях",
+                    ["nominativePlural"] = "калдораї",
+                    ["vocativePlural"] = "калдораї"
+                }
+            },
             ["game.layer_invite"] = {
                 ["en"] = {
                     ["canonical"] = "layer invite",
@@ -52888,6 +53864,28 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "міжфракційна мережа найманців"
+                }
+            },
+            ["game.night_elf"] = {
+                ["en"] = {
+                    ["canonical"] = "Night Elf",
+                    ["plural"] = "Night Elves"
+                },
+                ["uk"] = {
+                    ["accusative"] = "нічного ельфа",
+                    ["accusativePlural"] = "нічних ельфів",
+                    ["canonical"] = "нічний ельф",
+                    ["dativePlural"] = "нічним ельфам",
+                    ["dativeSingular"] = "нічному ельфові",
+                    ["genitivePlural"] = "нічних ельфів",
+                    ["genitiveSingular"] = "нічного ельфа",
+                    ["instrumental"] = "нічним ельфом",
+                    ["instrumentalPlural"] = "нічними ельфами",
+                    ["locative"] = "нічному ельфові",
+                    ["locativePlural"] = "нічних ельфах",
+                    ["nominativePlural"] = "нічні ельфи",
+                    ["vocativePlural"] = "нічні ельфи",
+                    ["vocativeSingular"] = "нічний ельфе"
                 }
             },
             ["game.only_requirement"] = {
@@ -53066,6 +54064,19 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Загроза"
+                }
+            },
+            ["game.trp3"] = {
+                ["en"] = {
+                    ["canonical"] = "TRP3"
+                },
+                ["uk"] = {
+                    ["accusative"] = "TRP3",
+                    ["canonical"] = "TRP3",
+                    ["dativeSingular"] = "TRP3",
+                    ["genitiveSingular"] = "TRP3",
+                    ["instrumental"] = "TRP3",
+                    ["locative"] = "TRP3"
                 }
             },
             ["game.voice_chat"] = {
@@ -53657,6 +54668,19 @@ ns.Data = {
                     ["canonical"] = "Ельвиннський ліс"
                 }
             },
+            ["place.frozen_throne"] = {
+                ["en"] = {
+                    ["canonical"] = "Frozen Throne"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Зледенілий трон",
+                    ["canonical"] = "Зледенілий трон",
+                    ["dativeSingular"] = "Зледенілому трону",
+                    ["genitiveSingular"] = "Зледенілого трону",
+                    ["instrumental"] = "Зледенілим троном",
+                    ["locative"] = "Зледенілому троні"
+                }
+            },
             ["place.gnomeregan"] = {
                 ["en"] = {
                     ["canonical"] = "Gnomeregan"
@@ -53699,6 +54723,19 @@ ns.Data = {
                     ["canonical"] = "Зали Блискавок",
                     ["genitiveSingular"] = "Зал Блискавок",
                     ["locative"] = "Залах Блискавок"
+                }
+            },
+            ["place.icecrown"] = {
+                ["en"] = {
+                    ["canonical"] = "Icecrown"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Крижану Корону",
+                    ["canonical"] = "Крижана Корона",
+                    ["dativeSingular"] = "Крижаній Короні",
+                    ["genitiveSingular"] = "Крижаної Корони",
+                    ["instrumental"] = "Крижаною Короною",
+                    ["locative"] = "Крижаній Короні"
                 }
             },
             ["place.ironforge"] = {
@@ -55571,7 +56608,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 309,
+        ["concepts"] = 314,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 85,
@@ -55590,7 +56627,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "c98dc7f600a51b5d0da174f8d7f3d1fc4ced5c1bc6126c21cbaedf803b353c61"
+        ["version"] = "403eb6f50110b1596ae43a3738ae19ecc6753726cb70636962b00daf1853c204"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -66267,6 +67304,34 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Переривання"
         },
+        ["game.kaldorei"] = {
+            ["category"] = "game",
+            ["en"] = "Kaldorei",
+            ["englishPlural"] = "Kaldorei",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["number"] = "plural",
+                ["semanticClass"] = "playableRace"
+            },
+            ["forms"] = {
+                ["accusativePlural"] = "калдораїв",
+                ["dativePlural"] = "калдораям",
+                ["genitivePlural"] = "калдораїв",
+                ["instrumentalPlural"] = "калдораями",
+                ["locativePlural"] = "калдораях",
+                ["nominativePlural"] = "калдораї",
+                ["vocativePlural"] = "калдораї"
+            },
+            ["id"] = "game.kaldorei",
+            ["provenance"] = {
+                ["context"] = "WoW collective race name with Ukrainian declension",
+                ["key"] = "Kaldorei",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:objects.lua:The Kaldorei", "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "калдораї"
+        },
         ["game.layer_invite"] = {
             ["aliases"] = {
                 ["en"] = { "layer inv" },
@@ -66427,6 +67492,40 @@ ns.Data = {
             ["sourceRefs"] = { "project-authored:chat-0.1" },
             ["status"] = "approved",
             ["uk"] = "міжфракційна мережа найманців"
+        },
+        ["game.night_elf"] = {
+            ["category"] = "game",
+            ["en"] = "Night Elf",
+            ["englishPlural"] = "Night Elves",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["semanticClass"] = "playableRace"
+            },
+            ["forms"] = {
+                ["accusative"] = "нічного ельфа",
+                ["accusativePlural"] = "нічних ельфів",
+                ["dativePlural"] = "нічним ельфам",
+                ["dativeSingular"] = "нічному ельфові",
+                ["genitivePlural"] = "нічних ельфів",
+                ["genitiveSingular"] = "нічного ельфа",
+                ["instrumental"] = "нічним ельфом",
+                ["instrumentalPlural"] = "нічними ельфами",
+                ["locative"] = "нічному ельфові",
+                ["locativePlural"] = "нічних ельфах",
+                ["nominativePlural"] = "нічні ельфи",
+                ["vocativePlural"] = "нічні ельфи",
+                ["vocativeSingular"] = "нічний ельфе"
+            },
+            ["id"] = "game.night_elf",
+            ["provenance"] = {
+                ["context"] = "WoW race name with Ukrainian declension",
+                ["key"] = "Night Elf",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Night Elf", "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "нічний ельф"
         },
         ["game.only_requirement"] = {
             ["category"] = "game",
@@ -66880,6 +67979,32 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:game.threat" },
             ["status"] = "approved",
             ["uk"] = "Загроза"
+        },
+        ["game.trp3"] = {
+            ["category"] = "game",
+            ["en"] = "TRP3",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["caseSensitiveEnglish"] = true,
+                ["gender"] = "masculine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "TRP3",
+                ["dativeSingular"] = "TRP3",
+                ["genitiveSingular"] = "TRP3",
+                ["instrumental"] = "TRP3",
+                ["locative"] = "TRP3"
+            },
+            ["id"] = "game.trp3",
+            ["provenance"] = {
+                ["context"] = "Proper name used in role-playing requirements",
+                ["key"] = "TRP3",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "TRP3"
         },
         ["game.voice_chat"] = {
             ["category"] = "game",
@@ -68359,6 +69484,32 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Ельвиннський ліс"
         },
+        ["place.frozen_throne"] = {
+            ["category"] = "places",
+            ["en"] = "Frozen Throne",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["englishDefinite"] = true,
+                ["gender"] = "masculine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Зледенілий трон",
+                ["dativeSingular"] = "Зледенілому трону",
+                ["genitiveSingular"] = "Зледенілого трону",
+                ["instrumental"] = "Зледенілим троном",
+                ["locative"] = "Зледенілому троні"
+            },
+            ["id"] = "place.frozen_throne",
+            ["provenance"] = {
+                ["context"] = "zone name listed as The Frozen Throne in UA_Forever",
+                ["key"] = "Frozen Throne",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:The Frozen Throne", "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Зледенілий трон"
+        },
         ["place.gnomeregan"] = {
             ["aliases"] = {
                 ["en"] = { "gnomer", "gnomergan", "gnomeragan" },
@@ -68486,6 +69637,31 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.halls_of_lightning" },
             ["status"] = "approved",
             ["uk"] = "Зали Блискавок"
+        },
+        ["place.icecrown"] = {
+            ["category"] = "places",
+            ["en"] = "Icecrown",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Крижану Корону",
+                ["dativeSingular"] = "Крижаній Короні",
+                ["genitiveSingular"] = "Крижаної Корони",
+                ["instrumental"] = "Крижаною Короною",
+                ["locative"] = "Крижаній Короні"
+            },
+            ["id"] = "place.icecrown",
+            ["provenance"] = {
+                ["context"] = "zone name in the UA_Forever catalog",
+                ["key"] = "Icecrown",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Icecrown", "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Крижана Корона"
         },
         ["place.ironforge"] = {
             ["aliases"] = {

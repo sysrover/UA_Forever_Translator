@@ -13,15 +13,40 @@ local dashJoins = { ["—"] = " — ", ["–"] = " – " }
 local sentenceJoins = { ["."] = ". ", ["!"] = "! ", ["?"] = "? ", ["…"] = "… " }
 local alternatives = { ["or"] = true, ["або"] = true, ["чи"] = true }
 local sharedPredicateJoins = {["and"]=true, ["or"]=true, ["і"]=true, ["й"]=true, ["та"]=true, ["або"]=true, ["чи"]=true}
-local function joinAt(tokens, index, joins)
+
+local function startsWithCapital(text, token)
+    if token.protected then return false end
+    local capitalized = ns.Engine.Normalize.upperStart(token.key)
+    if capitalized == token.key then return false end
+    local first = capitalized:match("^[A-Z]") or capitalized:sub(1, 2)
+    return text:sub(token.first, token.first + #first - 1) == first
+end
+
+function P.sentenceBoundary(text, tokens, index)
+    local punctuation, following = tokens[index], tokens[index + 1]
+    if not sentenceJoins[punctuation.key] then return false end
+    if not following or following.first > punctuation.last + 1 then return true end
+    if punctuation.key ~= "." or not startsWithCapital(text, following) then return false end
+    local previous = tokens[index - 1]
+    if not previous or previous.last + 1 ~= punctuation.first then return false end
+    if previous.protected or previous.key == ")" or previous.key == "»" or previous.key == '"' then return true end
+    -- Digits and compact initials or title abbreviations also attach to periods.
+    if not previous.key:match("[%a\128-\255]") then return false end
+    local _, length = previous.key:gsub("[\128-\191]", "")
+    local characters = #previous.key - length
+    return characters > 4 or characters > 1 and not startsWithCapital(text, previous)
+end
+
+local function joinAt(text, tokens, index, joins)
     local current = tokens[index]
     local wordJoin = joins[current.key] or dashJoins[current.key]
     if wordJoin then return wordJoin end
     if current.key == "а" and tokens[index + 1].key == "коли" then return ", and " end
-    if current.key == "!" or current.key == "?" then return sentenceJoins[current.key], true end
-    -- A decimal separator is part of a number when followed without a gap.
+    local stop = sentenceJoins[current.key]
+    if stop and (current.key == "!" or current.key == "?" or P.sentenceBoundary(text, tokens, index)) then
+        return stop, true
+    end
     if tokens[index + 1].first <= current.last + 1 then return nil end
-    if sentenceJoins[current.key] then return sentenceJoins[current.key], true end
     if current.key == "," then return ", " end
 end
 local function tokenText(text, tokens, first, last)
@@ -30,15 +55,12 @@ end
 
 local function inferredStarts(text, tokens, direction)
     local starts
-    local normalize = ns.Engine.Normalize
     for i = 3, #tokens - 1 do
         local token, previous = tokens[i], tokens[i - 1]
         local intrinsicCapital = direction == "en-uk" and (token.key == "i" or token.key:sub(1, 2) == "i'")
         if not (token.protected or intrinsicCapital) and token.first > previous.last + 1
             and (previous.protected or not previous.key:match("^%p$")) and not sentenceJoins[previous.key] then
-            local capitalized = normalize.upperStart(token.key)
-            local first = capitalized:match("^[A-Z]") or capitalized:sub(1, 2)
-            if capitalized ~= token.key and text:sub(token.first, token.first + #first - 1) == first then
+            if startsWithCapital(text, token) then
                 starts = starts or {}
                 starts[i] = true
             end
@@ -98,7 +120,7 @@ function P.hasExactOpening(text, tokens, direction)
     local expressions = ns.Data.exact[direction]
     if not composition or tokens[1].protected then return false end
     for index = 2, math.min(12, #tokens - 1) do
-        local _, sentence = joinAt(tokens, index, composition.joins)
+        local _, sentence = joinAt(text, tokens, index, composition.joins)
         if sentence or composition.joins[tokens[index].key] then
             local finish = tokens[index - 1].key == "," and index - 2 or index - 1
             local key = finish > 0 and ns.Engine.Normalize.key(tokenText(text, tokens, 1, finish))
@@ -130,7 +152,7 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
     else
         local found
         for i = 2, #tokens - 1 do
-            if joinAt(tokens, i, joins) or tokens[i].key == "," then found = true; break end
+            if joinAt(text, tokens, i, joins) or tokens[i].key == "," then found = true; break end
         end
         if not found and not inferred then return nil end
     end
@@ -186,20 +208,43 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
         if sentenceBudget then return nil end
         local ends = {}
         for index = 2, #tokens - 1 do
-            if sentenceJoins[tokens[index].key] and tokens[index + 1].first > tokens[index].last + 1 then
+            local key, previous = tokens[index].key, tokens[index - 1]
+            local closesSentence = key == ")" and sentenceJoins[previous.key]
+                and tokens[index].first == previous.last + 1
+            if P.sentenceBoundary(text, tokens, index)
+                or closesSentence and tokens[index + 1].first > tokens[index].last + 1 then
                 ends[#ends + 1] = index
                 if #ends == 8 then return nil end
             end
         end
-        if #ends < 2 then return nil end
+        if #ends == 0 then return nil end
         ends[#ends + 1] = #tokens
+        local opening, closing = {}, {}
+        local part, depth, startPart = 1, 0, nil
+        local startToken = 1
+        for index, token in ipairs(tokens) do
+            if token.key == "(" then
+                if depth == 0 then startPart = index == startToken and part or nil end
+                depth = depth + 1
+            elseif token.key == ")" and depth > 0 then
+                depth = depth - 1
+                if depth == 0 and startPart and startPart < part
+                    and (index == ends[part] or index == trailingPunctuation(text, tokens, startToken, ends[part])) then
+                    opening[startPart], closing[part] = true, index
+                end
+            end
+            if index == ends[part] then part, startToken = part + 1, index + 1 end
+        end
+        if #ends == 2 and not next(opening) then return nil end
         local matches, parts, fragments, start, complete = {}, {}, {}, 1, true
         local nestedBudget = {remaining=16}
-        for part, finish in ipairs(ends) do
-            local match = translateClause(start, finish)
-            if not match and grammarFallback and nestedBudget.remaining > 0 and finish - start >= 3 then
-                local offset = start - 1
-                local sentence = {unpack(tokens, start, finish)}
+        for part, segmentEnd in ipairs(ends) do
+            local first = start + (opening[part] and 1 or 0)
+            local finish = closing[part] and closing[part] - 1 or segmentEnd
+            local match = translateClause(first, finish)
+            if not match and grammarFallback and nestedBudget.remaining > 0 and finish - first >= 3 then
+                local offset = first - 1
+                local sentence = {unpack(tokens, first, finish)}
                 local value, subclauses = P.compose(text, sentence, direction, function(first, last)
                     return grammarFallback(first + offset, last + offset)
                 end, nestedBudget)
@@ -216,18 +261,24 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
                 local value = match.text
                 if sentenceJoins[tokens[finish].key] then
                     local punctuation = finish
-                    while punctuation > start and sentenceJoins[tokens[punctuation - 1].key]
+                    while punctuation > first and sentenceJoins[tokens[punctuation - 1].key]
                         and tokens[punctuation].first == tokens[punctuation - 1].last + 1 do
                         punctuation = punctuation - 1
                     end
                     value = withoutSentenceEnd(value) .. tokenText(text, tokens, punctuation, finish)
                 end
+                if opening[part] then value = "(" .. value end
+                if closing[part] then
+                    if not sentenceJoins[tokens[finish].key] then value = withoutSentenceEnd(value) end
+                    value = value .. tokenText(text, tokens, closing[part], segmentEnd)
+                end
                 matches[part], parts[part] = match, value
-                fragments[start] = {text=value, last=finish, rule=match.rule, slots=match.slots}
+                if start > 1 and tokens[start - 1].last + 1 == tokens[start].first then value = " " .. value end
+                fragments[start] = {text=value, last=segmentEnd, rule=match.rule, slots=match.slots}
             else
                 complete = false
             end
-            start = finish + 1
+            start = segmentEnd + 1
         end
         if complete then return table.concat(parts, " "), matches end
         return nil, nil, fragments
@@ -253,7 +304,7 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
         end
         if depth == 1 then states[state] = false; return nil end
         for i = start + 1, #tokens - 1 do
-            local join, sentence = joinAt(tokens, i, joins)
+            local join, sentence = joinAt(text, tokens, i, joins)
             local inferredJoin = not join and allowInference and inferred[i + 1]
             if inferredJoin then join, sentence = ". ", true end
             if join then
@@ -322,7 +373,7 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
     local inferredEnds, inferredBeginnings, fragments = {}, {}, {}
     local sentenceStart = 1
     for i = first + 1, #tokens - 1 do
-        local join, sentence = joinAt(tokens, i, joins)
+        local join, sentence = joinAt(text, tokens, i, joins)
         local inferredJoin
         if not join and inferred and inferred[i + 1] then
             local complete = translateClause(starts[sentenceStart], i)

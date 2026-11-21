@@ -509,6 +509,12 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
         append(parts, argument)
         if article == true and not node.article then article = node.argument.form.englishCompoundArticle or "definite" end
     end
+    if node.membershipAudience then
+        local audience = withNumber(node.membershipAudience, english and "singular" or "plural")
+        local restriction = G.noun(audience, english, english and "nominative" or "genitive", false)
+        if not restriction then return nil end
+        value = english and (restriction .. "-only " .. value) or (value .. " лише для " .. restriction)
+    end
     if node.activityMode then
         value = node.activityMode .. (english and " " or "-") .. value
     end
@@ -1030,6 +1036,7 @@ local function englishVerb(tree, subject)
         if not modifier.postposedEn then adverb = adverb .. modifier.en[1] .. " " end
     end
     if tree.hortative then return "Let's " .. (tree.negative and "not " or "") .. adverb .. lemma end
+    if tree.optative then return "let " .. subject .. (tree.negative and " not " or " ") .. adverb .. lemma end
     if tree.sharedModal or tree.sharedFuture then
         if tree.modalPerfect then lemma = englishForm(lemma, "participle", "verb") end
         return (tree.negative and "not " or "") .. adverb .. lemma
@@ -1219,6 +1226,7 @@ local function subjectText(tree, english)
     if not tree.subject and frame and frame.impersonalNeed and tree.infinitive then return "" end
     if tree.modalPerfect and tree.ellipticSubject then return english and tree.question and "one" or "" end
     if tree.subject then
+        if english and tree.optative then return G.noun(tree.subject, true, "accusative", "definite") end
         if tree.subject.actionSubject then return G.actionSubjectText(tree.subject.actionSubject) end
         if not english and tree.modal == "should" then return G.noun(tree.subject, false, "dative") end
         local article, value
@@ -1793,7 +1801,12 @@ renderTree = function(tree, english, controller)
         local name = G.noun(tree.recipient, english, english and "nominative" or "vocative")
             or G.noun(tree.recipient, english, "nominative")
         if tree.bareAddress then return name end
-        if name then return (english and "Hello, " or "Вітаю, ") .. name end
+        if name then
+            local greeting = tree.expression and (english and tree.expression.en or tree.expression.uk)[1]
+                or (english and "Hello" or "Вітаю")
+            local address = tree.fellowAddress and (english and "fellow " or "друзі-") or ""
+            return greeting .. ", " .. address .. name
+        end
         return nil
     end
     if tree.kind == "eventOccurrence" then
@@ -1992,7 +2005,7 @@ renderTree = function(tree, english, controller)
         if tree.recipient then head = withComma(head) end
         return head .. " " .. (english and rule.enMarker or rule.ukMarker) .. " " .. object
     end
-    local parts = {}
+    local parts = not english and tree.optative and {"нехай"} or {}
     local subject = subjectText(tree, english)
     if subject == nil then return nil end
     local reference = tree.subject and tree.subject.pronoun
@@ -2657,6 +2670,7 @@ function G.render(parse, direction, punctuation)
     if parse.politeness then
         append(parts, english and parse.politeness.en[1] or withComma(parse.politeness.uk[1]))
     end
+    if parse.discoursePrefix then append(parts, (english and parse.discoursePrefix.en or parse.discoursePrefix.uk)[1]) end
     if parse.prefix then append(parts, (english and parse.prefix.en or parse.prefix.uk)[1]) end
     for i, tree in ipairs(parse.trees) do
         local value = render(tree, english)

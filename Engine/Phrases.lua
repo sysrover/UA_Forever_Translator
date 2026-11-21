@@ -1241,6 +1241,10 @@ local function modePrefix(document, index, limit)
         local second = modeSymbols[P.key(document, after + 1, limit)]
         if not second or second == label then return nil end
         label, after = label .. "/" .. second, after + 2
+    elseif P.key(document, after, limit) == "-" and modeSymbols[P.key(document, after + 1, limit)] then
+        local second = modeSymbols[P.key(document, after + 1, limit)]
+        if second == label then return nil end
+        label, after = label .. "-" .. second, after + 2
     end
     if P.key(document, after, limit) == "-" then after = after + 1 end
     return label, after
@@ -1640,12 +1644,33 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         end
         if not locationOnly then
             local mode, modeEnd = modePrefix(document, index, limit)
+            local audience, marker = head, after
             if mode then
                 local group, finish = nounHead(document, modeEnd, limit, case, false, nounSense, required)
+                audience, marker = group, finish
                 local groupLemma = group and group.entry and group.entry.lexeme.en
                 if group and (group.term and group.term.id == "game.guild" or groupNouns[groupLemma]) then
                     group.activityMode = mode
                     head, after, compoundHead = group, finish, modeEnd
+                end
+            end
+            if not simple then
+                if english then
+                    if P.personNoun(audience) and not audience.pronoun then
+                        if P.key(document, marker, limit) == "-" then marker = marker + 1 end
+                        if P.key(document, marker, limit) == "only" then
+                            local group, finish = nounHead(document, marker + 1, limit, case, false, nounSense, required)
+                            if P.hasTrait(group, "membershipGroup") then
+                                group.activityMode, group.membershipAudience = mode, audience
+                                head, after, compoundHead = group, finish, marker + 1
+                            end
+                        end
+                    end
+                elseif P.hasTrait(head, "membershipGroup") and P.key(document, after, limit) == "лише"
+                    and P.key(document, after + 1, limit) == "для" then
+                    local audience, finish = nounHead(document, after + 2, limit, "genitive", false, nil,
+                        function(candidate) return not candidate.pronoun and P.personNoun(candidate) end)
+                    if audience then head.membershipAudience, after = audience, finish end
                 end
             end
         end
