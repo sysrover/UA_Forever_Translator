@@ -2700,13 +2700,24 @@ ns.Data = {
                 }
             },
             ["light"] = {
-                ["rp"] = {
-                    ["_literal"] = {
-                        ["id"] = "literal.light-rp",
-                        ["sourceRefs"] = { "project-authored:chat-0.1" },
-                        ["text"] = "ненав'язлива рольова гра",
-                        ["weak"] = false
+                ["role"] = {
+                    ["-"] = {
+                        ["play"] = {
+                            ["_id"] = "activity.light-roleplay"
+                        },
+                        ["playing"] = {
+                            ["_id"] = "activity.light-roleplay"
+                        }
                     }
+                },
+                ["roleplay"] = {
+                    ["_id"] = "activity.light-roleplay"
+                },
+                ["roleplaying"] = {
+                    ["_id"] = "activity.light-roleplay"
+                },
+                ["rp"] = {
+                    ["_id"] = "activity.light-roleplay"
                 }
             },
             ["line"] = {
@@ -11150,12 +11161,35 @@ ns.Data = {
             ["ненав'язлива"] = {
                 ["рольова"] = {
                     ["гра"] = {
-                        ["_literal"] = {
-                            ["id"] = "literal.light-rp",
-                            ["sourceRefs"] = { "project-authored:chat-0.1" },
-                            ["text"] = "light RP",
-                            ["weak"] = false
-                        }
+                        ["_id"] = "activity.light-roleplay"
+                    }
+                }
+            },
+            ["ненав'язливою"] = {
+                ["рольовою"] = {
+                    ["грою"] = {
+                        ["_id"] = "activity.light-roleplay"
+                    }
+                }
+            },
+            ["ненав'язливої"] = {
+                ["рольової"] = {
+                    ["гри"] = {
+                        ["_id"] = "activity.light-roleplay"
+                    }
+                }
+            },
+            ["ненав'язливу"] = {
+                ["рольову"] = {
+                    ["гру"] = {
+                        ["_id"] = "activity.light-roleplay"
+                    }
+                }
+            },
+            ["ненав'язливій"] = {
+                ["рольовій"] = {
+                    ["грі"] = {
+                        ["_id"] = "activity.light-roleplay"
                     }
                 }
             },
@@ -17681,6 +17715,8 @@ ns.Data = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["activityTopicGenericPlural"] = true,
                                     ["animacy"] = "inanimate",
                                     ["clearableInstance"] = true,
                                     ["englishCommon"] = true,
@@ -17983,6 +18019,8 @@ ns.Data = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["activityTopicGenericPlural"] = true,
                                     ["animacy"] = "inanimate",
                                     ["clearableInstance"] = true,
                                     ["englishCommon"] = true,
@@ -20563,6 +20601,8 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
+                                ["activityTopicGenericPlural"] = true,
                                 ["animacy"] = "inanimate",
                                 ["clearableInstance"] = true,
                                 ["englishCommon"] = true,
@@ -20581,6 +20621,8 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
+                                ["activityTopicGenericPlural"] = true,
                                 ["animacy"] = "inanimate",
                                 ["clearableInstance"] = true,
                                 ["englishCommon"] = true,
@@ -22835,6 +22877,107 @@ ns.Data = {
                         }
                     }
                 },
+                ["light"] = {
+                    ["role"] = {
+                        ["-"] = {
+                            ["play"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["activityTopic"] = true,
+                                            ["animacy"] = "inanimate",
+                                            ["canStandAlone"] = true,
+                                            ["englishUncountable"] = true,
+                                            ["gender"] = "feminine",
+                                            ["mass"] = true
+                                        },
+                                        ["id"] = "activity.light-roleplay",
+                                        ["lemma"] = "light roleplay",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "activity.light-roleplay",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    }
+                                }
+                            },
+                            ["playing"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["activityTopic"] = true,
+                                            ["animacy"] = "inanimate",
+                                            ["canStandAlone"] = true,
+                                            ["englishUncountable"] = true,
+                                            ["gender"] = "feminine",
+                                            ["mass"] = true
+                                        },
+                                        ["id"] = "activity.light-roleplay",
+                                        ["lemma"] = "light roleplay",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "activity.light-roleplay",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["roleplay"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["animacy"] = "inanimate",
+                                    ["canStandAlone"] = true,
+                                    ["englishUncountable"] = true,
+                                    ["gender"] = "feminine",
+                                    ["mass"] = true
+                                },
+                                ["id"] = "activity.light-roleplay",
+                                ["lemma"] = "light roleplay",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.light-roleplay",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["roleplaying"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["animacy"] = "inanimate",
+                                    ["canStandAlone"] = true,
+                                    ["englishUncountable"] = true,
+                                    ["gender"] = "feminine",
+                                    ["mass"] = true
+                                },
+                                ["id"] = "activity.light-roleplay",
+                                ["lemma"] = "light roleplay",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.light-roleplay",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["rp"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["activityTopic"] = true,
+                                    ["animacy"] = "inanimate",
+                                    ["canStandAlone"] = true,
+                                    ["englishUncountable"] = true,
+                                    ["gender"] = "feminine",
+                                    ["mass"] = true
+                                },
+                                ["id"] = "activity.light-roleplay",
+                                ["lemma"] = "light roleplay",
+                                ["pos"] = "noun",
+                                ["sense"] = "activity.light-roleplay",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["line"] = {
                     ["of"] = {
                         ["sight"] = {
@@ -25035,6 +25178,8 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
+                                ["activityTopicGenericPlural"] = true,
                                 ["animacy"] = "inanimate",
                                 ["clearableInstance"] = true,
                                 ["englishCommon"] = true,
@@ -34609,6 +34754,8 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
+                                ["activityTopicGenericPlural"] = true,
                                 ["animacy"] = "inanimate",
                                 ["clearableInstance"] = true,
                                 ["englishCommon"] = true,
@@ -42733,6 +42880,146 @@ ns.Data = {
                         }
                     }
                 },
+                ["ненав'язлива"] = {
+                    ["рольова"] = {
+                        ["гра"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["canStandAlone"] = true,
+                                        ["englishUncountable"] = true,
+                                        ["gender"] = "feminine",
+                                        ["mass"] = true
+                                    },
+                                    ["id"] = "activity.light-roleplay",
+                                    ["lemma"] = "ненав'язлива рольова гра",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "activity.light-roleplay",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ненав'язливою"] = {
+                    ["рольовою"] = {
+                        ["грою"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["canStandAlone"] = true,
+                                        ["case"] = "instrumental",
+                                        ["englishUncountable"] = true,
+                                        ["gender"] = "feminine",
+                                        ["mass"] = true,
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "activity.light-roleplay",
+                                    ["lemma"] = "ненав'язлива рольова гра",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "activity.light-roleplay",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ненав'язливої"] = {
+                    ["рольової"] = {
+                        ["гри"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["canStandAlone"] = true,
+                                        ["case"] = "genitive",
+                                        ["englishUncountable"] = true,
+                                        ["gender"] = "feminine",
+                                        ["mass"] = true,
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "activity.light-roleplay",
+                                    ["lemma"] = "ненав'язлива рольова гра",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "activity.light-roleplay",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ненав'язливу"] = {
+                    ["рольову"] = {
+                        ["гру"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["canStandAlone"] = true,
+                                        ["case"] = "accusative",
+                                        ["englishUncountable"] = true,
+                                        ["gender"] = "feminine",
+                                        ["mass"] = true,
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "activity.light-roleplay",
+                                    ["lemma"] = "ненав'язлива рольова гра",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "activity.light-roleplay",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["ненав'язливій"] = {
+                    ["рольовій"] = {
+                        ["грі"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["canStandAlone"] = true,
+                                        ["case"] = "dative",
+                                        ["englishUncountable"] = true,
+                                        ["gender"] = "feminine",
+                                        ["mass"] = true,
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "activity.light-roleplay",
+                                    ["lemma"] = "ненав'язлива рольова гра",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "activity.light-roleplay",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["activityTopic"] = true,
+                                        ["animacy"] = "inanimate",
+                                        ["canStandAlone"] = true,
+                                        ["case"] = "locative",
+                                        ["englishUncountable"] = true,
+                                        ["gender"] = "feminine",
+                                        ["mass"] = true,
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "activity.light-roleplay",
+                                    ["lemma"] = "ненав'язлива рольова гра",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "activity.light-roleplay",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["нижньою"] = {
                     ["частиною"] = {
                         ["чорноскельного"] = {
@@ -48603,6 +48890,8 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
+                                ["activityTopicGenericPlural"] = true,
                                 ["animacy"] = "inanimate",
                                 ["clearableInstance"] = true,
                                 ["englishCommon"] = true,
@@ -48617,6 +48906,8 @@ ns.Data = {
                         },
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
+                                ["activityTopicGenericPlural"] = true,
                                 ["animacy"] = "inanimate",
                                 ["case"] = "accusative",
                                 ["clearableInstance"] = true,
@@ -48691,6 +48982,8 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
+                                ["activityTopicGenericPlural"] = true,
                                 ["animacy"] = "inanimate",
                                 ["clearableInstance"] = true,
                                 ["englishCommon"] = true,
@@ -48709,6 +49002,8 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
+                                ["activityTopicGenericPlural"] = true,
                                 ["animacy"] = "inanimate",
                                 ["clearableInstance"] = true,
                                 ["englishCommon"] = true,
@@ -49187,6 +49482,8 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
+                                ["activityTopicGenericPlural"] = true,
                                 ["animacy"] = "inanimate",
                                 ["clearableInstance"] = true,
                                 ["englishCommon"] = true,
@@ -49201,6 +49498,8 @@ ns.Data = {
                         },
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
+                                ["activityTopicGenericPlural"] = true,
                                 ["animacy"] = "inanimate",
                                 ["case"] = "nominative",
                                 ["clearableInstance"] = true,
@@ -49217,6 +49516,8 @@ ns.Data = {
                         },
                         {
                             ["features"] = {
+                                ["activityTopic"] = true,
+                                ["activityTopicGenericPlural"] = true,
                                 ["animacy"] = "inanimate",
                                 ["case"] = "accusative",
                                 ["clearableInstance"] = true,
@@ -55546,6 +55847,19 @@ ns.Data = {
                     ["nominative"] = "похід гільдії"
                 }
             },
+            ["activity.light-roleplay"] = {
+                ["en"] = {
+                    ["canonical"] = "light roleplay"
+                },
+                ["uk"] = {
+                    ["accusative"] = "ненав'язливу рольову гру",
+                    ["canonical"] = "ненав'язлива рольова гра",
+                    ["dative"] = "ненав'язливій рольовій грі",
+                    ["genitiveSingular"] = "ненав'язливої рольової гри",
+                    ["instrumental"] = "ненав'язливою рольовою грою",
+                    ["locative"] = "ненав'язливій рольовій грі"
+                }
+            },
             ["activity.pve"] = {
                 ["en"] = {
                     ["canonical"] = "PvE"
@@ -59250,7 +59564,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 323,
+        ["concepts"] = 324,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 86,
@@ -59269,7 +59583,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "91b14c345df340d50c567a8bf156d36b497444e804c367c8301a9f1016a7f19a"
+        ["version"] = "70cd1ca760c737ea006a1d56fb7562c83d386035e5744f6bf66218e00f4b97e7"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -68097,6 +68411,37 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "похід гільдії"
         },
+        ["activity.light-roleplay"] = {
+            ["aliases"] = {
+                ["en"] = { "light RP", "light role-play", "light roleplaying", "light role-playing" }
+            },
+            ["category"] = "activities",
+            ["en"] = "light roleplay",
+            ["features"] = {
+                ["activityTopic"] = true,
+                ["animacy"] = "inanimate",
+                ["canStandAlone"] = true,
+                ["englishUncountable"] = true,
+                ["gender"] = "feminine",
+                ["mass"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "ненав'язливу рольову гру",
+                ["dative"] = "ненав'язливій рольовій грі",
+                ["genitiveSingular"] = "ненав'язливої рольової гри",
+                ["instrumental"] = "ненав'язливою рольовою грою",
+                ["locative"] = "ненав'язливій рольовій грі"
+            },
+            ["id"] = "activity.light-roleplay",
+            ["provenance"] = {
+                ["context"] = "Established translation for casual roleplay activity",
+                ["key"] = "light roleplay",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "ненав'язлива рольова гра"
+        },
         ["activity.pve"] = {
             ["category"] = "activities",
             ["contextOnly"] = true,
@@ -69634,6 +69979,8 @@ ns.Data = {
             ["en"] = "Dungeon",
             ["englishActivity"] = "a dungeon",
             ["features"] = {
+                ["activityTopic"] = true,
+                ["activityTopicGenericPlural"] = true,
                 ["animacy"] = "inanimate",
                 ["clearableInstance"] = true,
                 ["englishCommon"] = true,
@@ -70403,6 +70750,8 @@ ns.Data = {
             ["en"] = "Raid",
             ["englishActivity"] = "a raid",
             ["features"] = {
+                ["activityTopic"] = true,
+                ["activityTopicGenericPlural"] = true,
                 ["animacy"] = "inanimate",
                 ["clearableInstance"] = true,
                 ["englishCommon"] = true,

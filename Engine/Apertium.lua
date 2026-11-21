@@ -120,66 +120,86 @@ local animacy = {aa="animate", nn="inanimate"}
 local aspect = {perf="perfective", impf="imperfective"}
 local degrees = {cmp="comparative", comp="comparative", sup="superlative"}
 
+local fieldsByTag, valuesByTag = {}, {}
+for field, mapping in pairs({case=cases, gender=genders, number=numbers, tense=tenses,
+    person=people, animacy=animacy, aspect=aspect, degree=degrees}) do
+    for tag, value in pairs(mapping) do
+        fieldsByTag[tag], valuesByTag[tag] = field, value
+    end
+end
+
 local function readTags(raw)
     local tags, features = {}, {}
-    local function assign(key, value)
-        if value then features[key] = value end
-    end
     for tag in raw:gmatch("<([%w]+)>") do
         tags[tag] = true
-        assign("case", cases[tag])
-        assign("gender", genders[tag])
-        assign("number", numbers[tag])
-        assign("tense", tenses[tag])
-        assign("person", people[tag])
-        assign("animacy", animacy[tag])
-        assign("aspect", aspect[tag])
-        assign("degree", degrees[tag])
+        local field = fieldsByTag[tag]
+        if field then features[field] = valuesByTag[tag] end
     end
     return tags, features
 end
 
-function A.readParticiple(analysis)
-    local base, raw = analysis:match("^([^<+/#]+)<vblex>(<[^+/#]+>)$")
-    if not raw then return nil end
-    local tags, form = readTags(raw)
+local function participle(tags, form)
     if not (tags.pp or tags.pprs) or not form.case or not form.number then return nil end
     if tags.pasv then form.voice = "passive"
     elseif tags.actv then form.voice = "active"
     else return nil end
     form.verbalForm = "participle"
-    return base, "participle", form
+    return form
+end
+
+function A.readParticiple(analysis)
+    local base, raw = analysis:match("^([^<+/#]+)<vblex>(<[^+/#]+>)$")
+    if not raw then return nil end
+    local tags, features = readTags(raw)
+    local form = participle(tags, features)
+    if form then return base, "participle", form end
+end
+
+local function inflection(pos, tags, form, lang)
+    if lang == "en" then
+        if pos == "noun" and form.number and not tags.gen then return {number=form.number} end
+        if pos == "verb" then
+            if tags.inf then return {mood="base"} end
+            if tags.pp then return {tense="past", verbalForm="participle"} end
+            if tags.pprs then return {tense="present", verbalForm="participle"} end
+            if form.tense == "past" or form.tense == "present" and form.person == 3 and form.number == "singular" then
+                return form
+            end
+        elseif pos == "adj" and form.degree then return {degree=form.degree} end
+    elseif (pos == "noun" or pos == "adj" or pos == "det") and form.case and form.number then
+        return form
+    elseif pos == "verb" and not (tags.pp or tags.pprs or tags.pasv or tags.actv or tags.impers) then
+        if tags.inf then form.mood = "infinitive"
+        elseif tags.imp and form.person and form.number then form.mood = "imperative"
+        elseif form.tense == "past" and form.number and (form.number == "plural" or form.gender) then
+            return form
+        elseif (form.tense == "present" or form.tense == "future") and form.person and form.number then
+            return form
+        else return nil end
+        return form
+    end
 end
 
 function A.read(analysis, lang)
     local base, part, raw = analysis:match("^([^<+/#]+)<([%w]+)>(.+)$")
     local pos = part and parts[part]
     if not pos or not raw:match("^<[^+/#]+>$") then return nil end
-    local tags, form = readTags(raw)
-    if lang == "en" then
-        if pos == "noun" and form.number and not tags.gen then return base, pos, {number=form.number} end
-        if pos == "verb" then
-            if tags.inf then return base, pos, {mood="base"} end
-            if tags.pp then return base, pos, {tense="past", verbalForm="participle"} end
-            if tags.pprs then return base, pos, {tense="present", verbalForm="participle"} end
-            if form.tense == "past" or form.tense == "present" and form.person == 3 and form.number == "singular" then
-                return base, pos, form
-            end
-        elseif pos == "adj" and form.degree then return base, pos, {degree=form.degree} end
-    elseif (pos == "noun" or pos == "adj" or pos == "det") and form.case and form.number then
-        return base, pos, form
-    elseif pos == "verb" and not (tags.pp or tags.pprs or tags.pasv or tags.actv or tags.impers) then
-        if tags.inf then form.mood = "infinitive"
-        elseif tags.imp and form.person and form.number then form.mood = "imperative"
-        elseif form.tense == "past" and form.number and (form.number == "plural" or form.gender) then
-            return base, pos, form
-        elseif (form.tense == "present" or form.tense == "future") and form.person and form.number then
-            return base, pos, form
-        else return nil end
-        return base, pos, form
-    end
+    local tags, features = readTags(raw)
+    local form = inflection(pos, tags, features, lang)
+    if form then return base, pos, form end
 end
 
+-- UDPipe needs the raw tags even when the analysis has no transferable inflection.
+function A.dependencyFeatures(part, raw, lang)
+    local tags, features = readTags(raw)
+    local pos = parts[part]
+    local form
+    if pos and raw:match("^<[^+/#]+>$") then
+        if lang == "uk" and part == "vblex" then form = participle(tags, features) end
+        form = form or inflection(pos, tags, features, lang)
+    end
+    return tags, form or {}
+end
 
 function A.generate(lemma, lang, pos, requested, head)
     local graph = ns.ApertiumData and ns.ApertiumData.generation[lang]

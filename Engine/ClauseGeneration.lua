@@ -339,6 +339,16 @@ local function bareNominalArgument(node)
         or node.quantity or node.genitive or node.prepositions or node.relative or node.argument)
 end
 
+local function activityArgumentNeedsMarker(argument)
+    for _, topic in ipairs(argument.members or {argument}) do
+        if not bareNominalArgument(topic)
+            or topic.number == "plural" and P.hasTrait(topic, "activityTopicGenericPlural") then
+            return true
+        end
+    end
+    return false
+end
+
 local function withNumber(node, number)
     if not number or number == node.number then return node end
     local adjusted = {}
@@ -429,9 +439,11 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
         return nounWithAction(node, value, english, owner)
     end
     local number, requested = compoundModifier and "singular" or targetNumber(node, english), case
+    -- An indefinite mass noun can retain its governed oblique case without an article.
+    local explicitSome = node.some and (english or case == "nominative" or case == "accusative" or case == "genitive")
     if not english and case == "accusative" and node.partitive then requested = "genitive" end
     if node.few and not english and (case == "nominative" or case == "accusative") then requested = "genitive" end
-    if not english and (node.sufficient or node.some or node.many or node.more or node.abundance) then requested = "genitive" end
+    if not english and (node.sufficient or explicitSome or node.many or node.more or node.abundance) then requested = "genitive" end
     if node.quantity then
         if english then
             number = tonumber(node.quantity) == 1 and "singular" or "plural"
@@ -515,6 +527,9 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
         local argument = node.argument.object
         argumentCompound = bareNominalArgument(argument)
             and (not argumentNumber or argument.number == ukrainianArgumentNumber(node, argumentNumber))
+    end
+    if argumentCompound and node.argument.form.activityTopics and activityArgumentNeedsMarker(node.argument.object) then
+        argumentCompound = false
     end
     if argumentCompound then
         local dependent = withNumber(node.argument.object, argumentNumber and argumentNumber.en)
@@ -649,7 +664,7 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
         local emphasis = node.evenMore and (english and "even " or "ще ") or ""
         return emphasis .. (english and "more " or "більше ") .. value
     end
-    if node.some then return (english and "some " or "трохи ") .. value end
+    if explicitSome then return (english and "some " or "трохи ") .. value end
     if node.indefiniteChoice then
         local determiner = P.relativePronoun(node, case)
         return english and ("some " .. value) or determiner and (determiner .. "сь " .. value)
@@ -2539,6 +2554,14 @@ renderTree = function(tree, english, controller)
         local language = english and "en" or "uk"
         append(parts, tree.adverbComplement[language][1])
     end
+    if not english and tree.prepositions and tree.adverbs then
+        for _, adverb in ipairs(tree.adverbs) do
+            if adverb.ukBeforePrepositions then
+                if adverb.afterComma then parts[#parts] = withComma(parts[#parts]) end
+                append(parts, adverb.uk[1])
+            end
+        end
+    end
     if not addPrepositions(parts, tree, english, owner) then return nil end
     local defaultAdjunct = not english and verbFrame and verbFrame.ukDefaultAdjunct
     if defaultAdjunct then
@@ -2590,8 +2613,10 @@ renderTree = function(tree, english, controller)
         if not english and verbFrame then append(parts, verbFrame.ukMeasureSuffix) end
     end
     for _, adverb in ipairs(tree.adverbs or {}) do
-        if adverb.afterComma then parts[#parts] = withComma(parts[#parts]) end
-        append(parts, (english and adverb.en or adverb.uk)[1])
+        if english or not (tree.prepositions and adverb.ukBeforePrepositions) then
+            if adverb.afterComma then parts[#parts] = withComma(parts[#parts]) end
+            append(parts, (english and adverb.en or adverb.uk)[1])
+        end
     end
     if english and tree.leadingAdverb and tree.leadingAdverb.postposedEn then
         append(parts, tree.leadingAdverb.en[1])
@@ -2708,6 +2733,9 @@ function G.render(parse, direction, punctuation)
         return (prefix and prefix .. " " or "") .. table.concat(parts) .. (punctuation or "")
     end
     local parts, last = {}, nil
+    local comment = parse.speakerComment and (english and parse.speakerComment.en or parse.speakerComment.uk)[1]
+    local commentFirst = parse.speakerCommentFirst and not english
+    if comment and commentFirst then append(parts, withComma(comment)) end
     if parse.openingPastOffset then
         local value = pastOffsetText(parse.openingPastOffset, english)
         if not value then return nil end
@@ -2774,6 +2802,10 @@ function G.render(parse, direction, punctuation)
     if parse.questionTail then
         if parse.questionTailComma then parts[#parts] = withComma(parts[#parts]) end
         append(parts, (english and parse.questionTail.en or parse.questionTail.uk)[1])
+    end
+    if comment and not commentFirst then
+        parts[#parts] = withComma(parts[#parts])
+        append(parts, comment)
     end
     return (prefix and prefix .. " " or "") .. ns.Engine.Normalize.upperStart(table.concat(parts, " "))
         .. (last.question and "?" or punctuation or ".")

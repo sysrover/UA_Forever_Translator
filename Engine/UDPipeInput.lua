@@ -100,18 +100,9 @@ local function lexicalCandidates(document, index, lang, offer)
     for raw, weight in pairs(readings) do
         local lemma, kind, suffix = raw:match("^([^<+/#]+)<(%w+)>(.*)$")
         if kind and parts[kind] and not suffix:find("[+/#]") then
-            local tags = {}
-            for tag in suffix:gmatch("<(%w+)>") do tags[tag] = true end
-            local pos = parts[kind]
-            local _, _, form = A.read(raw, lang)
+            local tags, form = A.dependencyFeatures(kind, suffix, lang)
             -- Ukrainian UD uses ADJ for declined participles, including predicative ones.
-            if lang == "uk" and kind == "vblex" and (tags.pasv or tags.actv) then
-                local _, _, participle = A.readParticiple(raw)
-                if participle then
-                    pos, form = "ADJ", participle
-                end
-            end
-            form = form or {}
+            local pos = form.voice and "ADJ" or parts[kind]
             if not form.person then form.person = tags.p1 and 1 or tags.p2 and 2 or tags.p3 and 3 or nil end
             if not form.number then form.number = tags.sg and "singular" or tags.pl and "plural" or nil end
             if not form.case and lang == "en" and kind == "prn" then

@@ -3131,6 +3131,7 @@ local function predicate(document, tree, index, limit, depth)
             return predicateTime(document, tree, finish, limit)
         end
     end
+    local modifierEnd = index + 1
     local function adjectiveAllowed(candidate)
         local frame = lexemeFrame(candidate)
         local pronoun = tree.subject and tree.subject.pronoun
@@ -3143,11 +3144,11 @@ local function predicate(document, tree, index, limit, depth)
             end
         end
         if frame.enPredicateMarker and document.direction == "en-uk"
-            and not afterObjectMarker(document, index + 1, limit, frame.enPredicateMarker) then
+            and not afterObjectMarker(document, modifierEnd, limit, frame.enPredicateMarker) then
             return false
         end
         if frame.noEnglishInfinitive and document.direction == "en-uk"
-            and P.key(document, index + 1, limit) == "to" and L.choose(document, index + 2, "verb") then
+            and P.key(document, modifierEnd, limit) == "to" and L.choose(document, modifierEnd + 1, "verb") then
             return false
         end
         return not frame.profileOnly and not (pronoun and pronoun.id == "someone" and frame.sense == "price")
@@ -3182,9 +3183,21 @@ local function predicate(document, tree, index, limit, depth)
     local adjectiveEnd = index + (adjective and 3 or 1)
     local paired = adjective ~= nil
     if not paired and index <= limit then
-        adjective = contextualSubject and L.choose(document, index, "adj", nil, "nounModifier", contextualAdjective)
-            or stateSense and L.choose(document, index, "adj", nil, stateSense, adjectiveAllowed)
-            or L.choose(document, index, "adj", nil, nil, adjectiveAllowed)
+        local function chooseAdjective(source)
+            return contextualSubject and L.choose(document, source, "adj", nil, "nounModifier", contextualAdjective)
+                or stateSense and L.choose(document, source, "adj", nil, stateSense, adjectiveAllowed)
+                or L.choose(document, source, "adj", nil, nil, adjectiveAllowed)
+        end
+        local phrase, after = L.phraseAt(document, index, limit, "adj")
+        if phrase then
+            modifierEnd = after
+            adjective = chooseAdjective(phrase)
+            if adjective then adjectiveEnd = after end
+        end
+        if not adjective then
+            modifierEnd = index + 1
+            adjective = chooseAdjective(index)
+        end
     end
     if adjective and lexemeFrame(adjective).predicateHead and not lexemeFrame(adjective).headClasses[subjectClass] then
         refineSubject(document, tree.subject, lexemeFrame(adjective))
@@ -3218,6 +3231,9 @@ local function predicate(document, tree, index, limit, depth)
         tree.level = number
         return index + 2
     end
+    if adjective and object and adjectiveEnd > index + 1 and nextIndex < adjectiveEnd then
+        object = nil
+    end
     if adjective and object and object.entry and nextIndex == adjectiveEnd
         and not (object.article or object.possessor or object.adjectives or object.genitive or object.quantity)
         and adjective.lexeme.preference < object.entry.lexeme.preference then
@@ -3237,6 +3253,19 @@ local function predicate(document, tree, index, limit, depth)
                     object.genitive = nil
                 end
             end
+        end
+        local subjectPronoun = tree.subject and tree.subject.pronoun
+        if english and subjectPronoun and subjectPronoun.id == "you" and object.number == "plural"
+            and personNoun(object) then
+            -- Coordinated singular labels may all describe the same person.
+            local pluralMembers = true
+            for _, member in ipairs(object.members or {}) do
+                if member.number ~= "plural" then
+                    pluralMembers = false
+                    break
+                end
+            end
+            if pluralMembers then tree.subject = personalSubject("you_plural") end
         end
         if english and frame and frame.predicateGenderAgreement and tree.subject
             and tree.subject.number == "singular" and tree.subject.gender and object.number == "singular"
@@ -7035,6 +7064,12 @@ local function parseWithParticiples(document, first, limit)
         ampersand and {"CCONJ"})
     local status = arcs and A.chatProgressive(document, first, limit, forms, arcs)
     if status then memo[key] = status; return status end
+    local function copularPrefix(index)
+        local prefix = parse(document, first, index - 1)
+        local tree = prefix and not prefix.prefix and #prefix.trees == 1 and prefix.trees[1]
+        local predicate = tree and tree.copula and tree.predicate
+        return predicate and predicate.headIndex, tree and tree.tense
+    end
     local function copularAnchor(index, position)
         if position < 4 then return nil end
         local hasCopula
@@ -7047,14 +7082,11 @@ local function parseWithParticiples(document, first, limit)
             end
         end
         if not hasCopula then return nil end
-        local prefix = parse(document, first, index - 1)
-        local tree = prefix and not prefix.prefix and #prefix.trees == 1 and prefix.trees[1]
-        local predicate = tree and tree.copula and tree.predicate
-        local head = predicate and predicate.headIndex
+        local head, tense = copularPrefix(index)
         local attachment = head and arcs[head - first + 1]
         -- Retain the nominal predicate when the parser promotes its modifier to the root.
         if attachment and attachment.head == position and attachment.relation == "nsubj" then
-            return {head=head, tense=tree.tense}
+            return {head=head, tense=tense}
         end
     end
     local anchors = {}
@@ -7067,6 +7099,20 @@ local function parseWithParticiples(document, first, limit)
                 anchors[index] = {head=first + arc.head - 1}
             elseif arc.relation == "root" then
                 anchors[index] = copularAnchor(index, offset)
+            elseif head and arc.head < offset and arc.relation == "conj" and head.relation == "root" then
+                -- A nonfinite action directly after a closed nominal predicate can
+                -- describe that predicate even if Parsito labelled the edge conj.
+                local nominalHead = first + arc.head - 1
+                if copularPrefix(index) == nominalHead then
+                    local coordinated
+                    for _, dependency in ipairs(arcs) do
+                        if dependency.head == offset and dependency.relation == "cc" then
+                            coordinated = true
+                            break
+                        end
+                    end
+                    if not coordinated then anchors[index] = {head=nominalHead} end
+                end
             elseif head and arc.head < offset and arc.relation == "conj" and head.relation == "nmod" then
                 -- Resolve a mislabelled attachment only when transfer finds the
                 -- same coordinated nominal and a closed list of participles.
@@ -8009,6 +8055,59 @@ local function questionTail(document, first, limit, preferred)
     end
 end
 
+function A.speakerComment(document, first, limit)
+    if first >= limit then return nil end
+    local grammar = ns.Linguistics.grammar
+    local entries = grammar.speakerComments
+    if not entries then return nil end
+    local english = document.direction == "en-uk"
+    local lang = english and "en" or "uk"
+    local width = grammar.indexWidths[lang].speakerComments
+    local function core(start, stop)
+        local parsed = parseGroup(document, start, stop)
+        if parsed then return parsed end
+        local noun, after = P.coordinated(document, start, stop, "nominative")
+        if not noun or after <= stop then noun, after = P.amount(document, start, stop, "nominative") end
+        if noun and after == stop + 1 then return {trees={{kind="nounPhrase", subject=noun}}, joins={}} end
+    end
+    local leading, last = L.functional(document, "speakerComments", first, limit)
+    if leading and last + 1 < limit and P.key(document, last + 1, limit) == "," then
+        local parsed = core(last + 2, limit)
+        if parsed then
+            parsed.speakerComment, parsed.speakerCommentFirst = entries[leading[1]], true
+            return parsed
+        end
+    end
+    for opening = math.max(first + 1, limit - width + 1), limit do
+        local trailing, finish = L.functional(document, "speakerComments", opening, limit)
+        if trailing and finish == limit then
+            local comma = P.key(document, opening - 1, limit) == ","
+            local stop = opening - (comma and 2 or 1)
+            if stop < first or not english and not comma
+                or ns.Engine.Parser.sentenceBoundary(document.text, document.tokens, stop) then return nil end
+            local parsed = core(first, stop)
+            if not parsed then return nil end
+            local comment = entries[trailing[1]]
+            if not comma and comment.possibleObjectGap then
+                local tree = #parsed.trees == 1 and parsed.trees[1]
+                local noun = tree and tree.kind == "nounPhrase" and tree.subject
+                local measure = noun and noun.quantity
+                    and (P.hasTrait(noun, "durationUnit") or P.semanticClass(noun) == "timeBoundary")
+                if not measure then
+                    local parser = ns.Engine.UDPipe
+                    local arcs = parser and parser.analyzeDocument(document, first, limit)
+                    local edge = arcs and arcs[limit - first + 1]
+                    -- Keep an unmarked relative when the comment verb can govern its object.
+                    if not edge or edge.relation == "acl:relcl" or edge.relation == "acl" then return nil end
+                    parsed.dependency = true
+                end
+            end
+            parsed.speakerComment = comment
+            return parsed
+        end
+    end
+end
+
 function A.parse(document, first, limit, afterRating)
     if not afterRating then
         local rating, following = P.ratingNote(document, first, limit)
@@ -8023,6 +8122,18 @@ function A.parse(document, first, limit, afterRating)
     end
     local menu = P.menuPath(document, first, limit)
     if menu then return {trees={menu}, joins={}} end
+    if first < limit and document.spans[first] then
+        for _, candidate in ipairs(document.spans[first]) do
+            local features = candidate.term.features
+            if candidate.last == limit and features and features.canStandAlone then
+                local noun, after = P.noun(document, first, limit, "nominative")
+                if noun and noun.term == candidate.term and after == limit + 1 then
+                    return {trees={{kind="nounPhrase", subject=noun}}, joins={}}
+                end
+                break
+            end
+        end
+    end
     local provider, finish = P.preposition(document, first, limit, nil, nil, "providerAttribution", nil, "openProperName")
     if provider and finish > limit then return {trees={{kind="nounPhrase", prepositions={provider}}}, joins={}} end
     local key = P.key(document, first, limit)
@@ -8065,7 +8176,8 @@ function A.parse(document, first, limit, afterRating)
             end
         end
     end
-    local parsed = questionTail(document, first, limit, true) or parseGroup(document, first, limit)
+    local parsed = A.speakerComment(document, first, limit)
+        or questionTail(document, first, limit, true) or parseGroup(document, first, limit)
     if parsed or limit <= first then return parsed end
     parsed = A.frontedSpatialOpening(document, first, limit)
     if parsed then return parsed end

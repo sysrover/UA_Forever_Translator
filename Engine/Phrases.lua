@@ -842,6 +842,15 @@ local function audienceWithTopics(document, first, limit, prefix, required)
     if not entry then return end
     if not beforeHead then topics, after = activityTopics(document, first + 2, limit, "nominative") end
     if not topics then return end
+    if beforeHead then
+        for _, topic in ipairs(topics.members or {topics}) do
+            -- A bare singular compound modifier can name a class of activities.
+            if topic.number == "singular" and P.hasTrait(topic, "activityTopicGenericPlural")
+                and not (topic.article or topic.demonstrative or topic.possessor or topic.quantity or topic.argument) then
+                topic.number = "plural"
+            end
+        end
+    end
     local noun = lexicalNoun(entry)
     noun.argument = {object=topics, form=entry.lexeme.frame.nominalArguments[1]}
     return noun, after, anchor
@@ -1715,7 +1724,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             end)
         end
         local head, after
-        local compoundHead
+        local compoundHead, topicModifiers
         if contextual then head, after = lexicalNoun(contextual), index + 1
         else head, after = nounHead(document, index, limit, case, locationOnly, nounSense, required, adjectivalComplement) end
         if not (head or simple or locationOnly or nounSense) and index < limit
@@ -1765,6 +1774,11 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         end
         if english and not simple and not locationOnly then
             local audience, ending, anchor = audienceWithTopics(document, index, limit, head, required)
+            if not audience and hasContextualAdjective and activityTopic(head) then
+                -- A session-only modifier belongs with the topic, so retry that full group.
+                audience, ending, anchor = audienceWithTopics(document, adjectives[1].index, limit, head, agrees)
+                topicModifiers = audience ~= nil
+            end
             if audience then head, after, compoundHead = audience, ending, anchor end
         end
         if english and not simple then
@@ -1843,7 +1857,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             and (not best or after > nextIndex or (after == nextIndex and head.term and not best.term)) then
             best, nextIndex, headIndex = head, after, compoundHead or index
             bestMeasure = measure
-            if #adjectives > 0 then best.adjectives = {unpack(adjectives)} end
+            if #adjectives > 0 and not topicModifiers then best.adjectives = {unpack(adjectives)} end
             best.untranslatedHead = untranslatedHead
             local frame = head.entry and head.entry.lexeme.frame
             if english and case == "nominative" and frame and frame.lexicalPhrase and after > index + 1
@@ -2485,6 +2499,7 @@ function P.coordinated(document, first, limit, case, startsPredicate, locationOn
         members[#members + 1] = member
         joins[#joins + 1] = connector
         index = after
+        if document.checkpoint then document.checkpoint() end
     end
     if #members == 1 then
         head.listExtension = extension
