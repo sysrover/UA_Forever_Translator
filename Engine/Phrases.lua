@@ -173,7 +173,7 @@ function P.raw(document, first, last)
     return document.text:sub(document.tokens[first].first, document.tokens[last].last)
 end
 
-function P.personalName(document, first, limit)
+function P.properName(document, first, limit)
     local token = document.tokens[first]
     if not token or first > limit then return nil end
     if token.protected then
@@ -1177,15 +1177,44 @@ function P.locativeRelativeHead(document, noun, markerIndex, limit)
     end
 end
 
+local function withoutRule()
+    local grammar = ns.Linguistics.grammar
+    local ids = grammar.index.en.prepositions.without
+    return ids and grammar.prepositions[ids[1]]
+end
+
+local function absenceComplement(object, rule)
+    local frame = object.entry and object.entry.lexeme.frame
+    if frame and frame.absenceNumber then object.number = frame.absenceNumber end
+    return {rule=rule, object=object, case=rule.case}
+end
+
+function P.freeAbsence(document, first, limit, separated)
+    local opening = P.key(document, first, limit)
+    if not opening then return nil end
+    local following = P.key(document, first + 1, limit)
+    local hyphen = following == "-" or following == "‐" or following == "‑"
+    local property, after = opening:match("^(%a+)free$"), first + 1
+    if not property then
+        if hyphen and P.key(document, first + 2, limit) == "free" then
+            property, after = opening, first + 3
+        elseif separated and following == "free" then
+            property, after = opening, first + 2
+        else return nil end
+    end
+    local entry = L.choose(document, property, "noun", nil, "absenceProperty")
+    local rule = entry and withoutRule()
+    if rule then return absenceComplement(lexicalNoun(entry), rule), after end
+end
+
 local function nominalAbsence(document, first, limit, case, sense, agrees, determined)
     local opening = P.key(document, first, limit)
     if not opening or first >= limit then return nil end
-    local following = P.key(document, first + 1, limit)
-    local hyphen = following == "-"
-    local absentIndex, headAt, property
+    local phrase, headAt
     if opening == "no" then
+        local hyphen = P.key(document, first + 1, limit) == "-"
         if not (hyphen or determined) then return nil end
-        absentIndex = first + (hyphen and 2 or 1)
+        local absentIndex = first + (hyphen and 2 or 1)
         if absentIndex >= limit then return nil end
         local arcs, offset = nominalSentenceArcs(document, first, limit)
         local modifier = arcs and arcs[absentIndex - offset]
@@ -1193,32 +1222,19 @@ local function nominalAbsence(document, first, limit, case, sense, agrees, deter
         local marker = arcs[first - offset]
         if not marker or not ((marker.relation == "advmod" or marker.relation == "det")
             and (marker.head == absentIndex - offset or marker.head == modifier.head)) then return nil end
-    else
-        local propertyHead = opening:match("^(%a+)free$")
-        if propertyHead then headAt = first + 1
-        elseif hyphen and P.key(document, first + 2, limit) == "free" or determined and following == "free" then
-            propertyHead, headAt = opening, first + (hyphen and 3 or 2)
-        end
-        if not propertyHead or headAt > limit then return nil end
-        property = L.choose(document, propertyHead, "noun", nil, "absenceProperty")
-        if not property then return nil end
-    end
-    local grammar = ns.Linguistics.grammar
-    local ids = grammar.index.en.prepositions.without
-    local rule = ids and grammar.prepositions[ids[1]]
-    if not rule then return nil end
-    local object
-    if property then object = lexicalNoun(property)
-    else
+        local rule = withoutRule()
+        if not rule then return nil end
+        local object
         object, headAt = nounHead(document, absentIndex, absentIndex, rule.case, false, nil,
             function(noun) return not (noun.pronoun or noun.raw) end)
+        if object then phrase = absenceComplement(object, rule) end
+    else
+        phrase, headAt = P.freeAbsence(document, first, limit, determined)
     end
-    if not object then return nil end
+    if not phrase or headAt > limit then return nil end
     local head, after = nounHead(document, headAt, limit, case, false, sense, agrees)
     if not head or head.pronoun or head.raw then return nil end
-    local frame = object.entry and object.entry.lexeme.frame
-    if frame and frame.absenceNumber then object.number = frame.absenceNumber end
-    head.prepositions = {{rule=rule, object=object, case=rule.case}}
+    head.prepositions = {phrase}
     return head, after, headAt
 end
 
@@ -1829,6 +1845,9 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             bestMeasure = measure
             if #adjectives > 0 then best.adjectives = {unpack(adjectives)} end
             best.untranslatedHead = untranslatedHead
+            local frame = head.entry and head.entry.lexeme.frame
+            if english and case == "nominative" and frame and frame.lexicalPhrase and after > index + 1
+                and P.freeAbsence(document, after, limit, true) then break end
         end
         if index > limit then break end
         local comma = #adjectives > 0 and P.key(document, index, limit) == ","
@@ -2237,6 +2256,14 @@ function P.preposition(document, first, limit, motion, displacement, context, se
                 if not object then
                     object, ending = P.noun(document, last + 1, limit, case, locationOnly, nil, nil,
                         sense, spatial and container)
+                end
+            end
+            if rule.openProperName and (not object or ending <= limit) then
+                local start = last + 1
+                if english and P.key(document, start, limit) == "the" then start = start + 1 end
+                local name, finish = P.properName(document, start, limit)
+                if name and finish > limit then
+                    object, ending = {raw=name, person=3, number="singular"}, finish
                 end
             end
             if not object and spatial and not rule.requiresSpatialContainer then

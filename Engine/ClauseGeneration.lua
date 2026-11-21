@@ -720,7 +720,8 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
         local uncountable = mass and not (frame and frame.englishCountable)
             or node.term and node.term.features and node.term.features.englishUncountable
         local definiteName = node.term and node.term.features and node.term.features.englishDefinite
-        if article == "definite" and definiteName then return "the " .. value end
+        if definiteName and (article == "definite"
+            or article == true and not node.article and node.term.category == "goods") then return "the " .. value end
         if article == "definite" and not proper and not uncountable and number == "singular" then return "the " .. value end
         if (article or node.article == "indefinite") and not proper and not uncountable and number == "singular" then
             local leadingMeasure = measure and value:match("^(%d+)%-")
@@ -1298,7 +1299,7 @@ local function subjectText(tree, english)
         elseif english and tree.aspect == "passive" then article = "definite"
         elseif english and tree.wh and tree.wh.kind == "clock" then article = "definite"
         elseif english and (tree.kind == "need" or tree.subjectLocation or tree.temporalDependent
-            or tree.contentClause or tree.predicateAdverb or tree.adverbComplement
+            or tree.contentClause or tree.predicateAdverb or tree.adverbComplement or tree.absencePredicate
             or tree.where and not tree.question) then
             article = "definite"
         end
@@ -2482,6 +2483,7 @@ renderTree = function(tree, english, controller)
             if english and control.action.negative then append(parts, "not") end
             if english and frame.controlTo and not frame.bareInfinitive then append(parts, "to") end
             append(parts, action)
+            if not addInfinitiveSeries(parts, control.action, english, P.subjectPossessive(control.actor)) then return nil end
         end
         if not english and frame.ukManner then append(parts, frame.ukManner) end
         if english and frame.enSubjectPossessiveComplement then

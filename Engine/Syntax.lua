@@ -583,6 +583,10 @@ local function enhancementMaterials(p, english)
     p.i = before
 end
 
+local function zeroPrice(p)
+    return p:any("for free", "free of charge", "free", "безкоштовно", "безплатно")
+end
+
 local function gratuity(p, free)
     local start = p.i
     p:any(",", ".", "|", "i", "—")
@@ -741,7 +745,7 @@ local function enhancement(p, direction)
         joins[#joins + 1] = join
     end
     local materials = offer and enhancementMaterials(p, english)
-    local free = p:any("for free", "free", "безкоштовно")
+    local free = zeroPrice(p)
     local tips = gratuity(p, free)
     local beforeStock = p.i
     if offer then p:any(",", ".", "-", "—", "–") end
@@ -840,7 +844,7 @@ local function service(p, direction)
             return p:finish("service", {demand=true, practitioner=true, withRecipe=withRecipe, mats=mats})
         end
     end
-    local free = p:any("for free", "free", "безкоштовно")
+    local free = zeroPrice(p)
     local priceIntroduced = not free and p:any("for", "за")
     local priced = not free and p:money()
     if priceIntroduced and not priced then return end
@@ -887,6 +891,56 @@ local function availability(p, direction)
     local place = p.tokens[p.i - 1].key
     if place == "мережі" then place = "online" end
     return p:finish("availability", {question=true, place=place, occupation=occupation})
+end
+
+local pricedClasses = {goods=true, equipment=true, consumables=true, resource=true, craftingMaterials=true, services=true}
+
+local function pricedObject(noun)
+    if noun.members then
+        for _, member in ipairs(noun.members) do
+            if not pricedObject(member) then return false end
+        end
+        return true
+    end
+    return pricedClasses[ns.Engine.Phrases.semanticClass(noun)]
+        or noun.term and noun.term.category == "goods"
+        or noun.raw and (ns.Engine.Markup.isLink(noun.raw, "item") or ns.Engine.Markup.isLink(noun.raw, "enchant"))
+end
+
+local function freeOffer(p)
+    local prefixed = zeroPrice(p)
+    if prefixed then
+        local label = p:word(":")
+        if not label and p.i <= p.limit and p.tokens[p.i].key == "the" then return end
+    else
+        local last = p.limit
+        while last > p.first and p.tokens[last].key:match("^[.!?]$") do last = last - 1 end
+        local key = p.tokens[last].key
+        if last == p.first or not (key == "free" or key == "charge" or key == "безкоштовно" or key == "безплатно") then return end
+    end
+    local object
+    if ns.Linguistics then
+        local after
+        object, after = ns.Engine.Phrases.coordinated(p.document, p.i, p.limit, "nominative",
+            nil, nil, true, "lootItem", nil, true)
+        if not object or not pricedObject(object) then return end
+        p.i = after
+    elseif not (p:link("item", "item") or p:link("item", "enchant")) then return end
+    if not prefixed then
+        p:any("—", "–", ":")
+        if not zeroPrice(p) then return end
+    end
+    local recipient
+    if ns.Linguistics and p.i < p.limit then
+        local phrase, after = ns.Engine.Phrases.preposition(p.document, p.i, p.limit)
+        if phrase and phrase.rule.id == "for" then recipient, p.i = phrase, after end
+    end
+    local ending = p.i
+    local offer = p:finish("freeOffer", {object=object, recipient=recipient})
+    if offer and not offer.features.emote and ending <= p.limit then
+        offer.features.punctuation = p.document.text:sub(p.tokens[ending].first, p.tokens[p.limit].last)
+    end
+    return offer
 end
 
 local function price(p)
@@ -966,7 +1020,7 @@ local function statement(p, direction)
 end
 
 local parsers = {recruit, groupRoster, groupVacancy, enhancement, availability, enchantmentTrade, service, enchantmentList, gratuityNote, reward, questNeed, questAttendance,
-    statement, price, groupSearch, search}
+    statement, freeOffer, price, groupSearch, search}
 function S.parse(document, limit, first)
     if document.checkpoint then document.checkpoint() end
     for _, parse in ipairs(parsers) do

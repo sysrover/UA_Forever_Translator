@@ -2963,6 +2963,13 @@ ns.Data = {
             ["mining"] = {
                 ["_id"] = "profession.mining"
             },
+            ["mistmantle"] = {
+                ["family"] = {
+                    ["ring"] = {
+                        ["_id"] = "goods.mistmantle_family_ring"
+                    }
+                }
+            },
             ["mithril"] = {
                 ["_id"] = "goods.mithril",
                 ["bar"] = {
@@ -2974,6 +2981,9 @@ ns.Data = {
                         ["sourceRefs"] = { "ua-forever:item.3860" },
                         ["text"] = "злитки мітрилу"
                     }
+                },
+                ["spurs"] = {
+                    ["_id"] = "goods.mithril_spurs"
                 }
             },
             ["mob"] = {
@@ -10528,6 +10538,29 @@ ns.Data = {
             ["мітрил"] = {
                 ["_id"] = "goods.mithril"
             },
+            ["мітриловим"] = {
+                ["шпорам"] = {
+                    ["_id"] = "goods.mithril_spurs"
+                }
+            },
+            ["мітриловими"] = {
+                ["шпорами"] = {
+                    ["_id"] = "goods.mithril_spurs"
+                }
+            },
+            ["мітрилових"] = {
+                ["шпор"] = {
+                    ["_id"] = "goods.mithril_spurs"
+                },
+                ["шпорах"] = {
+                    ["_id"] = "goods.mithril_spurs"
+                }
+            },
+            ["мітрилові"] = {
+                ["шпори"] = {
+                    ["_id"] = "goods.mithril_spurs"
+                }
+            },
             ["мітрилом"] = {
                 ["_id"] = "goods.mithril"
             },
@@ -14157,6 +14190,39 @@ ns.Data = {
                         ["sourceRefs"] = { "project-authored:chat-0.1" },
                         ["text"] = "this morning",
                         ["weak"] = false
+                    }
+                }
+            },
+            ["сімейний"] = {
+                ["перстень"] = {
+                    ["імлокривів"] = {
+                        ["_id"] = "goods.mistmantle_family_ring"
+                    }
+                }
+            },
+            ["сімейним"] = {
+                ["перснем"] = {
+                    ["імлокривів"] = {
+                        ["_id"] = "goods.mistmantle_family_ring"
+                    }
+                }
+            },
+            ["сімейного"] = {
+                ["персня"] = {
+                    ["імлокривів"] = {
+                        ["_id"] = "goods.mistmantle_family_ring"
+                    }
+                }
+            },
+            ["сімейному"] = {
+                ["персневі"] = {
+                    ["імлокривів"] = {
+                        ["_id"] = "goods.mistmantle_family_ring"
+                    }
+                },
+                ["персні"] = {
+                    ["імлокривів"] = {
+                        ["_id"] = "goods.mistmantle_family_ring"
                     }
                 }
             },
@@ -23300,6 +23366,27 @@ ns.Data = {
                         }
                     }
                 },
+                ["mistmantle"] = {
+                    ["family"] = {
+                        ["ring"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["semanticClass"] = "equipment"
+                                    },
+                                    ["id"] = "goods.mistmantle_family_ring",
+                                    ["lemma"] = "Mistmantle Family Ring",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.mistmantle_family_ring",
+                                    ["sourceRefs"] = { "ua-forever:goods.mistmantle_family_ring" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["mithril"] = {
                     ["_analyses"] = {
                         {
@@ -23343,6 +23430,23 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "goods.mithril_bar",
                                 ["sourceRefs"] = { "ua-forever:item.3860" }
+                            }
+                        }
+                    },
+                    ["spurs"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "equipment"
+                                },
+                                ["id"] = "goods.mithril_spurs",
+                                ["lemma"] = "Mithril Spurs",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_spurs",
+                                ["sourceRefs"] = { "ua-forever:goods.mithril_spurs" }
                             }
                         }
                     }
@@ -26821,6 +26925,27 @@ ns.Data = {
                                             "ua-forever:place.hall_of_thanes",
                                             "project-authored:apertium-pipeline-1"
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["mistmantle"] = {
+                        ["family"] = {
+                            ["ring"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["englishDefinite"] = true,
+                                            ["gender"] = "masculine",
+                                            ["semanticClass"] = "equipment"
+                                        },
+                                        ["id"] = "goods.mistmantle_family_ring",
+                                        ["lemma"] = "Mistmantle Family Ring",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "goods.mistmantle_family_ring",
+                                        ["sourceRefs"] = { "ua-forever:goods.mistmantle_family_ring" }
                                     }
                                 }
                             }
@@ -41111,6 +41236,117 @@ ns.Data = {
                         }
                     }
                 },
+                ["мітриловим"] = {
+                    ["шпорам"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "equipment"
+                                },
+                                ["id"] = "goods.mithril_spurs",
+                                ["lemma"] = "Мітрилові шпори",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_spurs",
+                                ["sourceRefs"] = { "ua-forever:goods.mithril_spurs" }
+                            }
+                        }
+                    }
+                },
+                ["мітриловими"] = {
+                    ["шпорами"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "equipment"
+                                },
+                                ["id"] = "goods.mithril_spurs",
+                                ["lemma"] = "Мітрилові шпори",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_spurs",
+                                ["sourceRefs"] = { "ua-forever:goods.mithril_spurs" }
+                            }
+                        }
+                    }
+                },
+                ["мітрилових"] = {
+                    ["шпор"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "equipment"
+                                },
+                                ["id"] = "goods.mithril_spurs",
+                                ["lemma"] = "Мітрилові шпори",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_spurs",
+                                ["sourceRefs"] = { "ua-forever:goods.mithril_spurs" }
+                            }
+                        }
+                    },
+                    ["шпорах"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "equipment"
+                                },
+                                ["id"] = "goods.mithril_spurs",
+                                ["lemma"] = "Мітрилові шпори",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_spurs",
+                                ["sourceRefs"] = { "ua-forever:goods.mithril_spurs" }
+                            }
+                        }
+                    }
+                },
+                ["мітрилові"] = {
+                    ["шпори"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "equipment"
+                                },
+                                ["id"] = "goods.mithril_spurs",
+                                ["lemma"] = "Мітрилові шпори",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_spurs",
+                                ["sourceRefs"] = { "ua-forever:goods.mithril_spurs" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "equipment"
+                                },
+                                ["id"] = "goods.mithril_spurs",
+                                ["lemma"] = "Мітрилові шпори",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.mithril_spurs",
+                                ["sourceRefs"] = { "ua-forever:goods.mithril_spurs" }
+                            }
+                        }
+                    }
+                },
                 ["мітрилом"] = {
                     ["_analyses"] = {
                         {
@@ -51032,6 +51268,132 @@ ns.Data = {
                         }
                     }
                 },
+                ["сімейний"] = {
+                    ["перстень"] = {
+                        ["імлокривів"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["semanticClass"] = "equipment"
+                                    },
+                                    ["id"] = "goods.mistmantle_family_ring",
+                                    ["lemma"] = "Сімейний перстень Імлокривів",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.mistmantle_family_ring",
+                                    ["sourceRefs"] = { "ua-forever:goods.mistmantle_family_ring" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "accusative",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["semanticClass"] = "equipment"
+                                    },
+                                    ["id"] = "goods.mistmantle_family_ring",
+                                    ["lemma"] = "Сімейний перстень Імлокривів",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.mistmantle_family_ring",
+                                    ["sourceRefs"] = { "ua-forever:goods.mistmantle_family_ring" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["сімейним"] = {
+                    ["перснем"] = {
+                        ["імлокривів"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "instrumental",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["semanticClass"] = "equipment"
+                                    },
+                                    ["id"] = "goods.mistmantle_family_ring",
+                                    ["lemma"] = "Сімейний перстень Імлокривів",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.mistmantle_family_ring",
+                                    ["sourceRefs"] = { "ua-forever:goods.mistmantle_family_ring" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["сімейного"] = {
+                    ["персня"] = {
+                        ["імлокривів"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "genitive",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["semanticClass"] = "equipment"
+                                    },
+                                    ["id"] = "goods.mistmantle_family_ring",
+                                    ["lemma"] = "Сімейний перстень Імлокривів",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.mistmantle_family_ring",
+                                    ["sourceRefs"] = { "ua-forever:goods.mistmantle_family_ring" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["сімейному"] = {
+                    ["персневі"] = {
+                        ["імлокривів"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "dative",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["semanticClass"] = "equipment"
+                                    },
+                                    ["id"] = "goods.mistmantle_family_ring",
+                                    ["lemma"] = "Сімейний перстень Імлокривів",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.mistmantle_family_ring",
+                                    ["sourceRefs"] = { "ua-forever:goods.mistmantle_family_ring" }
+                                }
+                            }
+                        }
+                    },
+                    ["персні"] = {
+                        ["імлокривів"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "locative",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["semanticClass"] = "equipment"
+                                    },
+                                    ["id"] = "goods.mistmantle_family_ring",
+                                    ["lemma"] = "Сімейний перстень Імлокривів",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "goods.mistmantle_family_ring",
+                                    ["sourceRefs"] = { "ua-forever:goods.mistmantle_family_ring" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["танаріс"] = {
                     ["_analyses"] = {
                         {
@@ -56410,6 +56772,19 @@ ns.Data = {
                     ["genitiveSingular"] = "маготканого полотна"
                 }
             },
+            ["goods.mistmantle_family_ring"] = {
+                ["en"] = {
+                    ["canonical"] = "Mistmantle Family Ring"
+                },
+                ["uk"] = {
+                    ["accusative"] = "сімейний перстень Імлокривів",
+                    ["canonical"] = "Сімейний перстень Імлокривів",
+                    ["dativeSingular"] = "сімейному персневі Імлокривів",
+                    ["genitiveSingular"] = "сімейного персня Імлокривів",
+                    ["instrumentalSingular"] = "сімейним перснем Імлокривів",
+                    ["locativeSingular"] = "сімейному персні Імлокривів"
+                }
+            },
             ["goods.mithril"] = {
                 ["en"] = {
                     ["canonical"] = "mithril"
@@ -56435,6 +56810,19 @@ ns.Data = {
                     ["genitivePlural"] = "злитків мітрилу",
                     ["genitiveSingular"] = "злитка мітрилу",
                     ["nominativePlural"] = "злитки мітрилу"
+                }
+            },
+            ["goods.mithril_spurs"] = {
+                ["en"] = {
+                    ["canonical"] = "Mithril Spurs"
+                },
+                ["uk"] = {
+                    ["accusativePlural"] = "мітрилові шпори",
+                    ["canonical"] = "Мітрилові шпори",
+                    ["dativePlural"] = "мітриловим шпорам",
+                    ["genitivePlural"] = "мітрилових шпор",
+                    ["instrumentalPlural"] = "мітриловими шпорами",
+                    ["locativePlural"] = "мітрилових шпорах"
                 }
             },
             ["goods.mooncloth_bag"] = {
@@ -58862,7 +59250,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 321,
+        ["concepts"] = 323,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 86,
@@ -58881,7 +59269,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "5372902ab9b85f10b98e191b593fe723bdcf59332b561f0576cdda043358a431"
+        ["version"] = "91b14c345df340d50c567a8bf156d36b497444e804c367c8301a9f1016a7f19a"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -70786,6 +71174,40 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Маготкане полотно"
         },
+        ["goods.mistmantle_family_ring"] = {
+            ["category"] = "goods",
+            ["en"] = "Mistmantle Family Ring",
+            ["englishObject"] = "the Mistmantle Family Ring",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["englishDefinite"] = true,
+                ["gender"] = "masculine",
+                ["semanticClass"] = "equipment"
+            },
+            ["forms"] = {
+                ["accusative"] = "сімейний перстень Імлокривів",
+                ["dativeSingular"] = "сімейному персневі Імлокривів",
+                ["genitiveSingular"] = "сімейного персня Імлокривів",
+                ["instrumentalSingular"] = "сімейним перснем Імлокривів",
+                ["locativeSingular"] = "сімейному персні Імлокривів"
+            },
+            ["id"] = "goods.mistmantle_family_ring",
+            ["provenance"] = {
+                ["build"] = "1.60.1.71037",
+                ["context"] = "goods",
+                ["englishFile"] = "entries/forever/cliend_db/item_names.lua",
+                ["englishLine"] = 2490,
+                ["file"] = "entries/forever/cliend_db/item_names_uk.lua",
+                ["itemId"] = 3629,
+                ["key"] = "Mistmantle Family Ring",
+                ["line"] = 2618,
+                ["sha256"] = "a2b5a5a09c5c471d48e3866275d61d12aa8c3d693a7fb78ff501b8ada3d80b09",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:goods.mistmantle_family_ring" },
+            ["status"] = "approved",
+            ["uk"] = "Сімейний перстень Імлокривів"
+        },
         ["goods.mithril"] = {
             ["category"] = "goods",
             ["en"] = "mithril",
@@ -70835,6 +71257,39 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:item.3860" },
             ["status"] = "approved",
             ["uk"] = "Злиток мітрилу"
+        },
+        ["goods.mithril_spurs"] = {
+            ["category"] = "goods",
+            ["en"] = "Mithril Spurs",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine",
+                ["number"] = "plural",
+                ["semanticClass"] = "equipment"
+            },
+            ["forms"] = {
+                ["accusativePlural"] = "мітрилові шпори",
+                ["dativePlural"] = "мітриловим шпорам",
+                ["genitivePlural"] = "мітрилових шпор",
+                ["instrumentalPlural"] = "мітриловими шпорами",
+                ["locativePlural"] = "мітрилових шпорах"
+            },
+            ["id"] = "goods.mithril_spurs",
+            ["provenance"] = {
+                ["build"] = "1.60.1.71037",
+                ["context"] = "goods",
+                ["englishFile"] = "entries/forever/cliend_db/item_names.lua",
+                ["englishLine"] = 6075,
+                ["file"] = "entries/forever/cliend_db/item_names_uk.lua",
+                ["itemId"] = 7969,
+                ["key"] = "Mithril Spurs",
+                ["line"] = 6144,
+                ["sha256"] = "a2b5a5a09c5c471d48e3866275d61d12aa8c3d693a7fb78ff501b8ada3d80b09",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:goods.mithril_spurs" },
+            ["status"] = "approved",
+            ["uk"] = "Мітрилові шпори"
         },
         ["goods.mooncloth_bag"] = {
             ["category"] = "goods",

@@ -278,6 +278,16 @@ function T.render(tree, direction)
     elseif tree.kind == "search" then
         local object = ns.Engine.ClauseGeneration.noun(f.object, not uk, "accusative", not uk)
         if object then return (uk and "Шукаю " or "Looking for ") .. object .. "." end
+    elseif tree.kind == "freeOffer" then
+        local value = f.object and ns.Engine.ClauseGeneration.noun(f.object, not uk, "nominative")
+            or s.item and s.item.raw
+        if not value then return end
+        if f.recipient then
+            local recipient, marker = ns.Engine.ClauseGeneration.preposition(f.recipient, not uk)
+            if not recipient then return end
+            value = value .. " " .. marker .. " " .. recipient
+        end
+        return (uk and "Безкоштовно: " or "Free: ") .. value .. (f.punctuation or "")
     elseif tree.kind == "price" then
         local amount = render(uk and (f.introduced and "{price:money}" or "{price:moneyNominative}") or "{price}")
         local only = f.linked and (uk and "лише " or "only ") or (uk and "Лише " or "Only ")

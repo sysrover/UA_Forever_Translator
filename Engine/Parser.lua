@@ -298,8 +298,10 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
             end
             if segmentEnd < #tokens then
                 local stop, previous = tokens[segmentEnd], tokens[segmentEnd - 1]
+                local labelSeparator = tokens[segmentEnd + 2]
+                local continuation = labelSeparator and labelSeparator.key == ":"
                 local singlePeriod = stop.key == "." and not (previous.key == "." and previous.last + 1 == stop.first)
-                if stop.key == "?" or stop.key == "!" or match and singlePeriod then
+                if not continuation and (stop.key == "?" or stop.key == "!" or match and singlePeriod) then
                     confirmedEnds[#confirmedEnds + 1] = segmentEnd
                 end
             end
