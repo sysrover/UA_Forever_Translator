@@ -3,7 +3,7 @@
 ## Title: UA Forever Translator
 ## Notes: English-Ukrainian game chat phrases and reviewed outgoing drafts.
 ## Author: UA Forever Translator contributors
-## Version: 0.5.1
+## Version: 0.6.0
 ## SavedVariables: UA_Forever_TranslatorDB
 ## SavedVariablesPerCharacter: UA_Forever_TranslatorTabID, UA_Forever_TranslatorLog
 

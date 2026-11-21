@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0
+
+- Improved group recruitment and search for dungeon runs and quests, including questions about who is joining. Quest links stay intact.
+- Expanded the dictionary and grammar for free offers, quantities, recurring events, and chat greetings. Improved translation of noun phrases and questions in both directions.
+- Improved sentence boundary detection in chat, including when messages omit spaces after punctuation.
+- Added more points where incoming translation can pause and resume across frames. The optional journal now records the longest processing slice as well as the total translation time.
+
 ## 0.5.1
 
 - Improved translation of group rosters, recruitment and enchantment trade messages, chat reactions, and expressions for dates, times, durations, and approximate quantities.
