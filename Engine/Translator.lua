@@ -192,6 +192,7 @@ local function dependencyFragments(document, fragments)
                 if open >= 2 then
                     attempts = attempts + 1
                     local arcs, words = ns.Engine.UDPipe.analyzeDocumentWithTags(document, first, ending)
+                    if document.checkpoint then document.checkpoint() end
                     local rendered
                     if arcs and words and not occupied then
                         local marker = sentenceEnd and token.key or nil
@@ -344,7 +345,12 @@ local function compute(text, direction, tokens, normalized, checkpoint)
     end
     local chunks, matched, unknown, refs, refSeen, i, cursor = {}, {}, {}, {}, {}, 1, 1
     local reason, reasonEnd
+    local nextCheckpoint = 5
     while i <= #tokens do
+        if checkpoint and i >= nextCheckpoint then
+            nextCheckpoint = i + 4
+            checkpoint()
+        end
         local token = tokens[i]
         local fragment = fragments and fragments[i]
         local preserve = document.preserve and document.preserve[i]

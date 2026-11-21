@@ -248,6 +248,7 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
     local previous = {[boundary]={score=0}}
     local words = {}
     local quantifiedHeads, hasAuxiliary
+    local checkpoint = document.checkpoint
     -- Viterbi over the available readings, retaining one predecessor for each part of speech.
     for index = first, last do
         local token = document.tokens[index]
@@ -291,6 +292,7 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
             candidate.raw = candidate.modelForm or raw
         end
         previous = candidates
+        if checkpoint and (index - first + 1) % 8 == 0 then checkpoint() end
     end
     local best, selected
     for id, candidate in pairs(previous) do
@@ -341,8 +343,10 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
     local lang = document.direction == "en-uk" and "en" or "uk"
     local model = ns.UDPipeModels and ns.UDPipeModels[lang]
     if not model or last < first or last - first >= 32 then return end
+    local checkpoint = document.checkpoint
     local words
     local original = (alternatives or commaBefore or omitted) and {}
+    if checkpoint then checkpoint() end
     if lang == "en" and ns.UDPipeTagWeights then
         local hasAuxiliary
         words, hasAuxiliary = tagEnglish(document, first, last, marker, markerEnd, ns.UDPipeTagWeights, hints, markerTags, readings)
@@ -361,7 +365,7 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
         end
     else
         local previous, previousParticiple
-        local index = first
+        local index, nextCheckpoint = first, 8
         words = {}
         while index <= last do
             local token = document.tokens[index]
@@ -388,6 +392,10 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
             if original then original[#words] = index - first + 1 end
             previous, previousParticiple = pos, following and participle
             index = nextIndex
+            if checkpoint and #words == nextCheckpoint then
+                nextCheckpoint = nextCheckpoint + 8
+                checkpoint()
+            end
         end
     end
     if omitted then
@@ -412,6 +420,7 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
     end
     -- The same annotated words can be produced by the plain and guided attempts.
     -- Cache compact arcs; each caller maps them back to its own source positions.
+    if checkpoint then checkpoint() end
     local arcs = parseModelInput(document, model, words)
     if not arcs or not original then return arcs, words end
     -- Restore source positions after inserting or compacting model tokens.

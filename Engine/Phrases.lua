@@ -173,6 +173,33 @@ function P.raw(document, first, last)
     return document.text:sub(document.tokens[first].first, document.tokens[last].last)
 end
 
+function P.personalName(document, first, limit)
+    local token = document.tokens[first]
+    if not token or first > limit then return nil end
+    if token.protected then
+        local raw = P.raw(document, first, first)
+        if ns.Engine.Markup.isLink(raw, "player") then return raw, first + 1 end
+        return nil
+    end
+    local startsWithCapital = ns.Engine.Parser.startsWithCapital
+    local index = first
+    for _ = 1, 5 do
+        local part = document.tokens[index]
+        if index > limit or not startsWithCapital(document.text, part)
+            or not part.key:match("^[%a\128-\255][%w\128-\255']*$")
+            or L.functional(document, "connectors", index, index) then break end
+        index = index + 1
+        local dash, nextPart = document.tokens[index], document.tokens[index + 1]
+        if index < limit and dash.key == "-" and dash.first == part.last + 1
+            and nextPart.first == dash.last + 1 and startsWithCapital(document.text, nextPart) then
+            index = index + 1
+        end
+    end
+    if index > first and document.tokens[index - 1].key ~= "-" then
+        return P.raw(document, first, index - 1), index
+    end
+end
+
 function P.ratingNote(document, first, limit)
     local tokens = document.tokens
     local opening = P.key(document, first, limit)
@@ -230,18 +257,37 @@ function P.menuPath(document, first, limit)
     end
 end
 
-function P.calendar(document, first, limit, shared)
+function P.calendar(document, first, limit, shared, sharedRecurrence)
     local english = document.direction == "en-uk"
     local marker = P.key(document, first, limit)
     local preposition = english and marker == "on" or not english and (marker == "у" or marker == "в")
     local start = first + (preposition and 1 or 0)
-    local choices, last = L.functional(document, "calendarDays", start, limit)
+    local key = marker
+    if preposition then key = P.key(document, start, limit) end
+    local genitive = not english and (key == "кожного" or key == "кожної")
+    local recurring = genitive or (english and (key == "every" or key == "each"))
+        or (not english and (key == "кожен" or key == "кожну"))
+    if recurring then
+        start = start + 1
+        key = P.key(document, start, limit)
+    end
+    local choices, last
+    if genitive then
+        -- The indexed щопонеділка/щоп'ятниці forms contain the weekday's genitive.
+        choices = key and ns.Linguistics.grammar.index.uk.calendarDays["що" .. key]
+        last = start
+    else
+        choices, last = L.functional(document, "calendarDays", start, limit)
+    end
     if not choices or #choices ~= 1 then return nil end
     local day = ns.Linguistics.grammar.calendarDays[choices[1]]
-    local key = P.key(document, start, limit)
-    local repeated = key == (english and day.en[2] or day.uk[2])
-    local abbreviated = english and key ~= day.en[1] and not repeated
-    if abbreviated and not (preposition or shared) then return nil end
+    local pluralDay = english and key == day.en[2]
+    if english and recurring and pluralDay then return nil end
+    if not english and recurring and not genitive and key ~= day.uk[1] then return nil end
+    local repeated = recurring or pluralDay or not english and key == day.uk[2]
+        or sharedRecurrence and not preposition
+    local abbreviated = english and key ~= day.en[1] and not pluralDay
+    if abbreviated and not (preposition or shared or recurring) then return nil end
     if not english and not (preposition or repeated or shared) then return nil end
     local phases, finish = L.functional(document, "calendarPhases", last + 1, limit)
     local phase = phases and #phases == 1 and ns.Linguistics.grammar.calendarPhases[phases[1]] or nil
@@ -249,7 +295,8 @@ function P.calendar(document, first, limit, shared)
         repeated = repeated or english and P.key(document, last + 1, limit) == phase.en[2]
         last = finish
     end
-    return {day=day, phase=phase, repeated=repeated, bareAbbreviation=abbreviated and not preposition}, last + 1
+    return {day=day, phase=phase, repeated=repeated, quantified=recurring,
+        bareAbbreviation=abbreviated and not (preposition or recurring)}, last + 1
 end
 
 local clockSeparators = {["-"]=true, ["–"]=true, ["—"]=true, ["‐"]=true, ["‑"]=true}
@@ -311,7 +358,8 @@ function P.calendarList(document, first, limit)
         local connector = join == "&" or (document.direction == "en-uk" and join == "and")
             or (document.direction == "uk-en" and (join == "і" or join == "й" or join == "та"))
         if not (comma or connector) then break end
-        local member, after = P.calendar(document, finish + (comma and 1 or 0) + (connector and 1 or 0), limit, true)
+        local member, after = P.calendar(document, finish + (comma and 1 or 0) + (connector and 1 or 0),
+            limit, true, head.quantified)
         if not member then break end
         members = members or {head}
         members[#members + 1], finish = member, after
@@ -386,6 +434,11 @@ function P.semanticClass(noun)
     local term = noun.term
     return noun.referenceClass or frame and frame.semanticClass
         or term and (term.features and term.features.semanticClass or term.category)
+end
+
+local scheduledClasses = {session=true, event=true, activities=true, encounter=true}
+function P.isScheduledEvent(noun)
+    return scheduledClasses[P.semanticClass(noun)]
 end
 
 function P.hasTrait(noun, trait)
@@ -1067,12 +1120,17 @@ local function unqualifiedPossession(noun)
     return true
 end
 
-local function nominalAdpositions(document, noun, first, limit)
-    local choices = L.functional(document, "prepositions", first, limit)
+local function nominalAdpositions(document, noun, first, limit, locationOnly)
+    local choices, last = L.functional(document, "prepositions", first, limit)
     if not choices then return nil end
     local rules = ns.Linguistics.grammar.prepositions
     for _, id in ipairs(choices) do
-        if rules[id].nominalAdjunct then
+        local rule = rules[id]
+        if rule.nominalAdjunct then
+            if locationOnly and rule.nominalPartner and P.spatialContainer(noun) then
+                local person, after = P.pronoun(document, last + 1, limit, rule.case, true)
+                if person and person.person < 3 and after > limit then return nil end
+            end
             local arcs, offset = nominalSentenceArcs(document, noun.headIndex, limit)
             local marker = arcs and arcs[first - offset]
             local modifier = marker and marker.relation == "case" and arcs[marker.head]
@@ -1080,7 +1138,7 @@ local function nominalAdpositions(document, noun, first, limit)
             local relation = modifier.relation:match("^[^:]+")
             local attached = modifier.head + offset == noun.headIndex and relation == "nmod"
             local qualification, class
-            if rules[id].id == "with" then qualification, class = possessionQualification(noun) end
+            if rule.id == "with" then qualification, class = possessionQualification(noun) end
             if not attached and not (qualification and relation == "obl") then return nil end
             local phrase, after = P.preposition(document, first, limit, nil, nil, nil, nil, "nominalAdjunct")
             if not phrase or phrase.object.headIndex ~= marker.head + offset then return nil end
@@ -1234,6 +1292,7 @@ function P.groundedState(document, noun, first, limit, case, attributive)
 end
 
 local modeSymbols = {rp="RP", pvp="PvP", pve="PvE"}
+local modeActivities = {event=true, session=true, encounter=true, activities=true, objective=true}
 local function modePrefix(document, index, limit)
     local label = modeSymbols[P.key(document, index, limit)]
     if not label then return nil end
@@ -1661,7 +1720,9 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
                 local group, finish = nounHead(document, modeEnd, limit, case, false, nounSense, required)
                 audience, marker = group, finish
                 local groupLemma = group and group.entry and group.entry.lexeme.en
-                if group and (group.term and group.term.id == "game.guild" or groupNouns[groupLemma]) then
+                if group and (not head or not head.term or finish > after)
+                    and (group.term and group.term.id == "game.guild" or groupNouns[groupLemma]
+                    or modeActivities[P.semanticClass(group)]) then
                     group.activityMode = mode
                     head, after, compoundHead = group, finish, modeEnd
                 end
@@ -2053,7 +2114,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     end
     if not simple and best.headIndex and not best.raw then
         while nextIndex < limit do
-            local phrase, after = nominalAdpositions(document, best, nextIndex, limit)
+            local phrase, after = nominalAdpositions(document, best, nextIndex, limit, locationOnly)
             if not phrase then break end
             best.prepositions = best.prepositions or {}
             best.prepositions[#best.prepositions + 1], nextIndex = phrase, after
@@ -2407,7 +2468,7 @@ function P.coordinated(document, first, limit, case, startsPredicate, locationOn
         local member = members[i + 1]
         if connector.id == "and" then
             person, number = math.min(person, member.person), "plural"
-        elseif case == "nominative" then
+        elseif case == "nominative" and enumeration ~= "predicate" then
             -- Agreement across a disjunction is language-specific. Leave a
             -- mixed-number subject unresolved instead of guessing a form.
             if person ~= member.person or number ~= member.number then return nil end

@@ -205,9 +205,16 @@ end
 function L.at(document, index)
     local token = document.tokens[index]
     if not token or token.protected then return {} end
+    if not ns.Linguistics then return L.lookup(document, token.key) end
+    local memo = document.tokenReadings
+    if not memo then memo = {}; document.tokenReadings = memo end
+    local cached = memo[index]
+    if cached then return cached end
+
     local direct = L.lookup(document, token.key)
-    if not ns.Linguistics or #direct > 0 then return direct end
-    return derived(document, token.key)
+    local readings = #direct > 0 and direct or derived(document, token.key)
+    memo[index] = readings
+    return readings
 end
 
 local function available(lexeme, document, sense)
@@ -282,6 +289,24 @@ local function matches(form, requested)
     return true
 end
 
+local noReadings = {}
+local function byPart(document, candidates, pos)
+    local memo = document.lexicalParts
+    if not memo then memo = {}; document.lexicalParts = memo end
+    local parts = memo[candidates]
+    if not parts then
+        parts = {}
+        for _, candidate in ipairs(candidates) do
+            local part = candidate.lexeme.pos
+            local list = parts[part]
+            if not list then list = {}; parts[part] = list end
+            list[#list + 1] = candidate
+        end
+        memo[candidates] = parts
+    end
+    return parts[pos] or noReadings
+end
+
 -- Choice is a lexical operation, not a spelling-order tie breaker. Project
 -- valency/sense entries rank above imported alternatives. Equal target meanings
 -- may share source analyses; different equally-ranked meanings remain visible.
@@ -289,10 +314,11 @@ function L.choose(document, first, pos, requested, sense, compatible)
     local candidates=type(first) == "string" and L.lookup(document, first) or L.at(document, first)
     local selected,score,ambiguous
     local target = document.direction == "en-uk" and "uk" or "en"
-    for _,candidate in ipairs(candidates) do
+    local matching = #candidates > 8 and byPart(document, candidates, pos) or candidates
+    for _,candidate in ipairs(matching) do
         local lexeme,form=candidate.lexeme,candidate.form
         local frame=lexeme.frame
-        if available(lexeme, document, sense) and lexeme.pos==pos and (not requested or matches(form,requested))
+        if lexeme.pos==pos and available(lexeme, document, sense) and (not requested or matches(form,requested))
             and (not frame or frame.sense ~= "duration" or sense == "duration")
             and (not frame or not frame.headClasses or sense == "nounModifier")
             and (not frame or frame.sense ~= "identityDeterminer" or sense == "identityDeterminer")
@@ -410,22 +436,44 @@ function L.curatedForm(term,case,number)
 end
 
 function L.functional(document, group, first, limit)
-    local data=ns.Linguistics
+    local data = ns.Linguistics
     if not data then return nil end
-    local lang=document.direction=="en-uk" and "en" or "uk"
-    local index=data.grammar.index[lang][group]
-    if not index then return nil end
-    local tokens=document.tokens
-    local key,last="",nil
-    local selected
-    local widths = data.grammar.indexWidths
-    local width = widths and widths[lang][group] or 3
-    for i=first,math.min(#tokens,limit or #tokens,first+width-1) do
-        if tokens[i].protected then break end
-        key=key=="" and tokens[i].key or key.." "..tokens[i].key
-        if index[key] then selected,last=index[key],i end
+    local tokens = document.tokens
+    limit = limit or #tokens
+    if first > limit or not tokens[first] or tokens[first].protected then return nil end
+    local memo = document.functionalMemo
+    if not memo then memo = {}; document.functionalMemo = memo end
+    local groups = memo[first]
+    if not groups then groups = {}; memo[first] = groups end
+    local hits = groups[group]
+    if hits == nil then
+        local lang = document.direction == "en-uk" and "en" or "uk"
+        local index = data.grammar.index[lang][group]
+        hits = false
+        if index then
+            -- Keep all matching endings so a shorter parse can still use its own limit.
+            local key = ""
+            local widths = data.grammar.indexWidths
+            local width = widths and widths[lang][group] or 3
+            for last = first, math.min(#tokens, first + width - 1) do
+                local token = tokens[last]
+                if token.protected then break end
+                key = key == "" and token.key or key .. " " .. token.key
+                local readings = index[key]
+                if readings then
+                    if not hits then hits = {} end
+                    hits[#hits + 1] = {readings=readings, last=last}
+                end
+            end
+        end
+        groups[group] = hits
     end
-    return selected,last
+    if hits then
+        for i = #hits, 1, -1 do
+            local hit = hits[i]
+            if hit.last <= limit then return hit.readings, hit.last end
+        end
+    end
 end
 
 L.matches=matches

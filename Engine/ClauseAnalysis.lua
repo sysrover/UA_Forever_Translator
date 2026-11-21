@@ -597,7 +597,7 @@ local function verb(document, index, limit, subject, base, imperative, sense, as
                 if not marked and not (english and frame.optionalEnglishObjectPreposition) then return false end
                 objectAt, case = marked or objectAt, governedCase or case
             end
-            local object, objectEnd = separatedObject, after
+            local object, objectEnd = separatedObject or aspect == "passive" and subject, after
             local referent = recentObject or previous and previous.object
             if not object and referent then
                 object, objectEnd = A.objectReference(document, objectAt, limit, case, referent)
@@ -1254,6 +1254,62 @@ end
 
 local complements, infinitiveSeries
 
+function A.recruitmentRoles(noun)
+    if not noun then return false end
+    for _, member in ipairs(noun.members or {noun}) do
+        local category = member.term and member.term.category
+        if category ~= "roles" and category ~= "classes" then return false end
+    end
+    return true
+end
+
+function A.recruitmentDestinationObject(document, first, limit, case)
+    local english = document.direction == "en-uk"
+    -- The catalogue indexes at most twelve tokens per term.
+    for start = math.max(first + 1, limit - 11), limit do
+        for _, span in ipairs(document.spans[start] or {}) do
+            if span.last == limit and span.term.category == "places"
+                and span.term.features and span.term.features.clearableInstance then
+                local marker = P.key(document, start - 1, limit)
+                local explicit = marker == (english and "for" or "на")
+                if english or explicit then
+                    local lastRole = start - 1 - ((explicit or marker == ",") and 1 or 0)
+                    if lastRole >= first then
+                        local rule = bareAdjunctRule("for-instance-recruitment")
+                        if not rule then return nil end
+                        local place, after = P.noun(document, start, limit, rule.case, true, nil, true, rule.objectSense)
+                        if place and place.term and after > limit and P.hasTrait(place, "clearableInstance") then
+                            local list, finish = coordinatedObject(document, first, lastRole, case)
+                            if finish == lastRole + 1 and A.recruitmentRoles(list) then
+                                return list, after, {rule=rule, object=place, case=rule.case}
+                            end
+                        end
+                    end
+                end
+                break
+            end
+        end
+    end
+end
+
+function A.rosterSearch(document, subject, index, limit, depth)
+    local key = P.key(document, index, limit)
+    if not key or not key:match("ing$") or not A.recruitmentRoles(subject) then return nil end
+    local counted
+    for _, member in ipairs(subject.members or {subject}) do
+        if member.quantity then counted = true; break end
+    end
+    if not counted then return nil end
+    local action, after = verb(document, index, limit, subject, false, false, nil, "present")
+    if not action or not lexemeFrame(action).recruitmentSearch then return nil end
+    local request = {kind="clause", subject=subject, verb=action, verbIndex=index, tense="present", aspect="continuous"}
+    local finish = complements(document, request, after, limit, depth)
+    local destination = request.prepositions and request.prepositions[1]
+    if finish == limit + 1 and destination and destination.rule.id == "for-instance-recruitment" then
+        return request, finish
+    end
+end
+
 function A.locativeSource(document, first, limit, depth)
     if depth >= 3 then return nil end
     local cue, start = adverbAt(document, first, limit, "locativeSource", function(candidate)
@@ -1280,6 +1336,7 @@ local function prepositionContext(tree, frame)
         or tree.object and tree.object.sufficient and "supply"
         or frame.objectPrepositionContexts and frame.objectPrepositionContexts[objectClass]
         or frame.prepositionContext
+        or frame.recruitmentSearch and tree.implicitSubject and personNoun(tree.object) and "recruitmentPurpose"
     return context, frame.durationBoundary and "duration"
 end
 local controlledTemporal = {
@@ -1288,7 +1345,8 @@ local controlledTemporal = {
 }
 
 local function controlledTimeClause(document, first, limit, main, depth)
-    if main.aspect == "passive" then return nil end
+    local passive = main.aspect == "passive"
+    if passive and (not main.modal or main.passiveAgent) then return nil end
     local subject = main.subject or main.imperative
         and personalSubject(main.imperativeNumber == "plural" and "you_plural" or "you")
     if not subject then return nil end
@@ -1299,6 +1357,13 @@ local function controlledTimeClause(document, first, limit, main, depth)
     local finish = complements(document, dependent, after, limit, depth + 1)
     if finish then
         dependent.temporalRecurring = recurringEvent(main) or recurringEvent(dependent)
+        if passive then
+            local id = subject.number == "plural" and "they"
+                or subject.gender == "feminine" and "she" or subject.gender == "masculine" and "he"
+            dependent.subject = subject.pronoun and subject or id and personalSubject(id) or subject
+            dependent.inherited = nil
+            if not dependent.temporalRecurring then A.prospectiveEvent(dependent) end
+        end
         return dependent, finish
     end
 end
@@ -1622,14 +1687,22 @@ function A.nominalQualification(document, noun, first, limit, case)
     document.qualificationDepth = depth + 1
     local action, finish = A.adjectiveAction(document, entry, at + 1, limit, depth)
     local confirmedBoundary
-    if english and case == "nominative" and action and finish == limit + 1
-        and action.object and action.object.headIndex == limit and noun.headIndex
-        and limit - noun.headIndex < 32 and ns.UDPipeModels and verb(document, limit, limit, noun, false) then
-        local arcs = ns.Engine.UDPipe.analyzeDocument(document, noun.headIndex, limit)
-        local candidate = arcs and arcs[limit - noun.headIndex + 1]
+    if english and case == "nominative" and action and noun.headIndex
+        and limit - noun.headIndex < 32 and ns.UDPipeModels then
+        -- A bare word at the end of the qualifier can be either its object or the main verb.
+        local candidateAt = not boundary(document, finish, limit) and finish
+            or finish == limit + 1 and action.object and action.object.headIndex == limit and limit
+        local key = candidateAt and P.key(document, candidateAt, limit)
+        local arcs = candidateAt and verb(document, candidateAt, limit, noun, false)
+            and ns.Engine.UDPipe.analyzeDocument(document, noun.headIndex, limit)
+        local candidate = arcs and arcs[candidateAt - noun.headIndex + 1]
+        if candidateAt == finish and (auxiliary[key] or copula[key] or have[key]) then confirmedBoundary = true end
         if candidate and candidate.relation == "root" then
-            local reduced, ending = A.adjectiveAction(document, entry, at + 1, limit - 1, depth)
-            if reduced and ending == limit then action, finish, confirmedBoundary = reduced, ending, true end
+            if candidateAt == finish then confirmedBoundary = true
+            else
+                local reduced, ending = A.adjectiveAction(document, entry, at + 1, candidateAt - 1, depth)
+                if reduced and ending == candidateAt then action, finish, confirmedBoundary = reduced, ending, true end
+            end
         end
     end
     document.qualificationDepth = previousDepth
@@ -1852,8 +1925,9 @@ function A.relativePrepositionAt(document, index, limit, frame, gap)
     if not choices then return nil end
     for _, id in ipairs(choices) do
         local rule = ns.Linguistics.grammar.prepositions[id]
-        if rule.relativeContext and (rule.relativeContext == frame.prepositionContext
-            or rule.relativeContext == frame.relativeContext)
+        if (rule.relativeAdjunct and gap and gap.fronted
+            or rule.relativeContext and (rule.relativeContext == frame.prepositionContext
+                or rule.relativeContext == frame.relativeContext))
             and (not rule.requiresMotion or frame.motion)
             and (not rule.relativeNounContent or gap and gap.nominalContent == rule.relativeNounContent)
             and (not rule.requiresClass or not gap or gap.class == rule.requiresClass
@@ -2160,7 +2234,7 @@ complements = function(document, tree, index, limit, depth, recentObject)
             end
         end
         objectStart = index
-        local object, nextIndex
+        local object, nextIndex, recruitmentDestination
         local referent = tree.previousObject or recentObject
         local requestedCase = not english and tree.negative and frame.negativeObjectCase or objectCase
         if referent then object, nextIndex = A.objectReference(document, index, limit, requestedCase, referent) end
@@ -2184,6 +2258,9 @@ complements = function(document, tree, index, limit, depth, recentObject)
                 object, nextIndex, activityPurpose, activityPurposeEnd =
                     objectBeforeActivityPurpose(document, index, limit, objectCase, frame, headFilter, depth)
             end
+            if not object and frame.recruitmentSearch then
+                object, nextIndex, recruitmentDestination = A.recruitmentDestinationObject(document, index, limit, objectCase)
+            end
             if not object then
                 object, nextIndex = coordinatedObject(document, index, limit, negativeCase or objectCase,
                     frame.destinationObject, frame.enumeratesObject, frame.objectSense, headFilter,
@@ -2196,6 +2273,9 @@ complements = function(document, tree, index, limit, depth, recentObject)
             end
             if not object and not english and frame.animateObject then
                 object, nextIndex = P.pronoun(document, index, limit, objectCase, true)
+            end
+            if not object and frame.headlessObjectPronoun then
+                object, nextIndex = P.pronoun(document, index, limit, objectCase, nil, nil, frame.headlessObjectPronoun)
             end
             document.transferDomain = previousDomain
         end
@@ -2236,6 +2316,13 @@ complements = function(document, tree, index, limit, depth, recentObject)
                 end
             end
             tree.object, index = object, nextIndex
+            if recruitmentDestination then
+                tree.prepositions = tree.prepositions or {}
+                tree.prepositions[#tree.prepositions + 1] = recruitmentDestination
+                if not english and tree.tense == "present" and not (tree.aspect or tree.modal) then
+                    tree.aspect = "continuous"
+                end
+            end
             if english and frame.objectActions then
                 tree.objectActions = realizeObjectActions(document, tree, frame.objectActions, object)
             end
@@ -2369,14 +2456,15 @@ complements = function(document, tree, index, limit, depth, recentObject)
             tree.priceComparison, tree.priceComma, tree.priceStandard, index = price, comma, standard, finish
         end
     end
-    local adjunctContext, temporalContext = prepositionContext(tree, frame)
+    local adjunctContext, secondaryContext = prepositionContext(tree, frame)
     local compensation = frame.amountObject and tree.object and (tree.object.amount or tree.object.quantity
         or P.semanticClass(tree.object) == "reward")
     if tree.aspect == "passive" and frame.passiveVoice then
+        secondaryContext = secondaryContext or adjunctContext
         adjunctContext = frame.passiveEnclosure and "passiveEnclosure" or "passiveAgent"
     end
     local relativeGap = prepositionalGap and not (tree.infinitive and tree.infinitive.relativePreposition)
-    if relativeGap and not english then
+    if relativeGap and (not english or prepositionalGap.fronted) then
         tree.relativePreposition = A.relativePrepositionAt(document, prepositionalGap.markerIndex,
             prepositionalGap.markerIndex, frame, prepositionalGap)
     end
@@ -2462,7 +2550,7 @@ complements = function(document, tree, index, limit, depth, recentObject)
             elseif not adverb or not (adverb.temporalAdjunct or adverb.secondPersonState or adverb.prepositionalIdiom) then
                 local payout = compensation and P.key(document, index, limit) == (english and "for" or "за")
                 pp, last = P.preposition(document, prepositionAt, limit, frame.motion, frame.displacesObject and tree.object ~= nil,
-                    payout and "compensation" or adjunctContext, temporalContext)
+                    payout and "compensation" or adjunctContext, secondaryContext)
             end
         end
         if pp and prepositionAt ~= index then
@@ -2939,8 +3027,13 @@ local function predicate(document, tree, index, limit, depth)
         else finish = addPredicateLocation(document, tree, pp, finish, limit) end
         return predicateTime(document, tree, finish, limit)
     end
-    if index > limit then return (tree.where or tree.wh and tree.wh.kind == "manner") and index end
-    if tree.where then return nil end
+    if tree.where then
+        if index > limit then return not tree.negative and index or nil end
+        local ending = predicateTime(document, tree, index, limit)
+        if ending > index then return ending end
+        return nil
+    end
+    if index > limit then return tree.wh and tree.wh.kind == "manner" and index end
     if document.direction == "en-uk" then
         local measure, after = P.quantity(document, index, limit)
         local head = P.key(document, after or index, limit)
@@ -3072,6 +3165,14 @@ local function predicate(document, tree, index, limit, depth)
         object = nil
     else
         object, nextIndex = P.coordinated(document, index, limit, "nominative")
+        if tree.question and object and P.personNoun(tree.subject) and P.personNoun(object)
+            and P.key(document, nextIndex, limit) == "," then
+            local listing, finish = P.coordinated(document, index, limit, "nominative",
+                nil, nil, "predicate", nil, P.personNoun)
+            if listing and listing.members and boundary(document, finish, limit) then
+                object, nextIndex = listing, finish
+            end
+        end
     end
     if not object and document.direction == "en-uk" and tree.subject and tree.subject.pronoun
         and tree.subject.pronoun.deixis then
@@ -3779,6 +3880,24 @@ end
 
 local englishHortative = {["let's"]=true, lets=true}
 
+function A.longLive(document, first, limit, english)
+    local at = first + 1
+    local actionKey = P.key(document, at, limit)
+    if english then
+        if actionKey ~= "live" then return nil end
+    elseif actionKey ~= "живе" and actionKey ~= "живуть" then return nil end
+    local subject, after = P.coordinated(document, at + 1, limit, "nominative")
+    if not subject or not boundary(document, after, limit) then return nil end
+    local action
+    if english then action = verb(document, at, at, subject, true, nil, nil, nil, "live")
+    else
+        action = L.choose(document, at, "verb", {tense="present", person=3, number=subject.number},
+            nil, function(candidate) return candidate.lexeme.en == "live" end)
+    end
+    if not action then return nil end
+    return {kind="clause", optative=true, longLive=true, subject=subject, verb=action, verbIndex=at, tense="present"}, after
+end
+
 function A.optative(document, first, limit, depth, english)
     local case = english and "accusative" or "nominative"
     local subject, at = P.coordinated(document, first + 1, limit, case)
@@ -4089,6 +4208,14 @@ do
             and (argument.relation == "obj" or argument.relation == "obl" and lexemeFrame(tree.verb).lexicalPhrase)
     end
 
+    function A.recruitmentCompanion(clause)
+        for _, phrase in ipairs(clause.prepositions or {}) do
+            local pronoun = phrase.object.pronoun
+            if phrase.rule.id == "with" and pronoun and pronoun.id == "we" then return true end
+        end
+        return clause.infinitive and A.recruitmentCompanion(clause.infinitive)
+    end
+
     standaloneEvent = function(document, first, limit, depth, key, english, sentenceQuestion)
         if depth < 3 then
             local comparison, finish = comparedEvent(document, first, limit, depth)
@@ -4164,7 +4291,17 @@ do
             end
         end
         local inferred = search and not actor and frame.recruitmentActor
+        local posting
+        if search and not actor and not inferred then
+            for at = start + 1, limit - 1 do
+                if P.key(document, at, limit) == "for" then posting = true; break end
+            end
+        end
+        local qualifiedSearch = search and not actor and not inferred and document.relativeBudget
+            and frame.lexicalPhrase and frame.ellipticPartnerSearch
         if inferred then actor = personalSubject(inferred) end
+        if qualifiedSearch then actor = personalSubject("i")
+        elseif posting then actor = personalSubject("we") end
         if activity and not actor then actor = personalSubject("i") end
         if not intention and not actor then return nil end
         local request = {kind="clause", subject=actor, implicitSubject=not question, verb=entry, verbIndex=index,
@@ -4181,10 +4318,41 @@ do
             end
         end
         if search and personNoun(request.object) then
+            if posting and A.recruitmentActivity(request) then
+                if qualifiedSearch then request.subject = personalSubject("we") end
+                return request, finish
+            end
+            if qualifiedSearch then
+                local qualified, groupActor
+                for _, object in ipairs(request.object.members or {request.object}) do
+                    local relative = object.relative
+                    if relative and relative.case == "nominative" then
+                        qualified = true
+                        if A.recruitmentCompanion(relative.clause) then groupActor = true end
+                    end
+                end
+                if not qualified then return nil end
+                if groupActor then request.subject = personalSubject("we") end
+            elseif posting then
+                return nil
+            end
             request.standaloneAttachment = inferred and standalonePredicateAttachment(document, first, limit, request)
             if not inferred or request.standaloneAttachment then return request, finish end
         end
     end
+end
+
+function A.recruitmentActivity(request)
+    for _, phrase in ipairs(request.prepositions or {}) do
+        if phrase.rule.id == "for" or phrase.rule.id == "for-recruitment-purpose" then
+            for _, member in ipairs(phrase.object.members or {phrase.object}) do
+                local class = P.semanticClass(member)
+                if class == "operation" or class == "activities" or class == "event" or class == "session"
+                    or class == "encounter" or class == "objective" then return true end
+            end
+        end
+    end
+    return false
 end
 
 function A.possessiveGot(document, index, limit, actor, elliptical)
@@ -4402,10 +4570,135 @@ function A.modalPredicateAt(document, first, limit)
     return P.key(document, start, limit) == "be" or hasVerbForm(document, start, limit, {mood="base"})
 end
 
+function A.impersonalModalPassive(document, first, limit, depth, sentenceQuestion)
+    local question = P.key(document, first, limit) == "чи"
+    local start = first + (question and 1 or 0)
+    local cue = P.key(document, start, limit)
+    if cue ~= "можна" and cue ~= "неможливо" then return nil end
+    local past = P.key(document, start + 1, limit) == "було"
+    local at = start + (past and 2 or 1)
+    local patient, after = P.coordinated(document, at + 1, limit, "accusative")
+    if not patient then patient, after = P.pronoun(document, at + 1, limit, "accusative", true) end
+    if not patient then return nil end
+    local action = L.choose(document, at, "verb", {mood="infinitive"}, nil, function(candidate)
+        local frame = lexemeFrame(candidate)
+        return frame.passiveVoice and not frame.objectPreposition
+            and (not frame.animateObject or personNoun(patient))
+    end)
+    if not action then return nil end
+    local tree = {kind="clause", subject=patient, verb=action, verbIndex=at, aspect="passive",
+        modal=past and "could" or "can", negative=cue == "неможливо", question=question or sentenceQuestion}
+    local finish = complements(document, tree, after, limit, depth)
+    if finish and boundary(document, finish, limit) then return tree, finish end
+end
+
+function A.locativeName(document, first, limit, fronted, establishedEnd)
+    local english = document.direction == "en-uk"
+    local startsWithCapital = ns.Engine.Parser.startsWithCapital
+    local index = first + (P.key(document, first, limit) == "the" and 1 or 0)
+    local tokens = document.tokens
+    if not startsWithCapital(document.text, tokens[index]) then return nil end
+
+    local ending, unrecognized
+    local bound = math.min(limit, first + 7)
+    while index <= bound do
+        local key = P.key(document, index, limit)
+        if english and not fronted and (copula[key] or negativeCopula[key]) then break end
+        if startsWithCapital(document.text, tokens[index]) then
+            ending = index + 1
+            if not unrecognized and #L.at(document, index) == 0 then unrecognized = true end
+        elseif not ending or not (key == "of" or key == "the" or key == "de" or key == "з" or key == "із") then
+            break
+        end
+        index = index + 1
+    end
+    if not (ending and unrecognized) or establishedEnd and ending <= establishedEnd then return nil end
+
+    local marker = P.key(document, ending, limit)
+    local gender, plural
+    if english then
+        marker = fronted or negativeCopula[marker] or marker
+        if not (copula[marker] and marker ~= "am") then return nil end
+        plural = marker == "are" or marker == "were"
+    else
+        if not fronted and ending <= limit and not copula[marker] then
+            local time, after = adverbAt(document, ending, limit)
+            if not (time and time.time and boundary(document, after, limit)) then return nil end
+        end
+        gender = fronted or ukCopulaAgreement[marker]
+        plural = gender == "plural"
+    end
+    return {raw=P.raw(document, first, ending - 1), person=3,
+        number=plural and "plural" or "singular", gender=not plural and gender or nil}, ending
+end
+
+function A.personalNaming(document, first, limit, english, key)
+    local subject, index, question, marker, past, negative
+    if english then
+        if key == "name's" then
+            subject, index = personalSubject("i"), first + 1
+        else
+            local start = first
+            if key == "what's" then
+                question, start = true, first + 1
+            elseif key == "what" then
+                marker = P.key(document, first + 1, limit)
+                if marker ~= "is" and marker ~= "was" then return nil end
+                question, past, start = true, marker == "was", first + 2
+            end
+            marker = P.key(document, start + 1, limit)
+            if marker ~= "name" and (question or marker ~= "name's") then return nil end
+            subject, index = P.pronoun(document, start, start, "possessive", true)
+            if not subject or index ~= start + 1 then return nil end
+            index = index + 1
+            if not question and marker == "name" then
+                local copulaKey = P.key(document, index, limit)
+                local base = negativeCopula[copulaKey] or copulaKey
+                if base ~= "is" and base ~= "was" then return nil end
+                past, negative, index = base == "was", copulaKey ~= base, index + 1
+            end
+        end
+        if not question and not negative and P.key(document, index, limit) == "not" then
+            negative, index = true, index + 1
+        end
+    else
+        question = key == "як"
+        local start = first + (question and 1 or 0)
+        local cue = P.key(document, start + 1, limit)
+        local verbAt = start + 1 + (cue == "не" and 1 or 0)
+        marker = P.key(document, verbAt, limit)
+        if marker ~= "звати" and marker ~= "звуть" and marker ~= "звали" then return nil end
+        subject, index = P.pronoun(document, start, start, "accusative", true)
+        if not subject or index ~= start + 1 then return nil end
+        past, negative, index = marker == "звали", cue == "не", verbAt + 1
+        if not question and not negative and P.key(document, index, limit) == "не" then
+            negative, index = true, index + 1
+        end
+    end
+    if not subject.pronoun.en.possessive then return nil end
+    local name, after
+    if question then
+        if negative or not boundary(document, index, limit) then return nil end
+        after = index
+    else
+        name, after = P.personalName(document, index, limit)
+        if not name or not boundary(document, after, limit) then return nil end
+    end
+    return {kind="clause", subject=subject, question=question, naming={name=name, past=past, negative=negative}}, after
+end
+
 simple = function(document, first, limit, previous, depth, indirect, objectGap, sentenceQuestion)
     if document.checkpoint then document.checkpoint() end
     local english = document.direction == "en-uk"
     local key = P.key(document, first, limit)
+    if not (previous or indirect or objectGap) then
+        local naming, finish = A.personalNaming(document, first, limit, english, key)
+        if naming then return naming, finish end
+    end
+    if not english and not (indirect or objectGap) and (key == "чи" or key == "можна" or key == "неможливо") then
+        local tree, finish = A.impersonalModalPassive(document, first, limit, depth, sentenceQuestion)
+        if tree then return tree, finish end
+    end
     if not english and not (indirect or objectGap) and previous and previous.analyticFuture and previous.subject then
         local negative = key == "не"
         local start = first + (negative and 1 or 0)
@@ -4472,11 +4765,11 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
             if label:match("^<[^<>]+>$") then
                 local separator = P.key(document, first + 1, limit)
                 local opening = first + ((separator == "—" or separator == ":") and 2 or 1)
-                if not objectGap then
+                if english and not objectGap then
                     local guild = {raw=label, number="singular", gender="feminine", person=3}
                     local entry, start = verb(document, opening, limit, guild, false)
                     local progressive
-                    if english and not entry then
+                    if not entry then
                         entry, start = verb(document, opening, limit, guild, false, false, nil, "present")
                         progressive = entry ~= nil
                     end
@@ -4562,6 +4855,11 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
         local social, finish = socialComplement(document, first, limit, depth)
         if social then return social, finish end
     end
+    if not (previous or indirect or objectGap) and (english and key == "long"
+        or not english and (key == "нехай" or key == "хай")) then
+        local wish, finish = A.longLive(document, first, limit, english)
+        if wish then return wish, finish end
+    end
     if not (previous or indirect or objectGap) and (english and key == "let"
         or not english and (key == "нехай" or key == "хай")) then
         local wish, finish = A.optative(document, first, limit, depth, english)
@@ -4613,7 +4911,7 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
         end
     end
     if english and key == "no" then
-        local object, after = P.noun(document, first + 1, limit, "nominative")
+        local object, after = P.coordinated(document, first + 1, limit, "nominative")
         local requirement = after and P.key(document, after, limit)
         if object and (requirement == "needed" or requirement == "required") then
             local tree = {kind="notRequired", object=object}
@@ -4629,6 +4927,18 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
                 end
             end
             return tree, after + 1
+        end
+        local plural = object and object.number == "plural"
+        if object and (plural and (requirement == "are" or requirement == "were")
+            or not plural and (requirement == "is" or requirement == "was")) then
+            local at = after + 1
+            local action, finish = verb(document, at, limit, object, false, false, nil, "passive")
+            if action then
+                local tree = {kind="clause", subject=object, verb=action, verbIndex=at,
+                    tense=copula[requirement], aspect="passive", negative=true, objectGap=objectGap}
+                local ending = complements(document, tree, finish, limit, depth)
+                if ending then return tree, ending end
+            end
         end
     end
     if english and key == "looking" and P.key(document, first + 1, limit) == "to"
@@ -4909,6 +5219,12 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
         if english and not subject and (not inverted or tree.copula) then
             subject, nextIndex = A.subjectFromCopularPredicate(document, index, limit, inverted)
         end
+        if tree.where == true and not (subject and (subject.pronoun or subject.raw))
+            and (not english or not inverted or tree.copula) then
+            local fronted = english and inverted and invertedCopula or frontedCopula
+            local name, finish = A.locativeName(document, index, limit, fronted, nextIndex)
+            if name then subject, nextIndex = name, finish end
+        end
         local label = not subject and P.key(document, index, limit)
         if label and label:match("^%d+$") then
             local modifier, after
@@ -4996,6 +5312,32 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
         return {kind="welcomeGroup", subject=subject}, index + 1
     end
     local current = syntheticCopula or contraction and contraction[2] or P.key(document, index, limit)
+    if english and subject and not (inverted or aux or contraction or indirect or objectGap
+        or previous or tree.question or questionMark) then
+        local request, finish = A.rosterSearch(document, subject, index, limit, depth)
+        if request then return request, finish end
+    end
+    if not english and subject and not (subject.pronoun or relativeSubject or wh or tree.question)
+        and (not objectGap or type(objectGap) == "table" and objectGap.prepositional) then
+        local class = P.semanticClass(subject)
+        local negative = current == "не"
+        local at = index + (negative and 1 or 0)
+        local word = class and P.key(document, at, limit)
+        if word and word:sub(-4) == "ть" then
+            local action = L.choose(document, at, "verb", {tense="present", number="plural", person=3}, nil,
+                function(candidate)
+                    local frame = lexemeFrame(candidate)
+                    return frame.anonymousPresentPassive and frame.objectClasses[class]
+                end)
+            if action then
+                tree.verb, tree.verbIndex, tree.tense, tree.aspect = action, at, "present", "passive"
+                tree.negative = negative
+                local finish = complements(document, tree, at + 1, limit, depth)
+                if finish then return tree, finish end
+                return nil
+            end
+        end
+    end
     local contractedNegative = negativeCopula[current] or negativePerfect[current]
     if contractedNegative then current = contractedNegative end
     if unmarkedQuestion and questionMark and current == "got" then
@@ -5259,6 +5601,22 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
         and P.key(document, index, limit) == "like" and P.key(document, index + 1, limit) == "to"
     local conditionalDesire = english and aux and aux.ability == "conditional" and not politeDesire
         and A.conditionalDesireAt(document, index, limit, subject or relativeSubject)
+    if english and (tree.modal == "can" or tree.modal == "could") and (subject or relativeSubject) then
+        local marker = P.key(document, index, limit)
+        if marker == "be" or marker == "get" then
+            local patient = subject or relativeSubject
+            local adverb, nextVerb = adverbAt(document, index + 1, limit)
+            nextVerb = nextVerb or index + 1
+            local action, after = verb(document, nextVerb, limit, patient, false, false, nil, "passive")
+            if action and lexemeFrame(action).passiveVoice then
+                tree.subject, tree.inherited, tree.verb, tree.verbIndex = patient, not subject, action, nextVerb
+                tree.aspect, tree.leadingAdverb = "passive", adverb
+                local finish = complements(document, tree, after, limit, depth)
+                if finish then return tree, finish end
+                return nil
+            end
+        end
+    end
     if english then
         local ability = tree.copula and tree.tense or aux and (aux.ability or aux.tense == "future" and "future")
         local at = ability and abilityComplementStart(document, index, limit, tree.copula)
@@ -5399,6 +5757,22 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
             politeDesire and "politeDesire" or conditionalDesire and "conditionalDesire" or nil, nil,
             contractedPredicate, inheritedSubject and previous, aux and aux.tense, previous and previous.object)
     end
+    if not tree.verb and not english and aux and not (objectGap or wh) then
+        local pronoun, start = P.pronoun(document, index, limit, "accusative")
+        if not pronoun then pronoun, start = P.pronoun(document, index, limit, "dative") end
+        local action, finish
+        if pronoun then action, finish = verb(document, start, limit, subject or inheritedSubject, true) end
+        if action then
+            local frame = lexemeFrame(action)
+            local case = tree.negative and frame.negativeObjectCase or frame.objectCase
+            if case and not (frame.objectPreposition or frame.intransitive or frame.motion or frame.separation) then
+                local argument, after = P.pronoun(document, index, limit, case)
+                if argument and after == start then
+                    tree.verb, tree.object, verbIndex, afterVerb = action, argument, start, finish
+                end
+            end
+        end
+    end
     if english and tree.imperative and tree.leadingAdverb and tree.leadingAdverb.pastUk then
         local past, finish = verb(document, index, limit, subject or inheritedSubject, false, false, nil, "simplePast", nil, previous)
         if past and (not tree.verb or past.lexeme.en ~= tree.verb.lexeme.en
@@ -5429,8 +5803,8 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
         tree.verb, afterVerb = verb(document, index, limit, nil, false, true)
         tree.imperative = tree.verb ~= nil
     end
-    if not tree.verb and not english and subject and (not aux or aux.tense == "future") then
-        if not aux and subject.demonstrative then
+    if not tree.verb and not english and (subject or relativeSubject) and (not aux or aux.tense == "future") then
+        if not aux and subject and subject.demonstrative then
             local pointer, following = P.pronoun(document, headIndex, limit, "nominative")
             if pointer and pointer.pronoun.id == "this" then
                 local identity = {kind="clause", subject=pointer, copula=true, tense="present", question=tree.question}
@@ -5441,8 +5815,9 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
         if adverbIndex and tree.leadingAdverb.location and P.durationSpan(document, index, limit, true) then
             tree.leadingAdverb, index = nil, adverbIndex
         end
+        if not subject then tree.subject, tree.inherited = relativeSubject, true end
         local finish = predicate(document, tree, index, limit, depth)
-        if finish then
+        if finish and (subject or boundary(document, finish, limit)) then
             tree.copula, tree.tense = true, tree.tense or "present"
             tree.predicateAdverb = tree.predicateAdverb or tree.leadingAdverb
             return tree, finish
@@ -5707,7 +6082,9 @@ function A.relative(document, noun, first, limit)
         return locativeRelative(document, noun, markerIndex, limit, english and comma)
     end
     local preposition
-    if not english and not P.relativeMarkers[document.direction][marker] then
+    local following = english and P.key(document, markerIndex + 1, limit)
+    if not P.relativeMarkers[document.direction][marker]
+        and (not english or following == "which" or following == "whom") then
         local keys, after = L.functional(document, "prepositions", markerIndex, limit)
         local nextMarker = after == markerIndex and P.key(document, after + 1, limit)
         if keys and nextMarker and P.relativeMarkers[document.direction][nextMarker] then
@@ -5738,7 +6115,7 @@ function A.relative(document, noun, first, limit)
             selected, ending, role = tree, after, "nominative"
         end
     end
-    if document.relativeBudget > 0 then
+    if document.relativeBudget > 0 and not (english and preposition) then
         document.relativeBudget = document.relativeBudget - 1
         local previousClass, previousMarker = document.relativeClass, document.relativeMarker
         document.relativeClass, document.relativeMarker = P.semanticClass(noun), preposition
@@ -5754,7 +6131,7 @@ function A.relative(document, noun, first, limit)
     if (not selected or role ~= "nominative" and not boundary(document, ending, limit))
         and (english or preposition) and document.relativeBudget > 0 then
         document.relativeBudget = document.relativeBudget - 1
-        local gap = {prepositional=true, markerIndex=markerIndex - 1,
+        local gap = {prepositional=true, markerIndex=markerIndex - 1, fronted=preposition ~= nil,
             class=P.semanticClass(noun), nominalContent=noun.entry and lexemeFrame(noun.entry).nominalContent}
         local tree, after = simple(document, start, limit, nil, oldDepth + 1, true, gap)
         if tree and tree.subject and not (tree.question or tree.imperative) then
@@ -5910,17 +6287,93 @@ local function adjectiveFragment(document, first, limit)
     return {kind="adjectivePhrase", adjective=adjective, prepositions={topic}, negative=negative}, finish
 end
 
-local scheduledNominals = {session=true, event=true, activities=true, encounter=true}
 local function scheduledListing(noun)
-    if not noun.members then return scheduledNominals[P.semanticClass(noun)] end
+    if not noun.members then return P.isScheduledEvent(noun) end
     for _, member in ipairs(noun.members) do
-        if not scheduledNominals[P.semanticClass(member)] then return false end
+        if not P.isScheduledEvent(member) then return false end
     end
     return true
 end
 
+function A.eventRoom(document, tree, after, limit)
+    if document.direction ~= "en-uk" or not tree.verbIndex or P.key(document, tree.verbIndex, limit) ~= "got"
+        or not tree.subject or not scheduledListing(tree.subject)
+        or tree.negative or tree.modal or tree.aspect or tree.question or tree.leadingAdverb
+        or tree.sentenceAdverb or tree.adverbs then return nil end
+    local index = tree.verbIndex + 1
+    if P.key(document, index, limit) == "some" then index = index + 1 end
+    if index + 1 ~= after or not boundary(document, after, limit) then return nil end
+    local space = L.choose(document, index, "noun", nil, nil, function(candidate)
+        return lexemeFrame(candidate).capacity and candidate.form.number ~= "plural"
+    end)
+    if not space then return nil end
+    return {kind="existential", capacity=true,
+        subject={entry=space, person=3, number="singular", gender=space.head.gender, animacy=space.head.animacy},
+        locationPreposition={object=tree.subject, case="locative", rule={en={"at"}, targetUk="на", englishArticle="definite"}}}
+end
+
 local function scheduleAdverb(document, first, limit)
     return adverbAt(document, first, limit, "nominalSchedule", function(candidate) return candidate.nominalSchedule end)
+end
+
+function A.scheduledCalendar(document, first, limit, candidate)
+    if document.hasCalendarDay == nil then
+        local english = document.direction == "en-uk"
+        local days = ns.Linguistics.grammar.index[english and "en" or "uk"].calendarDays or {}
+        document.hasCalendarDay = false
+        for _, token in ipairs(document.tokens) do
+            local key = token.key
+            if not token.protected and (days[key] or not english and (key == "кожної" or key == "кожного")) then
+                document.hasCalendarDay = true
+                break
+            end
+        end
+    end
+    if not document.hasCalendarDay then return nil end
+    local calendar, dayEnd = P.calendarList(document, first, limit)
+    if not calendar and not (candidate and scheduledListing(candidate)) then return nil end
+
+    local function clockAt(index)
+        local comma = P.key(document, index, limit) == ","
+        return P.clockSchedule(document, index + (comma and 1 or 0), limit)
+    end
+    local function locationAt(index)
+        local place, after = P.preposition(document, index, limit)
+        if place and place.case == "locative" then return place, after end
+    end
+
+    local clock, clockEnd
+    if calendar then
+        clock, clockEnd = clockAt(dayEnd)
+        first = clockEnd or dayEnd
+        local separator = P.key(document, first, limit)
+        if separator == "," or separator == "—" or separator == "–" then first = first + 1 end
+    end
+    local listing, index = P.coordinated(document, first, limit, "nominative", nil, nil, true, nil, scheduledListing, true)
+    if not listing then return nil end
+
+    local place, after
+    if not calendar then
+        calendar, dayEnd = P.calendarList(document, index, limit)
+        if not calendar then
+            place, after = locationAt(index)
+            if not place then return nil end
+            calendar, dayEnd = P.calendarList(document, after, limit)
+            if not calendar then return nil end
+        end
+        index = dayEnd
+    end
+    if not clock then
+        clock, clockEnd = clockAt(index)
+        index = clockEnd or index
+    end
+    if not place then
+        place, after = locationAt(index)
+        index = after or index
+    end
+    if boundary(document, index, limit) then
+        return {kind="nounPhrase", subject=listing, calendar=calendar, clockRange=clock, scheduleLocation=place}, index
+    end
 end
 
 function A.preverbalPronoun(document, first, limit, previous)
@@ -5974,14 +6427,9 @@ function A.namedRecruitment(document, first, limit)
     local article = english and P.key(document, first, limit) == "the"
     local start = first + (article and 1 or 0)
     local predicate = start
-    local normalize = ns.Engine.Normalize
+    local startsWithCapital = ns.Engine.Parser.startsWithCapital
     while predicate <= math.min(start + 5, limit - 1) do
-        local token = document.tokens[predicate]
-        if token.protected then break end
-        local capitalized = normalize.upperStart(token.key)
-        if capitalized == token.key then break end
-        local initial = capitalized:match("^[A-Z]") or capitalized:sub(1, 2)
-        if document.text:sub(token.first, token.first + #initial - 1) ~= initial then break end
+        if not startsWithCapital(document.text, document.tokens[predicate]) then break end
         predicate = predicate + 1
     end
     if predicate - start < 2 or predicate > limit then return nil end
@@ -6054,6 +6502,9 @@ local function parse(document, first, limit, sentenceQuestion)
             local question
             if index == first then question = sentenceQuestion end
             tree, after = simple(document, index, limit, previous, 0, nil, nil, question)
+        end
+        if tree and tree.verb and tree.verb.lexeme.en == "get" then
+            tree = A.eventRoom(document, tree, after, limit) or tree
         end
         local subject = tree and tree.subject
         if not previous and (not tree or not boundary(document, after, limit)
@@ -6138,7 +6589,13 @@ local function parse(document, first, limit, sentenceQuestion)
                 end
                 if not dependency then listing = nil end
             end
-            if listing then
+            local scheduled, scheduleEnd
+            if not (outlook or nominalCompetitor) then
+                scheduled, scheduleEnd = A.scheduledCalendar(document, index, limit, listing)
+            end
+            if scheduled then
+                tree, after = scheduled, scheduleEnd
+            elseif listing then
                 local finish = ending
                 if not outlook then outlook, finish = scheduleAdverb(document, ending, limit) end
                 if outlook and scheduledListing(listing) and boundary(document, finish, limit) then
@@ -6505,9 +6962,24 @@ local function parseWithParticiples(document, first, limit)
     local forms, ampersand = {}, nil
     for index = first + 1, limit do
         local token = document.tokens[index]
+        if index < limit and (token.key:match("^[.!?]$") or token.key == "…")
+            and ns.Engine.Parser.sentenceBoundary(document.text, document.tokens, index) then
+            -- An omitted subject or nominal anchor belongs to this sentence.
+            -- Composition also submits ranges that cross sentence boundaries.
+            return nil
+        end
         if not token.protected and token.key:match("ing$")
             and hasVerbForm(document, index, limit, {verbalForm="participle", tense="present"}) then
-            forms[#forms + 1] = index
+            -- A new reduced relative or chat progressive needs a nominal
+            -- anchor. Marked gerunds belong to a complement, and later
+            -- coordinated participles are read from the first action.
+            local previous = index - 1
+            local marked = L.functional(document, "prepositions", previous, previous)
+                or L.functional(document, "connectors", previous, previous)
+            if not marked or L.choose(document, previous, "noun")
+                or L.functional(document, "adverbs", previous, previous) then
+                forms[#forms + 1] = index
+            end
         elseif token.key == "&" then ampersand = index end
     end
     if #forms == 0 then return nil end

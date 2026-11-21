@@ -1,19 +1,49 @@
 local _, ns = ...
 local A = {}; ns.Engine.Apertium = A
 
-local function arcsAt(graph, state)
+-- Cache only decoded graph states. Readings stay scoped to each message.
+local stateCaches = setmetatable({}, {__mode="k"})
+local stateLimit = 1024
+
+local function readState(graph, state)
     local block = graph.blocks[math.floor(state / graph.blockSize) + 1]
     if not block then return end
     local _, start = block:find("\n" .. state .. "\t", 1, true)
     if not start then return end
     local tab = block:find("\t", start + 1, true)
     local finish = block:find("\n", tab + 1, true)
-    return tonumber(block:sub(start + 1, tab - 1)), block:sub(tab + 1, finish - 1)
+    local row = {final=tonumber(block:sub(start + 1, tab - 1))}
+    -- Store arcs in source order as input, target, output text and weight.
+    local arcs = block:sub(tab + 1, finish - 1)
+    for input, target, output, weight in arcs:gmatch("(%d+):(%d+):(%d+):([^,]+),") do
+        row[#row + 1] = tonumber(input)
+        row[#row + 1] = tonumber(target)
+        row[#row + 1] = graph.output[tonumber(output)] or ""
+        row[#row + 1] = tonumber(weight)
+    end
+    return row
+end
+
+local function stateAt(graph, cache, state)
+    local row = cache.rows[state]
+    if row ~= nil then return row end
+    row = readState(graph, state) or false
+    local slot = cache.next
+    local previous = cache.order[slot]
+    if previous then cache.rows[previous] = nil end
+    cache.rows[state], cache.order[slot] = row, state
+    cache.next = slot % stateLimit + 1
+    return row
 end
 
 -- Run a weighted finite-state transducer. Keep alternatives until a word is
 -- consumed and a final state is reached. Epsilon edges can emit tags.
 local function run(graph, symbols, acceptTags)
+    local cache = stateCaches[graph]
+    if not cache then
+        cache = {rows={}, order={}, next=1}
+        stateCaches[graph] = cache
+    end
     local paths = {{state=0, index=1, text="", weight=0, tags=acceptTags and ""}}
     local visited, values, steps = {}, {}, 0
     while #paths > 0 do
@@ -24,20 +54,22 @@ local function run(graph, symbols, acceptTags)
             visited[key] = path.weight
             steps = steps + 1
             if steps > 2048 then return nil, "limit" end
-            local final, arcs = arcsAt(graph, path.state)
+            local row = stateAt(graph, cache, path.state)
+            local final = row and row.final
             local input = symbols[path.index]
             if not input and final and (not acceptTags or acceptTags(path.tags)) then
                 local weight = path.weight + final
                 if not values[path.text] or values[path.text] > weight then values[path.text] = weight end
             end
-            if arcs then
-                for inputID, target, outputID, weight in arcs:gmatch("(%d+):(%d+):(%d+):([^,]+),") do
-                    local left, right = tonumber(inputID), tonumber(outputID)
+            if row then
+                for arc = 1, #row, 4 do
+                    local left = row[arc]
                     local label = not input and acceptTags and graph.output[left]
                     local tag = label and label:match("^<[%w]+>$")
                     if left == 0 or left == input or tag then
-                        paths[#paths + 1] = {state=tonumber(target), index=path.index + (left == input and 1 or 0),
-                            text=path.text .. (graph.output[right] or ""), weight=path.weight + tonumber(weight),
+                        local target, output, weight = row[arc + 1], row[arc + 2], row[arc + 3]
+                        paths[#paths + 1] = {state=target, index=path.index + (left == input and 1 or 0),
+                            text=path.text .. output, weight=path.weight + weight,
                             tags=tag and path.tags .. tag or path.tags}
                     end
                 end

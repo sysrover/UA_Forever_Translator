@@ -968,6 +968,7 @@ end
 local parsers = {recruit, groupRoster, groupVacancy, enhancement, availability, enchantmentTrade, service, enchantmentList, gratuityNote, reward, questNeed, questAttendance,
     statement, price, groupSearch, search}
 function S.parse(document, limit, first)
+    if document.checkpoint then document.checkpoint() end
     for _, parse in ipairs(parsers) do
         local result = parse(state(document, limit or #document.tokens, first or 1), document.direction)
         if result then return result end

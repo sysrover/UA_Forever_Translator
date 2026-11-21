@@ -5,6 +5,20 @@ local L, P = ns.Engine.Lexicon, ns.Engine.Phrases
 local renderTree, pastOffsetText
 
 local function render(tree, english, controller)
+    local naming = tree.naming
+    if naming then
+        local person = tree.subject.pronoun
+        if english then
+            local copula = naming.past and " was " or " is "
+            local owner = person.en.possessive .. " name"
+            if tree.question then return "what" .. copula .. owner end
+            return owner .. copula .. (naming.negative and "not " or "") .. naming.name
+        end
+        local owner = person.uk.accusative
+        local verb = naming.past and " звали" or " звати"
+        if tree.question then return "як " .. owner .. verb end
+        return owner .. verb .. (naming.negative and " не " or " ") .. naming.name
+    end
     if not english and tree.membershipRecruitment then
         local target = {}
         for key, value in pairs(tree) do target[key] = value end
@@ -53,6 +67,8 @@ local function render(tree, english, controller)
             target.subject, target.object = tree.passiveAgent, tree.subject
             target.implicitSubject = nil
             if frame.passiveEnclosure and not P.personNoun(tree.passiveAgent) then target.aspect = "continuous" end
+        elseif tree.modal and not tree.wh then
+            target.subject, target.object, target.impersonalPassive = nil, tree.subject, true
         else
             target.subject, target.implicitSubject = {person=3, number="plural"}, true
             target.frontedPassivePatient = tree.subject
@@ -870,6 +886,13 @@ local function ukrainianVerb(tree)
     local entry = tree.verb
     local person, number, gender, key = agreement(tree)
     local frame = entry.lexeme.frame or {}
+    if tree.impersonalPassive then
+        local cue = tree.negative and "неможливо" or "можна"
+        local time = tree.modal == "could" and " було " or " "
+        local lemma = frame.passiveModalLemma or frame.purposeLemma or frame.infinitiveLemma or entry.lexeme.uk
+        local adverb = tree.leadingAdverb and tree.leadingAdverb.uk[1]
+        return cue .. time .. (adverb and adverb .. " " or "") .. lemma
+    end
     local lemma = entry.lexeme.uk
     local modality = tree.modalSense == "request" and "can" or tree.modal
     local leading = tree.leadingAdverb
@@ -1049,6 +1072,7 @@ local function englishVerb(tree, subject)
         if not modifier.postposedEn then adverb = adverb .. modifier.en[1] .. " " end
     end
     if tree.hortative then return "Let's " .. (tree.negative and "not " or "") .. adverb .. lemma end
+    if tree.longLive then return "long live " .. subject end
     if tree.optative then return "let " .. subject .. (tree.negative and " not " or " ") .. adverb .. lemma end
     if tree.sharedModal or tree.sharedFuture then
         if tree.modalPerfect then lemma = englishForm(lemma, "participle", "verb") end
@@ -1061,9 +1085,13 @@ local function englishVerb(tree, subject)
         or tree.sentenceAdverb and tree.sentenceAdverb.tentative)
     local prefix
     if tree.aspect == "passive" then
-        prefix = tree.tense == "past" and ((number == "plural" or person == 2) and "were" or "was")
-            or presentBe(person, number)
         lemma = englishForm(lemma, "participle", "verb")
+        if tree.modal then
+            prefix, lemma = tree.modal, "be " .. lemma
+        else
+            prefix = tree.tense == "past" and ((number == "plural" or person == 2) and "were" or "was")
+                or presentBe(person, number)
+        end
     elseif tree.ability then
         if tree.ability == "future" or tree.ability == "conditional" then
             prefix = tree.ability == "future" and "will" or "would"
@@ -1899,7 +1927,12 @@ renderTree = function(tree, english, controller)
         local parts
         local locationValue, locationMarker
         if tree.locationPreposition then
-            locationValue, locationMarker = G.preposition(tree.locationPreposition, english)
+            local place = tree.locationPreposition
+            if english and tree.capacity and place.rule.id == "on" and P.isScheduledEvent(place.object) then
+                locationValue, locationMarker = G.noun(place.object, true, place.case, "definite"), "at"
+            else
+                locationValue, locationMarker = G.preposition(place, english)
+            end
             if not locationValue then return nil end
         end
         local frontedLocation = not english and (not tree.question or tree.why) and tree.locationAdverb and not tree.possessor
@@ -2268,7 +2301,8 @@ renderTree = function(tree, english, controller)
             local label = tree.subject.raw and tree.subject.raw:match("^<[^<>]+>$")
             if not english and not tree.omittedCopula and not tree.subject.pronoun
                 and (tree.predicate.members or tree.subject.subset or tree.subject.numberLabel or tail or label
-                    or tree.predicate.relative and tree.predicate.relative.preposition) and tree.tense == "present"
+                    or frame and frame.nominalPredicateDash or tree.predicate.relative and tree.predicate.relative.preposition)
+                and tree.tense == "present"
                 and not tree.negative then append(parts, "—") end
             if tail then value = value .. (english and " " or ", ") .. (english and tail.en or tail.uk)[1] end
             append(parts, value)
@@ -2336,8 +2370,8 @@ renderTree = function(tree, english, controller)
                 append(parts, euphonicZ(frame.objectPreposition, patient))
                 append(parts, patient)
             end
-            local postposed = tree.subject and not tree.subject.pronoun
-                and (tree.wh and tree.wh.kind == "clock" or frame.postposedSubject and tree.temporalDependent)
+            local postposed = tree.subject and not tree.subject.pronoun and (tree.longLive
+                or tree.wh and tree.wh.kind == "clock" or frame.postposedSubject and tree.temporalDependent)
             if not postposed then
                 append(parts, subject)
                 if tree.allSubject then append(parts, "всі") end
@@ -2598,6 +2632,12 @@ renderTree = function(tree, english, controller)
             .. (english and " to " or " до ") .. range.ending)
             or ((english and "at " or range.start:match("^11:") and "об " or "о ") .. range.start)
         append(parts, range.zone and time .. " " .. range.zone or time)
+    end
+    if tree.scheduleLocation then
+        local location, marker = G.preposition(tree.scheduleLocation, english, owner)
+        if not location then return nil end
+        append(parts, marker)
+        append(parts, location)
     end
     if tree.delay then
         if tree.delay.soon then append(parts, english and "soon" or "незабаром")

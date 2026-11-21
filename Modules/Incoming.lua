@@ -101,7 +101,7 @@ local function present(job, result, originalOnly, delayed)
     if tab then display(tab, message, r, g, b, id) end
     if not originalOnly and main and main ~= tab then display(main, message, r, g, b, id) end
     if logTranslation then
-        Log.record(event, job.text, result, "en-uk", job.translationMs)
+        Log.record(event, job.text, result, "en-uk", job.translationMs, job.maxSliceMs)
     end
 end
 
@@ -140,11 +140,16 @@ local function drain()
                     return ns.Translator.translate(job.text, "en-uk", job.context, checkpoint)
                 end)
             end
-            -- Count only the time spent inside each resume, across any number of frames.
+            -- Measure each resume once. Waiting for the next frame belongs to neither duration.
             local startedAt = job.translationMs and Log.now()
             local ok, result = coroutine.resume(active)
             local sliceMs = Log.duration(startedAt)
-            job.translationMs = sliceMs and (job.translationMs + sliceMs)
+            if sliceMs then
+                job.translationMs = job.translationMs + sliceMs
+                job.maxSliceMs = math.max(job.maxSliceMs, sliceMs)
+            else
+                job.translationMs, job.maxSliceMs = nil, nil
+            end
             if ok and coroutine.status(active) ~= "dead" then break end
             removeFirst()
             if ok then presentDelayed(job, result)
@@ -170,12 +175,13 @@ local function addTranslation(event, group, text, author, ...)
     if select(14, ...) or (group == "whisper" and flags == "GM") or not lineAllowed(line) then return end
     if not DB.settings.own and ownMessage(author, sender) then return end
     local job = {text=text, group=group, channel=channel, channelIndex=channelIndex,
-        translationMs=0,
+        translationMs=0, maxSliceMs=0,
         context={event=event, line=line, author=author, sender=sender, language=language, target=target}}
     if not C_Timer or type(C_Timer.After) ~= "function" or type(debugprofilestop) ~= "function" then
         local startedAt = Log.now()
         local result = ns.Translator.translate(text, "en-uk", job.context)
         job.translationMs = Log.duration(startedAt)
+        job.maxSliceMs = job.translationMs
         present(job, result)
         return
     end

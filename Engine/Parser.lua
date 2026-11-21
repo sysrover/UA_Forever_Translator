@@ -14,8 +14,8 @@ local sentenceJoins = { ["."] = ". ", ["!"] = "! ", ["?"] = "? ", ["…"] = "…
 local alternatives = { ["or"] = true, ["або"] = true, ["чи"] = true }
 local sharedPredicateJoins = {["and"]=true, ["or"]=true, ["і"]=true, ["й"]=true, ["та"]=true, ["або"]=true, ["чи"]=true}
 
-local function startsWithCapital(text, token)
-    if token.protected then return false end
+function P.startsWithCapital(text, token)
+    if not token or token.protected then return false end
     local capitalized = ns.Engine.Normalize.upperStart(token.key)
     if capitalized == token.key then return false end
     local first = capitalized:match("^[A-Z]") or capitalized:sub(1, 2)
@@ -26,7 +26,7 @@ function P.sentenceBoundary(text, tokens, index)
     local punctuation, following = tokens[index], tokens[index + 1]
     if not sentenceJoins[punctuation.key] then return false end
     if not following or following.first > punctuation.last + 1 then return true end
-    if punctuation.key ~= "." or not startsWithCapital(text, following) then return false end
+    if punctuation.key ~= "." or not P.startsWithCapital(text, following) then return false end
     local previous = tokens[index - 1]
     if not previous or previous.last + 1 ~= punctuation.first then return false end
     if previous.protected or previous.key == ")" or previous.key == "»" or previous.key == '"' then return true end
@@ -34,7 +34,7 @@ function P.sentenceBoundary(text, tokens, index)
     if not previous.key:match("[%a\128-\255]") then return false end
     local _, length = previous.key:gsub("[\128-\191]", "")
     local characters = #previous.key - length
-    return characters > 4 or characters > 1 and not startsWithCapital(text, previous)
+    return characters > 4 or characters > 1 and not P.startsWithCapital(text, previous)
 end
 
 local function joinAt(text, tokens, index, joins)
@@ -60,7 +60,7 @@ local function inferredStarts(text, tokens, direction)
         local intrinsicCapital = direction == "en-uk" and (token.key == "i" or token.key:sub(1, 2) == "i'")
         if not (token.protected or intrinsicCapital) and token.first > previous.last + 1
             and (previous.protected or not previous.key:match("^%p$")) and not sentenceJoins[previous.key] then
-            if startsWithCapital(text, token) then
+            if P.startsWithCapital(text, token) then
                 starts = starts or {}
                 starts[i] = true
             end
@@ -111,6 +111,8 @@ end
 
 local function lowerStart(value)
     if value:match("^I[^%w]") or value == "I" then return value end
+    local leadingWord = value:match("^[A-Z][A-Za-z]+")
+    if leadingWord and leadingWord:find("[A-Z]", 2) then return value end
     local first = value:match("^[\192-\223][\128-\191]") or value:sub(1, 1)
     return ns.Engine.Normalize.word(first) .. value:sub(#first + 1)
 end
@@ -130,7 +132,7 @@ function P.hasExactOpening(text, tokens, direction)
     return false
 end
 
-function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
+function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, annotation)
     local composition = ns.Data.composition and ns.Data.composition[direction]
     if not composition or #tokens == 0 or #tokens > 96 then return nil end
     local prefixes, joins = composition.prefixes, composition.joins
@@ -157,6 +159,7 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
         if not found and not inferred then return nil end
     end
     local attempts, memo = 24, {}
+    local annotationDocument = annotation and {text=text, tokens=tokens, direction=direction}
     local function translateClause(start, finish)
         if start > finish then return nil end
         local row = memo[start]
@@ -175,6 +178,14 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
                 output, rule, slots = P.addressedExact(text, tokens, direction, start, finish)
                 if not output and grammarFallback then output, rule, slots = grammarFallback(start, finish) end
                 if not output then output, rule, slots = P.translate(text, tokens, direction, start, finish) end
+                if annotationDocument and finish > start and (not output or rule.imperative) then
+                    local last = trailingPunctuation(text, tokens, start, finish)
+                    local descriptor, ending = ns.Engine.Dictionary.literal(annotationDocument, start)
+                    if descriptor and descriptor.text and ending == last and ending > start then
+                        output, slots = descriptor.text, nil
+                        rule = {intent="annotation", sourceRefs=descriptor.sourceRefs}
+                    end
+                end
             end
             if not output then
                 local last = trailingPunctuation(text, tokens, start, finish)
@@ -213,11 +224,11 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
                 and tokens[index].first == previous.last + 1
             if P.sentenceBoundary(text, tokens, index)
                 or closesSentence and tokens[index + 1].first > tokens[index].last + 1 then
+                -- The shared clause-attempt budget also bounds paragraphs with many short sentences.
                 ends[#ends + 1] = index
-                if #ends == 8 then return nil end
             end
         end
-        if #ends == 0 then return nil end
+        if #ends == 0 and tokens[1].key ~= "(" then return nil end
         ends[#ends + 1] = #tokens
         local opening, closing = {}, {}
         local part, depth, startPart = 1, 0, nil
@@ -228,15 +239,15 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
                 depth = depth + 1
             elseif token.key == ")" and depth > 0 then
                 depth = depth - 1
-                if depth == 0 and startPart and startPart < part
+                if depth == 0 and startPart
                     and (index == ends[part] or index == trailingPunctuation(text, tokens, startToken, ends[part])) then
                     opening[startPart], closing[part] = true, index
                 end
             end
             if index == ends[part] then part, startToken = part + 1, index + 1 end
         end
-        if #ends == 2 and not next(opening) then return nil end
-        local matches, parts, fragments, start, complete = {}, {}, {}, 1, true
+        if #ends <= 2 and not next(opening) then return nil end
+        local matches, parts, fragments, partials, start, complete = {}, {}, {}, {}, 1, true
         local nestedBudget = {remaining=16}
         for part, segmentEnd in ipairs(ends) do
             local first = start + (opening[part] and 1 or 0)
@@ -245,9 +256,9 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
             if not match and grammarFallback and nestedBudget.remaining > 0 and finish - first >= 3 then
                 local offset = first - 1
                 local sentence = {unpack(tokens, first, finish)}
-                local value, subclauses = P.compose(text, sentence, direction, function(first, last)
+                local value, subclauses, subfragments = P.compose(text, sentence, direction, function(first, last)
                     return grammarFallback(first + offset, last + offset)
-                end, nestedBudget)
+                end, nestedBudget, opening[part] and closing[part])
                 if value then
                     local refs, slots = {}, {}
                     for _, clause in ipairs(subclauses) do
@@ -255,6 +266,11 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
                         for _, slot in pairs(clause.slots or {}) do slots[#slots + 1] = slot end
                     end
                     match = {text=value, rule={intent="composition", sourceRefs=refs}, slots=slots}
+                elseif subfragments then
+                    for localFirst, fragment in pairs(subfragments) do
+                        fragment.last = fragment.last + offset
+                        partials[localFirst + offset] = fragment
+                    end
                 end
             end
             if match then
@@ -281,9 +297,9 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
             start = segmentEnd + 1
         end
         if complete then return table.concat(parts, " "), matches end
-        return nil, nil, fragments
+        return nil, nil, fragments, partials
     end
-    local paragraph, sentences, sentenceFragments = composeSentences()
+    local paragraph, sentences, sentenceFragments, sentencePartials = composeSentences()
     if paragraph then return paragraph, sentences end
     local function independentStart(match, start)
         local unit = match and match.rule.sentenceUnit
@@ -405,7 +421,10 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
             end
         end
     end
-    if #starts < 2 then return nil, nil, sentenceFragments end
+    if #starts < 2 then
+        for start, fragment in pairs(sentencePartials or {}) do sentenceFragments[start] = fragment end
+        return nil, nil, sentenceFragments
+    end
     ends[#ends + 1] = #tokens
     local segment, accepted = 1, 0
     while segment <= #starts and accepted < 4 and attempts > 0 do
@@ -449,6 +468,13 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget)
             if first <= sentence.last and old.last >= start then fragments[first] = nil end
         end
         fragments[start] = sentence
+    end
+    for start, partial in pairs(sentencePartials or {}) do
+        local covered
+        for first, old in pairs(fragments) do
+            if first <= partial.last and old.last >= start then covered = true; break end
+        end
+        if not covered then fragments[start] = partial end
     end
     return nil, nil, next(fragments) and fragments or nil
 end

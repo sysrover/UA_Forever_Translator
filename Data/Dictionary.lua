@@ -520,6 +520,11 @@ ns.Data = {
                     ["goods"] = "goods.ingot"
                 }
             },
+            ["bard"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.bard"
+                }
+            },
             ["barrens"] = {
                 ["_id"] = "place.the_barrens"
             },
@@ -3553,6 +3558,13 @@ ns.Data = {
                     ["_id"] = "slang.combat.pat-inc"
                 }
             },
+            ["petty"] = {
+                ["criminal"] = {
+                    ["_byCategory"] = {
+                        ["roles"] = "role.petty_criminal"
+                    }
+                }
+            },
             ["pick"] = {
                 ["-"] = {
                     ["up"] = {
@@ -3846,6 +3858,11 @@ ns.Data = {
                 },
                 ["lockout"] = {
                     ["_id"] = "slang.groups.raid-lockout"
+                }
+            },
+            ["rave"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.rave"
                 }
             },
             ["razorfang"] = {
@@ -4487,6 +4504,11 @@ ns.Data = {
             ["sw"] = {
                 ["_id"] = "place.stormwind"
             },
+            ["swindler"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.swindler"
+                }
+            },
             ["sword"] = {
                 ["_id"] = "goods.sword"
             },
@@ -4746,6 +4768,11 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "вони",
                     ["weak"] = true
+                }
+            },
+            ["thief"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.thief"
                 }
             },
             ["this"] = {
@@ -5873,6 +5900,61 @@ ns.Data = {
             },
             ["банк"] = {
                 ["_id"] = "game.bank"
+            },
+            ["бард"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.bard"
+                }
+            },
+            ["барда"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.bard"
+                }
+            },
+            ["бардам"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.bard"
+                }
+            },
+            ["бардами"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.bard"
+                }
+            },
+            ["бардах"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.bard"
+                }
+            },
+            ["барде"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.bard"
+                }
+            },
+            ["барди"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.bard"
+                }
+            },
+            ["бардові"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.bard"
+                }
+            },
+            ["бардом"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.bard"
+                }
+            },
+            ["барді"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.bard"
+                }
+            },
+            ["бардів"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.bard"
+                }
             },
             ["батлграунд"] = {
                 ["_id"] = "activity.battleground"
@@ -8233,6 +8315,70 @@ ns.Data = {
                     ["text"] = "druids"
                 }
             },
+            ["дрібний"] = {
+                ["злочинець"] = {
+                    ["_byCategory"] = {
+                        ["roles"] = "role.petty_criminal"
+                    }
+                },
+                ["злочинцю"] = {
+                    ["_byCategory"] = {
+                        ["roles"] = "role.petty_criminal"
+                    }
+                }
+            },
+            ["дрібним"] = {
+                ["злочинцем"] = {
+                    ["_byCategory"] = {
+                        ["roles"] = "role.petty_criminal"
+                    }
+                },
+                ["злочинцям"] = {
+                    ["_byCategory"] = {
+                        ["roles"] = "role.petty_criminal"
+                    }
+                }
+            },
+            ["дрібними"] = {
+                ["злочинцями"] = {
+                    ["_byCategory"] = {
+                        ["roles"] = "role.petty_criminal"
+                    }
+                }
+            },
+            ["дрібних"] = {
+                ["злочинцях"] = {
+                    ["_byCategory"] = {
+                        ["roles"] = "role.petty_criminal"
+                    }
+                },
+                ["злочинців"] = {
+                    ["_byCategory"] = {
+                        ["roles"] = "role.petty_criminal"
+                    }
+                }
+            },
+            ["дрібного"] = {
+                ["злочинця"] = {
+                    ["_byCategory"] = {
+                        ["roles"] = "role.petty_criminal"
+                    }
+                }
+            },
+            ["дрібному"] = {
+                ["злочинцеві"] = {
+                    ["_byCategory"] = {
+                        ["roles"] = "role.petty_criminal"
+                    }
+                }
+            },
+            ["дрібні"] = {
+                ["злочинці"] = {
+                    ["_byCategory"] = {
+                        ["roles"] = "role.petty_criminal"
+                    }
+                }
+            },
             ["дун"] = {
                 ["-"] = {
                     ["альґаз"] = {
@@ -8839,6 +8985,56 @@ ns.Data = {
                 ["_id"] = "goods.ingot",
                 ["мітрилу"] = {
                     ["_id"] = "goods.mithril_bar"
+                }
+            },
+            ["злодій"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.thief"
+                }
+            },
+            ["злодію"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.thief"
+                }
+            },
+            ["злодія"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.thief"
+                }
+            },
+            ["злодіям"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.thief"
+                }
+            },
+            ["злодіями"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.thief"
+                }
+            },
+            ["злодіях"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.thief"
+                }
+            },
+            ["злодієві"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.thief"
+                }
+            },
+            ["злодієм"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.thief"
+                }
+            },
+            ["злодії"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.thief"
+                }
+            },
+            ["злодіїв"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.thief"
                 }
             },
             ["злотохрестя"] = {
@@ -13170,6 +13366,61 @@ ns.Data = {
                     }
                 }
             },
+            ["рейв"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.rave"
+                }
+            },
+            ["рейвам"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.rave"
+                }
+            },
+            ["рейвами"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.rave"
+                }
+            },
+            ["рейвах"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.rave"
+                }
+            },
+            ["рейве"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.rave"
+                }
+            },
+            ["рейви"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.rave"
+                }
+            },
+            ["рейвові"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.rave"
+                }
+            },
+            ["рейвом"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.rave"
+                }
+            },
+            ["рейву"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.rave"
+                }
+            },
+            ["рейві"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.rave"
+                }
+            },
+            ["рейвів"] = {
+                ["_byCategory"] = {
+                    ["activities"] = "activity.rave"
+                }
+            },
             ["рейд"] = {
                 [","] = {
                     ["де"] = {
@@ -14903,6 +15154,56 @@ ns.Data = {
                     ["text"] = "shamans"
                 }
             },
+            ["шахрай"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.swindler"
+                }
+            },
+            ["шахраю"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.swindler"
+                }
+            },
+            ["шахрая"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.swindler"
+                }
+            },
+            ["шахраям"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.swindler"
+                }
+            },
+            ["шахраями"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.swindler"
+                }
+            },
+            ["шахраях"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.swindler"
+                }
+            },
+            ["шахраєві"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.swindler"
+                }
+            },
+            ["шахраєм"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.swindler"
+                }
+            },
+            ["шахраї"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.swindler"
+                }
+            },
+            ["шахраїв"] = {
+                ["_byCategory"] = {
+                    ["roles"] = "role.swindler"
+                }
+            },
             ["швидко"] = {
                 ["_literal"] = {
                     ["id"] = "literal.quickly",
@@ -15561,11 +15862,16 @@ ns.Data = {
                 ["text"] = "До побачення"
             },
             ["congrats"] = {
-                ["id"] = "gz",
+                ["id"] = "congratulations",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Вітаю з досягненням"
+                ["text"] = "Вітаю"
             },
             ["congratulations"] = {
+                ["id"] = "congratulations",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Вітаю"
+            },
+            ["congratulations on the achievement"] = {
                 ["id"] = "gz",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Вітаю з досягненням"
@@ -15701,9 +16007,9 @@ ns.Data = {
                 ["text"] = "До побачення"
             },
             ["grats"] = {
-                ["id"] = "gz",
+                ["id"] = "congratulations",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Вітаю з досягненням"
+                ["text"] = "Вітаю"
             },
             ["group full"] = {
                 ["id"] = "full",
@@ -16440,7 +16746,7 @@ ns.Data = {
             ["вітаю з досягненням"] = {
                 ["id"] = "gz",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
-                ["text"] = "Congratulations"
+                ["text"] = "Congratulations on the achievement"
             },
             ["гарна гра"] = {
                 ["id"] = "gg",
@@ -18517,6 +18823,39 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "goods.ingot",
                             ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["bard"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "bard",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["bards"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "bard",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -23859,6 +24198,41 @@ ns.Data = {
                         }
                     }
                 },
+                ["petty"] = {
+                    ["criminal"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "petty criminal",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["criminals"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "petty criminal",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["pick"] = {
                     ["-"] = {
                         ["up"] = {
@@ -24604,6 +24978,39 @@ ns.Data = {
                                 ["sense"] = "slang.groups.raid-lockout",
                                 ["sourceRefs"] = { "wow-community:wiki" }
                             }
+                        }
+                    }
+                },
+                ["rave"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "rave",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["raves"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "rave",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -26051,6 +26458,39 @@ ns.Data = {
                         }
                     }
                 },
+                ["swindler"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "swindler",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["swindlers"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "swindler",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["sword"] = {
                     ["_analyses"] = {
                         {
@@ -26545,6 +26985,39 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "recipient.them",
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["thief"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "thief",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        }
+                    }
+                },
+                ["thieves"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "thief",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
                         }
                     }
                 },
@@ -29411,6 +29884,258 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "game.bank",
                             ["sourceRefs"] = { "ua-forever:game.bank" }
+                        }
+                    }
+                },
+                ["бард"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["барда"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["бардам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["бардами"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["бардах"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["барде"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["барди"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["бардові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["бардом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["барді"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["бардів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.bard",
+                            ["lemma"] = "бард",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.bard",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
                         }
                     }
                 },
@@ -35164,6 +35889,268 @@ ns.Data = {
                         }
                     }
                 },
+                ["дрібний"] = {
+                    ["злочинець"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["злочинцю"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "vocative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["дрібним"] = {
+                    ["злочинцем"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["злочинцям"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["дрібними"] = {
+                    ["злочинцями"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["дрібних"] = {
+                    ["злочинцях"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["злочинців"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["дрібного"] = {
+                    ["злочинця"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["дрібному"] = {
+                    ["злочинцеві"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["дрібні"] = {
+                    ["злочинці"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "vocative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "person"
+                                },
+                                ["id"] = "role.petty_criminal",
+                                ["lemma"] = "дрібний злочинець",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.petty_criminal",
+                                ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["дун"] = {
                     ["-"] = {
                         ["альґаз"] = {
@@ -36683,6 +37670,254 @@ ns.Data = {
                                 ["sense"] = "goods.mithril_bar",
                                 ["sourceRefs"] = { "ua-forever:item.3860" }
                             }
+                        }
+                    }
+                },
+                ["злодій"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        }
+                    }
+                },
+                ["злодію"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        }
+                    }
+                },
+                ["злодія"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        }
+                    }
+                },
+                ["злодіям"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        }
+                    }
+                },
+                ["злодіями"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        }
+                    }
+                },
+                ["злодіях"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        }
+                    }
+                },
+                ["злодієві"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        }
+                    }
+                },
+                ["злодієм"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        }
+                    }
+                },
+                ["злодії"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        }
+                    }
+                },
+                ["злодіїв"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.thief",
+                            ["lemma"] = "злодій",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.thief",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" }
                         }
                     }
                 },
@@ -47424,6 +48659,272 @@ ns.Data = {
                         }
                     }
                 },
+                ["рейв"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["рейвам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["рейвами"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["рейвах"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["рейве"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "vocative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["рейви"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "vocative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["рейвові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["рейвом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["рейву"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["рейві"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["рейвів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "event"
+                            },
+                            ["id"] = "activity.rave",
+                            ["lemma"] = "рейв",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.rave",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["рейд"] = {
                     [","] = {
                         ["де"] = {
@@ -52223,6 +53724,254 @@ ns.Data = {
                         }
                     }
                 },
+                ["шахрай"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["шахраю"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["шахрая"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["шахраям"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["шахраями"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["шахраях"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["шахраєві"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["шахраєм"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["шахраї"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["шахраїв"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["semanticClass"] = "person"
+                            },
+                            ["id"] = "role.swindler",
+                            ["lemma"] = "шахрай",
+                            ["pos"] = "noun",
+                            ["sense"] = "role.swindler",
+                            ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
                 ["шию"] = {
                     ["_analyses"] = {
                         {
@@ -53469,6 +55218,29 @@ ns.Data = {
                     ["instrumental"] = "подією PvP",
                     ["locative"] = "події PvP",
                     ["nominative"] = "подія PvP"
+                }
+            },
+            ["activity.rave"] = {
+                ["en"] = {
+                    ["canonical"] = "rave",
+                    ["plural"] = "raves"
+                },
+                ["uk"] = {
+                    ["accusative"] = "рейв",
+                    ["accusativePlural"] = "рейви",
+                    ["canonical"] = "рейв",
+                    ["dative"] = "рейву",
+                    ["dativePlural"] = "рейвам",
+                    ["genitive"] = "рейву",
+                    ["genitivePlural"] = "рейвів",
+                    ["instrumental"] = "рейвом",
+                    ["instrumentalPlural"] = "рейвами",
+                    ["locative"] = "рейві",
+                    ["locativePlural"] = "рейвах",
+                    ["nominative"] = "рейв",
+                    ["nominativePlural"] = "рейви",
+                    ["vocative"] = "рейве",
+                    ["vocativePlural"] = "рейви"
                 }
             },
             ["activity.roleplay"] = {
@@ -56222,6 +57994,29 @@ ns.Data = {
                     ["canonical"] = "їм"
                 }
             },
+            ["role.bard"] = {
+                ["en"] = {
+                    ["canonical"] = "bard",
+                    ["plural"] = "bards"
+                },
+                ["uk"] = {
+                    ["accusative"] = "барда",
+                    ["accusativePlural"] = "бардів",
+                    ["canonical"] = "бард",
+                    ["dative"] = "бардові",
+                    ["dativePlural"] = "бардам",
+                    ["genitive"] = "барда",
+                    ["genitivePlural"] = "бардів",
+                    ["instrumental"] = "бардом",
+                    ["instrumentalPlural"] = "бардами",
+                    ["locative"] = "барді",
+                    ["locativePlural"] = "бардах",
+                    ["nominative"] = "бард",
+                    ["nominativePlural"] = "барди",
+                    ["vocative"] = "барде",
+                    ["vocativePlural"] = "барди"
+                }
+            },
             ["role.damage"] = {
                 ["en"] = {
                     ["canonical"] = "DPS",
@@ -56252,6 +58047,29 @@ ns.Data = {
                     ["nominativePlural"] = "цілителі"
                 }
             },
+            ["role.petty_criminal"] = {
+                ["en"] = {
+                    ["canonical"] = "petty criminal",
+                    ["plural"] = "petty criminals"
+                },
+                ["uk"] = {
+                    ["accusative"] = "дрібного злочинця",
+                    ["accusativePlural"] = "дрібних злочинців",
+                    ["canonical"] = "дрібний злочинець",
+                    ["dative"] = "дрібному злочинцеві",
+                    ["dativePlural"] = "дрібним злочинцям",
+                    ["genitive"] = "дрібного злочинця",
+                    ["genitivePlural"] = "дрібних злочинців",
+                    ["instrumental"] = "дрібним злочинцем",
+                    ["instrumentalPlural"] = "дрібними злочинцями",
+                    ["locative"] = "дрібному злочинцеві",
+                    ["locativePlural"] = "дрібних злочинцях",
+                    ["nominative"] = "дрібний злочинець",
+                    ["nominativePlural"] = "дрібні злочинці",
+                    ["vocative"] = "дрібний злочинцю",
+                    ["vocativePlural"] = "дрібні злочинці"
+                }
+            },
             ["role.player"] = {
                 ["en"] = {
                     ["canonical"] = "Player",
@@ -56266,6 +58084,29 @@ ns.Data = {
                     ["nominativePlural"] = "гравці"
                 }
             },
+            ["role.swindler"] = {
+                ["en"] = {
+                    ["canonical"] = "swindler",
+                    ["plural"] = "swindlers"
+                },
+                ["uk"] = {
+                    ["accusative"] = "шахрая",
+                    ["accusativePlural"] = "шахраїв",
+                    ["canonical"] = "шахрай",
+                    ["dative"] = "шахраєві",
+                    ["dativePlural"] = "шахраям",
+                    ["genitive"] = "шахрая",
+                    ["genitivePlural"] = "шахраїв",
+                    ["instrumental"] = "шахраєм",
+                    ["instrumentalPlural"] = "шахраями",
+                    ["locative"] = "шахраї",
+                    ["locativePlural"] = "шахраях",
+                    ["nominative"] = "шахрай",
+                    ["nominativePlural"] = "шахраї",
+                    ["vocative"] = "шахраю",
+                    ["vocativePlural"] = "шахраї"
+                }
+            },
             ["role.tank"] = {
                 ["en"] = {
                     ["canonical"] = "Tank",
@@ -56278,6 +58119,29 @@ ns.Data = {
                     ["genitivePlural"] = "танків",
                     ["genitiveSingular"] = "танка",
                     ["nominativePlural"] = "танки"
+                }
+            },
+            ["role.thief"] = {
+                ["en"] = {
+                    ["canonical"] = "thief",
+                    ["plural"] = "thieves"
+                },
+                ["uk"] = {
+                    ["accusative"] = "злодія",
+                    ["accusativePlural"] = "злодіїв",
+                    ["canonical"] = "злодій",
+                    ["dative"] = "злодієві",
+                    ["dativePlural"] = "злодіям",
+                    ["genitive"] = "злодія",
+                    ["genitivePlural"] = "злодіїв",
+                    ["instrumental"] = "злодієм",
+                    ["instrumentalPlural"] = "злодіями",
+                    ["locative"] = "злодієві",
+                    ["locativePlural"] = "злодіях",
+                    ["nominative"] = "злодій",
+                    ["nominativePlural"] = "злодії",
+                    ["vocative"] = "злодію",
+                    ["vocativePlural"] = "злодії"
                 }
             },
             ["slang.combat.adds"] = {
@@ -56998,10 +58862,10 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 316,
+        ["concepts"] = 321,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
-        ["phraseFamilies"] = 85,
+        ["phraseFamilies"] = 86,
         ["source"] = {
             ["approvalMeaning"] = "Editorially reviewed for this addon; not a claim of individual user approval.",
             ["catalogBuild"] = "1.60.1.70938",
@@ -57017,7 +58881,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "844bdd74e4132cbcbe429a4637a3351ef9b9e635e4dd8cec75a3d1cdc04ade4d"
+        ["version"] = "5372902ab9b85f10b98e191b593fe723bdcf59332b561f0576cdda043358a431"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -65922,6 +67786,57 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "подія PvP"
         },
+        ["activity.rave"] = {
+            ["aliasFeatures"] = {
+                ["uk"] = {
+                    ["рейвові"] = {
+                        ["case"] = "dative",
+                        ["number"] = "singular"
+                    }
+                }
+            },
+            ["aliases"] = {
+                ["uk"] = { "рейвові" }
+            },
+            ["category"] = "activities",
+            ["contextOnly"] = true,
+            ["en"] = "rave",
+            ["englishPlural"] = "raves",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["semanticClass"] = "event"
+            },
+            ["forms"] = {
+                ["accusative"] = "рейв",
+                ["accusativePlural"] = "рейви",
+                ["dative"] = "рейву",
+                ["dativePlural"] = "рейвам",
+                ["genitive"] = "рейву",
+                ["genitivePlural"] = "рейвів",
+                ["instrumental"] = "рейвом",
+                ["instrumentalPlural"] = "рейвами",
+                ["locative"] = "рейві",
+                ["locativePlural"] = "рейвах",
+                ["nominative"] = "рейв",
+                ["nominativePlural"] = "рейви",
+                ["vocative"] = "рейве",
+                ["vocativePlural"] = "рейви"
+            },
+            ["id"] = "activity.rave",
+            ["provenance"] = {
+                ["context"] = "Electronic-music event. Authored forms checked against Cambridge Dictionary and Slovnyk.ua.",
+                ["key"] = "rave",
+                ["references"] = {
+                    "https://dictionary.cambridge.org/dictionary/english/rave",
+                    "https://slovnyk.ua/index.php?swrd=%D1%80%D0%B5%D0%B9%D0%B2"
+                },
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "рейв"
+        },
         ["activity.roleplay"] = {
             ["aliases"] = {
                 ["en"] = { "role-play", "roleplaying", "role-playing" }
@@ -73182,6 +75097,46 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "їм"
         },
+        ["role.bard"] = {
+            ["category"] = "roles",
+            ["contextOnly"] = true,
+            ["en"] = "bard",
+            ["englishPlural"] = "bards",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["semanticClass"] = "person"
+            },
+            ["forms"] = {
+                ["accusative"] = "барда",
+                ["accusativePlural"] = "бардів",
+                ["dative"] = "бардові",
+                ["dativePlural"] = "бардам",
+                ["genitive"] = "барда",
+                ["genitivePlural"] = "бардів",
+                ["instrumental"] = "бардом",
+                ["instrumentalPlural"] = "бардами",
+                ["locative"] = "барді",
+                ["locativePlural"] = "бардах",
+                ["nominative"] = "бард",
+                ["nominativePlural"] = "барди",
+                ["vocative"] = "барде",
+                ["vocativePlural"] = "барди"
+            },
+            ["id"] = "role.bard",
+            ["provenance"] = {
+                ["context"] = "Poet or singer as a roleplay occupation.",
+                ["key"] = "bard",
+                ["references"] = {
+                    "https://dictionary.cambridge.org/us/dictionary/english/bard",
+                    "https://www.goroh.pp.ua/Словозміна/бард"
+                },
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "бард"
+        },
         ["role.damage"] = {
             ["aliases"] = {
                 ["en"] = { "dd", "dds", "damage dealer", "DPS" },
@@ -73275,6 +75230,43 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Цілитель"
         },
+        ["role.petty_criminal"] = {
+            ["category"] = "roles",
+            ["contextOnly"] = true,
+            ["en"] = "petty criminal",
+            ["englishPlural"] = "petty criminals",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["semanticClass"] = "person"
+            },
+            ["forms"] = {
+                ["accusative"] = "дрібного злочинця",
+                ["accusativePlural"] = "дрібних злочинців",
+                ["dative"] = "дрібному злочинцеві",
+                ["dativePlural"] = "дрібним злочинцям",
+                ["genitive"] = "дрібного злочинця",
+                ["genitivePlural"] = "дрібних злочинців",
+                ["instrumental"] = "дрібним злочинцем",
+                ["instrumentalPlural"] = "дрібними злочинцями",
+                ["locative"] = "дрібному злочинцеві",
+                ["locativePlural"] = "дрібних злочинцях",
+                ["nominative"] = "дрібний злочинець",
+                ["nominativePlural"] = "дрібні злочинці",
+                ["vocative"] = "дрібний злочинцю",
+                ["vocativePlural"] = "дрібні злочинці"
+            },
+            ["id"] = "role.petty_criminal",
+            ["provenance"] = {
+                ["context"] = "Person who commits minor crimes.",
+                ["key"] = "petty criminal",
+                ["references"] = { "https://dictionary.cambridge.org/dictionary/english/petty" },
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "дрібний злочинець"
+        },
         ["role.player"] = {
             ["aliases"] = {
                 ["en"] = { "player", "players" },
@@ -73304,6 +75296,46 @@ ns.Data = {
             ["sourceRefs"] = { "project-authored:apertium-pipeline-1" },
             ["status"] = "approved",
             ["uk"] = "Гравець"
+        },
+        ["role.swindler"] = {
+            ["category"] = "roles",
+            ["contextOnly"] = true,
+            ["en"] = "swindler",
+            ["englishPlural"] = "swindlers",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["semanticClass"] = "person"
+            },
+            ["forms"] = {
+                ["accusative"] = "шахрая",
+                ["accusativePlural"] = "шахраїв",
+                ["dative"] = "шахраєві",
+                ["dativePlural"] = "шахраям",
+                ["genitive"] = "шахрая",
+                ["genitivePlural"] = "шахраїв",
+                ["instrumental"] = "шахраєм",
+                ["instrumentalPlural"] = "шахраями",
+                ["locative"] = "шахраї",
+                ["locativePlural"] = "шахраях",
+                ["nominative"] = "шахрай",
+                ["nominativePlural"] = "шахраї",
+                ["vocative"] = "шахраю",
+                ["vocativePlural"] = "шахраї"
+            },
+            ["id"] = "role.swindler",
+            ["provenance"] = {
+                ["context"] = "A person who defrauds others.",
+                ["key"] = "swindler",
+                ["references"] = {
+                    "https://dictionary.cambridge.org/us/dictionary/english/swindler",
+                    "https://goroh.pp.ua/Словозміна/ШАХРАЙ"
+                },
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "шахрай"
         },
         ["role.tank"] = {
             ["aliases"] = {
@@ -73342,6 +75374,42 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:role.tank" },
             ["status"] = "approved",
             ["uk"] = "Танк"
+        },
+        ["role.thief"] = {
+            ["category"] = "roles",
+            ["contextOnly"] = true,
+            ["en"] = "thief",
+            ["englishPlural"] = "thieves",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["semanticClass"] = "person"
+            },
+            ["forms"] = {
+                ["accusative"] = "злодія",
+                ["accusativePlural"] = "злодіїв",
+                ["dative"] = "злодієві",
+                ["dativePlural"] = "злодіям",
+                ["genitive"] = "злодія",
+                ["genitivePlural"] = "злодіїв",
+                ["instrumental"] = "злодієм",
+                ["instrumentalPlural"] = "злодіями",
+                ["locative"] = "злодієві",
+                ["locativePlural"] = "злодіях",
+                ["nominative"] = "злодій",
+                ["nominativePlural"] = "злодії",
+                ["vocative"] = "злодію",
+                ["vocativePlural"] = "злодії"
+            },
+            ["id"] = "role.thief",
+            ["provenance"] = {
+                ["context"] = "Ordinary noun for a person who steals.",
+                ["key"] = "thief",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1", "koreader-dicts:wikt-en-uk" },
+            ["status"] = "approved",
+            ["uk"] = "злодій"
         },
         ["slang.combat.adds"] = {
             ["aliases"] = {
