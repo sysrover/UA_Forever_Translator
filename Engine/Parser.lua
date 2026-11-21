@@ -159,9 +159,10 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
         if not found and not inferred then return nil end
     end
     local attempts, memo = 24, {}
+    local sentenceEndAt
     local annotationDocument = annotation and {text=text, tokens=tokens, direction=direction}
     local function translateClause(start, finish)
-        if start > finish then return nil end
+        if start > finish or sentenceEndAt and finish > sentenceEndAt[start] then return nil end
         local row = memo[start]
         if row and row[finish] ~= nil then return row[finish] or nil end
         if attempts == 0 or sentenceBudget and sentenceBudget.remaining == 0 then return nil end
@@ -249,6 +250,7 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
         if #ends <= 2 and not next(opening) then return nil end
         local matches, parts, fragments, partials, start, complete = {}, {}, {}, {}, 1, true
         local nestedBudget = {remaining=16}
+        local confirmedEnds = {}
         for part, segmentEnd in ipairs(ends) do
             local first = start + (opening[part] and 1 or 0)
             local finish = closing[part] and closing[part] - 1 or segmentEnd
@@ -294,9 +296,26 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
             else
                 complete = false
             end
+            if segmentEnd < #tokens then
+                local stop, previous = tokens[segmentEnd], tokens[segmentEnd - 1]
+                local singlePeriod = stop.key == "." and not (previous.key == "." and previous.last + 1 == stop.first)
+                if stop.key == "?" or stop.key == "!" or match and singlePeriod then
+                    confirmedEnds[#confirmedEnds + 1] = segmentEnd
+                end
+            end
             start = segmentEnd + 1
         end
         if complete then return table.concat(parts, " "), matches end
+        if #confirmedEnds > 0 then
+            -- Retry clauses within a sentence. An unconfirmed period or pause may still join text.
+            sentenceEndAt = {}
+            confirmedEnds[#confirmedEnds + 1] = #tokens
+            local first = 1
+            for _, ending in ipairs(confirmedEnds) do
+                for index = first, ending do sentenceEndAt[index] = ending end
+                first = ending + 1
+            end
+        end
         return nil, nil, fragments, partials
     end
     local paragraph, sentences, sentenceFragments, sentencePartials = composeSentences()
