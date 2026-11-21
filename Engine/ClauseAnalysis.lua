@@ -2328,6 +2328,31 @@ complements = function(document, tree, index, limit, depth, recentObject)
             end
         end
     end
+    if frame.bareEnContent and frame.implicitSubject == "it"
+        and not (occupiedObject or tree.modal or tree.conditional) and depth < 3 then
+        local nominalAt = english and index or P.key(document, index, limit) == "на" and index + 1
+        if nominalAt then
+            local nominal, finish = P.coordinated(document, nominalAt, limit, "accusative")
+            if nominal and boundary(document, finish, limit) then
+                tree.object, tree.nominalImpression = nominal, true
+                return finish
+            end
+        end
+        if english and P.key(document, index, limit) then
+            -- A gerund names an event without identifying its performer.
+            local implicit = personalSubject("they")
+            local action, after = verb(document, index, limit, implicit, false, false, nil, "present")
+            if action then
+                local embedded = {kind="clause", subject=implicit, implicitSubject=true, verb=action,
+                    verbIndex=index, tense="present", contentClause=true}
+                local finish = complements(document, embedded, after, limit, depth + 1)
+                if finish and boundary(document, finish, limit) then
+                    tree.content = {embedded}
+                    return finish
+                end
+            end
+        end
+    end
     if frame.requiresContent and not tree.controlled then return nil end
     local recipient, after
     if frame.recipientCase and occupiedObject and frame.requiresRecipient then
@@ -4945,7 +4970,7 @@ function A.omittedReporter(document, first, limit, head, depth)
         local tree = {kind="clause", subject=implicit, implicitSubject=true, verb=impression,
             verbIndex=start, tense=support and support.tense or impression.form.tense, negative=support ~= nil}
         local finish = complements(document, tree, impressionEnd, limit, depth)
-        if finish and tree.content and boundary(document, finish, limit) then return tree, finish end
+        if finish and (tree.content or tree.nominalImpression) and boundary(document, finish, limit) then return tree, finish end
     end
     if not support or head == "doesn't" or head == "doesnt" or head == "does" then return nil end
     local subject = personalSubject("i")
@@ -4971,7 +4996,7 @@ function A.impersonalAdverbContent(document, first, limit, depth)
     local tree = {kind="clause", subject=personalSubject("it"), implicitSubject=true,
         verb=entry, verbIndex=at, tense="present", negative=negative}
     local finish = complements(document, tree, after, limit, depth)
-    if finish and tree.content and boundary(document, finish, limit) then return tree, finish end
+    if finish and (tree.content or tree.nominalImpression) and boundary(document, finish, limit) then return tree, finish end
 end
 
 function A.routeQuestion(document, first, limit, depth)

@@ -408,7 +408,7 @@ local function translateMixed(text, direction, tokens, ranges, checkpoint)
     local chunks, matched, unknown, refs, seen = {}, {}, {}, {}, {}
     local cursor, nextToken, changed = 1, 1, false
     local separators = ns.Engine.SourceLanguage.clauseEnd
-    local function translatePart(first, last)
+    local function translatePart(first, last, continues)
         local clipped = last < #tokens and separators[tokens[last].key]
         while first <= last and separators[tokens[first].key] do first = first + 1 end
         if clipped then
@@ -428,7 +428,7 @@ local function translateMixed(text, direction, tokens, ranges, checkpoint)
         if checkpoint then checkpoint() end
         local result = compute(source, direction, part, nil, checkpoint)
         local value = result.text
-        if clipped and value ~= source then value = (value:gsub("%.$", "")) end
+        if (clipped or continues) and value ~= source then value = (value:gsub("%.$", "")) end
         chunks[#chunks + 1] = text:sub(cursor, offset)
         chunks[#chunks + 1] = value
         cursor = ending + 1
@@ -441,7 +441,7 @@ local function translateMixed(text, direction, tokens, ranges, checkpoint)
         end
     end
     for _, range in ipairs(ranges) do
-        if range.first > nextToken then translatePart(nextToken, range.first - 1) end
+        if range.first > nextToken then translatePart(nextToken, range.first - 1, range.inline) end
         for i = range.first, range.last do
             local token = tokens[i]
             unknown[#unknown + 1] = {first=token.first, last=token.last, protected=token.protected or false,
@@ -465,7 +465,7 @@ local function translateText(text, direction, checkpoint)
     local contractions = direction == "en-uk" and ns.Engine.ClauseAnalysis.englishContractions
     local tokens = ns.Engine.Tokenizer.scan(text, contractions)
     if not tokens or #tokens == 0 then return unchanged(text, "token-limit-or-empty") end
-    local foreign = ns.Engine.SourceLanguage.foreignRanges(tokens)
+    local foreign = ns.Engine.SourceLanguage.foreignRanges(tokens, text)
     if foreign then
         local normalized = N.key(text)
         if ns.Data.exact[direction][normalized] then return compute(text, direction, tokens, normalized, checkpoint) end

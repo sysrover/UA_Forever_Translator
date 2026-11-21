@@ -330,12 +330,13 @@ function T.render(tree, direction)
         end
         return value
     elseif tree.kind == "roleInquiry" then
-        local role = render("{role}")
+        local plural = s.role.plural
+        local role = render(uk and plural and "{role:nominativePlural}" or "{role}")
         local place = f.name or (uk and render("{place:accusative}")) or render("{place}")
         if not role or not place then return nil end
         local normalize = ns.Engine.Normalize
         if not s.role.term.en:match("^[A-Z]+$") then role = normalize.word(role) end
-        local lead = f.explicit and (uk and "Чи є " or "Any ") or ""
+        local lead = f.explicit and (uk and "Чи є " or plural and "Are there " or "Any ") or ""
         local marker = uk and (f.unresolved and " для " or " на ") or " for "
         local here = f.here and (uk and " тут" or " here") or ""
         return normalize.upperStart(lead .. role .. marker .. place .. here)

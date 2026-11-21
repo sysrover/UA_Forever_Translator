@@ -460,11 +460,19 @@ local function recruit(p, direction)
         or place and (p.slots.count or p.slots.level or notes.run == "quest" and groupRequest)) then return end
     if lastSpot then
         local total = p.slots.total
-        if total and tonumber(total.raw) > 1 then return end
+        local conflict = total and tonumber(total.raw) > 1
         for n = 1, #roleJoins + 1 do
-            if bareVacancy and n > 1 and roleJoins[n - 1] ~= "or" then return end
+            local join = roleJoins[n - 1]
             local amount = p.slots[n == 1 and "count" or "count" .. n]
-            if amount and tonumber(amount.raw) > 1 then return end
+            if join and join ~= "or" or amount and tonumber(amount.raw) > 1 then
+                conflict = true
+                break
+            end
+        end
+        if conflict then
+            -- Keep the coordinated request intact. Treating its parts as separate
+            -- clauses could hide the conflict between roles and available places.
+            notes.unresolved = {first=p.first, last=p.limit, reason="conflicting-vacancy"}
         end
     end
     local roster

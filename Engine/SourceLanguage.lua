@@ -15,6 +15,13 @@ local frenchFunction = {
     pour=true, que=true, qui=true, sans=true, se=true, ses=true, tes=true, un=true, vos=true, ["à"]=true,
 }
 local distinctiveFunction = {aux=true, ces=true, cette=true, des=true, du=true, leurs=true, sans=true}
+-- Adjacent function words are stronger evidence than a single word shared
+-- with English. A third token must supply the rest of the construction.
+local frenchPairs = {
+    pour={aux=true, ces=true, cette=true, des=true, du=true, les=true, leurs=true, nos=true, une=true, vos=true},
+    qui={pour=true},
+    ["grâce"]={["à"]=true, au=true, aux=true},
+}
 local englishAnchor = {
     am=true, are=true, can=true, could=true, does=true, dont=true, how=true,
     i=true, is=true, lf=true, lfm=true, looking=true, need=true, should=true,
@@ -30,13 +37,23 @@ for letter in ("àâäçéèêëîïôöùûüÿœÀÂÄÇÉÈÊËÎÏÔÖÙÛÜ
     accents[letter] = true
 end
 
-local function measure(tokens, first, last)
+local function measure(tokens, first, last, text)
     local words, anchors, french, marked, supported, definiteFunction = 0, 0, 0, 0, 0, false
+    local cue, supportBeforeCue
     for index = first, last do
         local token = tokens[index]
         local word = token.key
         if not token.protected and word:find("[%a\195\197\208\209]") then
             words = words + 1
+            local pair = not cue and frenchPairs[word]
+            local follower = pair and index + 2 <= last and tokens[index + 1]
+            if follower and pair[follower.key]
+                and not (text and text:sub(follower.first, follower.first + 1):match("^[A-Z][a-z]")) then
+                local rest = tokens[index + 2]
+                if rest.protected or rest.key:find("[%a\195\197]") then
+                    cue, supportBeforeCue = index, supported
+                end
+            end
             if frenchAnchor[word] then anchors = anchors + 1
             elseif frenchFunction[word] or word:match("^[cdjlmnst]'[%a\195\197]") then
                 french = french + 1
@@ -50,6 +67,10 @@ local function measure(tokens, first, last)
             end
         end
     end
+    if cue and supported == supportBeforeCue then
+        if supportBeforeCue >= 2 then return false, true, cue end
+        return true, false
+    end
     -- An accent by itself can belong to an English loanword or a name.
     local strength = anchors * 2 + french + math.min(marked, 2)
     local distinctive = anchors >= 2 or anchors >= 1 and french + marked > 0
@@ -58,12 +79,12 @@ local function measure(tokens, first, last)
     return words >= 3 and distinctive and strength >= 2 * supported + 2, supported >= 2
 end
 
-function S.foreignRanges(tokens)
+function S.foreignRanges(tokens, text)
     if #tokens < 3 then return nil end
     local ranges
-    local function add(first, last)
+    local function add(first, last, inline)
         ranges = ranges or {}
-        ranges[#ranges + 1] = {first=first,last=last}
+        ranges[#ranges + 1] = {first=first,last=last,inline=inline}
     end
     local function inspect(first, last)
         local foreign, clearlySupported
@@ -73,23 +94,25 @@ function S.foreignRanges(tokens)
                 and tokens[finish + 1].first > tokens[finish].last + 1
             if split or finish == last then
                 local ending = split and finish - 1 or finish
-                local rejected, supported = measure(tokens, start, ending)
+                local rejected, supported, inline = measure(tokens, start, ending, text)
                 if not split and start == first then
                     if rejected then add(first, last) end
+                    if inline then add(inline, last, true) end
                     return
                 end
-                if rejected then
+                if rejected or inline then
                     foreign = foreign or {}
-                    foreign[#foreign + 1] = {first=start,last=ending}
-                elseif supported then clearlySupported = true end
+                    foreign[#foreign + 1] = {first=inline or start,last=ending,inline=inline and true or nil}
+                end
+                if supported then clearlySupported = true end
                 start = finish + 1
             end
         end
         -- Joining weak evidence across a sentence is only safe without a clear language switch.
-        if not clearlySupported and measure(tokens, first, last) then
+        if not clearlySupported and measure(tokens, first, last, text) then
             add(first, last)
         else
-            for _, range in ipairs(foreign or {}) do add(range.first, range.last) end
+            for _, range in ipairs(foreign or {}) do add(range.first, range.last, range.inline) end
         end
     end
     local start = 1

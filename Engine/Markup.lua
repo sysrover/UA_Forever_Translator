@@ -1,7 +1,7 @@
 local _, ns = ...
 local M = {}; ns.Engine.Markup = M
-local function endOfWord(text, first, mention)
-    local boundary = mention and "[%s\194\226\227|]" or "[%s\194\226\227]"
+local function endOfWord(text, first, stopAtPipe)
+    local boundary = stopAtPipe and "[%s\194\226\227|]" or "[%s\194\226\227]"
     local cursor = first
     while true do
         local index = text:find(boundary, cursor)
@@ -12,6 +12,27 @@ local function endOfWord(text, first, mention)
         if ns.Engine.Normalize.isUnicodeSpace(text:sub(index, index + width - 1)) then return index - 1 end
         cursor = index + 1
     end
+end
+
+local addressStartsAfter = {}
+for char in (" \t\n\v\f\r\"'(<=[,;"):gmatch(".") do
+    addressStartsAfter[char:byte()] = true
+end
+local function bareAddressEnd(text, first)
+    if first > 1 then
+        local previous = text:byte(first - 1)
+        if not addressStartsAfter[previous] then
+            if previous < 128 then return nil end
+            local unicodeSpace = ns.Engine.Normalize.isUnicodeSpace
+            if not (unicodeSpace(text:sub(first - 2, first - 1))
+                or first > 3 and unicodeSpace(text:sub(first - 3, first - 1))) then return nil end
+        end
+    end
+    local _, slash, host = text:find("^([A-Za-z0-9][A-Za-z0-9.%-]*)/", first)
+    if not host or not host:match("%.[A-Za-z][A-Za-z]+$") or host:find("..", 1, true)
+        or host:find(".-", 1, true) or host:find("-.", 1, true) then return nil end
+    -- Stop at WoW tags so the following link still has its own protected span.
+    return endOfWord(text, slash + 1, true)
 end
 local function findTag(text, tag, first)
     local i = first
@@ -71,6 +92,7 @@ end
 
 function M.split(text)
     local segments, plain, i, length = {}, 1, 1, #text
+    local hasBareAddress = text:find("/", 1, true) and text:find("%.[A-Za-z][A-Za-z]+/")
     local function protect(last, questReference)
         if plain < i then segments[#segments + 1] = { first = plain, last = i - 1 } end
         segments[#segments + 1] = { first = i, last = last, protected = true, questReference = questReference }
@@ -109,6 +131,8 @@ function M.split(text)
         elseif text:sub(i, i) == "<" and text:sub(i + 1, i + 1):match("[%a\128-\255]") then
             local close = text:find(">", i + 1, true)
             if close and close - i <= 64 and not text:sub(i + 1, close - 1):find("[<>|\r\n]") then last = close end
+        elseif hasBareAddress then
+            last = bareAddressEnd(text, i)
         end
         if last then protect(last, questReference) else i = i + 1 end
     end

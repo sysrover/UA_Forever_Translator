@@ -2699,7 +2699,8 @@ renderTree = function(tree, english, controller)
                 if tree.allSubject then append(parts, "всі") end
             end
             local time = tree.tense == "past" and "було " or tree.tense == "future" and "буде " or ""
-            local value = need and ((tree.negative and "не " or "") .. time .. "потрібно") or ukrainianVerb(tree)
+            local predicate = tree.nominalImpression and "схоже" or need and "потрібно"
+            local value = predicate and ((tree.negative and "не " or "") .. time .. predicate) or ukrainianVerb(tree)
             if not value then return nil end
             append(parts, value)
             if postposed then
@@ -2738,12 +2739,13 @@ renderTree = function(tree, english, controller)
             local object = tree.object
             if not english and frame.genericObjects and object.article == "indefinite" and not object.relative
                 and P.hasTrait(object, "genericPlural") then object = withNumber(object, "plural") end
-            local value = not english and frame.objectPreposition
-                and ukrainianPrepositionalPronoun(object, requested, frame.objectPreposition)
+            local preposition = tree.nominalImpression and "на" or frame.objectPreposition
+            local value = not english and preposition
+                and ukrainianPrepositionalPronoun(object, requested, preposition)
                 or G.noun(object, english, requested, article, nil, owner)
             if not value then return nil end
             if skill then value = ns.Engine.Normalize.word(value) end
-            append(parts, english and frame.enObjectPreposition or not english and euphonicZ(frame.objectPreposition, value))
+            append(parts, english and frame.enObjectPreposition or not english and euphonicZ(preposition, value))
             local pronoun = tree.object.pronoun
             if not english and frame.deicticObject and pronoun then
                 local id = pronoun.id
