@@ -743,7 +743,7 @@ function G.noun(node, english, case, article, compoundModifier, owner, commonHea
             local marker = qualifier.entry.lexeme.frame.governedAction
             return value .. " " .. desc .. " " .. marker .. (qualifier.action.negative and " not " or " ") .. action
         end
-        return withComma(value) .. (selection and " хто " or " ") .. desc .. " " .. action
+        return withComma(value) .. (selection and " хто " or " ") .. withComma(desc .. " " .. action)
     end
     if value and node.referenceLabel then value = value .. " " .. node.referenceLabel end
     if value and node.groundedState then

@@ -1360,10 +1360,10 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     if not (simple or locationOnly or sense) and first < limit and demonstratives[key] == "far" then
         local selection, after = P.pronoun(document, first, limit, case, true, nil, "qualifiedPeople")
         if selection then
-            selection.animacy = "animate"
+            selection.animacy, selection.headIndex = "animate", first
             local qualifier, finish = ns.Engine.ClauseAnalysis.nominalQualification(document, selection, after, limit, case)
             if qualifier and (not headFilter or headFilter(selection)) then
-                selection.nominalQualifier, selection.headIndex = qualifier, first
+                selection.nominalQualifier = qualifier
                 return selection, finish
             end
         end
@@ -2218,7 +2218,9 @@ function P.preposition(document, first, limit, motion, displacement, context, se
     if selected.rule.authorityOpening and P.hasTrait(selected.object, "proper")
         and P.key(document, after, limit) == "," then
         local title, finish = P.noun(document, after + 1, limit, selected.case, false, nil, true)
-        if P.hasTrait(title, "appositiveTitle") then selected.apposition, after = title, finish end
+        if P.hasTrait(title, "appositiveTitle") and (finish > limit or P.key(document, finish, limit) == ",") then
+            selected.apposition, after = title, finish
+        end
     end
     if priority == 0 and not selected.rule.targetEnByClass and not selected.rule.objectSense then
         local group, finish = attachedCoordination(document, first, limit, last + 1, selected.object,

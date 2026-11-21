@@ -1597,11 +1597,13 @@ function A.adjectiveAction(document, entry, first, limit, depth)
 end
 
 function A.nominalQualification(document, noun, first, limit, case)
-    local depth = document.qualificationDepth or 0
+    local previousDepth = document.qualificationDepth
+    local depth = previousDepth or 0
     if first >= limit or depth >= 2 then return nil end
     local english = document.direction == "en-uk"
     local selection = noun.pronoun and noun.pronoun.requiresExplicitReferent
     local comma = P.key(document, first, limit) == ","
+    if not english and not comma then return nil end
     local at = first + (comma and 1 or 0)
     if selection and not english then
         if not comma or P.key(document, at, limit) ~= "хто" then return nil end
@@ -1619,8 +1621,21 @@ function A.nominalQualification(document, noun, first, limit, case)
     if not entry then return nil end
     document.qualificationDepth = depth + 1
     local action, finish = A.adjectiveAction(document, entry, at + 1, limit, depth)
-    document.qualificationDepth = depth
-    if action and boundary(document, finish, limit) then
+    local confirmedBoundary
+    if english and case == "nominative" and action and finish == limit + 1
+        and action.object and action.object.headIndex == limit and noun.headIndex
+        and limit - noun.headIndex < 32 and ns.UDPipeModels and verb(document, limit, limit, noun, false) then
+        local arcs = ns.Engine.UDPipe.analyzeDocument(document, noun.headIndex, limit)
+        local candidate = arcs and arcs[limit - noun.headIndex + 1]
+        if candidate and candidate.relation == "root" then
+            local reduced, ending = A.adjectiveAction(document, entry, at + 1, limit - 1, depth)
+            if reduced and ending == limit then action, finish, confirmedBoundary = reduced, ending, true end
+        end
+    end
+    document.qualificationDepth = previousDepth
+    if action and (confirmedBoundary or boundary(document, finish, limit)) then
+        if not english and case == "nominative" and P.key(document, finish, limit) == ","
+            and verb(document, finish + 1, limit, noun, false) then finish = finish + 1 end
         return {entry=entry, action=action, selection=selection}, finish
     end
 end
@@ -6169,7 +6184,7 @@ local function parse(document, first, limit, sentenceQuestion)
                     elseif pp or ((noun.all or noun.same or noun.adjectives or noun.possessor or noun.nominalObject or noun.genitive or noun.argument
                         or noun.inclusion or noun.many or noun.more or noun.abundance or noun.nominalMeasure or noun.skillRequirement
                         or noun.destination or noun.activityMode or noun.membershipAudience or noun.groundedState
-                        or noun.relative or noun.prepositions or noun.nominalAction
+                        or noun.relative or noun.prepositions or noun.nominalAction or noun.nominalQualifier
                         or noun.term and noun.term.features and noun.term.features.canStandAlone)
                         and ending > limit) then
                         tree, after = {kind="nounPhrase", subject=noun, prepositions=pp and {pp}}, finish or ending
@@ -7501,7 +7516,8 @@ function A.parse(document, first, limit, afterRating)
             local start = after + (comma and 1 or 0)
             local core = start <= limit and parseGroup(document, start, limit)
             if core and core.trees[1].kind == "clause" then
-                core.openingPrepositions, core.openingPrepositionComma = {authority}, comma
+                core.openingPrepositions = {authority}
+                core.openingPrepositionComma = authority.apposition ~= nil
                 return core
             end
         end
