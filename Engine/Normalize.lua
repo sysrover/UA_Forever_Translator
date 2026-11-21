@@ -1,5 +1,12 @@
 local _, ns = ...
 local N = {}; ns.Engine.Normalize = N
+-- Chat spellings provide an auxiliary reading alongside the original word.
+N.englishNegativeAliases = {
+    dont="don't", doesnt="doesn't", didnt="didn't",
+    cant="can't", couldnt="couldn't", shouldnt="shouldn't", wouldnt="wouldn't", wont="won't",
+    isnt="isn't", arent="aren't", wasnt="wasn't", werent="weren't",
+    havent="haven't", hasnt="hasn't", hadnt="hadn't", shouldntve="shouldn't've",
+}
 local upper = {"А","Б","В","Г","Ґ","Д","Е","Є","Ж","З","И","І","Ї","Й","К","Л","М","Н","О","П","Р","С","Т","У","Ф","Х","Ц","Ч","Ш","Щ","Ь","Ю","Я"}
 local lower = {"а","б","в","г","ґ","д","е","є","ж","з","и","і","ї","й","к","л","м","н","о","п","р","с","т","у","ф","х","ц","ч","ш","щ","ь","ю","я"}
 local case, uppercase = {}, {}

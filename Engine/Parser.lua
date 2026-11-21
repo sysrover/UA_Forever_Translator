@@ -37,6 +37,17 @@ function P.sentenceBoundary(text, tokens, index)
     return characters > 4 or characters > 1 and not P.startsWithCapital(text, previous)
 end
 
+function P.ellipsisEnd(tokens, first, limit)
+    if first > limit then return nil end
+    local token = tokens[first]
+    if not token then return nil end
+    if token.key == "…" then return first end
+    if token.key ~= "." or first + 2 > limit then return nil end
+    local middle, last = tokens[first + 1], tokens[first + 2]
+    if middle.key == "." and last.key == "." and middle.first == token.last + 1
+        and last.first == middle.last + 1 then return first + 2 end
+end
+
 local function joinAt(text, tokens, index, joins)
     local current = tokens[index]
     local wordJoin = joins[current.key] or dashJoins[current.key]
@@ -231,6 +242,32 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
         end
         if #ends == 0 and tokens[1].key ~= "(" then return nil end
         ends[#ends + 1] = #tokens
+        if grammarFallback and ns.Linguistics then
+            local language = direction == "en-uk" and "en" or "uk"
+            local width = ns.Linguistics.grammar.indexWidths[language].degrees
+            local degreeDocument
+            local start, part = 1, 1
+            while part < #ends do
+                local ending = ends[part]
+                local pause = tokens[ending].key == "…" and ending
+                    or ending - 2 >= start and P.ellipsisEnd(tokens, ending - 2, ending) == ending and ending - 2
+                if pause and not tokens[ending + 1].protected and not P.startsWithCapital(text, tokens[ending + 1]) then
+                    degreeDocument = degreeDocument or {tokens=tokens, direction=direction}
+                    for first = math.max(start, pause - width), pause - 1 do
+                        local _, last = ns.Engine.Phrases.propertyDegreeAt(degreeDocument, first, pause - 1)
+                        if last == pause - 1 then
+                            local continuation = translateClause(start, ends[part + 1])
+                            if continuation and continuation.rule.propertyPause == ending then
+                                table.remove(ends, part)
+                                ending = ends[part]
+                            end
+                            break
+                        end
+                    end
+                end
+                start, part = ending + 1, part + 1
+            end
+        end
         local opening, closing = {}, {}
         local part, depth, startPart = 1, 0, nil
         local startToken = 1

@@ -1,6 +1,7 @@
 local _, ns = ...
 local U = ns.Engine.UDPipe
 local A, L = ns.Engine.Apertium, ns.Engine.Lexicon
+local negativeAliases = ns.Engine.Normalize.englishNegativeAliases
 
 local parts = {
     n="NOUN", np="PROPN", adj="ADJ", adv="ADV", det="DET", prn="PRON", pr="ADP",
@@ -193,14 +194,26 @@ local function pronounCandidate(document, index, lang)
         form={person=pronoun.person, number=number, gender=pronoun.gender, case=reading.case}}
 end
 
-local function englishCandidates(document, index, raw, weights)
+local modalObjectOpenings = {a=true, an=true, the=true, this=true, that=true, these=true, those=true}
+
+local function englishCandidates(document, index, first, last, raw, weights)
     local tagIds = weights.ids
     local key = document.tokens[index].key
-    local contraction = auxiliaryClitics[key:match("^(%a+)n't$")]
+    local chatSpelling = negativeAliases[key]
+    if key == "cant" or key == "wont" then
+        local nextKey = index < last and document.tokens[index + 1].key
+        local opening = document.tokens[first].key
+        local inverted = index == first or opening:sub(1, 2) == "wh" or opening == "how"
+        if not nextKey or nextKey == "to" or nextKey == "of" or not inverted and modalObjectOpenings[nextKey] then
+            chatSpelling = nil
+        end
+    end
+    local contraction = auxiliaryClitics[(chatSpelling or key):match("^(%a+)n't$")]
+    local negative
     if contraction then
         local surface, lemma, tense = unpack(contraction)
-        return {[tagIds.AUX]={lemma=lemma, pos="AUX", modelForm=surface,
-            form={tense=tense}, tags={neg=true}}}
+        negative = {lemma=lemma, pos="AUX", modelForm=surface, form={tense=tense}, tags={neg=true}}
+        if not chatSpelling then return {[tagIds.AUX]=negative} end
     end
     local candidates = {}
     lexicalCandidates(document, index, "en", function(lemma, pos, form, tags, weight, reading)
@@ -229,6 +242,11 @@ local function englishCandidates(document, index, raw, weights)
     elseif candidates[tagIds.PROPN] and not candidates[tagIds.PROPN].form then
         candidates[tagIds.PROPN].emission = candidates[tagIds.PROPN].emission - 180
     end
+    if negative then
+        local knownAuxiliary = candidates[tagIds.AUX]
+        negative.emission = knownAuxiliary and knownAuxiliary.emission or word and word[1]
+        candidates[tagIds.AUX] = negative
+    end
     if not next(candidates) then candidates[tagIds.X] = {lemma=key, pos="X"} end
     return candidates
 end
@@ -254,7 +272,7 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
         local raw = token.protected and "item" or document.text:sub(token.first, token.last)
         local pos = fixedTag(token, index, marker, markerEnd, markerTags)
         local candidates = pos and {[tagIds[pos]]={pos=pos, lemma=token.key}}
-            or englishCandidates(document, index, raw, weights)
+            or englishCandidates(document, index, first, last, raw, weights)
         local hint = not pos and (hints and hints[index] or quantifiedHeads and quantifiedHeads[index])
         local hintedId = tagIds[hint == true and "VERB" or hint]
         local resolved = not pos and not hintedId and readings and readings[index]

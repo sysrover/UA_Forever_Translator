@@ -412,7 +412,16 @@ function L.nominalize(candidate)
 end
 
 local formNames={nominative="nominativePlural",genitive="genitivePlural",accusative="accusativePlural"}
+function L.curatedNumber(term, number)
+    local family = term.morphology
+    if family and number and number ~= family.number then
+        return ns.Data.terms[family.root .. "." .. family.derivation .. "." .. number] or term
+    end
+    return term
+end
+
 function L.curatedForm(term,case,number)
+    term = L.curatedNumber(term, number)
     local forms=term.forms or {}
     if number=="plural" then
         local key=formNames[case] or case.."Plural"
@@ -423,6 +432,8 @@ function L.curatedForm(term,case,number)
         if forms[case.."Singular"] then return forms[case.."Singular"] end
         if forms[case] then return forms[case] end
     end
+    if case == "nominative" and term.features and term.features.proper
+        and (number ~= "plural" or term.features.number == "plural") then return term.uk end
     local lemma=N.word(term.uk)
     local requested={case=case,number=number or "singular"}
     local head=L.head(lemma,"noun")
@@ -431,6 +442,11 @@ function L.curatedForm(term,case,number)
     end
     local result=L.inflectLemma(lemma,"noun",requested)
     if result then return result end
+    local features = term.features
+    if case == "accusative" and features and features.animacy == "inanimate"
+        and (number == "plural" or features.gender == "masculine" or features.gender == "neuter") then
+        return L.curatedForm(term, "nominative", number)
+    end
     if case=="nominative" and (number~="plural" or term.features and term.features.number=="plural"
         or term.morphology and term.morphology.number=="plural") then return term.uk end
 end

@@ -146,6 +146,13 @@ ns.Data = {
                         }
                     }
                 },
+                ["tauren"] = {
+                    ["_morph"] = {
+                        ["race.tauren.base.singular"] = {
+                            ["nominative"] = true
+                        }
+                    }
+                },
                 ["wannabe"] = {
                     ["dwarf"] = {
                         ["_morph"] = {
@@ -937,6 +944,18 @@ ns.Data = {
                     }
                 }
             },
+            ["caster"] = {
+                ["dps"] = {
+                    ["_id"] = "role.caster_dps",
+                    ["players"] = {
+                        ["_plural"] = {
+                            ["id"] = "role.caster_dps",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" },
+                            ["text"] = "DPS-заклиначі"
+                        }
+                    }
+                }
+            },
             ["casual"] = {
                 [","] = {
                     ["friendly"] = {
@@ -1434,6 +1453,9 @@ ns.Data = {
             ["dun"] = {
                 ["algaz"] = {
                     ["_id"] = "place.dun_algaz"
+                },
+                ["modr"] = {
+                    ["_id"] = "place.dun_modr"
                 }
             },
             ["dung"] = {
@@ -2025,6 +2047,9 @@ ns.Data = {
             ["hall"] = {
                 ["of"] = {
                     ["thanes"] = {
+                        ["_id"] = "place.hall_of_thanes"
+                    },
+                    ["thranes"] = {
                         ["_id"] = "place.hall_of_thanes"
                     }
                 }
@@ -2951,6 +2976,16 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["melee"] = {
+                ["dps"] = {
+                    ["_id"] = "role.melee_dps",
+                    ["_plural"] = {
+                        ["id"] = "role.melee_dps",
+                        ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" },
+                        ["text"] = "DPS ближнього бою"
+                    }
+                }
+            },
             ["member"] = {
                 ["_id"] = "game.member"
             },
@@ -3706,6 +3741,11 @@ ns.Data = {
                     ["bis"] = {
                         ["_id"] = "slang.trade.pre-raid-bis"
                     }
+                }
+            },
+            ["preast"] = {
+                ["_byCategory"] = {
+                    ["classes"] = "class.priest"
                 }
             },
             ["premade"] = {
@@ -4576,6 +4616,13 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:ui.Target" },
                     ["text"] = "ціль",
                     ["weak"] = false
+                }
+            },
+            ["tauren"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.singular"] = {
+                        ["nominative"] = true
+                    }
                 }
             },
             ["tb"] = {
@@ -5591,7 +5638,36 @@ ns.Data = {
                 ["_id"] = "game.discord"
             },
             ["dps"] = {
-                ["_id"] = "role.damage"
+                ["-"] = {
+                    ["заклинач"] = {
+                        ["_id"] = "role.caster_dps"
+                    },
+                    ["заклинача"] = {
+                        ["_id"] = "role.caster_dps"
+                    },
+                    ["заклиначі"] = {
+                        ["_id"] = "role.caster_dps",
+                        ["_plural"] = {
+                            ["id"] = "role.caster_dps",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" },
+                            ["text"] = "Caster DPS players"
+                        }
+                    },
+                    ["заклиначів"] = {
+                        ["_id"] = "role.caster_dps",
+                        ["_plural"] = {
+                            ["id"] = "role.caster_dps",
+                            ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" },
+                            ["text"] = "Caster DPS players"
+                        }
+                    }
+                },
+                ["_id"] = "role.damage",
+                ["ближнього"] = {
+                    ["бою"] = {
+                        ["_id"] = "role.melee_dps"
+                    }
+                }
             },
             ["pve"] = {
                 ["_byCategory"] = {
@@ -8410,6 +8486,15 @@ ns.Data = {
                     },
                     ["альґазі"] = {
                         ["_id"] = "place.dun_algaz"
+                    },
+                    ["модр"] = {
+                        ["_id"] = "place.dun_modr"
+                    },
+                    ["модра"] = {
+                        ["_id"] = "place.dun_modr"
+                    },
+                    ["модрі"] = {
+                        ["_id"] = "place.dun_modr"
                     }
                 }
             },
@@ -14333,6 +14418,94 @@ ns.Data = {
                     ["text"] = "Tanks"
                 }
             },
+            ["таурен"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.singular"] = {
+                        ["nominative"] = true
+                    }
+                }
+            },
+            ["таурена"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.singular"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
+            ["тауренам"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.plural"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["тауренами"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.plural"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["тауренах"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.plural"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["таурене"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.singular"] = {
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["таурени"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.plural"] = {
+                        ["nominative"] = true,
+                        ["vocative"] = true
+                    }
+                }
+            },
+            ["тауренові"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.singular"] = {
+                        ["dative"] = true,
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["тауреном"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.singular"] = {
+                        ["instrumental"] = true
+                    }
+                }
+            },
+            ["таурену"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.singular"] = {
+                        ["dative"] = true
+                    }
+                }
+            },
+            ["таурені"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.singular"] = {
+                        ["locative"] = true
+                    }
+                }
+            },
+            ["тауренів"] = {
+                ["_morph"] = {
+                    ["race.tauren.base.plural"] = {
+                        ["accusative"] = true,
+                        ["genitive"] = true
+                    }
+                }
+            },
             ["твердиня"] = {
                 ["крол'док"] = {
                     ["_id"] = "place.kroldok_stronghold"
@@ -18068,6 +18241,41 @@ ns.Data = {
                             }
                         }
                     },
+                    ["tauren"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["derivation"] = "base",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.tauren",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "race.tauren.base.singular",
+                                ["lemma"] = "tauren",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.tauren.base.singular",
+                                ["sourceRefs"] = { "ua-forever:race.tauren" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "nominative",
+                                    ["derivation"] = "base",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["root"] = "race.tauren",
+                                    ["semanticClass"] = "playableRace"
+                                },
+                                ["id"] = "race.tauren.base.singular",
+                                ["lemma"] = "tauren",
+                                ["pos"] = "noun",
+                                ["sense"] = "race.tauren.base.singular",
+                                ["sourceRefs"] = { "ua-forever:race.tauren" }
+                            }
+                        }
+                    },
                     ["wannabe"] = {
                         ["dwarf"] = {
                             ["_analyses"] = {
@@ -19735,6 +19943,41 @@ ns.Data = {
                         }
                     }
                 },
+                ["caster"] = {
+                    ["dps"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["recruitmentAlternative"] = true
+                                },
+                                ["id"] = "role.caster_dps",
+                                ["lemma"] = "Caster DPS",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.caster_dps",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                            }
+                        },
+                        ["players"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.caster_dps",
+                                    ["lemma"] = "Caster DPS",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.caster_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["casual"] = {
                     [","] = {
                         ["friendly"] = {
@@ -20593,6 +20836,21 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.dun_algaz",
                                 ["sourceRefs"] = { "ua-forever:place.dun_algaz" }
+                            }
+                        }
+                    },
+                    ["modr"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine"
+                                },
+                                ["id"] = "place.dun_modr",
+                                ["lemma"] = "Dun Modr",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dun_modr",
+                                ["sourceRefs"] = { "ua-forever:place.dun_modr" }
                             }
                         }
                     }
@@ -21837,6 +22095,25 @@ ns.Data = {
                 ["hall"] = {
                     ["of"] = {
                         ["thanes"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["clearableInstance"] = true,
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "place.hall_of_thanes",
+                                    ["lemma"] = "The Hall of Thanes",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.hall_of_thanes",
+                                    ["sourceRefs"] = {
+                                        "ua-forever:place.hall_of_thanes",
+                                        "project-authored:apertium-pipeline-1"
+                                    }
+                                }
+                            }
+                        },
+                        ["thranes"] = {
                             ["_analyses"] = {
                                 {
                                     ["features"] = {
@@ -23467,6 +23744,25 @@ ns.Data = {
                         }
                     }
                 },
+                ["melee"] = {
+                    ["dps"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["recruitmentAlternative"] = true
+                                },
+                                ["id"] = "role.melee_dps",
+                                ["lemma"] = "Melee DPS",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.melee_dps",
+                                ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                            }
+                        }
+                    }
+                },
                 ["member"] = {
                     ["_analyses"] = {
                         {
@@ -23483,6 +23779,7 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["addressTitle"] = "Lady",
                                 ["animacy"] = "animate",
                                 ["gender"] = "feminine"
                             },
@@ -23798,6 +24095,7 @@ ns.Data = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {
+                                    ["addressTitle"] = "Lady",
                                     ["animacy"] = "animate",
                                     ["gender"] = "feminine"
                                 },
@@ -24664,6 +24962,22 @@ ns.Data = {
                                     ["sourceRefs"] = { "wow-community:wiki" }
                                 }
                             }
+                        }
+                    }
+                },
+                ["preast"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["pos"] = "noun"
+                            },
+                            ["id"] = "class.priest",
+                            ["lemma"] = "Priest",
+                            ["pos"] = "noun",
+                            ["sense"] = "class.priest",
+                            ["sourceRefs"] = { "ua-forever:class.priest" }
                         }
                     }
                 },
@@ -26831,6 +27145,41 @@ ns.Data = {
                         }
                     }
                 },
+                ["tauren"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.singular",
+                            ["lemma"] = "tauren",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.singular",
+                            ["lemma"] = "tauren",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
                 ["tb"] = {
                     ["_analyses"] = {
                         {
@@ -28718,6 +29067,106 @@ ns.Data = {
                     }
                 },
                 ["dps"] = {
+                    ["-"] = {
+                        ["заклинач"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["gender"] = "masculine",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.caster_dps",
+                                    ["lemma"] = "DPS-заклинач",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.caster_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                }
+                            }
+                        },
+                        ["заклинача"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "genitive",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.caster_dps",
+                                    ["lemma"] = "DPS-заклинач",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.caster_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "accusative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.caster_dps",
+                                    ["lemma"] = "DPS-заклинач",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.caster_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                }
+                            }
+                        },
+                        ["заклиначі"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.caster_dps",
+                                    ["lemma"] = "DPS-заклинач",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.caster_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                }
+                            }
+                        },
+                        ["заклиначів"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "genitive",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.caster_dps",
+                                    ["lemma"] = "DPS-заклинач",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.caster_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "accusative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.caster_dps",
+                                    ["lemma"] = "DPS-заклинач",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.caster_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                }
+                            }
+                        }
+                    },
                     ["_analyses"] = {
                         {
                             ["features"] = {
@@ -28801,6 +29250,94 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "role.damage",
                             ["sourceRefs"] = { "ua-forever:role.damage" }
+                        }
+                    },
+                    ["ближнього"] = {
+                        ["бою"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["gender"] = "masculine",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.melee_dps",
+                                    ["lemma"] = "DPS ближнього бою",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.melee_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "genitive",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.melee_dps",
+                                    ["lemma"] = "DPS ближнього бою",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.melee_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "genitive",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.melee_dps",
+                                    ["lemma"] = "DPS ближнього бою",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.melee_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "accusative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.melee_dps",
+                                    ["lemma"] = "DPS ближнього бою",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.melee_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "nominative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.melee_dps",
+                                    ["lemma"] = "DPS ближнього бою",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.melee_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["case"] = "accusative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "plural",
+                                        ["recruitmentAlternative"] = true
+                                    },
+                                    ["id"] = "role.melee_dps",
+                                    ["lemma"] = "DPS ближнього бою",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "role.melee_dps",
+                                    ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" }
+                                }
+                            }
                         }
                     }
                 },
@@ -36471,6 +37008,55 @@ ns.Data = {
                                     ["pos"] = "noun",
                                     ["sense"] = "place.dun_algaz",
                                     ["sourceRefs"] = { "ua-forever:place.dun_algaz" }
+                                }
+                            }
+                        },
+                        ["модр"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["gender"] = "masculine"
+                                    },
+                                    ["id"] = "place.dun_modr",
+                                    ["lemma"] = "Дун-Модр",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dun_modr",
+                                    ["sourceRefs"] = { "ua-forever:place.dun_modr" }
+                                }
+                            }
+                        },
+                        ["модра"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "genitive",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "place.dun_modr",
+                                    ["lemma"] = "Дун-Модр",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dun_modr",
+                                    ["sourceRefs"] = { "ua-forever:place.dun_modr" }
+                                }
+                            }
+                        },
+                        ["модрі"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["case"] = "locative",
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular"
+                                    },
+                                    ["id"] = "place.dun_modr",
+                                    ["lemma"] = "Дун-Модр",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dun_modr",
+                                    ["sourceRefs"] = { "ua-forever:place.dun_modr" }
                                 }
                             }
                         }
@@ -45766,6 +46352,7 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
+                                ["addressTitle"] = "Lady",
                                 ["animacy"] = "animate",
                                 ["gender"] = "feminine"
                             },
@@ -45777,6 +46364,7 @@ ns.Data = {
                         },
                         {
                             ["features"] = {
+                                ["addressTitle"] = "Lady",
                                 ["animacy"] = "animate",
                                 ["case"] = "nominative",
                                 ["gender"] = "feminine",
@@ -45790,6 +46378,7 @@ ns.Data = {
                         },
                         {
                             ["features"] = {
+                                ["addressTitle"] = "Lady",
                                 ["animacy"] = "animate",
                                 ["case"] = "vocative",
                                 ["gender"] = "feminine",
@@ -51836,6 +52425,340 @@ ns.Data = {
                         }
                     }
                 },
+                ["таурен"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.singular",
+                            ["lemma"] = "таурен",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.singular",
+                            ["lemma"] = "таурен",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
+                ["таурена"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.singular",
+                            ["lemma"] = "таурен",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.singular",
+                            ["lemma"] = "таурен",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
+                ["тауренам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.plural",
+                            ["lemma"] = "таурени",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
+                ["тауренами"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.plural",
+                            ["lemma"] = "таурени",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
+                ["тауренах"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.plural",
+                            ["lemma"] = "таурени",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
+                ["таурене"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.singular",
+                            ["lemma"] = "таурен",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
+                ["таурени"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.plural",
+                            ["lemma"] = "таурени",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.plural",
+                            ["lemma"] = "таурени",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.plural",
+                            ["lemma"] = "таурени",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
+                ["тауренові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.singular",
+                            ["lemma"] = "таурен",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.singular",
+                            ["lemma"] = "таурен",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
+                ["тауреном"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.singular",
+                            ["lemma"] = "таурен",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
+                ["таурену"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.singular",
+                            ["lemma"] = "таурен",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
+                ["таурені"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.singular",
+                            ["lemma"] = "таурен",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.singular",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
+                ["тауренів"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.plural",
+                            ["lemma"] = "таурени",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["derivation"] = "base",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural",
+                                ["root"] = "race.tauren",
+                                ["semanticClass"] = "playableRace"
+                            },
+                            ["id"] = "race.tauren.base.plural",
+                            ["lemma"] = "таурени",
+                            ["pos"] = "noun",
+                            ["sense"] = "race.tauren.base.plural",
+                            ["sourceRefs"] = { "ua-forever:race.tauren" }
+                        }
+                    }
+                },
                 ["твердиня"] = {
                     ["крол'док"] = {
                         ["_analyses"] = {
@@ -57496,6 +58419,16 @@ ns.Data = {
                     ["locative"] = "Дун-Альґазі"
                 }
             },
+            ["place.dun_modr"] = {
+                ["en"] = {
+                    ["canonical"] = "Dun Modr"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Дун-Модр",
+                    ["genitiveSingular"] = "Дун-Модра",
+                    ["locative"] = "Дун-Модрі"
+                }
+            },
             ["place.durotar"] = {
                 ["en"] = {
                     ["canonical"] = "Durotar"
@@ -58640,6 +59573,36 @@ ns.Data = {
                     ["vocative"] = "протоорку"
                 }
             },
+            ["race.tauren.base.plural"] = {
+                ["en"] = {
+                    ["canonical"] = "tauren"
+                },
+                ["uk"] = {
+                    ["accusative"] = "тауренів",
+                    ["canonical"] = "таурени",
+                    ["dative"] = "тауренам",
+                    ["genitive"] = "тауренів",
+                    ["instrumental"] = "тауренами",
+                    ["locative"] = "тауренах",
+                    ["nominative"] = "таурени",
+                    ["vocative"] = "таурени"
+                }
+            },
+            ["race.tauren.base.singular"] = {
+                ["en"] = {
+                    ["canonical"] = "tauren"
+                },
+                ["uk"] = {
+                    ["accusative"] = "таурена",
+                    ["canonical"] = "таурен",
+                    ["dative"] = "тауренові",
+                    ["genitive"] = "таурена",
+                    ["instrumental"] = "тауреном",
+                    ["locative"] = "тауренові",
+                    ["nominative"] = "таурен",
+                    ["vocative"] = "таурене"
+                }
+            },
             ["recipe.crusader"] = {
                 ["en"] = {
                     ["canonical"] = "Enchant Weapon - Crusader"
@@ -58719,6 +59682,20 @@ ns.Data = {
                     ["vocativePlural"] = "барди"
                 }
             },
+            ["role.caster_dps"] = {
+                ["en"] = {
+                    ["canonical"] = "Caster DPS",
+                    ["plural"] = "Caster DPS players"
+                },
+                ["uk"] = {
+                    ["accusative"] = "DPS-заклинача",
+                    ["accusativePlural"] = "DPS-заклиначів",
+                    ["canonical"] = "DPS-заклинач",
+                    ["genitivePlural"] = "DPS-заклиначів",
+                    ["genitiveSingular"] = "DPS-заклинача",
+                    ["nominativePlural"] = "DPS-заклиначі"
+                }
+            },
             ["role.damage"] = {
                 ["en"] = {
                     ["canonical"] = "DPS",
@@ -58747,6 +59724,20 @@ ns.Data = {
                     ["genitivePlural"] = "цілителів",
                     ["genitiveSingular"] = "цілителя",
                     ["nominativePlural"] = "цілителі"
+                }
+            },
+            ["role.melee_dps"] = {
+                ["en"] = {
+                    ["canonical"] = "Melee DPS",
+                    ["plural"] = "Melee DPS"
+                },
+                ["uk"] = {
+                    ["accusative"] = "DPS ближнього бою",
+                    ["accusativePlural"] = "DPS ближнього бою",
+                    ["canonical"] = "DPS ближнього бою",
+                    ["genitivePlural"] = "DPS ближнього бою",
+                    ["genitiveSingular"] = "DPS ближнього бою",
+                    ["nominativePlural"] = "DPS ближнього бою"
                 }
             },
             ["role.petty_criminal"] = {
@@ -59564,8 +60555,8 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 324,
-        ["derivedNouns"] = 26,
+        ["concepts"] = 327,
+        ["derivedNouns"] = 28,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 86,
         ["source"] = {
@@ -59583,7 +60574,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "70cd1ca760c737ea006a1d56fb7562c83d386035e5744f6bf66218e00f4b97e7"
+        ["version"] = "3f55a1a4aaf286e96bf4466842271db6a6bf3a7b62da1f1213013418fbb128fe"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -68669,6 +69660,7 @@ ns.Data = {
             ["category"] = "addresses",
             ["en"] = "milady",
             ["features"] = {
+                ["addressTitle"] = "Lady",
                 ["animacy"] = "animate",
                 ["gender"] = "feminine"
             },
@@ -69138,6 +70130,9 @@ ns.Data = {
                 ["uk"] = { "жреця" }
             },
             ["category"] = "classes",
+            ["contextAliases"] = {
+                ["en"] = { "preast" }
+            },
             ["contexts"] = { "classes" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "Priest",
@@ -72536,6 +73531,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Дун-Альґаз"
         },
+        ["place.dun_modr"] = {
+            ["category"] = "places",
+            ["en"] = "Dun Modr",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine"
+            },
+            ["forms"] = {
+                ["genitiveSingular"] = "Дун-Модра",
+                ["locative"] = "Дун-Модрі"
+            },
+            ["id"] = "place.dun_modr",
+            ["provenance"] = {
+                ["commit"] = "37359a5991b27a8088a1dd09f81bb14fdface66d",
+                ["context"] = "place",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Dun Modr",
+                ["line"] = 834,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.dun_modr" },
+            ["status"] = "approved",
+            ["uk"] = "Дун-Модр"
+        },
         ["place.durotar"] = {
             ["aliases"] = {
                 ["en"] = {},
@@ -72734,7 +73754,7 @@ ns.Data = {
         },
         ["place.hall_of_thanes"] = {
             ["aliases"] = {
-                ["en"] = { "Hall of Thanes", "Halls of Thanes" },
+                ["en"] = { "Hall of Thanes", "Halls of Thanes", "Hall of Thranes" },
                 ["uk"] = {}
             },
             ["category"] = "places",
@@ -75726,6 +76746,82 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:race.orc", "project-authored:chat-0.1" },
             ["uk"] = "протоорк"
         },
+        ["race.tauren.base.plural"] = {
+            ["category"] = "creatures",
+            ["en"] = "tauren",
+            ["englishAddress"] = "tauren",
+            ["englishObject"] = "tauren",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["semanticClass"] = "playableRace"
+            },
+            ["forms"] = {
+                ["accusative"] = "тауренів",
+                ["dative"] = "тауренам",
+                ["genitive"] = "тауренів",
+                ["instrumental"] = "тауренами",
+                ["locative"] = "тауренах",
+                ["nominative"] = "таурени",
+                ["vocative"] = "таурени"
+            },
+            ["id"] = "race.tauren.base.plural",
+            ["morphology"] = {
+                ["derivation"] = "base",
+                ["number"] = "plural",
+                ["root"] = "race.tauren"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "Tauren race and attested UA Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "tauren",
+                ["line"] = 64,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.tauren" },
+            ["uk"] = "таурени"
+        },
+        ["race.tauren.base.singular"] = {
+            ["category"] = "creatures",
+            ["en"] = "tauren",
+            ["englishAddress"] = "tauren",
+            ["englishObject"] = "a tauren",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["semanticClass"] = "playableRace"
+            },
+            ["forms"] = {
+                ["accusative"] = "таурена",
+                ["dative"] = "тауренові",
+                ["genitive"] = "таурена",
+                ["instrumental"] = "тауреном",
+                ["locative"] = "тауренові",
+                ["nominative"] = "таурен",
+                ["vocative"] = "таурене"
+            },
+            ["id"] = "race.tauren.base.singular",
+            ["morphology"] = {
+                ["derivation"] = "base",
+                ["number"] = "singular",
+                ["root"] = "race.tauren"
+            },
+            ["provenance"] = {
+                ["commit"] = "5c1cadddc75e18cd569207437e8ebf68ac162da1",
+                ["context"] = "Tauren race and attested UA Forever declension",
+                ["file"] = "entries/forever/cliend_db/shared_text.lua",
+                ["key"] = "tauren",
+                ["line"] = 64,
+                ["sha256"] = "f5366dc4c324922f92d3b518c8b0fa66f969ae6cbf86b7353d98ff694cf94632",
+                ["source"] = "ua-forever",
+                ["version"] = "1.0.3"
+            },
+            ["sourceRefs"] = { "ua-forever:race.tauren" },
+            ["uk"] = "таурен"
+        },
         ["recipe.crusader"] = {
             ["category"] = "craftServices",
             ["contextAliases"] = {
@@ -75941,6 +77037,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "бард"
         },
+        ["role.caster_dps"] = {
+            ["category"] = "roles",
+            ["en"] = "Caster DPS",
+            ["englishPlural"] = "Caster DPS players",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["recruitmentAlternative"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "DPS-заклинача",
+                ["genitivePlural"] = "DPS-заклиначів",
+                ["genitiveSingular"] = "DPS-заклинача",
+                ["nominativePlural"] = "DPS-заклиначі"
+            },
+            ["id"] = "role.caster_dps",
+            ["provenance"] = {
+                ["context"] = "spellcasting damage dealer",
+                ["key"] = "Caster DPS",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" },
+            ["status"] = "approved",
+            ["uk"] = "DPS-заклинач"
+        },
         ["role.damage"] = {
             ["aliases"] = {
                 ["en"] = { "dd", "dds", "damage dealer", "DPS" },
@@ -76033,6 +77154,31 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:role.healer", "kaikki:uk:2026-10-01" },
             ["status"] = "approved",
             ["uk"] = "Цілитель"
+        },
+        ["role.melee_dps"] = {
+            ["category"] = "roles",
+            ["en"] = "Melee DPS",
+            ["englishPlural"] = "Melee DPS",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["recruitmentAlternative"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "DPS ближнього бою",
+                ["genitivePlural"] = "DPS ближнього бою",
+                ["genitiveSingular"] = "DPS ближнього бою",
+                ["nominativePlural"] = "DPS ближнього бою"
+            },
+            ["id"] = "role.melee_dps",
+            ["provenance"] = {
+                ["context"] = "melee damage dealer",
+                ["key"] = "Melee DPS",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-0.1", "ua-forever:role.damage" },
+            ["status"] = "approved",
+            ["uk"] = "DPS ближнього бою"
         },
         ["role.petty_criminal"] = {
             ["category"] = "roles",

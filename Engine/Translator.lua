@@ -119,8 +119,9 @@ local function grammarClause(document, first, last)
         output = output .. " " .. emote
     end
     if output then
-        local slots
+        local slots, propertyPause
         for _, tree in ipairs(parsed.trees) do
+            if tree.property and tree.property.pauseIndex then propertyPause = tree.property.pauseIndex end
             local address = tree.addressee or tree.recipient
             if address and address.term then
                 slots = slots or {}
@@ -130,8 +131,9 @@ local function grammarClause(document, first, last)
         local firstTree = parsed.trees[1]
         local sentenceUnit = firstTree.exclusion and "exclusion" or firstTree.restriction and "restriction" or
             ((firstTree.kind == "clause" or firstTree.kind == "need") and "clause")
-        return output, {intent=firstTree.kind, imperative=firstTree.imperative == true, question=firstTree.question == true,
-            sentenceUnit=sentenceUnit,
+        return output, {intent=firstTree.kind, imperative=firstTree.imperative == true,
+            question=firstTree.question == true or parsed.hypothetical ~= nil,
+            sentenceUnit=sentenceUnit, propertyPause=propertyPause,
             earlierPhase=firstTree.sentenceAdverb and firstTree.sentenceAdverb.earlierPhase
                 or firstTree.predicateAdverb and firstTree.predicateAdverb.earlierPhase,
             initialWhen=parsed.prefix and parsed.prefix.id == "when" and #parsed.trees > 1,
@@ -200,7 +202,7 @@ local function dependencyFragments(document, fragments)
                         local parsed = ns.Engine.ClauseAnalysis.parseDependencies(document, first, limit, arcs, words)
                         local output = parsed and generation.render(parsed, document.direction, marker)
                         if not output then
-                            parsed = ns.Engine.ClauseAnalysis.parseWithUntranslatedModifiers(document, first, limit, arcs, words)
+                            parsed = ns.Engine.ClauseAnalysis.parseWithUntranslatedNominals(document, first, limit, arcs, words)
                             output = parsed and generation.render(parsed, document.direction, marker)
                         end
                         local original = phrases.raw(document, first, ending)
@@ -362,10 +364,10 @@ local function compute(text, direction, tokens, normalized, checkpoint)
         if fragment then
             last, replacement = fragment.last, fragment.text
             addClause(matched, refs, refSeen, fragment.rule, fragment.slots)
-            for _, index in ipairs(fragment.untranslated or {}) do
-                local modifier = tokens[index]
-                unknown[#unknown + 1] = {first=modifier.first, last=modifier.last, protected=false,
-                    reason="untranslated-modifier"}
+            for _, span in ipairs(fragment.untranslated or {}) do
+                local literal = tokens[span.index]
+                unknown[#unknown + 1] = {first=literal.first, last=literal.last, protected=false,
+                    reason=span.reason}
             end
         elseif not token.protected then
             term, last = ns.Engine.Dictionary.literal(document, i, fragments)

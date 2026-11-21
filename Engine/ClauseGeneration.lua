@@ -5,6 +5,15 @@ local L, P = ns.Engine.Lexicon, ns.Engine.Phrases
 local renderTree, pastOffsetText
 
 local function render(tree, english, controller)
+    if tree.kind == "nameLabel" then
+        return tree.label.lexeme[english and "en" or "uk"] .. ": " .. tree.rawName
+    end
+    if tree.situationAcceptance then
+        local past = tree.tense == "past"
+        if english then return past and "it was what it was" or "it is what it is" end
+        local be = past and "було" or "є"
+        return be .. " як " .. be
+    end
     local naming = tree.naming
     if naming then
         local person = tree.subject.pronoun
@@ -59,26 +68,48 @@ local function render(tree, english, controller)
         target.subject, target.object, target.aspect = tree.object, nil, "passive"
         tree = target
     end
-    if not english and tree.aspect == "passive" and frame and frame.passiveVoice then
+    if not english and tree.aspect == "passive" and frame and (frame.passiveVoice or tree.allSubject) then
         local target = {}
         for key, value in pairs(tree) do target[key] = value end
-        target.aspect, target.inherited = nil, nil
-        if tree.passiveAgent then
-            target.subject, target.object = tree.passiveAgent, tree.subject
-            target.implicitSubject = nil
-            if frame.passiveEnclosure and not P.personNoun(tree.passiveAgent) then target.aspect = "continuous" end
-        elseif tree.modal and not tree.wh then
-            target.subject, target.object, target.impersonalPassive = nil, tree.subject, true
-        else
-            target.subject, target.implicitSubject = {person=3, number="plural"}, true
-            target.frontedPassivePatient = tree.subject
+        local patient = tree.subject
+        if tree.allSubject then
+            patient = {}
+            for key, value in pairs(tree.subject) do patient[key] = value end
+            patient.all, patient.allUnderNegation = true, tree.allUnderNegation
+            target.allSubject = nil
+            if tree.allUnderNegation then target.negative = false end
         end
-        if tree.wh and tree.wh.role == "subject" then
-            local wh = {}
-            for key, value in pairs(tree.wh) do wh[key] = value end
-            wh.role, wh.case = "object", frame.objectCase or "accusative"
-            wh.preposition = frame.objectPreposition
-            target.wh, target.object, target.frontedPassivePatient = wh, nil, nil
+        if frame.passiveChangeLemma and tree.measure and not (tree.passiveAgent or tree.wh or tree.modal) then
+            target.aspect, target.passiveChange = nil, frame.passiveChangeLemma
+            if P.semanticClass(patient) == "populationGroup" then
+                local group = G.noun(patient, false, "genitive")
+                if not group then return nil end
+                target.subject = {raw="кількість " .. group, person=3, number="singular", gender="feminine"}
+            else
+                target.subject = patient
+            end
+        elseif frame.passiveVoice then
+            target.aspect, target.inherited = nil, nil
+            target.passivePastLemma = frame.passivePastLemma or frame.pastLemma
+            if tree.passiveAgent then
+                target.subject, target.object = tree.passiveAgent, patient
+                target.implicitSubject = nil
+                if frame.passiveEnclosure and not P.personNoun(tree.passiveAgent) then target.aspect = "continuous" end
+            elseif tree.modal and not tree.wh then
+                target.subject, target.object, target.impersonalPassive = nil, patient, true
+            else
+                target.subject, target.implicitSubject = {person=3, number="plural"}, true
+                target.frontedPassivePatient = patient
+            end
+            if tree.wh and tree.wh.role == "subject" then
+                local wh = {}
+                for key, value in pairs(tree.wh) do wh[key] = value end
+                wh.role, wh.case = "object", frame.objectCase or "accusative"
+                wh.preposition = frame.objectPreposition
+                target.wh, target.object, target.frontedPassivePatient = wh, nil, nil
+            end
+        else
+            target.subject = patient
         end
         tree = target
     end
@@ -371,6 +402,11 @@ local function amountText(amount, english)
 end
 
 local function noun(node, english, case, article, compoundModifier, owner, commonHead)
+    if node.calendarYear then return node.calendarYear .. (english and "" or " року") end
+    if node.substantive then
+        local value = adjective(node.substantive, english, case, "plural", nil, "animate")
+        return value and (english and "the " .. value or value)
+    end
     if node.amount and not node.quantity then return amountText(node.amount, english) end
     if node.headlessCardinal then
         local number = node.headlessCardinal
@@ -431,6 +467,15 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
         local pronoun = node.targetPronoun or node.pronoun
         local forms = english and pronoun.en or pronoun.uk
         local value = forms[case] or (english and forms.accusative)
+        if value and node.all and not english then
+            if node.allUnderNegation and case == "accusative" then
+                local group = pronoun.ukGenitiveAfterPreposition or forms.genitive
+                if not group then return nil end
+                return "всіх із " .. group
+            end
+            local quantifierCase = case == "accusative" and "genitive" or case
+            value = value .. " " .. (P.allForms[quantifierCase] or "усі")
+        end
         if value and node.postpositive then
             local modifier = adjective(node.postpositive, english, case, node.number, node.gender, node.animacy)
             if not modifier then return nil end
@@ -446,7 +491,8 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
     if not english and (node.sufficient or explicitSome or node.many or node.more or node.abundance) then requested = "genitive" end
     if node.quantity then
         if english then
-            number = tonumber(node.quantity) == 1 and "singular" or "plural"
+            local frame = node.entry and node.entry.lexeme.frame
+            number = (tonumber(node.quantity) == 1 or frame and frame.countInvariant) and "singular" or "plural"
         else
             requested, number = P.countedCase(node.quantity, case, node.animacy == "animate")
         end
@@ -454,10 +500,11 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
     local value
     if node.term then
         if english then
-            value = node.term.en
-            if number == "plural" and not (node.term.morphology and node.term.morphology.number == "plural")
-                and not (node.term.features and node.term.features.number == "plural") then
-                value = node.term.englishPlural or englishForm(value, "plural", "noun")
+            local term = L.curatedNumber(node.term, number)
+            value = term.en
+            if number == "plural" and not (term.morphology and term.morphology.number == "plural")
+                and not (term.features and term.features.number == "plural") then
+                value = term.englishPlural or englishForm(value, "plural", "noun")
             end
         else
             value = L.curatedForm(node.term, requested, number)
@@ -465,8 +512,8 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
     elseif node.entry then
         if english then
             value = node.entry.lexeme.en
-            if number == "plural" then value = englishForm(value, "plural", "noun") end
             local frame = node.entry.lexeme.frame
+            if number == "plural" then value = frame and frame.englishPlural or englishForm(value, "plural", "noun") end
             if frame and frame.capitalizeEnglish then value = ns.Engine.Normalize.upperStart(value) end
         else
             local frame = node.entry.lexeme.frame
@@ -501,15 +548,17 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
                 and (modifier.entry.form.degree == "superlative" or modifierFrame and modifierFrame.definiteHead) then
                 article = "definite"
             end
-            local word = adjective(modifier, english, requested, number, node.gender, node.animacy)
-            if not word then return nil end
-            local join = modifier.join
-            local contrast = join and join.id == "but"
-            if contrast and not english or not contrast and modifier.comma then
-                parts[#parts] = withComma(parts[#parts])
+            if english or not (modifierFrame and modifierFrame.ukPossessedState) then
+                local word = adjective(modifier, english, requested, number, node.gender, node.animacy)
+                if not word then return nil end
+                local join = modifier.join
+                local contrast = join and join.id == "but"
+                if #parts > 0 and (contrast and not english or not contrast and modifier.comma) then
+                    parts[#parts] = withComma(parts[#parts])
+                end
+                if join and #parts > 0 then append(parts, (english and join.en or join.uk)[1]) end
+                append(parts, word)
             end
-            if join then append(parts, (english and join.en or join.uk)[1]) end
-            append(parts, word)
         end
     end
     if placeCompound then
@@ -542,9 +591,12 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
     end
     if node.membershipAudience then
         local audience = withNumber(node.membershipAudience, english and "singular" or "plural")
-        local restriction = G.noun(audience, english, english and "nominative" or "genitive", false)
+        local composition = node.membershipComposition
+        local audienceCase = english and "nominative" or composition and "instrumental" or "genitive"
+        local restriction = G.noun(audience, english, audienceCase, false)
         if not restriction then return nil end
-        value = english and (restriction .. "-only " .. value) or (value .. " лише для " .. restriction)
+        if english then value = (composition and "all-" .. restriction or restriction .. "-only") .. " " .. value
+        else value = value .. (composition and " лише з " or " лише для ") .. restriction end
     end
     if node.activityMode then
         value = node.activityMode .. (english and " " or "-") .. value
@@ -584,6 +636,11 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
             value = value .. " " .. ns.Engine.Normalize.word(class)
         end
     end
+    if node.playableClass then
+        local class = G.noun(withNumber(node.playableClass, number), english, requested, false)
+        if not class then return nil end
+        value = value .. (english and " " or "-") .. class
+    end
     if node.genitive and not placeCompound then
         local dependent = G.noun(node.genitive, english, "genitive", english and "definite", nil, owner)
         if not dependent then return nil end
@@ -608,6 +665,14 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
         local argument, form = node.argument.object, node.argument.form
         if not english and node.argument.compound and form.compoundNumber and bareNominalArgument(argument) then
             argument = withNumber(argument, ukrainianArgumentNumber(node, form.compoundNumber))
+        end
+        if english and form.partitive and not (argument.article or argument.possessor or argument.demonstrative
+            or argument.pronoun or argument.raw or P.hasTrait(argument, "proper")
+            or argument.term and argument.term.category == "places") then
+            local definite = {}
+            for key, field in pairs(argument) do definite[key] = field end
+            definite.article = "definite"
+            argument = definite
         end
         local article = form.englishArticle
         if article == nil then article = true end
@@ -699,7 +764,9 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
         elseif number == "singular" and P.wholeForms[allCase] then
             amount = P.wholeForms[allCase][node.gender]
         end
-        return (amount or P.allForms[allCase] or "усі") .. " " .. value
+        local quantifier = amount or P.allForms[allCase] or "усі"
+        if node.allUnderNegation and not english then quantifier = "в" .. quantifier:sub(#"у" + 1) end
+        return quantifier .. " " .. value
     end
     if node.distributive then
         if english then return node.distributive .. " " .. value end
@@ -728,7 +795,10 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
     if node.quoted then return "\"" .. value .. "\"" end
     if english and not inferredOwner and not node.possessor and not (node.nominalObject and node.nominalObject.possessor) then
         if node.article == "definite" then return "the " .. value end
-        if article and not node.article and frame and frame.englishArticle ~= nil then article = frame.englishArticle end
+        if not node.article and frame and frame.englishArticle ~= nil
+            and (article or frame.englishArticle == "bare-unmodified" and node.adjectives) then
+            article = frame.englishArticle
+        end
         if article == "bare-unmodified" then article = node.adjectives and #node.adjectives > 0 and "definite" or false end
         local proper = node.channelNumber or node.term and (node.term.category == "places"
             or node.term.features and node.term.features.proper)
@@ -763,7 +833,22 @@ function G.noun(node, english, case, article, compoundModifier, owner, commonHea
     end
     local relative = node.relative
     if english and relative and not article and not (relative.nonrestrictive or relative.locative) then article = "definite" end
-    local value = noun(node, english, case, article, compoundModifier, owner, commonHead)
+    if english and node.groupLabel and not node.article then article = "definite" end
+    local partialGroup = not english and node.members and node.allUnderNegation
+    local value = noun(node, english, partialGroup and "genitive" or case, article, compoundModifier, owner, commonHead)
+    if value and not english and node.members and node.all then
+        if partialGroup then value = "всіх із " .. value
+        else
+            local animate = false
+            for _, member in ipairs(node.members) do
+                if member.animacy == "animate" or P.personNoun(member) then animate = true; break end
+            end
+            local quantifierCase = adjectiveCase(case, "plural", nil, animate and "animate" or nil)
+            value = (P.allForms[quantifierCase] or "усі") .. " " .. value
+        end
+    end
+    if value and node.allUnderNegation and not english then value = "не " .. value end
+    if value and node.groupLabel then value = value .. " " .. node.groupLabel end
     if value and node.nominalQualifier then
         local qualifier = node.nominalQualifier
         local selection = qualifier.selection
@@ -796,6 +881,23 @@ function G.noun(node, english, case, article, compoundModifier, owner, commonHea
     if value and node.listExtension then
         value = value .. " " .. (english and node.listExtension.en or node.listExtension.uk)[1]
     end
+    if value and node.comparativeOffset then
+        local offset = G.comparativeOffset(node.comparativeOffset, english)
+        if not offset then return nil end
+        value = value .. " " .. offset
+    end
+    if value and not english and node.adjectives then
+        for _, modifier in ipairs(node.adjectives) do
+            local frame = modifier.entry and modifier.entry.lexeme.frame
+            local state = frame and frame.ukPossessedState
+            if state then
+                local possessor = P.relativePronoun(node, "genitive")
+                local property = L.inflectLemma(state.lemma, "noun", {case="nominative", number=state.number})
+                if not (possessor and property) then return nil end
+                value = withComma(value) .. " у " .. possessor .. " " .. withComma(property)
+            end
+        end
+    end
     if not value or not relative then return value end
     local clause = render(relative.clause, english)
     if not clause then return nil end
@@ -826,6 +928,28 @@ function G.noun(node, english, case, article, compoundModifier, owner, commonHea
     if relative.preposition then marker = relative.preposition.targetUk .. " " .. marker
     elseif relative.clause.relativeMarkerUk then marker = relative.clause.relativeMarkerUk .. " " .. marker end
     return withComma(value) .. " " .. marker .. " " .. withComma(clause)
+end
+
+function G.comparativeOffset(offset, english)
+    local measure = G.noun(offset.measure, english, "accusative")
+    if not measure then return nil end
+    local text = (english and "" or "на ") .. measure .. " " .. (english and offset.direction.en or offset.direction.uk)
+    if offset.standard then
+        local standard = not english and ukrainianPrepositionalPronoun(offset.standard, "accusative", "за")
+            or G.noun(offset.standard, english, "accusative", true)
+        if not standard then return nil end
+        text = text .. (english and " than " or " за ") .. standard
+    end
+    return text
+end
+
+function G.address(address, english)
+    local case = english and "nominative" or "vocative"
+    if english and address.addressName then return address.addressTitle .. " " .. address.addressName end
+    local value = G.noun(address, english, case)
+    if not value and not english then value = G.noun(address, english, "nominative") end
+    if value and address.addressName then return value .. " " .. address.addressName end
+    return value
 end
 
 local ukrainianModals = {
@@ -876,16 +1000,20 @@ end
 local propertyDegreeUk = {more="більш ", very="дуже ", so="настільки ", too="надто ", quite="доволі "}
 local function propertyValue(tree, english, case)
     local property = tree.property
-    if english then return adjective(property, true) end
     local value
-    if case == "adverb" then
+    if english then value = adjective(property, true)
+    elseif case == "adverb" then
         local forms = ns.Linguistics.propertyAdverbs
         value = forms and forms.forms[property.entry.lexeme.uk]
     else
         local _, number, gender = agreement(tree)
         value = agreedAdjective({entry=property.entry}, false, case, tree.subject, number, gender)
     end
-    if value then return (propertyDegreeUk[property.intensity] or "") .. value end
+    if not value then return nil end
+    if not english then value = (propertyDegreeUk[property.intensity] or "") .. value end
+    local marker = property.degreeMarker
+    if marker then value = (english and marker.en or marker.uk)[1] .. (property.pause or "") .. " " .. value end
+    return value
 end
 
 local function renderObserved(event, english)
@@ -919,6 +1047,7 @@ local function ukrainianVerb(tree)
     for _, modifier in ipairs(tree.additionalLeadingAdverbs or {}) do
         adverb = adverb .. modifier.uk[1] .. " "
     end
+    if tree.emphaticDo and not (leading and leading.emphaticDo) then adverb = adverb .. "таки " end
     local preNegative = ""
     if tree.negative and leading and (leading.preNegative or tree.infinitiveAntonym and leading.sentenceInitial) then
         preNegative, adverb = adverb, ""
@@ -940,6 +1069,13 @@ local function ukrainianVerb(tree)
         local negative = tree.negative and "не " or ""
         if form then return negative .. adverb .. form end
         return "давай " .. negative .. adverb .. (frame.infinitiveLemma or chosen)
+    end
+    if tree.passiveChange then
+        local tense = tree.tense or "present"
+        local lemma = tense == "present" and frame.passiveChangePresent or tree.passiveChange
+        local form = L.inflectLemma(lemma, "verb", {tense=tense, mood="indicative",
+            person=tense ~= "past" and person or nil, number=number, gender=tense == "past" and gender or nil})
+        return form and (tree.negative and "не " or "") .. adverb .. form
     end
     if tree.aspect == "passive" then
         return adverb .. (tree.negative and "не " or "") .. (tree.tense == "past" and "було " or "") .. frame.passiveUk
@@ -993,7 +1129,7 @@ local function ukrainianVerb(tree)
         local ongoingNegation = tree.negative and tree.since and tree.aspect == "perfect"
         local progressive = tree.aspect == "continuous"
         local completed = not (progressive or ongoingNegation or durative)
-            and (frame.pastLemma or (tree.aspect == "perfect" and frame.completed))
+            and (tree.passivePastLemma or frame.pastLemma or (tree.aspect == "perfect" and frame.completed))
         if frame.pastByMeans and not progressive then
             for _, complement in ipairs(tree.prepositions or {}) do
                 if complement.rule.id == "on" then
@@ -1018,8 +1154,9 @@ local function ukrainianVerb(tree)
         if form and tree.conditional and (number ~= "singular" or gender) then
             form = form .. (number == "singular" and gender == "masculine" and " би" or " б")
         end
-    elseif tree.tense == "future" and not durative and (frame.futureLemma or frame.futureEventLemma and singleEvent) then
-        form = L.inflectLemma(frame.futureLemma or frame.futureEventLemma, "verb",
+    elseif tree.tense == "future" and not durative
+        and (tree.passivePastLemma or frame.futureLemma or frame.futureEventLemma and singleEvent) then
+        form = L.inflectLemma(tree.passivePastLemma or frame.futureLemma or frame.futureEventLemma, "verb",
             {tense="future", mood="indicative", person=person, number=number})
     elseif tree.tense == "future" and entry.head.aspect ~= "perfective" then
         form = tree.sharedFutureAuxiliary and lemma or future[key] .. " " .. lemma
@@ -1048,8 +1185,17 @@ local function ukrainianVerb(tree)
                 if modal and conditional then modal = modal .. (features.gender == "masculine" and " би" or " б") end
             end
         elseif tree.modalPerfect and modality == "should" then modal = "слід було"
+        elseif tree.modalSense == "request" then
+            local forms = ukrainianModals.could
+            if number == "plural" then modal = forms.plural .. " б"
+            elseif not gender and person == 2 then modal = forms.masculine .. " би/" .. forms.feminine .. " б"
+            elseif gender and gender ~= "masculine" then modal = forms[gender] .. " б"
+            else modal = forms.masculine .. " би" end
         elseif modality == "can" or modality == "may" or tree.modalSense == "possibility" then modal = ukrainianModals.can[key]
-        elseif modality == "could" then modal = modal[number == "plural" and "plural" or gender]
+        elseif modality == "could" then
+            modal = modal[number == "plural" and "plural" or gender]
+                or (number == "singular" and (person == 1 or person == 2)
+                    and ukrainianModals.could.masculine .. "/" .. ukrainianModals.could.feminine)
         elseif modality == "must" then
             modal = L.inflectLemma(modal, "verb", {tense="present", number=number, person=person, mood="indicative"})
         end
@@ -1067,7 +1213,8 @@ local function presentBe(person, number)
 end
 
 local function englishVerb(tree, subject)
-    if tree.allSubject and subject then subject = subject .. " all" end
+    local passiveAll = tree.allSubject and tree.aspect == "passive"
+    if tree.allSubject and subject and not passiveAll then subject = subject .. " all" end
     local lexeme = tree.verb.lexeme
     local frame = lexeme.frame or {}
     if frame.impersonalNeed and tree.infinitive and not (subject or tree.imperative or tree.modal) then
@@ -1078,6 +1225,12 @@ local function englishVerb(tree, subject)
     local form = tree.verb.form
     local lemma = form and form.mood == "impersonal" and frame.ellipticPastEn
         or tree.content and not tree.recipient and frame.enContentWithoutRecipient or lexeme.en
+    if frame.enByDirectionalAdverb then
+        for _, adverb in ipairs(tree.adverbs or {}) do
+            local directional = adverb.context == "arrival" and frame.enByDirectionalAdverb[adverb.en[1]]
+            if directional then lemma = directional; break end
+        end
+    end
     local particle = frame.particle
     if particle and tree.object and (tree.object.pronoun or frame.objectBeforeParticle) then
         lemma = lemma:sub(1, -#particle - 2)
@@ -1139,11 +1292,12 @@ local function englishVerb(tree, subject)
     elseif tree.tense == "future" and not tree.temporalDependent then
         prefix = "will"
         if tree.aspect == "continuous" then lemma = "be " .. englishForm(lemma, "ing", "verb") end
-    elseif tree.negative or inversion then
+    elseif tree.negative or inversion or tree.emphaticDo then
         prefix = tree.tense == "past" and "did" or (third and not tree.imperative and "does" or "do")
     end
     if prefix then
         local negative = tree.negative and " not" or ""
+        if passiveAll then negative = tree.allUnderNegation and negative .. " all" or " all" .. negative end
         if inversion then
             if not subject then return nil end
             return prefix .. " " .. subject .. negative .. " " .. adverb .. lemma
@@ -1212,6 +1366,18 @@ function G.preposition(complement, english, owner)
         if marker == "у" and rule.directional and ukrainianVowels[ns.Engine.Normalize.word(value:sub(1, 2))] then marker = "в"
         else marker = euphonicZ(marker, value) end
         if rule.inclusive then value = value .. " " .. rule.inclusive end
+    end
+    if complement.extension then
+        local extension = complement.extension
+        local parts = {value, (english and extension.expression.en or extension.expression.uk)[1]}
+        if extension.manner then append(parts, (english and extension.manner.en or extension.manner.uk)[1]) end
+        if extension.company then
+            local company, companyMarker = G.preposition(extension.company, english, owner)
+            if not company then return nil end
+            append(parts, companyMarker)
+            append(parts, company)
+        end
+        value = table.concat(parts, " ")
     end
     return value, marker
 end
@@ -1286,7 +1452,7 @@ local function subjectText(tree, english)
     if english and tree.verb and tree.verb.form and tree.verb.form.mood == "impersonal" then return "" end
     local frame = tree.verb and tree.verb.lexeme.frame
     if not tree.subject and frame and frame.impersonalNeed and tree.infinitive then return "" end
-    if tree.modalPerfect and tree.ellipticSubject then return english and tree.question and "one" or "" end
+    if tree.modal == "should" and tree.ellipticSubject then return english and tree.question and "one" or "" end
     if tree.subject then
         if english and tree.optative then return G.noun(tree.subject, true, "accusative", "definite") end
         if tree.subject.actionSubject then return G.actionSubjectText(tree.subject.actionSubject) end
@@ -1310,11 +1476,13 @@ local function subjectText(tree, english)
             and not (tree.sentenceAdverb and tree.sentenceAdverb.tentative) then
             value = "anyone"
         end
-        if english and tree.wh and tree.wh.role == "predicate" then article = tree.wh.definite and "definite" or true
+        if english and tree.exclamative then article = true
+        elseif english and tree.wh and tree.wh.role == "predicate" then article = tree.wh.definite and "definite" or true
         elseif english and tree.aspect == "passive" then article = "definite"
         elseif english and tree.wh and tree.wh.kind == "clock" then article = "definite"
         elseif english and (tree.kind == "need" or tree.subjectLocation or tree.temporalDependent
             or tree.contentClause or tree.predicateAdverb or tree.adverbComplement or tree.absencePredicate
+            or tree.locationEllipsis or tree.locationEllipsisAnchor
             or tree.where and not tree.question) then
             article = "definite"
         end
@@ -1329,6 +1497,9 @@ local function subjectText(tree, english)
         if english and not article and (tree.ability or tree.frontedModal) then article = true end
         local affiliation = tree.subject.argument
         if english and not article and affiliation then article = affiliation.form.englishSubjectArticle end
+        if english and not article and tree.kind == "clause" and P.semanticClass(tree.subject) == "playableRace" then
+            article = true
+        end
         if english and not article and tree.subject.term then
             local category = tree.subject.term.category
             for _, phrase in ipairs(tree.prepositions or {}) do
@@ -1384,6 +1555,14 @@ local whDefinite = {masculine="який", feminine="яка", neuter="яке", pl
 local function questionWord(tree, english)
     local wh = tree.wh
     if wh then
+        if wh.indirectPredicate then return english and "what" or "чим" end
+        if wh.boundRelative then
+            if english then
+                if not wh.total then return "what" end
+                return wh.role == "subject" and "that" or ""
+            end
+            return wh.role == "subject" and "що" or whThing[wh.case]
+        end
         local word
         if wh.kind == "manner" then return english and "how" or "як"
         elseif wh.kind == "duration" then return english and "how long" or "як довго"
@@ -1774,6 +1953,10 @@ renderTree = function(tree, english, controller)
         end
         return "Який рівень " .. requester.uk.dative .. " потрібен для " .. place
     end
+    if tree.kind == "levelAnnouncement" then
+        if english then return tree.level and "Ding, level " .. tree.level or "Ding" end
+        return tree.level and "Новий рівень — " .. tree.level .. "-й" or "Новий рівень"
+    end
     if tree.kind == "skillLevel" then
         local skill = G.noun(tree.skill, english, english and "accusative" or "genitive")
         if skill then return (english and "level " or "підвищити рівень ") .. ns.Engine.Normalize.word(skill) end
@@ -1808,22 +1991,25 @@ renderTree = function(tree, english, controller)
     if tree.kind == "need" or tree.kind == "notRequired" then
         local object = tree.object
         local objectCase = english and tree.kind == "need" and "accusative" or "nominative"
-        local value = G.noun(object, english, objectCase, true)
-        if not value then return nil end
-        local agreement = object.number == "plural" and "plural" or object.gender
+        local value = object and G.noun(object, english, objectCase, true)
+        if not value and not (tree.kind == "need" and tree.wh and tree.wh.boundRelative) then return nil end
+        local agreement = object and (object.number == "plural" and "plural" or object.gender)
         local forms = {masculine="потрібен", feminine="потрібна", neuter="потрібне", plural="потрібні"}
         if tree.kind == "need" then
             local predicate = english and "need" or forms[agreement] or "потрібно"
             local parts = {}
+            if tree.wh then append(parts, questionWord(tree, english)) end
             if tree.subject then
                 local subject = english and subjectText(tree, true) or G.noun(tree.subject, false, "dative")
                 if not subject then return nil end
                 local third = tree.subject.person == 3 and tree.subject.number == "singular"
                 if tree.question then append(parts, english and (third and "does" or "do") or "чи")
+                elseif english and tree.negative then predicate = third and "does not need" or "do not need"
                 elseif english and third then predicate = "needs" end
                 append(parts, subject)
                 if tree.allSubject then append(parts, english and "all" or "усім") end
             end
+            if not english and tree.negative then append(parts, "не") end
             append(parts, predicate)
             append(parts, value)
             if not addPrepositions(parts, tree, english) then return nil end
@@ -1860,11 +2046,12 @@ renderTree = function(tree, english, controller)
         return (english and "All hail to " or "Слава ") .. recipient
     end
     if tree.kind == "greeting" then
-        local name = G.noun(tree.recipient, english, english and "nominative" or "vocative")
-            or G.noun(tree.recipient, english, "nominative")
+        local name = G.address(tree.recipient, english)
         if tree.bareAddress then return name end
         if name then
-            local greeting = tree.expression and (english and tree.expression.en or tree.expression.uk)[1]
+            local polite = tree.recipient.number == "plural" or tree.recipient.addressTitle
+            local greeting = tree.expression and (not english and polite and tree.expression.pluralUk
+                or (english and tree.expression.en or tree.expression.uk)[1])
                 or (english and "Hello" or "Вітаю")
             local address = tree.fellowAddress and (english and "fellow " or "друзі-") or ""
             return greeting .. ", " .. address .. name
@@ -1921,6 +2108,12 @@ renderTree = function(tree, english, controller)
         if not addPrepositions(parts, tree, english) then return nil end
         return table.concat(parts, " ")
     end
+    if tree.kind == "coordinateReport" then
+        local language = english and "en" or "uk"
+        local parts = {tree.coordinateSource[language][1], tree.coordinateReport[language][1], tree.coordinates}
+        if not addPrepositions(parts, tree, english) then return nil end
+        return table.concat(parts, " ")
+    end
     if tree.kind == "routeQuestion" then
         local cue = tree.cue
         local parts = {english and cue.en[1] or cue.uk[1]}
@@ -1935,11 +2128,16 @@ renderTree = function(tree, english, controller)
     end
     if tree.kind == "existential" then
         local noun = tree.subject
-        local category = noun.term and noun.term.category
+        local category = noun and noun.term and noun.term.category
         local profession = category == "classes" or category == "roles"
-        local subject = G.noun(noun, english, "nominative", not tree.capacity, nil, nil, profession)
-        if not subject then return nil end
-        local indefinite = noun.pronoun and noun.pronoun.id == "someone"
+        local _, number, gender = agreement(tree, english)
+        local plural = (tree.existentialNumber or number) == "plural"
+        local tense = tree.tense or "present"
+        local case = not english and tree.negative and "genitive" or "nominative"
+        local any = english and tree.negative and (plural or tree.capacity or noun and P.mass(noun))
+        local subject = noun and G.noun(noun, english, case, not (tree.capacity or any), nil, nil, profession)
+        if noun and not subject then return nil end
+        local indefinite = noun and noun.pronoun and noun.pronoun.id == "someone"
         local parts
         local locationValue, locationMarker
         if tree.locationPreposition then
@@ -1955,6 +2153,9 @@ renderTree = function(tree, english, controller)
         if english then
             if indefinite and tree.question then subject = "anyone" end
             local located = tree.nearby or tree.prepositions or tree.locationAdverb
+            local be = tense == "past" and (plural and "were" or "was")
+                or tense == "future" and "will" or (plural and "are" or "is")
+            local certainty = tree.certainty and tree.certainty.en[1]
             local opening
             if tree.possessorSubject then
                 local owner = tree.possessorSubject
@@ -1964,13 +2165,17 @@ renderTree = function(tree, english, controller)
                 if tree.question then opening = (third and "does " or "do ") .. actor .. " have"
                 else opening = actor .. (third and " has" or " have") end
             elseif tree.question then
-                opening = tree.possessor and "do we have" or indefinite and located and "is"
-                    or (noun.number == "plural" and "are there" or "is there")
-            else opening = noun.number == "plural" and "there are" or "there is" end
+                opening = tree.possessor and "do we have"
+                    or tense == "present" and indefinite and located and "is" or be .. " there"
+            else opening = "there " .. (certainty and certainty .. " " or "") .. be end
             if tree.why then opening = "why " .. opening end
             parts = {opening}
+            if tree.question and certainty then append(parts, certainty == "sure" and "really" or certainty) end
+            if tree.negative then append(parts, "not") end
+            if tense == "future" then append(parts, "be") end
             if tree.persistence then append(parts, tree.persistence.en[1]) end
             if tree.quantityFocus then append(parts, tree.quantityFocus.en[1]) end
+            if any and subject then append(parts, "any") end
             append(parts, subject)
             if tree.nearby then append(parts, "around") end
             append(parts, locationMarker)
@@ -1984,7 +2189,14 @@ renderTree = function(tree, english, controller)
             if tree.question and not tree.why then append(parts, "чи") end
             if tree.persistence and tree.nearby and not tree.possessor then append(parts, "тут") end
             if tree.persistence then append(parts, tree.persistence.uk[1]) end
-            append(parts, "є")
+            if tree.certainty then append(parts, tree.certainty.uk[1]) end
+            local exists = "є"
+            if tense == "future" then exists = plural and "будуть" or "буде"
+            elseif tense == "past" then exists = pastCopula[plural and "plural" or gender] or "було" end
+            if tree.negative then
+                exists = tense == "past" and "не було" or tense == "future" and "не буде" or "немає"
+            end
+            append(parts, exists)
             if tree.possessor then append(parts, "в нас") end
             if tree.nearby and (not tree.persistence or tree.possessor) then append(parts, "тут") end
             if tree.quantityFocus then append(parts, tree.quantityFocus.uk[1]) end
@@ -2076,6 +2288,9 @@ renderTree = function(tree, english, controller)
     local subject = subjectText(tree, english)
     if subject == nil then return nil end
     local reference = tree.subject and tree.subject.pronoun
+    if english and tree.evaluationContent then subject = "it" end
+    if not english and tree.predicativeRelative and reference
+        and (reference.deixis or reference.id == "it") then subject = "це" end
     local identity = tree.copula and tree.predicate and reference and reference.deixis
     local pluralIdentity = english and identity and targetNumber(tree.predicate, true) == "plural"
         and not (tree.predicate.quantity and P.hasTrait(tree.predicate, "durationUnit"))
@@ -2121,6 +2336,7 @@ renderTree = function(tree, english, controller)
             and (difficulty and evaluation.rule.negativeUk or quantified and status.negativeUk)
         local demonstrative = pronoun and pronoun.deixis
         local adjectiveFrame = tree.adjective and tree.adjective.entry.lexeme.frame
+        local possessedState = not english and adjectiveFrame and adjectiveFrame.ukPossessedState
         if not english and tree.adjectiveContent and tree.tense == "present" and not tree.negative then
             local verb = L.inflectLemma(adjectiveFrame.ukContentLemma, "verb",
                 {person=person, number=number, tense="present", mood="indicative"})
@@ -2137,7 +2353,30 @@ renderTree = function(tree, english, controller)
             experiencer = (degree == "more" and "більш " or degree == "so" and "так " or degree == "too" and "надто " or "дуже ")
                 .. experiencer
         end
-        if tree.omittedCopula then
+        if possessedState then
+            local possessor = ukrainianPrepositionalPronoun(tree.subject, "genitive")
+                or G.noun(tree.subject, false, "genitive")
+            local intensity = tree.adjective.intensity
+            local quantity = intensity == "too" and "забагато" or intensity == "more" and "більше"
+                or intensity == "so" and "стільки" or intensity and "багато"
+            local case = (tree.negative or quantity) and "genitive" or "nominative"
+            local property = L.inflectLemma(possessedState.lemma, "noun", {case=case, number=possessedState.number})
+            if not (possessor and property) then return nil end
+            append(parts, question)
+            append(parts, "у " .. possessor)
+            if tree.predicateModifier then append(parts, tree.predicateModifier.uk[1]) end
+            if tree.negative and not quantity then
+                append(parts, tree.tense == "past" and "не було" or tree.tense == "future" and "не буде" or "немає")
+            else
+                local plural = not quantity and possessedState.number == "plural"
+                if tree.tense == "past" then
+                    append(parts, plural and pastCopula.plural or pastCopula[possessedState.gender] or "було")
+                elseif tree.tense == "future" then append(parts, plural and "будуть" or "буде") end
+                if tree.negative then quantity = (quantity == "багато" and "не" or "не ") .. quantity end
+            end
+            append(parts, quantity)
+            append(parts, property)
+        elseif tree.omittedCopula then
             if tree.negative then append(parts, english and "not" or "не") end
         elseif english then
             local be
@@ -2165,6 +2404,12 @@ renderTree = function(tree, english, controller)
             if tree.allSubject and (not tree.negative or tree.expletiveNegative or tree.allUnderNegation) then
                 append(parts, "all")
             end
+        elseif tree.locationEllipsis then
+            local absent = G.noun(tree.subject, false, "genitive")
+            if not absent then return nil end
+            append(parts, absent)
+            append(parts, tree.locationEllipsis)
+            append(parts, tree.tense == "past" and "не було" or tree.tense == "future" and "не буде" or "немає")
         elseif tree.exhausted then
             local pronoun = tree.subject.pronoun
             local owner = pronoun and pronoun.ukGenitiveAfterPreposition or G.noun(tree.subject, false, "genitive")
@@ -2208,12 +2453,15 @@ renderTree = function(tree, english, controller)
             elseif tree.modal == "might" and tree.predicate and tree.subject.pronoun and tree.subject.pronoun.id == "it" then
                 subject = "це"
             end
+            local nominalAll = tree.allSubject and tree.adjective and not (pronoun or experiencer)
+            if nominalAll then append(parts, tree.allUnderNegation and "не всі" or "усі") end
             append(parts, subject)
             if initialPhase then append(parts, tree.predicateAdverb.uk[1]) end
-            if tree.allSubject and not tree.allUnderNegation then append(parts, "всі") end
+            if tree.allSubject and not (nominalAll or tree.allUnderNegation) then append(parts, "всі") end
             if tree.modal == "might" and tree.predicate and not tree.subject.pronoun then append(parts, "—") end
-            if (tree.negative and not fusedNegative) or tree.expletiveNegative then append(parts, "не") end
-            if tree.allUnderNegation then append(parts, "всі") end
+            if (tree.negative and not (fusedNegative or nominalAll and tree.allUnderNegation))
+                or tree.expletiveNegative then append(parts, "не") end
+            if tree.allUnderNegation and not nominalAll then append(parts, "всі") end
             if tree.tense == "future" then
                 append(parts, (experiencer or difficulty or quantified) and "буде" or future[key])
             elseif tree.tense == "past" then
@@ -2226,9 +2474,11 @@ renderTree = function(tree, english, controller)
                         or be .. (be == "був" and " би" or " б")
                 end
                 append(parts, be)
+            elseif tree.wh and tree.wh.indirectPredicate then
+                append(parts, "є")
             end
         end
-        if tree.predicateModifier then
+        if tree.predicateModifier and not possessedState then
             local modifier = tree.predicateModifier
             append(parts, not english and tree.tense == "past" and modifier.pastUk
                 or (english and modifier.en or modifier.uk)[1])
@@ -2237,6 +2487,13 @@ renderTree = function(tree, english, controller)
             local adverb = tree.predicateAdverb
             append(parts, not english and tree.prepositions and adverb.followLocation
                 or quantified and fusedNegative or english and adverb.predicateEn or (english and adverb.en or adverb.uk)[1])
+            if tree.evaluationContent then
+                local content = render(tree.evaluationContent, english)
+                if not content then return nil end
+                if not english then parts[#parts] = withComma(parts[#parts]) end
+                append(parts, english and "that" or "що")
+                append(parts, content)
+            end
             if adverb.impersonalTiming and tree.infinitive then
                 local action = render(tree.infinitive, english, owner)
                 if not action then return nil end
@@ -2244,7 +2501,11 @@ renderTree = function(tree, english, controller)
                 append(parts, action)
             end
         end
-        if tree.exhausted then
+        if tree.comparativeOffset then
+            local offset = G.comparativeOffset(tree.comparativeOffset, english)
+            if not offset then return nil end
+            append(parts, offset)
+        elseif tree.exhausted then
             local case = (english or tree.negative) and "nominative" or "genitive"
             local supply = G.noun(tree.exhausted, english, case, english)
             if not supply then return nil end
@@ -2288,6 +2549,18 @@ renderTree = function(tree, english, controller)
             end
             if not value then return nil end
             append(parts, value)
+        elseif tree.predicativeRelative then
+            local relative = tree.predicativeRelative
+            local content = render(relative.clause, english)
+            if not content then return nil end
+            if english then
+                if relative.total then append(parts, "all") end
+            else
+                if tree.tense == "present" and not tree.negative
+                    and not (reference and (reference.deixis or reference.id == "it")) then append(parts, "—") end
+                append(parts, relative.total and "все," or "те,")
+            end
+            append(parts, content)
         elseif tree.nominalContent then
             local content = render(tree.nominalContent.clause, english)
             if not content then return nil end
@@ -2337,9 +2610,28 @@ renderTree = function(tree, english, controller)
             end
             append(parts, measuredPredicate)
         elseif tree.adjective then
-            local value = experiencer or agreedAdjective(tree.adjective, english, "nominative", tree.subject, number, gender)
-            if not value then return nil end
-            append(parts, value)
+            if not possessedState then
+                local value = experiencer or agreedAdjective(tree.adjective, english, "nominative", tree.subject, number, gender)
+                if not value then return nil end
+                append(parts, value)
+            end
+            local separate = possessedState
+            for _, member in ipairs(tree.adjectiveSeries or {}) do
+                local frame = member.entry.lexeme.frame
+                separate = separate or not english and frame and frame.ukPossessedState
+                local following
+                if separate then
+                    following = render({kind="clause", copula=true, subject=tree.subject, tense=tree.tense,
+                        adjective=member, predicateModifier=member.qualifier, negative=member.negative}, false)
+                    parts[#parts] = withComma(parts[#parts])
+                else
+                    following = agreedAdjective(member, english, "nominative", tree.subject, number, gender)
+                end
+                if not following then return nil end
+                append(parts, (english and member.join.en or member.join.uk)[1])
+                if member.negative and not separate then append(parts, english and "not" or "не") end
+                append(parts, following)
+            end
             if tree.comparison then
                 local standard = render(tree.comparison, english)
                 if not standard then return nil end
@@ -2554,11 +2846,12 @@ renderTree = function(tree, english, controller)
         local language = english and "en" or "uk"
         append(parts, tree.adverbComplement[language][1])
     end
-    if not english and tree.prepositions and tree.adverbs then
+    local preposedAdverb = english and "enBeforePrepositions" or "ukBeforePrepositions"
+    if tree.prepositions and tree.adverbs then
         for _, adverb in ipairs(tree.adverbs) do
-            if adverb.ukBeforePrepositions then
+            if adverb[preposedAdverb] then
                 if adverb.afterComma then parts[#parts] = withComma(parts[#parts]) end
-                append(parts, adverb.uk[1])
+                append(parts, (english and adverb.en or adverb.uk)[1])
             end
         end
     end
@@ -2607,13 +2900,19 @@ renderTree = function(tree, english, controller)
     end
     local measureMarker = english and verbFrame and verbFrame.measurePreposition or not english and "на"
     if tree.measure and measureMarker then
-        local amount = quantityText(tree.measure, english)
+        local measure = tree.measure
+        local amount = measure.nominalAmount and G.noun(measure.nominalAmount, english, "accusative")
+        if not measure.nominalAmount then amount = quantityText(measure, english) end
+        if amount and measure.amountScale then
+            local scale = G.noun(measure.amountScale, english, "genitive")
+            amount = scale and amount .. (english and " of " or " ") .. scale
+        end
         if not amount then return nil end
         append(parts, measureMarker .. " " .. amount)
         if not english and verbFrame then append(parts, verbFrame.ukMeasureSuffix) end
     end
     for _, adverb in ipairs(tree.adverbs or {}) do
-        if english or not (tree.prepositions and adverb.ukBeforePrepositions) then
+        if not (tree.prepositions and adverb[preposedAdverb]) then
             if adverb.afterComma then parts[#parts] = withComma(parts[#parts]) end
             append(parts, (english and adverb.en or adverb.uk)[1])
         end
@@ -2691,7 +2990,7 @@ renderTree = function(tree, english, controller)
         append(parts, description)
     end
     if tree.addressee then
-        local address = G.noun(tree.addressee, english, english and "nominative" or "vocative")
+        local address = G.address(tree.addressee, english)
         if not address then return nil end
         parts[#parts] = withComma(parts[#parts])
         append(parts, address)
@@ -2733,8 +3032,14 @@ function G.render(parse, direction, punctuation)
         return (prefix and prefix .. " " or "") .. table.concat(parts) .. (punctuation or "")
     end
     local parts, last = {}, nil
+    if parse.exclamation then append(parts, english and "what" or "оце так") end
+    if parse.leadingAddress then
+        local address = G.address(parse.leadingAddress, english)
+        if not address then return nil end
+        append(parts, withComma(address))
+    end
     local comment = parse.speakerComment and (english and parse.speakerComment.en or parse.speakerComment.uk)[1]
-    local commentFirst = parse.speakerCommentFirst and not english
+    local commentFirst = parse.speakerCommentFirst and (not english or parse.speakerComment.preserveLeading)
     if comment and commentFirst then append(parts, withComma(comment)) end
     if parse.openingPastOffset then
         local value = pastOffsetText(parse.openingPastOffset, english)
@@ -2745,7 +3050,7 @@ function G.render(parse, direction, punctuation)
         if not addPrepositions(parts, {prepositions=parse.openingPrepositions}, english) then return nil end
         if english or parse.openingPrepositionComma then parts[#parts] = withComma(parts[#parts]) end
     end
-    if english and punctuation == "?" then
+    if english and punctuation == "?" and not parse.hypothetical then
         local question = parse.trees[#parse.trees]
         for i = #parse.trees, 1, -1 do
             local tree, join = parse.trees[i], parse.joins[i - 1]
@@ -2761,9 +3066,23 @@ function G.render(parse, direction, punctuation)
     if parse.politeness then
         append(parts, english and parse.politeness.en[1] or withComma(parse.politeness.uk[1]))
     end
+    if parse.hypothetical then
+        local opening = (english and parse.hypothetical.en or parse.hypothetical.uk)[1]
+        if parse.hypotheticalContrast then append(parts, english and "But" or "А") end
+        append(parts, opening)
+    end
     if parse.discoursePrefix then append(parts, (english and parse.discoursePrefix.en or parse.discoursePrefix.uk)[1]) end
     if parse.prefix then append(parts, (english and parse.prefix.en or parse.prefix.uk)[1]) end
     for i, tree in ipairs(parse.trees) do
+        local join = parse.joins[i - 1]
+        local purpose = join and join.purposeObligation
+        local hypotheticalFuture = english and parse.hypothetical and tree.tense == "future"
+        if purpose or hypotheticalFuture then
+            local subordinate = {}
+            for key, value in pairs(tree) do subordinate[key] = value end
+            subordinate.tense = purpose and (not english or parse.trees[i - 1].tense == "past") and "past" or "present"
+            tree = subordinate
+        end
         local value = render(tree, english)
         if not value or value == "" then return nil end
         if tree.sentenceAdverb then
@@ -2773,25 +3092,30 @@ function G.render(parse, direction, punctuation)
             value = (comma and withComma(word) or word) .. " " .. value
         end
         if tree.leadingLabel then value = tree.leadingLabel .. " " .. ns.Engine.Normalize.upperStart(value) end
-        local join = parse.joins[i - 1]
         if join and join.sentence then
             parts[#parts] = parts[#parts] .. (join.punctuation or ".")
             value = ns.Engine.Normalize.upperStart(value)
         elseif join then
             local id = join.rule and join.rule.id
             local trailingSubordinate = id == "if" or id == "when" or id == "while"
+            local previous = parse.trees[i - 1]
+            local independent = not (english or parse.prefix or parse.hypothetical or previous.sentenceAdverb
+                or previous.question or tree.question)
+                and (id == "and" or id == "or") and previous.kind == "clause" and tree.kind == "clause"
+                and previous.subject and tree.subject and not (previous.implicitSubject or tree.implicitSubject or tree.inherited)
             local comma = join.comma and not (english and trailingSubordinate)
                 or (join.rule and join.rule.temporal and not join.rule.nominalHead and not english)
                 or id == "but" or id == "because" or not english and trailingSubordinate or id == "whenever"
                 or id == "unless" or id == "so" or id == "exception"
                 or not english and (id == "and" or id == "or") and tree.kind == "benefit"
                 or not english and (id == "and" or id == "or") and tree.inherited and tree.passiveAgent
-                or not english and (id == "and" or id == "or") and parse.trees[i - 1].perception
-                    and tree.subject and not tree.inherited
+                or independent
+                or not english and (id == "and" or id == "or") and previous.perception and tree.subject and not tree.inherited
             if join.dash then append(parts, "—")
-            elseif comma then parts[#parts] = withComma(parts[#parts]) end
-            if join.rule then
-                local previous = parse.trees[i - 1]
+            elseif purpose and not english or comma and not purpose then parts[#parts] = withComma(parts[#parts]) end
+            if purpose then append(parts, english and "so that" or "щоб")
+            elseif join.locativeContrast then append(parts, english and "but" or "а")
+            elseif join.rule then
                 local status = not english and previous.predicateAdverb and previous.predicateAdverb.statePredicate
                 append(parts, status and join.rule.ukStatus or (english and join.rule.en or join.rule.uk)[1])
             end
@@ -2808,5 +3132,6 @@ function G.render(parse, direction, punctuation)
         append(parts, comment)
     end
     return (prefix and prefix .. " " or "") .. ns.Engine.Normalize.upperStart(table.concat(parts, " "))
-        .. (last.question and "?" or punctuation or ".")
+        .. ((last.question or parse.hypothetical) and "?" or punctuation
+            or ((parse.exclamation or last.kind == "levelAnnouncement") and "!" or "."))
 end

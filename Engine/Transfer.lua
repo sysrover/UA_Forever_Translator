@@ -55,6 +55,16 @@ local function enchantmentList(slots, features, direction)
                 if uk then value = "зачарування на " .. label
                 elseif term.features.number == "plural" then value = "enchants for " .. label
                 else value = ns.Engine.Normalize.word(label) .. " enchants" end
+                if item.stats then
+                    local stats = {}
+                    for _, stat in ipairs(item.stats) do
+                        local name = M.generate(slots[stat].term, direction)
+                        if not name then return nil end
+                        stats[#stats + 1] = ns.Engine.Normalize.word(name)
+                    end
+                    local attributes = table.concat(stats, "/")
+                    value = uk and value .. " (" .. attributes .. ")" or attributes .. " " .. value
+                end
             end
         else
             local amount = item.noun
@@ -142,9 +152,18 @@ function T.render(tree, direction)
                 if not class then return nil end
                 value = value .. (uk and ". Бажано " .. class or ", preferably " .. class:lower())
             end
+            if s.excluded then
+                local form = s.excluded.plural and "{excluded:genitivePlural}" or "{excluded:genitiveSingular}"
+                local excluded = render(uk and form or "{excluded}")
+                if not excluded then return nil end
+                value = value .. (uk and ". Без " or ", no ") .. excluded
+            end
             if f.run == "full" then value = value .. (uk and ". Повне проходження" or ", full run")
             elseif f.run == "fresh" then value = value .. (uk and ". Проходження з початку" or ", fresh run")
             elseif f.run == "quest" then value = value .. (uk and ". Проходження із завданнями" or ", quest run") end
+            if f.pace then value = value .. (uk and ". Швидке проходження" or ", fast run") end
+            if f.clear then value = value .. (uk and ". Повна зачистка" or ", full clear") end
+            if f.ready then value = value .. (uk and ". Готові вирушати" or ". Ready to go") end
             if f.urgent then value = value .. (uk and ". Терміново" or ", quick") end
             if f.summon then value = value .. (uk and ". Можемо прикликати" or ", can summon") end
             if f.go then value = value .. (uk and ". І вирушаємо" or " and go") end
@@ -157,22 +176,27 @@ function T.render(tree, direction)
         if f.classJoins then
             local classes = {}
             for index = 1, #f.classJoins + 1 do
+                local slot = s["class" .. index]
                 local class = G.render(uk and "{class:genitiveSingular}" or "{class}",
-                    {class=s["class" .. index]}, direction)
+                    {class=slot}, direction)
                 if not class then return nil end
                 local join = f.classJoins[index - 1]
                 if join then
                     classes[#classes + 1] = recruitmentJoin(join, uk)
                 end
-                classes[#classes + 1] = uk and class or class:lower()
+                classes[#classes + 1] = (uk or slot.term.category == "roles") and class or class:lower()
             end
             local amount = total or (s.count and s.count.raw)
             if uk then output = amount and totalPlayers(amount) .. ": " or "Шукаємо "
             else output = amount and "LF" .. amount .. "M " or "LFM " end
-            output = output .. table.concat(classes)
-            if s.role then
-                local role = render(uk and "{role:genitiveSingular}" or "{role}")
-                if not role then return nil end
+            local role = s.role and render(uk and "{role:genitiveSingular}" or "{role}")
+            if s.role and not role then return nil end
+            if f.refinements then
+                output = output .. role .. ": " .. table.concat(classes)
+            else
+                output = output .. table.concat(classes)
+            end
+            if role and not f.refinements then
                 output = output .. (uk and " на роль " or " ") .. role
             end
             output = appendLevel(output)
@@ -251,10 +275,17 @@ function T.render(tree, direction)
         end
         return output .. "."
     elseif tree.kind == "groupSearch" then
-        if not uk and s.role and not s.place and not f.quests and not f.roleOffer then return render("{role} LFG") end
+        if not uk and s.role and not s.place and not f.quests and not f.objective and not f.roleOffer then
+            return render("{role} LFG")
+        end
         local output = uk and "Шукаю групу" or "LFG"
         if s.place then output = output .. render(uk and ". Місце: {place}" or " {place}") end
-        if f.quests then output = output .. (uk and " на завдання " or " for ") .. table.concat(f.quests, ", ") end
+        if f.quests or f.objective then
+            local objective = f.quests and ((uk and "завдання " or "") .. table.concat(f.quests, ", "))
+                or ns.Engine.ClauseGeneration.noun(f.objective, not uk, "accusative")
+            if not objective then return nil end
+            output = output .. (uk and (s.place and ". На " or " на ") or " for ") .. objective
+        end
         if s.role then output = output .. render(uk and ". Роль: {role}" or " as {role}") end
         if f.roleOffer then
             local offer = f.roleOffer
