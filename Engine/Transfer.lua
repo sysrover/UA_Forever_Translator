@@ -131,7 +131,7 @@ function T.render(tree, direction)
         end
         local function appendLevel(value)
             if not s.level then return value end
-            return value .. (uk and ". Рівень: " or " L") .. s.level.raw
+            return value .. (uk and ". Рівень: " or " L") .. s.level.raw .. (s.level.minimum and "+" or "")
         end
         local function appendPlace(value, afterSentence)
             if not s.place then return value end
@@ -307,8 +307,7 @@ function T.render(tree, direction)
         end
         return output .. (uk and "." or "")
     elseif tree.kind == "search" then
-        local object = ns.Engine.ClauseGeneration.noun(f.object, not uk, "accusative", not uk)
-        if object then return (uk and "Шукаю " or "Looking for ") .. object .. "." end
+        return ns.Engine.ClauseGeneration.search(f.object, f.purpose, not uk, f.group, f.emphatic)
     elseif tree.kind == "freeOffer" then
         local value = f.object and ns.Engine.ClauseGeneration.noun(f.object, not uk, "nominative")
             or s.item and s.item.raw
@@ -330,6 +329,16 @@ function T.render(tree, direction)
             value = value .. (f.each == "bottle" and (uk and " за пляшку" or " a bottle") or (uk and " за штуку" or " each"))
         end
         return value
+    elseif tree.kind == "roleInquiry" then
+        local role = render("{role}")
+        local place = f.name or (uk and render("{place:accusative}")) or render("{place}")
+        if not role or not place then return nil end
+        local normalize = ns.Engine.Normalize
+        if not s.role.term.en:match("^[A-Z]+$") then role = normalize.word(role) end
+        local lead = f.explicit and (uk and "Чи є " or "Any ") or ""
+        local marker = uk and (f.unresolved and " для " or " на ") or " for "
+        local here = f.here and (uk and " тут" or " here") or ""
+        return normalize.upperStart(lead .. role .. marker .. place .. here)
     elseif tree.kind == "availability" then
         local profession = ns.Engine.ClauseGeneration.noun(f.occupation, not uk, "nominative")
         if not profession then return end

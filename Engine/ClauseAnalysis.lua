@@ -54,19 +54,30 @@ local have = {have=true, has=true, had=true}
 local negativePerfect = {["haven't"]="have", ["hasn't"]="has", ["hadn't"]="had"}
 local contracted = {
     idk={"i","do","know",true},
-    ["i'm"]={"i","am"}, ["you're"]={"you","are"}, youre={"you","are"}, ["we're"]={"we","are"}, ["they're"]={"they","are"},
+    ["i'm"]={"i","am"}, ["you're"]={"you","are"}, ["we're"]={"we","are"}, ["they're"]={"they","are"},
     ["he's"]={"he","is"}, ["she's"]={"she","is"}, ["it's"]={"it","is"}, ["that's"]={"that","is"},
     ["i've"]={"i","have"}, ["you've"]={"you","have"}, ["we've"]={"we","have"}, ["they've"]={"they","have"},
     ["i'll"]={"i","will"}, ["you'll"]={"you","will"}, ["he'll"]={"he","will"}, ["she'll"]={"she","will"},
     ["it'll"]={"it","will"}, ["we'll"]={"we","will"}, ["they'll"]={"they","will"},
 }
-contracted.im = contracted["i'm"]
 contracted.il = contracted["i'll"]
-contracted.thats = contracted["that's"]
 local indefiniteContractions = {
     ["someone's"]="someone", ["somebody's"]="someone", ["anyone's"]="someone", ["anybody's"]="someone",
     ["everyone's"]="everyone", ["everybody's"]="everyone",
 }
+do
+    -- These spellings also have an ordinary English reading. The contextual
+    -- copula check in simple handles "its" separately.
+    local independentWords = {were=true, well=true, ill=true, hell=true, shell=true, its=true}
+    for _, expansions in ipairs({contracted, indefiniteContractions}) do
+        local aliases = {}
+        for spelling, expansion in pairs(expansions) do
+            local plain, removed = spelling:gsub("'", "")
+            if removed > 0 and not independentWords[plain] then aliases[plain] = expansion end
+        end
+        for spelling, expansion in pairs(aliases) do expansions[spelling] = expansion end
+    end
+end
 local auxiliary = {
     can={modal="can"}, cannot={modal="can", negative=true}, ["can't"]={modal="can", negative=true},
     could={modal="could"}, ["couldn't"]={modal="could", negative=true},
@@ -910,9 +921,18 @@ end
 local englishQuestions = {
     who={kind="person"}, whom={kind="person", role="object"}, ["who's"]={kind="person", role="subject", copula="is"},
     what={kind="thing"}, ["what's"]={kind="thing", copula="is"}, how={kind="manner", role="manner"},
-    ["how'd"]={kind="manner", role="manner", auxiliary="did"},
+    ["how's"]={kind="manner", role="manner", copula="is"}, ["how'd"]={kind="manner", role="manner", auxiliary="did"},
 }
 englishQuestions.whats = englishQuestions["what's"]
+do
+    local spellings = {}
+    for _, forms in ipairs({contracted, indefiniteContractions, auxiliary, negativeCopula, negativePerfect, englishQuestions}) do
+        for key in pairs(forms) do
+            if key:match("^[a-z]+'[a-z][a-z]?$") then spellings[key] = true end
+        end
+    end
+    A.englishContractions = spellings
+end
 local ukrainianQuestions = {
     ["хто"]={kind="person", role="subject"}, ["кого"]={kind="person", role="object", case="accusative"},
     ["кому"]={kind="person", role="object", case="dative"}, ["ким"]={kind="person", role="object", case="instrumental"},
@@ -6718,6 +6738,57 @@ function A.relative(document, noun, first, limit)
     return {clause=selected, case=role, nonrestrictive=english and comma, actions=actions, joins=joins,
         preposition=governedPreposition},
         closeRelative(document, ending, limit)
+end
+
+do
+    local function hasUnresolvedSearchTarget(document, action)
+        local object = action.object
+        if object and object.headIndex and object.number == "singular"
+            and not (object.term or object.raw or object.article or object.possessor or object.demonstrative or object.quantity) then
+            local spelling = P.raw(document, object.headIndex, object.headIndex)
+            if spelling:match("^[A-Z][a-z]") then return true end
+        end
+        if action.infinitive and hasUnresolvedSearchTarget(document, action.infinitive) then return true end
+        for _, step in ipairs(action.series or {}) do
+            if hasUnresolvedSearchTarget(document, step.action) then return true end
+        end
+        return false
+    end
+
+    function A.searchQualification(document, first, limit, object, after, abbreviated)
+        if not personNoun(object) then
+            -- A role can also be read as an adjective in the longer noun phrase.
+            if object and not object.adjectives then return nil end
+            object, after = P.noun(document, first, limit, "accusative", false, nil, true, nil, personNoun)
+        end
+        if not personNoun(object) or after >= limit then return nil end
+        local key = P.key(document, after, limit)
+        local marker = key == "," and P.key(document, after + 1, limit) or key
+        if marker and P.relativeMarkers["en-uk"][marker] then
+            -- Full search clauses already resolve relatives and the speaker together.
+            if not abbreviated then return nil end
+            local budget, depth = document.relativeBudget, document.relativeDepth
+            document.relativeBudget, document.relativeDepth = budget or 16, depth or 0
+            local relative, finish = A.relative(document, object, after, limit)
+            document.relativeBudget, document.relativeDepth = budget, depth
+            if relative and relative.case == "nominative" and finish == limit + 1
+                and not hasUnresolvedSearchTarget(document, relative.clause) then
+                object.relative = relative
+                return object, finish
+            end
+            return nil
+        end
+
+        local marked = purposeStart(document, after, limit, true)
+        local action, finish = purposeAt(document, after, limit, 0, true, not marked)
+        if not action or finish ~= limit + 1 or hasUnresolvedSearchTarget(document, action) then return nil end
+        -- With no linker, require a parsed complement to distinguish the action
+        -- from a trailing label or a word shared by a noun and a verb.
+        if not marked and not (action.object or action.controlled or action.infinitive or action.kind == "activity") then
+            return nil
+        end
+        return object, finish, action
+    end
 end
 
 function A.finiteCopulaTail(document, marker, limit, subject, expandedForm)

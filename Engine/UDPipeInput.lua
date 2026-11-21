@@ -269,7 +269,7 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
                 quantifiedHeads[noun.headIndex] = "NOUN"
             end
         end
-        local raw = token.protected and "item" or document.text:sub(token.first, token.last)
+        local raw = token.protected and "item" or token.modelForm or document.text:sub(token.first, token.last)
         local pos = fixedTag(token, index, marker, markerEnd, markerTags)
         local candidates = pos and {[tagIds[pos]]={pos=pos, lemma=token.key}}
             or englishCandidates(document, index, first, last, raw, weights)
@@ -380,7 +380,7 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
             local token = document.tokens[index]
             local nextIndex = (alternatives and alternatives[index] or index) + 1
             local following = nextIndex == index + 1 and nextIndex <= last and document.tokens[nextIndex]
-            local raw = document.text:sub(token.first,token.last)
+            local raw = token.modelForm or document.text:sub(token.first, token.last)
             local pos = fixedTag(token, index, marker, markerEnd, markerTags)
             local lemma, feats, participle
             if token.protected then raw = lang == "en" and "item" or "предмет" end

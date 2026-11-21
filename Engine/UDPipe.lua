@@ -250,19 +250,33 @@ function U.prepare(model)
     matrix.prepared = true
 end
 
-local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidden, checkpoint, allowed, allowedCount)
+local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidden, checkpoint, allowed, allowedCount, parts)
     local width = model.hiddenSize
     local bias = #model.selectors * model.dimension * width
     for index = 1, width do hidden[index] = matrix.hidden[bias + index] end
+    local at = 2 -- Skip the legal-move shape when scoring features already collected for the decision key.
     for index, slot in ipairs(model.selectors) do
-        local node = nodeAt(slot, stack, buffer, nodes)
-        if node then
+        local node, present
+        if parts then
+            present = parts[at] ~= "-"
+            if not present then at = at + 1 end
+        else
+            node = nodeAt(slot, stack, buffer, nodes)
+            present = node ~= nil
+        end
+        if present then
             local projected = memo[index]
             for group, feature in ipairs(model.features) do
-                local id = node.embeddings[group]
-                -- Only dependency labels change as the parser applies arcs.
-                if feature.kind == "deprel" then id = embeddingID(feature, node.relation) end
-                if id then
+                local id
+                if parts then
+                    id = parts[at]
+                    at = at + 1
+                else
+                    id = node.embeddings[group]
+                    -- Only dependency labels change as the parser applies arcs.
+                    if feature.kind == "deprel" then id = embeddingID(feature, node.relation) end
+                end
+                if id and id ~= "_" then
                     local cache = projected[group]
                     local vector = cache[id]
                     if not vector then
@@ -371,7 +385,8 @@ local function greedyKey(model, state, shape, parts)
 end
 
 local function searchGreedy(model, matrix, memo, state, checkpoint, decisions)
-    local scores, hidden, parts, transitionLists = {}, {}, {}, {}
+    local scores, hidden, transitionLists = {}, {}, {}
+    local parts = decisions and {}
     while not finish(state) do
         local stack, buffer = state.stack, state.buffer
         local size = #stack
@@ -394,7 +409,7 @@ local function searchGreedy(model, matrix, memo, state, checkpoint, decisions)
             if cached then
                 best = cached
             else
-                classify(model, matrix, stack, buffer, state.nodes, memo, scores, hidden, checkpoint, allowed, count)
+                classify(model, matrix, stack, buffer, state.nodes, memo, scores, hidden, checkpoint, allowed, count, parts)
                 for index = 2, count do
                     local transition = allowed[index]
                     if scores[transition] > scores[best] then best = transition end

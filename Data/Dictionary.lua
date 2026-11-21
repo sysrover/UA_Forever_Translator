@@ -16109,6 +16109,11 @@ ns.Data = {
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Згуба не однієї панянки"
             },
+            ["bb"] = {
+                ["id"] = "bye_bye",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Бувай-бувай"
+            },
             ["be right back"] = {
                 ["id"] = "brb",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
@@ -16133,6 +16138,16 @@ ns.Data = {
                 ["id"] = "bye",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "До побачення"
+            },
+            ["bye bye"] = {
+                ["id"] = "bye_bye",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Бувай-бувай"
+            },
+            ["bye-bye"] = {
+                ["id"] = "bye_bye",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Бувай-бувай"
             },
             ["congrats"] = {
                 ["id"] = "congratulations",
@@ -16950,6 +16965,11 @@ ns.Data = {
                 ["id"] = "bye",
                 ["sourceRefs"] = { "project-authored:chat-0.1" },
                 ["text"] = "Goodbye"
+            },
+            ["бувай-бувай"] = {
+                ["id"] = "bye_bye",
+                ["sourceRefs"] = { "project-authored:chat-0.1" },
+                ["text"] = "Bye bye"
             },
             ["будеш тут втикати"] = {
                 ["id"] = "stand_around_question",
@@ -60558,7 +60578,7 @@ ns.Data = {
         ["concepts"] = 327,
         ["derivedNouns"] = 28,
         ["linguisticSchema"] = 1,
-        ["phraseFamilies"] = 86,
+        ["phraseFamilies"] = 87,
         ["source"] = {
             ["approvalMeaning"] = "Editorially reviewed for this addon; not a claim of individual user approval.",
             ["catalogBuild"] = "1.60.1.70938",
@@ -60574,7 +60594,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "3f55a1a4aaf286e96bf4466842271db6a6bf3a7b62da1f1213013418fbb128fe"
+        ["version"] = "a919739a6803bf9b0c2841b73b6c6a35d44060b0a16488dd4821627b60fc6925"
     },
     ["rules"] = {
         ["en-uk"] = {

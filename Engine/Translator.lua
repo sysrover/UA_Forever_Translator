@@ -330,9 +330,12 @@ local function compute(text, direction, tokens, normalized, checkpoint)
         end
         table.sort(matched)
         table.sort(refs)
-        return {text = output, mode = "template", intent = clauses and "composition" or rule.intent,
-            matchedTerms = matched, unknownSpans = {}, sourceRefs = refs,
-            coverage = {complete=true, pipeline=clauses and "composition" or general and "grammar"
+        local unresolved = tree and tree.features.unresolved
+        local unknown = unresolved and {{first=tokens[unresolved.first].first, last=tokens[unresolved.last].last,
+            protected=false, reason=unresolved.reason}} or {}
+        return {text = output, mode = unresolved and "partial" or "template", intent = clauses and "composition" or rule.intent,
+            matchedTerms = matched, unknownSpans = unknown, sourceRefs = refs,
+            coverage = {complete=not unresolved, pipeline=clauses and "composition" or general and "grammar"
                 or tree and "structural" or "legacy", dependency=rule and rule.dependency == true or nil}}
     end
     local usedDependency
@@ -459,7 +462,8 @@ local function translateMixed(text, direction, tokens, ranges, checkpoint)
 end
 
 local function translateText(text, direction, checkpoint)
-    local tokens = ns.Engine.Tokenizer.scan(text)
+    local contractions = direction == "en-uk" and ns.Engine.ClauseAnalysis.englishContractions
+    local tokens = ns.Engine.Tokenizer.scan(text, contractions)
     if not tokens or #tokens == 0 then return unchanged(text, "token-limit-or-empty") end
     local foreign = ns.Engine.SourceLanguage.foreignRanges(tokens)
     if foreign then

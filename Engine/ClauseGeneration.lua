@@ -453,7 +453,8 @@ local function noun(node, english, case, article, compoundModifier, owner, commo
         return nounWithAction(node, table.concat(values, " "), english, owner)
     end
     if node.raw then
-        local value = node.amount and amountText(node.amount, english) .. " " .. node.raw or node.raw
+        local quantity = node.amount and amountText(node.amount, english) or node.quantity
+        local value = quantity and quantity .. " " .. node.raw or node.raw
         return nounWithAction(node, value, english, owner)
     end
     if node.ownPeople then
@@ -1445,6 +1446,19 @@ local function addPurpose(parts, purpose, english, owner)
     append(parts, marker)
     append(parts, value)
     return addInfinitiveSeries(parts, purpose, english, owner)
+end
+
+function G.search(object, purpose, english, group, emphatic)
+    local value = G.noun(object, english, "accusative", english)
+    if not value then return nil end
+    local opening = english and "Looking for " or group and "Шукаємо " or "Шукаю "
+    local ending = emphatic and "!" or "."
+    if not purpose then
+        if object.relative then value = (value:gsub(",+$", "")) end
+        return opening .. value .. ending
+    end
+    local parts = {opening .. value}
+    if addPurpose(parts, purpose, english) then return table.concat(parts, " ") .. ending end
 end
 
 local function subjectText(tree, english)
