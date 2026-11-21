@@ -526,7 +526,8 @@ function P.pronoun(document, first, limit, case, personOnly, headlessQuantity, m
         local valid = case == match.case or (case ~= "nominative" and match.case ~= "nominative"
             and match.case ~= "possessive" and document.direction == "en-uk")
         local candidate = ns.Linguistics.grammar.pronouns[match.id]
-        if valid and candidate.headlessQuantity == headlessQuantity
+        if valid and (not candidate.requiresExplicitReferent or matchingReferent == candidate.id)
+            and candidate.headlessQuantity == headlessQuantity
             and (not personOnly or candidate.id ~= "it" and not candidate.inanimate)
             and (not matchingReferent or candidate.id == matchingReferent) then
             if selected and selected ~= candidate then return false end
@@ -1356,6 +1357,17 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     local index = first
     local key = P.key(document, index, limit)
     local english = document.direction == "en-uk"
+    if not (simple or locationOnly or sense) and first < limit and demonstratives[key] == "far" then
+        local selection, after = P.pronoun(document, first, limit, case, true, nil, "qualifiedPeople")
+        if selection then
+            selection.animacy = "animate"
+            local qualifier, finish = ns.Engine.ClauseAnalysis.nominalQualification(document, selection, after, limit, case)
+            if qualifier and (not headFilter or headFilter(selection)) then
+                selection.nominalQualifier, selection.headIndex = qualifier, first
+                return selection, finish
+            end
+        end
+    end
     if sense == "uiControl" and not locationOnly then
         local control, after = controlLabelAt(document, first, limit)
         if control and (not headFilter or headFilter(control)) then return control, after end
@@ -2034,6 +2046,10 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
     if not simple and best.headIndex and nextIndex < limit then
         local state, finish = P.groundedState(document, best, nextIndex, limit, case, true)
         if state then best.groundedState, nextIndex = state, finish end
+        if not state and not locationOnly then
+            local qualifier, ending = ns.Engine.ClauseAnalysis.nominalQualification(document, best, nextIndex, limit, case)
+            if qualifier then best.nominalQualifier, nextIndex = qualifier, ending end
+        end
     end
     if not simple and best.headIndex and not best.raw then
         while nextIndex < limit do
@@ -2199,6 +2215,11 @@ function P.preposition(document, first, limit, motion, displacement, context, se
         end
     end
     if ambiguous or not selected then return nil end
+    if selected.rule.authorityOpening and P.hasTrait(selected.object, "proper")
+        and P.key(document, after, limit) == "," then
+        local title, finish = P.noun(document, after + 1, limit, selected.case, false, nil, true)
+        if P.hasTrait(title, "appositiveTitle") then selected.apposition, after = title, finish end
+    end
     if priority == 0 and not selected.rule.targetEnByClass and not selected.rule.objectSense then
         local group, finish = attachedCoordination(document, first, limit, last + 1, selected.object,
             after, selected.case, nil, true)

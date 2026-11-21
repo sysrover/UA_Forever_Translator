@@ -390,6 +390,11 @@ ns.Data = {
                     ["text"] = "стріли"
                 }
             },
+            ["arthas"] = {
+                ["menethil"] = {
+                    ["_id"] = "character.arthas_menethil"
+                }
+            },
             ["asap"] = {
                 ["_literal"] = {
                     ["id"] = "literal.quickly",
@@ -2666,6 +2671,11 @@ ns.Data = {
             },
             ["lfw"] = {
                 ["_id"] = "slang.trade.lfw"
+            },
+            ["lich"] = {
+                ["king"] = {
+                    ["_id"] = "character.lich_king"
+                }
             },
             ["life"] = {
                 ["choice"] = {
@@ -5723,6 +5733,29 @@ ns.Data = {
             },
             ["аое"] = {
                 ["_id"] = "slang.combat.aoe"
+            },
+            ["артас"] = {
+                ["менетіл"] = {
+                    ["_id"] = "character.arthas_menethil"
+                }
+            },
+            ["артаса"] = {
+                ["менетіла"] = {
+                    ["_id"] = "character.arthas_menethil"
+                }
+            },
+            ["артасові"] = {
+                ["менетілу"] = {
+                    ["_id"] = "character.arthas_menethil"
+                },
+                ["менетілі"] = {
+                    ["_id"] = "character.arthas_menethil"
+                }
+            },
+            ["артасом"] = {
+                ["менетілом"] = {
+                    ["_id"] = "character.arthas_menethil"
+                }
             },
             ["артишок"] = {
                 ["морозних"] = {
@@ -9322,6 +9355,41 @@ ns.Data = {
                 },
                 ["юрби"] = {
                     ["_id"] = "slang.combat.cc"
+                }
+            },
+            ["королем"] = {
+                ["-"] = {
+                    ["лічем"] = {
+                        ["_id"] = "character.lich_king"
+                    }
+                }
+            },
+            ["король"] = {
+                ["-"] = {
+                    ["ліч"] = {
+                        ["_id"] = "character.lich_king"
+                    }
+                }
+            },
+            ["королю"] = {
+                ["-"] = {
+                    ["лічу"] = {
+                        ["_id"] = "character.lich_king"
+                    }
+                }
+            },
+            ["короля"] = {
+                ["-"] = {
+                    ["ліча"] = {
+                        ["_id"] = "character.lich_king"
+                    }
+                }
+            },
+            ["королі"] = {
+                ["-"] = {
+                    ["лічі"] = {
+                        ["_id"] = "character.lich_king"
+                    }
                 }
             },
             ["корчма"] = {
@@ -18205,6 +18273,24 @@ ns.Data = {
                         }
                     }
                 },
+                ["arthas"] = {
+                    ["menethil"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "character.arthas_menethil",
+                                ["lemma"] = "Arthas Menethil",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.arthas_menethil",
+                                ["sourceRefs"] = { "ua-forever:Arthas Menethil", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
                 ["ashenvale"] = {
                     ["_analyses"] = {
                         {
@@ -20838,7 +20924,8 @@ ns.Data = {
                                     ["animacy"] = "inanimate",
                                     ["englishDefinite"] = true,
                                     ["gender"] = "masculine",
-                                    ["proper"] = true
+                                    ["proper"] = true,
+                                    ["semanticClass"] = "sovereignSeat"
                                 },
                                 ["id"] = "place.frozen_throne",
                                 ["lemma"] = "Frozen Throne",
@@ -22272,6 +22359,27 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.trade.lfw",
                             ["sourceRefs"] = { "wow-community:craft" }
+                        }
+                    }
+                },
+                ["lich"] = {
+                    ["king"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["appositiveTitle"] = true,
+                                    ["englishDefinite"] = true,
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true,
+                                    ["semanticClass"] = "ruler"
+                                },
+                                ["id"] = "character.lich_king",
+                                ["lemma"] = "Lich King",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.lich_king",
+                                ["sourceRefs"] = { "ua-forever:objects.lua:175748", "project-authored:chat-0.1" }
+                            }
                         }
                     }
                 },
@@ -28826,6 +28934,116 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.combat.aoe",
                             ["sourceRefs"] = { "wow-community:forum" }
+                        }
+                    }
+                },
+                ["артас"] = {
+                    ["менетіл"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "character.arthas_menethil",
+                                ["lemma"] = "Артас Менетіл",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.arthas_menethil",
+                                ["sourceRefs"] = { "ua-forever:Arthas Menethil", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["артаса"] = {
+                    ["менетіла"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "character.arthas_menethil",
+                                ["lemma"] = "Артас Менетіл",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.arthas_menethil",
+                                ["sourceRefs"] = { "ua-forever:Arthas Menethil", "project-authored:chat-0.1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "character.arthas_menethil",
+                                ["lemma"] = "Артас Менетіл",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.arthas_menethil",
+                                ["sourceRefs"] = { "ua-forever:Arthas Menethil", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["артасові"] = {
+                    ["менетілу"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "character.arthas_menethil",
+                                ["lemma"] = "Артас Менетіл",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.arthas_menethil",
+                                ["sourceRefs"] = { "ua-forever:Arthas Menethil", "project-authored:chat-0.1" }
+                            }
+                        }
+                    },
+                    ["менетілі"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "character.arthas_menethil",
+                                ["lemma"] = "Артас Менетіл",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.arthas_menethil",
+                                ["sourceRefs"] = { "ua-forever:Arthas Menethil", "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["артасом"] = {
+                    ["менетілом"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "character.arthas_menethil",
+                                ["lemma"] = "Артас Менетіл",
+                                ["pos"] = "noun",
+                                ["sense"] = "character.arthas_menethil",
+                                ["sourceRefs"] = { "ua-forever:Arthas Menethil", "project-authored:chat-0.1" }
+                            }
                         }
                     }
                 },
@@ -36134,7 +36352,8 @@ ns.Data = {
                                     ["animacy"] = "inanimate",
                                     ["englishDefinite"] = true,
                                     ["gender"] = "masculine",
-                                    ["proper"] = true
+                                    ["proper"] = true,
+                                    ["semanticClass"] = "sovereignSeat"
                                 },
                                 ["id"] = "place.frozen_throne",
                                 ["lemma"] = "Зледенілий трон",
@@ -36149,7 +36368,8 @@ ns.Data = {
                                     ["englishDefinite"] = true,
                                     ["gender"] = "masculine",
                                     ["number"] = "singular",
-                                    ["proper"] = true
+                                    ["proper"] = true,
+                                    ["semanticClass"] = "sovereignSeat"
                                 },
                                 ["id"] = "place.frozen_throne",
                                 ["lemma"] = "Зледенілий трон",
@@ -36170,7 +36390,8 @@ ns.Data = {
                                     ["englishDefinite"] = true,
                                     ["gender"] = "masculine",
                                     ["number"] = "singular",
-                                    ["proper"] = true
+                                    ["proper"] = true,
+                                    ["semanticClass"] = "sovereignSeat"
                                 },
                                 ["id"] = "place.frozen_throne",
                                 ["lemma"] = "Зледенілий трон",
@@ -36191,7 +36412,8 @@ ns.Data = {
                                     ["englishDefinite"] = true,
                                     ["gender"] = "masculine",
                                     ["number"] = "singular",
-                                    ["proper"] = true
+                                    ["proper"] = true,
+                                    ["semanticClass"] = "sovereignSeat"
                                 },
                                 ["id"] = "place.frozen_throne",
                                 ["lemma"] = "Зледенілий трон",
@@ -36212,7 +36434,8 @@ ns.Data = {
                                     ["englishDefinite"] = true,
                                     ["gender"] = "masculine",
                                     ["number"] = "singular",
-                                    ["proper"] = true
+                                    ["proper"] = true,
+                                    ["semanticClass"] = "sovereignSeat"
                                 },
                                 ["id"] = "place.frozen_throne",
                                 ["lemma"] = "Зледенілий трон",
@@ -36231,7 +36454,8 @@ ns.Data = {
                                     ["englishDefinite"] = true,
                                     ["gender"] = "masculine",
                                     ["number"] = "singular",
-                                    ["proper"] = true
+                                    ["proper"] = true,
+                                    ["semanticClass"] = "sovereignSeat"
                                 },
                                 ["id"] = "place.frozen_throne",
                                 ["lemma"] = "Зледенілий трон",
@@ -37588,6 +37812,146 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "slang.combat.cc",
                                 ["sourceRefs"] = { "wow-community:forum" }
+                            }
+                        }
+                    }
+                },
+                ["королем"] = {
+                    ["-"] = {
+                        ["лічем"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["appositiveTitle"] = true,
+                                        ["case"] = "instrumental",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "ruler"
+                                    },
+                                    ["id"] = "character.lich_king",
+                                    ["lemma"] = "Король-ліч",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "character.lich_king",
+                                    ["sourceRefs"] = { "ua-forever:objects.lua:175748", "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["король"] = {
+                    ["-"] = {
+                        ["ліч"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["appositiveTitle"] = true,
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "ruler"
+                                    },
+                                    ["id"] = "character.lich_king",
+                                    ["lemma"] = "Король-ліч",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "character.lich_king",
+                                    ["sourceRefs"] = { "ua-forever:objects.lua:175748", "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["королю"] = {
+                    ["-"] = {
+                        ["лічу"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["appositiveTitle"] = true,
+                                        ["case"] = "dative",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "ruler"
+                                    },
+                                    ["id"] = "character.lich_king",
+                                    ["lemma"] = "Король-ліч",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "character.lich_king",
+                                    ["sourceRefs"] = { "ua-forever:objects.lua:175748", "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["короля"] = {
+                    ["-"] = {
+                        ["ліча"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["appositiveTitle"] = true,
+                                        ["case"] = "genitive",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "ruler"
+                                    },
+                                    ["id"] = "character.lich_king",
+                                    ["lemma"] = "Король-ліч",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "character.lich_king",
+                                    ["sourceRefs"] = { "ua-forever:objects.lua:175748", "project-authored:chat-0.1" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["appositiveTitle"] = true,
+                                        ["case"] = "accusative",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "ruler"
+                                    },
+                                    ["id"] = "character.lich_king",
+                                    ["lemma"] = "Король-ліч",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "character.lich_king",
+                                    ["sourceRefs"] = { "ua-forever:objects.lua:175748", "project-authored:chat-0.1" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["королі"] = {
+                    ["-"] = {
+                        ["лічі"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "animate",
+                                        ["appositiveTitle"] = true,
+                                        ["case"] = "locative",
+                                        ["englishDefinite"] = true,
+                                        ["gender"] = "masculine",
+                                        ["number"] = "singular",
+                                        ["proper"] = true,
+                                        ["semanticClass"] = "ruler"
+                                    },
+                                    ["id"] = "character.lich_king",
+                                    ["lemma"] = "Король-ліч",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "character.lich_king",
+                                    ["sourceRefs"] = { "ua-forever:objects.lua:175748", "project-authored:chat-0.1" }
+                                }
                             }
                         }
                     }
@@ -53194,6 +53558,19 @@ ns.Data = {
                     ["nominativePlural"] = "шукачі пригод"
                 }
             },
+            ["character.arthas_menethil"] = {
+                ["en"] = {
+                    ["canonical"] = "Arthas Menethil"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Артаса Менетіла",
+                    ["canonical"] = "Артас Менетіл",
+                    ["dativeSingular"] = "Артасові Менетілу",
+                    ["genitiveSingular"] = "Артаса Менетіла",
+                    ["instrumental"] = "Артасом Менетілом",
+                    ["locative"] = "Артасові Менетілі"
+                }
+            },
             ["character.bolvar_short"] = {
                 ["en"] = {
                     ["canonical"] = "Bolvar"
@@ -53242,6 +53619,19 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Верховний лорд Болвар Фордраґон"
+                }
+            },
+            ["character.lich_king"] = {
+                ["en"] = {
+                    ["canonical"] = "Lich King"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Короля-ліча",
+                    ["canonical"] = "Король-ліч",
+                    ["dativeSingular"] = "Королю-лічу",
+                    ["genitiveSingular"] = "Короля-ліча",
+                    ["instrumental"] = "Королем-лічем",
+                    ["locative"] = "Королі-лічі"
                 }
             },
             ["character.ragstallion"] = {
@@ -56608,7 +56998,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 314,
+        ["concepts"] = 316,
         ["derivedNouns"] = 26,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 85,
@@ -56627,7 +57017,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "403eb6f50110b1596ae43a3738ae19ecc6753726cb70636962b00daf1853c204"
+        ["version"] = "844bdd74e4132cbcbe429a4637a3351ef9b9e635e4dd8cec75a3d1cdc04ade4d"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -65747,6 +66137,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "шукач пригод"
         },
+        ["character.arthas_menethil"] = {
+            ["category"] = "characters",
+            ["en"] = "Arthas Menethil",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Артаса Менетіла",
+                ["dativeSingular"] = "Артасові Менетілу",
+                ["genitiveSingular"] = "Артаса Менетіла",
+                ["instrumental"] = "Артасом Менетілом",
+                ["locative"] = "Артасові Менетілі"
+            },
+            ["id"] = "character.arthas_menethil",
+            ["provenance"] = {
+                ["context"] = "name from the WoW Forever dictionary",
+                ["key"] = "Arthas Menethil",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:Arthas Menethil", "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Артас Менетіл"
+        },
         ["character.bolvar_short"] = {
             ["category"] = "characters",
             ["en"] = "Bolvar",
@@ -65868,6 +66283,34 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:character.highlord_bolvar_fordragon" },
             ["status"] = "approved",
             ["uk"] = "Верховний лорд Болвар Фордраґон"
+        },
+        ["character.lich_king"] = {
+            ["category"] = "characters",
+            ["en"] = "Lich King",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["appositiveTitle"] = true,
+                ["englishDefinite"] = true,
+                ["gender"] = "masculine",
+                ["proper"] = true,
+                ["semanticClass"] = "ruler"
+            },
+            ["forms"] = {
+                ["accusative"] = "Короля-ліча",
+                ["dativeSingular"] = "Королю-лічу",
+                ["genitiveSingular"] = "Короля-ліча",
+                ["instrumental"] = "Королем-лічем",
+                ["locative"] = "Королі-лічі"
+            },
+            ["id"] = "character.lich_king",
+            ["provenance"] = {
+                ["context"] = "title in the UA_Forever object catalog",
+                ["key"] = "Lich King",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "ua-forever:objects.lua:175748", "project-authored:chat-0.1" },
+            ["status"] = "approved",
+            ["uk"] = "Король-ліч"
         },
         ["character.ragstallion"] = {
             ["category"] = "characters",
@@ -69491,7 +69934,8 @@ ns.Data = {
                 ["animacy"] = "inanimate",
                 ["englishDefinite"] = true,
                 ["gender"] = "masculine",
-                ["proper"] = true
+                ["proper"] = true,
+                ["semanticClass"] = "sovereignSeat"
             },
             ["forms"] = {
                 ["accusative"] = "Зледенілий трон",

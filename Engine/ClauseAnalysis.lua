@@ -1584,6 +1584,47 @@ local function complementaryInfinitive(document, index, limit, frame, depth, gap
     if not frame.gerundComplement then return nil, index end
 end
 
+function A.adjectiveAction(document, entry, first, limit, depth)
+    local marker = lexemeFrame(entry).governedAction
+    if not marker or first > limit or depth >= 3 then return nil end
+    local english = document.direction == "en-uk"
+    if english and P.key(document, first, limit) ~= marker then return nil end
+    local start = first + (english and 1 or 0)
+    local negative = P.key(document, start, limit) == (english and "not" or "не")
+    local action, finish = complementaryInfinitive(document, start + (negative and 1 or 0), limit,
+        {infinitive=true, gerundComplement=true, infinitiveAdverbs=true}, depth)
+    if action then action.negative = negative; return action, finish end
+end
+
+function A.nominalQualification(document, noun, first, limit, case)
+    local depth = document.qualificationDepth or 0
+    if first >= limit or depth >= 2 then return nil end
+    local english = document.direction == "en-uk"
+    local selection = noun.pronoun and noun.pronoun.requiresExplicitReferent
+    local comma = P.key(document, first, limit) == ","
+    local at = first + (comma and 1 or 0)
+    if selection and not english then
+        if not comma or P.key(document, at, limit) ~= "хто" then return nil end
+        at = at + 1
+    elseif selection and P.key(document, at, limit) == "who"
+        and P.key(document, at + 1, limit) == "are" then
+        at = at + 2
+    end
+    if english and P.key(document, at + 1, limit) ~= "of" then return nil end
+    local features = not english and (selection and {case="nominative", number="singular", gender="masculine"}
+        or {case=case, number=noun.number}) or nil
+    local entry = L.choose(document, at, "adj", features, nil, function(candidate)
+        return lexemeFrame(candidate).governedAction ~= nil
+    end)
+    if not entry then return nil end
+    document.qualificationDepth = depth + 1
+    local action, finish = A.adjectiveAction(document, entry, at + 1, limit, depth)
+    document.qualificationDepth = depth
+    if action and boundary(document, finish, limit) then
+        return {entry=entry, action=action, selection=selection}, finish
+    end
+end
+
 local difficultyInfinitive = {infinitive=true}
 
 local function difficultyAt(document, index, limit)
@@ -3089,6 +3130,11 @@ local function predicate(document, tree, index, limit, depth)
         tree.adjective = {entry=adjective, intensity=intensity}
         tree.predicateIndex = index
         local frame = adjective.lexeme.frame
+        local action, finish = A.adjectiveAction(document, adjective, adjectiveEnd, limit, depth or 0)
+        if action then
+            tree.infinitive, tree.adjectiveActionMarker = action, frame.governedAction
+            return finish
+        end
         if frame and frame.predicateLocation then
             local place, finish = tree.frontedLocation, adjectiveEnd
             if not place then place, finish = P.preposition(document, adjectiveEnd, limit, nil, nil, "predicate") end
@@ -4411,12 +4457,17 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
             if label:match("^<[^<>]+>$") then
                 local separator = P.key(document, first + 1, limit)
                 local opening = first + ((separator == "—" or separator == ":") and 2 or 1)
-                if english and not objectGap then
+                if not objectGap then
                     local guild = {raw=label, number="singular", gender="feminine", person=3}
-                    local entry, start = verb(document, opening, limit, guild, false, false, nil, "present")
+                    local entry, start = verb(document, opening, limit, guild, false)
+                    local progressive
+                    if english and not entry then
+                        entry, start = verb(document, opening, limit, guild, false, false, nil, "present")
+                        progressive = entry ~= nil
+                    end
                     if entry and lexemeFrame(entry).recruitmentSearch then
                         local search = {kind="clause", subject=guild, verb=entry, verbIndex=opening,
-                            tense="present", aspect="continuous"}
+                            tense=progressive and "present" or entry.form.tense, aspect=progressive and "continuous" or nil}
                         local finish = complements(document, search, start, limit, depth)
                         if finish == limit + 1 and P.relativeAnimate(search.object) then return search, finish end
                     end
@@ -7440,6 +7491,18 @@ function A.parse(document, first, limit, afterRating)
             if parsed and parsed.trees[1].imperative and not parsed.prefix then
                 parsed.politeness = polite
                 return parsed
+            end
+        end
+    end
+    if key == "by" or key == "за" then
+        local authority, after = P.preposition(document, first, limit, nil, nil, nil, nil, "authorityOpening")
+        if authority then
+            local comma = P.key(document, after, limit) == ","
+            local start = after + (comma and 1 or 0)
+            local core = start <= limit and parseGroup(document, start, limit)
+            if core and core.trees[1].kind == "clause" then
+                core.openingPrepositions, core.openingPrepositionComma = {authority}, comma
+                return core
             end
         end
     end

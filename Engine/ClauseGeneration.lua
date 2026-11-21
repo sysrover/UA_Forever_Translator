@@ -732,6 +732,19 @@ function G.noun(node, english, case, article, compoundModifier, owner, commonHea
     local relative = node.relative
     if english and relative and not article and not (relative.nonrestrictive or relative.locative) then article = "definite" end
     local value = noun(node, english, case, article, compoundModifier, owner, commonHead)
+    if value and node.nominalQualifier then
+        local qualifier = node.nominalQualifier
+        local selection = qualifier.selection
+        local desc = adjective(qualifier, english, selection and "nominative" or case,
+            selection and "singular" or node.number, selection and "masculine" or node.gender, node.animacy)
+        local action = render(qualifier.action, english, owner)
+        if not (desc and action) then return nil end
+        if english then
+            local marker = qualifier.entry.lexeme.frame.governedAction
+            return value .. " " .. desc .. " " .. marker .. (qualifier.action.negative and " not " or " ") .. action
+        end
+        return withComma(value) .. (selection and " хто " or " ") .. desc .. " " .. action
+    end
     if value and node.referenceLabel then value = value .. " " .. node.referenceLabel end
     if value and node.groundedState then
         local state = node.groundedState
@@ -1141,6 +1154,11 @@ function G.preposition(complement, english, owner)
     end
     local value = marked or G.noun(object, english, case, article, nil, owner)
     if not value then return nil end
+    if complement.apposition then
+        local title = G.noun(complement.apposition, english, case, "definite", nil, owner)
+        if not title then return nil end
+        value = withComma(value) .. " " .. title
+    end
     local term = complement.object.term
     local locative = rule.id == "in" and complement.case == "locative"
         and (frame and frame.locativePreposition or term and term.features and term.features.locativePreposition)
@@ -2282,7 +2300,10 @@ renderTree = function(tree, english, controller)
             if tree.infinitive then
                 local action = render(tree.infinitive, english, owner)
                 if not action then return nil end
-                if english then append(parts, "to") end
+                if english then
+                    append(parts, tree.adjectiveActionMarker or "to")
+                    if tree.adjectiveActionMarker and tree.infinitive.negative then append(parts, "not") end
+                end
                 append(parts, action)
             end
         end
