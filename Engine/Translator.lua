@@ -197,12 +197,17 @@ end
 local function dependencyFragments(document, fragments, verbatim, accept)
     local tokens = document.tokens
     if not ns.Engine.UDPipe or not ns.Engine.UDPipe.analyzeDocumentWithTags then return fragments, false end
-    local blocked, lastFragment, first, attempts, used = {}, 0, 1, 0, false
+    local blocked, preserveEnd, fragmentEnd, first, attempts, used = {}, 0, 0, 1, 0, false
+    local crossing = {}
     local newVerbatim
     for index = 1, #tokens do
-        local fragment = fragments and fragments[index] or document.preserve and document.preserve[index]
-        if fragment then lastFragment = math.max(lastFragment, fragment.last) end
-        if index <= lastFragment or verbatim and verbatim[index] then blocked[index] = true end
+        local fragment = fragments and fragments[index]
+        local preserve = document.preserve and document.preserve[index]
+        if fragment then fragmentEnd = math.max(fragmentEnd, fragment.last) end
+        if preserve then preserveEnd = math.max(preserveEnd, preserve.last) end
+        if index < fragmentEnd then crossing[index] = true end
+        if index <= preserveEnd or verbatim and verbatim[index] then blocked[index] = "preserve"
+        elseif index <= fragmentEnd then blocked[index] = true end
     end
     local phrases, generation = ns.Engine.Phrases, ns.Engine.ClauseGeneration
     local english = document.direction == "uk-en"
@@ -212,9 +217,10 @@ local function dependencyFragments(document, fragments, verbatim, accept)
             and ns.Engine.Parser.sentenceBoundary(document.text, tokens, ending)
         if sentenceEnd or ending == #tokens then
             if ending - first >= 2 and ending - first < 32 and attempts < 3 then
-                local open, occupied = 0, false
+                local open, occupied, preservation = 0, false, crossing[first - 1] or crossing[ending]
                 for index = first, ending do
                     if blocked[index] then occupied = true end
+                    if blocked[index] == "preserve" then preservation = true end
                     if not blocked[index] and not tokens[index].protected then open = open + 1 end
                 end
                 if open >= 2 then
@@ -222,33 +228,34 @@ local function dependencyFragments(document, fragments, verbatim, accept)
                     local arcs, words = ns.Engine.UDPipe.analyzeDocumentWithTags(document, first, ending)
                     if document.checkpoint then document.checkpoint() end
                     local rendered
-                    if arcs and words and not occupied then
+                    if arcs and words and not preservation then
                         local marker = sentenceEnd and token.key or nil
                         local limit = marker and ending - 1 or ending
                         local parsed = ns.Engine.ClauseAnalysis.parseDependencies(document, first, limit, arcs, words)
                         local output, reason = renderDependency(document, parsed, first, ending, arcs, words, marker, accept)
                         local conflict = reason == "role-conflict"
-                        if not output then
+                        if not output and not occupied then
                             parsed = ns.Engine.ClauseAnalysis.parseWithUntranslatedNominals(document, first, limit, arcs, words)
                             output, reason = renderDependency(document, parsed, first, ending, arcs, words, marker, accept)
                             conflict = conflict or reason == "role-conflict"
                         end
                         local original = phrases.raw(document, first, ending)
-                        if output and N.key(output) ~= N.key(original) then
+                        if output and (not occupied or not parsed.untranslated) and N.key(output) ~= N.key(original) then
                             local intent = #parsed.trees > 1 and "composition" or parsed.trees[1].kind
                             if first == 1 and ending == #tokens and not parsed.untranslated then
                                 return fragments, false, output, intent
                             end
                             fragments = fragments or {}
+                            for index = first, ending do fragments[index] = nil end
                             fragments[first] = {text=output, last=ending, untranslated=parsed.untranslated,
                                 rule={sourceRefs=ns.Linguistics.manifest.sourceRefs}}
                             used, rendered = true, true
-                        elseif conflict then
+                        elseif conflict and not occupied then
                             fragments = fragments or {}
                             fragments[first] = {last=ending, preserve="role-conflict"}
                             newVerbatim, rendered = true, true
                         end
-                        if not rendered then
+                        if not rendered and not occupied then
                             local prefix = clauseBeforeUnknownTail(document, first, ending)
                             if prefix and accept(prefix.text, first, prefix.last) then
                                 fragments = fragments or {}

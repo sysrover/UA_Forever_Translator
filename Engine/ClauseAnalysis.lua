@@ -9716,6 +9716,7 @@ local function frontedLocativePredicate(document, first, limit, arcs)
 end
 
 do
+(function()
 local reverseTemporalLinks = {advcl=true, parataxis=true, ccomp=true, xcomp=true}
 
 local function temporalHeads(arcs, limit, reverse)
@@ -9738,13 +9739,19 @@ local function temporalHeads(arcs, limit, reverse)
     if principal then return marker.head, principal, true end
 end
 
-local function temporalOwner(arcs, position, endpoint, principal, count)
+local function dependencyOwner(arcs, position, left, right, count)
     for _ = 1, count do
-        if position == endpoint or position == principal then return position end
+        if position == left or position == right then return position end
         local arc = arcs[position]
         if not arc or arc.head == 0 then return nil end
         position = arc.head
     end
+end
+
+local function dependencyPredicateMatches(tree, position, word)
+    if not tree or not word then return false end
+    if word.upos == "VERB" then return tree.verbIndex == position end
+    return word.upos == "ADJ" and tree.copula and tree.adjective and tree.predicateIndex == position
 end
 
 function A.temporalFromDependencies(document, first, limit, arcs, words)
@@ -9767,7 +9774,8 @@ function A.temporalFromDependencies(document, first, limit, arcs, words)
         end
     end
     if not endpoint or not words[endpoint] or not words[principal]
-        or words[endpoint].upos ~= "VERB" or words[principal].upos ~= "VERB" then return nil end
+        or (words[endpoint].upos ~= "VERB" and words[endpoint].upos ~= "ADJ")
+        or words[principal].upos ~= "VERB" then return nil end
 
     local mainFirst
     for index = markerEnd + 1, limit do
@@ -9776,7 +9784,7 @@ function A.temporalFromDependencies(document, first, limit, arcs, words)
         if arc and arc.relation ~= "punct" then
             local key = document.tokens[index].key
             local negatesPrincipal = position == principal - 1 and (key == "не" or key == "don't" or key == "dont")
-            local owner = negatesPrincipal and principal or temporalOwner(arcs, position, endpoint, principal, count)
+            local owner = negatesPrincipal and principal or dependencyOwner(arcs, position, endpoint, principal, count)
             if owner == principal then
                 mainFirst = mainFirst or index
             elseif owner ~= endpoint or mainFirst then
@@ -9789,11 +9797,64 @@ function A.temporalFromDependencies(document, first, limit, arcs, words)
     local main, dependent = temporalClauses(document, mainFirst, limit, markerEnd + 1,
         mainFirst - (comma and 2 or 1), nil, rule)
     local action, condition = main and main.trees[1], dependent and dependent.trees[1]
-    if not action or not condition or action.verbIndex ~= first + principal - 1
-        or condition.verbIndex ~= first + endpoint - 1 or reversed and not action.imperative then return nil end
+    if not dependencyPredicateMatches(action, first + principal - 1, words[principal])
+        or not dependencyPredicateMatches(condition, first + endpoint - 1, words[endpoint])
+        or reversed and not action.imperative then return nil end
+    local objectPronoun = action.object and action.object.pronoun
+    if words[endpoint].upos == "ADJ" and objectPronoun and objectPronoun.person == 3 and condition.subject
+        and not action.object.targetPronoun then
+        local source, target = A.pronounReference(document, condition.subject)
+        if not source or target and source == objectPronoun.id then return nil end
+    end
     if rule.startBoundary and document.direction == "en-uk" and not A.elapsedFromClause(action) then return nil end
     return joined(document, dependent, main, {comma=true}, rule, nil, true)
 end
+
+local function coordinatedRanges(arcs, words, left, right, separator, count)
+    local leftSubject, rightSubject
+    for index = 1, count do
+        local arc = arcs[index]
+        if not arc or not words[index] then return false end
+        if index ~= separator and arc.relation ~= "punct" then
+            local expected = index < separator and left or right
+            if dependencyOwner(arcs, index, left, right, count) ~= expected then return false end
+            if arc.head == expected and arc.relation:match("^nsubj") then
+                if expected == left then leftSubject = true else rightSubject = true end
+            end
+        end
+    end
+    return leftSubject and rightSubject
+end
+
+function A.coordinatedFromDependencies(document, first, limit, arcs, words)
+    local count = limit - first + 1
+    for offset = 2, count - 1 do
+        local marker = arcs[offset]
+        local right = marker and marker.relation == "cc" and marker.head
+        local clause = right and arcs[right]
+        local left = clause and clause.relation == "conj" and clause.head
+        if left and left > 0 and left < offset and right > offset and right <= count
+            and arcs[left] and arcs[left].relation == "root" and words[offset] and words[offset].upos == "CCONJ" then
+            local index = first + offset - 1
+            local rule, last = clauseConnector(document, index, index)
+            if rule and last == index and A.sharedPredicateJoin({rule=rule})
+                and coordinatedRanges(arcs, words, left, right, offset, count) then
+                local comma = P.key(document, index - 1, limit) == ","
+                local leftEnd = index - (comma and 2 or 1)
+                local action, afterLeft = simple(document, first, leftEnd, nil, 0)
+                local question = P.key(document, limit + 1, #document.tokens) == "?"
+                local following, afterRight = simple(document, index + 1, limit, nil, 0, nil, nil, question)
+                if afterLeft == leftEnd + 1 and afterRight == limit + 1
+                    and dependencyPredicateMatches(action, first + left - 1, words[left])
+                    and dependencyPredicateMatches(following, first + right - 1, words[right])
+                    and action.subject and following.subject and not (action.implicitSubject or following.implicitSubject) then
+                    return {trees={action, following}, joins={{rule=rule, comma=comma}}, dependency=true}
+                end
+            end
+        end
+    end
+end
+end)()
 end
 
 function A.parseDependencies(document, first, limit, arcs, words)
@@ -9813,6 +9874,8 @@ function A.parseDependencies(document, first, limit, arcs, words)
         or frontedTemporalPreposition(document, first, limit) or A.socialSequence(document, first, limit, arcs)
         or unmarkedRelatives(document, first, limit, arcs)
         or dependencySequence(document, first, limit, arcs, words)
+        or A.coordinatedFromDependencies(document, first, limit, arcs, words)
+        or A.parseWithRecoveredPredicate(document, first, limit, arcs, words)
 end
 
 local function recordGerund(readings, action, head)
@@ -9898,7 +9961,11 @@ function A.parseWithUntranslatedNominals(document, first, limit, arcs, words)
             and #spelling >= 3 and spelling:match("^[a-z\208\209\128-\191]+$") then
             local nextArc = arcs[position + 1]
             local modifier = word.upos == "ADJ" or word.upos == "X"
-            local forward = modifier and arc.head > position and arc.head <= position + 3
+            local headWord = words[arc.head]
+            local nominalCompound = document.direction == "en-uk" and arc.relation == "compound"
+                and (word.upos == "NOUN" or word.upos == "PROPN") and headWord
+                and (headWord.upos == "NOUN" or headWord.upos == "PROPN")
+            local forward = (modifier or nominalCompound) and arc.head > position and arc.head <= position + 3
                 and untranslatedNominal.modifiers[arc.relation]
             local reverse = document.direction == "uk-en" and word.upos == "X"
                 and nextArc and nextArc.head == position and nextArc.relation == "appos"
@@ -9934,4 +10001,61 @@ function A.parseWithUntranslatedNominals(document, first, limit, arcs, words)
     if #untranslated == 0 then return nil end
     parsed.untranslated, parsed.dependency = untranslated, true
     return parsed
+end
+
+do
+(function()
+local function transposedVerb(document, source)
+    local selected, readings
+    for index = 1, #source - 1 do
+        local one, two = source:sub(index, index), source:sub(index + 1, index + 1)
+        if one ~= two then
+            local spelling = source:sub(1, index - 1) .. two .. one .. source:sub(index + 2)
+            local options = L.lookup(document, spelling)
+            for _, entry in ipairs(options) do
+                if entry.lexeme.pos == "verb" then
+                    if selected and selected ~= spelling then return nil end
+                    selected, readings = spelling, options
+                    break
+                end
+            end
+        end
+    end
+    return readings
+end
+
+function A.parseWithRecoveredPredicate(document, first, limit, arcs, words)
+    if document.direction ~= "en-uk" then return nil end
+    local dictionary = ns.Engine.Dictionary
+    local repair, readings, attempts
+    for index = first, limit do
+        local token, word = document.tokens[index], words[index - first + 1]
+        if word and (word.upos == "X" or word.upos == "VERB") and not token.protected
+            and #token.key >= 4 and #token.key <= 16 and token.key:match("^[a-z]+$")
+            and P.raw(document, index, index) == token.key and #L.at(document, index) == 0
+            and not dictionary.literal(document, index) and not dictionary.general(document, index) then
+            attempts = (attempts or 0) + 1
+            if attempts > 2 then return nil end
+            local options = transposedVerb(document, token.key)
+            if options then
+                if repair then return nil end
+                repair, readings = index, options
+            end
+            if document.checkpoint then document.checkpoint() end
+        end
+    end
+    if not repair then return nil end
+    local previous = document.tokenReadings[repair]
+    document.tokenReadings[repair] = readings
+    local parsed = A.parse(document, first, limit) or A.parseWithUntranslatedNominals(document, first, limit, arcs, words)
+    document.tokenReadings[repair] = previous
+    if not parsed then return nil end
+    for _, tree in ipairs(parsed.trees) do
+        if tree.verbIndex == repair and tree.verb and tree.subject and not tree.implicitSubject then
+            parsed.dependency = true
+            return parsed
+        end
+    end
+end
+end)()
 end

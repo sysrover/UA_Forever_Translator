@@ -163,6 +163,80 @@ local function contextScores(document, index, first, last, weights)
     return scores
 end
 
+local function englishTagShape(raw, key)
+    if key:match("^%d+$") then return "number" end
+    if raw:match("^%u%u+$") then return "upper" end
+    if raw:match("^%u") then return "initial" end
+    if key:find("'", 1, true) then return "apostrophe" end
+    if key:find("-", 1, true) then return "hyphen" end
+    if key:match("^[a-z]+$") then return "lower" end
+    if key:match("^%p+$") then return "punctuation" end
+    return "other"
+end
+
+-- Shared with the offline trainer so sentence boundaries, casing and
+-- protected tokens produce the same features in both environments.
+function U.englishTagFeatures(text, tokens, first, last, weights)
+    local words, shapes, preferred = {}, {}, {}
+    for index = first, last do
+        local token = tokens[index]
+        if token.protected then
+            words[index], shapes[index], preferred[index] = "", "protected", "NOUN"
+        else
+            local key = token.key
+            words[index] = key
+            shapes[index] = englishTagShape(text:sub(token.first, token.last), key)
+            local row = weights.words[key]
+            local strongest, score
+            for offset = 2, row and #row or 0, 3 do
+                if not score or row[offset + 1] > score then
+                    strongest, score = row[offset], row[offset + 1]
+                end
+            end
+            preferred[index] = weights.tags[strongest] or ""
+        end
+    end
+    local rows = {}
+    for index = first, last do
+        local word, shape = words[index], shapes[index]
+        local row = {"w=" .. word, "s=" .. shape, "t=" .. preferred[index]}
+        if word:match("^[a-z]+$") then
+            for size = 1, math.min(3, #word) do
+                row[#row + 1] = "end" .. size .. "=" .. word:sub(-size)
+            end
+            row[#row + 1] = "start=" .. word:sub(1, 2)
+        end
+        for _, offset in ipairs(contextOffsets) do
+            local at = index + offset
+            row[#row + 1] = "w" .. offset .. "=" .. (words[at] or "")
+            row[#row + 1] = "s" .. offset .. "=" .. (shapes[at] or "boundary")
+            row[#row + 1] = "t" .. offset .. "=" .. (preferred[at] or "")
+        end
+        rows[index - first + 1] = row
+    end
+    return rows
+end
+
+local function tagActivation(weights, features)
+    local hidden = {unpack(weights.bias)}
+    for _, feature in ipairs(features) do
+        local row = weights.embeddings[feature]
+        if row then
+            for index, value in ipairs(row) do hidden[index] = hidden[index] + value end
+        end
+    end
+    for index, value in ipairs(hidden) do hidden[index] = math.max(0, value) end
+    return hidden
+end
+
+local function tagEmission(weights, hidden, pos)
+    local row = weights.output[pos]
+    if not row then return 0 end
+    local score = row[1]
+    for index, value in ipairs(hidden) do score = score + value * row[index + 1] end
+    return score * weights.scale
+end
+
 local function choose(document, index, lang, previous, following, hint, previousParticiple, learned, context, pronoun)
     local best, priority, order, nominalForms
     local seen = learned and {}
@@ -282,13 +356,15 @@ local function englishCandidates(document, index, first, last, raw, weights)
     return candidates
 end
 
-local function tagEnglish(document, first, last, marker, markerEnd, weights, hints, markerTags, readings, contextWeights)
+local function tagEnglish(document, first, last, marker, markerEnd, weights, hints, markerTags, readings, contextWeights, lattice)
     local tagIds = weights.ids
     local boundary = tagIds[""]
     local previous = {[boundary]={score=0}}
     local words = {}
     local quantifiedHeads, hasAuxiliary
     local checkpoint = document.checkpoint
+    local neural = contextWeights and contextWeights.neural
+    local featureRows = neural and U.englishTagFeatures(document.text, document.tokens, first, last, weights)
     -- Viterbi over the available readings, retaining one predecessor for each part of speech.
     for index = first, last do
         local token = document.tokens[index]
@@ -319,8 +395,17 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
         elseif hintedId then
             candidates = {[hintedId]=candidates[hintedId] or {pos=weights.tags[hintedId], lemma=token.key}}
         end
-        local context = contextWeights and not pos and not hintedId and not resolved and contextWeights.context
+        if lattice then
+            local scores = {}
+            for id, candidate in pairs(candidates) do scores[id] = candidate.emission or 0 end
+            lattice[index - first + 1] = scores
+        end
+        local canRank = not pos and not hintedId and not resolved
+        local context = contextWeights and canRank and contextWeights.context
             and contextScores(document, index, first, last, contextWeights)
+        local firstCandidate = neural and canRank and next(candidates)
+        local hidden = firstCandidate and next(candidates, firstCandidate)
+            and tagActivation(neural, featureRows[index - first + 1])
         for id, candidate in pairs(candidates) do
             local best, from
             for previousId, entry in pairs(previous) do
@@ -330,6 +415,7 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
                 end
             end
             candidate.score = best + (candidate.emission or 0) + (context and context[candidate.pos] or 0)
+                + (hidden and tagEmission(neural, hidden, candidate.pos) or 0)
             candidate.previous = previous[from]
             candidate.raw = candidate.modelForm or raw
         end
@@ -352,6 +438,12 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
         candidate = candidate.previous
     end
     return words, hasAuxiliary
+end
+
+function U.englishTagLattice(document, first, last)
+    local lattice = {}
+    tagEnglish(document, first, last, nil, nil, ns.UDPipeTagWeights, nil, nil, nil, nil, lattice)
+    return lattice
 end
 
 local modelFields = {"form", "lemma", "upos", "xpos", "feats", "misc"}
