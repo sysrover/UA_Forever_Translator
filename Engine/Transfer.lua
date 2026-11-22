@@ -326,7 +326,7 @@ function T.render(tree, direction)
             value = s.item.raw .. (f.introduced and (uk and " за " or " for ") or " — ") .. value
         end
         if f.each then
-            value = value .. (f.each == "bottle" and (uk and " за пляшку" or " a bottle") or (uk and " за штуку" or " each"))
+            value = value .. " " .. G.priceBasisText(f.each, not uk)
         end
         return value
     elseif tree.kind == "roleInquiry" then

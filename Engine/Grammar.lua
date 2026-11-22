@@ -28,6 +28,40 @@ function G.moneyAt(document, first, limit)
     end
 end
 
+local priceBases = {
+    each="unit", ["per item"]="unit", ["a piece"]="unit", ["за штуку"]="unit", ["за одиницю"]="unit",
+    ["a bottle"]="bottle", ["per bottle"]="bottle", ["за пляшку"]="bottle",
+    total="total", ["in total"]="total", ["загалом"]="total", ["усього"]="total", ["всього"]="total",
+}
+
+function G.priceBasisAt(document, first, limit)
+    if first > limit then return nil, first end
+    local tokens = document.tokens
+    local head = tokens[first].key
+    if head == "each" and first < limit and ns.Linguistics and tokens[first + 1].key:match("^%a+$") then
+        local grammar = ns.Linguistics.grammar
+        if grammar.index.en.calendarDays[tokens[first + 1].key] then return nil, first end
+        local rows, last = ns.Engine.Lexicon.functional(document, "adverbs", first, limit)
+        if last and last > first then
+            for _, row in ipairs(rows) do
+                if grammar.adverbs[row].recurring then return nil, first end
+            end
+        end
+    end
+    if priceBases[head] then return priceBases[head], first + 1 end
+    if first < limit then
+        local basis = priceBases[head .. " " .. tokens[first + 1].key]
+        if basis then return basis, first + 2 end
+    end
+    return nil, first
+end
+
+function G.priceBasisText(basis, english)
+    if basis == "bottle" then return english and "a bottle" or "за пляшку" end
+    if basis == "total" then return english and "total" or "загалом" end
+    return english and "each" or "за штуку"
+end
+
 function G.moneyText(slot, nominative)
     local amount, forms = slot.amount, moneyForms[slot.unit]
     if not amount or not forms then return slot.raw end

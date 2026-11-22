@@ -28949,6 +28949,7 @@ ns.Linguistics = {
         },
         ["25834"] = {
             ["imperative"] = "зустріти",
+            ["indirectInfinitiveLemma"] = "зустріти",
             ["modalLemma"] = "зустріти",
             ["noObjectPlural"] = true,
             ["noObjectSense"] = "reciprocal",
@@ -29463,6 +29464,11 @@ ns.Linguistics = {
                 }
             },
             ["objectCase"] = "accusative",
+            ["passivePastLemma"] = "зробити",
+            ["passiveUk"] = "зроблено",
+            ["resultative"] = true,
+            ["resultativeActor"] = true,
+            ["resultativeLemma"] = "завершити",
             ["sense"] = "generalAction"
         },
         ["25893"] = {
@@ -29745,7 +29751,8 @@ ns.Linguistics = {
         },
         ["25927"] = {
             ["imperative"] = "викликати",
-            ["objectCase"] = "accusative"
+            ["objectCase"] = "accusative",
+            ["passiveVoice"] = true
         },
         ["25928"] = {
             ["animateObject"] = true,
@@ -30774,6 +30781,7 @@ ns.Linguistics = {
         },
         ["26051"] = {
             ["objectCase"] = "accusative",
+            ["passivePastLemma"] = "розробити",
             ["passiveUk"] = "розроблено"
         },
         ["26052"] = {
@@ -31917,15 +31925,20 @@ ns.Linguistics = {
         ["26207"] = {
             ["objectCase"] = "accusative",
             ["objectSense"] = "questObjective",
+            ["passiveUk"] = "завершено",
             ["pastLemma"] = "завершити",
-            ["purposeLemma"] = "завершити"
+            ["purposeLemma"] = "завершити",
+            ["resultative"] = true,
+            ["resultativeActor"] = true
         },
         ["26208"] = {
             ["objectCase"] = "accusative",
             ["objectSense"] = "questObjective"
         },
         ["26209"] = {
-            ["objectCase"] = "accusative"
+            ["objectCase"] = "accusative",
+            ["passivePastLemma"] = "виконати",
+            ["passiveUk"] = "виконано"
         },
         ["26210"] = {
             ["barePurpose"] = true,
@@ -32216,6 +32229,7 @@ ns.Linguistics = {
         ["26252"] = {
             ["elapsedDuration"] = "marked",
             ["intransitive"] = true,
+            ["prepositionContext"] = "conversation",
             ["relativeContext"] = "topic"
         },
         ["26254"] = {
@@ -51396,13 +51410,27 @@ ns.Linguistics = {
             },
             {
                 ["en"] = { "fishing" },
+                ["nominalUk"] = "рибальства",
                 ["targetUk"] = "порибалити",
-                ["uk"] = { "порибалити" }
+                ["uk"] = { "порибалити", "рибальства" }
             },
             {
                 ["en"] = { "crafting" },
                 ["targetUk"] = "позайматися ремеслом",
                 ["uk"] = { "позайматися ремеслом" }
+            },
+            {
+                ["en"] = { "disenchanting" },
+                ["nominalUk"] = "розпилення",
+                ["sourceRefs"] = { "ua-forever" },
+                ["targetUk"] = "розпилювати",
+                ["uk"] = { "розпилення" }
+            },
+            {
+                ["en"] = { "healing" },
+                ["nominalUk"] = "лікування",
+                ["targetUk"] = "лікувати",
+                ["uk"] = { "лікування" }
             }
         },
         ["adverbs"] = {
@@ -52282,6 +52310,61 @@ ns.Linguistics = {
                 ["context"] = "quantity",
                 ["en"] = { "approximately", "about", "around", "like" },
                 ["uk"] = { "приблизно" }
+            },
+            {
+                ["context"] = "sentenceInitial",
+                ["en"] = { "anyway" },
+                ["sentenceInitial"] = true,
+                ["sentenceInitialComma"] = true,
+                ["uk"] = { "хай там як" },
+                ["ukInitialRequiresComma"] = true
+            },
+            {
+                ["context"] = "predicate",
+                ["en"] = { "nice" },
+                ["evaluationInfinitive"] = true,
+                ["evaluativePredicate"] = true,
+                ["uk"] = { "приємно" }
+            },
+            {
+                ["context"] = "predicate",
+                ["en"] = { "fun" },
+                ["evaluationInfinitive"] = true,
+                ["evaluativePredicate"] = true,
+                ["uk"] = { "весело" }
+            },
+            {
+                ["en"] = { "almost", "nearly" },
+                ["predicateModifier"] = true,
+                ["uk"] = { "майже" },
+                ["ukPreverbal"] = true
+            },
+            {
+                ["context"] = "predicate",
+                ["en"] = { "wrong", "mistaken" },
+                ["personalPredicate"] = true,
+                ["prepositionContext"] = "judgment",
+                ["requiresAnimate"] = true,
+                ["sourceLanguage"] = "en",
+                ["uk"] = { "помилятися", "помилитися" }
+            },
+            {
+                ["context"] = "suitability",
+                ["en"] = { "good" },
+                ["suitability"] = true,
+                ["uk"] = { "добре" }
+            },
+            {
+                ["context"] = "suitability",
+                ["en"] = { "great" },
+                ["suitability"] = true,
+                ["uk"] = { "чудово" }
+            },
+            {
+                ["context"] = "suitability",
+                ["en"] = { "ideal", "perfect" },
+                ["suitability"] = true,
+                ["uk"] = { "ідеально" }
             }
         },
         ["calendarDays"] = {
@@ -52530,6 +52613,12 @@ ns.Linguistics = {
                 ["en"] = { "while", "as" },
                 ["id"] = "while",
                 ["uk"] = { "поки" }
+            },
+            {
+                ["en"] = { "wherever" },
+                ["freeLocative"] = true,
+                ["id"] = "wherever",
+                ["uk"] = { "де тільки", "куди тільки" }
             }
         },
         ["degrees"] = {
@@ -52575,7 +52664,9 @@ ns.Linguistics = {
             ["en"] = {
                 ["activities"] = {
                     ["crafting"] = { 3 },
+                    ["disenchanting"] = { 4 },
                     ["fishing"] = { 2 },
+                    ["healing"] = { 5 },
                     ["questing"] = { 1 }
                 },
                 ["adverbs"] = {
@@ -52586,6 +52677,7 @@ ns.Linguistics = {
                     ["ahoy"] = { 15 },
                     ["all along"] = { 110 },
                     ["all right"] = { 31 },
+                    ["almost"] = { 151 },
                     ["alone"] = { 75 },
                     ["already"] = { 109 },
                     ["also"] = { 41 },
@@ -52594,7 +52686,7 @@ ns.Linguistics = {
                     ["and all that"] = { 36 },
                     ["and beyond"] = { 108 },
                     ["and everything"] = { 36 },
-                    ["anyway"] = { 85 },
+                    ["anyway"] = { 85, 148 },
                     ["apparently"] = { 5, 133 },
                     ["approximately"] = { 147 },
                     ["around"] = { 147 },
@@ -52653,9 +52745,12 @@ ns.Linguistics = {
                     ["free"] = { 141 },
                     ["free of charge"] = { 141 },
                     ["from where"] = { 130 },
+                    ["fun"] = { 150 },
                     ["gloriously"] = { 88 },
                     ["god bless you"] = { 10 },
+                    ["good"] = { 153 },
                     ["good luck"] = { 12 },
+                    ["great"] = { 154 },
                     ["greetings"] = { 13 },
                     ["hard"] = { 44 },
                     ["hardly"] = { 4 },
@@ -52669,6 +52764,7 @@ ns.Linguistics = {
                     ["home"] = { 122 },
                     ["homeward"] = { 122 },
                     ["homewards"] = { 122 },
+                    ["ideal"] = { 155 },
                     ["in bulk"] = { 79 },
                     ["in essence"] = { 50 },
                     ["in the morning"] = { 46 },
@@ -52691,13 +52787,16 @@ ns.Linguistics = {
                     ["manually"] = { 38 },
                     ["maybe"] = { 6 },
                     ["mid - pull"] = { 33, 33 },
+                    ["mistaken"] = { 152 },
                     ["more expensive"] = { 81 },
                     ["mostly"] = { 35 },
                     ["much better"] = { 89 },
                     ["nearby"] = { 124 },
+                    ["nearly"] = { 151 },
                     ["never"] = { 67 },
                     ["newly"] = { 78 },
                     ["next time"] = { 144 },
+                    ["nice"] = { 149 },
                     ["no problem"] = { 14 },
                     ["no worries"] = { 14 },
                     ["nothing like"] = { 30 },
@@ -52720,6 +52819,7 @@ ns.Linguistics = {
                     ["outside"] = { 54 },
                     ["overnight"] = { 49 },
                     ["pelase"] = { 96 },
+                    ["perfect"] = { 155 },
                     ["perhaps"] = { 6 },
                     ["please"] = { 96 },
                     ["poorly"] = { 2, 91 },
@@ -52779,6 +52879,7 @@ ns.Linguistics = {
                     ["which way"] = { 131 },
                     ["worse"] = { 93 },
                     ["worth"] = { 32 },
+                    ["wrong"] = { 152 },
                     ["yes"] = { 18 },
                     ["yesterday"] = { 137 },
                     ["yet"] = { 114 }
@@ -52838,6 +52939,7 @@ ns.Linguistics = {
                     ["unless"] = { 11 },
                     ["when"] = { 12 },
                     ["whenever"] = { 13 },
+                    ["wherever"] = { 15 },
                     ["while"] = { 14 }
                 },
                 ["degrees"] = {
@@ -52881,7 +52983,7 @@ ns.Linguistics = {
                     ["sound"] = { 17 }
                 },
                 ["prepositions"] = {
-                    ["about"] = { 108 },
+                    ["about"] = { 108, 112 },
                     ["after"] = { 100, 101 },
                     ["against"] = { 84 },
                     ["as"] = { 33, 36 },
@@ -52945,7 +53047,7 @@ ns.Linguistics = {
                     ["south of"] = { 61 },
                     ["through"] = { 66, 67, 68 },
                     ["till"] = { 106 },
-                    ["to"] = { 14, 15, 26, 27, 28, 30, 55 },
+                    ["to"] = { 14, 15, 26, 27, 28, 30, 55, 111 },
                     ["to the east of"] = { 62 },
                     ["to the north of"] = { 60 },
                     ["to the south of"] = { 61 },
@@ -52956,11 +53058,21 @@ ns.Linguistics = {
                     ["via"] = { 68 },
                     ["west of"] = { 63 },
                     ["while"] = { 25 },
-                    ["with"] = { 50, 51, 52, 53, 54, 55 },
+                    ["with"] = { 50, 51, 52, 53, 54, 55, 111 },
                     ["with no"] = { 56 },
                     ["without"] = { 56 }
                 },
                 ["pronouns"] = {
+                    ["'em"] = {
+                        {
+                            ["case"] = "accusative",
+                            ["id"] = 16
+                        },
+                        {
+                            ["case"] = "dative",
+                            ["id"] = 16
+                        }
+                    },
                     ["a few"] = {
                         {
                             ["case"] = "nominative",
@@ -53067,6 +53179,16 @@ ns.Linguistics = {
                         {
                             ["case"] = "dative",
                             ["id"] = 20
+                        }
+                    },
+                    ["em"] = {
+                        {
+                            ["case"] = "accusative",
+                            ["id"] = 16
+                        },
+                        {
+                            ["case"] = "dative",
+                            ["id"] = 16
                         }
                     },
                     ["everybody"] = {
@@ -53446,9 +53568,12 @@ ns.Linguistics = {
             },
             ["uk"] = {
                 ["activities"] = {
+                    ["лікування"] = { 5 },
                     ["повиконувати завдання"] = { 1 },
                     ["позайматися ремеслом"] = { 3 },
-                    ["порибалити"] = { 2 }
+                    ["порибалити"] = { 2 },
+                    ["рибальства"] = { 2 },
+                    ["розпилення"] = { 4 }
                 },
                 ["adverbs"] = {
                     ["або щось таке"] = { 86 },
@@ -53471,6 +53596,7 @@ ns.Linguistics = {
                     ["в інтернеті"] = { 126 },
                     ["важко"] = { 44 },
                     ["варто"] = { 32 },
+                    ["весело"] = { 150 },
                     ["весь цей час"] = { 110 },
                     ["вже"] = { 109 },
                     ["взагалі"] = { 74, 85 },
@@ -53496,7 +53622,7 @@ ns.Linguistics = {
                     ["дешевше"] = { 80 },
                     ["деякий час"] = { 111 },
                     ["до послаблень"] = { 40 },
-                    ["добре"] = { 1, 90 },
+                    ["добре"] = { 1, 90, 153 },
                     ["додому"] = { 122 },
                     ["дорожче"] = { 81 },
                     ["доступно"] = { 28 },
@@ -53540,6 +53666,7 @@ ns.Linguistics = {
                     ["ледве"] = { 4 },
                     ["лише"] = { 66, 132 },
                     ["мабуть"] = { 5 },
+                    ["майже"] = { 151 },
                     ["може"] = { 6 },
                     ["на карті"] = { 127 },
                     ["на мапі"] = { 127 },
@@ -53576,6 +53703,7 @@ ns.Linguistics = {
                     ["погано"] = { 2, 91 },
                     ["попереду"] = { 7 },
                     ["приблизно"] = { 147 },
+                    ["приємно"] = { 149 },
                     ["просто"] = { 63, 64 },
                     ["просто зараз"] = { 117 },
                     ["пс - с"] = { 17 },
@@ -53626,13 +53754,14 @@ ns.Linguistics = {
                     ["учора"] = { 137 },
                     ["хай бог вас благословить"] = { 10 },
                     ["хай бог тебе благословить"] = { 10 },
+                    ["хай там як"] = { 148 },
                     ["хай щастить"] = { 12 },
                     ["хе - хе"] = { 29 },
                     ["цього тижня"] = { 139 },
                     ["часом"] = { 82 },
                     ["чи що"] = { 87 },
                     ["чи щось таке"] = { 86 },
-                    ["чудово"] = { 21 },
+                    ["чудово"] = { 21, 154 },
                     ["швидко"] = { 135 },
                     ["щасти"] = { 12 },
                     ["ще"] = { 100, 114 },
@@ -53651,6 +53780,7 @@ ns.Linguistics = {
                     ["і все таке"] = { 36 },
                     ["і далі"] = { 108 },
                     ["і таке інше"] = { 36 },
+                    ["ідеально"] = { 155 },
                     ["із того місця, де"] = { 130 },
                     ["ішну - ала"] = { 19 }
                 },
@@ -53684,12 +53814,14 @@ ns.Linguistics = {
                     ["або"] = { 2 },
                     ["але"] = { 3 },
                     ["бо"] = { 7 },
+                    ["де тільки"] = { 15 },
                     ["й"] = { 1 },
                     ["коли"] = { 12 },
                     ["коли тільки"] = { 13 },
                     ["крім того , що"] = { 8 },
                     ["крім того що"] = { 8 },
                     ["крім того, що"] = { 8 },
+                    ["куди тільки"] = { 15 },
                     ["окрім того , що"] = { 8 },
                     ["поки"] = { 14 },
                     ["потім"] = { 4 },
@@ -53749,7 +53881,7 @@ ns.Linguistics = {
                     ["дарунок від"] = { 65 },
                     ["для"] = { 22, 69, 70, 71, 78, 85, 92, 93 },
                     ["до"] = { 15, 26, 27, 28, 67, 90, 103, 104, 105, 106 },
-                    ["з"] = { 21, 47, 50, 52, 55 },
+                    ["з"] = { 21, 47, 50, 52, 55, 111 },
                     ["з - за"] = { 45, 46 },
                     ["з застосуванням"] = { 53 },
                     ["за"] = { 72, 73, 74, 76, 83 },
@@ -53762,7 +53894,7 @@ ns.Linguistics = {
                     ["західніше від"] = { 63 },
                     ["значком"] = { 54 },
                     ["зовні біля"] = { 58 },
-                    ["зі"] = { 21, 37, 47, 50, 52, 55 },
+                    ["зі"] = { 21, 37, 47, 50, 52, 55, 111 },
                     ["крім"] = { 49 },
                     ["мов"] = { 34 },
                     ["на"] = { 3, 8, 9, 11, 12, 13, 14, 16, 17, 18, 20, 29, 30, 77, 86, 91, 95, 96, 97 },
@@ -53791,14 +53923,15 @@ ns.Linguistics = {
                     ["північніше від"] = { 60 },
                     ["під час"] = { 23, 24 },
                     ["після"] = { 88, 100, 101 },
+                    ["стосовно"] = { 112 },
                     ["східніше"] = { 62 },
                     ["східніше від"] = { 62 },
                     ["у"] = { 1, 2, 4, 5, 6, 7, 16, 29, 87 },
                     ["у спеціалізації"] = { 36 },
                     ["через"] = { 68, 75 },
-                    ["щодо"] = { 94 },
+                    ["щодо"] = { 94, 112 },
                     ["як"] = { 33, 35 },
-                    ["із"] = { 21, 37, 47, 50, 52, 55 },
+                    ["із"] = { 21, 37, 47, 50, 52, 55, 111 },
                     ["із застосуванням"] = { 53 }
                 },
                 ["pronouns"] = {
@@ -54689,6 +54822,10 @@ ns.Linguistics = {
             ["softwareService"] = true,
             ["timeBoundary"] = true,
             ["waterSlide"] = true
+        },
+        ["personalPredicateVerbs"] = {
+            ["помилитися"] = 152,
+            ["помилятися"] = 152
         },
         ["predicatePossessives"] = {
             ["hers"] = "her",
@@ -55853,6 +55990,26 @@ ns.Linguistics = {
                 ["targetUk"] = "до",
                 ["temporalAdjunct"] = true,
                 ["uk"] = { "аж до" }
+            },
+            {
+                ["case"] = "instrumental",
+                ["context"] = "conversation",
+                ["en"] = { "to", "with" },
+                ["id"] = "conversation-partner",
+                ["requiresPerson"] = true,
+                ["targetEn"] = "to",
+                ["targetUk"] = "з",
+                ["uk"] = { "з", "із", "зі" }
+            },
+            {
+                ["case"] = "genitive",
+                ["context"] = "judgment",
+                ["en"] = { "about" },
+                ["id"] = "judgment-topic",
+                ["predicateTopic"] = true,
+                ["targetEn"] = "about",
+                ["targetUk"] = "щодо",
+                ["uk"] = { "щодо", "стосовно" }
             }
         },
         ["pronouns"] = {
@@ -56168,6 +56325,10 @@ ns.Linguistics = {
                     ["dative"] = "them",
                     ["nominative"] = "they",
                     ["possessive"] = "their"
+                },
+                ["enAliases"] = {
+                    ["accusative"] = { "em", "'em" },
+                    ["dative"] = { "em", "'em" }
                 },
                 ["id"] = "they",
                 ["number"] = "plural",
@@ -56498,6 +56659,10 @@ ns.Linguistics = {
             }
         },
         ["subjectFallbackSenses"] = { "lootItem", "combatActor" },
+        ["suitabilityVerb"] = {
+            ["en"] = "suit",
+            ["uk"] = "підходити"
+        },
         ["tradeOpeners"] = {
             ["wtb"] = "buy",
             ["wts"] = "sell"
@@ -83396,7 +83561,7 @@ ns.Linguistics = {
                 ["expandedSha256"] = "ea3cff8d44ed0a7aa4500024a2d85a060a88484d5a00e8150a5ee4b1a4ead1a6"
             }
         },
-        ["authoredSha256"] = "86f437fb778bf825529016f15c1d6d62ffdcc28cde71a37c796e3f0ba5255162",
+        ["authoredSha256"] = "05c7fd708e593871c810afb459025d91b1581e58d8a2285a3417368e1417e9ff",
         ["englishDate"] = "2026.09.21",
         ["englishForms"] = 35262,
         ["englishSha256"] = "2e5dfd0b86e5d9a8dd3d5f6eff932285829a5d3ef8d2cc6e8c6558d7e06583e3",

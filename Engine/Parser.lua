@@ -104,7 +104,7 @@ local function addressed(text, tokens, direction, start, finish, resolveCore)
                     for name, value in pairs(core.slots or {}) do slots[name] = value end
                     slots.finalAddress = {term=address}
                     local rule = {intent=core.rule.intent or core.rule.id, sourceRefs=core.rule.sourceRefs,
-                        imperative=core.rule.imperative}
+                        imperative=core.rule.imperative, unknownSpans=core.rule.unknownSpans}
                     return withoutSentenceEnd(core.text) .. ", " .. rendered .. punctuation, rule, slots
                 end
             end
@@ -300,11 +300,16 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
                 end, nestedBudget, opening[part] and closing[part])
                 if value then
                     local refs, slots = {}, {}
+                    local unknown
                     for _, clause in ipairs(subclauses) do
                         for _, ref in ipairs(clause.rule.sourceRefs or {}) do refs[#refs + 1] = ref end
                         for _, slot in pairs(clause.slots or {}) do slots[#slots + 1] = slot end
+                        if clause.rule.unknownSpans then
+                            unknown = unknown or {}
+                            for _, span in ipairs(clause.rule.unknownSpans) do unknown[#unknown + 1] = span end
+                        end
                     end
-                    match = {text=value, rule={intent="composition", sourceRefs=refs}, slots=slots}
+                    match = {text=value, rule={intent="composition", sourceRefs=refs, unknownSpans=unknown}, slots=slots}
                 elseif subfragments then
                     for localFirst, fragment in pairs(subfragments) do
                         fragment.last = fragment.last + offset

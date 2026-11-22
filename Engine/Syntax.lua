@@ -1127,8 +1127,8 @@ local function price(p)
     local introduced = linked and p:any("for", "за")
     local only = p:any("only", "лише")
     if not p:money() then return end
-    local each = p:any("a bottle", "per bottle", "за пляшку") and "bottle"
-        or p:any("each", "per item", "за штуку") and "unit"
+    local each, after = ns.Engine.Grammar.priceBasisAt(p.document, p.i, p.limit)
+    p.i = after
     return p:finish("price", {only=only, linked=linked, each=each, introduced=introduced})
 end
 

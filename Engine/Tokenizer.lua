@@ -60,8 +60,25 @@ local function spacedContraction(text, first, apostropheEnd, spaceEnd, limit, sp
     if spellings[key] then return ending, key, modelForm end
 end
 
+local function leadingElision(text, first, apostropheEnd, limit, pronouns)
+    local last = apostropheEnd
+    while last < limit do
+        local ending, kind = readUnit(text, last + 1, limit)
+        if kind == "apostrophe" then return end
+        if kind ~= "word" then break end
+        if ending - apostropheEnd > 4 then return end
+        last = ending
+    end
+    if last > apostropheEnd then
+        local key = normalize.word(text:sub(first, last))
+        if pronouns[key] then return last, key end
+    end
+end
+
 function T.scan(text, englishContractions)
     local tokens = {}
+    local grammar = englishContractions and ns.Linguistics and ns.Linguistics.grammar
+    local englishPronouns = grammar and grammar.index.en.pronouns
     for _, segment in ipairs(ns.Engine.Markup.split(text)) do
         if segment.protected then
             tokens[#tokens + 1] = { first = segment.first, last = segment.last, key = "<protected>", protected = true,
@@ -92,6 +109,10 @@ function T.scan(text, englishContractions)
                             if nextKind ~= "word" then break end
                             last = nextLast
                         end
+                    elseif kind == "apostrophe" and englishPronouns then
+                        local ending
+                        ending, key = leadingElision(text, first, last, segment.last, englishPronouns)
+                        if ending then last = ending end
                     end
                     key = key or normalize.word(text:sub(first, last))
                     local count, suffix = key:match("^lf(%d+)(m?)$")

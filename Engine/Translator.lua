@@ -48,8 +48,16 @@ local function addRefs(refs, seen, additions)
         if not seen[ref] then refs[#refs + 1], seen[ref] = ref, true end
     end
 end
-local function addClause(matched, refs, seen, rule, slots)
+local function byteSpan(tokens, range)
+    return {first=tokens[range.first].first, last=tokens[range.last].last,
+        protected=range.first == range.last and tokens[range.first].protected == true,
+        reason=range.reason}
+end
+local function addClause(matched, refs, seen, rule, slots, unknown)
     addRefs(refs, seen, rule.sourceRefs)
+    if rule.unknownSpans then
+        for _, span in ipairs(rule.unknownSpans) do unknown[#unknown + 1] = span end
+    end
     if not slots then return end
     for _, value in pairs(slots) do
         if value.term then
@@ -119,8 +127,18 @@ local function grammarClause(document, first, last)
         output = output .. " " .. emote
     end
     if output then
-        local slots, propertyPause
+        local slots, propertyPause, unknown
         for _, tree in ipairs(parsed.trees) do
+            if tree.unresolved then
+                unknown = unknown or {}
+                unknown[#unknown + 1] = byteSpan(document.tokens, tree.unresolved)
+            end
+            if tree.unresolvedRanges then
+                unknown = unknown or {}
+                for _, range in ipairs(tree.unresolvedRanges) do
+                    unknown[#unknown + 1] = byteSpan(document.tokens, range)
+                end
+            end
             if tree.property and tree.property.pauseIndex then propertyPause = tree.property.pauseIndex end
             local address = tree.addressee or tree.recipient
             if address and address.term then
@@ -133,7 +151,7 @@ local function grammarClause(document, first, last)
             ((firstTree.kind == "clause" or firstTree.kind == "need") and "clause")
         return output, {intent=firstTree.kind, imperative=firstTree.imperative == true,
             question=firstTree.question == true or parsed.hypothetical ~= nil,
-            sentenceUnit=sentenceUnit, propertyPause=propertyPause,
+            sentenceUnit=sentenceUnit, propertyPause=propertyPause, unknownSpans=unknown,
             earlierPhase=firstTree.sentenceAdverb and firstTree.sentenceAdverb.earlierPhase
                 or firstTree.predicateAdverb and firstTree.predicateAdverb.earlierPhase,
             initialWhen=parsed.prefix and parsed.prefix.id == "when" and #parsed.trees > 1,
@@ -322,20 +340,20 @@ local function compute(text, direction, tokens, normalized, checkpoint)
     end
     if output then
         if clauses and N.key(output) == normalized then return unchanged(text, "identical") end
-        local matched, refs, seen = {}, {}, {}
+        local matched, refs, seen, unknown = {}, {}, {}, {}
         if clauses then
-            for _, clause in ipairs(clauses) do addClause(matched, refs, seen, clause.rule, clause.slots) end
+            for _, clause in ipairs(clauses) do addClause(matched, refs, seen, clause.rule, clause.slots, unknown) end
         else
-            addClause(matched, refs, seen, rule, slots)
+            addClause(matched, refs, seen, rule, slots, unknown)
         end
         table.sort(matched)
         table.sort(refs)
         local unresolved = tree and tree.features.unresolved
-        local unknown = unresolved and {{first=tokens[unresolved.first].first, last=tokens[unresolved.last].last,
-            protected=false, reason=unresolved.reason}} or {}
-        return {text = output, mode = unresolved and "partial" or "template", intent = clauses and "composition" or rule.intent,
+        if unresolved then unknown[#unknown + 1] = byteSpan(tokens, unresolved) end
+        local complete = #unknown == 0
+        return {text = output, mode = complete and "template" or "partial", intent = clauses and "composition" or rule.intent,
             matchedTerms = matched, unknownSpans = unknown, sourceRefs = refs,
-            coverage = {complete=not unresolved, pipeline=clauses and "composition" or general and "grammar"
+            coverage = {complete=complete, pipeline=clauses and "composition" or general and "grammar"
                 or tree and "structural" or "legacy", dependency=rule and rule.dependency == true or nil}}
     end
     local usedDependency
@@ -366,7 +384,7 @@ local function compute(text, direction, tokens, normalized, checkpoint)
         local term, last, replacement
         if fragment then
             last, replacement = fragment.last, fragment.text
-            addClause(matched, refs, refSeen, fragment.rule, fragment.slots)
+            addClause(matched, refs, refSeen, fragment.rule, fragment.slots, unknown)
             for _, span in ipairs(fragment.untranslated or {}) do
                 local literal = tokens[span.index]
                 unknown[#unknown + 1] = {first=literal.first, last=literal.last, protected=false,

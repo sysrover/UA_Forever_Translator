@@ -1586,6 +1586,26 @@ function P.raceAndClass(document, head, first, limit, case)
     return race, finish, at
 end
 
+local itemClasses = {storageContainer=true, goods=true, equipment=true, consumables=true, publication=true}
+
+local function itemReferences(document, noun, first, limit)
+    local tokens = document.tokens
+    local parenthesized = tokens[first].key == "("
+    local start = first + (parenthesized and 1 or 0)
+    if start > limit or tokens[start].linkKind ~= "item" then return nil end
+    if not parenthesized and tokens[start].first ~= tokens[start - 1].last + 1 then return nil end
+    if not itemClasses[P.semanticClass(noun)] then return nil end
+    local after = start + 1
+    while after <= limit do
+        if tokens[after].linkKind == "item" then after = after + 1
+        elseif parenthesized and tokens[after].key == "," and after < limit and tokens[after + 1].linkKind == "item" then
+            after = after + 2
+        else break end
+    end
+    if parenthesized and P.key(document, after, limit) ~= ")" then return nil end
+    return P.raw(document, start, after - 1), after + (parenthesized and 1 or 0)
+end
+
 function P.noun(document, first, limit, case, locationOnly, count, simple, sense, headFilter)
     local index = first
     local key = P.key(document, index, limit)
@@ -1992,6 +2012,9 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
                     session.genitive = prefix
                     head, after = session, sessionEnd
                     if session.entry.lexeme.frame.placeCompoundTitle then compoundHead = sessionEnd - 1 end
+                elseif place and relation and relation.pathTo then
+                    part.pathTo = prefix
+                    head, after, compoundHead = part, ending, following
                 elseif #adjectives == 0 and (not definitePlace or owner) and relation and relation.spatialPart then
                     if relation.pathTo then part.pathTo = prefix
                     else part.genitive = prefix end
@@ -2299,7 +2322,7 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
                 best.argument, nextIndex, frame = scoped.argument, after, scoped.entry.lexeme.frame
             end
         end
-        if not best.argument and frame and frame.pathTo and marker == (en and "to" or "до") then
+        if not (best.argument or best.pathTo) and frame and frame.pathTo and marker == (en and "to" or "до") then
             local goal, after = P.noun(document, nextIndex + 1, limit, "genitive", false, false, true)
             if goal then best.pathTo, nextIndex = goal, after end
         end
@@ -2353,6 +2376,11 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
         if amount then skillRequirement, nextIndex = amount, after end
     end
     best.skillRequirement = skillRequirement
+    if nextIndex <= limit and best.quantity and not (simple or locationOnly or best.raw)
+        and (document.tokens[nextIndex].linkKind == "item" or document.tokens[nextIndex].key == "(") then
+        local references, after = itemReferences(document, best, nextIndex, limit)
+        if references then best.itemReferences, nextIndex = references, after end
+    end
     if not (locationOnly or best.pronoun) and nextIndex < limit then
         local offset, after = P.comparativeOffsetAt(document, nextIndex, limit)
         if offset then best.comparativeOffset, nextIndex = offset, after end
@@ -2373,10 +2401,22 @@ function P.noun(document, first, limit, case, locationOnly, count, simple, sense
             best.prepositions[#best.prepositions + 1], nextIndex = phrase, after
         end
     end
-    if not simple and best.raw and nextIndex <= limit and document.tokens[headIndex].linkKind == "item" then
-        local id = ns.Engine.Markup.itemId(best.raw)
-        local classes = ns.Data.itemTitleClasses
-        return describeTitle(document, best, nextIndex, limit, case, classes and classes[id])
+    if best.raw and nextIndex <= limit and document.tokens[headIndex].linkKind == "item" then
+        if not (best.quantity or locationOnly or count == false) then
+            local marker = P.key(document, nextIndex, limit)
+            local separate = marker == "x" or marker == "×"
+            local stack = separate and P.key(document, nextIndex + 1, limit)
+                or marker:match("^x(%d+)$") or marker:match("^×(%d+)$")
+            local amount = stack and stack:match("^%d+$") and tonumber(stack)
+            if amount and amount > 0 and amount < math.huge then
+                best.quantity, nextIndex = stack, nextIndex + (separate and 2 or 1)
+            end
+        end
+        if not simple then
+            local id = ns.Engine.Markup.itemId(best.raw)
+            local classes = ns.Data.itemTitleClasses
+            return describeTitle(document, best, nextIndex, limit, case, classes and classes[id])
+        end
     end
     if document.relativeBudget and not simple and not best.raw
         and (not best.pronoun or best.pronoun.id == "someone") and nextIndex <= limit then
@@ -2562,7 +2602,8 @@ function P.preposition(document, first, limit, motion, displacement, context, se
         end
         local frame = object and object.entry and object.entry.lexeme.frame
         local class = P.semanticClass(object)
-        local person = rule.requiresPerson and P.personNoun(object)
+        local person = rule.requiresPerson and (P.personNoun(object)
+            or rule.passiveAgent and P.hasTrait(object, "membershipGroup"))
         local reference = object and object.pronoun and object.pronoun.id
         if object and (not rule.requiresCategory or (object.term and object.term.category == rule.requiresCategory))
             and (not rule.requiresPerson or person)

@@ -1211,6 +1211,14 @@ ns.Data = {
                 ["dealer"] = {
                     ["_id"] = "role.damage"
                 },
+                ["dealers"] = {
+                    ["_id"] = "role.damage",
+                    ["_plural"] = {
+                        ["id"] = "role.damage",
+                        ["sourceRefs"] = { "ua-forever:role.damage" },
+                        ["text"] = "DPS"
+                    }
+                },
                 ["over"] = {
                     ["time"] = {
                         ["_id"] = "slang.combat.dot"
@@ -20478,6 +20486,23 @@ ns.Data = {
                                     ["animacy"] = "animate",
                                     ["gender"] = "masculine",
                                     ["number"] = "singular",
+                                    ["pos"] = "noun"
+                                },
+                                ["id"] = "role.damage",
+                                ["lemma"] = "DPS",
+                                ["pos"] = "noun",
+                                ["sense"] = "role.damage",
+                                ["sourceRefs"] = { "ua-forever:role.damage" }
+                            }
+                        }
+                    },
+                    ["dealers"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "animate",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
                                     ["pos"] = "noun"
                                 },
                                 ["id"] = "role.damage",
@@ -60594,7 +60619,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "a919739a6803bf9b0c2841b73b6c6a35d44060b0a16488dd4821627b60fc6925"
+        ["version"] = "3a7abb0a2593f1c4ec5140701ca745a4f381581c02f920dd9d13c7c02724186a"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -77092,6 +77117,7 @@ ns.Data = {
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "DPS",
             ["englishPlural"] = "DPS",
+            ["englishPluralAliases"] = { "damage dealers" },
             ["features"] = {
                 ["animacy"] = "animate",
                 ["gender"] = "masculine",
