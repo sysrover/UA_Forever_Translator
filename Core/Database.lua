@@ -25,7 +25,7 @@ function DB.load()
     local channels = type(old.channels) == "table" and old.channels or {}
     local clean = { schema = 1, enabled = old.enabled ~= false, own = old.own == true,
         showInUA = old.showInUA ~= false, showInMain = old.showInMain == true,
-        logTranslations = old.logTranslations == true, channels = {} }
+        logTranslations = old.logTranslations == true, neuralIncoming = old.neuralIncoming == true, channels = {} }
     local color = old.translationColor
     if type(color) == "table" and validColor(color.r, color.g, color.b) then
         clean.translationColor = {r=color.r, g=color.g, b=color.b}

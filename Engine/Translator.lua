@@ -1,6 +1,7 @@
 local _, ns = ...
 local E = {}; ns.Translator = E
 local C, N, A = ns.Compat, ns.Engine.Normalize, ns.Engine.Acceptance
+local neuralRuntime, neuralModel = ns.Engine.NeuralRuntime
 local contextFields = {"event", "line", "author", "sender", "language", "target"}
 local cache, queue, head, tail, bytes, count = {}, {}, 1, 0, 0, 0
 function E.clearCache()
@@ -599,7 +600,36 @@ local function translateMixed(text, direction, tokens, ranges, checkpoint)
         coverage={complete=false, pipeline="composition"}}
 end
 
-local function translateText(text, direction, checkpoint)
+local function translateNeural(text, tokens, checkpoint)
+    local english
+    for _, token in ipairs(tokens) do
+        if not token.protected then
+            if token.key:find("[\208\209][\128-\191]") then return end
+            english = english or token.key:find("[A-Za-z]")
+        end
+    end
+    if not english then return end
+    if not neuralModel then neuralModel = neuralRuntime.prepare(ns.Data.translationStudent, checkpoint) end
+    local facts = A.measure(text, tokens, "en-uk")
+    local output, mode, calls = neuralRuntime.routeChat(ns, text, function(value)
+        return neuralRuntime.translate(neuralModel, value, checkpoint, false, ns.Engine.Markup.split)
+    end, checkpoint, tokens, facts)
+    if mode ~= "complete" or not output or #output > ns.Limits.messageBytes or output == text
+        or A.reject(facts, 1, #tokens, output) then return end
+    local digits = output:gmatch("%d+")
+    for original in text:gmatch("%d+") do
+        if digits() ~= original then return end
+    end
+    if digits() then return end
+    for _, segment in ipairs(ns.Engine.Markup.split(output)) do
+        if not segment.protected and output:sub(segment.first, segment.last):find("[\208\209][\128-\191]") then
+            return {text=output, mode=calls > 0 and "neural" or "template",
+                matchedTerms={}, unknownSpans={}, sourceRefs={}}
+        end
+    end
+end
+
+local function translateText(text, direction, checkpoint, neural)
     local contractions = direction == "en-uk" and ns.Engine.ClauseAnalysis.englishContractions
     local tokens = ns.Engine.Tokenizer.scan(text, contractions)
     if not tokens or #tokens == 0 then return unchanged(text, "token-limit-or-empty") end
@@ -613,6 +643,10 @@ local function translateText(text, direction, checkpoint)
         local reason = result.mode ~= "unchanged" and A.reject(facts, 1, #tokens, result.text)
         return reason and unchanged(text, reason) or result
     end
+    if neural then
+        local translated = translateNeural(text, tokens, checkpoint)
+        if translated then return translated end
+    end
     return compute(text, direction, tokens, nil, checkpoint)
 end
 
@@ -620,10 +654,14 @@ function E.translate(text, direction, context, checkpoint)
     if C.secret(text) or C.secret(direction) then return nil end
     if type(text) ~= "string" or (direction ~= "en-uk" and direction ~= "uk-en") then return nil end
     if #text > ns.Limits.messageBytes then return unchanged(text, "byte-limit") end
+    local settings = ns.Database.settings
+    local neural = direction == "en-uk" and context and checkpoint and settings and settings.neuralIncoming
+        and neuralRuntime and ns.Data.translationStudent
     local key = cachedKey(text, direction, context)
+    if key and neural then key = "neural|" .. key end
     local entry = key and cache[key]
     if entry then return entry.result end
-    local result = translateText(text, direction, checkpoint)
+    local result = translateText(text, direction, checkpoint, neural)
     store(key, result)
     return result
 end

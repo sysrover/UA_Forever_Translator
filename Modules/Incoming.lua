@@ -101,7 +101,7 @@ local function present(job, result, originalOnly, delayed)
     if tab then display(tab, message, r, g, b, id) end
     if not originalOnly and main and main ~= tab then display(main, message, r, g, b, id) end
     if logTranslation then
-        Log.record(event, job.text, result, "en-uk", job.translationMs, job.maxSliceMs)
+        Log.record(event, job.text, result, "en-uk", job.translationMs, job.maxSliceMs, Log.duration(job.neuralQueuedAt))
     end
 end
 
@@ -132,10 +132,13 @@ local function drain()
     while count > 0 and debugprofilestop() < deadline do
         local job = pending[first]
         local tab, main = destinations(job.group)
-        if not (tab or main) or not active and not lineAllowed(job.context.line) then
+        local neural = DB.settings.neuralIncoming
+        local starting = not active or job.neural ~= neural
+        if not (tab or main) or starting and not lineAllowed(job.context.line) then
             removeFirst()
         else
-            if not active then
+            if starting then
+                job.neural = neural
                 active = coroutine.create(function()
                     return ns.Translator.translate(job.text, "en-uk", job.context, checkpoint)
                 end)
@@ -177,6 +180,7 @@ local function addTranslation(event, group, text, author, ...)
     local job = {text=text, group=group, channel=channel, channelIndex=channelIndex,
         translationMs=0, maxSliceMs=0,
         context={event=event, line=line, author=author, sender=sender, language=language, target=target}}
+    if DB.settings.neuralIncoming and DB.settings.logTranslations then job.neuralQueuedAt = Log.now() end
     if not C_Timer or type(C_Timer.After) ~= "function" or type(debugprofilestop) ~= "function" then
         local startedAt = Log.now()
         local result = ns.Translator.translate(text, "en-uk", job.context)

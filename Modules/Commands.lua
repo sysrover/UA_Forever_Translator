@@ -26,6 +26,17 @@ function Commands.dispatch(message)
     elseif command == "en" then ns.UI.ComposeWindow.open(rest)
     elseif command == "config" then ns.UI.Settings.open()
     elseif command == "tab" then ns.Incoming.openTab()
+    elseif command == "neural" then
+        local enabled = rest:lower()
+        if enabled == "on" and not (ns.Data.translationStudent and ns.Engine.NeuralRuntime) then
+            ns.Compat.print(ns.L.neuralUnavailable)
+        elseif enabled == "on" or enabled == "off" then
+            ns.Database.settings.neuralIncoming = enabled == "on"
+            ns.Database.changed()
+            ns.Compat.print(ns.L[enabled == "on" and "neuralEnabled" or "neuralDisabled"])
+        else
+            ns.Compat.print(ns.L[ns.Database.settings.neuralIncoming and "neuralEnabled" or "neuralDisabled"])
+        end
     elseif command == "on" or command == "off" then
         ns.Database.settings.enabled = command == "on"; ns.Database.changed()
         ns.Compat.print(ns.L[command == "on" and "enabled" or "disabled"])

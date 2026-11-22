@@ -48,7 +48,7 @@ local function validDuration(value)
     if ns.Compat.public(value) and type(value) == "number" and value >= 0 and value < math.huge then return value end
 end
 
-function Log.record(event, original, result, direction, translationMs, maxSliceMs)
+function Log.record(event, original, result, direction, translationMs, maxSliceMs, latencyMs)
     local settings = ns.Database.settings
     if not settings or not settings.logTranslations then return end
     if not ns.Compat.public(event, original, result, direction) or type(result) ~= "table" then return end
@@ -57,7 +57,7 @@ function Log.record(event, original, result, direction, translationMs, maxSliceM
     direction = direction or "en-uk"
     if direction ~= "en-uk" and direction ~= "uk-en" then return end
     if type(event) ~= "string" or type(original) ~= "string" or type(translation) ~= "string" then return end
-    if mode ~= "exact" and mode ~= "template" and mode ~= "partial" then return end
+    if mode ~= "exact" and mode ~= "template" and mode ~= "partial" and mode ~= "neural" then return end
     if not journal then journal = openJournal() end
 
     local index = journal.nextIndex
@@ -69,6 +69,7 @@ function Log.record(event, original, result, direction, translationMs, maxSliceM
         direction = direction,
         translationMs = validDuration(translationMs),
         maxSliceMs = validDuration(maxSliceMs),
+        latencyMs = validDuration(latencyMs),
     }
     journal.nextIndex = index + 1
 end

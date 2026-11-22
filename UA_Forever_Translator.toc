@@ -19,6 +19,7 @@ Data\Apertium.lua
 Data\UDPipeModels.lua
 Data\UDPipeEnglishOutput.lua
 Data\UDPipeTagWeights.lua
+Data\TranslationStudent.lua
 Engine\Markup.lua
 Engine\Normalize.lua
 Engine\Tokenizer.lua
@@ -38,6 +39,7 @@ Engine\ClauseGeneration.lua
 Engine\Syntax.lua
 Engine\Transfer.lua
 Engine\Acceptance.lua
+Engine\NeuralRuntime.lua
 Engine\Translator.lua
 UI\ChatTab.lua
 Modules\ChatLog.lua
