@@ -117,6 +117,12 @@ local function grammarClause(document, first, last)
     local analysis = ns.Engine.ClauseAnalysis
     local parsed = analysis.parse(document, first, last)
     local reported
+    local firstTree = parsed and #parsed.trees == 1 and parsed.trees[1]
+    if document.direction == "en-uk" and firstTree and firstTree.copula and firstTree.adjective then
+        local following = document.tokens[last + 1]
+        local modelEnd = following and following.key:match("^[.!?]$") and last + 1 or last
+        parsed = analysis.disambiguatePassiveControl(document, first, last, modelEnd, firstTree.predicateIndex) or parsed
+    end
     if document.direction == "uk-en" and (not parsed or parsed.trees[1].question or parsed.hypothetical) then
         local following = document.tokens[last + 1]
         local marker = innerPunctuation or punctuation
@@ -223,10 +229,16 @@ local function dependencyFragments(document, fragments, verbatim, accept)
     end
     local phrases, generation = ns.Engine.Phrases, ns.Engine.ClauseGeneration
     local english = document.direction == "uk-en"
+    -- Closing chat punctuation can trail a complete sentence. Leave the suffix outside the graph.
+    local finalSentenceEnd = #tokens
+    while finalSentenceEnd > 1 and not tokens[finalSentenceEnd].protected
+        and tokens[finalSentenceEnd].key:match("^[%)%]%}>]+$") do
+        finalSentenceEnd = finalSentenceEnd - 1
+    end
     for ending = 1, #tokens do
         local token = tokens[ending]
         local sentenceEnd = not token.protected and token.key:match("^[.!?]$")
-            and ns.Engine.Parser.sentenceBoundary(document.text, tokens, ending)
+            and (ending == finalSentenceEnd or ns.Engine.Parser.sentenceBoundary(document.text, tokens, ending))
         if sentenceEnd or ending == #tokens then
             if ending - first >= 2 and ending - first < 32 and attempts < 3 then
                 local open, occupied, preservation = 0, false, crossing[first - 1] or crossing[ending]
@@ -256,6 +268,10 @@ local function dependencyFragments(document, fragments, verbatim, accept)
                             local intent = #parsed.trees > 1 and "composition" or parsed.trees[1].kind
                             if first == 1 and ending == #tokens and not parsed.untranslated then
                                 return fragments, false, output, intent
+                            end
+                            if first == 1 and sentenceEnd and ending == finalSentenceEnd and not parsed.untranslated then
+                                local complete = accept(output .. document.text:sub(token.last + 1), first, #tokens)
+                                if complete then return fragments, false, complete, intent end
                             end
                             fragments = fragments or {}
                             for index = first, ending do fragments[index] = nil end

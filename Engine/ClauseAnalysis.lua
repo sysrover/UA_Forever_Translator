@@ -10000,10 +10000,16 @@ function A.reportedFromDependencies(document, first, limit, arcs, words, index)
     if not (model and model.reportedOutput and embedded) or P.key(document, limit + 1, #document.tokens) == "?"
         or ambiguous and missingReportedObject(embedded) then return nil end
     local tried = document.reportedOutputTried
-    if tried and (tried[first] or tried.remaining == 0) then return nil end
+    local attempt = tried and tried[first]
+    if attempt then
+        return attempt.last == last and attempt.arcs and fromReportedGraph(document, first, limit, attempt.arcs, words, ambiguous) or nil
+    end
+    if tried and tried.remaining == 0 then return nil end
     tried = tried or {remaining=3}
-    tried[first], tried.remaining, document.reportedOutputTried = true, tried.remaining - 1, tried
+    attempt = {last=last}
+    tried[first], tried.remaining, document.reportedOutputTried = attempt, tried.remaining - 1, tried
     local guided = ns.Engine.UDPipe.analyzeReportedDocument(document, first, last, index, hints)
+    attempt.arcs = guided
     if document.checkpoint then document.checkpoint() end
     return guided and fromReportedGraph(document, first, limit, guided, words, ambiguous) or nil
 end
@@ -10037,6 +10043,136 @@ function A.disambiguateReportedClause(document, first, limit, last)
     ranges[last] = parsed or false
     return parsed
 end
+
+local function passiveControlEntry(document, position)
+    local frames, reverse = {}, {direction="uk-en"}
+    local entry = L.choose(document, position, "verb", {tense="past", verbalForm="participle"}, nil, function(candidate)
+        local frame = lexemeFrame(candidate)
+        if frame.controlCase then frames[candidate.id] = frame; return true end
+        local lemma = candidate.lexeme.uk
+        local best, preference
+        for _, donor in ipairs(L.lookup(reverse, lemma)) do
+            local known = lexemeFrame(donor)
+            local rank = donor.lexeme.preference
+            if donor.lexeme.pos == "verb" and donor.lexeme.uk == lemma and known.controlCase then
+                if best and best.controlCase ~= known.controlCase then return false end
+                if not preference or rank < preference then best, preference = known, rank end
+            end
+        end
+        if best then frames[candidate.id] = best; return true end
+    end)
+    if not entry then return nil end
+    local selected = frames[entry.id]
+    if selected == entry.lexeme.frame then return entry end
+    local lexeme = {}
+    for key, value in pairs(entry.lexeme) do lexeme[key] = value end
+    lexeme.frame = selected
+    return {id=entry.id, lexeme=lexeme, form=entry.form, head=entry.head}
+end
+
+local function passiveControlPatient(document, first, last)
+    if last < first then return nil end
+    local patient, after = P.pronoun(document, first, last, "nominative", true)
+    if not patient then patient, after = P.noun(document, first, last, "nominative") end
+    if patient and after == last + 1 and (patient.pronoun or patient.animacy == "animate") then return patient end
+end
+
+local function passiveControlMatrix(document, first, limit, arcs, governor)
+    local main = first + governor - 1
+    local auxiliaryIndex, subjectIndex, tense, negative
+    for index = 1, governor - 1 do
+        local sibling = arcs[index]
+        if sibling and sibling.head == governor then
+            if sibling.relation == "nsubj:pass" or sibling.relation == "nsubj" then subjectIndex = index end
+            if sibling.relation == "aux:pass" or sibling.relation == "aux" then
+                local position = first + index - 1
+                local key = P.key(document, position, limit)
+                local base = negativeCopula[key] or key
+                if copula[base] then auxiliaryIndex, tense, negative = position, copula[base], base ~= key end
+            end
+        end
+    end
+    if not (auxiliaryIndex and subjectIndex) then return nil end
+    local why = P.key(document, first, limit) == "why"
+    local inverted = auxiliaryIndex == first + (why and 1 or 0)
+    local detachedNegative = P.key(document, main - 1, limit) == "not"
+    if not inverted and (why or auxiliaryIndex + (detachedNegative and 2 or 1) ~= main) then return nil end
+    local start = inverted and auxiliaryIndex + 1 or first
+    local stop = inverted and main - (detachedNegative and 2 or 1) or auxiliaryIndex - 1
+    if stop < start then return nil end
+    local patient = passiveControlPatient(document, start, stop)
+    if not patient or (patient.headIndex or start) ~= first + subjectIndex - 1 then return nil end
+    return {kind="clause", verbIndex=main, tense=tense, subject={person=3, number="plural"}, implicitSubject=true,
+        controlled={actor=patient}, negative=negative or detachedNegative, question=inverted, why=why}
+end
+
+function A.passiveControlFromDependencies(document, first, limit, arcs, words, expectedPredicate, entry)
+    if document.direction ~= "en-uk" then return nil end
+    for dependent = 4, limit - first + 1 do
+        local arc = arcs[dependent]
+        local governor = arc and arc.head
+        local root = governor and arcs[governor]
+        if arc and arc.relation == "xcomp" and root and root.relation == "root" and governor < dependent
+            and words[governor] and words[governor].upos == "VERB" and words[dependent] and words[dependent].upos == "VERB" then
+            local main = first + governor - 1
+            local marker = arcs[governor + 1]
+            if (not expectedPredicate or expectedPredicate == main) and P.key(document, main + 1, limit) == "to"
+                and marker and marker.relation == "mark" and marker.head == dependent then
+                local tree = passiveControlMatrix(document, first, limit, arcs, governor)
+                local predicate = tree and (entry or passiveControlEntry(document, main))
+                if predicate then
+                    local action, finish = complementaryInfinitive(document, main + 1, limit,
+                        {infinitive=true, infinitiveAdverbs=true}, 0)
+                    if action and finish == limit + 1 and action.verbIndex == first + dependent - 1 then
+                        tree.verb, tree.controlled.action = predicate, action
+                        return {trees={tree}, joins={}, dependency=true}
+                    end
+                end
+            end
+        end
+    end
+end
+
+function A.passiveWhyFromDependencies(document, first, limit, arcs, words)
+    if document.direction ~= "en-uk" or P.key(document, first, limit) ~= "why" then return nil end
+    local auxiliary = P.key(document, first + 1, limit)
+    if not copula[negativeCopula[auxiliary] or auxiliary] then return nil end
+    local last = limit + (#arcs == limit - first + 2 and 1 or 0)
+    local ranges = document.passiveWhyRanges
+    if ranges and (ranges[first] and ranges[first] ~= last or not ranges[first] and ranges.remaining == 0) then return nil end
+
+    for predicate = first + 3, limit - 2 do
+        if P.key(document, predicate + 1, limit) == "to" then
+            local stop = predicate - (P.key(document, predicate - 1, limit) == "not" and 2 or 1)
+            local patient = passiveControlPatient(document, first + 2, stop)
+            local entry = patient and passiveControlEntry(document, predicate)
+            if entry then
+                if not ranges or not ranges[first] then
+                    ranges = ranges or {remaining=3}
+                    ranges[first], ranges.remaining, document.passiveWhyRanges = last, ranges.remaining - 1, ranges
+                end
+                -- Keep the question word in the source and in generation. Its position is restored after parsing.
+                local alternate = ns.Engine.UDPipe.analyzeDocument(document, first, last,
+                    nil, nil, nil, nil, nil, nil, nil, {first=first, last=first})
+                if document.checkpoint then document.checkpoint() end
+                return alternate and A.passiveControlFromDependencies(document, first, limit, alternate, words, predicate, entry) or nil
+            end
+        end
+    end
+end
+
+function A.disambiguatePassiveControl(document, first, limit, last, predicate)
+    if not predicate or last - first >= 32 or P.key(document, predicate + 1, limit) ~= "to"
+        or not (ns.UDPipeModels and ns.UDPipeModels.en) then return nil end
+    local entry = passiveControlEntry(document, predicate)
+    if not entry then return nil end
+    local pipe = ns.Engine.UDPipe
+    local arcs, words = pipe.analyzeDocumentWithTags(document, first, last)
+    if document.checkpoint then document.checkpoint() end
+    if not (arcs and words) then return nil end
+    return A.passiveControlFromDependencies(document, first, limit, arcs, words, predicate, entry)
+        or A.passiveWhyFromDependencies(document, first, limit, arcs, words)
+end
 end)()
 end
 
@@ -10059,6 +10195,8 @@ function A.parseDependencies(document, first, limit, arcs, words)
         or dependencySequence(document, first, limit, arcs, words)
         or A.coordinatedFromDependencies(document, first, limit, arcs, words)
         or A.reportedFromDependencies(document, first, limit, arcs, words)
+        or A.passiveControlFromDependencies(document, first, limit, arcs, words)
+        or A.passiveWhyFromDependencies(document, first, limit, arcs, words)
         or A.parseWithRecoveredPredicate(document, first, limit, arcs, words)
 end
 
