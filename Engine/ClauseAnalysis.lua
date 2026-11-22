@@ -2170,6 +2170,28 @@ function A.transferReportedTime(document, reporter, reported, finish, limit)
     end
 end
 
+function A.prepareReportedClause(document, tree, embedded, recipient, finish, limit, polar)
+    embedded.polar, embedded.contentClause = polar, true
+    local frame = lexemeFrame(tree.verb)
+    local english = document.direction == "en-uk"
+    if english and polar and tree.tense == "future" and frame.prospectiveContent
+        and not recurringEvent(embedded) then
+        A.prospectiveEvent(embedded)
+    end
+    if english and recipient and recipient.person == 3 and recipient.number == "singular"
+        and embedded.possessiveRecipient == "they" then
+        local pronoun = recipient.gender == "feminine" and "she" or "he"
+        embedded.recipient = personalSubject(pronoun)
+    end
+    A.transferReportedTime(document, tree, embedded, finish, limit)
+    if english and frame.reportedPresent and tree.tense == "past" and embedded.tense == "past"
+        and embedded.aspect == "continuous" and explicitTime(embedded) ~= "past" then
+        local scheduled = hasFutureSchedule(embedded)
+        embedded.tense = scheduled and "future" or "present"
+        if scheduled then embedded.sequencedEvent = true end
+    end
+end
+
 function A.relativePrepositionAt(document, index, limit, frame, gap)
     local choices, last = L.functional(document, "prepositions", index, limit)
     if not choices then return nil end
@@ -2422,24 +2444,8 @@ complements = function(document, tree, index, limit, depth, recentObject)
             local clauseStart = (indirect or bare) and start or start + 1
             local embedded, finish = simple(document, clauseStart, limit, nil, depth + 1, indirect or polar, nil, false)
             if embedded and embedded.subject and not embedded.imperative and not embedded.question then
-                embedded.polar, embedded.contentClause = polar, true
-                if english and polar and tree.tense == "future" and frame.prospectiveContent
-                    and not recurringEvent(embedded) then
-                    A.prospectiveEvent(embedded)
-                end
                 tree.recipient = contentRecipient
-                if english and recipient and recipient.person == 3 and recipient.number == "singular"
-                    and embedded.possessiveRecipient == "they" then
-                    local pronoun = recipient.gender == "feminine" and "she" or "he"
-                    embedded.recipient = personalSubject(pronoun)
-                end
-                A.transferReportedTime(document, tree, embedded, finish, limit)
-                if english and frame.reportedPresent and tree.tense == "past" and embedded.tense == "past"
-                    and embedded.aspect == "continuous" and explicitTime(embedded) ~= "past" then
-                    local scheduled = hasFutureSchedule(embedded)
-                    embedded.tense = scheduled and "future" or "present"
-                    if scheduled then embedded.sequencedEvent = true end
-                end
+                A.prepareReportedClause(document, tree, embedded, recipient, finish, limit, polar)
                 tree.content = {embedded}
                 index = finish
                 if indirect or polar then return index end
@@ -3976,8 +3982,9 @@ function A.existentialHead(document, first, limit)
         if not tense or negative and form ~= "немає" and form ~= "нема"
             and form ~= "було" and form ~= "буде" then return nil end
         local agreement = ukCopulaAgreement[form] or (form == "будуть" and "plural")
-        return {tense=tense, negative=negative, agreement=agreement, singular=form == "буде"},
-            first + (key == "не" and 2 or 1)
+        local position = key == "не" and first + 1 or first
+        return {tense=tense, negative=negative, agreement=agreement, singular=form == "буде",
+            predicateIndex=position}, position + 1
     end
     local form, index, question, certainty
     if key == "there's" or key == "there'll" then
@@ -4098,7 +4105,12 @@ local function existential(document, first, limit, depth, sentenceQuestion)
     local agrees
     if not english and not head.negative and (head.agreement or head.singular) then
         agrees = function(noun)
-            if noun.number == "plural" then return head.agreement == "plural" end
+            if noun.number == "plural" then
+                -- Ukrainian can use a singular copula with a counted group.
+                return head.agreement == "plural" or (head.agreement == "neuter" or head.singular)
+                    and (noun.quantity or noun.headlessCardinal or noun.few
+                        or noun.pronoun and noun.pronoun.headlessQuantity or P.quantifiedSubject(noun))
+            end
             if head.singular then return true end
             return head.agreement == noun.gender
         end
@@ -4131,7 +4143,8 @@ local function existential(document, first, limit, depth, sentenceQuestion)
                 end)
         end
         if capacity then
-            subject = {entry=capacity, person=3, number="singular", gender=capacity.head.gender, animacy=capacity.head.animacy}
+            subject = {entry=capacity, person=3, number="singular", gender=capacity.head.gender,
+                animacy=capacity.head.animacy, headIndex=index}
             after = index + 1
         end
     end
@@ -4159,6 +4172,7 @@ local function existential(document, first, limit, depth, sentenceQuestion)
         nearby=nearby, possessor=possessor, possessorSubject=possessorSubject,
         tense=head and head.tense, negative=head and head.negative, certainty=certainty,
         capacity=capacity ~= nil, locationAdverb=location, persistence=persistence, quantityFocus=focus,
+        existentialIndex=head and head.predicateIndex,
         locationPreposition=leadingPlace or leadingDistribution}
     after = attachNominalAction(document, subject, after, limit, depth)
     local category = subject.term and subject.term.category
@@ -9854,6 +9868,175 @@ function A.coordinatedFromDependencies(document, first, limit, arcs, words)
         end
     end
 end
+
+local function reportedBoundary(arcs, governor, dependent, count)
+    local opening
+    for index = 1, count do
+        local arc = arcs[index]
+        if not arc then return nil end
+        if arc.relation ~= "punct" then
+            local owner = dependencyOwner(arcs, index, governor, dependent, count)
+            if owner == dependent then
+                opening = opening or index
+            elseif owner ~= governor or opening then
+                return nil
+            end
+        end
+    end
+    if opening and opening > governor then return opening end
+end
+
+local function reportedMatrix(document, first, limit)
+    local tree, finish = simple(document, first, limit, nil, 0)
+    if not tree or finish ~= limit + 1 or not tree.verb or not tree.subject or tree.implicitSubject
+        or tree.question or tree.imperative or tree.object or tree.content or tree.controlled
+        or tree.infinitive or tree.perception or tree.prepositions or tree.purpose then return nil end
+    local frame = lexemeFrame(tree.verb)
+    if frame.content or frame.perception then return tree, frame end
+end
+
+local function reportedPredicate(tree, position, word)
+    if dependencyPredicateMatches(tree, position, word) then return true end
+    if not word then return false end
+    if tree.kind == "existential" and tree.existentialIndex == position then
+        return word.upos == "VERB" or word.upos == "AUX"
+    end
+    if word.upos == "ADV" then
+        return tree.copula and tree.locativeAdverbIndex == position
+    end
+    if word.upos == "NOUN" or word.upos == "PROPN" then
+        if tree.kind == "existential" then return tree.subject.headIndex == position end
+        local location = tree.copula and tree.prepositions and tree.prepositions[1]
+        return location and P.spatialLocation(location) and location.object.headIndex == position
+    end
+end
+
+local function reportedContent(document, first, limit)
+    local embedded, finish = simple(document, first, limit, nil, 1)
+    if embedded and finish == limit + 1 and embedded.subject and not embedded.implicitSubject
+        and not (embedded.imperative or embedded.question or embedded.wh or embedded.why
+            or embedded.when or embedded.where) then return embedded end
+end
+
+local function missingReportedObject(embedded)
+    local frame = embedded.verb and lexemeFrame(embedded.verb)
+    return frame and (frame.objectCase or frame.content) and not (embedded.object or embedded.content
+        or embedded.controlled or embedded.perception or embedded.infinitive)
+end
+
+local function fromReportedGraph(document, first, limit, arcs, words, ambiguousMarker)
+    local english = document.direction == "en-uk"
+    local marker = english and "that" or "що"
+    local count = limit - first + 1
+    for dependent = 2, count do
+        local arc = arcs[dependent]
+        local governor = arc and arc.head
+        local root = governor and arcs[governor]
+        if arc and arc.relation == "ccomp" and root and root.relation == "root"
+            and governor > 0 and governor < dependent and words[governor] and words[governor].upos == "VERB" then
+            local opening = reportedBoundary(arcs, governor, dependent, count)
+            if opening then
+                local start = first + opening - 1
+                local marked = P.key(document, start, limit) == marker
+                local markerArc = arcs[opening]
+                local leftEnd = start - (P.key(document, start - 1, limit) == "," and 2 or 1)
+                local tree, frame = reportedMatrix(document, first, leftEnd)
+                if tree and tree.verbIndex == first + governor - 1
+                    and (marked and markerArc.relation == "mark" and markerArc.head == dependent
+                        or not marked and english and frame.bareContent) then
+                    local embedded = reportedContent(document, start + (marked and 1 or 0), limit)
+                    if embedded and reportedPredicate(embedded, first + dependent - 1, words[dependent])
+                        and not (ambiguousMarker == start and missingReportedObject(embedded))
+                        and not ns.Engine.Acceptance.rejectRoles({trees={embedded}}, first, arcs, words) then
+                        A.prepareReportedClause(document, tree, embedded, tree.recipient, limit + 1, limit)
+                        tree.content = {embedded}
+                        return {trees={tree}, joins={}, dependency=true}
+                    end
+                end
+            end
+        end
+    end
+end
+
+local function ukrainianReportedMarker(document, first, limit)
+    for index = first + 2, limit - 1 do
+        if P.key(document, index, limit) == "що" and P.key(document, index - 1, limit) == ","
+            and not document.tokens[index].protected and reportedMatrix(document, first, index - 2) then
+            return index
+        end
+    end
+end
+
+function A.reportedFromDependencies(document, first, limit, arcs, words, index)
+    local parsed = fromReportedGraph(document, first, limit, arcs, words)
+    if parsed or document.direction ~= "uk-en" then return parsed end
+    index = index or ukrainianReportedMarker(document, first, limit)
+    if not index then return nil end
+    local offset = index - first + 1
+    local marker = arcs[offset]
+    local ambiguous = marker and marker.relation == "obj" and index
+    local last = limit + (#arcs == limit - first + 2 and 1 or 0)
+    local function withReadings(hints)
+        local guided = ns.Engine.UDPipe.analyzeDocument(document, first, last, index, index, hints, {"SCONJ"})
+        if document.checkpoint then document.checkpoint() end
+        return guided and fromReportedGraph(document, first, limit, guided, words, ambiguous) or nil
+    end
+    if words[offset] and words[offset].upos ~= "SCONJ" then
+        parsed = withReadings()
+        if parsed then return parsed end
+    end
+    local embedded = reportedContent(document, index + 1, limit)
+    local subject = embedded and embedded.subject
+    local predicate = embedded and embedded.existentialIndex
+    local word = predicate and words[predicate - first + 1]
+    local hints
+    if word and word.upos == "AUX" and (subject.quantity or subject.few or P.quantifiedSubject(subject)) then
+        -- The counted phrase identifies an existential verb rather than an adjectival copula.
+        hints = {[predicate]={pos="VERB", lemma="бути", feats="VerbForm=Fin"}}
+        parsed = withReadings(hints)
+        if parsed then return parsed end
+    end
+    local model = ns.UDPipeModels and ns.UDPipeModels.uk
+    if not (model and model.reportedOutput and embedded) or P.key(document, limit + 1, #document.tokens) == "?"
+        or ambiguous and missingReportedObject(embedded) then return nil end
+    local tried = document.reportedOutputTried
+    if tried and (tried[first] or tried.remaining == 0) then return nil end
+    tried = tried or {remaining=3}
+    tried[first], tried.remaining, document.reportedOutputTried = true, tried.remaining - 1, tried
+    local guided = ns.Engine.UDPipe.analyzeReportedDocument(document, first, last, index, hints)
+    if document.checkpoint then document.checkpoint() end
+    return guided and fromReportedGraph(document, first, limit, guided, words, ambiguous) or nil
+end
+
+function A.disambiguateReportedClause(document, first, limit, last)
+    if document.direction ~= "uk-en" or last - first >= 32 or limit - first < 4
+        or not (ns.UDPipeModels and ns.UDPipeModels.uk) then return nil end
+    if document.preserve then
+        for start, span in pairs(document.preserve) do
+            if start <= last and span.last >= first then return nil end
+        end
+    end
+    local memo = document.reportedDisambiguation
+    local ranges = memo and memo[first]
+    local previous = ranges and ranges[last]
+    if previous ~= nil then return previous or nil end
+    if memo and memo.remaining == 0 then return nil end
+    for index = first, limit do
+        local token = document.tokens[index]
+        if not token.protected and (token.key:match("^[.!?;]$") or token.key == "…") then return nil end
+    end
+    local marker = ukrainianReportedMarker(document, first, limit)
+    if not marker then return nil end
+    memo = memo or {remaining=3}
+    ranges = ranges or {}
+    document.reportedDisambiguation, memo[first] = memo, ranges
+    memo.remaining = memo.remaining - 1
+    local arcs, words = ns.Engine.UDPipe.analyzeDocumentWithTags(document, first, last)
+    if document.checkpoint then document.checkpoint() end
+    local parsed = arcs and words and A.reportedFromDependencies(document, first, limit, arcs, words, marker)
+    ranges[last] = parsed or false
+    return parsed
+end
 end)()
 end
 
@@ -9875,6 +10058,7 @@ function A.parseDependencies(document, first, limit, arcs, words)
         or unmarkedRelatives(document, first, limit, arcs)
         or dependencySequence(document, first, limit, arcs, words)
         or A.coordinatedFromDependencies(document, first, limit, arcs, words)
+        or A.reportedFromDependencies(document, first, limit, arcs, words)
         or A.parseWithRecoveredPredicate(document, first, limit, arcs, words)
 end
 
@@ -9937,21 +10121,33 @@ local untranslatedNominal = {
     cases={Acc="accusative", Dat="dative", Gen="genitive", Ins="instrumental", Loc="locative"},
 }
 
-local function untranslatedPositions(node, positions, seen)
+local function untranslatedPositions(node, positions, seen, compounds, arcs, first)
     if seen[node] then return end
     seen[node] = true
     if node.rawModifier then positions[node.index] = "untranslated-modifier" end
     if node.untranslatedHeadIndex then positions[node.untranslatedHeadIndex] = "untranslated-nominal" end
+    if compounds and node.adjectives then
+        local compound, discourse
+        for _, modifier in ipairs(node.adjectives) do
+            if modifier.index then
+                local arc = arcs[modifier.index - first + 1]
+                compound = compound or modifier.rawModifier and compounds[modifier.index]
+                discourse = discourse or arc and arc.relation == "discourse"
+            end
+        end
+        if compound and discourse then return false end
+    end
     for key, child in pairs(node) do
         if type(child) == "table" and key ~= "entry" and key ~= "term" and key ~= "rule"
             and key ~= "form" and key ~= "lexeme" and key ~= "pronoun" then
-            untranslatedPositions(child, positions, seen)
+            if untranslatedPositions(child, positions, seen, compounds, arcs, first) == false then return false end
         end
     end
 end
 
 function A.parseWithUntranslatedNominals(document, first, limit, arcs, words)
     local modifiers, prepositionalHeads = {}, {}
+    local compounds
     local dictionary = ns.Engine.Dictionary
     for index = first, limit do
         local position = index - first + 1
@@ -9981,6 +10177,10 @@ function A.parseWithUntranslatedNominals(document, first, limit, arcs, words)
                 and #L.at(document, index) == 0 and not dictionary.literal(document, index)
                 and not dictionary.general(document, index) then
                 modifiers[index] = head
+                if head and nominalCompound then
+                    compounds = compounds or {}
+                    compounds[index] = true
+                end
                 if markedObject then
                     local case = (word.feats or ""):match("Case=(%a+)")
                     prepositionalHeads[index] = {marker=index - 1, case=untranslatedNominal.cases[case]}
@@ -9994,7 +10194,7 @@ function A.parseWithUntranslatedNominals(document, first, limit, arcs, words)
     document.untranslatedModifiers, document.untranslatedPrepositionalHeads = nil, nil
     if not parsed then return nil end
     local positions, untranslated = {}, {}
-    untranslatedPositions(parsed, positions, {})
+    if untranslatedPositions(parsed, positions, {}, compounds, arcs, first) == false then return nil end
     for index = first, limit do
         if positions[index] then untranslated[#untranslated + 1] = {index=index, reason=positions[index]} end
     end

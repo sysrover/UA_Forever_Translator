@@ -304,16 +304,18 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
                 end, nestedBudget, opening[part] and closing[part], acceptSentence)
                 if value then
                     local refs, slots = {}, {}
-                    local unknown
+                    local unknown, dependency
                     for _, clause in ipairs(subclauses) do
                         for _, ref in ipairs(clause.rule.sourceRefs or {}) do refs[#refs + 1] = ref end
                         for _, slot in pairs(clause.slots or {}) do slots[#slots + 1] = slot end
+                        dependency = dependency or clause.rule.dependency
                         if clause.rule.unknownSpans then
                             unknown = unknown or {}
                             for _, span in ipairs(clause.rule.unknownSpans) do unknown[#unknown + 1] = span end
                         end
                     end
-                    match = {text=value, rule={intent="composition", sourceRefs=refs, unknownSpans=unknown}, slots=slots}
+                    match = {text=value, rule={intent="composition", sourceRefs=refs, unknownSpans=unknown,
+                        dependency=dependency}, slots=slots}
                 elseif subfragments then
                     for localFirst, fragment in pairs(subfragments) do
                         fragment.last = fragment.last + offset
@@ -381,7 +383,7 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
         if states[state] ~= nil then return states[state] or nil end
         local match = translateClause(start, #tokens)
         if match and (not noCommand or not match.rule.imperative) and (not needQuestion or match.text:sub(-1) == "?") then
-            local result = {match=match}
+            local result = {match=match, last=#tokens}
             states[state] = result
             return result
         end
@@ -415,6 +417,16 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
                         not inferredJoin and sharedPredicateJoins[tokens[i].key] and not matched.rule.imperative,
                         needQuestion or alternativeQuestion, allowInference)
                     if right and (not inferredJoin or independentStart(right.match, i + 1)) then
+                        if grammarFallback and direction == "uk-en" and not (sentence or needQuestion)
+                            and tokens[i].key == "," and tokens[i + 1].key == "що" and right.match.rule.question then
+                            local united = translateClause(start, right.last)
+                            if united and united.rule.reportedContent then
+                                local result = {match=united, last=right.last, join=right.join, sentence=right.sentence,
+                                    alternative=right.alternative, next=right.next}
+                                states[state] = result
+                                return result
+                            end
+                        end
                         if inferredJoin and left:match("[!?]$") then join = left:sub(-1) .. " " end
                         local unit = matched.rule.sentenceUnit
                         if not sentence and tokens[i].key == "," and (unit == "clause" or unit == "restriction")
@@ -423,7 +435,8 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
                         end
                         if direction == "en-uk" and tokens[i].key == "and" and matched.rule.imperative
                             and right.match.rule.initialWhen then join = ", а " end
-                        local result = {match=matched, join=join, sentence=sentence, alternative=alternativeQuestion, next=right}
+                        local result = {match=matched, last=finish, join=join, sentence=sentence,
+                            alternative=alternativeQuestion, next=right}
                         states[state] = result
                         return result
                     end

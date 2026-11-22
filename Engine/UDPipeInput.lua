@@ -447,7 +447,7 @@ function U.englishTagLattice(document, first, last)
 end
 
 local modelFields = {"form", "lemma", "upos", "xpos", "feats", "misc"}
-local function parseModelInput(document, model, words)
+local function parseModelInput(document, model, words, output)
     local parts = {}
     for _, word in ipairs(words) do
         for _, field in ipairs(modelFields) do
@@ -458,14 +458,15 @@ local function parseModelInput(document, model, words)
     local key = table.concat(parts)
     local models = document.udpipeInferences
     if not models then models = {}; document.udpipeInferences = models end
-    local memo = models[model]
-    if not memo then memo = {count=0}; models[model] = memo end
+    local modelKey = output or model
+    local memo = models[modelKey]
+    if not memo then memo = {count=0}; models[modelKey] = memo end
     local cached = memo[key]
     if cached ~= nil then return cached or nil end
 
     local projections = document.udpipeProjections
     if not projections then projections = {}; document.udpipeProjections = projections end
-    local arcs = U.parse(model, words, 1, projections, document.checkpoint)
+    local arcs = U.parse(model, words, 1, projections, document.checkpoint, output)
     if memo.count < 8 then
         memo[key] = arcs or false
         memo.count = memo.count + 1
@@ -473,7 +474,7 @@ local function parseModelInput(document, model, words)
     return arcs
 end
 
-local function analyzeDocument(document, first, last, marker, markerEnd, hints, markerTags, alternatives, commaBefore, readings, omitted)
+local function analyzeDocument(document, first, last, marker, markerEnd, hints, markerTags, alternatives, commaBefore, readings, omitted, output)
     local lang = document.direction == "en-uk" and "en" or "uk"
     local model = ns.UDPipeModels and ns.UDPipeModels[lang]
     if not model or last < first or last - first >= 32 then return end
@@ -560,7 +561,7 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
     -- The same annotated words can be produced by the plain and guided attempts.
     -- Cache compact arcs; each caller maps them back to its own source positions.
     if checkpoint then checkpoint() end
-    local arcs = parseModelInput(document, model, words)
+    local arcs = parseModelInput(document, model, words, output)
     if not arcs or not original then return arcs, words end
     -- Restore source positions after inserting or compacting model tokens.
     local expanded, alignedWords, previousOffset = {}, {}, 0
@@ -593,6 +594,13 @@ end
 
 function U.analyzeDocument(...)
     local arcs = analyzeDocument(...)
+    return arcs
+end
+
+function U.analyzeReportedDocument(document, first, last, marker, hints)
+    local model = document.direction == "uk-en" and ns.UDPipeModels and ns.UDPipeModels.uk
+    if not (model and model.reportedOutput) then return nil end
+    local arcs = analyzeDocument(document, first, last, marker, marker, hints, nil, nil, nil, nil, nil, model.reportedOutput)
     return arcs
 end
 

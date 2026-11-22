@@ -47,8 +47,8 @@ local function decode(blocks, checkpoint)
     return values
 end
 
-local function outputRows(model, checkpoint)
-    local flat = decode(model.output, checkpoint)
+local function outputRows(model, checkpoint, blocks)
+    local flat = decode(blocks or model.output, checkpoint)
     local count, width = #model.labels * 2 + 1, model.hiddenSize
     local rows = {}
     for transition = 1, count do
@@ -61,6 +61,18 @@ local function outputRows(model, checkpoint)
         if checkpoint and transition % 8 == 0 then checkpoint() end
     end
     return rows
+end
+
+local function cacheOutput(model, matrix, blocks, checkpoint)
+    if not blocks or blocks == model.output then return matrix end
+    local outputs = matrix.outputs
+    if not outputs then outputs = setmetatable({}, {__mode="k"}); matrix.outputs = outputs end
+    local layer = outputs[blocks]
+    if layer then return layer end
+    layer = {output=outputRows(model, checkpoint, blocks)}
+    if outputs[blocks] then return outputs[blocks] end
+    outputs[blocks] = layer
+    return layer
 end
 
 local function cacheModel(model, checkpoint)
@@ -250,7 +262,7 @@ function U.prepare(model)
     matrix.prepared = true
 end
 
-local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidden, checkpoint, allowed, allowedCount, parts)
+local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidden, checkpoint, allowed, allowedCount, parts, output)
     local width = model.hiddenSize
     local bias = #model.selectors * model.dimension * width
     for index = 1, width do hidden[index] = matrix.hidden[bias + index] end
@@ -291,7 +303,7 @@ local function classify(model, matrix, stack, buffer, nodes, memo, scores, hidde
         if checkpoint then checkpoint() end
     end
 
-    local output = matrix.output
+    output = output or matrix.output
     for index = 1, width do hidden[index] = activate(hidden[index], model.activation) end
     for choice = 1, allowedCount or #output do
         local index = allowed and allowed[choice] or choice
@@ -384,7 +396,7 @@ local function greedyKey(model, state, shape, parts)
     return table.concat(parts, ",", 1, count)
 end
 
-local function searchGreedy(model, matrix, memo, state, checkpoint, decisions)
+local function searchGreedy(model, matrix, memo, state, checkpoint, decisions, output)
     local scores, hidden, transitionLists = {}, {}, {}
     local parts = decisions and {}
     while not finish(state) do
@@ -409,7 +421,7 @@ local function searchGreedy(model, matrix, memo, state, checkpoint, decisions)
             if cached then
                 best = cached
             else
-                classify(model, matrix, stack, buffer, state.nodes, memo, scores, hidden, checkpoint, allowed, count, parts)
+                classify(model, matrix, stack, buffer, state.nodes, memo, scores, hidden, checkpoint, allowed, count, parts, output)
                 for index = 2, count do
                     local transition = allowed[index]
                     if scores[transition] > scores[best] then best = transition end
@@ -439,13 +451,13 @@ local function normalizedLoss(scores)
     return math.log(total) + maximum
 end
 
-local function searchBeam(model, matrix, memo, initial, beam, checkpoint)
+local function searchBeam(model, matrix, memo, initial, beam, checkpoint, output)
     local states = {initial}
     local scores, hidden = {}, {}
     while not finish(states[1]) do
         local candidates = {}
         for _, state in ipairs(states) do
-            classify(model, matrix, state.stack, state.buffer, state.nodes, memo, scores, hidden, checkpoint)
+            classify(model, matrix, state.stack, state.buffer, state.nodes, memo, scores, hidden, checkpoint, nil, nil, nil, output)
             local norm = normalizedLoss(scores)
             transitions(model, state.stack, state.buffer, function(transition)
                 local cost = state.cost + scores[transition] - norm
@@ -504,10 +516,11 @@ local function projectionMemo(model)
     return memo
 end
 
-function U.parse(model, words, beam, workspace, checkpoint)
+function U.parse(model, words, beam, workspace, checkpoint, outputBlocks)
     beam = beam or 5
     if not model or #words == 0 or #words > 64 or beam < 1 or beam > 5 or beam % 1 ~= 0 then return nil end
     local matrix = cacheModel(model, checkpoint)
+    local layer = cacheOutput(model, matrix, outputBlocks, checkpoint)
     local initial = initialState(model, words, checkpoint)
     local memo = workspace and workspace[model]
     -- Reuse projections for this message and model. Retain at most one parse's
@@ -521,16 +534,15 @@ function U.parse(model, words, beam, workspace, checkpoint)
     if beam == 1 then
         local decisions
         if workspace and #words >= 5 then
-            -- A model can reuse the same transition for identical embedding IDs
-            -- and legal moves across ranges and messages.
-            decisions = matrix.greedyDecisions
+            -- Decision caches belong to the output layer. Projection caches belong to the model.
+            decisions = layer.greedyDecisions
             if not decisions then
                 decisions = {entries={}, order={}, next=1}
-                matrix.greedyDecisions = decisions
+                layer.greedyDecisions = decisions
             end
         end
-        nodes = searchGreedy(model, matrix, memo, initial, checkpoint, decisions)
-    else nodes = searchBeam(model, matrix, memo, initial, beam, checkpoint) end
+        nodes = searchGreedy(model, matrix, memo, initial, checkpoint, decisions, layer.output)
+    else nodes = searchBeam(model, matrix, memo, initial, beam, checkpoint, layer.output) end
     if not nodes then return nil end
     local arcs = {}
     for index = 1, #words do arcs[index] = {head=nodes[index].head, relation=nodes[index].relation} end

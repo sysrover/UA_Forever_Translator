@@ -114,7 +114,18 @@ local function grammarClause(document, first, last)
         if inner:match("^[.!?]$") then innerPunctuation, last = inner, last - 1 end
     end
     if last < first then return nil end
-    local parsed = ns.Engine.ClauseAnalysis.parse(document, first, last)
+    local analysis = ns.Engine.ClauseAnalysis
+    local parsed = analysis.parse(document, first, last)
+    local reported
+    if document.direction == "uk-en" and (not parsed or parsed.trees[1].question or parsed.hypothetical) then
+        local following = document.tokens[last + 1]
+        local marker = innerPunctuation or punctuation
+        if marker ~= "?" and not (following and following.key == "?") then
+            local modelEnd = following and following.key:match("^[.!]$") and last + 1 or last
+            reported = analysis.disambiguateReportedClause(document, first, last, modelEnd)
+            parsed = reported or parsed
+        end
+    end
     if not parsed then return nil end
     if chatReaction and not punctuation and not parsed.trees[#parsed.trees].content then return nil end
     local output = ns.Engine.ClauseGeneration.render(parsed, document.direction, innerPunctuation or punctuation)
@@ -155,7 +166,8 @@ local function grammarClause(document, first, last)
             earlierPhase=firstTree.sentenceAdverb and firstTree.sentenceAdverb.earlierPhase
                 or firstTree.predicateAdverb and firstTree.predicateAdverb.earlierPhase,
             initialWhen=parsed.prefix and parsed.prefix.id == "when" and #parsed.trees > 1,
-            sourceRefs=ns.Linguistics.manifest.sourceRefs, dependency=parsed.dependency == true}, slots
+            reportedContent=reported ~= nil, sourceRefs=ns.Linguistics.manifest.sourceRefs,
+            dependency=parsed.dependency == true}, slots
     end
 end
 local function placePhrase(document, first, fragments, limit)
@@ -416,8 +428,12 @@ local function compute(text, direction, tokens, normalized, checkpoint)
     if output then
         if clauses and N.key(output) == normalized then return unchanged(text, "identical") end
         local matched, refs, seen, unknown = {}, {}, {}, {}
+        local dependency = rule and rule.dependency == true or nil
         if clauses then
-            for _, clause in ipairs(clauses) do addClause(matched, refs, seen, clause.rule, clause.slots, unknown) end
+            for _, clause in ipairs(clauses) do
+                addClause(matched, refs, seen, clause.rule, clause.slots, unknown)
+                dependency = dependency or clause.rule.dependency
+            end
         else
             addClause(matched, refs, seen, rule, slots, unknown)
         end
@@ -429,7 +445,7 @@ local function compute(text, direction, tokens, normalized, checkpoint)
         return {text = output, mode = complete and "template" or "partial", intent = clauses and "composition" or rule.intent,
             matchedTerms = matched, unknownSpans = unknown, sourceRefs = refs,
             coverage = {complete=complete, pipeline=clauses and "composition" or general and "grammar"
-                or tree and "structural" or "legacy", dependency=rule and rule.dependency == true or nil}}
+                or tree and "structural" or "legacy", dependency=dependency}}
     end
     local usedDependency
     if grammarEnabled then
