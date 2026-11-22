@@ -434,10 +434,18 @@ local function recruit(p, direction)
             else
                 local token = p.tokens[p.i]
                 local quest = token and (token.linkKind == "quest" or token.questReference)
-                if introduced and not quest and p.limit == #p.tokens then
-                    p.document.preserve = p.document.preserve or {}
-                    local unresolved = p.i <= p.limit and p.i or start
-                    p.document.preserve[unresolved] = {last=p.limit, reason="unresolved-destination"}
+                if introduced and not quest and p.i <= p.limit and p.limit == #p.tokens then
+                    local last = p.limit
+                    for i = p.i, last do
+                        if ns.Engine.Parser.sentenceBoundary(p.document.text, p.tokens, i) then
+                            last = i - 1
+                            break
+                        end
+                    end
+                    if last >= p.i then
+                        p.document.preserve = p.document.preserve or {}
+                        p.document.preserve[p.i] = {last=last, reason="unresolved-destination"}
+                    end
                 end
                 p.i = start
                 break

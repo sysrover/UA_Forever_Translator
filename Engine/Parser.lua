@@ -143,7 +143,7 @@ function P.hasExactOpening(text, tokens, direction)
     return false
 end
 
-function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, annotation)
+function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, annotation, accept)
     local composition = ns.Data.composition and ns.Data.composition[direction]
     if not composition or #tokens == 0 or #tokens > 96 then return nil end
     local prefixes, joins = composition.prefixes, composition.joins
@@ -220,7 +220,8 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
                 if matched then output, rule, slots = lead .. lowerStart(matched.text), matched.rule, matched.slots end
             end
         end
-        local match = output and {text = output, rule = rule, slots = slots} or false
+        local match = output and (not accept or accept(output, start, finish))
+            and {text = output, rule = rule, slots = slots} or false
         row[finish] = match
         return match or nil
     end
@@ -295,9 +296,12 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
             if not match and grammarFallback and nestedBudget.remaining > 0 and finish - first >= 3 then
                 local offset = first - 1
                 local sentence = {unpack(tokens, first, finish)}
+                local acceptSentence = accept and function(value, first, last)
+                    return accept(value, first + offset, last + offset)
+                end
                 local value, subclauses, subfragments = P.compose(text, sentence, direction, function(first, last)
                     return grammarFallback(first + offset, last + offset)
-                end, nestedBudget, opening[part] and closing[part])
+                end, nestedBudget, opening[part] and closing[part], acceptSentence)
                 if value then
                     local refs, slots = {}, {}
                     local unknown

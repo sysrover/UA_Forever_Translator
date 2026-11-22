@@ -3219,6 +3219,7 @@ function G.render(parse, direction, punctuation)
             if join.dash then append(parts, "—")
             elseif purpose and not english or comma and not purpose then parts[#parts] = withComma(parts[#parts]) end
             if purpose then append(parts, english and "so that" or "щоб")
+            elseif not english and join.sharedNegation then append(parts, "і")
             elseif join.locativeContrast then append(parts, english and "but" or "а")
             elseif join.rule then
                 local status = not english and previous.predicateAdverb and previous.predicateAdverb.statePredicate

@@ -4607,20 +4607,23 @@ local function abilitySubject(document, first, limit)
     if classes and classes.abilities then return subject, after end
 end
 
-function A.frontedIntransitivePredicate(document, first, limit, depth)
+function A.frontedIntransitivePredicate(document, first, limit, depth, temporalEndpoint)
     local negative = P.key(document, first, limit) == "не"
     local at = first + (negative and 1 or 0)
     local subject, after = abilityNoun(document, at + 1, limit)
     if not subject then
         local fronted = L.choose(document, at, "verb", nil, nil, function(candidate)
-            return lexemeFrame(candidate).postposedSubject and candidate.form.tense and not candidate.form.verbalForm
+            local frame = lexemeFrame(candidate)
+            return (frame.postposedSubject or temporalEndpoint and A.isPostposedEndpoint(candidate, frame))
+                and candidate.form.tense and not candidate.form.verbalForm
         end)
         if fronted then subject, after = P.noun(document, at + 1, limit, "nominative") end
     end
     if not subject then return nil end
     local predicate, ending = verb(document, at, limit, subject, false)
     local frame = predicate and lexemeFrame(predicate)
-    if not frame or not (frame.postposedSubject or frame.subjectClasses and frame.subjectClasses.abilities)
+    if not frame or not (frame.postposedSubject or frame.subjectClasses and frame.subjectClasses.abilities
+            or temporalEndpoint and A.isPostposedEndpoint(predicate, frame))
         or ending ~= at + 1 then return nil end
     agreeSubject(document, subject, predicate.form)
     if frame.reverseSubjectSense then refineSubject(document, subject, frame) end
@@ -4628,6 +4631,12 @@ function A.frontedIntransitivePredicate(document, first, limit, depth)
         negative=negative, verbIndex=at}
     local finish = complements(document, tree, after, limit, depth)
     if finish then return tree, finish end
+end
+
+function A.isPostposedEndpoint(candidate, frame)
+    return candidate.form.tense == "future"
+        and (candidate.form.aspect or candidate.head.aspect) == "perfective"
+        and (frame.intransitive or frame.motion) and not frame.objectCase
 end
 
 local function ellipticalEvaluation(document, first, limit, depth)
@@ -7712,7 +7721,8 @@ local function parse(document, first, limit, sentenceQuestion)
             end
         end
         if found and last < limit then
-            joins[#joins + 1] = {rule=found, comma=comma, dash=dash}
+            joins[#joins + 1] = {rule=found, comma=comma, dash=dash,
+                consequence=found.id == "or" and P.key(document, last + 1, limit) == "else" or nil}
             index = last + 1
         elseif detached then
             joins[#joins + 1] = {comma=true, locativeContrast=locativeContrast}
@@ -7745,6 +7755,13 @@ local function parse(document, first, limit, sentenceQuestion)
     end
     for i, join in ipairs(joins) do
         local action, followup = trees[i], trees[i + 1]
+        if document.direction == "en-uk" and join.rule and join.rule.id == "or"
+            and not (join.comma or join.dash or join.consequence)
+            and action.imperative and action.negative
+            and followup.imperative and not (followup.subject or followup.negative) then
+            followup.negative = true
+            join.sharedNegation = true
+        end
         if join.rule and (join.rule.id == "purpose" or join.rule.id == "so" and not join.comma) then
             local obligation = action.verb and followup.subject and followup.verb
                 and lexemeFrame(followup.verb).purposeObligation
@@ -8203,7 +8220,7 @@ local function matchesTemporalDomain(main, dependent, domain)
     return false
 end
 
-local function temporalClauses(document, mainFirst, mainLast, subordinateFirst, subordinateLast, sentenceQuestion)
+local function temporalClauses(document, mainFirst, mainLast, subordinateFirst, subordinateLast, sentenceQuestion, rule)
     local domain = temporalDomain(document, mainFirst, mainLast, subordinateFirst, subordinateLast)
     if domain then
         document.transferDomain = domain
@@ -8214,8 +8231,13 @@ local function temporalClauses(document, mainFirst, mainLast, subordinateFirst, 
     end
 
     local action = parseWithRelatives(document, mainFirst, mainLast, sentenceQuestion)
-    local ending = finiteClause(action) and parseWithRelatives(document, subordinateFirst, subordinateLast, false)
+    if not finiteClause(action) then return nil end
+    local ending = parseWithRelatives(document, subordinateFirst, subordinateLast, false)
     if finiteClause(ending, true) then return action, ending end
+    if document.direction == "uk-en" and rule.id == "until" and rule.uk[1] == "доки" then
+        local endpoint, finish = A.frontedIntransitivePredicate(document, subordinateFirst, subordinateLast, 0, true)
+        if endpoint and finish > subordinateLast then return action, {trees={endpoint}, joins={}} end
+    end
 end
 
 local function markNominal(tags, noun)
@@ -8438,13 +8460,20 @@ local function locativeState(tree)
     return false
 end
 
+function A.hasEndpointNegation(tree)
+    if tree.tense ~= "future" or not tree.negative or tree.question or tree.modal or tree.conditional then return false end
+    if locativeState(tree) then return true end
+    local action = tree.verb
+    return action and (action.form.aspect or action.head.aspect) == "perfective"
+end
+
 local function explicitUntilBoundary(document, rule, main, dependent, comma)
     if rule.id ~= "until" or rule.uk[1] ~= "доки" or #main.trees ~= 1 or #dependent.trees ~= 1
         or not main.trees[1].imperative then return false end
     local endpoint = dependent.trees[1]
-    if not endpoint.subject or endpoint.question or not locativeState(endpoint) then return false end
-    if document.direction == "en-uk" then return endpoint.tense == "present" end
-    return comma and endpoint.tense == "future" and endpoint.negative
+    if not endpoint.subject or endpoint.question then return false end
+    if document.direction == "en-uk" then return endpoint.tense == "present" and locativeState(endpoint) end
+    return comma and A.hasEndpointNegation(endpoint)
 end
 
 function A.contextualTemporalReading(document, action, event)
@@ -8523,11 +8552,11 @@ local function joined(document, left, right, junction, prefix, tail, dependency)
         if english and rule and rule.futureLocation and futureAction and locativeState(tree) and tree.tense == "present" then
             tree.tense = "future"
         end
-        if rule and rule.id == "until" and rule.uk[1] == "доки" and locativeState(tree) then
-            if english and not tree.negative and tree.tense == "present" and futureAction then
+        if rule and rule.id == "until" and rule.uk[1] == "доки" then
+            if english and not tree.negative and tree.tense == "present" and futureAction and locativeState(tree) then
                 tree.tense, tree.expletiveNegative = "future", true
-            elseif not english and tree.negative and tree.tense == "future" then
-                tree.expletiveNegative = true
+            elseif not english and A.hasEndpointNegation(tree) then
+                tree.negative, tree.expletiveNegative = nil, true
             end
         end
     end
@@ -8607,7 +8636,7 @@ function A.confirmOpeningCondition(document, arcs, first, main, condition)
         and subjectArc.relation == "nsubj" and subjectArc.head == governor
 end
 
-local function unpunctuatedTemporal(document, parser, first, limit, rule, markerEnd, markerTags)
+local function unpunctuatedTemporal(document, parser, first, limit, rule, markerEnd, markerTags, budget)
     local subordinateFirst = markerEnd + 1
     local split, main, dependent, evidence, ambiguous
     local attempts = 0
@@ -8627,7 +8656,7 @@ local function unpunctuatedTemporal(document, parser, first, limit, rule, marker
         if finite or verb(document, command, limit, nil, english, true) then
             attempts = attempts + 1
             if attempts > 4 then return nil end
-            local action, timing = temporalClauses(document, index, limit, subordinateFirst, index - 1)
+            local action, timing = temporalClauses(document, index, limit, subordinateFirst, index - 1, nil, rule)
             if action and timing.trees[1].subject
                 and (action.trees[1].imperative or finiteMain and action.trees[1].subject) then
                 local condition = timing.trees[1]
@@ -8643,7 +8672,7 @@ local function unpunctuatedTemporal(document, parser, first, limit, rule, marker
         end
     end
     if not split or ambiguous then return nil end
-    document.udpipeUsed = true
+    budget.remaining = budget.remaining - 1
     local offset = first - 1
     local arcs = temporalArcs(parser, document, first, limit, first, markerEnd, markerTags, main, dependent, split,
         nil, rule.preferRealizedCondition)
@@ -8677,7 +8706,7 @@ local function markedPredicate(arcs, offset, first, last, tree)
     return false
 end
 
-local function temporalChain(document, parser, first, limit, marker, markerEnd, markerTags, rule, mainEnd)
+local function temporalChain(document, parser, first, limit, marker, markerEnd, markerTags, rule, mainEnd, budget)
     if rule.nominalHead then return nil end
     local middleStart = markerEnd + 1
     local later, middle, middleEnd
@@ -8701,7 +8730,7 @@ local function temporalChain(document, parser, first, limit, marker, markerEnd, 
     if not finiteClause(main) or #main.trees ~= 1 then return nil end
     if document.direction == "en-uk" and (rule.startBoundary and not A.elapsedFromClause(main.trees[1])
         or later.rule.startBoundary and not A.elapsedFromClause(middle.trees[1])) then return nil end
-    document.udpipeUsed = true
+    budget.remaining = budget.remaining - 1
     local arcs = temporalArcs(parser, document, first, limit, marker, markerEnd, markerTags, main, middle, nil, later)
     if not arcs then return nil end
     local offset = first - 1
@@ -8725,9 +8754,9 @@ local function temporalChain(document, parser, first, limit, marker, markerEnd, 
     return joined(document, firstPair, later.parsed, {rule=later.rule}, nil, nil, true)
 end
 
-local function temporalAttachment(document, first, limit)
-    local parser = ns.Engine.UDPipe
-    if not parser or not ns.UDPipeModels or document.udpipeUsed or limit - first >= 32 then return nil end
+local temporalAttachment
+do
+local function searchTemporalAttachment(document, parser, first, limit, budget)
     local attempts = 0
     for marker = first, limit - 1 do
         local rule, markerEnd = temporalMarker(document, marker, limit)
@@ -8742,20 +8771,21 @@ local function temporalAttachment(document, first, limit)
                         attempts = attempts + 1
                         if attempts > 4 then return nil end
                         local main, dependent = temporalClauses(document, separator + 1, limit,
-                            subordinateFirst, separator - 1)
+                            subordinateFirst, separator - 1, nil, rule)
                         if main and rule.startBoundary and document.direction == "en-uk"
                             and not A.elapsedFromClause(main.trees[1]) then return nil end
                         if main then
-                            document.udpipeUsed = true
+                            budget.remaining = budget.remaining - 1
                             local arcs = temporalArcs(parser, document, first, limit, marker, markerEnd,
                                 markerTags, main, dependent)
                             local endpoint = dependent.trees[1]
                             local timingIndex = endpoint.predicateAdverb and endpoint.predicateAdverb.impersonalTiming and endpoint.predicateIndex
                             local attachment = arcs and confirmedAttachment(arcs, first - 1, marker, markerEnd,
                                 subordinateFirst, separator - 1, separator + 1, limit, rule, timingIndex)
-                            if attachment or A.confirmTemporalPredicateHeads(parser, document, first, limit, marker, markerEnd,
-                                markerTags, rule, main, dependent, arcs) then
-                                return joined(document, dependent, main, {comma=true}, rule, nil, true)
+                            attachment = attachment or A.confirmTemporalPredicateHeads(parser, document, first, limit, marker, markerEnd,
+                                markerTags, rule, main, dependent, arcs)
+                            if attachment or explicitUntilBoundary(document, rule, main, dependent, true) then
+                                return joined(document, dependent, main, {comma=true}, rule, nil, attachment or nil)
                             end
                             return nil
                         end
@@ -8763,7 +8793,7 @@ local function temporalAttachment(document, first, limit)
                 end
                 if (not hasSeparator or rule.recurring) and (rule.nominalHead or rule.recurring or rule.unpunctuated)
                     and limit - subordinateFirst >= 3 then
-                    return unpunctuatedTemporal(document, parser, first, limit, rule, markerEnd, markerTags)
+                    return unpunctuatedTemporal(document, parser, first, limit, rule, markerEnd, markerTags, budget)
                 end
             else
                 attempts = attempts + 1
@@ -8774,11 +8804,11 @@ local function temporalAttachment(document, first, limit)
                     local tail = temporalTail(document, subordinateFirst + 1, limit)
                     local finish = tail and tail.finish or limit
                     local question = not tail and P.key(document, limit + 1, #document.tokens) == "?"
-                    local main, dependent = temporalClauses(document, first, mainEnd, subordinateFirst, finish, question)
+                    local main, dependent = temporalClauses(document, first, mainEnd, subordinateFirst, finish, question, rule)
                     if main and rule.startBoundary and document.direction == "en-uk"
                         and not A.elapsedFromClause(main.trees[1]) then return nil end
                     if main then
-                        document.udpipeUsed = true
+                        budget.remaining = budget.remaining - 1
                         local arcs = temporalArcs(parser, document, first, finish, marker, markerEnd,
                             markerTags, main, dependent)
                         local endpoint = dependent.trees[1]
@@ -8795,13 +8825,38 @@ local function temporalAttachment(document, first, limit)
                         return nil
                     end
                     if not tail then
-                        local chain = temporalChain(document, parser, first, limit, marker, markerEnd, markerTags, rule, mainEnd)
-                        if chain or document.udpipeUsed then return chain end
+                        local remaining = budget.remaining
+                        local chain = temporalChain(document, parser, first, limit, marker, markerEnd, markerTags, rule,
+                            mainEnd, budget)
+                        if chain or budget.remaining < remaining then return chain end
                     end
                 end
             end
         end
     end
+end
+
+function temporalAttachment(document, first, limit)
+    local parser = ns.Engine.UDPipe
+    if not parser or not ns.UDPipeModels or limit - first >= 32 then return nil end
+    local budget = document.temporalAttachment
+    if not budget then
+        budget = {remaining=3, rejected={}}
+        document.temporalAttachment = budget
+    end
+    local rejected = budget.rejected[first]
+    if budget.remaining == 0 or rejected and rejected[limit] then return nil end
+    local remaining = budget.remaining
+    local parsed = searchTemporalAttachment(document, parser, first, limit, budget)
+    if not parsed and budget.remaining < remaining then
+        if not rejected then
+            rejected = {}
+            budget.rejected[first] = rejected
+        end
+        rejected[limit] = true
+    end
+    return parsed
+end
 end
 
 local function frontedRange(document, first, limit)
@@ -9660,6 +9715,87 @@ local function frontedLocativePredicate(document, first, limit, arcs)
     return {trees={tree}, joins={}, dependency=true}
 end
 
+do
+local reverseTemporalLinks = {advcl=true, parataxis=true, ccomp=true, xcomp=true}
+
+local function temporalHeads(arcs, limit, reverse)
+    local marker = arcs[1]
+    if not marker or marker.relation ~= "mark" or marker.head <= 1 or marker.head > limit then return nil end
+    local endpoint = arcs[marker.head]
+    if not endpoint then return nil end
+    if endpoint.relation:match("^advcl") and endpoint.head > marker.head and endpoint.head <= limit then
+        return marker.head, endpoint.head
+    end
+    if not reverse or endpoint.head ~= 0 then return nil end
+    local principal
+    for position = marker.head + 1, limit do
+        local arc = arcs[position]
+        if arc and arc.head == marker.head and reverseTemporalLinks[arc.relation] then
+            if principal then return nil end
+            principal = position
+        end
+    end
+    if principal then return marker.head, principal, true end
+end
+
+local function temporalOwner(arcs, position, endpoint, principal, count)
+    for _ = 1, count do
+        if position == endpoint or position == principal then return position end
+        local arc = arcs[position]
+        if not arc or arc.head == 0 then return nil end
+        position = arc.head
+    end
+end
+
+function A.temporalFromDependencies(document, first, limit, arcs, words)
+    local rule, markerEnd = temporalMarker(document, first, limit)
+    if not rule or rule.nominalHead or not (rule.temporal or rule.id == "if") then return nil end
+    local count = limit - first + 1
+    local endpoint, principal, reversed = temporalHeads(arcs, count, rule.reverseAttachment)
+    if not endpoint and (not arcs[1] or arcs[1].relation ~= "mark")
+        and not document.temporalMarkerRetagged and ns.UDPipeModels
+        and (not document.temporalAttachment or document.temporalAttachment.remaining > 0) then
+        document.temporalMarkerRetagged = true
+        if document.temporalAttachment then
+            document.temporalAttachment.remaining = document.temporalAttachment.remaining - 1
+        end
+        local markerTags = document.direction == "uk-en" and rule.ukTags or rule.enTags
+        local guided = ns.Engine.UDPipe.analyzeDocument(document, first, limit, first, markerEnd, nil, markerTags)
+        if guided then
+            arcs = guided
+            endpoint, principal, reversed = temporalHeads(arcs, count, rule.reverseAttachment)
+        end
+    end
+    if not endpoint or not words[endpoint] or not words[principal]
+        or words[endpoint].upos ~= "VERB" or words[principal].upos ~= "VERB" then return nil end
+
+    local mainFirst
+    for index = markerEnd + 1, limit do
+        local position = index - first + 1
+        local arc = arcs[position]
+        if arc and arc.relation ~= "punct" then
+            local key = document.tokens[index].key
+            local negatesPrincipal = position == principal - 1 and (key == "не" or key == "don't" or key == "dont")
+            local owner = negatesPrincipal and principal or temporalOwner(arcs, position, endpoint, principal, count)
+            if owner == principal then
+                mainFirst = mainFirst or index
+            elseif owner ~= endpoint or mainFirst then
+                return nil
+            end
+        end
+    end
+    if not mainFirst or mainFirst <= markerEnd + 1 then return nil end
+    local comma = P.key(document, mainFirst - 1, limit) == ","
+    local main, dependent = temporalClauses(document, mainFirst, limit, markerEnd + 1,
+        mainFirst - (comma and 2 or 1), nil, rule)
+    local action, condition = main and main.trees[1], dependent and dependent.trees[1]
+    if not action or not condition or action.verbIndex ~= first + principal - 1
+        or condition.verbIndex ~= first + endpoint - 1 or reversed and not action.imperative then return nil end
+    if rule.startBoundary and document.direction == "en-uk" and not A.elapsedFromClause(action) then return nil end
+    return joined(document, dependent, main, {comma=true}, rule, nil, true)
+end
+end
+
 function A.parseDependencies(document, first, limit, arcs, words)
     local fronted = frontedLocativePredicate(document, first, limit, arcs)
         or frontedPreposition(document, first, limit, arcs, words)
@@ -9673,7 +9809,8 @@ function A.parseDependencies(document, first, limit, arcs, words)
         fronted = alternate and tags and frontedPreposition(document, first, limit, alternate, tags)
         if fronted then return fronted end
     end
-    return frontedTemporalPreposition(document, first, limit) or A.socialSequence(document, first, limit, arcs)
+    return A.temporalFromDependencies(document, first, limit, arcs, words)
+        or frontedTemporalPreposition(document, first, limit) or A.socialSequence(document, first, limit, arcs)
         or unmarkedRelatives(document, first, limit, arcs)
         or dependencySequence(document, first, limit, arcs, words)
 end

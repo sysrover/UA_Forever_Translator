@@ -145,10 +145,29 @@ local function followingNominals(document, index, lang)
     return forms
 end
 
-local function choose(document, index, lang, previous, following, hint, previousParticiple)
+local contextOffsets = {-2, -1, 1, 2}
+
+local function contextScores(document, index, first, last, weights)
+    local scores
+    local suffix = "\t" .. document.tokens[index].key .. "\t"
+    for _, offset in ipairs(contextOffsets) do
+        local neighbor = index + offset
+        local token = neighbor >= first and neighbor <= last and document.tokens[neighbor]
+        local key = not token and "" or not token.protected and token.key
+        local row = key and weights.context[offset .. suffix .. key]
+        if row then
+            scores = scores or {}
+            for pos, score in pairs(row) do scores[pos] = (scores[pos] or 0) + score end
+        end
+    end
+    return scores
+end
+
+local function choose(document, index, lang, previous, following, hint, previousParticiple, learned, context, pronoun)
     local best, priority, order, nominalForms
+    local seen = learned and {}
     local nextKey = following and following.key or ""
-    lexicalCandidates(document, index, lang, function(lemma, pos, form, tags, weight, key)
+    local function consider(lemma, pos, form, tags, weight, key, feats)
         if hint and pos ~= hint then return end
         local score = rank(pos, previous, nextKey, tags) - weight
         if previousParticiple and (pos == "NOUN" or pos == "PROPN") and agrees(previousParticiple, form) then
@@ -162,10 +181,22 @@ local function choose(document, index, lang, previous, following, hint, previous
                 end
             end
         end
-        if not best or score > priority or (score == priority and key < order) then
-            best, priority, order = {lemma=lemma, pos=pos, form=form, tags=tags}, score, key
+        if learned then
+            seen[pos] = true
+            local reading = learned[pos]
+            score = 10 * score + (reading and reading[1] or -100) + (context and context[pos] or 0)
         end
-    end)
+        if not best or score > priority or (score == priority and key < order) then
+            best, priority, order = {lemma=lemma, pos=pos, form=form, tags=tags, feats=feats}, score, key
+        end
+    end
+    lexicalCandidates(document, index, lang, consider)
+    if pronoun then consider(pronoun.lemma, pronoun.pos, pronoun.form, pronoun.tags, -1, "pronoun") end
+    if learned then
+        for pos, reading in pairs(learned) do
+            if not seen[pos] then consider(reading[2], pos, {}, {}, 2, pos, reading[3]) end
+        end
+    end
     if best and best.pos == "ADJ" and best.form.voice then
         local form = best.form
         best.lemma = A.generate(best.lemma, "uk", "participle", {
@@ -251,7 +282,7 @@ local function englishCandidates(document, index, first, last, raw, weights)
     return candidates
 end
 
-local function tagEnglish(document, first, last, marker, markerEnd, weights, hints, markerTags, readings)
+local function tagEnglish(document, first, last, marker, markerEnd, weights, hints, markerTags, readings, contextWeights)
     local tagIds = weights.ids
     local boundary = tagIds[""]
     local previous = {[boundary]={score=0}}
@@ -288,6 +319,8 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
         elseif hintedId then
             candidates = {[hintedId]=candidates[hintedId] or {pos=weights.tags[hintedId], lemma=token.key}}
         end
+        local context = contextWeights and not pos and not hintedId and not resolved and contextWeights.context
+            and contextScores(document, index, first, last, contextWeights)
         for id, candidate in pairs(candidates) do
             local best, from
             for previousId, entry in pairs(previous) do
@@ -296,7 +329,7 @@ local function tagEnglish(document, first, last, marker, markerEnd, weights, hin
                     best, from = score, previousId
                 end
             end
-            candidate.score = best + (candidate.emission or 0)
+            candidate.score = best + (candidate.emission or 0) + (context and context[candidate.pos] or 0)
             candidate.previous = previous[from]
             candidate.raw = candidate.modelForm or raw
         end
@@ -355,10 +388,12 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
     local checkpoint = document.checkpoint
     local words
     local original = (alternatives or commaBefore or omitted) and {}
+    local contextWeights = ns.UDPipeContextWeights and ns.UDPipeContextWeights[lang]
     if checkpoint then checkpoint() end
     if lang == "en" and ns.UDPipeTagWeights then
         local hasAuxiliary
-        words, hasAuxiliary = tagEnglish(document, first, last, marker, markerEnd, ns.UDPipeTagWeights, hints, markerTags, readings)
+        words, hasAuxiliary = tagEnglish(document, first, last, marker, markerEnd,
+            ns.UDPipeTagWeights, hints, markerTags, readings, contextWeights)
         if hasAuxiliary then original = original or {} end
         if original then
             for offset = 1, #words do original[offset] = offset end
@@ -389,10 +424,13 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
                 if type(hint) == "table" then
                     pos, lemma, feats = hint.pos, hint.lemma, hint.feats
                 else
-                    local candidate = (not hint or hint == "PRON") and pronounCandidate(document, index, lang)
-                        or choose(document, index, lang, previous, following, hint, previousParticiple)
+                    local pronoun = (not hint or hint == "PRON") and pronounCandidate(document, index, lang)
+                    local learned = contextWeights and not hint and contextWeights.words[token.key]
+                    local context = learned and contextWeights.context and contextScores(document, index, first, last, contextWeights)
+                    local candidate = not learned and pronoun
+                        or choose(document, index, lang, previous, following, hint, previousParticiple, learned, context, pronoun)
                     if candidate then
-                        pos, lemma, feats = candidate.pos, candidate.lemma, udFeatures(candidate,lang)
+                        pos, lemma, feats = candidate.pos, candidate.lemma, candidate.feats or udFeatures(candidate,lang)
                         if pos == "ADJ" and candidate.form.voice then participle = candidate.form end
                     else pos = hint or (raw ~= token.key and "PROPN" or "X") end
                 end
@@ -433,13 +471,14 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
     local arcs = parseModelInput(document, model, words)
     if not arcs or not original then return arcs, words end
     -- Restore source positions after inserting or compacting model tokens.
-    local expanded, previousOffset = {}, 0
+    local expanded, alignedWords, previousOffset = {}, {}, 0
     for compact, arc in ipairs(arcs) do
         local offset = original[compact]
         if offset then
             local head = arc.head
-            if original[head] == false then head = arcs[head].head end
+            while original[head] == false do head = arcs[head].head end
             expanded[offset] = {head=original[head] or 0, relation=arc.relation}
+            alignedWords[offset] = words[compact]
             for alternative = previousOffset + 1, offset - 1 do
                 expanded[alternative] = {head=previousOffset, relation="dep"}
             end
@@ -449,7 +488,15 @@ local function analyzeDocument(document, first, last, marker, markerEnd, hints, 
     for alternative = previousOffset + 1, last - first + 1 do
         expanded[alternative] = {head=previousOffset, relation="dep"}
     end
-    return expanded
+    for offset = 1, last - first + 1 do
+        if not alignedWords[offset] then
+            local token = document.tokens[first + offset - 1]
+            local form = token.protected and (lang == "en" and "item" or "предмет")
+                or token.modelForm or document.text:sub(token.first, token.last)
+            alignedWords[offset] = {form=form, lemma=token.key, upos="X"}
+        end
+    end
+    return expanded, alignedWords, original
 end
 
 function U.analyzeDocument(...)

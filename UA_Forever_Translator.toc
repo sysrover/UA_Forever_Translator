@@ -37,6 +37,7 @@ Engine\ClauseAnalysis.lua
 Engine\ClauseGeneration.lua
 Engine\Syntax.lua
 Engine\Transfer.lua
+Engine\Acceptance.lua
 Engine\Translator.lua
 UI\ChatTab.lua
 Modules\ChatLog.lua

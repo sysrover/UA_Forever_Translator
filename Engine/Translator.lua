@@ -1,6 +1,6 @@
 local _, ns = ...
 local E = {}; ns.Translator = E
-local C, N = ns.Compat, ns.Engine.Normalize
+local C, N, A = ns.Compat, ns.Engine.Normalize, ns.Engine.Acceptance
 local contextFields = {"event", "line", "author", "sender", "language", "target"}
 local cache, queue, head, tail, bytes, count = {}, {}, 1, 0, 0, 0
 function E.clearCache()
@@ -158,8 +158,8 @@ local function grammarClause(document, first, last)
             sourceRefs=ns.Linguistics.manifest.sourceRefs, dependency=parsed.dependency == true}, slots
     end
 end
-local function placePhrase(document, first, fragments)
-    local phrase, after = ns.Engine.Phrases.preposition(document, first, #document.tokens)
+local function placePhrase(document, first, fragments, limit)
+    local phrase, after = ns.Engine.Phrases.preposition(document, first, limit)
     local term = phrase and phrase.object.term
     if not term or term.category ~= "places" then return nil end
     for i = first + 1, after - 1 do
@@ -187,14 +187,22 @@ local function clauseBeforeUnknownTail(document, first, ending)
     end
 end
 
-local function dependencyFragments(document, fragments)
+local function renderDependency(document, parsed, first, ending, arcs, words, marker, accept)
+    if not parsed then return nil end
+    local reason = A.rejectRoles(parsed, first, arcs, words)
+    if reason then return nil, reason end
+    return accept(ns.Engine.ClauseGeneration.render(parsed, document.direction, marker), first, ending)
+end
+
+local function dependencyFragments(document, fragments, verbatim, accept)
     local tokens = document.tokens
     if not ns.Engine.UDPipe or not ns.Engine.UDPipe.analyzeDocumentWithTags then return fragments, false end
     local blocked, lastFragment, first, attempts, used = {}, 0, 1, 0, false
+    local newVerbatim
     for index = 1, #tokens do
         local fragment = fragments and fragments[index] or document.preserve and document.preserve[index]
         if fragment then lastFragment = math.max(lastFragment, fragment.last) end
-        if index <= lastFragment then blocked[index] = true end
+        if index <= lastFragment or verbatim and verbatim[index] then blocked[index] = true end
     end
     local phrases, generation = ns.Engine.Phrases, ns.Engine.ClauseGeneration
     local english = document.direction == "uk-en"
@@ -218,10 +226,12 @@ local function dependencyFragments(document, fragments)
                         local marker = sentenceEnd and token.key or nil
                         local limit = marker and ending - 1 or ending
                         local parsed = ns.Engine.ClauseAnalysis.parseDependencies(document, first, limit, arcs, words)
-                        local output = parsed and generation.render(parsed, document.direction, marker)
+                        local output, reason = renderDependency(document, parsed, first, ending, arcs, words, marker, accept)
+                        local conflict = reason == "role-conflict"
                         if not output then
                             parsed = ns.Engine.ClauseAnalysis.parseWithUntranslatedNominals(document, first, limit, arcs, words)
-                            output = parsed and generation.render(parsed, document.direction, marker)
+                            output, reason = renderDependency(document, parsed, first, ending, arcs, words, marker, accept)
+                            conflict = conflict or reason == "role-conflict"
                         end
                         local original = phrases.raw(document, first, ending)
                         if output and N.key(output) ~= N.key(original) then
@@ -233,10 +243,14 @@ local function dependencyFragments(document, fragments)
                             fragments[first] = {text=output, last=ending, untranslated=parsed.untranslated,
                                 rule={sourceRefs=ns.Linguistics.manifest.sourceRefs}}
                             used, rendered = true, true
+                        elseif conflict then
+                            fragments = fragments or {}
+                            fragments[first] = {last=ending, preserve="role-conflict"}
+                            newVerbatim, rendered = true, true
                         end
                         if not rendered then
                             local prefix = clauseBeforeUnknownTail(document, first, ending)
-                            if prefix then
+                            if prefix and accept(prefix.text, first, prefix.last) then
                                 fragments = fragments or {}
                                 fragments[first] = prefix
                                 rendered = true
@@ -248,7 +262,7 @@ local function dependencyFragments(document, fragments)
                         and phrases.dependencyNominals(document, first, arcs, words, blocked) or {}
                     local previous = 0
                     for _, group in ipairs(groups) do
-                        if group.first > previous then
+                    if group.first > previous then
                             local nominal = group.preposition and group.phrase.object or group.phrase
                             local value
                             if group.preposition then
@@ -258,7 +272,8 @@ local function dependencyFragments(document, fragments)
                                 value = generation.noun(group.phrase, english, group.case)
                             end
                             local original = phrases.raw(document, group.first, group.last)
-                            if value and value ~= "" and N.key(original) ~= N.key(value) then
+                        if value and value ~= "" and N.key(original) ~= N.key(value)
+                            and accept(value, group.first, group.last) then
                                 local _, literalEnd = ns.Engine.Dictionary.literal(document, group.first, fragments)
                                 if not literalEnd or literalEnd <= group.last then
                                     if group.first == first then value = N.upperStart(value) end
@@ -276,23 +291,66 @@ local function dependencyFragments(document, fragments)
             first = ending + 1
         end
     end
-    return fragments, used
+    return fragments, used, nil, nil, newVerbatim
+end
+
+local function verbatimRanges(document, fragments)
+    local verbatim, resolvedEnd = nil, 0
+    for first = 1, #document.tokens do
+        local fragment = fragments and fragments[first]
+        local unresolved = document.preserve and document.preserve[first]
+        if fragment and fragment.text and not fragment.untranslated
+            and not (fragment.rule and fragment.rule.unknownSpans) then
+            resolvedEnd = math.max(resolvedEnd, fragment.last)
+        end
+        -- A complete composition can resolve a range left open by a failed structural attempt.
+        if unresolved and unresolved.reason == "unresolved-destination" and unresolved.last > resolvedEnd then
+            verbatim = verbatim or {}
+            for i = first, unresolved.last do verbatim[i] = unresolved.reason end
+        end
+        if fragment and fragment.preserve then
+            verbatim = verbatim or {}
+            for i = first, fragment.last do verbatim[i] = fragment.preserve end
+        end
+    end
+    if not verbatim then return nil end
+
+    local stops, nextStop = {}, #document.tokens + 1
+    for i = #document.tokens, 1, -1 do
+        if verbatim[i] then nextStop = i end
+        stops[i] = nextStop - 1
+    end
+    return verbatim, stops
+end
+
+local function exactResult(exact)
+    return {text=exact.text, mode="exact", intent=exact.id, matchedTerms={}, unknownSpans={}, sourceRefs=exact.sourceRefs}
 end
 
 local function compute(text, direction, tokens, normalized, checkpoint)
     normalized = normalized or N.key(text)
-    local exact = ns.Data.exact[direction][normalized]
-    if exact then
-        return {text = exact.text, mode = "exact", intent = exact.id, matchedTerms = {}, unknownSpans = {}, sourceRefs = exact.sourceRefs}
+    local facts = A.measure(text, tokens, direction)
+    local failure
+    local function accept(value, first, last)
+        if value then
+            local reason = A.reject(facts, first or 1, last or #tokens, value)
+            if not reason then return value end
+            failure = reason
+            return nil, reason
+        end
     end
+    local exact = ns.Data.exact[direction][normalized]
+    if exact and accept(exact.text) then return exactResult(exact) end
     local document = ns.Engine.Morphology.analyze(text, tokens, direction)
     document.checkpoint = checkpoint
     local output, tree, syntaxFragments = ns.Engine.Syntax.translate(document)
+    if output and not accept(output) then output, tree = nil, nil end
     local rule, slots
     if tree then
         rule, slots = {intent=tree.kind, sourceRefs={"project-authored:apertium-pipeline-1"}}, tree.slots
     elseif not document.truncated and not document.ambiguities then
         output, rule, slots = ns.Engine.Parser.addressedExact(text, tokens, direction)
+        output = accept(output)
     end
     local clauses, fragments
     local general
@@ -310,27 +368,37 @@ local function compute(text, direction, tokens, normalized, checkpoint)
     local composedOpening
     if not output and not document.truncated and not document.ambiguities
         and ns.Engine.Parser.hasExactOpening(text, tokens, direction) then
-        output, clauses, fragments = ns.Engine.Parser.compose(text, tokens, direction, grammarFallback)
+        output, clauses, fragments = ns.Engine.Parser.compose(text, tokens, direction, grammarFallback, nil, nil, accept)
+        output = accept(output)
+        if not output then clauses = nil end
         composedOpening = true
     end
     if not output and grammarEnabled then
         local rendered, grammarRule, grammarSlots = grammarClause(document, 1, #tokens)
-        if rendered and N.key(rendered) ~= normalized then
+        if rendered and N.key(rendered) ~= normalized and accept(rendered) then
             output, rule, general, slots = rendered, grammarRule, true, grammarSlots
         end
     end
     if not output and not document.truncated and not document.ambiguities then
         output, rule, slots = ns.Engine.Parser.translate(text, tokens, direction)
+        output = accept(output)
     end
     if not output and not composedOpening and not document.truncated and not document.ambiguities then
-        output, clauses, fragments = ns.Engine.Parser.compose(text, tokens, direction, grammarFallback)
+        output, clauses, fragments = ns.Engine.Parser.compose(text, tokens, direction, grammarFallback, nil, nil, accept)
+        output = accept(output)
+        if not output then clauses = nil end
+    end
+    local verbatim, stops
+    if not output and (fragments or document.preserve) then
+        verbatim, stops = verbatimRanges(document, fragments)
     end
     if syntaxFragments and not output then
         fragments = fragments or {}
         for first, fragment in pairs(syntaxFragments) do
             -- Keep a translated sentence that already covers this opening.
             local sentence = fragments[first]
-            if not (sentence and sentence.text and sentence.last > fragment.last) then
+            if (not stops or fragment.last <= stops[first]) and accept(fragment.text, first, fragment.last)
+                and not (sentence and sentence.text and sentence.last > fragment.last) then
                 for start, old in pairs(fragments) do
                     if start <= fragment.last and old.last >= first then fragments[start] = nil end
                 end
@@ -358,13 +426,14 @@ local function compute(text, direction, tokens, normalized, checkpoint)
     end
     local usedDependency
     if grammarEnabled then
-        local rendered, intent
-        fragments, usedDependency, rendered, intent = dependencyFragments(document, fragments)
+        local rendered, intent, newVerbatim
+        fragments, usedDependency, rendered, intent, newVerbatim = dependencyFragments(document, fragments, verbatim, accept)
         if rendered then
             return {text=rendered, mode="template", intent=intent, matchedTerms={}, unknownSpans={},
                 sourceRefs=ns.Linguistics.manifest.sourceRefs,
                 coverage={complete=true, pipeline="grammar", dependency=true}}
         end
+        if newVerbatim then verbatim, stops = verbatimRanges(document, fragments) end
     end
     local chunks, matched, unknown, refs, refSeen, i, cursor = {}, {}, {}, {}, {}, 1, 1
     local reason, reasonEnd
@@ -377,31 +446,38 @@ local function compute(text, direction, tokens, normalized, checkpoint)
         local token = tokens[i]
         local fragment = fragments and fragments[i]
         local preserve = document.preserve and document.preserve[i]
-        if fragment and fragment.preserve then
-            preserve, fragment = {last=fragment.last, reason=fragment.preserve}, nil
-        end
         if preserve then reason, reasonEnd = preserve.reason, preserve.last end
-        local term, last, replacement
-        if fragment then
-            last, replacement = fragment.last, fragment.text
+        local limit = stops and stops[i] or #tokens
+        local keep = verbatim and verbatim[i]
+        local term, last, replacement, rejected
+        if fragment and fragment.last <= limit then
+            replacement, rejected = accept(fragment.text, i, fragment.last)
+        end
+        if replacement then
+            last = fragment.last
             addClause(matched, refs, refSeen, fragment.rule, fragment.slots, unknown)
             for _, span in ipairs(fragment.untranslated or {}) do
                 local literal = tokens[span.index]
                 unknown[#unknown + 1] = {first=literal.first, last=literal.last, protected=false,
                     reason=span.reason}
             end
-        elseif not token.protected then
-            term, last = ns.Engine.Dictionary.literal(document, i, fragments)
+        elseif not keep and not token.protected then
+            term, last = ns.Engine.Dictionary.literal(document, i, fragments, limit)
             if grammarEnabled and not (reasonEnd and i <= reasonEnd) and (not last or last == i) then
-                local place, finish, value = placePhrase(document, i, fragments)
+                local place, finish, value = placePhrase(document, i, fragments, limit)
                 if place then term, last, replacement = place, finish, value end
             end
             if not term then term, last = ns.Engine.Dictionary.general(document, i) end
             if term then
                 replacement = replacement or term.features and term.features.verbatim and text:sub(token.first, tokens[last].last)
                     or term.text or (direction == "en-uk" and term.uk or term.en)
-                matched[#matched + 1] = term.id
-                addRefs(refs, refSeen, term.sourceRefs)
+                local reason
+                replacement, reason = accept(replacement, i, last)
+                rejected = reason or rejected
+                if replacement then
+                    matched[#matched + 1] = term.id
+                    addRefs(refs, refSeen, term.sourceRefs)
+                end
             end
         end
         if replacement then
@@ -410,14 +486,19 @@ local function compute(text, direction, tokens, normalized, checkpoint)
             cursor, i = tokens[last].last + 1, last + 1
         else
             unknown[#unknown + 1] = {first = token.first, last = token.last, protected = token.protected or false,
-                reason = reasonEnd and i <= reasonEnd and reason or nil}
+                reason = keep or rejected or (reasonEnd and i <= reasonEnd and reason or nil)}
             i = i + 1
         end
     end
-    if #chunks == 0 then return unchanged(text, "unsupported") end
+    if #chunks == 0 then
+        local result = unchanged(text, failure or "unsupported")
+        if verbatim or failure then result.unknownSpans = unknown end
+        return result
+    end
     chunks[#chunks + 1] = text:sub(cursor)
     local translated = table.concat(chunks)
     if translated == text or N.key(translated) == normalized then return unchanged(text, "identical") end
+    if not accept(translated) then return unchanged(text, failure) end
     return {text = translated, mode = "partial", matchedTerms = matched, unknownSpans = unknown, sourceRefs = refs,
         coverage = usedDependency and {complete=false, pipeline="dictionary", dependency=true} or nil}
 end
@@ -463,7 +544,7 @@ local function translateMixed(text, direction, tokens, ranges, checkpoint)
         for i = range.first, range.last do
             local token = tokens[i]
             unknown[#unknown + 1] = {first=token.first, last=token.last, protected=token.protected or false,
-                reason="unsupported-source-language"}
+                reason=range.reason or "unsupported-source-language"}
         end
         nextToken = range.last + 1
     end
@@ -486,8 +567,12 @@ local function translateText(text, direction, checkpoint)
     local foreign = ns.Engine.SourceLanguage.foreignRanges(tokens, text)
     if foreign then
         local normalized = N.key(text)
-        if ns.Data.exact[direction][normalized] then return compute(text, direction, tokens, normalized, checkpoint) end
-        return translateMixed(text, direction, tokens, foreign, checkpoint)
+        local exact = ns.Data.exact[direction][normalized]
+        local facts = A.measure(text, tokens, direction)
+        if exact and not A.reject(facts, 1, #tokens, exact.text) then return exactResult(exact) end
+        local result = translateMixed(text, direction, tokens, A.preserveScopes(facts, foreign), checkpoint)
+        local reason = result.mode ~= "unchanged" and A.reject(facts, 1, #tokens, result.text)
+        return reason and unchanged(text, reason) or result
     end
     return compute(text, direction, tokens, nil, checkpoint)
 end

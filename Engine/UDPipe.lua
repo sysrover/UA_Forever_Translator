@@ -472,16 +472,13 @@ end
 
 -- The caller supplies the same UD features consumed by the native parser.
 -- Head zero denotes the root.
-function U.parse(model, words, beam, workspace, checkpoint)
-    beam = beam or 5
-    if not model or #words == 0 or #words > 64 or beam < 1 or beam > 5 or beam % 1 ~= 0 then return nil end
-    local matrix = cacheModel(model, checkpoint)
+local function initialState(model, words, checkpoint)
     local stack, buffer = {0}, {}
     local nodes = {[0]={form="<root>", lemma="<root>", upos="<root>", xpos="<root>",
         feats="<root>", children={}, relation=""}}
     for index, word in ipairs(words) do
         nodes[index] = {form=word.form:gsub(" ", "\194\160"), lemma=(word.lemma or ""):gsub(" ", "\194\160"),
-            upos=word.upos or "", xpos=word.xpos or "", 
+            upos=word.upos or "", xpos=word.xpos or "",
             feats=word.feats or "", misc=word.misc, children={}, relation=""}
         buffer[#words - index + 1] = index
     end
@@ -495,19 +492,32 @@ function U.parse(model, words, beam, workspace, checkpoint)
         node.embeddings = embeddings
         if checkpoint and index % 8 == 0 then checkpoint() end
     end
+    return {stack=stack, buffer=buffer, nodes=nodes, cost=0}
+end
+
+local function projectionMemo(model)
+    local memo = {count=0}
+    for index = 1, #model.selectors do
+        memo[index] = {}
+        for feature = 1, #model.features do memo[index][feature] = {} end
+    end
+    return memo
+end
+
+function U.parse(model, words, beam, workspace, checkpoint)
+    beam = beam or 5
+    if not model or #words == 0 or #words > 64 or beam < 1 or beam > 5 or beam % 1 ~= 0 then return nil end
+    local matrix = cacheModel(model, checkpoint)
+    local initial = initialState(model, words, checkpoint)
     local memo = workspace and workspace[model]
     -- Reuse projections for this message and model. Retain at most one parse's
     -- growth above the reuse threshold before resetting on the next range.
     if not memo or memo.count >= 512 then
-        memo = {count=0}
-        for index = 1, #model.selectors do
-            memo[index] = {}
-            for feature = 1, #model.features do memo[index][feature] = {} end
-        end
+        memo = projectionMemo(model)
         if workspace then workspace[model] = memo end
     end
 
-    local initial = {stack=stack, buffer=buffer, nodes=nodes, cost=0}
+    local nodes
     if beam == 1 then
         local decisions
         if workspace and #words >= 5 then

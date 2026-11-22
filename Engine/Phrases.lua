@@ -339,7 +339,7 @@ end
 local clockSeparators = {["-"]=true, ["–"]=true, ["—"]=true, ["‐"]=true, ["‑"]=true}
 local clockZones = {utc=true, gmt=true, cet=true, cest=true, est=true, edt=true, pst=true, pdt=true}
 
-local function clockAt(document, first, limit)
+function P.clockAt(document, first, limit)
     local hour = P.key(document, first, limit)
     local minute = P.key(document, first + 2, limit)
     if not hour or not hour:match("^%d%d?$") or tonumber(hour) > 23
@@ -354,13 +354,13 @@ function P.clockSchedule(document, first, limit)
     local marker = P.key(document, first, limit)
     local from = english and marker == "from" or not english and (marker == "з" or marker == "із" or marker == "зі")
     local point = english and marker == "at" or not english and (marker == "о" or marker == "об")
-    local start, after = clockAt(document, first + ((from or point) and 1 or 0), limit)
+    local start, after = P.clockAt(document, first + ((from or point) and 1 or 0), limit)
     if not start then return nil end
     local ending, finish = nil, after
     if not point then
         local separator = P.key(document, after, limit)
         if not (clockSeparators[separator] or from and separator == (english and "to" or "до")) then return nil end
-        ending, finish = clockAt(document, after + 1, limit)
+        ending, finish = P.clockAt(document, after + 1, limit)
         if not ending then return nil end
     end
     local zone

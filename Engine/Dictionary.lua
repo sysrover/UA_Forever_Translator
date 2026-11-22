@@ -50,12 +50,12 @@ function D.lookup(text, direction)
     if #tokens == 1 then return generalTerm(tokens[1], direction) end
 end
 
-function D.literal(document, first, fragments)
+function D.literal(document, first, fragments, limit)
     local tokens, direction = document.tokens, document.direction
     if tokens[first].protected then return nil end
     local node = ns.Data.aliases[direction]
     local entry, last
-    for i = first, math.min(#tokens, first + 11) do
+    for i = first, math.min(limit or #tokens, first + 11) do
         local fragment = fragments and fragments[i]
         if tokens[i].protected or (i > first and fragment and not fragment.preserve) then break end
         node = node[tokens[i].key]
