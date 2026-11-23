@@ -4,16 +4,41 @@ frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 frame:RegisterEvent("PLAYER_LOGOUT")
 local loaded, enteredWorld
+
+local function prepareParsers()
+    local models = ns.UDPipeModels
+    if not models then return end
+    local prepare = ns.Engine.UDPipe.prepare
+    if not C_Timer or type(C_Timer.After) ~= "function" or type(debugprofilestop) ~= "function" then
+        prepare(models.en)
+        prepare(models.uk)
+        return
+    end
+
+    local deadline
+    local function checkpoint()
+        if debugprofilestop() >= deadline then coroutine.yield() end
+    end
+    local warmup = coroutine.create(function()
+        prepare(models.en, checkpoint)
+        prepare(models.uk, checkpoint)
+    end)
+    local function resumeWarmup()
+        if not ns.Incoming.hasPendingWork() then
+            deadline = debugprofilestop() + 3
+            local ok, reason = coroutine.resume(warmup)
+            if not ok then error(reason) end
+        end
+        if coroutine.status(warmup) ~= "dead" then C_Timer.After(0, resumeWarmup) end
+    end
+    C_Timer.After(0, resumeWarmup)
+end
 frame:SetScript("OnEvent", function(_, event, addon)
     if event == "ADDON_LOADED" and ns.Compat.public(addon) then
         if addon == name and not loaded then
             loaded = true
             ns.Database.load(); ns.Commands.register()
-            local models = ns.UDPipeModels
-            if models then
-                ns.Engine.UDPipe.prepare(models.en)
-                ns.Engine.UDPipe.prepare(models.uk)
-            end
+            prepareParsers()
             if enteredWorld then ns.Incoming.start() end
             ns.UI.Settings.register()
         elseif loaded and addon == "Blizzard_ChatFrameBase" then

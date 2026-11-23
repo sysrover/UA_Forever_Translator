@@ -18,7 +18,7 @@ UA Forever Translator helps English- and Ukrainian-speaking players communicate 
 
 Use `/uaft` to open the composer or `/uaft en <Ukrainian text>` to prepare an English draft. You can edit the draft, choose a chat target, and insert it into the game chat box. You send the message yourself.
 
-The built-in dictionaries and grammar cover common group, trade, combat, and loot phrases. Partial translations are labeled and retain unfamiliar text. Translation runs offline without addon dependencies. An optional local journal can record translations and draft previews. The journal is off by default.
+The built-in dictionaries and grammar cover common group, trade, combat, and loot phrases. Partial translations retain unfamiliar text. Translation runs offline without addon dependencies. An optional local journal can record translations and draft previews. The journal is off by default.
 
 ## Packaging
 

@@ -235,9 +235,9 @@ local function projection(model, matrix, selector, group, feature, id, checkpoin
     return vector
 end
 
-function U.prepare(model)
+function U.prepare(model, checkpoint)
     if not model then return end
-    local matrix = cacheModel(model)
+    local matrix = cacheModel(model, checkpoint)
     if matrix.prepared then return end
     -- Parsito assigns low dictionary IDs to frequent values in these models.
     -- Keep this fixed startup set outside the ring used by rare values from chat.
@@ -245,8 +245,11 @@ function U.prepare(model)
     for group, feature in ipairs(model.features) do
         local ids = {}
         local limit = warmLimits[feature.kind] or 0
+        local inspected = 0
         for _, id in pairs(feature.dictionary) do
             if id <= limit then ids[id] = true end
+            inspected = inspected + 1
+            if checkpoint and inspected % 128 == 0 then checkpoint() end
         end
         local defaults = {feature.unknown, feature.dictionary[""], feature.dictionary["<root>"]}
         for _, id in pairs(defaults) do ids[id] = true end
@@ -255,7 +258,7 @@ function U.prepare(model)
     for selector = 1, #model.selectors do
         for group, feature in ipairs(model.features) do
             for id in pairs(selected[group]) do
-                projection(model, matrix, selector, group, feature, id, nil, true)
+                projection(model, matrix, selector, group, feature, id, checkpoint, true)
             end
         end
     end

@@ -39,10 +39,16 @@ Engine\ClauseGeneration.lua
 Engine\Syntax.lua
 Engine\Transfer.lua
 Engine\Acceptance.lua
+Engine\Message.lua
+Engine\NeuralNumbers.lua
+Engine\NeuralInference.lua
 Engine\NeuralRuntime.lua
+Engine\ChatRouting.lua
 Engine\Translator.lua
 UI\ChatTab.lua
 Modules\ChatLog.lua
+Modules\ChatPresentation.lua
+Modules\IncomingQueue.lua
 Modules\Incoming.lua
 Modules\Composer.lua
 UI\ComposeWindow.lua

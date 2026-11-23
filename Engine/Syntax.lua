@@ -149,7 +149,8 @@ function State:finish(kind, extra)
     local ending = self.limit
     local emote = ending > self.first and self.i < ending and emoteAt(self, ending - 1, ending)
     if emote then extra.emote, ending = emote, ending - 2 end
-    if self.tokens[ending] and self.tokens[ending].key == "?" then extra.question = true end
+    local question = ns.Engine.Normalize.tokenQuestion(self.document.text, self.tokens, self.first, ending)
+    if question then extra.question, extra.questionEnd = true, question end
     while self.i <= ending and self.tokens[self.i].key:match("^[.!?]$") do self.i = self.i + 1 end
     if self.i <= ending or self.ambiguous then return nil end
     return {kind=kind, slots=self.slots, features=extra, first=self.first, last=self.limit}
@@ -1591,7 +1592,27 @@ local function pricedObject(noun)
         or noun.raw and (ns.Engine.Markup.isLink(noun.raw, "item") or ns.Engine.Markup.isLink(noun.raw, "enchant"))
 end
 
-local function freeOffer(p)
+local function linkedStockOffer(p, direction)
+    local english = direction == "en-uk"
+    local prefixed = zeroPrice(p)
+    if prefixed then p:word(":")
+    elseif english then return end
+    if not (p:link("item", "item") or p:link("item", "spell") or p:link("item", "enchant")) then return end
+    if not prefixed and not zeroPrice(p) then return end
+    p:word(",")
+    if english then
+        if not p:any("while", "until") then return end
+        p:word("the")
+        if not p:any("supplies", "supply", "stocks", "stock", "mats", "materials", "inventory") then return end
+        if not p:any("last", "lasts", "run out", "runs out") then return end
+    elseif not p:any("поки є запаси", "доки є запаси", "доки не скінчаться запаси") then return end
+    return p:finish("freeOffer", {stockLimited=true})
+end
+
+local function freeOffer(p, direction)
+    local stockOffer = linkedStockOffer(p, direction)
+    if stockOffer then return stockOffer end
+    p:reset()
     local prefixed = zeroPrice(p)
     if prefixed then
         local label = p:word(":")
@@ -1804,8 +1825,8 @@ function S.parse(document, limit, first)
     if document.checkpoint then document.checkpoint() end
     limit, first = limit or #document.tokens, first or 1
     local p = state(document, limit, first)
-    local ending = document.tokens[limit]
-    if ending and ending.key == "?" and not (document.truncated or document.ambiguities) then
+    if not (document.truncated or document.ambiguities)
+        and ns.Engine.Normalize.tokenQuestion(document.text, document.tokens, first, limit) then
         local result = roleInquiry(p, document.direction)
         if result then return result end
         p:reset()
@@ -1822,7 +1843,9 @@ function S.translateRange(document, first, last, allowPartial)
     if tree then
         if tree.features.unresolved and not allowPartial then return nil end
         local output = ns.Engine.Transfer.render(tree, document.direction)
-        if output and tree.features.question then output = output:gsub("[.!?]+$", "") .. "?" end
+        if output and tree.features.question then
+            output = ns.Engine.Normalize.endAsQuestion(output, tree.features.questionEnd or "?")
+        end
         if output and tree.features.emote then output = output:gsub("%.$", "") .. " " .. tree.features.emote end
         if output and not document.truncated then return output, tree end
     end
@@ -1839,7 +1862,8 @@ function S.translate(document)
         if tree and not tree.features.unresolved and tree.kind ~= "price" and tree.kind ~= "search" and tree.kind ~= "groupSearch" then
             local output = ns.Engine.Transfer.render(tree, document.direction)
             if output then
-                return nil, nil, {[1]={text=output:gsub("[.!]+$", ""), last=last,
+                if output:sub(-1) ~= document.tokens[last].key then output = output:gsub("[.!]+$", "") end
+                return nil, nil, {[1]={text=output, last=last,
                     rule={sourceRefs={"project-authored:apertium-pipeline-1"}}, slots=tree.slots}}
             end
         end

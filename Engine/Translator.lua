@@ -2,12 +2,13 @@ local _, ns = ...
 local E = {}; ns.Translator = E
 local C, N, A = ns.Compat, ns.Engine.Normalize, ns.Engine.Acceptance
 local neuralRuntime, neuralModel = ns.Engine.NeuralRuntime
+local router, message = ns.Engine.ChatRouting, ns.Engine.Message
 local contextFields = {"event", "line", "author", "sender", "language", "target"}
 local cache, queue, head, tail, bytes, count = {}, {}, 1, 0, 0, 0
 function E.clearCache()
     cache, queue, head, tail, bytes, count = {}, {}, 1, 0, 0, 0
 end
-local function cachedKey(text, direction, context, neural)
+local function cachedKey(text, direction, context, neural, modelFirst)
     if not context or not C.public(context.event, context.line, context.author, context.sender, context.language, context.target) then return nil end
     if type(context.line) ~= "number" or context.line <= 0 or context.line % 1 ~= 0 then return nil end
     if neural then
@@ -16,20 +17,20 @@ local function cachedKey(text, direction, context, neural)
             local value = context[name]
             if value ~= nil and type(value) ~= "string" and type(value) ~= "number" then return nil end
         end
-        return "neural|" .. ns.Data.manifest.version .. "|" .. tostring(ns.Database.revision or 0) .. "|" .. text
+        return (modelFirst and "model-first|" or "neural|") .. ns.Data.manifest.version .. "|" .. text
     end
-    local parts = {direction, ns.Data.manifest.version, tostring(ns.Database.revision or 0), text}
+    local parts = {direction, ns.Data.manifest.version, text}
     for _, name in ipairs(contextFields) do
         local value = context[name]
         if value ~= nil and type(value) ~= "string" and type(value) ~= "number" then return nil end
         local raw = value == nil and "" or tostring(value)
         parts[#parts + 1] = type(value) .. ":" .. #raw .. ":" .. raw
     end
-    for i = 1, 4 do parts[i] = #parts[i] .. ":" .. parts[i] end
+    for i = 1, 3 do parts[i] = #parts[i] .. ":" .. parts[i] end
     return table.concat(parts, "|")
 end
 local function store(key, result)
-    if not key then return end
+    if not key or cache[key] then return end
     local cost = #key + #result.text + 512 + #result.unknownSpans * 128 + #result.matchedTerms * 128
     if cost > ns.Limits.cacheBytes then return end
     while count >= ns.Limits.cacheEntries or bytes + cost > ns.Limits.cacheBytes do
@@ -50,7 +51,8 @@ end
 local function unchanged(text, reason)
     local unknown = {}
     if reason == "unsupported" and #text > 0 then unknown[1] = {first=1,last=#text} end
-    return {text = text, mode = "unchanged", matchedTerms = {}, unknownSpans = unknown, sourceRefs = {}, reason = reason}
+    return {text=text, mode="unchanged", matchedTerms={}, unknownSpans=unknown, sourceRefs={}, reason=reason,
+        coverage={complete=false, pipeline="original"}}
 end
 local function addRefs(refs, seen, additions)
     for _, ref in ipairs(additions) do
@@ -171,6 +173,10 @@ local function grammarClause(document, first, last, inAside)
     if not parsed then return nil end
     if chatReaction and not punctuation and not parsed.trees[#parsed.trees].content then return nil end
     local output = ns.Engine.ClauseGeneration.render(parsed, document.direction, innerPunctuation or punctuation)
+    if output and not aside and punctuation == "?" then
+        local question = N.tokenQuestion(document.text, document.tokens, first, endToken)
+        if question and question ~= "?" then output = N.endAsQuestion(output, question) end
+    end
     if output and aside then
         output = "(" .. output:gsub("[.!?]+$", "") .. (innerPunctuation or "") .. ")" .. (punctuation or "")
     end
@@ -447,35 +453,44 @@ local function verbatimRanges(document, fragments)
     return verbatim, stops
 end
 
-local function exactResult(exact)
-    return {text=exact.text, mode="exact", intent=exact.id, matchedTerms={}, unknownSpans={}, sourceRefs=exact.sourceRefs}
+local function exactResult(output, entry)
+    return {text=output, mode="exact", intent=entry.id, matchedTerms={}, unknownSpans={}, sourceRefs=entry.sourceRefs,
+        coverage={complete=true, pipeline="exact"}}
 end
 
-local function compute(text, direction, tokens, checkpoint, facts, tryNeural)
-    local normalized = N.key(text)
+local function ruleCandidate(source, trace, deferPartial)
+    local text, direction, tokens = source.text, source.direction, source.tokens
+    local checkpoint, facts, offset = source.checkpoint, source.facts, source.offset
+    local function record(kind, first, last, candidate, reason)
+        if trace then trace(kind, tokens[first].first + offset, tokens[last].last + offset, candidate, reason) end
+    end
+    local normalized = source.key
     local failure
     local function accept(value, first, last)
         if value then
-            local reason = A.reject(facts, first or 1, last or #tokens, value)
+            first, last = first or 1, last or #tokens
+            local reason = A.reject(facts, first, last, value)
+            if reason then record("rejected", first, last, value, reason) end
             if not reason then return value end
             failure = reason
             return nil, reason
         end
     end
-    local exact = ns.Data.exact[direction][normalized]
-    if exact and accept(exact.text) then
-        local result = exactResult(exact)
-        return tryNeural and tryNeural(result, true) or result
+    local value, exact = ns.Engine.Parser.exact(text, direction, normalized)
+    if value then record("exact", 1, #tokens, value) end
+    if accept(value) then
+        return exactResult(value, exact), true
     end
-    local document = ns.Engine.Morphology.analyze(text, tokens, direction)
-    document.checkpoint = checkpoint
+    local document = message.analysis(source)
     local output, tree, syntaxFragments = ns.Engine.Syntax.translate(document)
+    record("structural", 1, #tokens, output, not output and "no-match" or nil)
     if output and not accept(output) then output, tree = nil, nil end
     local rule, slots
     if tree then
         rule, slots = {intent=tree.kind, sourceRefs={"project-authored:apertium-pipeline-1"}}, tree.slots
     elseif not document.truncated and not document.ambiguities then
         output, rule, slots = ns.Engine.Parser.addressedExact(text, tokens, direction)
+        record("addressed", 1, #tokens, output, not output and "no-match" or nil)
         output = accept(output)
     end
     local clauses, fragments
@@ -501,12 +516,14 @@ local function compute(text, direction, tokens, checkpoint, facts, tryNeural)
     end
     if not output and grammarEnabled then
         local rendered, grammarRule, grammarSlots = grammarClause(document, 1, #tokens)
+        record("grammar", 1, #tokens, rendered, not rendered and "no-match" or nil)
         if rendered and N.key(rendered) ~= normalized and accept(rendered) then
             output, rule, general, slots = rendered, grammarRule, true, grammarSlots
         end
     end
     if not output and not document.truncated and not document.ambiguities then
         output, rule, slots = ns.Engine.Parser.translate(text, tokens, direction)
+        record("template", 1, #tokens, output, not output and "no-match" or nil)
         output = accept(output)
     end
     if not output and not composedOpening and not document.truncated and not document.ambiguities then
@@ -514,34 +531,8 @@ local function compute(text, direction, tokens, checkpoint, facts, tryNeural)
         output = accept(output)
         if not output then clauses = nil end
     end
-    -- Without a complete rendering, build the fallback only if the model declines.
-    if tryNeural and not output then
-        local result = tryNeural()
-        if result then return result end
-    end
-    local verbatim, stops
-    if not output and (fragments or document.preserve) then
-        verbatim, stops = verbatimRanges(document, fragments)
-    end
-    if syntaxFragments and not output then
-        fragments = fragments or {}
-        for first, fragment in pairs(syntaxFragments) do
-            -- Keep a translated sentence that already covers this opening.
-            local sentence = fragments[first]
-            if (not stops or fragment.last <= stops[first]) and accept(fragment.text, first, fragment.last)
-                and not (sentence and sentence.text and sentence.last > fragment.last) then
-                for start, old in pairs(fragments) do
-                    if start <= fragment.last and old.last >= first then fragments[start] = nil end
-                end
-                fragments[first] = fragment
-            end
-        end
-    end
     if output then
-        if clauses and N.key(output) == normalized then
-            local result = unchanged(text, "identical")
-            return tryNeural and tryNeural(result) or result
-        end
+        if clauses and N.key(output) == normalized then return unchanged(text, "identical") end
         local matched, refs, seen, unknown = {}, {}, {}, {}
         local dependency = rule and rule.dependency == true or nil
         if clauses then
@@ -567,6 +558,7 @@ local function compute(text, direction, tokens, checkpoint, facts, tryNeural)
             and tree.slots.count and tree.slots.stat
         local itemAction = tree and (tree.kind == "linkedSale" or tree.kind == "lockRequest" or tree.kind == "lockOffer")
         local skillInquiry = tree and tree.kind == "availability"
+        local stockOffer = tree and tree.kind == "freeOffer" and tree.features.stockLimited
         local craftingTrade = slots and slots.craftService
             and (rule.intent == "trade_buy" or rule.intent == "trade_sell")
         local preservedNames = not complete
@@ -574,99 +566,125 @@ local function compute(text, direction, tokens, checkpoint, facts, tryNeural)
             if span.reason ~= "preserved-recruitment-name" then preservedNames = false; break end
         end
         local preferred = preservedNames or unresolved and tree.kind == "roleInquiry"
-            or complete and (groupPattern or serviceOffer or enchantmentOffer or itemAction or skillInquiry or craftingTrade or clauses ~= nil
+            or complete and (groupPattern or serviceOffer or enchantmentOffer or itemAction or skillInquiry or stockOffer
+                or craftingTrade or clauses ~= nil
                 or general and (rule.graded or rule.politeRequest or rule.preferredInChat
                     or not (rule.modal or rule.copular)))
-        local result = {text = output, mode = complete and "template" or "partial", intent = clauses and "composition" or rule.intent,
+        local result = {text=output, mode=complete and "template" or "partial", intent=clauses and "composition" or rule.intent,
+            reason=not complete and "untranslated-spans" or nil,
             matchedTerms = matched, unknownSpans = unknown, sourceRefs = refs,
             coverage = {complete=complete, pipeline=clauses and "composition" or general and "grammar"
                 or tree and "structural" or "legacy", dependency=dependency}}
-        return tryNeural and tryNeural(result, preferred, complete and general and rule.directQuestion) or result
+        return result, preferred, complete and general and rule.directQuestion
     end
-    local usedDependency
-    if grammarEnabled then
-        local rendered, intent, newVerbatim
-        fragments, usedDependency, rendered, intent, newVerbatim = dependencyFragments(document, fragments, verbatim, accept)
-        if rendered then
-            return {text=rendered, mode="template", intent=intent, matchedTerms={}, unknownSpans={},
-                sourceRefs=ns.Linguistics.manifest.sourceRefs,
-                coverage={complete=true, pipeline="grammar", dependency=true}}
+    local function partial()
+        local verbatim, stops
+        if fragments or document.preserve then
+            verbatim, stops = verbatimRanges(document, fragments)
         end
-        if newVerbatim then verbatim, stops = verbatimRanges(document, fragments) end
-    end
-    local chunks, matched, unknown, refs, refSeen, i, cursor = {}, {}, {}, {}, {}, 1, 1
-    local reason, reasonEnd
-    local nextCheckpoint = 5
-    while i <= #tokens do
-        if checkpoint and i >= nextCheckpoint then
-            nextCheckpoint = i + 4
-            checkpoint()
-        end
-        local token = tokens[i]
-        local fragment = fragments and fragments[i]
-        local preserve = document.preserve and document.preserve[i]
-        if preserve then reason, reasonEnd = preserve.reason, preserve.last end
-        local limit = stops and stops[i] or #tokens
-        local keep = verbatim and verbatim[i]
-        if not (fragment or keep or reasonEnd and i <= reasonEnd) and grammarEnabled
-            and direction == "en-uk" and document.hasHyphen then
-            fragment = activityProfileFragment(document, i, limit, fragments)
-        end
-        local term, last, replacement, rejected
-        if fragment and fragment.last <= limit then
-            replacement, rejected = accept(fragment.text, i, fragment.last)
-        end
-        if replacement then
-            last = fragment.last
-            addClause(matched, refs, refSeen, fragment.rule, fragment.slots, unknown)
-            for _, span in ipairs(fragment.untranslated or {}) do
-                local literal = tokens[span.index]
-                unknown[#unknown + 1] = {first=literal.first, last=literal.last, protected=false,
-                    reason=span.reason}
-            end
-        elseif not keep and not token.protected then
-            term, last = ns.Engine.Dictionary.literal(document, i, fragments, limit)
-            if grammarEnabled and not (reasonEnd and i <= reasonEnd) and (not last or last == i) then
-                local place, finish, value = placePhrase(document, i, fragments, limit)
-                if place then term, last, replacement = place, finish, value end
-            end
-            if not term then term, last = ns.Engine.Dictionary.general(document, i) end
-            if term then
-                replacement = replacement or term.features and term.features.verbatim and text:sub(token.first, tokens[last].last)
-                    or term.text or (direction == "en-uk" and term.uk or term.en)
-                local reason
-                replacement, reason = accept(replacement, i, last)
-                rejected = reason or rejected
-                if replacement then
-                    matched[#matched + 1] = term.id
-                    addRefs(refs, refSeen, term.sourceRefs)
+        if syntaxFragments then
+            fragments = fragments or {}
+            for first, fragment in pairs(syntaxFragments) do
+                -- Keep a translated sentence that already covers this opening.
+                local sentence = fragments[first]
+                if (not stops or fragment.last <= stops[first]) and accept(fragment.text, first, fragment.last)
+                    and not (sentence and sentence.text and sentence.last > fragment.last) then
+                    for start, old in pairs(fragments) do
+                        if start <= fragment.last and old.last >= first then fragments[start] = nil end
+                    end
+                    fragments[first] = fragment
                 end
             end
         end
-        if replacement then
-            chunks[#chunks + 1] = text:sub(cursor, token.first - 1)
-            chunks[#chunks + 1] = replacement
-            cursor, i = tokens[last].last + 1, last + 1
-        else
-            unknown[#unknown + 1] = {first = token.first, last = token.last, protected = token.protected or false,
-                reason = keep or rejected or (reasonEnd and i <= reasonEnd and reason or nil)}
-            i = i + 1
+        local usedDependency
+        if grammarEnabled then
+            local rendered, intent, newVerbatim
+            fragments, usedDependency, rendered, intent, newVerbatim = dependencyFragments(document, fragments, verbatim, accept)
+            if rendered then
+                return {text=rendered, mode="template", intent=intent, matchedTerms={}, unknownSpans={},
+                    sourceRefs=ns.Linguistics.manifest.sourceRefs,
+                    coverage={complete=true, pipeline="grammar", dependency=true}}
+            end
+            if newVerbatim then verbatim, stops = verbatimRanges(document, fragments) end
         end
+        local chunks, matched, unknown, refs, refSeen, i, cursor = {}, {}, {}, {}, {}, 1, 1
+        local reason, reasonEnd
+        local nextCheckpoint = 5
+        while i <= #tokens do
+            if checkpoint and i >= nextCheckpoint then
+                nextCheckpoint = i + 4
+                checkpoint()
+            end
+            local token = tokens[i]
+            local fragment = fragments and fragments[i]
+            local preserve = document.preserve and document.preserve[i]
+            if preserve then reason, reasonEnd = preserve.reason, preserve.last end
+            local limit = stops and stops[i] or #tokens
+            local keep = verbatim and verbatim[i]
+            if not (fragment or keep or reasonEnd and i <= reasonEnd) and grammarEnabled
+                and direction == "en-uk" and document.hasHyphen then
+                fragment = activityProfileFragment(document, i, limit, fragments)
+            end
+            local term, last, replacement, rejected
+            if fragment and fragment.last <= limit then
+                replacement, rejected = accept(fragment.text, i, fragment.last)
+            end
+            if replacement then
+                last = fragment.last
+                addClause(matched, refs, refSeen, fragment.rule, fragment.slots, unknown)
+                for _, span in ipairs(fragment.untranslated or {}) do
+                    local literal = tokens[span.index]
+                    unknown[#unknown + 1] = {first=literal.first, last=literal.last, protected=false,
+                        reason=span.reason}
+                end
+            elseif not keep and not token.protected then
+                term, last = ns.Engine.Dictionary.literal(document, i, fragments, limit)
+                if grammarEnabled and not (reasonEnd and i <= reasonEnd) and (not last or last == i) then
+                    local place, finish, value = placePhrase(document, i, fragments, limit)
+                    if place then term, last, replacement = place, finish, value end
+                end
+                if not term then term, last = ns.Engine.Dictionary.general(document, i) end
+                if term then
+                    replacement = replacement or term.features and term.features.verbatim and text:sub(token.first, tokens[last].last)
+                        or term.text or (direction == "en-uk" and term.uk or term.en)
+                    local reason
+                    replacement, reason = accept(replacement, i, last)
+                    rejected = reason or rejected
+                    if replacement then
+                        matched[#matched + 1] = term.id
+                        addRefs(refs, refSeen, term.sourceRefs)
+                    end
+                end
+            end
+            if replacement then
+                chunks[#chunks + 1] = text:sub(cursor, token.first - 1)
+                chunks[#chunks + 1] = replacement
+                cursor, i = tokens[last].last + 1, last + 1
+            else
+                unknown[#unknown + 1] = {first = token.first, last = token.last, protected = token.protected or false,
+                    reason = keep or rejected or (reasonEnd and i <= reasonEnd and reason or nil)}
+                i = i + 1
+            end
+        end
+        if #chunks == 0 then
+            local result = unchanged(text, failure or "unsupported")
+            if verbatim or failure then result.unknownSpans = unknown end
+            return result
+        end
+        chunks[#chunks + 1] = text:sub(cursor)
+        local translated = table.concat(chunks)
+        if translated == text or N.key(translated) == normalized then return unchanged(text, "identical") end
+        if not accept(translated) then return unchanged(text, failure) end
+        return {text=translated, mode="partial", matchedTerms=matched, unknownSpans=unknown, sourceRefs=refs,
+            reason="untranslated-spans",
+            coverage = {complete=false, pipeline="dictionary", dependency=usedDependency or nil}}
     end
-    if #chunks == 0 then
-        local result = unchanged(text, failure or "unsupported")
-        if verbatim or failure then result.unknownSpans = unknown end
-        return result
-    end
-    chunks[#chunks + 1] = text:sub(cursor)
-    local translated = table.concat(chunks)
-    if translated == text or N.key(translated) == normalized then return unchanged(text, "identical") end
-    if not accept(translated) then return unchanged(text, failure) end
-    return {text = translated, mode = "partial", matchedTerms = matched, unknownSpans = unknown, sourceRefs = refs,
-        coverage = usedDependency and {complete=false, pipeline="dictionary", dependency=true} or nil}
+    if deferPartial then return nil, nil, nil, partial end
+    return partial()
 end
 
-local function translateMixed(text, direction, tokens, ranges, checkpoint)
+local function translateMixed(source, ranges, trace)
+    local text, tokens, checkpoint = source.text, source.tokens, source.checkpoint
     local chunks, matched, unknown, refs, seen = {}, {}, {}, {}, {}
     local cursor, nextToken, changed = 1, 1, false
     local separators = ns.Engine.SourceLanguage.clauseEnd
@@ -677,24 +695,17 @@ local function translateMixed(text, direction, tokens, ranges, checkpoint)
             while first <= last and separators[tokens[last].key] do last = last - 1 end
         end
         if first > last then return end
-        local offset = tokens[first].first - 1
+        local part = message.range(source, first, last)
+        local offset = part.offset - source.offset
         local ending = tokens[last].last
-        local source = text:sub(offset + 1, ending)
-        local part = {}
-        for i = first, last do
-            local token = {}
-            for key, value in pairs(tokens[i]) do token[key] = value end
-            token.first, token.last = token.first - offset, token.last - offset
-            part[#part + 1] = token
-        end
         if checkpoint then checkpoint() end
-        local result = compute(source, direction, part, checkpoint, A.measure(source, part, direction))
+        local result = ruleCandidate(part, trace)
         local value = result.text
-        if (clipped or continues) and value ~= source then value = (value:gsub("%.$", "")) end
+        if (clipped or continues) and value ~= part.text then value = (value:gsub("%.$", "")) end
         chunks[#chunks + 1] = text:sub(cursor, offset)
         chunks[#chunks + 1] = value
         cursor = ending + 1
-        changed = changed or value ~= source
+        changed = changed or value ~= part.text
         for _, term in ipairs(result.matchedTerms) do matched[#matched + 1] = term end
         addRefs(refs, seen, result.sourceRefs)
         for _, span in ipairs(result.unknownSpans) do
@@ -720,6 +731,7 @@ local function translateMixed(text, direction, tokens, ranges, checkpoint)
     chunks[#chunks + 1] = text:sub(cursor)
     table.sort(refs)
     return {text=table.concat(chunks), mode="partial", matchedTerms=matched, unknownSpans=unknown, sourceRefs=refs,
+        reason="unsupported-source-language",
         coverage={complete=false, pipeline="composition"}}
 end
 
@@ -732,7 +744,8 @@ local function digitsMatch(text, output)
 end
 
 local noFacts = {}
-local function translateNeural(text, tokens, checkpoint, facts, directQuestion)
+local function translateNeural(source, directQuestion, trace)
+    local text, tokens, checkpoint, facts = source.text, source.tokens, source.checkpoint, source.facts
     local english
     for _, token in ipairs(tokens) do
         if not token.protected then
@@ -741,61 +754,79 @@ local function translateNeural(text, tokens, checkpoint, facts, directQuestion)
         end
     end
     if not english then return end
-    local output, mode, calls = neuralRuntime.routeChat(ns, text, function(value, context)
+    local output, mode, calls = router.routeChat(ns, text, function(value, context, offset)
+        offset = offset or 1
         if not neuralModel then neuralModel = neuralRuntime.prepare(ns.Data.translationStudent, checkpoint) end
-        return neuralRuntime.translate(neuralModel, value, checkpoint, false, ns.Engine.Markup.split, context, true)
-    end, checkpoint, tokens, facts or noFacts, grammarClause, false, true)
-    if mode ~= "complete" or not output or output == text then return end
-    local last = tokens[#tokens]
-    if (directQuestion or not last.protected and last.key == "?") and not output:find("?", 1, true) then
-        local tail = output:match("%s*$")
-        output = output:sub(1, #output - #tail):gsub("…$", ""):gsub("[.!]+$", "") .. "?" .. tail
+        local record
+        if trace then
+            record = function(kind, first, last, candidate, reason)
+                trace(kind, first + offset - 1, last + offset - 1, candidate, reason)
+            end
+        end
+        local candidate, status = neuralRuntime.translate(neuralModel, value, checkpoint, false,
+            ns.Engine.Markup.split, context, true, record)
+        if trace then trace("model", offset, offset + #value - 1, candidate, status) end
+        return candidate, status
+    end, checkpoint, tokens, facts or noFacts, grammarClause, false, true, trace, source)
+    if mode ~= "complete" or not output or output == text then
+        if trace then trace("neural-rejected", 1, #text, output, mode) end
+        return
     end
-    if #output > ns.Limits.messageBytes or A.reject(facts, 1, #tokens, output) then return end
-    if not digitsMatch(text, output) then return end
+    local question = source.question or directQuestion and "?"
+    if question and not N.questionEnd(output) then
+        output = N.endAsQuestion(output, question) .. output:match("%s*$")
+    end
+    local reason = #output > ns.Limits.messageBytes and "byte-limit" or A.reject(facts, 1, #tokens, output)
+    reason = reason or (not digitsMatch(text, output) and "digits")
+    if reason then
+        if trace then trace("neural-rejected", 1, #text, output, reason) end
+        return
+    end
     if neuralRuntime.hasVisibleCyrillic(output, ns.Engine.Markup.split) then
         return {text=output, mode=calls > 0 and "neural" or "template",
-            matchedTerms={}, unknownSpans={}, sourceRefs={}}
+            matchedTerms={}, unknownSpans={}, sourceRefs={},
+            coverage={complete=true, pipeline=calls > 0 and "neural-route" or "chat-rules"}}
     end
+    if trace then trace("neural-rejected", 1, #text, output, "target-language") end
 end
 
-local function translateText(text, direction, checkpoint, neural)
-    local contractions = direction == "en-uk" and ns.Engine.ClauseAnalysis.englishContractions
-    local tokens = ns.Engine.Tokenizer.scan(text, contractions)
-    if not tokens or #tokens == 0 then return unchanged(text, "token-limit-or-empty") end
-    local foreign = ns.Engine.SourceLanguage.foreignRanges(tokens, text)
-    local facts = A.measure(text, tokens, direction)
-    if foreign then
-        local normalized = N.key(text)
-        local exact = ns.Data.exact[direction][normalized]
-        if exact and not A.reject(facts, 1, #tokens, exact.text) then return exactResult(exact) end
-        local result = translateMixed(text, direction, tokens, A.preserveScopes(facts, foreign), checkpoint)
-        local reason = result.mode ~= "unchanged" and A.reject(facts, 1, #tokens, result.text)
-        return reason and unchanged(text, reason) or result
-    end
-    if neural then
-        if neuralRuntime.chatOpener(tokens, 1) then
-            return translateNeural(text, tokens, checkpoint, facts) or compute(text, direction, tokens, checkpoint, facts)
-        end
-        return compute(text, direction, tokens, checkpoint, facts, function(grammatical, preferred, directQuestion)
-            if preferred and digitsMatch(text, grammatical.text) then return grammatical end
-            return translateNeural(text, tokens, checkpoint, facts, directQuestion)
-        end)
-    end
-    return compute(text, direction, tokens, checkpoint, facts)
+local providers = {
+    rules=ruleCandidate, model=translateNeural, mixed=translateMixed, exact=exactResult,
+    original=unchanged, digitsMatch=digitsMatch,
+}
+
+local function translateText(text, direction, checkpoint, neural, trace, modelFirst)
+    local source = message.parse(text, direction, checkpoint)
+    if not source then return unchanged(text, "token-limit-or-empty") end
+    return router.select(source, neural, providers, trace, modelFirst)
 end
 
-function E.translate(text, direction, context, checkpoint)
+function E.translate(text, direction, context, checkpoint, options)
     if C.secret(text) or C.secret(direction) then return nil end
     if type(text) ~= "string" or (direction ~= "en-uk" and direction ~= "uk-en") then return nil end
     if #text > ns.Limits.messageBytes then return unchanged(text, "byte-limit") end
-    local settings = ns.Database.settings
-    local neural = direction == "en-uk" and context and checkpoint and settings and settings.neuralIncoming
-        and neuralRuntime and ns.Data.translationStudent
-    local key = cachedKey(text, direction, context, neural)
+    local policy = options and options.model
+    if not policy then
+        -- Older offline callers use the account option and provide their own execution budget.
+        local settings = ns.Database.settings
+        policy = context and checkpoint and settings and settings.neuralIncoming and "allowed" or "disabled"
+    end
+    if direction ~= "en-uk" then policy = "direction"
+    elseif policy == "allowed" and not (neuralRuntime and ns.Data.translationStudent) then policy = "weights-unavailable" end
+    local neural = policy == "allowed"
+    local trace = options and options.trace
+    if trace then trace("model-policy", 1, #text, nil, policy) end
+    local modelFirst = neural and options and options.route == "model-first"
+    local key = cachedKey(text, direction, context, neural, modelFirst)
     local entry = key and cache[key]
-    if entry then return entry.result end
-    local result = translateText(text, direction, checkpoint, neural)
+    if entry then
+        if trace then trace("cache-hit", 1, #text, entry.result.text, entry.result.mode) end
+        return entry.result
+    end
+    local result = translateText(text, direction, checkpoint, neural, trace, modelFirst)
+    if trace then
+        trace("selected", 1, #text, result.text, result.reason or result.intent or result.mode)
+    end
     store(key, result)
     return result
 end

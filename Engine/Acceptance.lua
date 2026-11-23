@@ -95,7 +95,7 @@ function A.measure(text, tokens, direction)
 end
 
 function A.reject(facts, first, last, output)
-    local expected, tracked
+    local expected, tracked, protected, nextProtected
     for _, fact in ipairs(facts or empty) do
         if fact.first > last then break end
         if fact.last >= first then
@@ -104,26 +104,38 @@ function A.reject(facts, first, last, output)
                 expected, tracked = expected or {}, tracked or {}
                 expected[fact.key] = (expected[fact.key] or 0) + 1
                 tracked[fact.kind] = true
+                if fact.kind == "protected-content" then
+                    protected = protected or {}
+                    protected[#protected + 1] = fact.key
+                end
             end
         end
     end
 
     -- Unprotected prose only needs to be scanned if the rendering opens a protected span.
     if not expected and not output:find("[|@<{/%[]") and not output:find("[Ww][Ww][Ww]%.") then return nil end
+    nextProtected = 1
+    local function consumeProtected(key)
+        if not protected or protected[nextProtected] ~= key then return false end
+        nextProtected = nextProtected + 1
+        expected[key] = expected[key] - 1
+        return true
+    end
+
     if not tracked or not (tracked["clock-content"] or tracked["currency-content"]) then
         for _, segment in ipairs(ns.Engine.Markup.split(output)) do
             if segment.protected then
                 local key = "protected-content:" .. output:sub(segment.first, segment.last)
-                if not expected or not expected[key] then return "protected-content" end
-                expected[key] = expected[key] - 1
-                if expected[key] < 0 then return "protected-content" end
+                if not consumeProtected(key) then return "protected-content" end
             end
         end
     else
         local tokens = ns.Engine.Tokenizer.scan(output)
         if not tokens then return "unverifiable-content" end
         for _, fact in ipairs(A.measure(output, tokens) or empty) do
-            if fact.kind == "protected-content" or tracked[fact.kind] then
+            if fact.kind == "protected-content" then
+                if not consumeProtected(fact.key) then return fact.kind end
+            elseif tracked[fact.kind] then
                 if not expected[fact.key] then return fact.kind end
                 expected[fact.key] = expected[fact.key] - 1
                 if expected[fact.key] < 0 then return fact.kind end

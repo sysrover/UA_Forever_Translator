@@ -1,5 +1,6 @@
 local _, ns = ...
 local N = {}; ns.Engine.Normalize = N
+N.englishCopulas = {is=true, are=true, was=true, were=true, be=true}
 -- Chat spellings provide an auxiliary reading alongside the original word.
 N.englishNegativeAliases = {
     dont="don't", doesnt="doesn't", didnt="didn't",
@@ -38,6 +39,34 @@ function N.upperStart(text)
     local capital = first and uppercase[first]
     return capital and capital .. text:sub(#first + 1) or text
 end
+local function questionMarks(terminal)
+    if terminal and terminal:find("?", 1, true) then
+        return terminal:match("^%?+$") and "?" or terminal
+    end
+end
+
+function N.questionEnd(text)
+    return questionMarks(normalizeSpaces(text):match("([.!?]+)%s*$"))
+end
+
+function N.tokenQuestion(text, tokens, first, last)
+    local ending = tokens[last]
+    if not ending or last < first or not ending.key:match("^[.!?]$") then return end
+    local start, question = last, ending.key == "?"
+    while start > first do
+        local previous = tokens[start - 1]
+        if previous.last + 1 ~= tokens[start].first or not previous.key:match("^[.!?]$") then break end
+        question = question or previous.key == "?"
+        start = start - 1
+    end
+    if question then return questionMarks(text:sub(tokens[start].first, ending.last)) end
+end
+
+function N.endAsQuestion(text, terminal)
+    local body = text:gsub("%s+$", ""):gsub("…$", ""):gsub("[.!?]+$", "")
+    return body .. terminal
+end
+
 function N.key(text)
     return (N.word(normalizeSpaces(text)):gsub("%s+", " "):gsub("^%s+", ""):gsub("%s+$", "")
         :gsub("%s*[.!?]+$", ""))

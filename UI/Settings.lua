@@ -61,8 +61,8 @@ local function populate(page)
         label:SetJustifyH("LEFT")
         label:SetText(text)
         control:SetScript("OnClick", function(self)
-            setter(self:GetChecked() == true)
-            DB.changed()
+            if setter(self:GetChecked() == true) == false then refresh(page)
+            else DB.changed() end
         end)
         page.controls[#page.controls + 1] = {control = control, getter = getter}
         y = y - 30
@@ -71,6 +71,12 @@ local function populate(page)
     addCheck(L.showInUA, function() return DB.settings.showInUA end, function(v) DB.settings.showInUA = v end)
     addCheck(L.showInMain, function() return DB.settings.showInMain end, function(v) DB.settings.showInMain = v end)
     addCheck(L.own, function() return DB.settings.own end, function(v) DB.settings.own = v end)
+    addCheck(L.neuralIncoming, function() return DB.settings.neuralIncoming end,
+        function(v)
+            if DB.setNeuralIncoming(v) then return true end
+            C.print(L.neuralUnavailable)
+            return false
+        end)
     addCheck(L.logTranslations, function() return DB.settings.logTranslations end,
         function(v) DB.settings.logTranslations = v end)
     for _, id in ipairs({"whisper", "party", "raid", "guild", "say", "channel"}) do
@@ -153,7 +159,7 @@ function S.open()
     if not S.fallback then
         local page = C.frame("Frame", UIParent, "BackdropTemplate")
         page:Hide()
-        page:SetSize(540, 510)
+        page:SetSize(540, 540)
         page:SetPoint("CENTER")
         page:SetFrameStrata("DIALOG")
         page:EnableMouse(true)

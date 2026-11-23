@@ -28,12 +28,11 @@ function Commands.dispatch(message)
     elseif command == "tab" then ns.Incoming.openTab()
     elseif command == "neural" then
         local enabled = rest:lower()
-        if enabled == "on" and not (ns.Data.translationStudent and ns.Engine.NeuralRuntime) then
-            ns.Compat.print(ns.L.neuralUnavailable)
-        elseif enabled == "on" or enabled == "off" then
-            ns.Database.settings.neuralIncoming = enabled == "on"
-            ns.Database.changed()
-            ns.Compat.print(ns.L[enabled == "on" and "neuralEnabled" or "neuralDisabled"])
+        if enabled == "on" or enabled == "off" then
+            local available = ns.Database.setNeuralIncoming(enabled == "on")
+            if available then ns.Database.changed() end
+            ns.Compat.print(ns.L[not available and "neuralUnavailable"
+                or enabled == "on" and "neuralEnabled" or "neuralDisabled"])
         else
             ns.Compat.print(ns.L[ns.Database.settings.neuralIncoming and "neuralEnabled" or "neuralDisabled"])
         end

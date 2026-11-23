@@ -36,7 +36,7 @@ function DB.load()
         clean.channels[group] = value
     end
     UA_Forever_TranslatorDB = clean
-    DB.settings, DB.revision = clean, 1
+    DB.settings = clean
 end
 
 function DB.setTranslationColor(r, g, b)
@@ -46,9 +46,13 @@ function DB.setTranslationColor(r, g, b)
     if ns.UI.Settings then ns.UI.Settings.refreshVisible() end
 end
 
+function DB.setNeuralIncoming(enabled)
+    if enabled and not (ns.Data.translationStudent and ns.Engine.NeuralRuntime) then return false end
+    DB.settings.neuralIncoming = enabled == true
+    return true
+end
+
 function DB.changed()
-    DB.revision = DB.revision + 1
-    if ns.Translator then ns.Translator.clearCache() end
     if ns.Incoming then ns.Incoming.configure() end
     if ns.UI.Settings then ns.UI.Settings.refreshVisible() end
 end

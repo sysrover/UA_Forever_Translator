@@ -546,6 +546,10 @@ function T.render(tree, direction)
         local value = f.object and ns.Engine.ClauseGeneration.noun(f.object, not uk, "nominative")
             or s.item and s.item.raw
         if not value then return end
+        if f.stockLimited then
+            if uk then return value .. " безкоштовно, поки є запаси!" end
+            return "Free " .. value .. " while supplies last!"
+        end
         if f.recipient then
             local recipient, marker = ns.Engine.ClauseGeneration.preposition(f.recipient, not uk)
             if not recipient then return end

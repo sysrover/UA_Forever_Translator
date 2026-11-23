@@ -124,10 +124,20 @@ local function addressed(text, tokens, direction, start, finish, resolveCore)
     end
 end
 
+function P.exact(text, direction, normalized)
+    local normal = ns.Engine.Normalize
+    local entry = ns.Data.exact[direction][normalized or normal.key(text)]
+    if not entry then return nil end
+    local question = normal.questionEnd(text)
+    local output = entry.text
+    if question and not normal.questionEnd(output) then output = normal.endAsQuestion(output, question) end
+    return output, entry
+end
+
 function P.addressedExact(text, tokens, direction, first, last)
     return addressed(text, tokens, direction, first or 1, last or #tokens, function(start, finish)
-        local exact = ns.Data.exact[direction][ns.Engine.Normalize.key(tokenText(text, tokens, start, finish))]
-        if exact then return {text=exact.text, rule=exact} end
+        local output, entry = P.exact(tokenText(text, tokens, start, finish), direction)
+        if output then return {text=output, rule=entry} end
     end)
 end
 
@@ -195,10 +205,8 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
         local output, rule, slots
         -- The entry point already checked exact, structural and grammar matches for the full message.
         if start ~= 1 or finish ~= #tokens then
-            local key = ns.Engine.Normalize.key(tokenText(text, tokens, start, finish))
-            local exact = ns.Data.exact[direction][key]
-            if exact then output, rule = exact.text, exact
-            else
+            output, rule = P.exact(tokenText(text, tokens, start, finish), direction)
+            if not output then
                 output, rule, slots = P.addressedExact(text, tokens, direction, start, finish)
                 if not output and grammarFallback then output, rule, slots = grammarFallback(start, finish) end
                 if not output then output, rule, slots = P.translate(text, tokens, direction, start, finish) end
@@ -648,9 +656,9 @@ local function matchRule(rule, text, tokens, direction, first, last)
     while index <= last and tokens[index].key:match("^[.!?]$") do index = index + 1 end
     if index <= last then return nil end
     local output = ns.Engine.Grammar.render(rule.output, slots, direction)
-    if output and tokens[last].key == "?" then
-        output = output:gsub("[.!?]+$", "") .. "?"
-    end
+    local normal = ns.Engine.Normalize
+    local question = output and normal.tokenQuestion(text, tokens, first, last)
+    if question then output = normal.endAsQuestion(output, question) end
     if output then return output, slots end
 end
 local function selectMatch(matches, text, tokens, direction, first, last, selected, selectedRule, selectedSlots, ambiguous)
