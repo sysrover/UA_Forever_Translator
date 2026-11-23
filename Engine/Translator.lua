@@ -567,12 +567,14 @@ local function compute(text, direction, tokens, checkpoint, facts, tryNeural)
             and tree.slots.count and tree.slots.stat
         local itemAction = tree and (tree.kind == "linkedSale" or tree.kind == "lockRequest" or tree.kind == "lockOffer")
         local skillInquiry = tree and tree.kind == "availability"
+        local craftingTrade = slots and slots.craftService
+            and (rule.intent == "trade_buy" or rule.intent == "trade_sell")
         local preservedNames = not complete
         for _, span in ipairs(unknown) do
             if span.reason ~= "preserved-recruitment-name" then preservedNames = false; break end
         end
         local preferred = preservedNames or unresolved and tree.kind == "roleInquiry"
-            or complete and (groupPattern or serviceOffer or enchantmentOffer or itemAction or skillInquiry or clauses ~= nil
+            or complete and (groupPattern or serviceOffer or enchantmentOffer or itemAction or skillInquiry or craftingTrade or clauses ~= nil
                 or general and (rule.graded or rule.politeRequest or rule.preferredInChat
                     or not (rule.modal or rule.copular)))
         local result = {text = output, mode = complete and "template" or "partial", intent = clauses and "composition" or rule.intent,

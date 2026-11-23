@@ -607,6 +607,10 @@ local function slot(text, tokens, index, name, direction, limit)
         local kind = ns.Engine.Markup.linkKind(raw)
         -- Legacy {item} also serves spell recipes, but never a profession or quest.
         if kind == name or (name == "item" and kind == "spell") then return {raw = raw}, index + 1 end
+    elseif name == "offerPrice" then
+        local grammar = ns.Engine.Grammar
+        local parts, after = grammar.offerPriceAt({text=text, tokens=tokens}, index, limit)
+        if parts then return {raw=grammar.offerPriceText(parts, true), parts=parts}, after end
     elseif name == "price" or name == "time" then
         if token.protected then return nil end
         local pattern = name == "price" and "^(%d+[%.,]?%d*)%s*([gsc])$" or "^(%d+[%.,]?%d*)%s*([mh])$"

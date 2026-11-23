@@ -171,6 +171,9 @@ function G.render(template, slots, direction)
                 return genitive and " до " .. genitive or " — " .. slot.term.uk
             end
             if form == "activity" then form = "accusative" end
+            if form == "serviceObject" then
+                return slot.term.forms and slot.term.forms.accusative or slot.term.uk
+            end
             if form == "object" or form == "negativeObject" then
                 form = slot.partitive and "genitiveSingular" or slot.plural and "accusativePlural" or "accusative"
             end
@@ -200,6 +203,7 @@ function G.render(template, slots, direction)
             return slot.term.uk
         end
         if form == "roleQuantity" then return G.roleQuantity(slot, slots.role.term, true) end
+        if form == "offerPrice" then return G.offerPriceText(slot.parts, direction == "uk-en") end
         if form == "money" or form == "moneyNominative" then return G.moneyText(slot, form == "moneyNominative") end
         return slot.raw
     end)
