@@ -28,12 +28,17 @@ function State:coordination()
     return self:any("and", "&", "+", "та", "і", "й") and "and"
         or self:any("or", "/", "або") and "or" or comma and "comma"
 end
-function State:noun(name, category, case)
-    local candidate, reason = M.select(self.document, self.i, category, self.limit, case)
-    local token = self.tokens[self.i]
+function State:noun(name, category, case, correctDungeonSpelling)
+    local first = self.i
+    local candidate, reason = M.select(self.document, first, category, self.limit, case)
+    local token = self.tokens[first]
     if not (candidate or reason) and category == "places" and self.document.direction == "en-uk"
-        and self.i < self.limit and token.key == "the" then
-        candidate, reason = M.select(self.document, self.i + 1, category, self.limit, case)
+        and first < self.limit and token.key == "the" then
+        first = first + 1
+        candidate, reason = M.select(self.document, first, category, self.limit, case)
+    end
+    if not (candidate or reason) and correctDungeonSpelling and first <= self.limit then
+        candidate = M.dungeonSpelling(self.document, first)
     end
     if reason == "ambiguous" then self.ambiguous = true end
     if not candidate then return false end
@@ -42,19 +47,20 @@ function State:noun(name, category, case)
     self.i = candidate.last + 1
     return true
 end
-function State:count(slot, words, multiplicity)
+function State:count(slot, words, multiplicity, allowZero)
     local token = self.tokens[self.i]
     if self.i > self.limit or token.protected then return false end
     local amount = #token.key <= 3 and token.key:match("^%d+$")
     if multiplicity and not amount then
         amount = token.key:match("^(%d%d?%d?)x$") or token.key:match("^(%d%d?%d?)×$")
     end
+    local spelled
     if not amount and words then
         local cardinal = ns.Engine.Phrases.cardinal(self.document, token.key, "genitive")
-        if cardinal then amount = tostring(cardinal) end
+        if cardinal then amount, spelled = tostring(cardinal), true end
     end
-    if not amount or tonumber(amount) == 0 then return false end
-    self.slots[slot or "count"] = {raw=amount}
+    if not amount or (not allowZero and tonumber(amount) == 0) then return false end
+    self.slots[slot or "count"] = {raw=amount, spelled=spelled}
     self.i = self.i + 1
     if multiplicity and token.key == amount then self:any("x", "×") end
     return true
@@ -148,6 +154,12 @@ function State:finish(kind, extra)
     if self.i <= ending or self.ambiguous then return nil end
     return {kind=kind, slots=self.slots, features=extra, first=self.first, last=self.limit}
 end
+-- Reuse the attempt state while keeping each parser's slots and flags isolated.
+function State:reset()
+    self.i, self.ambiguous, self.classJoins = self.first, nil, nil
+    if next(self.slots) then self.slots = {} end
+end
+
 local function state(document, limit, first)
     return setmetatable({document=document, tokens=document.tokens, i=first, first=first, limit=limit, slots={}}, State)
 end
@@ -253,30 +265,37 @@ local function compactRecruitRole(p)
     return true
 end
 
+local function readyToGo(p, uk)
+    if uk then return p:any("готові вирушати", "готові йти") end
+    return p:any("ready to go", "good to go")
+end
+
 local function groupRoster(p, direction, afterRecruitment)
     local uk = direction == "uk-en"
-    local explicit, already
+    local explicit, already, readyOnly
     if uk then
-        if not p:any("у нас", "в нас") then return end
-        already = p:any("уже", "вже")
-        explicit = p:word("є")
+        if p:any("у нас", "в нас") then
+            already = p:any("уже", "вже")
+            explicit = p:word("є")
+        elseif afterRecruitment then readyOnly = true
+        else return end
     elseif p:word("we've") then
         already = p:word("already")
         if not p:word("got") then return end
         explicit = true
     elseif afterRecruitment and p:any("have", "got") then
         explicit = true
-    else
-        if not p:word("we") then return end
+    elseif p:word("we") then
         already = p:word("already")
         explicit = p:any("have", "got")
-    end
+    elseif afterRecruitment then readyOnly = true
+    else return end
     local members = {}
     for index = 1, 8 do
         local join
         if index > 1 then
             local comma = p:word(",")
-            join = p:any("and", "&", "+", "та", "і", "й") or comma
+            join = p:any("and", "&", "+", "та", "і", "й") or (readyOnly and not uk and p:word("n")) or comma
             if join and not uk then p:any("have", "got") end
         end
         local name, countKey = "member" .. index, "memberCount" .. index
@@ -285,11 +304,19 @@ local function groupRoster(p, direction, afterRecruitment)
             break
         end
         local quantity = p.slots[countKey] and p.slots[countKey].raw
-        if (index > 1 and not join or not explicit and not uk and index == 1) and not quantity then return end
+        if (index > 1 and not join or not explicit and not readyOnly and not uk and index == 1)
+            and not quantity then return end
         members[index] = {slot=name, quantity=quantity}
     end
     if #members == 0 then return end
-    local result = p:finish("groupRoster", {members=members, already=already})
+    local ready
+    if readyOnly then
+        if #members < 2 then return end
+        if readyToGo(p, uk) then ready = "toGo"
+        elseif p:word(uk and "готові" or "ready") then ready = "ready"
+        else return end
+    end
+    local result = p:finish("groupRoster", {members=members, already=already, ready=ready})
     if result and not result.features.question then return result end
 end
 
@@ -298,8 +325,28 @@ local function lastSpotMarker(p, uk)
     return p:any("last spot", "last slot", "one spot left", "one slot left")
 end
 
+local function countedVacancy(p, uk)
+    if uk and not p:any("залишилося", "лишилося") then return end
+    local writtenOne = p:word(uk and "одне" or "one")
+    if not writtenOne and not p:count("vacancies") then return end
+    if uk then
+        if not p:any("місце", "місця", "місць") then return end
+        p:any("у групі", "в групі")
+        if not p:word("до") then return end
+    elseif not p:any("spot", "spots", "slot", "slots", "place", "places")
+        or not p:phrase("left for") then return end
+    if not p:noun("place", "places", uk and "genitive" or nil, not uk) then return end
+    local features = p.slots.place.term.features
+    if not (features and features.clearableInstance) then return end
+    return p:finish("groupVacancy", {counted=true, writtenOne=writtenOne})
+end
+
 local function groupVacancy(p, direction)
     local uk = direction == "uk-en"
+    local start = p.i
+    local counted = countedVacancy(p, uk)
+    if counted then return counted end
+    p.i, p.slots.vacancies, p.slots.place = start, nil, nil
     local identity
     if uk then
         identity = p:word("це")
@@ -329,15 +376,29 @@ local recruitNoteForms = {
     {"run", "quest", {"quest run"}, {"проходження із завданнями"}},
     {"pace", true, {"fast run","quick run"}, {"швидке проходження"}},
     {"clear", true, {"full clear"}, {"повна зачистка"}},
-    {"ready", true, {"ready to go"}, {"готові вирушати","готові йти"}},
     {"urgent", true, {"fast","quick","quickly"}, {"терміново"}},
     {"summon", true, {"can summon"}, {"можемо прикликати"}},
     {"go", true, {"and go","then go","n go","n ' go"}, {"і йдемо","і вирушаємо"}},
+    {"fillsGroup", true, {"and full", "and we're full", "and we are full", "then we're full",
+        "then the group will be full"}, {"після цього група буде повна", "і група буде повна"}},
 }
+
+local function recruitReadiness(p, uk)
+    local start = p.i
+    local afterFill
+    if uk then
+        afterFill = p:phrase("після цього") and p:phrase("можемо вирушати")
+    else
+        afterFill = p:any("and then", "and", "then") and p:any("we're", "we are") and readyToGo(p, false)
+    end
+    if afterFill then return "afterFill" end
+    p.i = start
+    return readyToGo(p, uk)
+end
 
 local function recruitNotes(p, uk)
     local notes = {}
-    for _ = 1, #recruitNoteForms do
+    for _ = 1, #recruitNoteForms + 1 do
         if p.i > p.limit then break end
         local start = p.i
         p:any(".", ",", ";")
@@ -347,6 +408,10 @@ local function recruitNotes(p, uk)
                 notes[row[1]], matched = row[2], true
                 break
             end
+        end
+        if not matched and not notes.ready then
+            notes.ready = recruitReadiness(p, uk) or nil
+            matched = notes.ready
         end
         if not matched then p.i = start; break end
     end
@@ -363,46 +428,92 @@ function S.recruitRoleRequestEnd(tokens, first, last)
     end
 end
 
+local function instanceWing(p, index)
+    local selected, ending
+    for last = p.i, math.min(p.limit, p.i + 11) do
+        local token = p.tokens[last]
+        if token.protected then break end
+        index = index[token.key]
+        if type(index) ~= "table" then break end
+        if index._id then selected, ending = ns.Data.terms[index._id], last + 1 end
+    end
+    if selected then p.i = ending; return {term=selected} end
+end
+
+local function recruitWings(p, uk)
+    local term = p.slots.place.term
+    local parent = term.features and term.features.instanceParent
+    local index = ns.Data.instanceWings and ns.Data.instanceWings[parent or term.id]
+    index = index and index[p.document.direction]
+    if not index then return end
+    local joins
+    for _ = 1, 4 do
+        local start = p.i
+        local join = p:coordination()
+        if (not join or join == "comma") and p:word(uk and "потім" or "then") then join = "then" end
+        if not parent and not join and p:word(":") then join = "comma" end
+        if not join or not parent and join ~= "comma" or joins and #joins == 3 then
+            p.i = start
+            break
+        end
+        local wing = instanceWing(p, index)
+        if not wing then p.i = start; break end
+        if not parent then
+            p.slots.place, parent = wing, term.id
+        else
+            joins = joins or {}
+            joins[#joins + 1] = join
+            p.slots["place" .. (#joins + 1)] = wing
+        end
+    end
+    return joins
+end
+
 local function recruit(p, direction)
     local uk = direction == "uk-en"
-    local countWords = uk
-    local leadingPlace, countDirect, additional, bareVacancy, bareCount
+    local bareGroupWords = uk
+    local leadingPlace, countDirect, additional, bareVacancy, bareCount, openRecruitment, needsRoles
     local groupRequest = not uk and p:word("lfm")
     if uk then
         if not p:any("шукаємо", "потрібно", "потрібен", "потрібна", "потрібне", "потрібні") then return end
         additional = p:word("ще")
         groupRequest = p:word("гравців")
     elseif groupRequest or p:word("lf") or compactRecruitRole(p) then
-        countWords = true
+        bareGroupWords = true
         p:word("for")
-    elseif not p:any("looking for", "lookng for", "need", "we're looking for", "we are looking for", "we need") then
+    elseif p:any("recruiting for", "recruiting players for") then
+        openRecruitment = true
+    elseif p:any("need", "we need") then
+        needsRoles = true
+    elseif not p:any("looking for", "lookng for", "we're looking for", "we are looking for") then
         local start = p.i
-        if p:count() and p:word("more") then countDirect = true
+        local leadingCount = p:count(nil, true)
+        if leadingCount and p:word("more") then countDirect = true
         else
             p.i, p.slots.count = start, nil
             local token = p.tokens[start]
             if lastSpotMarker(p, false) then
                 bareVacancy = true
                 p:word("for")
-            elseif token and not token.protected and token.key:match("^%d")
-                and p:role("role", "count") and p.slots.count then
+            elseif token and not token.protected and (leadingCount or token.key:match("^%d"))
+                and p:role("role", "count", true) and p.slots.count then
                 bareCount = true
             else
                 p.i, p.slots.role, p.slots.count = start, nil, nil
                 if not p:noun("place", "places") then return end
-                p:word(",")
+                p:any(",", ":", "-", "—", "–")
                 if not (p:any("lfm", "lf", "looking for", "lookng for", "need") or compactRecruitRole(p)) then return end
-                leadingPlace, countWords = true, true
+                leadingPlace, bareGroupWords = true, true
             end
         end
     end
-    local count = countDirect or not p.slots.role and p:count(nil, countWords, not uk)
+    local count = countDirect or not p.slots.role and p:count(nil, true, not uk)
     additional = additional or countDirect or count and not uk and p:word("more")
     local compact = count and (p:word("m") or (uk and p:any("гравця :", "гравців :", "гравця", "гравців")))
     if compact then p.slots.total, p.slots.count = p.slots.count, nil end
     local lastSpot = bareVacancy or lastSpotMarker(p, uk)
     local role, place, refinements, destinationRun = nil, leadingPlace, nil, nil
-    local destinationRoles
+    local destinationRoles, wingJoins, roleNeeded
     local roleJoins = {}
     for _ = 1, 4 do
         local separator = p:any(",", ".", ":")
@@ -418,13 +529,13 @@ local function recruit(p, direction)
         local classes = roleRequest and "counted"
         if separator and role and not lastSpot and lastSpotMarker(p, uk) then
             lastSpot = true
-        elseif not role and (p.slots.role or p:role("role", "count", countWords, classes)) then
+        elseif not role and (p.slots.role or p:role("role", "count", true, classes)) then
             role, destinationRoles = true, roleRequest
             for n = 2, 4 do
                 local start = p.i
                 local join = p:coordination()
                 local suffix = tostring(n)
-                if p:role("role" .. suffix, "count" .. suffix, countWords, classes)
+                if p:role("role" .. suffix, "count" .. suffix, true, classes)
                     and (join or p.slots["count" .. suffix] or roleRequest) then
                     roleJoins[#roleJoins + 1] = join or "and"
                 else
@@ -432,6 +543,10 @@ local function recruit(p, direction)
                     p.slots["role" .. suffix], p.slots["count" .. suffix] = nil, nil
                     break
                 end
+            end
+            if not uk and (countDirect or bareCount) and p:any("needed", "is needed", "are needed") then
+                if ns.Engine.Phrases.key(p.document, p.i, p.limit) ~= "for" then return end
+                roleNeeded = true
             end
         elseif not role and recruitClasses(p, uk) then
             role = true
@@ -449,12 +564,14 @@ local function recruit(p, direction)
         elseif not place then
             local start = p.i
             local runMarker = uk and p:phrase("для проходження") or not uk and p:phrase("to run")
-            local introduced = runMarker or p:any("for", "для", "до", "у", "в", "місце :")
+            local introduced = runMarker or p:any("for", "для", "до", "у", "в", "місце :", "місця :")
             if not introduced and not uk then p:word("to") end
-            if p:noun("place", "places", uk and runMarker and "genitive") then
+            if p:noun("place", "places", uk and runMarker and "genitive",
+                not uk and (role or introduced or openRecruitment)) then
                 local features = p.slots.place.term.features
                 if runMarker and not (features and features.clearableInstance) then return end
                 place, destinationRun = true, runMarker
+                wingJoins = recruitWings(p, uk)
             else
                 local token = p.tokens[p.i]
                 local quest = token and (token.linkKind == "quest" or token.questReference)
@@ -487,9 +604,10 @@ local function recruit(p, direction)
     local vacancies = p.slots.total or p.slots.count
     if vacancies and tonumber(vacancies.raw) == 1 and #roleJoins == 0 and p:phrase("full group") then lastSpot = true end
     local notes = recruitNotes(p, uk)
-    if bareVacancy and not role or bareCount and not (role and place) then return end
+    if bareVacancy and not role or bareCount and not (role and place) or roleNeeded and not place then return end
+    if not role and vacancies and vacancies.spelled and not bareGroupWords then return end
     if not role and not (p.slots.total or quests and groupRequest
-        or place and (p.slots.count or p.slots.level or notes.run == "quest" and groupRequest)) then return end
+        or place and (openRecruitment or p.slots.count or p.slots.level or notes.run == "quest" and groupRequest)) then return end
     if lastSpot then
         local total = p.slots.total
         local conflict = total and tonumber(total.raw) > 1
@@ -519,8 +637,12 @@ local function recruit(p, direction)
     end
     notes.lastSpot, notes.roleJoins, notes.classJoins = lastSpot, roleJoins, p.classJoins
     notes.additional, notes.quests, notes.refinements = additional, quests, refinements
-    notes.roster, notes.destinationRun = roster and roster.features, destinationRun
-    notes.destinationRoles = destinationRoles and (not p.slots.count or p.slots.role.term.category == "classes")
+    notes.roster, notes.destinationRun, notes.roleNeeded = roster and roster.features, destinationRun, roleNeeded
+    notes.wingJoins = wingJoins
+    notes.needsRoles = needsRoles and place and not p.slots.total
+        and (roleJoins[1] == "and" or roleJoins[1] == "comma")
+    notes.destinationRoles = notes.needsRoles
+        or destinationRoles and (not p.slots.count or p.slots.role.term.category == "classes")
     return p:finish("recruit", notes)
 end
 
@@ -595,7 +717,7 @@ local function groupSearch(p, direction)
         if p:noun("role", "roles") then p:word(",") end
     end
     local destination = uk and p:any("для", "у", "в", "на", "місце :") or not uk and p:word("for")
-    local place = p:noun("place", "places")
+    local place = p:noun("place", "places", nil, not uk and (destination or p.slots.role))
     local quests, objective = groupObjectives(p, uk, place)
     if destination and not (place or quests or objective) then return end
     p:any(".", ",")
@@ -688,17 +810,31 @@ end
 
 local function enhancementOfferMarker(p, english)
     if english then
-        if p:any("offering enchants", "selling enchants") then return "enchanting" end
+        local start = p.i
+        local finalOffer = p:word("last")
+        local free = p:word("free")
+        if free or not finalOffer and p:any("offering", "selling") then
+            local plural = p:any("enchants", "enchantments")
+            if plural or p:any("enchant", "enchantment") then
+                return "enchanting", free, finalOffer and (plural and "plural" or "singular")
+            end
+        end
+        p.i = start
         if p:word("wts") then return "selling" end
     else
+        if p:phrase("останнє безкоштовне зачарування") then return "enchanting", true, "singular" end
+        if p:phrase("останні безкоштовні зачарування") then return "enchanting", true, "plural" end
         if p:phrase("пропоную зачарування") then return "enchanting" end
         if p:word("продам") then return "selling" end
     end
 end
 
 local function enhancementOffer(p, english)
-    local offer = enhancementOfferMarker(p, english)
-    if offer then p:word(":"); return offer end
+    local offer, free, finalOffer = enhancementOfferMarker(p, english)
+    if offer then
+        p:word(":")
+        return offer, nil, free, finalOffer
+    end
     local first = p.i
     local N, P = ns.Engine.Normalize, ns.Engine.Phrases
     for separator = first, math.min(first + 6, p.limit - 1) do
@@ -708,7 +844,7 @@ local function enhancementOffer(p, english)
             if separator < first + 2 then return end
             local last = p.tokens[separator - 1]
             p.i = separator + 1
-            offer = enhancementOfferMarker(p, english)
+            offer, free, finalOffer = enhancementOfferMarker(p, english)
             if offer then
                 local profession = compactTerm(last.key, "professions")
                 if not profession then
@@ -718,7 +854,7 @@ local function enhancementOffer(p, english)
                 if profession then
                     if profession.id == "profession.enchanting" then offer = "enchanting" end
                     p:word(":")
-                    return offer, P.raw(p.document, first, separator - 1)
+                    return offer, P.raw(p.document, first, separator - 1), free, finalOffer
                 end
             end
             p.i = first
@@ -751,11 +887,26 @@ end
 local function gratuity(p, free)
     local start = p.i
     p:any(",", ".", "|", "i", "—")
-    if p:any("tips", "gratuities") then
-        p:word("are")
-        if p:any("appreciated", "greatly appreciated", "welcome") then return "appreciated" end
+    if p:any("tip", "tips", "gratuities") then
+        p:any("are", "is")
+        if p:any("appreciated", "greatly appreciated", "welcome", "would be nice") then
+            local after = p.i
+            p:word(",")
+            if p:any("but not expected", "but not required", "but not needed", "but optional") then
+                return "appreciatedOptional"
+            end
+            p.i = after
+            return "appreciated"
+        end
         if p:word("accepted") then return "accepted" end
     else
+        if p:phrase("чайові вітаються") then
+            local after = p.i
+            p:word(",")
+            if p:any("але вони необов'язкові", "але необов'язкові") then return "appreciatedOptional" end
+            p.i = after
+            return "appreciated"
+        end
         if p:any("буду вдячний за чайові", "дякую за чайові") then return "appreciated" end
         if p:any("приймаю чайові", "чайові приймаються") then return "accepted" end
         if free and p:any("with tips", "з чайовими", "із чайовими") then return "with" end
@@ -894,7 +1045,7 @@ end
 
 local function enhancement(p, direction)
     local english = direction == "en-uk"
-    local offer, header = enhancementOffer(p, english)
+    local offer, header, freeOffer, finalOffer = enhancementOffer(p, english)
     local demand, inquiry
     if not offer and english then
         inquiry = p:any("any", "is there an", "is there a")
@@ -925,14 +1076,21 @@ local function enhancement(p, direction)
         joins[#joins + 1] = join
     end
     local materials = offer and enhancementMaterials(p, english)
-    local free = zeroPrice(p)
+    local free = zeroPrice(p) or freeOffer
+    if freeOffer then
+        for index = 1, #joins + 1 do
+            local price = p.slots[index == 1 and "price" or "price" .. index]
+            if price and tonumber((price.amount:gsub(",", "."))) ~= 0 then return end
+        end
+    end
     local tips = gratuity(p, free)
     local beforeStock = p.i
     if offer then p:any(",", ".", "-", "—", "–") end
     local limited = offer and p:any("limited stock", "limited supply", "запас обмежений", "запаси обмежені")
     if not limited then p.i = beforeStock end
     return p:finish("enhancement", {demand=demand, inquiry=inquiry, question=inquiry, mats=mats,
-        free=free, tips=tips, joins=joins, offer=offer, header=header, materials=materials, limited=limited})
+        free=free, tips=tips, joins=joins, offer=offer, header=header, materials=materials, limited=limited,
+        finalOffer=finalOffer})
 end
 
 local function enchantmentSlot(p, case)
@@ -969,6 +1127,44 @@ local function enchantmentTrade(p, direction)
     return p:finish("enchantmentTrade", {buy=buy, enchantment=noun})
 end
 
+local function serviceLocation(p, english, compact)
+    local P = ns.Engine.Phrases
+    if compact then
+        p:any(".", ",", ";")
+        if english then p:any("i'm", "i am") else p:word("я") end
+        if not english and p:phrase("біля сходів") then
+            local owner, after = P.noun(p.document, p.i, p.limit, "genitive", true)
+            if P.spatialContainer(owner) then return {object=owner, accessSteps=true}, after end
+            return
+        end
+    else
+        p:word(",")
+    end
+    local place, after = P.preposition(p.document, p.i, p.limit, nil, nil, "predicate",
+        compact and "service-location" or nil)
+    if not place or not (P.spatialAdjuncts[place.rule.id] or place.rule.id == "out-of-location"
+        or compact and P.spatialLocation(place)) then return end
+    if compact and english and P.spatialContainer(place.object) and after <= p.limit then
+        local nextWord = p.tokens[after]
+        if not nextWord.protected and (nextWord.key == "steps" or nextWord.key == "stairs") then
+            return {object=place.object, accessSteps=true}, after + 1
+        end
+    end
+    return place, after
+end
+
+local function remainingStock(p, english)
+    local start = p.i
+    p:any(".", ",", ";", ":", "-", "—", "–")
+    local remaining
+    if english then
+        remaining = p:count("stock", nil, nil, true) and p:any("left", "remaining", "letf")
+    else
+        remaining = p:any("залишилося", "лишилося") and p:count("stock", nil, nil, true)
+    end
+    if not remaining then p.i, p.slots.stock = start, nil end
+end
+
 local function service(p, direction)
     local english = direction == "en-uk"
     local demand, offer
@@ -979,8 +1175,11 @@ local function service(p, direction)
         demand = p:any("шукаю послуги", "шукаю")
         if not demand then offer = p:any("пропоную послуги", "пропоную", "послуги") end
     end
+    local compactFree = not (demand or offer) and (english and p:word("free")
+        or not english and p:any("безкоштовно накладу", "безкоштовно пропоную послуги"))
     p:word(":")
     local linked = p:link("trade", "trade") or p:link("trade", "enchant")
+    if compactFree and not linked then return end
     local practitioner
     if linked then
         for index = 2, 4 do
@@ -1024,7 +1223,7 @@ local function service(p, direction)
             return p:finish("service", {demand=true, practitioner=true, withRecipe=withRecipe, mats=mats})
         end
     end
-    local free = zeroPrice(p)
+    local free = compactFree or zeroPrice(p)
     local priceIntroduced = not free and p:any("for", "за")
     local priced = not free and p:money()
     if priceIntroduced and not priced then return end
@@ -1037,22 +1236,248 @@ local function service(p, direction)
     local tips = not demand and gratuity(p, free)
     if not (demand or offer or linked and (free or tips)) then return end
     local places
-    if tips then
-        local P = ns.Engine.Phrases
+    if tips or compactFree then
         places = {}
         for index = 1, 2 do
             local before = p.i
-            p:word(",")
-            local place, after = P.preposition(p.document, p.i, p.limit, nil, nil, "predicate")
-            if not place or not (P.spatialAdjuncts[place.rule.id] or place.rule.id == "out-of-location") then
+            local place, after = serviceLocation(p, english, compactFree)
+            if not place then
                 p.i = before
                 break
             end
             places[index], p.i = place, after
         end
     end
+    if compactFree then remainingStock(p, english) end
     return p:finish("service", {demand=demand, practitioner=practitioner, priced=priced, free=free, materials=materials, promise=promise,
-        tips=tips, places=places})
+        tips=tips, places=places, compactFree=compactFree})
+end
+
+local function lockedItemLink(p)
+    local token = p.tokens[p.i]
+    if p.i > p.limit or not token or token.linkKind ~= "item" then return end
+    local link = p.document.text:sub(token.first, token.last)
+    local label = ns.Engine.Markup.bracketLabel(link)
+    if not label then return end
+    local key = " " .. ns.Engine.Normalize.key(label)
+    if key:match(" lockbox$") or key:match(" lock box$") or key:match(" locked chest$")
+        or key:match(" locked box$") or key:match(" замкнена скриня$") or key:match(" замкнена скринька$") then
+        p.i = p.i + 1
+        return link
+    end
+end
+
+local function lockedItemList(p)
+    local first = lockedItemLink(p)
+    if not first then return end
+    local links = {first}
+    for i = 2, 6 do
+        local before = p.i
+        p:word(",")
+        p:any("and", "і", "й", "та")
+        local link = lockedItemLink(p)
+        if not link then p.i = before; break end
+        links[i] = link
+    end
+    return links
+end
+
+local function lockActor(p, english)
+    local token = p.i <= p.limit and p.tokens[p.i]
+    if not token or token.protected then return end
+    if p:noun("actor", "classes") then return p.slots.actor.term.id == "class.rogue" end
+    local corrected = english and M.classSpelling(token.key)
+    if corrected and corrected.id == "class.rogue" then
+        p.slots.actor, p.i = {term=corrected}, p.i + 1
+        return true
+    end
+end
+
+local function lockLocation(p)
+    local key = ns.Engine.Phrases.key(p.document, p.i, p.limit)
+    if key ~= "in" and key ~= "at" and key ~= "near" and key ~= "у" and key ~= "в" and key ~= "біля" then return end
+    local place, after = ns.Engine.Phrases.preposition(p.document, p.i, p.limit, nil, nil, "predicate")
+    if ns.Engine.Phrases.spatialLocation(place) then p.i = after; return place end
+end
+
+local function lockSkill(p, english)
+    local P = ns.Engine.Phrases
+    local amount, after = P.skillRequirementAt(p.document, p.i, p.limit, english)
+    if amount then p.i = after; return amount end
+    local start = p.i
+    if english then
+        amount = P.levelNumberAt(p.document, p.i, p.limit)
+        if amount then
+            p.i = p.i + 1
+            if p:word("skill") then return amount end
+        end
+    end
+    p.i = start
+    if p:word(english and "skill" or "навичка") then
+        amount = P.levelNumberAt(p.document, p.i, p.limit)
+        if amount then p.i = p.i + 1; return amount end
+        p.i = start
+    end
+end
+
+local lockOfferOpenings = {opening=true, unlocking=true, lockpicking=true, i=true, ["i'm"]=true,
+    rogue=true, rogues=true, rouge=true, ["відмикаю"]=true, ["відкриваю"]=true, ["можу"]=true,
+    ["розбійник"]=true, ["розбійники"]=true}
+
+local function offeredLockObject(p, english)
+    local P = ns.Engine.Phrases
+    local qualified = english and p:any("lock", "locked") or not english and p:any("замкнену", "замкнені")
+    if qualified then
+        local requested = not english and {case="accusative"} or nil
+        local noun = ns.Engine.Lexicon.choose(p.document, p.i, "noun", requested, nil, function(candidate)
+            local word = candidate.lexeme.en
+            return word == "lockbox" or word == "chest"
+        end)
+        if noun then p.i = p.i + 1; return P.lexicalNoun(noun) end
+        return
+    end
+    if not ns.Linguistics then return end
+    local noun, after = P.noun(p.document, p.i, p.limit, "accusative", nil, nil, true)
+    if P.hasTrait(noun, "skillThreshold") then p.i = after; return noun end
+end
+
+local function lockOffer(p, direction)
+    local first = p.tokens[p.i]
+    if not first or first.protected or not lockOfferOpenings[first.key] then return end
+    local english = direction == "en-uk"
+    local provider, ability, descriptive
+    if english then
+        ability = p:any("i can open", "i can unlock")
+        descriptive = not ability and p:any("i'm opening", "i am opening", "i open", "i unlock")
+        if not (ability or descriptive) and not p:any("opening", "unlocking", "lockpicking") then
+            if not (lockActor(p, english) and p:any("lf opening", "lf unlocking")) then return end
+            provider = true
+        end
+    else
+        ability = p:phrase("можу відкрити")
+        descriptive = not ability and p:word("відкриваю")
+        if not (ability or descriptive or p:word("відмикаю")) then
+            if not (lockActor(p, english) and p:any("шукає , кому відкрити", "шукають , кому відкрити")) then return end
+            provider = true
+        end
+    end
+    if english then p:any("a", "an", "the") end
+    local links = lockedItemList(p)
+    local object = not links and offeredLockObject(p, english)
+    if not (links or object) then return end
+    local place, skill, tips
+    for _ = 1, 3 do
+        local before = p.i
+        p:any(".", ",", ";", "-", "–", "—")
+        local qualifier = p.i
+        local value, after
+        if not place then value, after = serviceLocation(p, english, true) end
+        if value then place, p.i = value, after
+        else
+            -- The location parser can consume a separator or a subject before failing.
+            p.i = qualifier
+            if not skill then value = lockSkill(p, english) end
+            if value then skill = value
+            else
+                if not tips then value = gratuity(p) end
+                if value then tips = value else p.i = before; break end
+            end
+        end
+    end
+    -- An item requirement belongs to the object. An independent skill or tip can signal an offer.
+    if descriptive and not (skill or tips) then return end
+    local result = p:finish("lockOffer", {provider=provider, ability=ability, links=links, object=object,
+        place=place, skill=skill, tips=tips})
+    if result and not result.features.question then return result end
+end
+
+local lockRequestOpenings = {
+    ["en-uk"]={lf=true, looking=true, ["i'm"]=true, any=true, anyone=true, someone=true, can=true, could=true},
+    ["uk-en"]={["шукаю"]=true, ["чи"]=true, ["є"]=true, ["хтось"]=true},
+}
+
+local function requestPoliteness(p)
+    if p.i > p.limit then return end
+    local entry, last = ns.Engine.Dictionary.literal(p.document, p.i, nil, p.limit)
+    if entry and entry.id == "literal.please" then
+        p.i = last + 1
+        return true
+    end
+end
+
+local function lockRequest(p, direction)
+    local first = p.tokens[p.i]
+    if not first or (first.linkKind ~= "item" and not lockRequestOpenings[direction][first.key]) then return end
+    local english = direction == "en-uk"
+    local links = lockedItemList(p)
+    local fronted = links ~= nil
+    if fronted then p:any(":", "—", "-", ",") end
+
+    local request, anyone, kind
+    if english then
+        if p:any("lf", "looking for", "i'm looking for") then request = "search"
+        elseif p:any("can anyone", "could anyone", "anyone", "can someone", "could someone", "someone") then
+            request, anyone = "question", true
+        elseif p:word("any") then request = "question"
+        else return end
+        if request == "search" and p:any("lockpick", "lockpicker") then kind = "lockpicker" end
+    else
+        if p:word("шукаю") then request = "search"
+        elseif p:phrase("чи є") then request = "question"
+        elseif fronted and p:word("є") then request = "question"
+        elseif p:word("хтось") then request, anyone = "question", true
+        else return end
+        if request == "search" and p:phrase(", хто") then kind = "lockpicker" end
+    end
+    if not (anyone or kind or lockActor(p, english)) then return end
+    local location = lockLocation(p)
+    p:word(",")
+    local willing, action, ability
+    if english then
+        p:any("who", "that")
+        willing = p:any("willing to", "want to")
+        ability = p:any("can", "could")
+        if not ability then p:word("to") end
+        if p:any("lockpick", "pick the lock on", "pick the lock") then action = "pick"
+        elseif p:any("open", "unlock") then action = "open" end
+    else
+        p:any("який", "які", "щоб")
+        willing = p:any("готовий", "готові", "згоден", "згодні", "хоче")
+        ability = p:any("може", "можуть")
+        if p:any("зламати замок", "зламає замок", "відмикати") then
+            action = "pick"
+            p:word("на")
+        elseif p:any("відкрити", "відкриє", "відчинити", "відмикнути") then action = "open" end
+    end
+    if not action and not fronted then p:word(english and "for" or "для") end
+    local recipient = p:any("for me", "мені", "для мене")
+    local please = requestPoliteness(p)
+    if fronted and not english and action == "open" then p:any("її", "їх", "скриньку", "скриньки") end
+    local amount
+    if not fronted then
+        local before = p.i
+        local token = p.i <= p.limit and p.tokens[p.i]
+        amount = token and not token.protected and (token.key:match("^x(%d%d?%d?)$") or token.key:match("^×(%d%d?%d?)$"))
+        if amount and tonumber(amount) > 0 then p.i = p.i + 1
+        else
+            amount = p:count("lockCount", false, english) and p.slots.lockCount.raw
+        end
+        links = lockedItemList(p)
+        if not links then amount, p.i = nil, before end
+    end
+    if not links and action ~= "pick" then return end
+    if anyone and not action then return end
+    if not recipient then recipient = p:any("for me", "мені", "для мене") end
+    if not please then
+        local before = p.i
+        p:word(",")
+        please = requestPoliteness(p)
+        if not please then p.i = before end
+    end
+    local skill = links and lockSkill(p, english)
+    return p:finish("lockRequest", {request=request, anyone=anyone, kind=kind, location=location,
+        willing=willing, action=action, ability=ability, links=links, fronted=fronted and not action, amount=amount,
+        recipient=recipient, please=please, skill=skill})
 end
 
 local function roleInquiry(p, direction)
@@ -1069,7 +1494,7 @@ local function roleInquiry(p, direction)
 
     local start = p.i
     local name, unresolved
-    if p:noun("place", "places", not english and "accusative" or nil) then
+    if p:noun("place", "places", not english and "accusative" or nil, english) then
         local features = p.slots.place.term.features
         if not features or not features.clearableInstance then return end
     else
@@ -1087,22 +1512,69 @@ local function roleInquiry(p, direction)
     return p:finish("roleInquiry", {explicit=explicit, here=here, name=name, unresolved=unresolved})
 end
 
+local function skillFloor(p)
+    local start = p.i
+    if p:count("skill") and p:word("+") then return true end
+    p.i, p.slots.skill = start, nil
+end
+
 local function availability(p, direction)
     if not ns.Linguistics or p.document.truncated or p.document.ambiguities then return end
     local english = direction == "en-uk"
+    local search
     if english then
-        if not p:any("any", "is there a", "is there an") then return end
-    elseif not p:any("чи є", "є") then return end
-    local P = ns.Engine.Phrases
-    if english and (not p:count("skill") or not p:word("+")) then return end
-    local occupation, after = P.noun(p.document, p.i, p.limit, "nominative", nil, nil, true)
-    if P.semanticClass(occupation) ~= "occupation" then return end
+        search = p:any("lf", "looking for", "i'm looking for")
+        if not search and not p:any("any", "is there a", "is there an") then return end
+    else
+        search = p:word("шукаю")
+        if not search and not p:any("чи є", "є") then return end
+    end
+    local plus = p.i <= p.limit and p.document.text:find("+", p.tokens[p.i].first, true)
+    if not plus or plus > p.tokens[p.limit].last then return end
+    local P, D = ns.Engine.Phrases, ns.Engine.Dictionary
+    if english and search then p:any("a", "an") end
+    local preposed = english and skillFloor(p)
+    local case = search and "accusative" or "nominative"
+    local occupation, after = P.noun(p.document, p.i, p.limit, case, nil, nil, true, nil,
+        function(noun) return P.semanticClass(noun) == "occupation" end)
+    local profession
+    if not occupation and english then
+        local key = P.key(p.document, p.i, p.limit)
+        profession = D.craftingAlias(key)
+        local term = profession and ns.Data.terms[profession .. ".practitioner"]
+        if term then
+            occupation, after = {term=term, person=3, number="singular"}, p.i + 1
+        end
+    end
+    if not occupation then return end
     p.i = after
-    if not english and (not p:phrase("із навичкою") or not p:count("skill") or not p:word("+")) then return end
-    if not p:any("online", "around", "here", "онлайн", "у мережі", "поблизу", "тут") then return end
-    local place = p.tokens[p.i - 1].key
-    if place == "мережі" then place = "online" end
-    return p:finish("availability", {question=true, place=place, occupation=occupation})
+    if not preposed then
+        if english then
+            if p:word("with") then p:word("skill")
+            elseif not search then return end
+        elseif not p:any("із навичкою", "з навичкою") then return end
+        if not skillFloor(p) then return end
+    end
+    if english and not preposed and not p:word("skill") then
+        local entry = occupation.entry
+        local term = occupation.term
+        profession = profession or entry and entry.lexeme.frame.practitionerOf
+            or term and term.id:match("^(profession%..+)%.practitioner$")
+        if profession then
+            local following = P.key(p.document, p.i, p.limit)
+            if D.craftingAlias(following) == profession then p.i = p.i + 1
+            else
+                local candidate = M.select(p.document, p.i, "professions", p.limit)
+                if candidate and candidate.id == profession then p.i = candidate.last + 1 end
+            end
+        end
+    end
+    local place
+    if p:any("online", "around", "here", "онлайн", "у мережі", "поблизу", "тут") then
+        place = p.tokens[p.i - 1].key
+        if place == "мережі" then place = "online" end
+    end
+    return p:finish("availability", {question=not search, search=search, place=place, occupation=occupation})
 end
 
 local pricedClasses = {goods=true, equipment=true, consumables=true, resource=true, craftingMaterials=true, services=true}
@@ -1163,6 +1635,101 @@ local function price(p)
     local each, after = ns.Engine.Grammar.priceBasisAt(p.document, p.i, p.limit)
     p.i = after
     return p:finish("price", {only=only, linked=linked, each=each, introduced=introduced})
+end
+
+local function auctionComparison(p, english)
+    local start = p.i
+    local emphatic, comparison
+    if english then
+        emphatic = p:any("much", "far", "significantly")
+        if p:word("cheaper") and p:any("than", "then") then
+            p:word("at")
+            p:word("the")
+            comparison = true
+        end
+    else
+        emphatic = p:any("набагато", "значно")
+        if p:word("дешевше") then
+            p:word(",")
+            comparison = p:phrase("ніж на")
+        end
+    end
+    if comparison and p:noun("market", "game") and p.slots.market.term.id == "game.auction_house" then
+        return emphatic and "emphatic" or "plain"
+    end
+    p.i, p.slots.market = start, nil
+end
+
+local function auctionCondition(p, english)
+    local start = p.i
+    p:any(",", "-", "–", "—")
+    local comparison = auctionComparison(p, english)
+    if comparison then return comparison end
+    if english or p:word("на") then
+        local amount, after = ns.Engine.Grammar.offerPriceAt(p.document, p.i, p.limit)
+        if amount then
+            p.i = after
+            comparison = auctionComparison(p, english)
+            if comparison then return comparison, amount end
+        end
+    end
+    p.i = start
+end
+
+local function sellerMaterials(p, english)
+    local start = p.i
+    p:word(",")
+    local parenthesized = p:word("(")
+    local provided = english and p:any("my mats", "my materials", "with my mats", "with my materials")
+        or not english and p:any("матеріали мої", "з моїми матеріалами")
+    if provided and (not parenthesized or p:word(")")) then return true end
+    p.i = start
+end
+
+local function linkedSale(p, direction)
+    local english = direction == "en-uk"
+    if english then
+        if not p:any("wts", "selling", "i'm selling", "i am selling") then return end
+    elseif not p:any("продам", "продаю") then return end
+    p:word(":")
+    local offers, detailed = {}, false
+    local grammar = ns.Engine.Grammar
+    for index = 1, 6 do
+        local slot = "sale" .. index
+        if not (p:link(slot, "item") or p:link(slot, "enchant")) then return end
+        p:any("-", "–", "—")
+        local explicitPrice = p:word(english and "for" or "за")
+        local amount, after = grammar.offerPriceAt(p.document, p.i, p.limit)
+        local basis
+        if amount then
+            basis, p.i = grammar.priceBasisAt(p.document, after, p.limit)
+        end
+        local link = p.slots[slot]
+        local materials, comparison, discount
+        if link.kind == "item" then
+            -- An unintroduced amount directly before the comparative is the difference.
+            local nextToken = p.tokens[p.i]
+            if english and amount and not (explicitPrice or basis) and nextToken and nextToken.key == "cheaper" then
+                comparison = auctionComparison(p, english)
+                if comparison then discount, amount = amount, nil end
+            end
+            if not comparison then comparison, discount = auctionCondition(p, english) end
+        elseif amount then
+            materials = sellerMaterials(p, english)
+        end
+        if not (amount or comparison) then return end
+        offers[index] = {link=link.raw, amount=amount, basis=basis, materials=materials,
+            comparison=comparison, discount=discount}
+        if index == 1 and link.kind == "item" then remainingStock(p, english) end
+        if p.slots.stock then return p:finish("linkedSale", {offers=offers}) end
+        detailed = detailed or comparison or #amount > 1 or materials or basis == "enchant"
+        local separator = p:any(",", ";")
+        local join = english and p:word("and") or not english and p:any("а", "і", "й", "та")
+        if not (separator or join) then
+            if detailed or index > 1 then return p:finish("linkedSale", {offers=offers}) end
+            return
+        end
+    end
 end
 
 local function reward(p, direction)
@@ -1231,19 +1798,22 @@ local function statement(p, direction)
     return p:finish("statement", {negative=negative, question=question, modal=modal, conjunction=conjunction})
 end
 
-local parsers = {recruit, groupRoster, groupVacancy, enhancement, availability, enchantmentTrade, service, enchantmentList, gratuityNote, reward, questNeed, questAttendance,
+local parsers = {lockRequest, lockOffer, recruit, groupRoster, groupVacancy, enhancement, availability, enchantmentTrade, linkedSale, service, enchantmentList, gratuityNote, reward, questNeed, questAttendance,
     statement, freeOffer, price, groupSearch, search}
 function S.parse(document, limit, first)
     if document.checkpoint then document.checkpoint() end
     limit, first = limit or #document.tokens, first or 1
+    local p = state(document, limit, first)
     local ending = document.tokens[limit]
     if ending and ending.key == "?" and not (document.truncated or document.ambiguities) then
-        local result = roleInquiry(state(document, limit, first), document.direction)
+        local result = roleInquiry(p, document.direction)
         if result then return result end
+        p:reset()
     end
     for _, parse in ipairs(parsers) do
-        local result = parse(state(document, limit, first), document.direction)
+        local result = parse(p, document.direction)
         if result then return result end
+        p:reset()
     end
 end
 

@@ -75,19 +75,27 @@ local function addClause(matched, refs, seen, rule, slots, unknown)
         end
     end
 end
-local function grammarClause(document, first, last)
+local function hasDegree(modifier)
+    local degree = modifier and modifier.entry and modifier.entry.form.degree
+    return degree == "comparative" or degree == "superlative"
+end
+
+local function grammarClause(document, first, last, inAside)
     if last - first >= 64 then return nil end
-    local tail, colon = document.tokens[last], document.tokens[last - 1]
+    local tail, beforeTail = document.tokens[last], document.tokens[last - 1]
     local emote, chatReaction
-    if last > first and colon.key == ":" and tail.first == colon.last + 1
-        and (tail.key == ")" or tail.key == "(" or tail.key == "d") then
-        emote = document.text:sub(colon.first, tail.last)
+    local separated = last > first + 1 and beforeTail.first > document.tokens[last - 2].last + 1
+    if last > first and tail.first == beforeTail.last + 1 and (
+        beforeTail.key == ":" and (tail.key == ")" or tail.key == "(" or tail.key == "d")
+        or beforeTail.key == ";" and tail.key == ")"
+        or separated and (beforeTail.key == "x" and tail.key == ")" or beforeTail.key == "<" and tail.key == "3")) then
+        emote = document.text:sub(beforeTail.first, tail.last)
         last = last - 2
-    elseif last > first and not tail.protected and tail.key == "xd" and colon.key:match("^[.!?]$")
-        and tail.first > colon.last + 1 then
+    elseif last > first and not tail.protected and tail.key == "xd" and beforeTail.key:match("^[.!?]$")
+        and tail.first > beforeTail.last + 1 then
         emote = document.text:sub(tail.first, tail.last)
         last = last - 1
-    elseif last > first and not tail.protected and tail.key == "lol" and tail.first > colon.last + 1
+    elseif last > first and not tail.protected and tail.key == "lol" and tail.first > beforeTail.last + 1
         and document.text:sub(tail.first, tail.last) == "lol" then
         emote, chatReaction, last = "lol", true, last - 1
     end
@@ -125,6 +133,7 @@ local function grammarClause(document, first, last)
     if last < first then return nil end
     local analysis = ns.Engine.ClauseAnalysis
     local parsed = analysis.parse(document, first, last)
+    if not parsed and ns.UDPipeModels then parsed = analysis.parseWithRecruitmentName(document, first, last) end
     local reported
     local firstTree = parsed and #parsed.trees == 1 and parsed.trees[1]
     if document.direction == "en-uk" and firstTree and firstTree.copula and firstTree.adjective then
@@ -141,6 +150,24 @@ local function grammarClause(document, first, last)
             parsed = reported or parsed
         end
     end
+    if not parsed and not (aside or inAside or emote or prefix or punctuation == "?")
+        and document.tokens[last].key == ")" then
+        for opening = last - 1, first + 1, -1 do
+            local token = document.tokens[opening]
+            if token.key == ")" then break end
+            if token.key == "(" then
+                if token.first <= document.tokens[opening - 1].last + 1 then break end
+                local note, noteRule = grammarClause(document, opening, last, true)
+                if not (noteRule and noteRule.intent == "prohibition" and not noteRule.unknownSpans) then break end
+                local main, rule, slots = grammarClause(document, first, opening - 1, true)
+                if rule and rule.imperative and not (rule.question or rule.unknownSpans) then
+                    rule.attachedRestriction = true
+                    return main:gsub("[.!]+$", "") .. " " .. note .. (punctuation or ""), rule, slots
+                end
+                break
+            end
+        end
+    end
     if not parsed then return nil end
     if chatReaction and not punctuation and not parsed.trees[#parsed.trees].content then return nil end
     local output = ns.Engine.ClauseGeneration.render(parsed, document.direction, innerPunctuation or punctuation)
@@ -154,6 +181,12 @@ local function grammarClause(document, first, last)
     end
     if output then
         local slots, propertyPause, unknown
+        if parsed.untranslated then
+            unknown = {}
+            for _, span in ipairs(parsed.untranslated) do
+                unknown[#unknown + 1] = byteSpan(document.tokens, {first=span.index, last=span.index, reason=span.reason})
+            end
+        end
         for _, tree in ipairs(parsed.trees) do
             if tree.unresolved then
                 unknown = unknown or {}
@@ -173,12 +206,42 @@ local function grammarClause(document, first, last)
             end
         end
         local firstTree = parsed.trees[1]
+        local frame = firstTree.verb and firstTree.verb.lexeme.frame
+        local state = firstTree.predicateAdverb
+        local predicate = firstTree.predicate
+        local preferredInChat = frame and frame.preferredInChat or state and state.preferredInChat
+            or firstTree.descriptionLabel or predicate and predicate.amount and predicate.amount.bound
+        if not preferredInChat and firstTree.prepositions then
+            for _, phrase in ipairs(firstTree.prepositions) do
+                if phrase.rule.preferredInChat then preferredInChat = true; break end
+            end
+        end
+        local graded
+        if firstTree.copula then
+            graded = hasDegree(firstTree.adjective)
+            if not graded and firstTree.subject and firstTree.subject.adjectives then
+                for _, modifier in ipairs(firstTree.subject.adjectives) do
+                    if hasDegree(modifier) then graded = true; break end
+                end
+            end
+        end
+        local politeRequest
+        local actor = firstTree.subject and firstTree.subject.pronoun
+        if firstTree.question and (firstTree.modal == "can" or firstTree.modal == "could")
+            and actor and (actor.person == 2 or actor.id == "someone") and firstTree.tense == "present"
+            and not (firstTree.negative or firstTree.modalPerfect or firstTree.wh or firstTree.where
+                or firstTree.why or firstTree.when) then
+            for _, adverb in ipairs(firstTree.adverbs or {}) do
+                if adverb.clausePoliteness then politeRequest = true; break end
+            end
+        end
         local sentenceUnit = firstTree.exclusion and "exclusion" or firstTree.restriction and "restriction" or
             ((firstTree.kind == "clause" or firstTree.kind == "need") and "clause")
         return output, {intent=firstTree.kind, imperative=firstTree.imperative == true,
             question=firstTree.question == true or parsed.hypothetical ~= nil,
             directQuestion=#parsed.trees == 1 and firstTree.question == true and not aside and not emote,
-            modal=firstTree.modal or firstTree.ability, copular=firstTree.copula,
+            modal=firstTree.modal or firstTree.ability, copular=firstTree.copula, graded=graded,
+            politeRequest=politeRequest, preferredInChat=preferredInChat,
             sentenceUnit=sentenceUnit, propertyPause=propertyPause, unknownSpans=unknown,
             earlierPhase=firstTree.sentenceAdverb and firstTree.sentenceAdverb.earlierPhase
                 or firstTree.predicateAdverb and firstTree.predicateAdverb.earlierPhase,
@@ -197,6 +260,21 @@ local function placePhrase(document, first, fragments, limit)
     phrase.targetUk = phrase.rule.literalTargetUk
     local value, marker = ns.Engine.ClauseGeneration.preposition(phrase, document.direction == "uk-en")
     if value and marker and marker ~= "" then return term, after - 1, marker .. " " .. value end
+end
+
+local function activityProfileFragment(document, first, limit, fragments)
+    if first > 1 and not ns.Engine.Parser.sentenceBoundary(document.text, document.tokens, first - 1) then return nil end
+    local phrases = ns.Engine.Phrases
+    if not phrases.activityDescriptorPrefix(document, first, limit) then return nil end
+    local noun, after = phrases.noun(document, first, limit, "nominative")
+    if not (noun and noun.activityDescriptors) then return nil end
+    for i = first + 1, after - 1 do
+        if fragments and fragments[i] or document.preserve and document.preserve[i] then return nil end
+    end
+    local value = ns.Engine.ClauseGeneration.noun(noun, false, "nominative")
+    if value then
+        return {text=N.upperStart(value), last=after - 1, rule={sourceRefs=ns.Linguistics.manifest.sourceRefs}}
+    end
 end
 
 local function clauseBeforeUnknownTail(document, first, ending)
@@ -373,7 +451,7 @@ local function exactResult(exact)
     return {text=exact.text, mode="exact", intent=exact.id, matchedTerms={}, unknownSpans={}, sourceRefs=exact.sourceRefs}
 end
 
-local function compute(text, direction, tokens, checkpoint, facts)
+local function compute(text, direction, tokens, checkpoint, facts, tryNeural)
     local normalized = N.key(text)
     local failure
     local function accept(value, first, last)
@@ -385,7 +463,10 @@ local function compute(text, direction, tokens, checkpoint, facts)
         end
     end
     local exact = ns.Data.exact[direction][normalized]
-    if exact and accept(exact.text) then return exactResult(exact), true end
+    if exact and accept(exact.text) then
+        local result = exactResult(exact)
+        return tryNeural and tryNeural(result, true) or result
+    end
     local document = ns.Engine.Morphology.analyze(text, tokens, direction)
     document.checkpoint = checkpoint
     local output, tree, syntaxFragments = ns.Engine.Syntax.translate(document)
@@ -433,6 +514,11 @@ local function compute(text, direction, tokens, checkpoint, facts)
         output = accept(output)
         if not output then clauses = nil end
     end
+    -- Without a complete rendering, build the fallback only if the model declines.
+    if tryNeural and not output then
+        local result = tryNeural()
+        if result then return result end
+    end
     local verbatim, stops
     if not output and (fragments or document.preserve) then
         verbatim, stops = verbatimRanges(document, fragments)
@@ -452,7 +538,10 @@ local function compute(text, direction, tokens, checkpoint, facts)
         end
     end
     if output then
-        if clauses and N.key(output) == normalized then return unchanged(text, "identical") end
+        if clauses and N.key(output) == normalized then
+            local result = unchanged(text, "identical")
+            return tryNeural and tryNeural(result) or result
+        end
         local matched, refs, seen, unknown = {}, {}, {}, {}
         local dependency = rule and rule.dependency == true or nil
         if clauses then
@@ -468,12 +557,29 @@ local function compute(text, direction, tokens, checkpoint, facts)
         local unresolved = tree and tree.features.unresolved
         if unresolved then unknown[#unknown + 1] = byteSpan(tokens, unresolved) end
         local complete = #unknown == 0
-        local preferred = complete and (clauses ~= nil or general and not (rule.modal or rule.copular))
-        return {text = output, mode = complete and "template" or "partial", intent = clauses and "composition" or rule.intent,
+        local place = tree and tree.slots.place
+        local dungeon = place and place.term.features and place.term.features.clearableInstance
+        local role = tree and tree.slots.role
+        local groupPattern = place and tree.kind == "recruit" and (dungeon or role and role.term.category == "roles")
+            or dungeon and (tree.kind == "groupVacancy" or tree.kind == "roleInquiry")
+        local serviceOffer = tree and tree.kind == "service" and tree.features.compactFree and tree.slots.trade
+        local enchantmentOffer = tree and tree.kind == "enhancement" and tree.features.offer == "enchanting"
+            and tree.slots.count and tree.slots.stat
+        local itemAction = tree and (tree.kind == "linkedSale" or tree.kind == "lockRequest" or tree.kind == "lockOffer")
+        local skillInquiry = tree and tree.kind == "availability"
+        local preservedNames = not complete
+        for _, span in ipairs(unknown) do
+            if span.reason ~= "preserved-recruitment-name" then preservedNames = false; break end
+        end
+        local preferred = preservedNames or unresolved and tree.kind == "roleInquiry"
+            or complete and (groupPattern or serviceOffer or enchantmentOffer or itemAction or skillInquiry or clauses ~= nil
+                or general and (rule.graded or rule.politeRequest or rule.preferredInChat
+                    or not (rule.modal or rule.copular)))
+        local result = {text = output, mode = complete and "template" or "partial", intent = clauses and "composition" or rule.intent,
             matchedTerms = matched, unknownSpans = unknown, sourceRefs = refs,
             coverage = {complete=complete, pipeline=clauses and "composition" or general and "grammar"
-                or tree and "structural" or "legacy", dependency=dependency}},
-            preferred, complete and general and rule.directQuestion
+                or tree and "structural" or "legacy", dependency=dependency}}
+        return tryNeural and tryNeural(result, preferred, complete and general and rule.directQuestion) or result
     end
     local usedDependency
     if grammarEnabled then
@@ -500,6 +606,10 @@ local function compute(text, direction, tokens, checkpoint, facts)
         if preserve then reason, reasonEnd = preserve.reason, preserve.last end
         local limit = stops and stops[i] or #tokens
         local keep = verbatim and verbatim[i]
+        if not (fragment or keep or reasonEnd and i <= reasonEnd) and grammarEnabled
+            and direction == "en-uk" and document.hasHyphen then
+            fragment = activityProfileFragment(document, i, limit, fragments)
+        end
         local term, last, replacement, rejected
         if fragment and fragment.last <= limit then
             replacement, rejected = accept(fragment.text, i, fragment.last)
@@ -629,10 +739,10 @@ local function translateNeural(text, tokens, checkpoint, facts, directQuestion)
         end
     end
     if not english then return end
-    if not neuralModel then neuralModel = neuralRuntime.prepare(ns.Data.translationStudent, checkpoint) end
     local output, mode, calls = neuralRuntime.routeChat(ns, text, function(value, context)
-        return neuralRuntime.translate(neuralModel, value, checkpoint, false, ns.Engine.Markup.split, context)
-    end, checkpoint, tokens, facts or noFacts, grammarClause)
+        if not neuralModel then neuralModel = neuralRuntime.prepare(ns.Data.translationStudent, checkpoint) end
+        return neuralRuntime.translate(neuralModel, value, checkpoint, false, ns.Engine.Markup.split, context, true)
+    end, checkpoint, tokens, facts or noFacts, grammarClause, false, true)
     if mode ~= "complete" or not output or output == text then return end
     local last = tokens[#tokens]
     if (directQuestion or not last.protected and last.key == "?") and not output:find("?", 1, true) then
@@ -641,11 +751,9 @@ local function translateNeural(text, tokens, checkpoint, facts, directQuestion)
     end
     if #output > ns.Limits.messageBytes or A.reject(facts, 1, #tokens, output) then return end
     if not digitsMatch(text, output) then return end
-    for _, segment in ipairs(ns.Engine.Markup.split(output)) do
-        if not segment.protected and output:sub(segment.first, segment.last):find("[\208\209][\128-\191]") then
-            return {text=output, mode=calls > 0 and "neural" or "template",
-                matchedTerms={}, unknownSpans={}, sourceRefs={}}
-        end
+    if neuralRuntime.hasVisibleCyrillic(output, ns.Engine.Markup.split) then
+        return {text=output, mode=calls > 0 and "neural" or "template",
+            matchedTerms={}, unknownSpans={}, sourceRefs={}}
     end
 end
 
@@ -667,9 +775,10 @@ local function translateText(text, direction, checkpoint, neural)
         if neuralRuntime.chatOpener(tokens, 1) then
             return translateNeural(text, tokens, checkpoint, facts) or compute(text, direction, tokens, checkpoint, facts)
         end
-        local grammatical, preferred, directQuestion = compute(text, direction, tokens, checkpoint, facts)
-        if preferred and digitsMatch(text, grammatical.text) then return grammatical end
-        return translateNeural(text, tokens, checkpoint, facts, directQuestion) or grammatical
+        return compute(text, direction, tokens, checkpoint, facts, function(grammatical, preferred, directQuestion)
+            if preferred and digitsMatch(text, grammatical.text) then return grammatical end
+            return translateNeural(text, tokens, checkpoint, facts, directQuestion)
+        end)
     end
     return compute(text, direction, tokens, checkpoint, facts)
 end

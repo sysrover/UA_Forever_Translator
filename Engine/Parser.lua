@@ -48,9 +48,20 @@ function P.ellipsisEnd(tokens, first, limit)
         and last.first == middle.last + 1 then return first + 2 end
 end
 
+local function spacedDash(tokens, index)
+    local token = tokens[index]
+    if token.protected then return end
+    local before, after = tokens[index - 1], tokens[index + 1]
+    if before and after and token.first > before.last + 1 and after.first > token.last + 1
+        and not (before.key:match("^%d") and after.key:match("^%d")) then
+        return dashJoins["—"]
+    end
+end
+
 local function joinAt(text, tokens, index, joins)
     local current = tokens[index]
     local wordJoin = joins[current.key] or dashJoins[current.key]
+        or current.key == "-" and spacedDash(tokens, index)
     if wordJoin then return wordJoin end
     if current.key == "а" and tokens[index + 1].key == "коли" then return ", and " end
     local stop = sentenceJoins[current.key]
@@ -157,7 +168,8 @@ function P.compose(text, tokens, direction, grammarFallback, sentenceBudget, ann
         end
         if not prefix then return start end
         local separator = tokens[ending + 1] and tokens[ending + 1].key
-        return ending + ((separator == "," or dashJoins[separator]) and 2 or 1), prefix
+        local joined = separator == "," or dashJoins[separator] or separator == "-" and spacedDash(tokens, ending + 1)
+        return ending + (joined and 2 or 1), prefix
     end
     local first, prefix = prefixAt(1, #tokens)
     if prefix then

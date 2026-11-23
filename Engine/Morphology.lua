@@ -56,8 +56,92 @@ function M.select(document, first, category, limit, requiredCase)
     return selected
 end
 
+local dungeonSpellings
+local function dungeonSpellingIndex()
+    local exact, missing = {}, {}
+    local function add(index, key, term)
+        local prior = index[key]
+        if prior == nil then index[key] = term
+        elseif prior ~= term then index[key] = false end
+    end
+    local function spellings(aliases, term)
+        for _, value in ipairs(aliases) do
+            local key = ns.Engine.Normalize.key(value):gsub("^the ", "")
+            if #key >= 6 and #key <= 24 and key:match("^[a-z]+$") then
+                add(exact, key, term)
+                for i = 1, #key do add(missing, key:sub(1, i - 1) .. key:sub(i + 1), term) end
+            end
+        end
+    end
+    for _, term in pairs(ns.Data.terms) do
+        if term.category == "places" and term.features and term.features.clearableInstance then
+            spellings({term.en}, term)
+            spellings(term.aliases and term.aliases.en or {}, term)
+            spellings(term.contextAliases and term.contextAliases.en or {}, term)
+        end
+    end
+    return {exact=exact, missing=missing}
+end
+
+-- Call only from a grammar position that requires a dungeon destination.
+function M.dungeonSpelling(document, first)
+    local token = document.tokens[first]
+    if document.direction ~= "en-uk" or not token or token.protected then return end
+    local key = token.key
+    if #key < 5 or #key > 25 or not key:match("^[a-z]+$") then return end
+    -- Exact names are resolved before this fallback. A known word can name a different entity.
+    for _, reading in ipairs(document.spans[first] or {}) do
+        if reading.last == first then return end
+    end
+    dungeonSpellings = dungeonSpellings or dungeonSpellingIndex()
+    local exact, missing = dungeonSpellings.exact, dungeonSpellings.missing
+    local selected = missing[key]
+    local function consider(term)
+        if term ~= nil then
+            if selected == nil then selected = term
+            elseif selected ~= term then selected = false end
+        end
+    end
+    for i = 1, #key do
+        local prefix, suffix = key:sub(1, i - 1), key:sub(i + 1)
+        consider(exact[prefix .. suffix])
+        if i < #key and key:sub(i, i) ~= key:sub(i + 1, i + 1) then
+            consider(exact[prefix .. key:sub(i + 1, i + 1) .. key:sub(i, i) .. key:sub(i + 2)])
+        end
+        if selected == false then return end
+    end
+    if not selected or #ns.Engine.Lexicon.at(document, first) > 0 then return end
+    return {term=selected, last=first, features=selected.features}
+end
+
 function M.generate(term, direction, form)
     local data = ns.Data.linguistics and ns.Data.linguistics.generation[term.id]
     local language = direction == "en-uk" and "uk" or "en"
     return data and data[language] and data[language][form or "canonical"]
+end
+
+local classSpellingByRegistry = setmetatable({}, {__mode="k"})
+function M.classSpelling(key)
+    local registry = ns.Data.terms
+    local spellings = classSpellingByRegistry[registry]
+    if not spellings then
+        spellings = {}
+        for _, term in pairs(registry) do
+            local canonical = term.category == "classes" and term.status == "approved"
+                and ns.Engine.Normalize.key(term.en)
+            if canonical and canonical:match("^[a-z][a-z][a-z][a-z]+$") then
+                for i = 1, #canonical - 1 do
+                    local left, right = canonical:sub(i, i), canonical:sub(i + 1, i + 1)
+                    if left ~= right then
+                        local spelling = canonical:sub(1, i - 1) .. right .. left .. canonical:sub(i + 2)
+                        local prior = spellings[spelling]
+                        if prior == nil then spellings[spelling] = term
+                        elseif prior ~= term then spellings[spelling] = false end
+                    end
+                end
+            end
+        end
+        classSpellingByRegistry[registry] = spellings
+    end
+    return spellings[key] or nil
 end

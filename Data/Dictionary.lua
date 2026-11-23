@@ -374,6 +374,11 @@ ns.Data = {
                     }
                 }
             },
+            ["arm"] = {
+                ["sm"] = {
+                    ["_id"] = "place.scarlet_monastery.armory"
+                }
+            },
             ["armor"] = {
                 ["_id"] = "game.armor",
                 ["_literal"] = {
@@ -381,6 +386,11 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "броня",
                     ["weak"] = false
+                }
+            },
+            ["armory"] = {
+                ["sm"] = {
+                    ["_id"] = "place.scarlet_monastery.armory"
                 }
             },
             ["arrow"] = {
@@ -535,6 +545,9 @@ ns.Data = {
                 ["_byCategory"] = {
                     ["roles"] = "role.bard"
                 }
+            },
+            ["barking"] = {
+                ["_id"] = "activity.barking"
             },
             ["barrens"] = {
                 ["_id"] = "place.the_barrens"
@@ -982,6 +995,16 @@ ns.Data = {
                             ["_id"] = "game.casual_friendly_guild"
                         }
                     }
+                }
+            },
+            ["cath"] = {
+                ["sm"] = {
+                    ["_id"] = "place.scarlet_monastery.cathedral"
+                }
+            },
+            ["cathedral"] = {
+                ["sm"] = {
+                    ["_id"] = "place.scarlet_monastery.cathedral"
                 }
             },
             ["cc"] = {
@@ -2284,6 +2307,16 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["dog"] = {
+                ["_id"] = "creature.dog"
+            },
+            ["dogs"] = {
+                ["_plural"] = {
+                    ["id"] = "creature.dog",
+                    ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                    ["text"] = "собаки"
+                }
+            },
             ["don't"] = {
                 ["_literal"] = {
                     ["id"] = "literal.do_not",
@@ -2850,6 +2883,18 @@ ns.Data = {
             ["gdkp"] = {
                 ["_id"] = "slang.loot.gdkp"
             },
+            ["general"] = {
+                ["chat"] = {
+                    ["_id"] = "game.general_chat"
+                },
+                ["chats"] = {
+                    ["_plural"] = {
+                        ["id"] = "game.general_chat",
+                        ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                        ["text"] = "загальні чати"
+                    }
+                }
+            },
             ["get"] = {
                 ["_literal"] = {
                     ["id"] = "literal.get",
@@ -2941,6 +2986,18 @@ ns.Data = {
             ["goldshire"] = {
                 ["_id"] = "place.goldshire"
             },
+            ["grave"] = {
+                ["yard"] = {
+                    ["sm"] = {
+                        ["_id"] = "place.scarlet_monastery.graveyard"
+                    }
+                }
+            },
+            ["graveyard"] = {
+                ["sm"] = {
+                    ["_id"] = "place.scarlet_monastery.graveyard"
+                }
+            },
             ["greater"] = {
                 ["healing"] = {
                     ["potion"] = {
@@ -2990,6 +3047,11 @@ ns.Data = {
                     ["id"] = "game.guild",
                     ["sourceRefs"] = { "ua-forever:game.guild", "kaikki:uk:2026-10-01" },
                     ["text"] = "гільдії"
+                }
+            },
+            ["gy"] = {
+                ["sm"] = {
+                    ["_id"] = "place.scarlet_monastery.graveyard"
                 }
             },
             ["hall"] = {
@@ -3348,6 +3410,11 @@ ns.Data = {
                     ["text"] = "в",
                     ["weak"] = true
                 },
+                ["character"] = {
+                    ["_byCategory"] = {
+                        ["slang"] = "discourse.in-character"
+                    }
+                },
                 ["stormwind"] = {
                     ["_literal"] = {
                         ["id"] = "literal.place.in-stormwind",
@@ -3584,6 +3651,11 @@ ns.Data = {
                     }
                 }
             },
+            ["layered"] = {
+                ["_byCategory"] = {
+                    ["slang"] = "discourse.layered-chat"
+                }
+            },
             ["lbrs"] = {
                 ["_id"] = "place.lower_blackrock_spire"
             },
@@ -3677,6 +3749,16 @@ ns.Data = {
             },
             ["lfw"] = {
                 ["_id"] = "slang.trade.lfw"
+            },
+            ["lib"] = {
+                ["sm"] = {
+                    ["_id"] = "place.scarlet_monastery.library"
+                }
+            },
+            ["library"] = {
+                ["sm"] = {
+                    ["_id"] = "place.scarlet_monastery.library"
+                }
             },
             ["lich"] = {
                 ["king"] = {
@@ -4554,6 +4636,20 @@ ns.Data = {
                     ["weak"] = true
                 }
             },
+            ["out"] = {
+                ["of"] = {
+                    ["character"] = {
+                        ["_byCategory"] = {
+                            ["slang"] = "discourse.out-of-character"
+                        }
+                    },
+                    ["context"] = {
+                        ["_byCategory"] = {
+                            ["slang"] = "discourse.out-of-context"
+                        }
+                    }
+                }
+            },
             ["outside"] = {
                 ["_literal"] = {
                     ["id"] = "literal.outside",
@@ -5148,12 +5244,52 @@ ns.Data = {
             },
             ["scarlet"] = {
                 ["monastery"] = {
+                    ["-"] = {
+                        ["armory"] = {
+                            ["_id"] = "place.scarlet_monastery.armory"
+                        },
+                        ["cathedral"] = {
+                            ["_id"] = "place.scarlet_monastery.cathedral"
+                        },
+                        ["graveyard"] = {
+                            ["_id"] = "place.scarlet_monastery.graveyard"
+                        },
+                        ["library"] = {
+                            ["_id"] = "place.scarlet_monastery.library"
+                        }
+                    },
+                    [":"] = {
+                        ["armory"] = {
+                            ["_id"] = "place.scarlet_monastery.armory"
+                        },
+                        ["cathedral"] = {
+                            ["_id"] = "place.scarlet_monastery.cathedral"
+                        },
+                        ["graveyard"] = {
+                            ["_id"] = "place.scarlet_monastery.graveyard"
+                        },
+                        ["library"] = {
+                            ["_id"] = "place.scarlet_monastery.library"
+                        }
+                    },
                     ["_id"] = "place.scarlet_monastery",
                     ["_literal"] = {
                         ["id"] = "literal.place.scarlet_monastery",
                         ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" },
                         ["text"] = "Багряний монастир",
                         ["weak"] = false
+                    },
+                    ["armory"] = {
+                        ["_id"] = "place.scarlet_monastery.armory"
+                    },
+                    ["cathedral"] = {
+                        ["_id"] = "place.scarlet_monastery.cathedral"
+                    },
+                    ["graveyard"] = {
+                        ["_id"] = "place.scarlet_monastery.graveyard"
+                    },
+                    ["library"] = {
+                        ["_id"] = "place.scarlet_monastery.library"
                     }
                 }
             },
@@ -5324,7 +5460,64 @@ ns.Data = {
                 }
             },
             ["sm"] = {
-                ["_id"] = "place.scarlet_monastery"
+                ["-"] = {
+                    ["armory"] = {
+                        ["_id"] = "place.scarlet_monastery.armory"
+                    },
+                    ["cathedral"] = {
+                        ["_id"] = "place.scarlet_monastery.cathedral"
+                    },
+                    ["graveyard"] = {
+                        ["_id"] = "place.scarlet_monastery.graveyard"
+                    },
+                    ["library"] = {
+                        ["_id"] = "place.scarlet_monastery.library"
+                    }
+                },
+                [":"] = {
+                    ["armory"] = {
+                        ["_id"] = "place.scarlet_monastery.armory"
+                    },
+                    ["cathedral"] = {
+                        ["_id"] = "place.scarlet_monastery.cathedral"
+                    },
+                    ["graveyard"] = {
+                        ["_id"] = "place.scarlet_monastery.graveyard"
+                    },
+                    ["library"] = {
+                        ["_id"] = "place.scarlet_monastery.library"
+                    }
+                },
+                ["_id"] = "place.scarlet_monastery",
+                ["arm"] = {
+                    ["_id"] = "place.scarlet_monastery.armory"
+                },
+                ["armory"] = {
+                    ["_id"] = "place.scarlet_monastery.armory"
+                },
+                ["cath"] = {
+                    ["_id"] = "place.scarlet_monastery.cathedral"
+                },
+                ["cathedral"] = {
+                    ["_id"] = "place.scarlet_monastery.cathedral"
+                },
+                ["grave"] = {
+                    ["yard"] = {
+                        ["_id"] = "place.scarlet_monastery.graveyard"
+                    }
+                },
+                ["graveyard"] = {
+                    ["_id"] = "place.scarlet_monastery.graveyard"
+                },
+                ["gy"] = {
+                    ["_id"] = "place.scarlet_monastery.graveyard"
+                },
+                ["lib"] = {
+                    ["_id"] = "place.scarlet_monastery.library"
+                },
+                ["library"] = {
+                    ["_id"] = "place.scarlet_monastery.library"
+                }
             },
             ["soft"] = {
                 ["res"] = {
@@ -6980,17 +7173,65 @@ ns.Data = {
             },
             ["багряний"] = {
                 ["монастир"] = {
+                    ["-"] = {
+                        ["бібліотека"] = {
+                            ["_id"] = "place.scarlet_monastery.library"
+                        },
+                        ["бібліотеку"] = {
+                            ["_id"] = "place.scarlet_monastery.library"
+                        },
+                        ["зброярню"] = {
+                            ["_id"] = "place.scarlet_monastery.armory"
+                        },
+                        ["зброярня"] = {
+                            ["_id"] = "place.scarlet_monastery.armory"
+                        },
+                        ["кладовище"] = {
+                            ["_id"] = "place.scarlet_monastery.graveyard"
+                        },
+                        ["собор"] = {
+                            ["_id"] = "place.scarlet_monastery.cathedral"
+                        }
+                    },
                     ["_id"] = "place.scarlet_monastery",
                     ["_literal"] = {
                         ["id"] = "literal.place.scarlet_monastery",
                         ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" },
                         ["text"] = "Scarlet Monastery",
                         ["weak"] = false
+                    },
+                    ["—"] = {
+                        ["бібліотека"] = {
+                            ["_id"] = "place.scarlet_monastery.library"
+                        },
+                        ["зброярня"] = {
+                            ["_id"] = "place.scarlet_monastery.armory"
+                        },
+                        ["кладовище"] = {
+                            ["_id"] = "place.scarlet_monastery.graveyard"
+                        },
+                        ["собор"] = {
+                            ["_id"] = "place.scarlet_monastery.cathedral"
+                        }
                     }
                 }
             },
             ["багряного"] = {
                 ["монастиря"] = {
+                    ["-"] = {
+                        ["бібліотеки"] = {
+                            ["_id"] = "place.scarlet_monastery.library"
+                        },
+                        ["зброярні"] = {
+                            ["_id"] = "place.scarlet_monastery.armory"
+                        },
+                        ["кладовища"] = {
+                            ["_id"] = "place.scarlet_monastery.graveyard"
+                        },
+                        ["собору"] = {
+                            ["_id"] = "place.scarlet_monastery.cathedral"
+                        }
+                    },
                     ["_id"] = "place.scarlet_monastery",
                     ["_literal"] = {
                         ["id"] = "literal.place.scarlet_monastery",
@@ -7015,6 +7256,20 @@ ns.Data = {
             },
             ["багряному"] = {
                 ["монастирі"] = {
+                    ["-"] = {
+                        ["бібліотеці"] = {
+                            ["_id"] = "place.scarlet_monastery.library"
+                        },
+                        ["зброярні"] = {
+                            ["_id"] = "place.scarlet_monastery.armory"
+                        },
+                        ["кладовищі"] = {
+                            ["_id"] = "place.scarlet_monastery.graveyard"
+                        },
+                        ["соборі"] = {
+                            ["_id"] = "place.scarlet_monastery.cathedral"
+                        }
+                    },
                     ["_id"] = "place.scarlet_monastery",
                     ["_literal"] = {
                         ["id"] = "literal.place.scarlet_monastery",
@@ -8185,6 +8440,18 @@ ns.Data = {
                     ["text"] = "he",
                     ["weak"] = true
                 }
+            },
+            ["гавкотом"] = {
+                ["_id"] = "activity.barking"
+            },
+            ["гавкоту"] = {
+                ["_id"] = "activity.barking"
+            },
+            ["гавкоті"] = {
+                ["_id"] = "activity.barking"
+            },
+            ["гавкіт"] = {
+                ["_id"] = "activity.barking"
             },
             ["гайни"] = {
                 ["_literal"] = {
@@ -9791,6 +10058,75 @@ ns.Data = {
             },
             ["завдання"] = {
                 ["_id"] = "game.quest"
+            },
+            ["загальний"] = {
+                ["чат"] = {
+                    ["_id"] = "game.general_chat"
+                }
+            },
+            ["загальним"] = {
+                ["чатам"] = {
+                    ["_id"] = "game.general_chat",
+                    ["_plural"] = {
+                        ["id"] = "game.general_chat",
+                        ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                        ["text"] = "general chats"
+                    }
+                },
+                ["чатом"] = {
+                    ["_id"] = "game.general_chat"
+                }
+            },
+            ["загальними"] = {
+                ["чатами"] = {
+                    ["_id"] = "game.general_chat",
+                    ["_plural"] = {
+                        ["id"] = "game.general_chat",
+                        ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                        ["text"] = "general chats"
+                    }
+                }
+            },
+            ["загальних"] = {
+                ["чатах"] = {
+                    ["_id"] = "game.general_chat",
+                    ["_plural"] = {
+                        ["id"] = "game.general_chat",
+                        ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                        ["text"] = "general chats"
+                    }
+                },
+                ["чатів"] = {
+                    ["_id"] = "game.general_chat",
+                    ["_plural"] = {
+                        ["id"] = "game.general_chat",
+                        ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                        ["text"] = "general chats"
+                    }
+                }
+            },
+            ["загального"] = {
+                ["чату"] = {
+                    ["_id"] = "game.general_chat"
+                }
+            },
+            ["загальному"] = {
+                ["чатові"] = {
+                    ["_id"] = "game.general_chat"
+                },
+                ["чаті"] = {
+                    ["_id"] = "game.general_chat"
+                }
+            },
+            ["загальні"] = {
+                ["чати"] = {
+                    ["_id"] = "game.general_chat",
+                    ["_plural"] = {
+                        ["id"] = "game.general_chat",
+                        ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                        ["text"] = "general chats"
+                    }
+                }
             },
             ["загроза"] = {
                 ["_id"] = "game.threat"
@@ -14589,6 +14925,15 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["поділено"] = {
+                ["за"] = {
+                    ["шарами"] = {
+                        ["_byCategory"] = {
+                            ["slang"] = "discourse.layered-chat"
+                        }
+                    }
+                }
+            },
             ["поділись"] = {
                 ["_literal"] = {
                     ["id"] = "literal.share",
@@ -14623,6 +14968,18 @@ ns.Data = {
             ["події"] = {
                 ["pvp"] = {
                     ["_id"] = "activity.pvp_event"
+                }
+            },
+            ["поза"] = {
+                ["контекстом"] = {
+                    ["_byCategory"] = {
+                        ["slang"] = "discourse.out-of-context"
+                    }
+                },
+                ["роллю"] = {
+                    ["_byCategory"] = {
+                        ["slang"] = "discourse.out-of-character"
+                    }
                 }
             },
             ["полагодити"] = {
@@ -16152,6 +16509,56 @@ ns.Data = {
             ["смерколіссі"] = {
                 ["_id"] = "place.duskwood"
             },
+            ["собак"] = {
+                ["_id"] = "creature.dog",
+                ["_plural"] = {
+                    ["id"] = "creature.dog",
+                    ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                    ["text"] = "dogs"
+                }
+            },
+            ["собака"] = {
+                ["_id"] = "creature.dog"
+            },
+            ["собакам"] = {
+                ["_id"] = "creature.dog",
+                ["_plural"] = {
+                    ["id"] = "creature.dog",
+                    ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                    ["text"] = "dogs"
+                }
+            },
+            ["собаками"] = {
+                ["_id"] = "creature.dog",
+                ["_plural"] = {
+                    ["id"] = "creature.dog",
+                    ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                    ["text"] = "dogs"
+                }
+            },
+            ["собаках"] = {
+                ["_id"] = "creature.dog",
+                ["_plural"] = {
+                    ["id"] = "creature.dog",
+                    ["sourceRefs"] = { "project-authored:general-grammar-1" },
+                    ["text"] = "dogs"
+                }
+            },
+            ["собаки"] = {
+                ["_id"] = "creature.dog"
+            },
+            ["собако"] = {
+                ["_id"] = "creature.dog"
+            },
+            ["собакою"] = {
+                ["_id"] = "creature.dog"
+            },
+            ["собаку"] = {
+                ["_id"] = "creature.dog"
+            },
+            ["собаці"] = {
+                ["_id"] = "creature.dog"
+            },
             ["сокир"] = {
                 ["_id"] = "goods.axe",
                 ["_literal"] = {
@@ -17128,6 +17535,11 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "in",
                     ["weak"] = true
+                },
+                ["ролі"] = {
+                    ["_byCategory"] = {
+                        ["slang"] = "discourse.in-character"
+                    }
                 }
             },
             ["убий"] = {
@@ -20031,6 +20443,286 @@ ns.Data = {
             }
         }
     },
+    ["instanceWings"] = {
+        ["place.scarlet_monastery"] = {
+            ["en-uk"] = {
+                ["arm"] = {
+                    ["_id"] = "place.scarlet_monastery.armory",
+                    ["sm"] = {
+                        ["_id"] = "place.scarlet_monastery.armory"
+                    }
+                },
+                ["armory"] = {
+                    ["_id"] = "place.scarlet_monastery.armory",
+                    ["sm"] = {
+                        ["_id"] = "place.scarlet_monastery.armory"
+                    }
+                },
+                ["cath"] = {
+                    ["_id"] = "place.scarlet_monastery.cathedral",
+                    ["sm"] = {
+                        ["_id"] = "place.scarlet_monastery.cathedral"
+                    }
+                },
+                ["cathedral"] = {
+                    ["_id"] = "place.scarlet_monastery.cathedral",
+                    ["sm"] = {
+                        ["_id"] = "place.scarlet_monastery.cathedral"
+                    }
+                },
+                ["grave"] = {
+                    ["yard"] = {
+                        ["_id"] = "place.scarlet_monastery.graveyard",
+                        ["sm"] = {
+                            ["_id"] = "place.scarlet_monastery.graveyard"
+                        }
+                    }
+                },
+                ["graveyard"] = {
+                    ["_id"] = "place.scarlet_monastery.graveyard",
+                    ["sm"] = {
+                        ["_id"] = "place.scarlet_monastery.graveyard"
+                    }
+                },
+                ["gy"] = {
+                    ["_id"] = "place.scarlet_monastery.graveyard",
+                    ["sm"] = {
+                        ["_id"] = "place.scarlet_monastery.graveyard"
+                    }
+                },
+                ["lib"] = {
+                    ["_id"] = "place.scarlet_monastery.library",
+                    ["sm"] = {
+                        ["_id"] = "place.scarlet_monastery.library"
+                    }
+                },
+                ["library"] = {
+                    ["_id"] = "place.scarlet_monastery.library",
+                    ["sm"] = {
+                        ["_id"] = "place.scarlet_monastery.library"
+                    }
+                },
+                ["scarlet"] = {
+                    ["monastery"] = {
+                        ["-"] = {
+                            ["armory"] = {
+                                ["_id"] = "place.scarlet_monastery.armory"
+                            },
+                            ["cathedral"] = {
+                                ["_id"] = "place.scarlet_monastery.cathedral"
+                            },
+                            ["graveyard"] = {
+                                ["_id"] = "place.scarlet_monastery.graveyard"
+                            },
+                            ["library"] = {
+                                ["_id"] = "place.scarlet_monastery.library"
+                            }
+                        },
+                        [":"] = {
+                            ["armory"] = {
+                                ["_id"] = "place.scarlet_monastery.armory"
+                            },
+                            ["cathedral"] = {
+                                ["_id"] = "place.scarlet_monastery.cathedral"
+                            },
+                            ["graveyard"] = {
+                                ["_id"] = "place.scarlet_monastery.graveyard"
+                            },
+                            ["library"] = {
+                                ["_id"] = "place.scarlet_monastery.library"
+                            }
+                        },
+                        ["armory"] = {
+                            ["_id"] = "place.scarlet_monastery.armory"
+                        },
+                        ["cathedral"] = {
+                            ["_id"] = "place.scarlet_monastery.cathedral"
+                        },
+                        ["graveyard"] = {
+                            ["_id"] = "place.scarlet_monastery.graveyard"
+                        },
+                        ["library"] = {
+                            ["_id"] = "place.scarlet_monastery.library"
+                        }
+                    }
+                },
+                ["sm"] = {
+                    ["-"] = {
+                        ["armory"] = {
+                            ["_id"] = "place.scarlet_monastery.armory"
+                        },
+                        ["cathedral"] = {
+                            ["_id"] = "place.scarlet_monastery.cathedral"
+                        },
+                        ["graveyard"] = {
+                            ["_id"] = "place.scarlet_monastery.graveyard"
+                        },
+                        ["library"] = {
+                            ["_id"] = "place.scarlet_monastery.library"
+                        }
+                    },
+                    [":"] = {
+                        ["armory"] = {
+                            ["_id"] = "place.scarlet_monastery.armory"
+                        },
+                        ["cathedral"] = {
+                            ["_id"] = "place.scarlet_monastery.cathedral"
+                        },
+                        ["graveyard"] = {
+                            ["_id"] = "place.scarlet_monastery.graveyard"
+                        },
+                        ["library"] = {
+                            ["_id"] = "place.scarlet_monastery.library"
+                        }
+                    },
+                    ["arm"] = {
+                        ["_id"] = "place.scarlet_monastery.armory"
+                    },
+                    ["armory"] = {
+                        ["_id"] = "place.scarlet_monastery.armory"
+                    },
+                    ["cath"] = {
+                        ["_id"] = "place.scarlet_monastery.cathedral"
+                    },
+                    ["cathedral"] = {
+                        ["_id"] = "place.scarlet_monastery.cathedral"
+                    },
+                    ["grave"] = {
+                        ["yard"] = {
+                            ["_id"] = "place.scarlet_monastery.graveyard"
+                        }
+                    },
+                    ["graveyard"] = {
+                        ["_id"] = "place.scarlet_monastery.graveyard"
+                    },
+                    ["gy"] = {
+                        ["_id"] = "place.scarlet_monastery.graveyard"
+                    },
+                    ["lib"] = {
+                        ["_id"] = "place.scarlet_monastery.library"
+                    },
+                    ["library"] = {
+                        ["_id"] = "place.scarlet_monastery.library"
+                    }
+                }
+            },
+            ["uk-en"] = {
+                ["багряний"] = {
+                    ["монастир"] = {
+                        ["-"] = {
+                            ["бібліотека"] = {
+                                ["_id"] = "place.scarlet_monastery.library"
+                            },
+                            ["бібліотеку"] = {
+                                ["_id"] = "place.scarlet_monastery.library"
+                            },
+                            ["зброярню"] = {
+                                ["_id"] = "place.scarlet_monastery.armory"
+                            },
+                            ["зброярня"] = {
+                                ["_id"] = "place.scarlet_monastery.armory"
+                            },
+                            ["кладовище"] = {
+                                ["_id"] = "place.scarlet_monastery.graveyard"
+                            },
+                            ["собор"] = {
+                                ["_id"] = "place.scarlet_monastery.cathedral"
+                            }
+                        },
+                        ["—"] = {
+                            ["бібліотека"] = {
+                                ["_id"] = "place.scarlet_monastery.library"
+                            },
+                            ["зброярня"] = {
+                                ["_id"] = "place.scarlet_monastery.armory"
+                            },
+                            ["кладовище"] = {
+                                ["_id"] = "place.scarlet_monastery.graveyard"
+                            },
+                            ["собор"] = {
+                                ["_id"] = "place.scarlet_monastery.cathedral"
+                            }
+                        }
+                    }
+                },
+                ["багряного"] = {
+                    ["монастиря"] = {
+                        ["-"] = {
+                            ["бібліотеки"] = {
+                                ["_id"] = "place.scarlet_monastery.library"
+                            },
+                            ["зброярні"] = {
+                                ["_id"] = "place.scarlet_monastery.armory"
+                            },
+                            ["кладовища"] = {
+                                ["_id"] = "place.scarlet_monastery.graveyard"
+                            },
+                            ["собору"] = {
+                                ["_id"] = "place.scarlet_monastery.cathedral"
+                            }
+                        }
+                    }
+                },
+                ["багряному"] = {
+                    ["монастирі"] = {
+                        ["-"] = {
+                            ["бібліотеці"] = {
+                                ["_id"] = "place.scarlet_monastery.library"
+                            },
+                            ["зброярні"] = {
+                                ["_id"] = "place.scarlet_monastery.armory"
+                            },
+                            ["кладовищі"] = {
+                                ["_id"] = "place.scarlet_monastery.graveyard"
+                            },
+                            ["соборі"] = {
+                                ["_id"] = "place.scarlet_monastery.cathedral"
+                            }
+                        }
+                    }
+                },
+                ["бібліотека"] = {
+                    ["_id"] = "place.scarlet_monastery.library"
+                },
+                ["бібліотеки"] = {
+                    ["_id"] = "place.scarlet_monastery.library"
+                },
+                ["бібліотеку"] = {
+                    ["_id"] = "place.scarlet_monastery.library"
+                },
+                ["бібліотеці"] = {
+                    ["_id"] = "place.scarlet_monastery.library"
+                },
+                ["зброярню"] = {
+                    ["_id"] = "place.scarlet_monastery.armory"
+                },
+                ["зброярня"] = {
+                    ["_id"] = "place.scarlet_monastery.armory"
+                },
+                ["зброярні"] = {
+                    ["_id"] = "place.scarlet_monastery.armory"
+                },
+                ["кладовища"] = {
+                    ["_id"] = "place.scarlet_monastery.graveyard"
+                },
+                ["кладовище"] = {
+                    ["_id"] = "place.scarlet_monastery.graveyard"
+                },
+                ["кладовищі"] = {
+                    ["_id"] = "place.scarlet_monastery.graveyard"
+                },
+                ["собор"] = {
+                    ["_id"] = "place.scarlet_monastery.cathedral"
+                },
+                ["собору"] = {
+                    ["_id"] = "place.scarlet_monastery.cathedral"
+                },
+                ["соборі"] = {
+                    ["_id"] = "place.scarlet_monastery.cathedral"
+                }
+            }
+        }
+    },
     ["itemTitleClasses"] = {
         ["19484"] = "publication",
         ["2154"] = "publication"
@@ -21256,6 +21948,23 @@ ns.Data = {
                         }
                     }
                 },
+                ["arm"] = {
+                    ["sm"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.armory",
+                                ["lemma"] = "Scarlet Monastery: Armory",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.armory",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                            }
+                        }
+                    }
+                },
                 ["armor"] = {
                     ["_analyses"] = {
                         {
@@ -21265,6 +21974,23 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "game.armor",
                             ["sourceRefs"] = { "ua-forever:game.armor" }
+                        }
+                    }
+                },
+                ["armory"] = {
+                    ["sm"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.armory",
+                                ["lemma"] = "Scarlet Monastery: Armory",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.armory",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                            }
                         }
                     }
                 },
@@ -21584,6 +22310,22 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "role.bard",
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["barking"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["mass"] = true
+                            },
+                            ["id"] = "activity.barking",
+                            ["lemma"] = "barking",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.barking",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
                         }
                     }
                 },
@@ -22460,6 +23202,40 @@ ns.Data = {
                                         ["sourceRefs"] = { "project-authored:chat-0.1" }
                                     }
                                 }
+                            }
+                        }
+                    }
+                },
+                ["cath"] = {
+                    ["sm"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.cathedral",
+                                ["lemma"] = "Scarlet Monastery: Cathedral",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.cathedral",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                            }
+                        }
+                    }
+                },
+                ["cathedral"] = {
+                    ["sm"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.cathedral",
+                                ["lemma"] = "Scarlet Monastery: Cathedral",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.cathedral",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
                             }
                         }
                     }
@@ -26123,6 +26899,37 @@ ns.Data = {
                         }
                     }
                 },
+                ["dog"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "dog",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["dogs"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "dog",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
                 ["dot"] = {
                     ["_analyses"] = {
                         {
@@ -27188,6 +27995,41 @@ ns.Data = {
                         }
                     }
                 },
+                ["general"] = {
+                    ["chat"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "general chat",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            }
+                        }
+                    },
+                    ["chats"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "general chat",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
                 ["gl"] = {
                     ["hf"] = {
                         ["_analyses"] = {
@@ -27413,6 +28255,42 @@ ns.Data = {
                         }
                     }
                 },
+                ["grave"] = {
+                    ["yard"] = {
+                        ["sm"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.graveyard",
+                                    ["lemma"] = "Scarlet Monastery: Graveyard",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.graveyard",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["graveyard"] = {
+                    ["sm"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.graveyard",
+                                ["lemma"] = "Scarlet Monastery: Graveyard",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.graveyard",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                            }
+                        }
+                    }
+                },
                 ["greater"] = {
                     ["healing"] = {
                         ["potion"] = {
@@ -27594,6 +28472,23 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "game.guild",
                             ["sourceRefs"] = { "ua-forever:game.guild", "kaikki:uk:2026-10-01" }
+                        }
+                    }
+                },
+                ["gy"] = {
+                    ["sm"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.graveyard",
+                                ["lemma"] = "Scarlet Monastery: Graveyard",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.graveyard",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                            }
                         }
                     }
                 },
@@ -28228,6 +29123,22 @@ ns.Data = {
                         }
                     }
                 },
+                ["in"] = {
+                    ["character"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["neuralSense"] = "roleplayMode"
+                                },
+                                ["id"] = "discourse.in-character",
+                                ["lemma"] = "in character",
+                                ["pos"] = "adv",
+                                ["sense"] = "discourse.in-character",
+                                ["sourceRefs"] = { "project-authored:chat-discourse" }
+                            }
+                        }
+                    }
+                },
                 ["inc"] = {
                     ["_analyses"] = {
                         {
@@ -28597,6 +29508,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["layered"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["neuralSense"] = "layeredChat"
+                            },
+                            ["id"] = "discourse.layered-chat",
+                            ["lemma"] = "layered",
+                            ["pos"] = "adv",
+                            ["sense"] = "discourse.layered-chat",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
                 ["lbrs"] = {
                     ["_analyses"] = {
                         {
@@ -28724,6 +29649,40 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "slang.trade.lfw",
                             ["sourceRefs"] = { "wow-community:craft" }
+                        }
+                    }
+                },
+                ["lib"] = {
+                    ["sm"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.library",
+                                ["lemma"] = "Scarlet Monastery: Library",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.library",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                            }
+                        }
+                    }
+                },
+                ["library"] = {
+                    ["sm"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.library",
+                                ["lemma"] = "Scarlet Monastery: Library",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.library",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                            }
                         }
                     }
                 },
@@ -30354,6 +31313,38 @@ ns.Data = {
                         }
                     }
                 },
+                ["out"] = {
+                    ["of"] = {
+                        ["character"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["neuralSense"] = "roleplayMode"
+                                    },
+                                    ["id"] = "discourse.out-of-character",
+                                    ["lemma"] = "out of character",
+                                    ["pos"] = "adv",
+                                    ["sense"] = "discourse.out-of-character",
+                                    ["sourceRefs"] = { "project-authored:chat-discourse" }
+                                }
+                            }
+                        },
+                        ["context"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["neuralSense"] = "discourseMode"
+                                    },
+                                    ["id"] = "discourse.out-of-context",
+                                    ["lemma"] = "out of context",
+                                    ["pos"] = "adv",
+                                    ["sense"] = "discourse.out-of-context",
+                                    ["sourceRefs"] = { "project-authored:chat-discourse" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["paladin"] = {
                     ["_analyses"] = {
                         {
@@ -31949,6 +32940,130 @@ ns.Data = {
                 },
                 ["scarlet"] = {
                     ["monastery"] = {
+                        ["-"] = {
+                            ["armory"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.armory",
+                                        ["lemma"] = "Scarlet Monastery: Armory",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.armory",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                                    }
+                                }
+                            },
+                            ["cathedral"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.cathedral",
+                                        ["lemma"] = "Scarlet Monastery: Cathedral",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.cathedral",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                                    }
+                                }
+                            },
+                            ["graveyard"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.graveyard",
+                                        ["lemma"] = "Scarlet Monastery: Graveyard",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.graveyard",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                                    }
+                                }
+                            },
+                            ["library"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.library",
+                                        ["lemma"] = "Scarlet Monastery: Library",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.library",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                                    }
+                                }
+                            }
+                        },
+                        [":"] = {
+                            ["armory"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.armory",
+                                        ["lemma"] = "Scarlet Monastery: Armory",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.armory",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                                    }
+                                }
+                            },
+                            ["cathedral"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.cathedral",
+                                        ["lemma"] = "Scarlet Monastery: Cathedral",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.cathedral",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                                    }
+                                }
+                            },
+                            ["graveyard"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.graveyard",
+                                        ["lemma"] = "Scarlet Monastery: Graveyard",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.graveyard",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                                    }
+                                }
+                            },
+                            ["library"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.library",
+                                        ["lemma"] = "Scarlet Monastery: Library",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.library",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                                    }
+                                }
+                            }
+                        },
                         ["_analyses"] = {
                             {
                                 ["features"] = {
@@ -31959,6 +33074,66 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.scarlet_monastery",
                                 ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" }
+                            }
+                        },
+                        ["armory"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.armory",
+                                    ["lemma"] = "Scarlet Monastery: Armory",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.armory",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                                }
+                            }
+                        },
+                        ["cathedral"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.cathedral",
+                                    ["lemma"] = "Scarlet Monastery: Cathedral",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.cathedral",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                                }
+                            }
+                        },
+                        ["graveyard"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.graveyard",
+                                    ["lemma"] = "Scarlet Monastery: Graveyard",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.graveyard",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                                }
+                            }
+                        },
+                        ["library"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.library",
+                                    ["lemma"] = "Scarlet Monastery: Library",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.library",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                                }
                             }
                         }
                     }
@@ -32242,6 +33417,130 @@ ns.Data = {
                     }
                 },
                 ["sm"] = {
+                    ["-"] = {
+                        ["armory"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.armory",
+                                    ["lemma"] = "Scarlet Monastery: Armory",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.armory",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                                }
+                            }
+                        },
+                        ["cathedral"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.cathedral",
+                                    ["lemma"] = "Scarlet Monastery: Cathedral",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.cathedral",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                                }
+                            }
+                        },
+                        ["graveyard"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.graveyard",
+                                    ["lemma"] = "Scarlet Monastery: Graveyard",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.graveyard",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                                }
+                            }
+                        },
+                        ["library"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.library",
+                                    ["lemma"] = "Scarlet Monastery: Library",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.library",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                                }
+                            }
+                        }
+                    },
+                    [":"] = {
+                        ["armory"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.armory",
+                                    ["lemma"] = "Scarlet Monastery: Armory",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.armory",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                                }
+                            }
+                        },
+                        ["cathedral"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.cathedral",
+                                    ["lemma"] = "Scarlet Monastery: Cathedral",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.cathedral",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                                }
+                            }
+                        },
+                        ["graveyard"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.graveyard",
+                                    ["lemma"] = "Scarlet Monastery: Graveyard",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.graveyard",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                                }
+                            }
+                        },
+                        ["library"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.library",
+                                    ["lemma"] = "Scarlet Monastery: Library",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.library",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                                }
+                            }
+                        }
+                    },
                     ["_analyses"] = {
                         {
                             ["features"] = {
@@ -32252,6 +33551,143 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.scarlet_monastery",
                             ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" }
+                        }
+                    },
+                    ["arm"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.armory",
+                                ["lemma"] = "Scarlet Monastery: Armory",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.armory",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                            }
+                        }
+                    },
+                    ["armory"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.armory",
+                                ["lemma"] = "Scarlet Monastery: Armory",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.armory",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                            }
+                        }
+                    },
+                    ["cath"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.cathedral",
+                                ["lemma"] = "Scarlet Monastery: Cathedral",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.cathedral",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                            }
+                        }
+                    },
+                    ["cathedral"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.cathedral",
+                                ["lemma"] = "Scarlet Monastery: Cathedral",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.cathedral",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                            }
+                        }
+                    },
+                    ["grave"] = {
+                        ["yard"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["clearableInstance"] = true,
+                                        ["instanceParent"] = "place.scarlet_monastery"
+                                    },
+                                    ["id"] = "place.scarlet_monastery.graveyard",
+                                    ["lemma"] = "Scarlet Monastery: Graveyard",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.scarlet_monastery.graveyard",
+                                    ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                                }
+                            }
+                        }
+                    },
+                    ["graveyard"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.graveyard",
+                                ["lemma"] = "Scarlet Monastery: Graveyard",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.graveyard",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                            }
+                        }
+                    },
+                    ["gy"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.graveyard",
+                                ["lemma"] = "Scarlet Monastery: Graveyard",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.graveyard",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                            }
+                        }
+                    },
+                    ["lib"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.library",
+                                ["lemma"] = "Scarlet Monastery: Library",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.library",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                            }
+                        }
+                    },
+                    ["library"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["instanceParent"] = "place.scarlet_monastery"
+                                },
+                                ["id"] = "place.scarlet_monastery.library",
+                                ["lemma"] = "Scarlet Monastery: Library",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.scarlet_monastery.library",
+                                ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                            }
                         }
                     }
                 },
@@ -34301,7 +35737,9 @@ ns.Data = {
                             {
                                 ["features"] = {
                                     ["activityTopic"] = true,
+                                    ["animacy"] = "inanimate",
                                     ["englishUncountable"] = true,
+                                    ["gender"] = "neuter",
                                     ["pvpActivity"] = true,
                                     ["worldPvP"] = true
                                 },
@@ -34376,7 +35814,9 @@ ns.Data = {
                         {
                             ["features"] = {
                                 ["activityTopic"] = true,
+                                ["animacy"] = "inanimate",
                                 ["englishUncountable"] = true,
+                                ["gender"] = "neuter",
                                 ["pvpActivity"] = true,
                                 ["worldPvP"] = true
                             },
@@ -35297,7 +36737,9 @@ ns.Data = {
                                     {
                                         ["features"] = {
                                             ["activityTopic"] = true,
+                                            ["animacy"] = "inanimate",
                                             ["englishUncountable"] = true,
+                                            ["gender"] = "neuter",
                                             ["pvpActivity"] = true,
                                             ["worldPvP"] = true
                                         },
@@ -35310,8 +36752,10 @@ ns.Data = {
                                     {
                                         ["features"] = {
                                             ["activityTopic"] = true,
+                                            ["animacy"] = "inanimate",
                                             ["case"] = "instrumental",
                                             ["englishUncountable"] = true,
+                                            ["gender"] = "neuter",
                                             ["number"] = "singular",
                                             ["pvpActivity"] = true,
                                             ["worldPvP"] = true
@@ -35325,8 +36769,10 @@ ns.Data = {
                                     {
                                         ["features"] = {
                                             ["activityTopic"] = true,
+                                            ["animacy"] = "inanimate",
                                             ["case"] = "genitive",
                                             ["englishUncountable"] = true,
+                                            ["gender"] = "neuter",
                                             ["number"] = "singular",
                                             ["pvpActivity"] = true,
                                             ["worldPvP"] = true
@@ -35340,8 +36786,27 @@ ns.Data = {
                                     {
                                         ["features"] = {
                                             ["activityTopic"] = true,
+                                            ["animacy"] = "inanimate",
                                             ["case"] = "locative",
                                             ["englishUncountable"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular",
+                                            ["pvpActivity"] = true,
+                                            ["worldPvP"] = true
+                                        },
+                                        ["id"] = "activity.world_pvp",
+                                        ["lemma"] = "PvP у відкритому світі",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "activity.world_pvp",
+                                        ["sourceRefs"] = { "project-authored:chat-0.1" }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["activityTopic"] = true,
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "accusative",
+                                            ["englishUncountable"] = true,
+                                            ["gender"] = "neuter",
                                             ["number"] = "singular",
                                             ["pvpActivity"] = true,
                                             ["worldPvP"] = true
@@ -36469,6 +37934,128 @@ ns.Data = {
                 },
                 ["багряний"] = {
                     ["монастир"] = {
+                        ["-"] = {
+                            ["бібліотека"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.library",
+                                        ["lemma"] = "Багряний монастир - Бібліотека",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.library",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                                    }
+                                }
+                            },
+                            ["бібліотеку"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "accusative",
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.library",
+                                        ["lemma"] = "Багряний монастир - Бібліотека",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.library",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                                    }
+                                }
+                            },
+                            ["зброярню"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "accusative",
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.armory",
+                                        ["lemma"] = "Багряний монастир - Зброярня",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.armory",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                                    }
+                                }
+                            },
+                            ["зброярня"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.armory",
+                                        ["lemma"] = "Багряний монастир - Зброярня",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.armory",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                                    }
+                                }
+                            },
+                            ["кладовище"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.graveyard",
+                                        ["lemma"] = "Багряний монастир - Кладовище",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.graveyard",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "accusative",
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.graveyard",
+                                        ["lemma"] = "Багряний монастир - Кладовище",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.graveyard",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                                    }
+                                }
+                            },
+                            ["собор"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.cathedral",
+                                        ["lemma"] = "Багряний монастир - Собор",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.cathedral",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "accusative",
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.cathedral",
+                                        ["lemma"] = "Багряний монастир - Собор",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.cathedral",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                                    }
+                                }
+                            }
+                        },
                         ["_analyses"] = {
                             {
                                 ["features"] = {
@@ -36492,11 +38079,143 @@ ns.Data = {
                                 ["sense"] = "place.scarlet_monastery",
                                 ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" }
                             }
+                        },
+                        ["—"] = {
+                            ["бібліотека"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.library",
+                                        ["lemma"] = "Багряний монастир - Бібліотека",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.library",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                                    }
+                                }
+                            },
+                            ["зброярня"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.armory",
+                                        ["lemma"] = "Багряний монастир - Зброярня",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.armory",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                                    }
+                                }
+                            },
+                            ["кладовище"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.graveyard",
+                                        ["lemma"] = "Багряний монастир - Кладовище",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.graveyard",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                                    }
+                                }
+                            },
+                            ["собор"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.cathedral",
+                                        ["lemma"] = "Багряний монастир - Собор",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.cathedral",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
                 ["багряного"] = {
                     ["монастиря"] = {
+                        ["-"] = {
+                            ["бібліотеки"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "genitive",
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.library",
+                                        ["lemma"] = "Багряний монастир - Бібліотека",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.library",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                                    }
+                                }
+                            },
+                            ["зброярні"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "genitive",
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.armory",
+                                        ["lemma"] = "Багряний монастир - Зброярня",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.armory",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                                    }
+                                }
+                            },
+                            ["кладовища"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "genitive",
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.graveyard",
+                                        ["lemma"] = "Багряний монастир - Кладовище",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.graveyard",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                                    }
+                                }
+                            },
+                            ["собору"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "genitive",
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.cathedral",
+                                        ["lemma"] = "Багряний монастир - Собор",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.cathedral",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                                    }
+                                }
+                            }
+                        },
                         ["_analyses"] = {
                             {
                                 ["features"] = {
@@ -36582,6 +38301,76 @@ ns.Data = {
                 },
                 ["багряному"] = {
                     ["монастирі"] = {
+                        ["-"] = {
+                            ["бібліотеці"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "locative",
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.library",
+                                        ["lemma"] = "Багряний монастир - Бібліотека",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.library",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" }
+                                    }
+                                }
+                            },
+                            ["зброярні"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "locative",
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.armory",
+                                        ["lemma"] = "Багряний монастир - Зброярня",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.armory",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" }
+                                    }
+                                }
+                            },
+                            ["кладовищі"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "locative",
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.graveyard",
+                                        ["lemma"] = "Багряний монастир - Кладовище",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.graveyard",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" }
+                                    }
+                                }
+                            },
+                            ["соборі"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["case"] = "locative",
+                                            ["clearableInstance"] = true,
+                                            ["instanceParent"] = "place.scarlet_monastery",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.scarlet_monastery.cathedral",
+                                        ["lemma"] = "Багряний монастир - Собор",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.scarlet_monastery.cathedral",
+                                        ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" }
+                                    }
+                                }
+                            }
+                        },
                         ["_analyses"] = {
                             {
                                 ["features"] = {
@@ -39039,6 +40828,104 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "specialization.retribution",
                             ["sourceRefs"] = { "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["гавкотом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["mass"] = true,
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "activity.barking",
+                            ["lemma"] = "гавкіт",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.barking",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["гавкоту"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["mass"] = true,
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "activity.barking",
+                            ["lemma"] = "гавкіт",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.barking",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["mass"] = true,
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "activity.barking",
+                            ["lemma"] = "гавкіт",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.barking",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["гавкоті"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["mass"] = true,
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "activity.barking",
+                            ["lemma"] = "гавкіт",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.barking",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["гавкіт"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["mass"] = true
+                            },
+                            ["id"] = "activity.barking",
+                            ["lemma"] = "гавкіт",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.barking",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["mass"] = true,
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "activity.barking",
+                            ["lemma"] = "гавкіт",
+                            ["pos"] = "noun",
+                            ["sense"] = "activity.barking",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
                         }
                     }
                 },
@@ -43765,6 +45652,226 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "game.quest",
                             ["sourceRefs"] = { "ua-forever:game.quest" }
+                        }
+                    }
+                },
+                ["загальний"] = {
+                    ["чат"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "загальний чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "загальний чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["загальним"] = {
+                    ["чатам"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "загальний чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            }
+                        }
+                    },
+                    ["чатом"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "загальний чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["загальними"] = {
+                    ["чатами"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "загальний чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["загальних"] = {
+                    ["чатах"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "загальний чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            }
+                        }
+                    },
+                    ["чатів"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "загальний чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["загального"] = {
+                    ["чату"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "загальний чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["загальному"] = {
+                    ["чатові"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "dative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "загальний чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            }
+                        }
+                    },
+                    ["чаті"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "singular",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "загальний чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            }
+                        }
+                    }
+                },
+                ["загальні"] = {
+                    ["чати"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "загальний чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["number"] = "plural",
+                                    ["semanticClass"] = "chatChannel"
+                                },
+                                ["id"] = "game.general_chat",
+                                ["lemma"] = "загальний чат",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.general_chat",
+                                ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                            }
                         }
                     }
                 },
@@ -56735,6 +58842,24 @@ ns.Data = {
                         }
                     }
                 },
+                ["поділено"] = {
+                    ["за"] = {
+                        ["шарами"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["neuralSense"] = "layeredChat"
+                                    },
+                                    ["id"] = "discourse.layered-chat",
+                                    ["lemma"] = "поділено за шарами",
+                                    ["pos"] = "adv",
+                                    ["sense"] = "discourse.layered-chat",
+                                    ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["подію"] = {
                     ["pvp"] = {
                         ["_analyses"] = {
@@ -56851,6 +58976,36 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "activity.pvp_event",
                                 ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["поза"] = {
+                    ["контекстом"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["neuralSense"] = "discourseMode"
+                                },
+                                ["id"] = "discourse.out-of-context",
+                                ["lemma"] = "поза контекстом",
+                                ["pos"] = "adv",
+                                ["sense"] = "discourse.out-of-context",
+                                ["sourceRefs"] = { "project-authored:chat-discourse" }
+                            }
+                        }
+                    },
+                    ["роллю"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["neuralSense"] = "roleplayMode"
+                                },
+                                ["id"] = "discourse.out-of-character",
+                                ["lemma"] = "поза роллю",
+                                ["pos"] = "adv",
+                                ["sense"] = "discourse.out-of-character",
+                                ["sourceRefs"] = { "project-authored:chat-discourse" }
                             }
                         }
                     }
@@ -61184,6 +63339,213 @@ ns.Data = {
                         }
                     }
                 },
+                ["собак"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["собака"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["собакам"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["собаками"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["собаках"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["собаки"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "nominative",
+                                ["gender"] = "masculine",
+                                ["number"] = "plural"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["собако"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "vocative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["собакою"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["собаку"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
+                ["собаці"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "locative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular"
+                            },
+                            ["id"] = "creature.dog",
+                            ["lemma"] = "собака",
+                            ["pos"] = "noun",
+                            ["sense"] = "creature.dog",
+                            ["sourceRefs"] = { "project-authored:general-grammar-1" }
+                        }
+                    }
+                },
                 ["сокир"] = {
                     ["_analyses"] = {
                         {
@@ -63737,6 +66099,22 @@ ns.Data = {
                                     ["sense"] = "place.warsong_gulch",
                                     ["sourceRefs"] = { "ua-forever:place.warsong_gulch", "wow-community:classic" }
                                 }
+                            }
+                        }
+                    }
+                },
+                ["у"] = {
+                    ["ролі"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["neuralSense"] = "roleplayMode"
+                                },
+                                ["id"] = "discourse.in-character",
+                                ["lemma"] = "у ролі",
+                                ["pos"] = "adv",
+                                ["sense"] = "discourse.in-character",
+                                ["sourceRefs"] = { "project-authored:chat-discourse" }
                             }
                         }
                     }
@@ -67315,6 +69693,19 @@ ns.Data = {
                     ["nominativePlural"] = "спроби"
                 }
             },
+            ["activity.barking"] = {
+                ["en"] = {
+                    ["canonical"] = "barking"
+                },
+                ["uk"] = {
+                    ["accusative"] = "гавкіт",
+                    ["canonical"] = "гавкіт",
+                    ["dativeSingular"] = "гавкоту",
+                    ["genitiveSingular"] = "гавкоту",
+                    ["instrumentalSingular"] = "гавкотом",
+                    ["locativeSingular"] = "гавкоті"
+                }
+            },
             ["activity.battleground"] = {
                 ["en"] = {
                     ["canonical"] = "Battleground"
@@ -67509,6 +69900,7 @@ ns.Data = {
                     ["canonical"] = "World PvP"
                 },
                 ["uk"] = {
+                    ["accusative"] = "PvP у відкритому світі",
                     ["canonical"] = "PvP у відкритому світі",
                     ["genitiveSingular"] = "PvP у відкритому світі",
                     ["instrumental"] = "PvP у відкритому світі",
@@ -67801,6 +70193,59 @@ ns.Data = {
                     ["locative"] = "Циклоніані",
                     ["nominative"] = "Циклоніан",
                     ["vocative"] = "Циклоніане"
+                }
+            },
+            ["creature.dog"] = {
+                ["en"] = {
+                    ["canonical"] = "dog",
+                    ["plural"] = "dogs"
+                },
+                ["uk"] = {
+                    ["accusative"] = "собаку",
+                    ["accusativePlural"] = "собак",
+                    ["canonical"] = "собака",
+                    ["dativePlural"] = "собакам",
+                    ["dativeSingular"] = "собаці",
+                    ["genitivePlural"] = "собак",
+                    ["genitiveSingular"] = "собаки",
+                    ["instrumentalPlural"] = "собаками",
+                    ["instrumentalSingular"] = "собакою",
+                    ["locativePlural"] = "собаках",
+                    ["locativeSingular"] = "собаці",
+                    ["nominativePlural"] = "собаки",
+                    ["vocativeSingular"] = "собако"
+                }
+            },
+            ["discourse.in-character"] = {
+                ["en"] = {
+                    ["canonical"] = "in character"
+                },
+                ["uk"] = {
+                    ["canonical"] = "у ролі"
+                }
+            },
+            ["discourse.layered-chat"] = {
+                ["en"] = {
+                    ["canonical"] = "layered"
+                },
+                ["uk"] = {
+                    ["canonical"] = "поділено за шарами"
+                }
+            },
+            ["discourse.out-of-character"] = {
+                ["en"] = {
+                    ["canonical"] = "out of character"
+                },
+                ["uk"] = {
+                    ["canonical"] = "поза роллю"
+                }
+            },
+            ["discourse.out-of-context"] = {
+                ["en"] = {
+                    ["canonical"] = "out of context"
+                },
+                ["uk"] = {
+                    ["canonical"] = "поза контекстом"
                 }
             },
             ["enhancement.unspecified"] = {
@@ -68142,6 +70587,26 @@ ns.Data = {
                     ["accusative"] = "їжі",
                     ["canonical"] = "Їжа",
                     ["genitiveSingular"] = "їжі"
+                }
+            },
+            ["game.general_chat"] = {
+                ["en"] = {
+                    ["canonical"] = "general chat",
+                    ["plural"] = "general chats"
+                },
+                ["uk"] = {
+                    ["accusative"] = "загальний чат",
+                    ["accusativePlural"] = "загальні чати",
+                    ["canonical"] = "загальний чат",
+                    ["dativePlural"] = "загальним чатам",
+                    ["dativeSingular"] = "загальному чатові",
+                    ["genitivePlural"] = "загальних чатів",
+                    ["genitiveSingular"] = "загального чату",
+                    ["instrumental"] = "загальним чатом",
+                    ["instrumentalPlural"] = "загальними чатами",
+                    ["locative"] = "загальному чаті",
+                    ["locativePlural"] = "загальних чатах",
+                    ["nominativePlural"] = "загальні чати"
                 }
             },
             ["game.gold"] = {
@@ -69616,6 +72081,50 @@ ns.Data = {
                     ["canonical"] = "Багряний монастир",
                     ["genitiveSingular"] = "Багряного монастиря",
                     ["locative"] = "Багряному монастирі"
+                }
+            },
+            ["place.scarlet_monastery.armory"] = {
+                ["en"] = {
+                    ["canonical"] = "Scarlet Monastery: Armory"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Багряний монастир - Зброярню",
+                    ["canonical"] = "Багряний монастир - Зброярня",
+                    ["genitiveSingular"] = "Багряного монастиря - Зброярні",
+                    ["locative"] = "Багряному монастирі - Зброярні"
+                }
+            },
+            ["place.scarlet_monastery.cathedral"] = {
+                ["en"] = {
+                    ["canonical"] = "Scarlet Monastery: Cathedral"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Багряний монастир - Собор",
+                    ["canonical"] = "Багряний монастир - Собор",
+                    ["genitiveSingular"] = "Багряного монастиря - Собору",
+                    ["locative"] = "Багряному монастирі - Соборі"
+                }
+            },
+            ["place.scarlet_monastery.graveyard"] = {
+                ["en"] = {
+                    ["canonical"] = "Scarlet Monastery: Graveyard"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Багряний монастир - Кладовище",
+                    ["canonical"] = "Багряний монастир - Кладовище",
+                    ["genitiveSingular"] = "Багряного монастиря - Кладовища",
+                    ["locative"] = "Багряному монастирі - Кладовищі"
+                }
+            },
+            ["place.scarlet_monastery.library"] = {
+                ["en"] = {
+                    ["canonical"] = "Scarlet Monastery: Library"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Багряний монастир - Бібліотеку",
+                    ["canonical"] = "Багряний монастир - Бібліотека",
+                    ["genitiveSingular"] = "Багряного монастиря - Бібліотеки",
+                    ["locative"] = "Багряному монастирі - Бібліотеці"
                 }
             },
             ["place.scholomance"] = {
@@ -72692,7 +75201,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 503,
+        ["concepts"] = 514,
         ["derivedNouns"] = 28,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 87,
@@ -72711,7 +75220,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "ace6d3f533aa5f42b338d60ef5e3c05e557056ea8e7ee9e220e703146965bccc"
+        ["version"] = "28a539aa6f224ff734816841afcddf26c5c7ee76682f824ae4587c3d5566a2da"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -81349,6 +83858,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "спроба"
         },
+        ["activity.barking"] = {
+            ["category"] = "activities",
+            ["en"] = "barking",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["mass"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "гавкіт",
+                ["dativeSingular"] = "гавкоту",
+                ["genitiveSingular"] = "гавкоту",
+                ["instrumentalSingular"] = "гавкотом",
+                ["locativeSingular"] = "гавкоті"
+            },
+            ["id"] = "activity.barking",
+            ["provenance"] = {
+                ["context"] = "animal sound as an activity",
+                ["key"] = "barking",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:general-grammar-1" },
+            ["status"] = "approved",
+            ["uk"] = "гавкіт"
+        },
         ["activity.battleground"] = {
             ["aliases"] = {
                 ["en"] = { "bg" },
@@ -81770,11 +84304,14 @@ ns.Data = {
             ["en"] = "World PvP",
             ["features"] = {
                 ["activityTopic"] = true,
+                ["animacy"] = "inanimate",
                 ["englishUncountable"] = true,
+                ["gender"] = "neuter",
                 ["pvpActivity"] = true,
                 ["worldPvP"] = true
             },
             ["forms"] = {
+                ["accusative"] = "PvP у відкритому світі",
                 ["genitiveSingular"] = "PvP у відкритому світі",
                 ["instrumental"] = "PvP у відкритому світі",
                 ["locative"] = "PvP у відкритому світі"
@@ -82511,6 +85048,110 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:creature.cyclonian" },
             ["status"] = "approved",
             ["uk"] = "Циклоніан"
+        },
+        ["creature.dog"] = {
+            ["category"] = "creatures",
+            ["en"] = "dog",
+            ["englishPlural"] = "dogs",
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine"
+            },
+            ["forms"] = {
+                ["accusative"] = "собаку",
+                ["accusativePlural"] = "собак",
+                ["dativePlural"] = "собакам",
+                ["dativeSingular"] = "собаці",
+                ["genitivePlural"] = "собак",
+                ["genitiveSingular"] = "собаки",
+                ["instrumentalPlural"] = "собаками",
+                ["instrumentalSingular"] = "собакою",
+                ["locativePlural"] = "собаках",
+                ["locativeSingular"] = "собаці",
+                ["nominativePlural"] = "собаки",
+                ["vocativeSingular"] = "собако"
+            },
+            ["id"] = "creature.dog",
+            ["provenance"] = {
+                ["context"] = "common animal",
+                ["key"] = "dog",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:general-grammar-1" },
+            ["status"] = "approved",
+            ["uk"] = "собака"
+        },
+        ["discourse.in-character"] = {
+            ["category"] = "slang",
+            ["contextOnly"] = true,
+            ["en"] = "in character",
+            ["features"] = {
+                ["neuralSense"] = "roleplayMode"
+            },
+            ["id"] = "discourse.in-character",
+            ["pos"] = "adv",
+            ["provenance"] = {
+                ["context"] = "speech or actions as a roleplayed character",
+                ["key"] = "in character",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-discourse" },
+            ["status"] = "approved",
+            ["uk"] = "у ролі"
+        },
+        ["discourse.layered-chat"] = {
+            ["category"] = "slang",
+            ["contextOnly"] = true,
+            ["en"] = "layered",
+            ["features"] = {
+                ["neuralSense"] = "layeredChat"
+            },
+            ["id"] = "discourse.layered-chat",
+            ["pos"] = "adv",
+            ["provenance"] = {
+                ["context"] = "chat channel segmented by world layers",
+                ["key"] = "layered",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:general-grammar-1" },
+            ["status"] = "approved",
+            ["uk"] = "поділено за шарами"
+        },
+        ["discourse.out-of-character"] = {
+            ["category"] = "slang",
+            ["contextOnly"] = true,
+            ["en"] = "out of character",
+            ["features"] = {
+                ["neuralSense"] = "roleplayMode"
+            },
+            ["id"] = "discourse.out-of-character",
+            ["pos"] = "adv",
+            ["provenance"] = {
+                ["context"] = "player speech outside the role",
+                ["key"] = "out of character",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-discourse" },
+            ["status"] = "approved",
+            ["uk"] = "поза роллю"
+        },
+        ["discourse.out-of-context"] = {
+            ["category"] = "slang",
+            ["contextOnly"] = true,
+            ["en"] = "out of context",
+            ["features"] = {
+                ["neuralSense"] = "discourseMode"
+            },
+            ["id"] = "discourse.out-of-context",
+            ["pos"] = "adv",
+            ["provenance"] = {
+                ["context"] = "speech separated from its original context",
+                ["key"] = "out of context",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:chat-discourse" },
+            ["status"] = "approved",
+            ["uk"] = "поза контекстом"
         },
         ["enhancement.unspecified"] = {
             ["aliases"] = {
@@ -83395,6 +86036,38 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:game.food" },
             ["status"] = "approved",
             ["uk"] = "Їжа"
+        },
+        ["game.general_chat"] = {
+            ["category"] = "game",
+            ["en"] = "general chat",
+            ["englishPlural"] = "general chats",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["semanticClass"] = "chatChannel"
+            },
+            ["forms"] = {
+                ["accusative"] = "загальний чат",
+                ["accusativePlural"] = "загальні чати",
+                ["dativePlural"] = "загальним чатам",
+                ["dativeSingular"] = "загальному чатові",
+                ["genitivePlural"] = "загальних чатів",
+                ["genitiveSingular"] = "загального чату",
+                ["instrumental"] = "загальним чатом",
+                ["instrumentalPlural"] = "загальними чатами",
+                ["locative"] = "загальному чаті",
+                ["locativePlural"] = "загальних чатах",
+                ["nominativePlural"] = "загальні чати"
+            },
+            ["id"] = "game.general_chat",
+            ["provenance"] = {
+                ["context"] = "WoW chat channel",
+                ["key"] = "general chat",
+                ["source"] = "project-authored"
+            },
+            ["sourceRefs"] = { "project-authored:general-grammar-1" },
+            ["status"] = "approved",
+            ["uk"] = "загальний чат"
         },
         ["game.gold"] = {
             ["aliases"] = {
@@ -87189,6 +89862,176 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.scarlet_monastery" },
             ["status"] = "approved",
             ["uk"] = "Багряний монастир"
+        },
+        ["place.scarlet_monastery.armory"] = {
+            ["aliases"] = {
+                ["en"] = {
+                    "Scarlet Monastery - Armory",
+                    "Scarlet Monastery Armory",
+                    "SM Armory",
+                    "Armory SM",
+                    "SM: Armory",
+                    "SM - Armory",
+                    "SM arm",
+                    "arm SM"
+                },
+                ["uk"] = { "Багряний монастир — Зброярня" }
+            },
+            ["category"] = "places",
+            ["en"] = "Scarlet Monastery: Armory",
+            ["features"] = {
+                ["clearableInstance"] = true,
+                ["instanceParent"] = "place.scarlet_monastery"
+            },
+            ["forms"] = {
+                ["accusative"] = "Багряний монастир - Зброярню",
+                ["genitiveSingular"] = "Багряного монастиря - Зброярні",
+                ["locative"] = "Багряному монастирі - Зброярні"
+            },
+            ["id"] = "place.scarlet_monastery.armory",
+            ["instanceWingAliases"] = {
+                ["en"] = { "Armory", "arm" },
+                ["uk"] = { "Зброярня", "Зброярню", "Зброярні" }
+            },
+            ["provenance"] = {
+                ["context"] = "named wing of Scarlet Monastery",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Scarlet Monastery: Armory",
+                ["line"] = 2305,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.armory" },
+            ["status"] = "approved",
+            ["uk"] = "Багряний монастир - Зброярня"
+        },
+        ["place.scarlet_monastery.cathedral"] = {
+            ["aliases"] = {
+                ["en"] = {
+                    "Scarlet Monastery - Cathedral",
+                    "Scarlet Monastery Cathedral",
+                    "SM Cathedral",
+                    "Cathedral SM",
+                    "SM: Cathedral",
+                    "SM - Cathedral",
+                    "SM cath",
+                    "cath SM"
+                },
+                ["uk"] = { "Багряний монастир — Собор" }
+            },
+            ["category"] = "places",
+            ["en"] = "Scarlet Monastery: Cathedral",
+            ["features"] = {
+                ["clearableInstance"] = true,
+                ["instanceParent"] = "place.scarlet_monastery"
+            },
+            ["forms"] = {
+                ["accusative"] = "Багряний монастир - Собор",
+                ["genitiveSingular"] = "Багряного монастиря - Собору",
+                ["locative"] = "Багряному монастирі - Соборі"
+            },
+            ["id"] = "place.scarlet_monastery.cathedral",
+            ["instanceWingAliases"] = {
+                ["en"] = { "Cathedral", "cath" },
+                ["uk"] = { "Собор", "Собору", "Соборі" }
+            },
+            ["provenance"] = {
+                ["context"] = "named wing of Scarlet Monastery",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Scarlet Monastery: Cathedral",
+                ["line"] = 2306,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.cathedral" },
+            ["status"] = "approved",
+            ["uk"] = "Багряний монастир - Собор"
+        },
+        ["place.scarlet_monastery.graveyard"] = {
+            ["aliases"] = {
+                ["en"] = {
+                    "Scarlet Monastery - Graveyard",
+                    "Scarlet Monastery Graveyard",
+                    "SM Graveyard",
+                    "Graveyard SM",
+                    "SM: Graveyard",
+                    "SM - Graveyard",
+                    "SM gy",
+                    "gy SM",
+                    "SM Grave Yard",
+                    "Grave Yard SM"
+                },
+                ["uk"] = { "Багряний монастир — Кладовище" }
+            },
+            ["category"] = "places",
+            ["en"] = "Scarlet Monastery: Graveyard",
+            ["features"] = {
+                ["clearableInstance"] = true,
+                ["instanceParent"] = "place.scarlet_monastery"
+            },
+            ["forms"] = {
+                ["accusative"] = "Багряний монастир - Кладовище",
+                ["genitiveSingular"] = "Багряного монастиря - Кладовища",
+                ["locative"] = "Багряному монастирі - Кладовищі"
+            },
+            ["id"] = "place.scarlet_monastery.graveyard",
+            ["instanceWingAliases"] = {
+                ["en"] = { "Graveyard", "gy", "Grave Yard" },
+                ["uk"] = { "Кладовище", "Кладовища", "Кладовищі" }
+            },
+            ["provenance"] = {
+                ["context"] = "named wing of Scarlet Monastery",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Scarlet Monastery: Graveyard",
+                ["line"] = 2307,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.graveyard" },
+            ["status"] = "approved",
+            ["uk"] = "Багряний монастир - Кладовище"
+        },
+        ["place.scarlet_monastery.library"] = {
+            ["aliases"] = {
+                ["en"] = {
+                    "Scarlet Monastery - Library",
+                    "Scarlet Monastery Library",
+                    "SM Library",
+                    "Library SM",
+                    "SM: Library",
+                    "SM - Library",
+                    "SM lib",
+                    "lib SM"
+                },
+                ["uk"] = { "Багряний монастир — Бібліотека" }
+            },
+            ["category"] = "places",
+            ["en"] = "Scarlet Monastery: Library",
+            ["features"] = {
+                ["clearableInstance"] = true,
+                ["instanceParent"] = "place.scarlet_monastery"
+            },
+            ["forms"] = {
+                ["accusative"] = "Багряний монастир - Бібліотеку",
+                ["genitiveSingular"] = "Багряного монастиря - Бібліотеки",
+                ["locative"] = "Багряному монастирі - Бібліотеці"
+            },
+            ["id"] = "place.scarlet_monastery.library",
+            ["instanceWingAliases"] = {
+                ["en"] = { "Library", "lib" },
+                ["uk"] = { "Бібліотека", "Бібліотеку", "Бібліотеки", "Бібліотеці" }
+            },
+            ["provenance"] = {
+                ["context"] = "named wing of Scarlet Monastery",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Scarlet Monastery: Library",
+                ["line"] = 2308,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:place.scarlet_monastery.library" },
+            ["status"] = "approved",
+            ["uk"] = "Багряний монастир - Бібліотека"
         },
         ["place.scholomance"] = {
             ["aliases"] = {

@@ -128,7 +128,7 @@ local priceSuffix = {['for']=true, ['if']=true, ['or']=true, ['and']=true, ['the
     from=true, later=true, instead=true, today=true, yesterday=true, only=true, near=true, ['in']=true}
 
 function M.prices(text, opener)
-    if not text:match("%d%s*[gsc]%f[^%w_]") then return nil end
+    if not text:match("%d%s*[GSCgsc]%f[^%w_]") then return nil end
     local e = ns.Engine
     local tokens = e.Tokenizer.scan(text)
     if not tokens then return nil end
@@ -145,7 +145,7 @@ function M.prices(text, opener)
             local value, ending = e.Grammar.moneyAt(document,i,#tokens)
             local following = ending and tokens[ending]
             local terminal = not following or following.protected or following.key:match("^%p$") or priceSuffix[following.key]
-            if value and terminal and value.sourceRaw:match("^%d+%s*[gsc]$") and #value.amount <= 8 then
+            if value and terminal and value.sourceRaw:match("^%d+%s*[GSCgsc]$") and #value.amount <= 8 then
                 ranges = ranges or {}
                 ranges[token.first] = {first=token.first,last=tokens[ending-1].last+1,value=value.amount,
                     price=e.Grammar.moneyText(value),unit=value.unit,sourceRaw=value.sourceRaw}
@@ -208,12 +208,12 @@ end
 return M
 end)()
 
-local finderCopula = {is=true, are=true, was=true, were=true, be=true}
+local beForms = {is=true, are=true, was=true, were=true, be=true}
 local finderAction = {open=true, use=true, check=true, enable=true, disable=true}
 local function finderReference(tokens, first)
     local before, after = tokens[first - 1], tokens[first + 1]
-    return before and (finderCopula[before.key] or finderAction[before.key])
-        or after and finderCopula[after.key]
+    return before and (beForms[before.key] or finderAction[before.key])
+        or after and beForms[after.key]
 end
 
 local Glossary = (function()
@@ -239,6 +239,11 @@ local groupQuestion = keys("any anyone anybody who")
 local ambiguousRole = keys("heal heals tank dps damage")
 local itemVerb = keys("make craft buy sell trade need use equip wear bring give offer gave disenchant enchant have got")
 local professionDeterminers = keys("a an the any another our your my their his her")
+local roleplayCue = keys("rp roleplay roleplaying ooc emote channel chat whisper speak talk")
+local chatHeads = keys("chat chats")
+local chatScopes = keys("general trade guild zone chat party raid")
+local roleplayTail = keys("here now today tonight again too please only")
+local roleplayOuterPreposition = keys("з із зі в у")
 
 G.sourceMarkers, G.targetMarkers = {}, {}
 for i = 1,3 do G.sourceMarkers[i] = char(7+i) end
@@ -247,6 +252,19 @@ for i = 1,3 do G.sourceMarkers[9+i] = char(47+i) end
 for i = 1,3 do
     G.targetMarkers[i] = {}
     for f = 1,#names do G.targetMarkers[i][f] = char(17+(i-1)*#names+f) end
+end
+
+local function roleplayMode(tokens, first, last)
+    local following = tokens[last + 1]
+    if following and not (roleplayTail[following.key] or following.key:match("^%p$")) then return false end
+    local preceding = tokens[first - 1]
+    if preceding and (preceding.key == "from" or preceding.key == "with") then return false end
+    for i = first - 1, math.max(1, first - 10), -1 do
+        local token = tokens[i]
+        if token.protected or token.key:match("^[.!?]$") then break end
+        if roleplayCue[token.key] then return true end
+    end
+    return false
 end
 
 local function senseAllowed(n, text, tokens, first, span, groupChat, opener)
@@ -288,7 +306,20 @@ local function senseAllowed(n, text, tokens, first, span, groupChat, opener)
             return exact or venueCue[prev] or prev == "the" and venueCue[before]
                 or prev == "to" and before == "next" or prev == "only" and raw:match("^[A-Z][A-Z]+$") ~= nil
         end
-        return false
+        local features = entry.features
+        if not ((exact or plural) and features and not (features.verbatim or features.apposition)) then return false end
+        if span.last == first then
+            if features.englishDefinite and (prev == "a" or prev == "an") then return false end
+            local properSpelling = first > 1 and raw == entry.en or prev == "the"
+                or first == 1 and features.englishDefinite
+            if not (features.proper and properSpelling and raw:match("^[A-Z]")) then return false end
+        end
+        -- Outside one sentence, the model can lose the surrounding context when a new term is masked.
+        local sentenceBoundary = ns.Engine.Parser.sentenceBoundary
+        for i = 1, #tokens - 1 do
+            if sentenceBoundary(text, tokens, i) then return false end
+        end
+        return true
     elseif category == "characters" then
         return exact and entry.features and entry.features.proper and not entry.features.verbatim
             and (span.last > first or raw == entry.en)
@@ -315,6 +346,14 @@ local function senseAllowed(n, text, tokens, first, span, groupChat, opener)
         if surface == "if" then return raw == "IF" and placeCue[prev] end
         return groupChat or (placeCue[prev] and #surface >= 4 and surface ~= "stocks")
     elseif category == "slang" then
+        if neuralSense == "layeredChat" then
+            local head = tokens[first - 2]
+            local modifier = tokens[first - 3]
+            return exact and beForms[prev] and head and not head.protected and (chatHeads[head.key]
+                or (head.key == "channel" or head.key == "channels") and modifier and chatScopes[modifier.key])
+        end
+        if neuralSense == "roleplayMode" then return exact and roleplayMode(tokens, first, span.last) end
+        if neuralSense == "discourseMode" then return exact end
         return exact and raw == entry.en and raw:match("^[A-Z][A-Z][A-Z]+$") ~= nil
     elseif category == "abilities" then
         return exact and (surface:find(" ",1,true) or (raw == entry.en and
@@ -373,7 +412,6 @@ local function edits(text, changes)
 end
 
 
-local classTypoIndices = setmetatable({},{__mode="k"})
 local recruitingPeople = keys("lf lfg lfm seeking need")
 local roleFollowing = keys("to for with in at from and please pst who that")
 local actionCues = keys("to can could might should must would will please"
@@ -392,8 +430,9 @@ local lexemes = {
     ["disenchant"]={id="action.disenchant",category="actions",uk="розпилити"},
     ["dispel"]={id="action.dispel",category="actions",uk="розвіяти"},
     ["resurrect"]={id="action.resurrect",category="actions",uk="воскресити"},
-    ["rez"]={id="action.resurrect",category="actions",uk="воскресити"},
-    ["res"]={id="action.resurrect",category="actions",uk="воскресити"},
+    ["inv"]={id="action.invite",category="actions",uk="запросити",canonicalSource="invite"},
+    ["rez"]={id="action.resurrect",category="actions",uk="воскресити",canonicalSource="resurrect"},
+    ["res"]={id="action.resurrect",category="actions",uk="воскресити",canonicalSource="resurrect"},
     ["interrupt"]={id="action.interrupt",category="actions",uk="перервати"},
     ["taunt"]={id="action.taunt",category="actions",uk="спровокувати"},
     ["summon"]={id="action.summon",category="actions",uk="викликати"},
@@ -444,7 +483,7 @@ local function curatedLexeme(tokens, first, opener)
                     (nextWord=="to" or nextWord=="who" or nextWord=="with"))
             end
             if allowed then
-                result={id=entry.id,term=entry,last=last,manual=true}
+                result={id=entry.id,term=entry,last=last,manual=true,correctedSource=entry.canonicalSource}
             end
         end
     end
@@ -458,28 +497,7 @@ local function classTypo(ns,tokens,first,opener)
         (following and not roleFollowing[following] and not following:match("^[!?.]$")) then
         return nil
     end
-    local registry = ns.Data.terms
-    local index = classTypoIndices[registry]
-    if not index then
-        index = {}
-        for _, entry in pairs(registry) do
-            local canonical = entry.category == "classes" and entry.status == "approved"
-                and ns.Engine.Normalize.key(entry.en)
-            if canonical and canonical:match("^[a-z][a-z][a-z][a-z]+$") then
-                for i = 1,#canonical-1 do
-                    if canonical:sub(i,i) ~= canonical:sub(i+1,i+1) then
-                        local spelling = canonical:sub(1,i-1)..canonical:sub(i+1,i+1)
-                            ..canonical:sub(i,i)..canonical:sub(i+2)
-                        local current = index[spelling]
-                        if current ~= nil and current ~= entry then index[spelling] = false
-                        else index[spelling] = entry end
-                    end
-                end
-            end
-        end
-        classTypoIndices[registry] = index
-    end
-    local corrected = index[tokens[first].key]
+    local corrected = ns.Engine.Morphology.classSpelling(tokens[first].key)
     if corrected then return {term=corrected,id=corrected.id,last=first,correctedSource=corrected.en} end
 end
 
@@ -526,9 +544,10 @@ function G.mask(ns,text,opener,itemSlots)
                 corrections[#corrections+1] = {first=start,last=finish,value=best.correctedSource}
             end
             local f = forms(e,surface,best)
-            local category = categories[best.term.category]
-            if category == 9 then
-                local term = best.term
+            local term = best.term
+            local category = categories[term.category]
+            if category == 9 or (term.category == "game" and term.englishPlural
+                and not (term.features and term.features.neuralSense)) then
                 local lexicalPlural = term.features and term.features.number == "plural"
                 local inflectedPlural = term.englishPlural and e.Normalize.key(surface) == e.Normalize.key(term.englishPlural)
                     and e.Normalize.key(surface) ~= e.Normalize.key(term.en)
@@ -546,8 +565,13 @@ function G.mask(ns,text,opener,itemSlots)
             local slot = #slots + 1
             if next(f) then
                 if slot > #G.targetMarkers then return text,nil,corrections and edits(text,corrections) end
+                local sense = term.features and term.features.neuralSense
                 slots[slot] = {id=best.id, forms=f, raw=surface,
-                    preferConstrained=category == 9 or best.term.category == "game"}
+                    roleplayMode=sense == "roleplayMode",
+                    keepInFallback=sense == "venue",
+                    preferConstrained=category == 9 or best.term.category == "game"
+                        or sense == "roleplayMode" or sense == "discourseMode" or sense == "layeredChat"
+                        or best.manual and best.correctedSource ~= nil}
                 changes[slot] = {first=start,last=finish,value=G.sourceMarkers[slot]..G.sourceMarkers[3+category]}
             end
             first = best.last+1
@@ -602,17 +626,24 @@ function G.target(ns,text,mapping)
 end
 
 function G.restore(ns,text,mapping,opener)
-    local used, invalid = {}, false
-    text = text:gsub("\238\132[\146-\175]",function(key)
+    local used, changes = {}, {}
+    for first, key, after in text:gmatch("()(\238\132[\146-\175])()") do
         local idx = key:byte(3)-146
         local slot, form = math.floor(idx/#names)+1,idx%#names+1
-        local value = mapping[slot] and mapping[slot].forms[form]
-        if not value or used[slot] then invalid = true; return key end
+        local entry = mapping[slot]
+        local value = entry and entry.forms[form]
+        if not value or used[slot] then return nil end
         used[slot]=true
-        return value
-    end)
-    if invalid or text:find("\238\132[\136-\178]") then return nil end
-    for i=1,#mapping do if not used[i] then return nil end end
+        if entry.roleplayMode then
+            -- This invariable adverbial already includes its Ukrainian preposition.
+            local start, word = text:sub(1, first - 1):match("()([^%s]+)%s+$")
+            if word and roleplayOuterPreposition[ns.Engine.Normalize.word(word)] then first = start end
+        end
+        changes[#changes+1] = {first=first,last=after-1,value=value}
+    end
+    if #changes ~= #mapping then return nil end
+    text = edits(text, changes)
+    if text:find("\238\132[\136-\178]") then return nil end
     return opener and text or ns.Engine.Normalize.upperStart(text)
 end
 
@@ -628,15 +659,24 @@ local digit = {}
 for i = 1, #alphabet do digit[alphabet:byte(i)] = i - 1 end
 local floor, exp = math.floor, math.exp
 
-local function decodeBytes(packed)
-    local row = {}
+-- Matrix weights are signed; linked vocabulary IDs use unsigned bytes.
+local signedBytes, unsignedBytes = {}, {}
+for value = 0, 255 do
+    unsignedBytes[value] = value
+    signedBytes[value] = value < 128 and value or value - 256
+end
+
+local function decodeBytes(packed, bytes)
+    bytes = bytes or unsignedBytes
+    local row, index = {}, 1
     for start = 1, #packed, 5 do
         local a, b, c, d, e = packed:byte(start, start + 4)
         local value = (((digit[a] * 85 + digit[b]) * 85 + digit[c]) * 85 + digit[d]) * 85 + digit[e]
-        row[#row + 1] = floor(value / 16777216)
-        row[#row + 1] = floor(value / 65536) % 256
-        row[#row + 1] = floor(value / 256) % 256
-        row[#row + 1] = value % 256
+        row[index] = bytes[floor(value / 16777216)]
+        row[index + 1] = bytes[floor(value / 65536) % 256]
+        row[index + 2] = bytes[floor(value / 256) % 256]
+        row[index + 3] = bytes[value % 256]
+        index = index + 4
     end
     return row
 end
@@ -644,10 +684,7 @@ end
 local function rowAt(matrix, index)
     local row = matrix.rows[index]
     if not row then
-        row = decodeBytes(matrix.packed[index])
-        for i, value in ipairs(row) do
-            if value >= 128 then row[i] = value - 256 end
-        end
+        row = decodeBytes(matrix.packed[index], signedBytes)
         matrix.rows[index] = row
     end
     return row, matrix.scales[index]
@@ -733,11 +770,26 @@ function M.prepare(data, checkpoint)
         if checkpoint and id % 128 == 0 then checkpoint() end
     end
     local reserved, allCandidates = {}, {EOS}
-    local numericPieces
+    local numericPieces, numberSlotOrder
     if data.numberSlots then
         numericPieces = {}
+        if #data.numberSlots == #Numbers.slots then
+            numberSlotOrder = {}
+            for slot, id in ipairs(data.numberSlots) do
+                if data.targetPieces[id] ~= Numbers.slots[slot] then
+                    numberSlotOrder = nil
+                    break
+                end
+                numberSlotOrder[id] = slot
+            end
+        end
         for id, piece in ipairs(data.targetPieces) do
             if piece:find('[0-9]') then numericPieces[id] = true end
+            -- A marker embedded in another piece or split across pieces needs the full restore check.
+            if numberSlotOrder and not numberSlotOrder[id] and (piece:find("\238\132[\128-\131]")
+                or piece:sub(-1) == "\238" or piece:sub(-2) == "\238\132") then
+                numberSlotOrder = nil
+            end
         end
     end
     for _, id in ipairs(data.targetSlots or {}) do reserved[id] = true end
@@ -748,7 +800,8 @@ function M.prepare(data, checkpoint)
     return {width=data.width, pieces=pieces, maximumBytes=maximumBytes, unknownScore=data.unknownScore,
         targetPieces=data.targetPieces, fallback=data.fallback, linked=data.linked, linkedCache={},
         allCandidates=allCandidates, reserved=reserved, inputAttention=data.format == 2,
-        numberSlots=data.numberSlots, numericPieces=numericPieces, termSlots=data.termSlots, itemSlots=data.itemSlots, moneySlots=data.moneySlots,
+        numberSlots=data.numberSlots, numberSlotOrder=numberSlotOrder, numericPieces=numericPieces,
+        termSlots=data.termSlots, itemSlots=data.itemSlots, moneySlots=data.moneySlots,
         maxPieces=data.transformer and math.min(128, #data.transformer.sourcePos.packed,
             #data.transformer.targetPos.packed) or MAX_PIECES,
         source=matrix(data.source), target=matrix(data.target), encoder=data.encoder and network(data.encoder),
@@ -757,9 +810,13 @@ function M.prepare(data, checkpoint)
         outputBias=data.outputBias}
 end
 
-function M.tokenize(model, text, checkpoint)
+local function normalizeInput(text)
     text = text:gsub("’", "'"):gsub("‘", "'"):gsub("ʼ", "'"):gsub("[A-Z]", string.lower)
-    text = text:gsub("^ +", ""):gsub(" +$", ""):gsub(" +", " ")
+    return (text:gsub("^ +", ""):gsub(" +$", ""):gsub(" +", " "))
+end
+
+function M.tokenize(model, text, checkpoint, normalized)
+    text = normalized or normalizeInput(text)
     if text == "" then return {EOS} end
     text = "▁" .. text:gsub(" ", "▁")
     local positions = {}
@@ -970,7 +1027,63 @@ function M.prepareTrainingFragment(source, target, opener, expanded, glossary)
     return nil, "reference-slots"
 end
 
-local function translatePlain(model, text, checkpoint, fullVocabulary, opener, terms, prices)
+local decodedCacheLimit = 64
+
+local function restoreDecoded(output, values, terms, opener, count)
+    if output == nil then return nil, "target-length", count end
+    if output == "" then return nil, "empty" end
+    if values then
+        local reason
+        output, reason = Numbers.restore(output, values)
+        if not output then return nil, reason, count end
+    end
+    if terms then
+        output = Glossary.restore(ns, output, terms, opener)
+        if not output then return nil, "term-slots", count end
+    end
+    return output, "complete", count
+end
+
+local function decodedKey(model, source, fullVocabulary, values, terms)
+    local key = (fullVocabulary and "full:" or "short:") .. model.maxPieces .. ":" .. #source .. ":" .. source
+    if values then key = key .. "!" .. #values end
+    if terms then
+        for slot, term in ipairs(terms) do
+            local forms = {}
+            for form in pairs(term.forms) do forms[#forms + 1] = model.termSlots[slot][form] end
+            table.sort(forms)
+            key = key .. "/" .. table.concat(forms, ",")
+        end
+    end
+    return key
+end
+
+local function rememberDecoded(cache, key, output, count, failure)
+    if cache.outputs[key] then return end
+    local index = cache.next
+    local evicted = cache.keys[index]
+    if evicted then cache.outputs[evicted] = nil end
+    cache.keys[index] = key
+    cache.outputs[key] = {output=output, count=count, failure=failure}
+    cache.next = index == decodedCacheLimit and 1 or index + 1
+end
+
+local bestTarget
+
+local function hasSourceRepetition(text)
+    for bytes = 1, 4 do
+        if text:find("(" .. string.rep("[a-z]", bytes) .. ")%1%1") then return true end
+    end
+    local previous, repeated = nil, 0
+    for word in text:gmatch("[a-z]+") do
+        repeated = word == previous and repeated + 1 or 1
+        if repeated == 3 then return true end
+        previous = word
+    end
+    return false
+end
+
+local function translatePlain(model, text, checkpoint, fullVocabulary, requireComplete, opener, terms, prices)
     local sourceText, values = text, nil
     if terms then sourceText = terms.input end
     if model.numberSlots then
@@ -980,10 +1093,25 @@ local function translatePlain(model, text, checkpoint, fullVocabulary, opener, t
     elseif sourceText:find("[0-9]") then
         return nil, "number-slots-unavailable"
     end
-    local source = M.tokenize(model, sourceText, checkpoint)
+    -- A cache hit can skip tokenization and restore the current message's numbers and terms.
+    local normalized = normalizeInput(sourceText)
+    local key = decodedKey(model, normalized, fullVocabulary, values, terms)
+    local numberOrder = requireComplete and values and #values > 1 and model.numberSlotOrder
+    if numberOrder then key = key .. ":ordered" end
+    local cache = model.decodedCache
+    local cached = cache and cache.outputs[key]
+    if cached then
+        if cached.failure then return nil, cached.failure, cached.count end
+        return restoreDecoded(cached.output, values, terms, opener, cached.count)
+    end
+    local source = M.tokenize(model, sourceText, checkpoint, normalized)
     if #source < 2 or #source > model.maxPieces then return nil, "source-length" end
     for _, id in ipairs(source) do
         if id == UNK then return nil, "source-vocabulary" end
+    end
+    if not cache then
+        cache = model.decodedCache or {outputs={}, keys={}, next=1}
+        model.decodedCache = cache
     end
     local choices = fullVocabulary and model.allCandidates or M.candidates(model, source)
     local pending
@@ -1010,28 +1138,23 @@ local function translatePlain(model, text, checkpoint, fullVocabulary, opener, t
     end
     local encoded, state = M.encode(model, source, checkpoint)
     local target, previous = {}, BOS
+    local nextNumber, repeated = 1, 1
     for _ = 1, model.maxPieces do
         local features
         features, state = M.decode(model, previous, encoded, state, checkpoint)
-        local best, highest = EOS, -math.huge
-        for index, id in ipairs(choices) do
-            local score = M.score(model, features, id)
-            if score > highest then best, highest = id, score end
-            if checkpoint and index % 32 == 0 then checkpoint() end
-        end
+        local best = bestTarget(model, features, choices, checkpoint)
         if best == EOS then
             local output = table.concat(target):gsub("▁", " "):gsub("^ +", "")
-            if output == "" then return nil, "empty" end
-            if values then
-                local reason
-                output, reason = Numbers.restore(output, values)
-                if not output then return nil, reason, #choices end
+            rememberDecoded(cache, key, output, #choices)
+            return restoreDecoded(output, values, terms, opener, #choices)
+        end
+        local number = numberOrder and numberOrder[best]
+        if number then
+            if number ~= nextNumber then
+                rememberDecoded(cache, key, nil, #choices, "number-slot-count")
+                return nil, "number-slot-count", #choices
             end
-            if terms then
-                output = Glossary.restore(ns, output, terms, opener)
-                if not output then return nil, "term-slots", #choices end
-            end
-            return output, "complete", #choices
+            nextNumber = nextNumber + 1
         end
         local group = pending and pending[best]
         if group then
@@ -1039,12 +1162,31 @@ local function translatePlain(model, text, checkpoint, fullVocabulary, opener, t
                 if group[choices[i]] then table.remove(choices,i) end
             end
         end
-        target[#target + 1], previous = model.targetPieces[best], best
+        local piece = model.targetPieces[best]
+        repeated = best == previous and repeated + 1 or 1
+        -- Identical Cyrillic pieces inside one word can trap an autoregressive decode.
+        if repeated == 5 and #piece >= 4 and not piece:find("[^\208\209\128-\191]")
+            and not hasSourceRepetition(normalized) then
+            rememberDecoded(cache, key, nil, #choices, "target-repetition")
+            return nil, "target-repetition", #choices
+        end
+        target[#target + 1], previous = piece, best
     end
+    -- A decode that exhausts its limit also depends only on the masked input and candidates.
+    rememberDecoded(cache, key, nil, #choices)
     return nil, "target-length", #choices
 end
 
-function M.withProtected(text, split, translate)
+function M.hasVisibleCyrillic(text, split)
+    for _, segment in ipairs(split(text)) do
+        if not segment.protected and text:sub(segment.first, segment.last):find("[\208\209][\128-\191]") then
+            return true
+        end
+    end
+    return false
+end
+
+function M.withProtected(text, split, translate, requireComplete)
     local segments = split(text)
     if #segments == 0 or (#segments == 1 and not segments[1].protected) then
         return translate(text)
@@ -1065,6 +1207,7 @@ function M.withProtected(text, split, translate)
                 value = leading .. result:gsub("%s+$", "") .. trailing
                 changed = changed or value ~= original
             else
+                if requireComplete then return nil, "partial", largest, calls end
                 incomplete = true
             end
         end
@@ -1084,10 +1227,11 @@ function M.withProtected(text, split, translate)
     return output, incomplete and "partial" or "complete", largest, calls
 end
 
-local function translateWithPrices(model, text, checkpoint, fullVocabulary, opener, terms)
+local function translateWithPrices(model, text, checkpoint, fullVocabulary, requireComplete, opener, terms)
     local prices = model.moneySlots and Numbers.prices(terms and terms.input or text, opener)
     if prices then
-        local result, mode, count = translatePlain(model, text, checkpoint, fullVocabulary, opener, terms, prices)
+        local result, mode, count = translatePlain(model, text, checkpoint, fullVocabulary,
+            requireComplete, opener, terms, prices)
         if result then
             local digits = result:gmatch("%d+")
             local same = true
@@ -1097,31 +1241,41 @@ local function translateWithPrices(model, text, checkpoint, fullVocabulary, open
             if same and not digits() then return result, mode, count end
         end
     end
-    return translatePlain(model, text, checkpoint, fullVocabulary, opener, terms)
+    return translatePlain(model, text, checkpoint, fullVocabulary, requireComplete, opener, terms)
 end
 
-function M.translate(model, text, checkpoint, fullVocabulary, split, context)
+function M.translate(model, text, checkpoint, fullVocabulary, split, context, requireComplete)
     local function infer(fragment, opener)
-        if not model.termSlots then return translateWithPrices(model, fragment, checkpoint, fullVocabulary) end
+        if not model.termSlots then
+            return translateWithPrices(model, fragment, checkpoint, fullVocabulary, requireComplete)
+        end
         local masked, terms, corrected = Glossary.mask(ns, fragment, opener, model.itemSlots)
         local function constrained()
             terms.input = masked
-            local candidate, mode, count = translateWithPrices(model, fragment, checkpoint, fullVocabulary, opener, terms)
+            local candidate, mode, count = translateWithPrices(model, fragment, checkpoint, fullVocabulary,
+                requireComplete, opener, terms)
             if candidate and Glossary.target(ns, candidate, terms) then return candidate, mode, count end
         end
-        local preferConstrained
+        local preferConstrained, requiredTerms
         for _, term in ipairs(terms or {}) do
-            if term.preferConstrained then preferConstrained = true; break end
+            preferConstrained = preferConstrained or term.preferConstrained
+            if term.keepInFallback then
+                requiredTerms = requiredTerms or {}
+                requiredTerms[#requiredTerms + 1] = term
+            end
         end
         if preferConstrained then
             local candidate, mode, count = constrained()
             if candidate then return candidate, mode, count end
         end
         local ordinary, ordinaryMode, ordinaryCount = translateWithPrices(model, corrected or fragment,
-            checkpoint, fullVocabulary, opener)
+            checkpoint, fullVocabulary, requireComplete, opener)
         if terms and not preferConstrained and (not ordinary or not Glossary.target(ns, ordinary, terms)) then
             local candidate, mode, count = constrained()
             if candidate then return candidate, mode, count end
+        end
+        if ordinary and requiredTerms and not Glossary.target(ns, ordinary, requiredTerms) then
+            return nil, "term-slots"
         end
         return ordinary, ordinaryMode, ordinaryCount
     end
@@ -1137,7 +1291,7 @@ function M.translate(model, text, checkpoint, fullVocabulary, split, context)
     if not split then return translate(text, context) end
     return M.withProtected(text, split, function(fragment, first)
         return translate(fragment, (not first or first == 1) and context or nil)
-    end)
+    end, requireComplete)
 end
 
 local chatOpeners = {lf=true, lfg=true, lfm=true, wts=true, wtb=true, wtt=true, lfw=true,
@@ -1163,19 +1317,31 @@ local conditionalContinuation = {unless=true, ["if"]=true, ["while"]=true, since
 local periodAbbreviation = {dr=true, mr=true, mrs=true, ms=true, st=true, vs=true, lvl=true, etc=true,
     no=true, approx=true, prof=true, sr=true, jr=true, inc=true}
 
-local function independentChat(text, tokens, ranges, parser)
-    if #ranges < 2 or #ranges > 6 or #tokens < 23 then return false end
+local function independentChat(text, tokens, ranges, engine)
+    if #ranges < 2 or #ranges > 6 or #tokens < 12 then return false end
+    local parser = engine.Parser
     local twoSentences = #ranges == 2
     local minimumWords = twoSentences and 4 or 2
-    local total = 0
+    local total, strongBoundary = 0, false
     for i, range in ipairs(ranges) do
         local first, last = range[1], range[2]
         local initial = tokens[first]
         if i > 1 and (clauseDependent[initial.key] or twoSentences and conditionalContinuation[initial.key]
             or not parser.startsWithCapital(text, initial)) then return false end
         if i < #ranges then
-            local stop, previous = tokens[last], tokens[last - 1]
-            if not previous or stop.key ~= "." and stop.key ~= "!" and stop.key ~= "?" then return false end
+            local stop = tokens[last]
+            if stop.key ~= "." and stop.key ~= "!" and stop.key ~= "?" then return false end
+            local previousIndex = last - 1
+            -- Adjacent question and exclamation marks can emphasize a single sentence ending.
+            if stop.key ~= "." then
+                strongBoundary = true
+                while previousIndex >= first and tokens[previousIndex].key:match("^[!?]$")
+                    and tokens[previousIndex].last + 1 == tokens[previousIndex + 1].first do
+                    previousIndex = previousIndex - 1
+                end
+            end
+            if previousIndex < first then return false end
+            local previous = tokens[previousIndex]
             if previous.key:match("^[.?!]$") or previous.key == "…" or periodAbbreviation[previous.key]
                 or stop.key == "." and #previous.key < 2 then return false end
         end
@@ -1188,17 +1354,106 @@ local function independentChat(text, tokens, ranges, parser)
                 if token.key:find("[A-Za-z]") then count = count + 1 end
             end
         end
-        if count < minimumWords then return false end
+        if count < minimumWords and not (i == 1 and count == 1
+            and engine.ClauseAnalysis.guildHeadingWord(text, tokens, first, last)) then return false end
         if hasNumbers then
             local source = text:sub(tokens[first].first, tokens[last].last)
             if not Numbers.ranges(source, Numbers.prices(source)) then return false end
         end
         total = total + count
     end
-    return total >= 21
+    return total >= 21 or strongBoundary and total >= 10
 end
 
-function M.routeChat(ns, text, translate, checkpoint, tokens, facts, grammarClause)
+local enchantmentOpenings = {free=true, selling=true, offering=true, last=true}
+local clauseJoin = {["and"]=true, ["or"]=true, but=true}
+
+local function enchantmentAdvertisement(engine, text, tokens, checkpoint)
+    if not enchantmentOpenings[tokens[1].key]
+        or not (text:find("..", 1, true) or text:find("…", 1, true)) then return end
+    local parser = engine.Parser
+    local ranges, first, i = {}, 1, 1
+    while i < #tokens do
+        local ending = parser.ellipsisEnd(tokens, i, #tokens)
+        if not ending and tokens[i].key == "." and tokens[i + 1].key == "."
+            and tokens[i].last + 1 == tokens[i + 1].first then ending = i + 1 end
+        if ending then
+            while ending < #tokens and tokens[ending + 1].key == "."
+                and tokens[ending].last + 1 == tokens[ending + 1].first do
+                ending = ending + 1
+            end
+            if ending == #tokens then break end
+            local initial = tokens[ending + 1]
+            if i <= first or #ranges == 5 or clauseJoin[initial.key] or clauseDependent[initial.key]
+                or conditionalContinuation[initial.key] or not parser.startsWithCapital(text, initial) then return end
+            ranges[#ranges + 1] = {first, i - 1}
+            first, i = ending + 1, ending
+        end
+        i = i + 1
+    end
+    if #ranges == 0 then return end
+    local document = engine.Morphology.analyze(text, tokens, "en-uk")
+    document.checkpoint = checkpoint
+    local output, tree = engine.Syntax.translateRange(document, 1, ranges[1][2])
+    if not (output and tree.kind == "enhancement" and tree.features.offer == "enchanting"
+        and tree.slots.count and tree.slots.stat) then return end
+    ranges[#ranges + 1] = {first, #tokens}
+    return ranges, document, output
+end
+
+local function contactCommand(tokens, first)
+    local head, command = tokens[first], tokens[first + 1]
+    return head.key == "whisper" or head.key == "/" and command
+        and (command.key == "w" or command.key == "whisper") and command.first == head.last + 1
+end
+
+local dependentContactOpening = {when=true, once=true, because=true, although=true, whereas=true, provided=true}
+
+local function contactBoundary(tokens, first)
+    local stop, previous = tokens[first - 1], tokens[first - 2]
+    if previous and contactCommand(tokens, first) and stop.key:match("^[.!?]$")
+        and not previous.key:match("^[.!?]$") and previous.key ~= "…"
+        and not (stop.key == "." and periodAbbreviation[previous.key]) then
+        return first, first - 1
+    end
+    -- A conditional or temporal opening may need the contact command as its main clause.
+    local opening = first
+    while opening < #tokens and tokens[opening].protected do opening = opening + 1 end
+    local key = tokens[opening].key
+    if conditionalContinuation[key] or dependentContactOpening[key] then return end
+    for i = #tokens - 1, math.max(first + 1, 2), -1 do
+        local separator, before, after = tokens[i], tokens[i - 1], tokens[i + 1]
+        if (separator.key == "—" or separator.key == "–" or separator.key == "-")
+            and before.last + 1 < separator.first and separator.last + 1 < after.first
+            and contactCommand(tokens, i + 1) then return i + 1, i - 1 end
+    end
+end
+
+local function trailingContact(engine, text, tokens, first, grammarClause, checkpoint)
+    local head = tokens[first]
+
+    -- A protected heading can travel with the prefix; keep inline links and chat formatting in their existing route.
+    local visible
+    for _, token in ipairs(tokens) do
+        if token.protected then
+            if visible then return end
+        else visible = true end
+    end
+
+    local tail = text:sub(head.first, tokens[#tokens].last)
+    local words = engine.Tokenizer.scan(tail, engine.ClauseAnalysis.englishContractions)
+    if not words then return end
+    local document = engine.Morphology.analyze(tail, words, "en-uk")
+    if document.truncated or document.ambiguities then return end
+    document.checkpoint = checkpoint
+    local translated, clause = grammarClause(document, 1, #words)
+    -- A translated restriction can remain in the grammar fallback without splitting an unverified body.
+    if clause and clause.imperative and not (clause.question or clause.unknownSpans or clause.attachedRestriction) then
+        return translated
+    end
+end
+
+function M.routeChat(ns, text, translate, checkpoint, tokens, facts, grammarClause, skipContact, requireComplete)
     local engine, direction = ns.Engine, "en-uk"
     tokens = tokens or engine.Tokenizer.scan(text, engine.ClauseAnalysis.englishContractions)
     if not tokens or #tokens == 0 then
@@ -1215,16 +1470,45 @@ function M.routeChat(ns, text, translate, checkpoint, tokens, facts, grammarClau
     end
     local known = M.chatOpener(tokens, first)
     ranges[#ranges + 1] = {first, #tokens, known}
-    local independent = not (routed or known) and independentChat(text, tokens, ranges, engine.Parser)
+    local calls, rules = 0, 0
+    if not (routed or known or skipContact) and grammarClause then
+        local contact, prefixEnd = contactBoundary(tokens, first)
+        local tail = contact and trailingContact(engine, text, tokens, contact, grammarClause, checkpoint)
+        if tail then
+            facts = facts or engine.Acceptance.measure(text, tokens, direction)
+            if not engine.Acceptance.reject(facts, contact, #tokens, tail) then
+                local boundary = tokens[prefixEnd].last
+                local prefix = text:sub(1, boundary)
+                local body, mode, attempts, bodyRules = M.routeChat(ns, prefix, translate, checkpoint,
+                    nil, nil, grammarClause, true, requireComplete)
+                if body and mode == "complete" and M.hasVisibleCyrillic(body, engine.Markup.split) then
+                    if prefixEnd < contact - 1 and not tokens[prefixEnd].key:match("^[.!?]$") then
+                        body = body:gsub("%.$", "")
+                    end
+                    local output = body .. text:sub(boundary + 1, tokens[contact].first - 1)
+                        .. tail .. text:sub(tokens[#tokens].last + 1)
+                    if not engine.Acceptance.reject(facts, 1, #tokens, output) then
+                        return output, mode, attempts, bodyRules + 1
+                    end
+                end
+                calls = attempts
+            end
+        end
+    end
+    local advertisement, document, firstOffer
+    if not (routed or known) then
+        advertisement, document, firstOffer = enchantmentAdvertisement(engine, text, tokens, checkpoint)
+        if advertisement then ranges = advertisement end
+    end
+    local independent = advertisement ~= nil or not (routed or known) and independentChat(text, tokens, ranges, engine)
     if not (routed or known or independent) then
         local result, mode = translate(text)
-        return result, mode, 1, 0
+        return result, mode, calls + 1, 0
     end
 
-    local document = engine.Morphology.analyze(text, tokens, direction)
+    document = document or engine.Morphology.analyze(text, tokens, direction)
     document.checkpoint = checkpoint
     facts = facts or engine.Acceptance.measure(text, tokens, direction)
-    local calls, rules = 0, 0
     local tradeOpeners = ns.Linguistics and ns.Linguistics.grammar.tradeOpeners
     local function raw(start, finish)
         return text:sub(tokens[start].first, tokens[finish].last)
@@ -1301,10 +1585,11 @@ function M.routeChat(ns, text, translate, checkpoint, tokens, facts, grammarClau
             end
         elseif independent then
             local parsed, clause
-            if grammarClause and not document.truncated and not document.ambiguities then
+            if advertisement then parsed = start == 1 and firstOffer or rule(start, finish) end
+            if not parsed and grammarClause and not document.truncated and not document.ambiguities then
                 parsed, clause = grammarClause(document, start, finish)
             end
-            if parsed and not clause.unknownSpans and not engine.Acceptance.reject(facts, start, finish, parsed) then
+            if parsed and not (clause and clause.unknownSpans) and not engine.Acceptance.reject(facts, start, finish, parsed) then
                 value, mode, rules = parsed, "complete", rules + 1
             else
                 value, mode = neural(start, finish)
@@ -1313,15 +1598,19 @@ function M.routeChat(ns, text, translate, checkpoint, tokens, facts, grammarClau
             value, mode = neural(start, finish)
         end
         local join = text:sub(cursor, tokens[start].first - 1)
-        if independent and cursor > 1 and join == "" then join = " " end
+        if cursor > 1 then
+            if advertisement then join = join:match("^%s*(.-)%s*$") .. " "
+            elseif independent and join == "" then join = " " end
+        end
         pieces[#pieces + 1] = join
-        pieces[#pieces + 1] = value
+        pieces[#pieces + 1] = advertisement and finish < #tokens and value:gsub("[.!]+$", "") or value
         cursor = tokens[finish].last + 1
         complete = complete and mode == "complete"
         if independent and not complete then
             local result, status = translate(text)
             return result, status, calls + 1, rules
         end
+        if requireComplete and not complete then return nil, "partial", calls, rules end
     end
     pieces[#pieces + 1] = text:sub(cursor)
     local output = table.concat(pieces)
@@ -1339,29 +1628,260 @@ end
 local function projectTransformer(matrix, index, vector, width)
     local values, scale = rowAt(matrix, index)
     local total = 0
-    for j = 1,width,8 do
+    local last = width - width % 16
+    for j = 1, last, 16 do
         total = total + values[j] * vector[j] + values[j + 1] * vector[j + 1]
             + values[j + 2] * vector[j + 2] + values[j + 3] * vector[j + 3]
             + values[j + 4] * vector[j + 4] + values[j + 5] * vector[j + 5]
             + values[j + 6] * vector[j + 6] + values[j + 7] * vector[j + 7]
+            + values[j + 8] * vector[j + 8] + values[j + 9] * vector[j + 9]
+            + values[j + 10] * vector[j + 10] + values[j + 11] * vector[j + 11]
+            + values[j + 12] * vector[j + 12] + values[j + 13] * vector[j + 13]
+            + values[j + 14] * vector[j + 14] + values[j + 15] * vector[j + 15]
     end
+    for j = last + 1, width do total = total + values[j] * vector[j] end
     return total * scale
 end
 
-local function linearSlice(matrix, vector, first, count, checkpoint)
-    local result, width = {}, #vector
-    for i = 1,count do
+-- Reuse each input block while preserving the addition order within each dot product.
+local function projectFour(matrix, first, second, third, fourth, vector, width)
+    local firstRow, firstScale = rowAt(matrix, first)
+    local secondRow, secondScale = rowAt(matrix, second)
+    local thirdRow, thirdScale = rowAt(matrix, third)
+    local fourthRow, fourthScale = rowAt(matrix, fourth)
+    local firstSum, secondSum, thirdSum, fourthSum = 0, 0, 0, 0
+    -- Constant indexes avoid loop arithmetic at the deployed model width.
+    -- Keep the additions in the same order as the general path.
+    if width == 128 then
+        do
+            local x0, x1, x2, x3 = vector[1], vector[2], vector[3], vector[4]
+            local x4, x5, x6, x7 = vector[5], vector[6], vector[7], vector[8]
+            firstSum = firstSum + firstRow[1] * x0 + firstRow[2] * x1 + firstRow[3] * x2 + firstRow[4] * x3
+                + firstRow[5] * x4 + firstRow[6] * x5 + firstRow[7] * x6 + firstRow[8] * x7
+            secondSum = secondSum + secondRow[1] * x0 + secondRow[2] * x1 + secondRow[3] * x2 + secondRow[4] * x3
+                + secondRow[5] * x4 + secondRow[6] * x5 + secondRow[7] * x6 + secondRow[8] * x7
+            thirdSum = thirdSum + thirdRow[1] * x0 + thirdRow[2] * x1 + thirdRow[3] * x2 + thirdRow[4] * x3
+                + thirdRow[5] * x4 + thirdRow[6] * x5 + thirdRow[7] * x6 + thirdRow[8] * x7
+            fourthSum = fourthSum + fourthRow[1] * x0 + fourthRow[2] * x1 + fourthRow[3] * x2 + fourthRow[4] * x3
+                + fourthRow[5] * x4 + fourthRow[6] * x5 + fourthRow[7] * x6 + fourthRow[8] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[9], vector[10], vector[11], vector[12]
+            local x4, x5, x6, x7 = vector[13], vector[14], vector[15], vector[16]
+            firstSum = firstSum + firstRow[9] * x0 + firstRow[10] * x1 + firstRow[11] * x2 + firstRow[12] * x3
+                + firstRow[13] * x4 + firstRow[14] * x5 + firstRow[15] * x6 + firstRow[16] * x7
+            secondSum = secondSum + secondRow[9] * x0 + secondRow[10] * x1 + secondRow[11] * x2 + secondRow[12] * x3
+                + secondRow[13] * x4 + secondRow[14] * x5 + secondRow[15] * x6 + secondRow[16] * x7
+            thirdSum = thirdSum + thirdRow[9] * x0 + thirdRow[10] * x1 + thirdRow[11] * x2 + thirdRow[12] * x3
+                + thirdRow[13] * x4 + thirdRow[14] * x5 + thirdRow[15] * x6 + thirdRow[16] * x7
+            fourthSum = fourthSum + fourthRow[9] * x0 + fourthRow[10] * x1 + fourthRow[11] * x2 + fourthRow[12] * x3
+                + fourthRow[13] * x4 + fourthRow[14] * x5 + fourthRow[15] * x6 + fourthRow[16] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[17], vector[18], vector[19], vector[20]
+            local x4, x5, x6, x7 = vector[21], vector[22], vector[23], vector[24]
+            firstSum = firstSum + firstRow[17] * x0 + firstRow[18] * x1 + firstRow[19] * x2 + firstRow[20] * x3
+                + firstRow[21] * x4 + firstRow[22] * x5 + firstRow[23] * x6 + firstRow[24] * x7
+            secondSum = secondSum + secondRow[17] * x0 + secondRow[18] * x1 + secondRow[19] * x2 + secondRow[20] * x3
+                + secondRow[21] * x4 + secondRow[22] * x5 + secondRow[23] * x6 + secondRow[24] * x7
+            thirdSum = thirdSum + thirdRow[17] * x0 + thirdRow[18] * x1 + thirdRow[19] * x2 + thirdRow[20] * x3
+                + thirdRow[21] * x4 + thirdRow[22] * x5 + thirdRow[23] * x6 + thirdRow[24] * x7
+            fourthSum = fourthSum + fourthRow[17] * x0 + fourthRow[18] * x1 + fourthRow[19] * x2 + fourthRow[20] * x3
+                + fourthRow[21] * x4 + fourthRow[22] * x5 + fourthRow[23] * x6 + fourthRow[24] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[25], vector[26], vector[27], vector[28]
+            local x4, x5, x6, x7 = vector[29], vector[30], vector[31], vector[32]
+            firstSum = firstSum + firstRow[25] * x0 + firstRow[26] * x1 + firstRow[27] * x2 + firstRow[28] * x3
+                + firstRow[29] * x4 + firstRow[30] * x5 + firstRow[31] * x6 + firstRow[32] * x7
+            secondSum = secondSum + secondRow[25] * x0 + secondRow[26] * x1 + secondRow[27] * x2 + secondRow[28] * x3
+                + secondRow[29] * x4 + secondRow[30] * x5 + secondRow[31] * x6 + secondRow[32] * x7
+            thirdSum = thirdSum + thirdRow[25] * x0 + thirdRow[26] * x1 + thirdRow[27] * x2 + thirdRow[28] * x3
+                + thirdRow[29] * x4 + thirdRow[30] * x5 + thirdRow[31] * x6 + thirdRow[32] * x7
+            fourthSum = fourthSum + fourthRow[25] * x0 + fourthRow[26] * x1 + fourthRow[27] * x2 + fourthRow[28] * x3
+                + fourthRow[29] * x4 + fourthRow[30] * x5 + fourthRow[31] * x6 + fourthRow[32] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[33], vector[34], vector[35], vector[36]
+            local x4, x5, x6, x7 = vector[37], vector[38], vector[39], vector[40]
+            firstSum = firstSum + firstRow[33] * x0 + firstRow[34] * x1 + firstRow[35] * x2 + firstRow[36] * x3
+                + firstRow[37] * x4 + firstRow[38] * x5 + firstRow[39] * x6 + firstRow[40] * x7
+            secondSum = secondSum + secondRow[33] * x0 + secondRow[34] * x1 + secondRow[35] * x2 + secondRow[36] * x3
+                + secondRow[37] * x4 + secondRow[38] * x5 + secondRow[39] * x6 + secondRow[40] * x7
+            thirdSum = thirdSum + thirdRow[33] * x0 + thirdRow[34] * x1 + thirdRow[35] * x2 + thirdRow[36] * x3
+                + thirdRow[37] * x4 + thirdRow[38] * x5 + thirdRow[39] * x6 + thirdRow[40] * x7
+            fourthSum = fourthSum + fourthRow[33] * x0 + fourthRow[34] * x1 + fourthRow[35] * x2 + fourthRow[36] * x3
+                + fourthRow[37] * x4 + fourthRow[38] * x5 + fourthRow[39] * x6 + fourthRow[40] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[41], vector[42], vector[43], vector[44]
+            local x4, x5, x6, x7 = vector[45], vector[46], vector[47], vector[48]
+            firstSum = firstSum + firstRow[41] * x0 + firstRow[42] * x1 + firstRow[43] * x2 + firstRow[44] * x3
+                + firstRow[45] * x4 + firstRow[46] * x5 + firstRow[47] * x6 + firstRow[48] * x7
+            secondSum = secondSum + secondRow[41] * x0 + secondRow[42] * x1 + secondRow[43] * x2 + secondRow[44] * x3
+                + secondRow[45] * x4 + secondRow[46] * x5 + secondRow[47] * x6 + secondRow[48] * x7
+            thirdSum = thirdSum + thirdRow[41] * x0 + thirdRow[42] * x1 + thirdRow[43] * x2 + thirdRow[44] * x3
+                + thirdRow[45] * x4 + thirdRow[46] * x5 + thirdRow[47] * x6 + thirdRow[48] * x7
+            fourthSum = fourthSum + fourthRow[41] * x0 + fourthRow[42] * x1 + fourthRow[43] * x2 + fourthRow[44] * x3
+                + fourthRow[45] * x4 + fourthRow[46] * x5 + fourthRow[47] * x6 + fourthRow[48] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[49], vector[50], vector[51], vector[52]
+            local x4, x5, x6, x7 = vector[53], vector[54], vector[55], vector[56]
+            firstSum = firstSum + firstRow[49] * x0 + firstRow[50] * x1 + firstRow[51] * x2 + firstRow[52] * x3
+                + firstRow[53] * x4 + firstRow[54] * x5 + firstRow[55] * x6 + firstRow[56] * x7
+            secondSum = secondSum + secondRow[49] * x0 + secondRow[50] * x1 + secondRow[51] * x2 + secondRow[52] * x3
+                + secondRow[53] * x4 + secondRow[54] * x5 + secondRow[55] * x6 + secondRow[56] * x7
+            thirdSum = thirdSum + thirdRow[49] * x0 + thirdRow[50] * x1 + thirdRow[51] * x2 + thirdRow[52] * x3
+                + thirdRow[53] * x4 + thirdRow[54] * x5 + thirdRow[55] * x6 + thirdRow[56] * x7
+            fourthSum = fourthSum + fourthRow[49] * x0 + fourthRow[50] * x1 + fourthRow[51] * x2 + fourthRow[52] * x3
+                + fourthRow[53] * x4 + fourthRow[54] * x5 + fourthRow[55] * x6 + fourthRow[56] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[57], vector[58], vector[59], vector[60]
+            local x4, x5, x6, x7 = vector[61], vector[62], vector[63], vector[64]
+            firstSum = firstSum + firstRow[57] * x0 + firstRow[58] * x1 + firstRow[59] * x2 + firstRow[60] * x3
+                + firstRow[61] * x4 + firstRow[62] * x5 + firstRow[63] * x6 + firstRow[64] * x7
+            secondSum = secondSum + secondRow[57] * x0 + secondRow[58] * x1 + secondRow[59] * x2 + secondRow[60] * x3
+                + secondRow[61] * x4 + secondRow[62] * x5 + secondRow[63] * x6 + secondRow[64] * x7
+            thirdSum = thirdSum + thirdRow[57] * x0 + thirdRow[58] * x1 + thirdRow[59] * x2 + thirdRow[60] * x3
+                + thirdRow[61] * x4 + thirdRow[62] * x5 + thirdRow[63] * x6 + thirdRow[64] * x7
+            fourthSum = fourthSum + fourthRow[57] * x0 + fourthRow[58] * x1 + fourthRow[59] * x2 + fourthRow[60] * x3
+                + fourthRow[61] * x4 + fourthRow[62] * x5 + fourthRow[63] * x6 + fourthRow[64] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[65], vector[66], vector[67], vector[68]
+            local x4, x5, x6, x7 = vector[69], vector[70], vector[71], vector[72]
+            firstSum = firstSum + firstRow[65] * x0 + firstRow[66] * x1 + firstRow[67] * x2 + firstRow[68] * x3
+                + firstRow[69] * x4 + firstRow[70] * x5 + firstRow[71] * x6 + firstRow[72] * x7
+            secondSum = secondSum + secondRow[65] * x0 + secondRow[66] * x1 + secondRow[67] * x2 + secondRow[68] * x3
+                + secondRow[69] * x4 + secondRow[70] * x5 + secondRow[71] * x6 + secondRow[72] * x7
+            thirdSum = thirdSum + thirdRow[65] * x0 + thirdRow[66] * x1 + thirdRow[67] * x2 + thirdRow[68] * x3
+                + thirdRow[69] * x4 + thirdRow[70] * x5 + thirdRow[71] * x6 + thirdRow[72] * x7
+            fourthSum = fourthSum + fourthRow[65] * x0 + fourthRow[66] * x1 + fourthRow[67] * x2 + fourthRow[68] * x3
+                + fourthRow[69] * x4 + fourthRow[70] * x5 + fourthRow[71] * x6 + fourthRow[72] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[73], vector[74], vector[75], vector[76]
+            local x4, x5, x6, x7 = vector[77], vector[78], vector[79], vector[80]
+            firstSum = firstSum + firstRow[73] * x0 + firstRow[74] * x1 + firstRow[75] * x2 + firstRow[76] * x3
+                + firstRow[77] * x4 + firstRow[78] * x5 + firstRow[79] * x6 + firstRow[80] * x7
+            secondSum = secondSum + secondRow[73] * x0 + secondRow[74] * x1 + secondRow[75] * x2 + secondRow[76] * x3
+                + secondRow[77] * x4 + secondRow[78] * x5 + secondRow[79] * x6 + secondRow[80] * x7
+            thirdSum = thirdSum + thirdRow[73] * x0 + thirdRow[74] * x1 + thirdRow[75] * x2 + thirdRow[76] * x3
+                + thirdRow[77] * x4 + thirdRow[78] * x5 + thirdRow[79] * x6 + thirdRow[80] * x7
+            fourthSum = fourthSum + fourthRow[73] * x0 + fourthRow[74] * x1 + fourthRow[75] * x2 + fourthRow[76] * x3
+                + fourthRow[77] * x4 + fourthRow[78] * x5 + fourthRow[79] * x6 + fourthRow[80] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[81], vector[82], vector[83], vector[84]
+            local x4, x5, x6, x7 = vector[85], vector[86], vector[87], vector[88]
+            firstSum = firstSum + firstRow[81] * x0 + firstRow[82] * x1 + firstRow[83] * x2 + firstRow[84] * x3
+                + firstRow[85] * x4 + firstRow[86] * x5 + firstRow[87] * x6 + firstRow[88] * x7
+            secondSum = secondSum + secondRow[81] * x0 + secondRow[82] * x1 + secondRow[83] * x2 + secondRow[84] * x3
+                + secondRow[85] * x4 + secondRow[86] * x5 + secondRow[87] * x6 + secondRow[88] * x7
+            thirdSum = thirdSum + thirdRow[81] * x0 + thirdRow[82] * x1 + thirdRow[83] * x2 + thirdRow[84] * x3
+                + thirdRow[85] * x4 + thirdRow[86] * x5 + thirdRow[87] * x6 + thirdRow[88] * x7
+            fourthSum = fourthSum + fourthRow[81] * x0 + fourthRow[82] * x1 + fourthRow[83] * x2 + fourthRow[84] * x3
+                + fourthRow[85] * x4 + fourthRow[86] * x5 + fourthRow[87] * x6 + fourthRow[88] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[89], vector[90], vector[91], vector[92]
+            local x4, x5, x6, x7 = vector[93], vector[94], vector[95], vector[96]
+            firstSum = firstSum + firstRow[89] * x0 + firstRow[90] * x1 + firstRow[91] * x2 + firstRow[92] * x3
+                + firstRow[93] * x4 + firstRow[94] * x5 + firstRow[95] * x6 + firstRow[96] * x7
+            secondSum = secondSum + secondRow[89] * x0 + secondRow[90] * x1 + secondRow[91] * x2 + secondRow[92] * x3
+                + secondRow[93] * x4 + secondRow[94] * x5 + secondRow[95] * x6 + secondRow[96] * x7
+            thirdSum = thirdSum + thirdRow[89] * x0 + thirdRow[90] * x1 + thirdRow[91] * x2 + thirdRow[92] * x3
+                + thirdRow[93] * x4 + thirdRow[94] * x5 + thirdRow[95] * x6 + thirdRow[96] * x7
+            fourthSum = fourthSum + fourthRow[89] * x0 + fourthRow[90] * x1 + fourthRow[91] * x2 + fourthRow[92] * x3
+                + fourthRow[93] * x4 + fourthRow[94] * x5 + fourthRow[95] * x6 + fourthRow[96] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[97], vector[98], vector[99], vector[100]
+            local x4, x5, x6, x7 = vector[101], vector[102], vector[103], vector[104]
+            firstSum = firstSum + firstRow[97] * x0 + firstRow[98] * x1 + firstRow[99] * x2 + firstRow[100] * x3
+                + firstRow[101] * x4 + firstRow[102] * x5 + firstRow[103] * x6 + firstRow[104] * x7
+            secondSum = secondSum + secondRow[97] * x0 + secondRow[98] * x1 + secondRow[99] * x2 + secondRow[100] * x3
+                + secondRow[101] * x4 + secondRow[102] * x5 + secondRow[103] * x6 + secondRow[104] * x7
+            thirdSum = thirdSum + thirdRow[97] * x0 + thirdRow[98] * x1 + thirdRow[99] * x2 + thirdRow[100] * x3
+                + thirdRow[101] * x4 + thirdRow[102] * x5 + thirdRow[103] * x6 + thirdRow[104] * x7
+            fourthSum = fourthSum + fourthRow[97] * x0 + fourthRow[98] * x1 + fourthRow[99] * x2 + fourthRow[100] * x3
+                + fourthRow[101] * x4 + fourthRow[102] * x5 + fourthRow[103] * x6 + fourthRow[104] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[105], vector[106], vector[107], vector[108]
+            local x4, x5, x6, x7 = vector[109], vector[110], vector[111], vector[112]
+            firstSum = firstSum + firstRow[105] * x0 + firstRow[106] * x1 + firstRow[107] * x2 + firstRow[108] * x3
+                + firstRow[109] * x4 + firstRow[110] * x5 + firstRow[111] * x6 + firstRow[112] * x7
+            secondSum = secondSum + secondRow[105] * x0 + secondRow[106] * x1 + secondRow[107] * x2 + secondRow[108] * x3
+                + secondRow[109] * x4 + secondRow[110] * x5 + secondRow[111] * x6 + secondRow[112] * x7
+            thirdSum = thirdSum + thirdRow[105] * x0 + thirdRow[106] * x1 + thirdRow[107] * x2 + thirdRow[108] * x3
+                + thirdRow[109] * x4 + thirdRow[110] * x5 + thirdRow[111] * x6 + thirdRow[112] * x7
+            fourthSum = fourthSum + fourthRow[105] * x0 + fourthRow[106] * x1 + fourthRow[107] * x2 + fourthRow[108] * x3
+                + fourthRow[109] * x4 + fourthRow[110] * x5 + fourthRow[111] * x6 + fourthRow[112] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[113], vector[114], vector[115], vector[116]
+            local x4, x5, x6, x7 = vector[117], vector[118], vector[119], vector[120]
+            firstSum = firstSum + firstRow[113] * x0 + firstRow[114] * x1 + firstRow[115] * x2 + firstRow[116] * x3
+                + firstRow[117] * x4 + firstRow[118] * x5 + firstRow[119] * x6 + firstRow[120] * x7
+            secondSum = secondSum + secondRow[113] * x0 + secondRow[114] * x1 + secondRow[115] * x2 + secondRow[116] * x3
+                + secondRow[117] * x4 + secondRow[118] * x5 + secondRow[119] * x6 + secondRow[120] * x7
+            thirdSum = thirdSum + thirdRow[113] * x0 + thirdRow[114] * x1 + thirdRow[115] * x2 + thirdRow[116] * x3
+                + thirdRow[117] * x4 + thirdRow[118] * x5 + thirdRow[119] * x6 + thirdRow[120] * x7
+            fourthSum = fourthSum + fourthRow[113] * x0 + fourthRow[114] * x1 + fourthRow[115] * x2 + fourthRow[116] * x3
+                + fourthRow[117] * x4 + fourthRow[118] * x5 + fourthRow[119] * x6 + fourthRow[120] * x7
+        end
+        do
+            local x0, x1, x2, x3 = vector[121], vector[122], vector[123], vector[124]
+            local x4, x5, x6, x7 = vector[125], vector[126], vector[127], vector[128]
+            firstSum = firstSum + firstRow[121] * x0 + firstRow[122] * x1 + firstRow[123] * x2 + firstRow[124] * x3
+                + firstRow[125] * x4 + firstRow[126] * x5 + firstRow[127] * x6 + firstRow[128] * x7
+            secondSum = secondSum + secondRow[121] * x0 + secondRow[122] * x1 + secondRow[123] * x2 + secondRow[124] * x3
+                + secondRow[125] * x4 + secondRow[126] * x5 + secondRow[127] * x6 + secondRow[128] * x7
+            thirdSum = thirdSum + thirdRow[121] * x0 + thirdRow[122] * x1 + thirdRow[123] * x2 + thirdRow[124] * x3
+                + thirdRow[125] * x4 + thirdRow[126] * x5 + thirdRow[127] * x6 + thirdRow[128] * x7
+            fourthSum = fourthSum + fourthRow[121] * x0 + fourthRow[122] * x1 + fourthRow[123] * x2 + fourthRow[124] * x3
+                + fourthRow[125] * x4 + fourthRow[126] * x5 + fourthRow[127] * x6 + fourthRow[128] * x7
+        end
+        return firstSum * firstScale, secondSum * secondScale, thirdSum * thirdScale, fourthSum * fourthScale
+    end
+    for j = 1, width, 8 do
+        local j1, j2, j3, j4 = j + 1, j + 2, j + 3, j + 4
+        local j5, j6, j7 = j + 5, j + 6, j + 7
+        local x0, x1, x2, x3 = vector[j], vector[j1], vector[j2], vector[j3]
+        local x4, x5, x6, x7 = vector[j4], vector[j5], vector[j6], vector[j7]
+        firstSum = firstSum + firstRow[j] * x0 + firstRow[j1] * x1 + firstRow[j2] * x2 + firstRow[j3] * x3
+            + firstRow[j4] * x4 + firstRow[j5] * x5 + firstRow[j6] * x6 + firstRow[j7] * x7
+        secondSum = secondSum + secondRow[j] * x0 + secondRow[j1] * x1 + secondRow[j2] * x2 + secondRow[j3] * x3
+            + secondRow[j4] * x4 + secondRow[j5] * x5 + secondRow[j6] * x6 + secondRow[j7] * x7
+        thirdSum = thirdSum + thirdRow[j] * x0 + thirdRow[j1] * x1 + thirdRow[j2] * x2 + thirdRow[j3] * x3
+            + thirdRow[j4] * x4 + thirdRow[j5] * x5 + thirdRow[j6] * x6 + thirdRow[j7] * x7
+        fourthSum = fourthSum + fourthRow[j] * x0 + fourthRow[j1] * x1 + fourthRow[j2] * x2 + fourthRow[j3] * x3
+            + fourthRow[j4] * x4 + fourthRow[j5] * x5 + fourthRow[j6] * x6 + fourthRow[j7] * x7
+    end
+    return firstSum * firstScale, secondSum * secondScale, thirdSum * thirdScale, fourthSum * fourthScale
+end
+
+local function linearSlice(matrix, vector, first, count, checkpoint, result)
+    local width = #vector
+    result = result or {}
+    local grouped = width % 8 == 0 and count - count % 4 or 0
+    for i = 1, grouped, 4 do
+        local row = first + i - 1
+        result[i], result[i + 1], result[i + 2], result[i + 3] =
+            projectFour(matrix, row, row + 1, row + 2, row + 3, vector, width)
+        if checkpoint and i % 8 == 5 then checkpoint() end
+    end
+    for i = grouped + 1, count do
         result[i] = projectTransformer(matrix, first + i - 1, vector, width)
         if checkpoint and i % 8 == 0 then checkpoint() end
     end
     return result
 end
 
-local function sumInto(target, increment)
-    for i = 1,#increment do target[i] = target[i] + increment[i] end
-end
-
-local function normalize(vector, parameters)
+local function normalize(vector, parameters, out)
     local width, total = #vector, 0
     for i = 1,width do total = total + vector[i] end
     local mean, variance = total / width, 0
@@ -1370,40 +1890,32 @@ local function normalize(vector, parameters)
         variance = variance + delta * delta
     end
     local inv = 1 / math.sqrt(variance / width + .00001)
-    local out, scale, bias = {}, parameters[1], parameters[2]
+    out = out or {}
+    local scale, bias = parameters[1], parameters[2]
     for i = 1,width do out[i] = (vector[i] - mean) * inv * scale[i] + bias[i] end
     return out
 end
 
 local function keyValue(attention, vector, width, checkpoint)
-    local keys, values, matrix = {}, {}, attention.qkv
-    for i = 1,width do
-        local keyRow, keyScale = rowAt(matrix, width + i)
-        local valueRow, valueScale = rowAt(matrix, 2 * width + i)
-        local keySum, valueSum = 0, 0
-        for j = 1,#vector,8 do
-            local x1, x2, x3, x4 = vector[j], vector[j + 1], vector[j + 2], vector[j + 3]
-            local x5, x6, x7, x8 = vector[j + 4], vector[j + 5], vector[j + 6], vector[j + 7]
-            keySum = keySum + keyRow[j] * x1 + keyRow[j + 1] * x2
-                + keyRow[j + 2] * x3 + keyRow[j + 3] * x4 + keyRow[j + 4] * x5
-                + keyRow[j + 5] * x6 + keyRow[j + 6] * x7 + keyRow[j + 7] * x8
-            valueSum = valueSum + valueRow[j] * x1 + valueRow[j + 1] * x2
-                + valueRow[j + 2] * x3 + valueRow[j + 3] * x4 + valueRow[j + 4] * x5
-                + valueRow[j + 5] * x6 + valueRow[j + 6] * x7 + valueRow[j + 7] * x8
-        end
-        keys[i], values[i] = keySum * keyScale, valueSum * valueScale
-        if checkpoint and i % 4 == 0 then checkpoint() end
-    end
-    return keys, values
+    local matrix = attention.qkv
+    return linearSlice(matrix, vector, width + 1, width, checkpoint),
+        linearSlice(matrix, vector, 2 * width + 1, width, checkpoint)
 end
 
-local function mixedAttention(attention, query, keys, values, heads, checkpoint)
-    local width, context = #query, {}
+local function queryKeyValue(attention, vector, width, checkpoint, queries)
+    local matrix = attention.qkv
+    return linearSlice(matrix, vector, 1, width, checkpoint, queries),
+        linearSlice(matrix, vector, width + 1, width, checkpoint),
+        linearSlice(matrix, vector, 2 * width + 1, width, checkpoint)
+end
+
+local function addAttention(vector, attention, query, keys, values, heads, checkpoint, scratch)
+    local width, context, weights = #query, scratch.context, scratch.weights
     local span = width / heads
     local inverse = 1 / math.sqrt(span)
     for head = 1,heads do
         local first, last = (head - 1) * span + 1, head * span
-        local peak, weights = -math.huge, {}
+        local peak = -math.huge
         for i, key in ipairs(keys) do
             local value = 0
             for j = first,last do value = value + key[j] * query[j] end
@@ -1412,8 +1924,8 @@ local function mixedAttention(attention, query, keys, values, heads, checkpoint)
             if value > peak then peak = value end
         end
         local total = 0
-        for i, value in ipairs(weights) do
-            weights[i] = exp(value - peak)
+        for i = 1, #keys do
+            weights[i] = exp(weights[i] - peak)
             total = total + weights[i]
         end
         for j = first,last do context[j] = 0 end
@@ -1423,56 +1935,94 @@ local function mixedAttention(attention, query, keys, values, heads, checkpoint)
         end
         if checkpoint then checkpoint() end
     end
-    return linearSlice(attention.output, context, 1, width, checkpoint)
-end
-
-local function feedForward(layer, vector, width, checkpoint)
-    local hidden = linearSlice(layer.feedIn, normalize(vector, layer.feedNorm), 1, width * 2, checkpoint)
-    local indexes, activation = {}, {}
-    local count = 0
-    for j = 1,#hidden do
-        if hidden[j] > 0 then
-            count = count + 1
-            indexes[count], activation[count] = j, hidden[j]
-        end
+    local grouped = width % 8 == 0 and width - width % 4 or 0
+    for i = 1, grouped, 4 do
+        local a, b, c, d = projectFour(attention.output, i, i + 1, i + 2, i + 3, context, width)
+        vector[i], vector[i + 1] = vector[i] + a, vector[i + 1] + b
+        vector[i + 2], vector[i + 3] = vector[i + 2] + c, vector[i + 3] + d
+        if checkpoint and i % 8 == 5 then checkpoint() end
     end
-    for i = 1,width do
-        local row, scale = rowAt(layer.feedOut, i)
-        local total = 0
-        for j = 1,count do total = total + row[indexes[j]] * activation[j] end
-        vector[i] = vector[i] + total * scale
+    for i = grouped + 1, width do
+        vector[i] = vector[i] + projectTransformer(attention.output, i, context, width)
         if checkpoint and i % 8 == 0 then checkpoint() end
     end
+end
+
+local function feedForward(layer, vector, width, checkpoint, scratch)
+    local input = normalize(vector, layer.feedNorm, scratch.normalized)
+    local hidden = linearSlice(layer.feedIn, input, 1, width * 2, checkpoint, scratch.hidden)
+    -- Pack active values into the already visited part of hidden.
+    local indexes = scratch.indexes
+    local count = 0
+    for j = 1,#hidden do
+        local value = hidden[j]
+        if value > 0 then
+            count = count + 1
+            indexes[count], hidden[count] = j, value
+        end
+    end
+    local last = count - count % 4
+    -- Share the active indexes and values across two output rows.
+    local paired = width - width % 2
+    for i = 1, paired, 2 do
+        local leftRow, leftScale = rowAt(layer.feedOut, i)
+        local rightRow, rightScale = rowAt(layer.feedOut, i + 1)
+        local left, right = 0, 0
+        for j = 1, last, 4 do
+            local a, b, c, d = indexes[j], indexes[j + 1], indexes[j + 2], indexes[j + 3]
+            local x, y, z, w = hidden[j], hidden[j + 1], hidden[j + 2], hidden[j + 3]
+            left = left + leftRow[a] * x + leftRow[b] * y + leftRow[c] * z + leftRow[d] * w
+            right = right + rightRow[a] * x + rightRow[b] * y + rightRow[c] * z + rightRow[d] * w
+        end
+        for j = last + 1, count do
+            local k, value = indexes[j], hidden[j]
+            left, right = left + leftRow[k] * value, right + rightRow[k] * value
+        end
+        vector[i], vector[i + 1] = vector[i] + left * leftScale, vector[i + 1] + right * rightScale
+        if checkpoint and i % 8 == 7 then checkpoint() end
+    end
+    if paired < width then
+        local row, scale = rowAt(layer.feedOut, width)
+        local total = 0
+        for j = 1, count do total = total + row[indexes[j]] * hidden[j] end
+        vector[width] = vector[width] + total * scale
+    end
+end
+
+local function positionalEmbedding(tokens, id, positions, position, width)
+    local token, tokenScale = rowAt(tokens, id)
+    local offset, offsetScale = rowAt(positions, position)
+    local result = {}
+    for i = 1, width do result[i] = token[i] * tokenScale + offset[i] * offsetScale end
+    return result
 end
 
 local function transformerEncode(model, tokens, checkpoint)
     local network, width = model.transformer, model.width
     local encoded = {}
+    local scratch = {normalized={}, query={}, context={}, weights={}, hidden={}, indexes={}}
     for i, id in ipairs(tokens) do
-        encoded[i] = embedding(model.source, id, width)
-        sumInto(encoded[i], embedding(network.sourcePos, i, width))
+        encoded[i] = positionalEmbedding(model.source, id, network.sourcePos, i, width)
     end
     for _, layer in ipairs(network.encoder) do
         local queries, keys, values = {}, {}, {}
         for i, vector in ipairs(encoded) do
-            local input = normalize(vector, layer.selfNorm)
-            queries[i] = linearSlice(layer.attention.qkv, input, 1, width, checkpoint)
-            keys[i], values[i] = keyValue(layer.attention, input, width, checkpoint)
+            local input = normalize(vector, layer.selfNorm, scratch.normalized)
+            queries[i], keys[i], values[i] = queryKeyValue(layer.attention, input, width, checkpoint)
         end
         for i, vector in ipairs(encoded) do
-            sumInto(vector, mixedAttention(layer.attention, queries[i], keys, values, network.heads, checkpoint))
-            feedForward(layer, vector, width, checkpoint)
+            addAttention(vector, layer.attention, queries[i], keys, values, network.heads, checkpoint, scratch)
+            feedForward(layer, vector, width, checkpoint, scratch)
         end
     end
     for i, vector in ipairs(encoded) do encoded[i] = normalize(vector, network.sourceNorm) end
-    return encoded, {position=0, cache={}}
+    return encoded, {position=0, cache={}, scratch=scratch}
 end
 
 local function transformerDecode(model, previous, encoded, state, checkpoint)
     local network, width = model.transformer, model.width
-    local position = state.position + 1
-    local vector = embedding(model.target, previous, width)
-    sumInto(vector, embedding(network.targetPos, position, width))
+    local position, scratch = state.position + 1, state.scratch
+    local vector = positionalEmbedding(model.target, previous, network.targetPos, position, width)
     for i, layer in ipairs(network.decoder) do
         local cache = state.cache[i]
         if not cache then
@@ -1482,15 +2032,16 @@ local function transformerDecode(model, previous, encoded, state, checkpoint)
             end
             state.cache[i] = cache
         end
-        local input = normalize(vector, layer.selfNorm)
-        local query = linearSlice(layer.attention.qkv, input, 1, width, checkpoint)
-        cache.keys[position], cache.values[position] = keyValue(layer.attention, input, width, checkpoint)
-        sumInto(vector, mixedAttention(layer.attention, query, cache.keys, cache.values, network.heads, checkpoint))
-        input = normalize(vector, layer.crossNorm)
-        query = linearSlice(layer.crossAttention.qkv, input, 1, width, checkpoint)
-        sumInto(vector, mixedAttention(layer.crossAttention, query, cache.crossKeys, cache.crossValues,
-            network.heads, checkpoint))
-        feedForward(layer, vector, width, checkpoint)
+        local input = normalize(vector, layer.selfNorm, scratch.normalized)
+        local query
+        query, cache.keys[position], cache.values[position] =
+            queryKeyValue(layer.attention, input, width, checkpoint, scratch.query)
+        addAttention(vector, layer.attention, query, cache.keys, cache.values, network.heads, checkpoint, scratch)
+        input = normalize(vector, layer.crossNorm, scratch.normalized)
+        query = linearSlice(layer.crossAttention.qkv, input, 1, width, checkpoint, scratch.query)
+        addAttention(vector, layer.crossAttention, query, cache.crossKeys, cache.crossValues,
+            network.heads, checkpoint, scratch)
+        feedForward(layer, vector, width, checkpoint, scratch)
     end
     state.position = position
     return normalize(vector, network.targetNorm), state
@@ -1508,6 +2059,38 @@ end
 function M.decode(model, previous, encoded, state, checkpoint)
     if model.transformer then return transformerDecode(model, previous, encoded, state, checkpoint) end
     return gruDecode(model, previous, encoded, state, checkpoint)
+end
+
+local nativeScore = M.score
+bestTarget = function(model, features, choices, checkpoint)
+    local best, highest = EOS, -math.huge
+    if model.transformer and M.score == nativeScore and model.width % 8 == 0 then
+        local count, bias, width = #choices, model.outputBias, model.width
+        local grouped = count - count % 4
+        for index = 1, grouped, 4 do
+            local first, second = choices[index], choices[index + 1]
+            local third, fourth = choices[index + 2], choices[index + 3]
+            local a, b, c, d = projectFour(model.target, first, second, third, fourth, features, width)
+            a, b, c, d = a + bias[first], b + bias[second], c + bias[third], d + bias[fourth]
+            if a > highest then best, highest = first, a end
+            if b > highest then best, highest = second, b end
+            if c > highest then best, highest = third, c end
+            if d > highest then best, highest = fourth, d end
+            if checkpoint and index % 32 == 29 then checkpoint() end
+        end
+        for index = grouped + 1, count do
+            local candidate = choices[index]
+            local score = nativeScore(model, features, candidate)
+            if score > highest then best, highest = candidate, score end
+        end
+        return best
+    end
+    for index, id in ipairs(choices) do
+        local score = M.score(model, features, id)
+        if score > highest then best, highest = id, score end
+        if checkpoint and index % 32 == 0 then checkpoint() end
+    end
+    return best
 end
 
 return M

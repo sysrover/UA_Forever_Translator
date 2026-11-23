@@ -1,5 +1,12 @@
 local _, ns = ...
 local D = {}; ns.Engine.Dictionary = D
+
+-- In skill-qualified crafting requests, the same abbreviation can name the crafter or the skill.
+local craftingAliases = {lw="profession.leatherworking"}
+function D.craftingAlias(key)
+    return craftingAliases[key]
+end
+
 local function derivedTerm(node, direction, category, requiredCase, requiredNumber)
     if not node._morph or (category and category ~= "creatures" and category ~= "addresses") then return nil end
     local selected

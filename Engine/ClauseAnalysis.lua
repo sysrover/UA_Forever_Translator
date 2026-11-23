@@ -1487,6 +1487,7 @@ local function prepositionContext(tree, frame)
         or frame.prepositionContext
         or personalPredicate and personalPredicate.prepositionContext
         or frame.recruitmentSearch and tree.implicitSubject and personNoun(tree.object) and "recruitmentPurpose"
+        or frame.recruitedSubject and personNoun(tree.object) and "activityInvitation"
     return context, frame.durationBoundary and "duration"
 end
 local controlledTemporal = {
@@ -2323,7 +2324,10 @@ complements = function(document, tree, index, limit, depth, recentObject)
             tree.property, index = property, finish
         end
     end
-    local objectCase = governedCase or (english and "accusative" or frame.objectCase or "accusative")
+    local predicateCase = tree.tense == "infinitive" and tree.verb.lexeme.en == "be"
+        and tree.verb.lexeme.uk == "бути" and "instrumental"
+    local objectCase = governedCase or (english and "accusative") or predicateCase or frame.objectCase or "accusative"
+    if predicateCase then tree.infinitivePredicateCase = predicateCase end
     local priceAdverb
     if frame.priceAdverb and not occupiedObject then
         local adverb, after = adverbAt(document, index, limit, "price")
@@ -2601,6 +2605,12 @@ complements = function(document, tree, index, limit, depth, recentObject)
         end
         if not object and english and frame.ellipticalGroupRole then
             object, nextIndex = P.ellipticalGroupMember(document, index, limit, frame.ellipticalGroupRole)
+        end
+        if english and object and not preposition then
+            local head = object.members and object.members[1] or object
+            if head.amount and head.amount.bareOver and (not frame.objectCase or frame.objectPreposition) then
+                object, nextIndex = nil, nil
+            end
         end
         if english and object and not preposition and (object.genitive or nextIndex <= limit) then
             local spatial, finish = P.preposition(document, index, limit, frame.motion, nil, nil, nil, "requiresSpatialAnchor")
@@ -3480,6 +3490,14 @@ local function predicate(document, tree, index, limit, depth)
     local pp, finish = P.preposition(document, index, limit, nil, nil, "predicate")
     if not pp and document.direction == "en-uk" then pp, finish = P.freeAbsence(document, index, limit, true) end
     if pp then
+        if pp.rule.id == "over-location" and tree.subject and tree.subject.number == "plural"
+            and pp.object.quantity and P.personNoun(pp.object) then
+            local count, countEnd = P.noun(document, index, limit, "nominative", false, nil, nil, nil, P.personNoun)
+            if count and count.amount and count.amount.bareOver and countEnd >= finish then
+                tree.predicate, tree.predicateStart = count, index
+                return predicateTime(document, tree, countEnd, limit)
+            end
+        end
         if pp.rule.subjectSense then refineSubject(document, tree.subject, pp.rule) end
         if pp.rule.resourceDepletion then tree.exhausted = pp.object
         else finish = addPredicateLocation(document, tree, pp, finish, limit) end
@@ -4953,7 +4971,9 @@ do
                 end
             end
         end
-        local inferred = search and not actor and frame.recruitmentActor
+        local recruitmentName = document.untranslatedRecruitmentObject
+        local namedSearch = search and recruitmentName and recruitmentName.first == start
+        local inferred = search and not actor and (frame.recruitmentActor or namedSearch and "i")
         local posting
         if search and not actor and not inferred then
             for at = start + 1, limit - 1 do
@@ -4980,6 +5000,7 @@ do
                 return request, finish
             end
         end
+        if namedSearch and request.object and request.object.recruitmentName then return request, finish end
         if search and personNoun(request.object) then
             if posting and A.recruitmentActivity(request) then
                 if qualifiedSearch then request.subject = personalSubject("we") end
@@ -5471,11 +5492,17 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
             end
         end
         local token = document.tokens[first]
-        if token and token.protected and not token.linkKind then
-            local label = P.raw(document, first, first)
-            if label:match("^<[^<>]+>$") then
-                local separator = P.key(document, first + 1, limit)
-                local opening = first + ((separator == "—" or separator == ":") and 2 or 1)
+        local labelEnd = first
+        if first < limit and token and token.protected and P.raw(document, first, first):match("^%[[^%[%]]+%]$")
+            and document.tokens[first + 1] and document.tokens[first + 1].protected then
+            labelEnd = first + 1
+        end
+        local labelToken = document.tokens[labelEnd]
+        if labelToken and labelToken.protected and not labelToken.linkKind then
+            local label = P.raw(document, first, labelEnd)
+            if P.raw(document, labelEnd, labelEnd):match("^<[^<>]+>$") then
+                local separator = P.key(document, labelEnd + 1, limit)
+                local opening = labelEnd + ((separator == "—" or separator == ":") and 2 or 1)
                 if english and not objectGap then
                     local guild = {raw=label, number="singular", gender="feminine", person=3}
                     local entry, start = verb(document, opening, limit, guild, false)
@@ -5493,9 +5520,21 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
                         end
                     end
                 end
-                local description, ending = P.noun(document, opening, limit, "nominative")
-                if description and description.term and description.term.id == "game.guild" and boundary(document, ending, limit) then
-                    return {kind="nounPhrase", subject=description, descriptionLabel=label}, ending
+                local start = opening + (english and separator == "is" and 1 or 0)
+                local description, ending = P.noun(document, start, limit, "nominative")
+                if description and description.number == "singular" and P.hasTrait(description, "membershipGroup") then
+                    if not boundary(document, ending, limit) then
+                        local audience, after = P.preposition(document, ending, limit)
+                        if audience and audience.rule.id == "for" and P.personNoun(audience.object)
+                            and boundary(document, after, limit) then
+                            description.prepositions = description.prepositions or {}
+                            description.prepositions[#description.prepositions + 1] = audience
+                            ending = after
+                        end
+                    end
+                    if boundary(document, ending, limit) then
+                        return {kind="nounPhrase", subject=description, descriptionLabel=label}, ending
+                    end
                 end
             end
         end
@@ -5648,6 +5687,14 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
                 return tree, finish
             end
         end
+    end
+    local prohibition = english and key == "no" and P.key(document, limit, limit) == "allowed"
+        or not english and key == "під" and P.key(document, first + 1, limit) == "забороною"
+    if prohibition then
+        local objectFirst = first + (english and 1 or 2)
+        local objectEnd = limit - (english and 1 or 0)
+        local object, after = P.coordinated(document, objectFirst, objectEnd, "nominative", nil, nil, "predicate")
+        if object and after > objectEnd then return {kind="prohibition", object=object}, limit + 1 end
     end
     if english and key == "no" then
         local object, after = P.coordinated(document, first + 1, limit, "nominative")
@@ -7313,6 +7360,46 @@ function A.eventRoom(document, tree, after, limit)
         locationPreposition={object=tree.subject, case="locative", rule={en={"at"}, targetUk="на", englishArticle="definite"}}}
 end
 
+function A.activityListScope(document, first, limit)
+    local english = document.direction == "en-uk"
+    local tokens, split = document.tokens
+    for index = first + 3, limit - 2 do
+        local dash = tokens[index]
+        local key = dash.key
+        if key == "—" or key == "–" or key == "-" and dash.first > tokens[index - 1].last + 1
+            and tokens[index + 1].first > dash.last + 1 then
+            local quantifier = tokens[index + 1].key
+            if english and quantifier == "all" or not english and (quantifier == "усе" or quantifier == "все") then
+                split = index
+                break
+            end
+        end
+    end
+    if not split then return end
+    local listing, after = P.coordinated(document, first, split - 1, "nominative", nil, nil, true)
+    if not listing or not listing.members or after ~= split then return end
+    for _, activity in ipairs(listing.members) do
+        if not (P.hasTrait(activity, "activityTopic") or P.isScheduledEvent(activity)) then return end
+    end
+    local start = split + 2
+    local matches, ending = L.functional(document, "activityListQualifiers", start, limit)
+    local scope
+    if matches and ending == limit then
+        local qualifier = ns.Linguistics.grammar.activityListQualifiers[matches[1]]
+        scope = {kind="adverbPhrase", expression=qualifier}
+    else
+        local calendar, finish = P.calendarList(document, start, limit)
+        if calendar then
+            if finish > limit then scope = {kind="nounPhrase", calendar=calendar} end
+        else
+            local phrase
+            phrase, finish = P.preposition(document, start, limit)
+            if phrase and finish > limit then scope = {kind="nounPhrase", prepositions={phrase}} end
+        end
+    end
+    if scope then return {trees={{kind="nounPhrase", subject=listing, listScope=scope}}, joins={}} end
+end
+
 local function scheduleAdverb(document, first, limit)
     return adverbAt(document, first, limit, "nominalSchedule", function(candidate) return candidate.nominalSchedule end)
 end
@@ -7640,9 +7727,10 @@ local function parse(document, first, limit, sentenceQuestion)
                 tree, after = {kind="nounPhrase", subject=noun, negative=true}, ending
             end
         end
-        if not tree and not prefix and #trees == 0 then
+        if (not tree or unfinishedCommand and tree.imperative) and not prefix and #trees == 0 then
             local noun, ending = P.noun(document, index, limit, "nominative")
-            if noun then
+            if noun and (not tree or noun.activityDescriptors and ending > limit) then
+                if unfinishedCommand then tree = nil end
                 if noun.entry and lexemeFrame(noun.entry).nominalInfinitive then
                     ending = attachNominalAction(document, noun, ending, limit, 0)
                 end
@@ -7667,15 +7755,16 @@ local function parse(document, first, limit, sentenceQuestion)
                     elseif pp or ((noun.all or noun.same or noun.adjectives or noun.possessor or noun.nominalObject or noun.genitive or noun.argument
                         or noun.inclusion or noun.many or noun.more or noun.abundance or noun.nominalMeasure or noun.skillRequirement
                         or noun.destination or noun.activityMode or noun.membershipAudience or noun.groundedState or noun.playableClass
+                        or noun.activityDescriptors
                         or noun.comparativeOffset
-                        or noun.relative or noun.prepositions or noun.nominalAction or noun.nominalQualifier
+                        or noun.relative or noun.progressiveModifier or noun.prepositions or noun.nominalAction or noun.nominalQualifier
                         or noun.term and noun.term.features and noun.term.features.canStandAlone)
                         and ending > limit) then
                         tree = {kind="nounPhrase", subject=noun}
                         after = pp and addPredicateLocation(document, tree, pp, finish, limit) or ending
                     end
                 end
-            else
+            elseif not tree then
                 local pp, finish = P.preposition(document, index, limit)
                 if pp and finish > limit then tree, after = {kind="nounPhrase", prepositions={pp}}, finish end
             end
@@ -8059,8 +8148,9 @@ local function parseWithParticiples(document, first, limit)
     local function copularPrefix(index)
         local prefix = parse(document, first, index - 1)
         local tree = prefix and not prefix.prefix and #prefix.trees == 1 and prefix.trees[1]
-        local predicate = tree and tree.copula and tree.predicate
-        return predicate and predicate.headIndex, tree and tree.tense
+        local predicate = tree and (tree.copula and tree.predicate or tree.descriptionLabel and tree.subject)
+        return predicate and predicate.headIndex, tree and tree.tense,
+            predicate and predicate.amount and predicate.amount.bound
     end
     local function copularAnchor(index, position)
         if position < 4 then return nil end
@@ -8091,6 +8181,11 @@ local function parseWithParticiples(document, first, limit)
                 anchors[index] = {head=first + arc.head - 1}
             elseif arc.relation == "root" then
                 anchors[index] = copularAnchor(index, offset)
+            elseif head and arc.head == offset - 1 and arc.relation == "advcl" and head.relation == "root" then
+                local nominalHead, tense, boundedGroup = copularPrefix(index)
+                if boundedGroup and nominalHead == first + arc.head - 1 then
+                    anchors[index] = {head=nominalHead, tense=tense}
+                end
             elseif head and arc.head < offset and arc.relation == "conj" and head.relation == "root" then
                 -- A nonfinite action directly after a closed nominal predicate can
                 -- describe that predicate even if Parsito labelled the edge conj.
@@ -9324,6 +9419,17 @@ function A.trailingNameAddress(document, first, limit)
     return parsed
 end
 
+function A.guildHeadingWord(text, tokens, first, last)
+    local label, word, ending = tokens[last - 2], tokens[last - 1], tokens[last]
+    if not ending or ending.key ~= "!" or not word or word.protected
+        or not label or not label.protected or text:sub(label.first, label.first) ~= "<" then return end
+    if first ~= last - 2 then
+        local language = tokens[first]
+        if first ~= last - 3 or not language.protected or text:sub(language.first, language.first) ~= "[" then return end
+    end
+    if text:sub(word.first, word.last):match("^[A-Z]+$") then return last - 1 end
+end
+
 function A.parse(document, first, limit, afterRating)
     if not afterRating then
         local rating, following = P.ratingNote(document, first, limit)
@@ -9338,6 +9444,8 @@ function A.parse(document, first, limit, afterRating)
     end
     local menu = P.menuPath(document, first, limit)
     if menu then return {trees={menu}, joins={}} end
+    local scopedActivities = A.activityListScope(document, first, limit)
+    if scopedActivities then return scopedActivities end
     local announcement = A.levelAnnouncement(document, first, limit)
     if announcement then return {trees={announcement}, joins={}} end
     if first < limit and document.spans[first] then
@@ -9367,6 +9475,20 @@ function A.parse(document, first, limit, afterRating)
         if exclamation then return exclamation end
     end
     local token = document.tokens[first]
+    if first < limit and token.protected and document.direction == "en-uk" then
+        local word = A.guildHeadingWord(document.text, document.tokens, first, limit + 1)
+        local action = word and L.choose(document, word, "verb", {tense="present", verbalForm="participle"}, nil,
+            function(candidate)
+                local frame = lexemeFrame(candidate)
+                return not frame.requiresDirectObject and (frame.recruitmentActor == "we"
+                    or frame.openEndedActivity and frame.intransitive)
+            end)
+        if action then
+            local tree = {kind="clause", subject=personalSubject("we"), verb=action, verbIndex=word,
+                tense="present", aspect="continuous", leadingLabel=P.raw(document, first, word - 1)}
+            return {trees={tree}, joins={}}
+        end
+    end
     if first < limit and token.protected and not token.linkKind
         and P.key(document, limit + 1, #document.tokens) == "?" then
         local label = P.raw(document, first, first):match("^<[^<>]+>$")
@@ -10265,7 +10387,9 @@ local function untranslatedPositions(node, positions, seen, compounds, arcs, fir
     if seen[node] then return end
     seen[node] = true
     if node.rawModifier then positions[node.index] = "untranslated-modifier" end
-    if node.untranslatedHeadIndex then positions[node.untranslatedHeadIndex] = "untranslated-nominal" end
+    if node.untranslatedHeadIndex then
+        positions[node.untranslatedHeadIndex] = node.recruitmentName and "preserved-recruitment-name" or "untranslated-nominal"
+    end
     if compounds and node.adjectives then
         local compound, discourse
         for _, modifier in ipairs(node.adjectives) do
@@ -10283,6 +10407,56 @@ local function untranslatedPositions(node, positions, seen, compounds, arcs, fir
             if untranslatedPositions(child, positions, seen, compounds, arcs, first) == false then return false end
         end
     end
+end
+
+function A.parseWithRecruitmentName(document, first, limit)
+    if document.direction ~= "en-uk" or limit <= first + 1 or limit - first >= 32
+        or not ns.Engine.Parser.startsWithCapital(document.text, document.tokens[limit]) then return nil end
+    local dictionary = ns.Engine.Dictionary
+    if #L.at(document, limit) > 0 or dictionary.literal(document, limit) or dictionary.general(document, limit) then return nil end
+    local more = P.key(document, limit - 1, limit) == "more"
+    local objectFirst = limit - (more and 1 or 0)
+    local recruitmentVerbs
+    for index = first, objectFirst - 1 do
+        local phrase = L.phraseAt(document, index, objectFirst - 1, "verb")
+        local action = L.choose(document, phrase or index, "verb", nil, nil, function(entry)
+            return lexemeFrame(entry).recruitmentSearch == true
+        end)
+        if action then
+            recruitmentVerbs = recruitmentVerbs or {}
+            recruitmentVerbs[index] = true
+        end
+    end
+    if not recruitmentVerbs then return nil end
+    local arcs, words = ns.Engine.UDPipe.analyzeDocumentWithTags(document, first, limit)
+    local position = limit - first + 1
+    local arc, word = arcs and arcs[position], words and words[position]
+    if not (arc and word and word.upos == "PROPN") then return nil end
+    if more then
+        local modifier = arcs[position - 1]
+        if not (modifier and modifier.head == position and (modifier.relation == "amod" or modifier.relation == "det")) then
+            return nil
+        end
+    end
+    local predicate = words[arc.head]
+    local verbIndex = first + arc.head - 1
+    if not (recruitmentVerbs[verbIndex] and predicate and predicate.upos == "VERB") then return nil end
+    if arc.relation == "obl" then
+        local marker = arcs[objectFirst - first]
+        if not (marker and marker.head == position and marker.relation == "case"
+            and P.key(document, objectFirst - 1, limit) == "for") then return nil end
+    elseif arc.relation ~= "obj" then return nil end
+    local previous = document.untranslatedRecruitmentObject
+    document.untranslatedRecruitmentObject = {first=objectFirst, index=limit, more=more or nil}
+    local parsed = A.parse(document, first, limit)
+    document.untranslatedRecruitmentObject = previous
+    if not parsed then return nil end
+    local positions = {}
+    untranslatedPositions(parsed, positions, {})
+    if positions[limit] ~= "preserved-recruitment-name" then return nil end
+    parsed.untranslated = {{index=limit, reason=positions[limit]}}
+    parsed.dependency = true
+    return parsed
 end
 
 function A.parseWithUntranslatedNominals(document, first, limit, arcs, words)

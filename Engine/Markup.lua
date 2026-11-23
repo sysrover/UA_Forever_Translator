@@ -90,8 +90,39 @@ function M.bracketLabel(text)
     return text:sub(first, last):match("^%[([^%[%]|%c]+)%]$")
 end
 
+local function angleEnd(text, first, heading)
+    local name = heading and text:match("^<[ \t]*()", first) or first + 1
+    if not text:sub(name, name):match("[%a\128-\255]") then return end
+    local last = text:find(">", first + 1, true)
+    if last and last - first <= 64 and not text:sub(first + 1, last - 1):find("[<>|\r\n]") then return last end
+end
+
+local guildLanguages = {
+    EN=true, UK=true, UA=true, RU=true, DE=true, FR=true, ES=true, IT=true, PT=true, PL=true,
+    CS=true, SK=true, HU=true, RO=true, TR=true, BG=true, SV=true, NO=true, ZH=true, KO=true, JA=true,
+}
+
+local function guildLanguageBounds(text)
+    local first = text:match("^%s*()%[")
+    if not first then return end
+    local codes, after = text:match("^%[([A-Z/ ]+)%]()", first)
+    if not codes then return end
+    local guild = text:match("^%s*()<", after)
+    if not guild or not angleEnd(text, guild, true) then return end
+
+    local cursor = 1
+    while cursor do
+        local code, nextAt = codes:match("^ *([A-Z][A-Z]) *()", cursor)
+        if not guildLanguages[code] then return end
+        if nextAt > #codes then return first, after - 1, guild end
+        cursor = codes:match("^/()", nextAt)
+    end
+end
+
 function M.split(text)
     local segments, plain, i, length = {}, 1, 1, #text
+    local languageFirst, languageLast, guild = guildLanguageBounds(text)
+    local heading = guild or text:match("^%s*()<")
     local hasBareAddress = text:find("/", 1, true) and text:find("%.[A-Za-z][A-Za-z]+/")
     local function protect(last, questReference)
         if plain < i then segments[#segments + 1] = { first = plain, last = i - 1 } end
@@ -102,7 +133,9 @@ function M.split(text)
         local head = text:sub(i, i + 1)
         local last
         local questReference
-        if head == "|H" then
+        if i == languageFirst then
+            last = languageLast
+        elseif head == "|H" then
             local firstClose = findTag(text, "|h", i + 2)
             last = firstClose and findTag(text, "|h", firstClose + 2)
             last = last and last + 1 or length
@@ -128,9 +161,8 @@ function M.split(text)
         elseif head == "[[" then
             local reference = text:sub(i, i + 255):match("^%[%[%d%d?%d?%] +[^%[%]|%c]+ %(%d+%)%]")
             if reference then last, questReference = i + #reference - 1, true end
-        elseif text:sub(i, i) == "<" and text:sub(i + 1, i + 1):match("[%a\128-\255]") then
-            local close = text:find(">", i + 1, true)
-            if close and close - i <= 64 and not text:sub(i + 1, close - 1):find("[<>|\r\n]") then last = close end
+        elseif text:sub(i, i) == "<" then
+            last = angleEnd(text, i, i == heading)
         elseif hasBareAddress then
             last = bareAddressEnd(text, i)
         end

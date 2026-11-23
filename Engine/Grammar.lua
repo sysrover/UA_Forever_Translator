@@ -28,9 +28,46 @@ function G.moneyAt(document, first, limit)
     end
 end
 
+local denominations = {g=3, s=2, c=1}
+local coinJoins = {["and"]=true, ["і"]=true, ["й"]=true, ["та"]=true, [","]=true}
+
+function G.packedMoney(token)
+    if not token or token.protected or not token.key:match("^%d+[gsc]%d") then return end
+    local parts, cursor, previous = {}, 1, 4
+    while cursor <= #token.key do
+        local amount, unit, after = token.key:sub(cursor):match("^(%d+)([gsc])()")
+        if not amount or denominations[unit] >= previous then return end
+        parts[#parts + 1] = {raw=amount .. unit, amount=amount, unit=unit}
+        cursor, previous = cursor + after - 1, denominations[unit]
+    end
+    return parts
+end
+
+function G.offerPriceAt(document, first, limit)
+    if first > limit then return end
+    local tokens = document.tokens
+    local parts = G.packedMoney(tokens[first])
+    local after = first + 1
+    if not parts then
+        local part
+        part, after = G.moneyAt(document, first, limit)
+        if not part then return end
+        parts = {part}
+    end
+    while after <= limit and #parts < 3 do
+        local token = tokens[after]
+        local following = not token.protected and coinJoins[token.key] and after + 1 or after
+        local part, ending = G.moneyAt(document, following, limit)
+        if not part or denominations[part.unit] >= denominations[parts[#parts].unit] then break end
+        parts[#parts + 1], after = part, ending
+    end
+    return parts, after
+end
+
 local priceBases = {
     each="unit", ["per item"]="unit", ["a piece"]="unit", ["за штуку"]="unit", ["за одиницю"]="unit",
     ["a bottle"]="bottle", ["per bottle"]="bottle", ["за пляшку"]="bottle",
+    ["per enchant"]="enchant", ["per enchantment"]="enchant", ["за зачарування"]="enchant",
     total="total", ["in total"]="total", ["загалом"]="total", ["усього"]="total", ["всього"]="total",
 }
 
@@ -58,6 +95,7 @@ end
 
 function G.priceBasisText(basis, english)
     if basis == "bottle" then return english and "a bottle" or "за пляшку" end
+    if basis == "enchant" then return english and "per enchant" or "за зачарування" end
     if basis == "total" then return english and "total" or "загалом" end
     return english and "each" or "за штуку"
 end
@@ -75,6 +113,14 @@ function G.moneyText(slot, nominative)
     return amount .. " " .. forms[form]
 end
 
+function G.offerPriceText(parts, english)
+    local values = {}
+    for i, part in ipairs(parts) do values[i] = english and part.raw or G.moneyText(part) end
+    if english then return table.concat(values, " ") end
+    if #values < 2 then return values[1] end
+    return table.concat(values, ", ", 1, #values - 1) .. " і " .. values[#values]
+end
+
 function G.numberForm(number)
     local n = tonumber(number)
     if not n then return "genitivePlural" end
@@ -83,6 +129,26 @@ function G.numberForm(number)
     if last >= 2 and last <= 4 and (pair < 12 or pair > 14) then return "genitivePlural" end
     return "genitivePlural"
 end
+function G.roleQuantity(slot, term, accusative)
+    if not slot.spelled then return slot.raw end
+    local number, features = tonumber(slot.raw), term.features or {}
+    local gender, animacy = features.gender or "masculine", features.animacy
+    if number == 1 then
+        return ns.Engine.Phrases.one(gender, accusative and "accusative" or "nominative", animacy)
+    end
+    local grammar = ns.Linguistics.grammar
+    local forms = grammar.cardinalUk
+    if accusative and animacy == "animate" and number >= 2 and number <= 4 then
+        forms = grammar.cardinalUkByCase.genitive
+    elseif number == 2 then
+        return gender == "feminine" and "дві" or "два"
+    end
+    for word, cardinal in pairs(forms) do
+        if cardinal == number then return word end
+    end
+    return slot.raw
+end
+
 function G.render(template, slots, direction)
     local failed = false
     local output = template:gsub("{([%w_]+):?([%w_]*)}", function(name, form)
@@ -133,6 +199,7 @@ function G.render(template, slots, direction)
             end
             return slot.term.uk
         end
+        if form == "roleQuantity" then return G.roleQuantity(slot, slots.role.term, true) end
         if form == "money" or form == "moneyNominative" then return G.moneyText(slot, form == "moneyNominative") end
         return slot.raw
     end)

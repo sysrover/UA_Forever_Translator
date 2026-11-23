@@ -54,19 +54,32 @@ function A.measure(text, tokens, direction)
             if clock then
                 kind, value, nextToken = "clock-content", clock:gsub("^0(%d:)", "%1"), after
             else
-                local price, ending = ns.Engine.Grammar.moneyAt(document, first, #tokens)
-                if price then
-                    local amount = decimalKey(price.amount)
-                    local metal = ns.Engine.Normalize.key(price.sourceRaw):match("^%d+[.,]?%d* (%a+)$")
-                    local following = tokens[ending]
-                    -- A bare metal can be a material adjective before an item.
-                    local unambiguous = not metalNames[metal] or not following
-                        or not following.protected and (following.key:match("^%p$")
-                            or amountIntroduces[following.key]
-                            or ns.Engine.Grammar.priceBasisAt(document, ending, #tokens))
-                    -- Zero can be rendered as "free" or "безкоштовно".
-                    if unambiguous and amount ~= "0." then
-                        kind, value, nextToken = "currency-content", amount .. price.unit, ending
+                local grammar = ns.Engine.Grammar
+                local packed = grammar.packedMoney(token)
+                if packed then
+                    for _, part in ipairs(packed) do
+                        local amount = decimalKey(part.amount)
+                        if amount ~= "0." then
+                            facts = facts or {}
+                            facts[#facts + 1] = {first=first, last=first, kind="currency-content",
+                                key="currency-content:" .. amount .. part.unit}
+                        end
+                    end
+                else
+                    local price, ending = grammar.moneyAt(document, first, #tokens)
+                    if price then
+                        local amount = decimalKey(price.amount)
+                        local metal = ns.Engine.Normalize.key(price.sourceRaw):match("^%d+[.,]?%d* (%a+)$")
+                        local following = tokens[ending]
+                        -- A bare metal can be a material adjective before an item.
+                        local unambiguous = not metalNames[metal] or not following
+                            or not following.protected and (following.key:match("^%p$")
+                                or amountIntroduces[following.key]
+                                or grammar.priceBasisAt(document, ending, #tokens))
+                        -- Zero can be rendered as "free" or "безкоштовно".
+                        if unambiguous and amount ~= "0." then
+                            kind, value, nextToken = "currency-content", amount .. price.unit, ending
+                        end
                     end
                 end
             end

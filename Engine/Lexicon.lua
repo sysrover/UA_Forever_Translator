@@ -73,6 +73,8 @@ local thirdPerson = {tense="present", person=3, number="singular"}
 local past = {tense="past"}
 local pastParticiple = {tense="past", verbalForm="participle"}
 local presentParticiple = {tense="present", verbalForm="participle"}
+local comparative = {degree="comparative"}
+local superlative = {degree="superlative"}
 
 local function doublesConsonant(stem)
     -- A single short vowel followed by one consonant takes a doubled ending.
@@ -87,7 +89,14 @@ end
 
 local function englishForms(word, add)
     if not word:match("^[a-z]+$") then return end
-    if ends(word, "s") then
+    if ends(word, "ier") or ends(word, "iest") then
+        local super = ends(word, "iest")
+        local stem = word:sub(1, super and -5 or -4)
+        if stem:match("[^aeiou]$") then
+            local form = super and superlative or comparative
+            add(stem .. "y", "adj", form, form.degree)
+        end
+    elseif ends(word, "s") then
         local function pluralOrThird(stem, verbOnly)
             if #stem < 2 then return end
             if not verbOnly then add(stem, "noun", plural, "plural") end
@@ -168,8 +177,10 @@ local function derived(document, word)
         for _, entry in ipairs(entries) do
             local lexeme, form = entry.lexeme, entry.form
             local matchesLemma = attested and lexeme[language] == base
-            local productive = not attested and (english and lexeme.en == base
-                and (pos == "verb" and form.mood == "base" or pos == "noun" and form.number == "singular" and not entry.head.mass)
+            local productive = not attested and (english and
+                (pos == "adj" and not form.degree and (slot == "comparative" or slot == "superlative")
+                    or lexeme.en == base and (pos == "verb" and form.mood == "base"
+                        or pos == "noun" and form.number == "singular" and not entry.head.mass))
                 or not english and form.case == "dative" and form.number == "singular" and form.gender == "masculine")
             if lexeme.pos == pos and (matchesLemma or productive) then
                 local analysis = inferred or form
@@ -178,7 +189,8 @@ local function derived(document, word)
                 if not readings[analysis] then
                     if #result == 64 then result.truncated = true; return end
                     readings[analysis] = true
-                    result[#result+1] = {id=entry.id, lexeme=lexeme, form=analysis, head=entry.head}
+                    result[#result+1] = {id=entry.id, lexeme=lexeme, form=analysis, head=entry.head,
+                        productiveDegree=pos == "adj" and not attested or nil}
                 end
             end
         end
@@ -234,7 +246,8 @@ function L.derivedLiteral(document, word)
     local target = document.direction == "en-uk" and "uk" or "en"
     local translation
     for _, entry in ipairs(candidates) do
-        if available(entry.lexeme, document) then
+        -- A derived adjective needs a head to preserve degree and agreement.
+        if not entry.productiveDegree and available(entry.lexeme, document) then
             local equivalent = entry.lexeme[target]
             if translation and translation ~= equivalent then return nil end
             translation = equivalent

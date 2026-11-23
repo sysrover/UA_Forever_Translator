@@ -4,26 +4,144 @@ local G, M = ns.Engine.Grammar, ns.Engine.Morphology
 
 local gratuities = {
     appreciated={uk=". Буду вдячний за чайові", en=". Tips are appreciated"},
+    appreciatedOptional={uk=". Чайові вітаються, але вони необов’язкові", en=". Tips are welcome but not required"},
     accepted={uk=". Приймаю чайові", en=". Tips accepted"},
     with={uk=" з чайовими", en=" with tips"},
 }
 
-local function serviceTerms(output, features, uk)
+local function servicePlace(place, uk)
+    local generation = ns.Engine.ClauseGeneration
+    local value, marker
+    if place.accessSteps then
+        value = generation.noun(place.object, not uk, uk and "genitive" or "nominative")
+        if value and not uk then value = "the " .. value .. " steps" end
+        marker = uk and "біля сходів" or "at"
+    else
+        value, marker = generation.preposition(place, not uk)
+        if not uk and place.rule.id == "out-of-location" then marker = "outside" end
+    end
+    if value and marker then return marker .. " " .. value end
+end
+
+local function remainingStock(stock, uk)
+    if not stock then return "" end
+    return uk and ". Залишилося " .. stock.raw or ". " .. stock.raw .. " left"
+end
+
+local function serviceTerms(output, features, uk, stock)
     local tips = gratuities[features.tips]
     if tips then output = output .. (uk and tips.uk or tips.en) end
     for index, place in ipairs(features.places or {}) do
-        local value, marker = ns.Engine.ClauseGeneration.preposition(place, not uk)
-        if not value then return nil end
-        if not uk and place.rule.id == "out-of-location" then marker = "outside" end
-        output = output .. (index == 1 and " " or ", ") .. marker .. " " .. value
+        local value = servicePlace(place, uk)
+        if not value then return end
+        local join = index == 1 and " " or ", "
+        if features.compactFree and index == 1 then join = uk and ". Я " or ". I'm " end
+        output = output .. join .. value
     end
-    return output .. (uk and "." or "")
+    return output .. remainingStock(stock, uk) .. ((uk or features.compactFree) and "." or "")
 end
 
 local function practitionerLabel(term, uk, nominative)
     if not uk then return term.englishPractitioner end
     local forms = term.renderForms
     return forms and forms[nominative and "practitionerNominative" or "practitioner"]
+end
+
+local function lockLinks(links, uk)
+    if #links < 2 then return links[1] or "" end
+    return table.concat(links, ", ", 1, #links - 1) .. (uk and " і " or " and ") .. links[#links]
+end
+
+local function lockOffer(slots, features, uk)
+    local entry = features.object and features.object.entry
+    local chest = entry and entry.lexeme.en == "chest"
+    local object = features.links and lockLinks(features.links, uk)
+        or ns.Engine.ClauseGeneration.noun(features.object, not uk, "accusative", not uk and not chest)
+    if not object then return end
+    if chest then
+        local plural = features.object.number == "plural"
+        local locked = uk and (plural and "замкнені " or "замкнену ") or (plural and "locked " or "a locked ")
+        object = locked .. object
+    end
+    local lead
+    if features.provider then
+        local plural = slots.actor.plural
+        if uk then lead = plural and "Розбійники шукають, кому відкрити " or "Розбійник шукає, кому відкрити "
+        else lead = plural and "Rogues LF opening " or "Rogue LF opening " end
+    elseif uk then lead = features.ability and "Можу відкрити " or "Відмикаю "
+    else lead = features.ability and "I can open " or "Opening " end
+    local text = lead .. object
+    if features.place then
+        local where = servicePlace(features.place, uk)
+        if not where then return end
+        text = text .. " " .. where
+    end
+    if features.skill then text = text .. (uk and ". Навичка " or ". Skill ") .. features.skill end
+    local tips = gratuities[features.tips]
+    if tips then text = text .. (uk and tips.uk or tips.en) end
+    return text .. "."
+end
+
+local function lockRequest(slots, features, uk, direction)
+    local location = ""
+    if features.location then
+        local value, marker = ns.Engine.ClauseGeneration.preposition(features.location, not uk)
+        if not value or not marker then return end
+        location = " " .. marker .. " " .. value
+    end
+    local linkList = features.links or {}
+    local links = lockLinks(linkList, uk)
+    local actor, plural = slots.actor, slots.actor and slots.actor.plural
+    local role
+    if actor then
+        local form = uk and (features.request == "search" and (plural and "genitivePlural" or "genitiveSingular")
+            or plural and "nominativePlural" or "canonical") or nil
+        role = not uk and plural and actor.term.englishPlural or M.generate(actor.term, direction, form)
+        if not role then return end
+        role = ns.Engine.Normalize.word(role)
+    end
+
+    local lead, action
+    local pick = features.action == "pick" or features.kind == "lockpicker"
+    if uk then
+        action = pick and (features.kind and "зламає замок" or "зламати замок") or "відкрити"
+        if features.kind then
+            lead = "Шукаю, хто" .. location .. " "
+        elseif features.anyone then
+            lead = features.willing and "Хтось згоден " or "Хтось може "
+        elseif features.request == "search" then
+            local qualification = features.willing and (plural and ", які готові " or ", який готовий ")
+                or (features.ability or pick) and (plural and ", які можуть " or ", який може ") or ", щоб "
+            lead = "Шукаю " .. role .. location .. qualification
+        else
+            local ability = features.willing and (plural and "готові" or "готовий") or (plural and "можуть" or "може")
+            lead = (features.fronted and "є " or "Чи є ") .. role .. location
+                .. (plural and ", які " or ", який ") .. ability .. " "
+        end
+        if features.recipient then action = action .. " мені" end
+    else
+        action = pick and "pick the lock" or "open"
+        if features.kind then lead = "LF lockpicker" .. location .. " to "
+        elseif features.anyone then lead = features.willing and "Anyone want to " or "Can anyone "
+        elseif features.request == "search" then
+            lead = "LF " .. role .. location
+                .. (features.willing and " willing to " or features.ability and " who can " or " to ")
+        else lead = "Any " .. role .. location .. (features.willing and " willing to " or " who can ") end
+    end
+    local value = lead .. action
+    if features.fronted then
+        value = links .. " — " .. value
+        if uk and features.request == "search" then value = value .. (#linkList == 1 and " скриньку" or " скриньки") end
+    elseif links ~= "" then
+        local marker = pick and (uk and " на " or " on ") or " "
+        value = value .. marker .. (features.amount and features.amount .. " " or "") .. links
+    end
+    if features.recipient and not uk then value = value .. " for me" end
+    if features.please then value = value .. (uk and ", будь ласка" or ", please") end
+    if features.skill then
+        value = value .. (uk and " (навичка " .. features.skill .. ")" or " requiring skill " .. features.skill)
+    end
+    return value .. (features.request == "question" and "?" or ".")
 end
 
 local function practitionerRequest(term, uk, article)
@@ -108,9 +226,15 @@ local function groupRoster(slots, features, uk)
         if index > 1 then parts[#parts + 1] = index < #features.members and ", " or (uk and " і " or " and ") end
         parts[#parts + 1] = value
     end
+    local list = table.concat(parts)
+    if features.ready then
+        local status = uk and (features.ready == "toGo" and " готові вирушати." or " готові.")
+            or (features.ready == "toGo" and " are ready to go." or " are ready.")
+        return ns.Engine.Normalize.upperStart(list) .. status
+    end
     local opening = uk and (features.already and "У нас уже є " or "У нас ")
         or (features.already and "We already have " or "We have ")
-    return opening .. table.concat(parts) .. "."
+    return opening .. list .. "."
 end
 
 local function recruitmentJoin(join, uk)
@@ -122,17 +246,30 @@ end
 function T.render(tree, direction)
     local s, f, uk = tree.slots, tree.features, direction == "en-uk"
     local function render(template) return G.render(template, s, direction) end
-    if tree.kind == "recruit" then
+    if tree.kind == "lockRequest" then return lockRequest(s, f, uk, direction)
+    elseif tree.kind == "lockOffer" then return lockOffer(s, f, uk)
+    elseif tree.kind == "recruit" then
         local output
         local total = s.total and s.total.raw
+        local writtenRoleCount = s.role and s.count and s.count.spelled
+        if not writtenRoleCount and f.roleJoins then
+            for index = 2, #f.roleJoins + 1 do
+                local count = s["count" .. index]
+                if count and count.spelled then writtenRoleCount = true; break end
+            end
+        end
         local contextualPlace, quickDestination
-        if uk and f.destinationRoles and s.place then
+        if uk and f.destinationRoles and s.place and not f.wingJoins and not writtenRoleCount then
             local features = s.place.term.features
             if f.pace and features and features.clearableInstance then
                 local format = s.place.plural and "{place:genitivePlural}" or "{place:genitiveSingular}"
                 quickDestination = render(" на швидке проходження " .. format)
             end
             contextualPlace = quickDestination or render(" у {place:object}")
+            if not contextualPlace and f.needsRoles and ns.Linguistics then
+                local place = ns.Engine.Lexicon.curatedForm(s.place.term, "accusative", s.place.plural and "plural" or "singular")
+                if place then contextualPlace = " у " .. ns.Engine.Normalize.upperStart(place) end
+            end
         end
         local function totalPlayers(amount)
             local form = G.numberForm(amount) == "genitiveSingular" and "гравця" or "гравців"
@@ -142,18 +279,35 @@ function T.render(tree, direction)
             if not s.level then return value end
             return value .. (uk and ". Рівень: " or " L") .. s.level.raw .. (s.level.minimum and "+" or "")
         end
+        local function destinationText(format)
+            local first = render(format)
+            if not first or not f.wingJoins then return first end
+            local parts = {first}
+            for i, join in ipairs(f.wingJoins) do
+                local wing = G.render(format, {place=s["place" .. (i + 1)]}, direction)
+                if not wing then return end
+                parts[#parts + 1] = join == "then" and (uk and ", потім " or ", then ") or recruitmentJoin(join, uk)
+                parts[#parts + 1] = wing
+            end
+            return table.concat(parts)
+        end
         local function appendPlace(value, afterSentence)
             if not s.place then return value end
-            if not uk then return value .. (f.destinationRun and " to run " or " for ") .. render("{place}") end
+            if not uk then return value .. (f.destinationRun and " to run " or " for ") .. destinationText("{place}") end
             if contextualPlace then
                 return value:gsub("%.$", "") .. contextualPlace .. (afterSentence and "." or "")
             end
-            if f.destinationRun then
+            if f.destinationRun or f.fillsGroup or f.roleNeeded or writtenRoleCount then
                 local format = s.place.plural and "{place:genitivePlural}" or "{place:genitiveSingular}"
-                return value:gsub("%.$", "") .. " для проходження " .. (render(format) or render("{place}"))
-                    .. (afterSentence and "." or "")
+                local destination = destinationText(format)
+                if f.destinationRun or destination then
+                    local preposition = f.destinationRun and " для проходження " or " до "
+                    return value:gsub("%.$", "") .. preposition .. (destination or destinationText("{place}"))
+                        .. (afterSentence and "." or "")
+                end
             end
-            return value .. (afterSentence and " " or ". ") .. render("Місце: {place}") .. (afterSentence and "." or "")
+            return value .. (afterSentence and " " or ". ") .. (f.wingJoins and "Місця: " or "Місце: ")
+                .. destinationText("{place}") .. (afterSentence and "." or "")
         end
         local function appendConditions(value)
             if f.quests then
@@ -175,10 +329,15 @@ function T.render(tree, direction)
             elseif f.run == "quest" then value = value .. (uk and ". Проходження із завданнями" or ", quest run") end
             if f.pace and not quickDestination then value = value .. (uk and ". Швидке проходження" or ", fast run") end
             if f.clear then value = value .. (uk and ". Повна зачистка" or ", full clear") end
-            if f.ready then value = value .. (uk and ". Готові вирушати" or ". Ready to go") end
+            if f.ready == "afterFill" then
+                value = value .. (uk and ". Після цього можемо вирушати" or ", then we're ready to go")
+            elseif f.ready then value = value .. (uk and ". Готові вирушати" or ". Ready to go") end
             if f.urgent then value = value .. (uk and ". Терміново" or ", quick") end
             if f.summon then value = value .. (uk and ". Можемо прикликати" or ", can summon") end
             if f.go then value = value .. (uk and ". І вирушаємо" or " and go") end
+            if f.fillsGroup then
+                value = value .. (uk and ". Після цього група буде повна" or ", then the group will be full")
+            end
             if f.roster then
                 local roster = groupRoster(s, f.roster, uk)
                 return roster and value .. (f.question and "? " or ". ") .. roster
@@ -221,10 +380,28 @@ function T.render(tree, direction)
             for n = 1, #f.roleJoins + 1 do
                 local suffix = n == 1 and "" or tostring(n)
                 local values = {role=s["role" .. suffix], count=s["count" .. suffix]}
-                local format = values.count and (uk and "{count} {role:counted}" or "{count} {role}")
-                    or (uk and "{role:genitiveSingular}" or "{role}")
-                local value = G.render(format, values, direction)
-                if not value then return nil end
+                local value
+                local additional = n == 1 and f.additional and values.count and not total
+                if uk and f.needsRoles then
+                    local term = values.role.term
+                    local amount = values.count and values.count.raw
+                    local case, number = "nominative", values.role.plural and "plural" or "singular"
+                    if amount then case, number = ns.Engine.Phrases.countedCase(amount, case, false) end
+                    local label = term.uk
+                    if not label:match("^[A-Z%d]+$") then
+                        label = ns.Engine.Lexicon.curatedForm(term, case, number)
+                        if not label then return nil end
+                        label = ns.Engine.Normalize.word(label)
+                    end
+                    value = amount and G.roleQuantity(values.count, term) .. " " .. label or label
+                else
+                    local format = values.count and (uk and "{count:roleQuantity} {role:counted}"
+                        or additional and "{count} more {role}" or "{count} {role}")
+                        or (uk and "{role:genitiveSingular}" or "{role}")
+                    value = G.render(format, values, direction)
+                    if not value then return nil end
+                end
+                if uk and additional then value = "ще " .. value end
                 local join = f.roleJoins[n - 1]
                 if join then
                     roles[#roles + 1] = recruitmentJoin(join, uk)
@@ -233,6 +410,7 @@ function T.render(tree, direction)
             end
             local prefix
             if contextualPlace and total then prefix = appendPlace(totalPlayers(total)) .. ": "
+            elseif uk and f.needsRoles then prefix = "Потрібні "
             elseif uk then prefix = total and totalPlayers(total) .. ": " or "Шукаємо "
             else prefix = total and "LF" .. total .. "M " or "Looking for " end
             output = appendLevel(prefix .. table.concat(roles))
@@ -241,25 +419,28 @@ function T.render(tree, direction)
             return appendConditions(output)
         end
         if uk then
-            if f.lastSpot and not f.destinationRun and s.role and s.place and not s.level and not (s.count and s.total) and (not (s.count or s.total)
-                or (s.count or s.total).raw == "1") then
-                output = render("Шукаємо {role:genitiveSingular} — {place}. Залишилося одне місце.")
+            local requested = s.count or s.total
+            if f.lastSpot and not f.destinationRun and s.role and s.place and not s.level and not (s.count and s.total) and (not requested
+                or requested.raw == "1") then
+                local amount = requested and not requested.spelled and (s.total and "ще {total} " or "{count} ") or ""
+                output = render("Шукаємо " .. amount .. "{role:genitiveSingular} — {place}. Залишилося одне місце.")
                 if output then return appendConditions((output:gsub("%.$", ""))) end
                 return nil
             end
             if s.role then
                 if contextualPlace and total then
-                    local role = render(s.count and "{count} {role:counted}" or "{role:genitiveSingular}")
+                    local role = render(s.count and "{count:roleQuantity} {role:counted}" or "{role:genitiveSingular}")
                     if not role then return end
                     output = appendPlace(totalPlayers(total)) .. ": " .. role .. "."
                 elseif total and s.count then
-                    local role = render("{count} {role:counted}")
+                    local role = render("{count:roleQuantity} {role:counted}")
                     if not role then return end
                     output = totalPlayers(total) .. ": " .. role .. "."
                 elseif total then
                     output = render("Набір у групу: ще {total}; роль: {role}.")
                 elseif s.count then
-                    output = render(f.additional and "Шукаємо ще {count} {role:counted}." or "Шукаємо {count} {role:counted}.")
+                    output = render(f.additional and "Шукаємо ще {count:roleQuantity} {role:counted}."
+                        or "Шукаємо {count:roleQuantity} {role:counted}.")
                 else output = render("Шукаємо {role:genitiveSingular}.") end
             elseif total or s.count then
                 output = totalPlayers(total or s.count.raw) .. "."
@@ -282,6 +463,21 @@ function T.render(tree, direction)
     elseif tree.kind == "groupRoster" then
         return groupRoster(s, f, uk)
     elseif tree.kind == "groupVacancy" then
+        if f.counted then
+            local raw = s.vacancies and s.vacancies.raw or "1"
+            if not uk then
+                local amount = f.writtenOne and "One" or raw
+                local unit = tonumber(raw) == 1 and " spot" or " spots"
+                return amount .. unit .. " left for " .. render("{place}") .. "."
+            end
+            local form = s.place.plural and "{place:genitivePlural}" or "{place:genitiveSingular}"
+            local place = render(form)
+            local case, number = ns.Engine.Phrases.countedCase(raw, "nominative", false)
+            local unit = ns.Engine.Lexicon.inflectLemma("місце", "noun", {case=case, number=number})
+            if not place or not unit then return nil end
+            local amount = f.writtenOne and "одне" or raw
+            return "Залишилося " .. amount .. " " .. unit .. " у групі до " .. place .. "."
+        end
         local output = uk and (f.identity and "Це останнє місце" or "Залишилося одне місце")
             or (f.identity and "This is the last spot" or "Last spot")
         if s.place then
@@ -325,6 +521,27 @@ function T.render(tree, direction)
         return output .. (uk and "." or "")
     elseif tree.kind == "search" then
         return ns.Engine.ClauseGeneration.search(f.object, f.purpose, not uk, f.group, f.emphatic)
+    elseif tree.kind == "linkedSale" then
+        local values = {uk and "Продам " or "WTS "}
+        for index, offer in ipairs(f.offers) do
+            if index > 1 then values[#values + 1] = uk and ", а " or "; and " end
+            local value = offer.link
+            if offer.amount then
+                local marker = uk and (index == 1 and " за " or " — за ") or " for "
+                value = value .. marker .. G.offerPriceText(offer.amount, not uk)
+            end
+            if offer.basis then value = value .. " " .. G.priceBasisText(offer.basis, not uk) end
+            if offer.materials then value = value .. (uk and ", матеріали мої" or " (my mats)") end
+            if offer.comparison then
+                local separator = offer.amount and (uk and ", " or " - ") or " "
+                local discount = offer.discount and G.offerPriceText(offer.discount, not uk)
+                if discount then separator = separator .. (uk and "на " or "") .. discount .. " " end
+                if offer.comparison == "emphatic" then separator = separator .. (uk and "набагато " or "much ") end
+                value = value .. separator .. (uk and "дешевше, ніж на аукціоні" or "cheaper than the auction house")
+            end
+            values[#values + 1] = value
+        end
+        return table.concat(values) .. remainingStock(s.stock, uk) .. "."
     elseif tree.kind == "freeOffer" then
         local value = f.object and ns.Engine.ClauseGeneration.noun(f.object, not uk, "nominative")
             or s.item and s.item.raw
@@ -358,14 +575,19 @@ function T.render(tree, direction)
         local here = f.here and (uk and " тут" or " here") or ""
         return normalize.upperStart(lead .. role .. marker .. place .. here)
     elseif tree.kind == "availability" then
-        local profession = ns.Engine.ClauseGeneration.noun(f.occupation, not uk, "nominative")
+        local case = f.search and "accusative" or "nominative"
+        local profession = ns.Engine.ClauseGeneration.noun(f.occupation, not uk, case)
         if not profession then return end
         local places = {online={"онлайн","online"}, ["онлайн"]={"онлайн","online"},
             around={"поблизу","around"}, ["поблизу"]={"поблизу","around"}, here={"тут","here"}, ["тут"]={"тут","here"}}
-        local place = places[f.place][uk and 1 or 2]
+        local place = f.place and " " .. places[f.place][uk and 1 or 2] or ""
         local skill = s.skill.raw .. "+"
-        if uk then return "Чи є " .. profession .. " із навичкою " .. skill .. " " .. place end
-        return "Any " .. skill .. " " .. profession .. " " .. place
+        if uk then
+            local lead = f.search and "Шукаю " or "Чи є "
+            return lead .. profession .. " із навичкою " .. skill .. place .. (f.search and "." or "")
+        end
+        if f.search then return "LF " .. profession .. " with " .. skill .. " skill" .. place end
+        return "Any " .. skill .. " " .. profession .. place
     elseif tree.kind == "enchantmentList" then
         return enchantmentList(s, f, direction)
     elseif tree.kind == "enchantmentTrade" then
@@ -413,12 +635,15 @@ function T.render(tree, direction)
             or (uk and (f.demand and "Шукаю послуги: " or "Пропоную послуги: ")
                 or (f.demand and "Looking for " or "Offering ")) .. subject
         if f.priced then output = output .. (uk and " за " or " for ") .. s.price.raw end
-        if f.free then output = output .. (uk and " безкоштовно" or " for free") end
+        if f.compactFree then
+            local lead = s.trade.kind == "enchant" and "Безкоштовно накладу " or "Безкоштовно пропоную послуги: "
+            output = (uk and lead or "Free ") .. subject
+        elseif f.free then output = output .. (uk and " безкоштовно" or " for free") end
         if f.materials then
             output = output .. (uk and " — принесіть матеріали" or " — bring materials")
             if f.promise then output = output .. (uk and ", і я виготовлю" or " and I'll make it") end
         end
-        return serviceTerms(output, f, uk)
+        return serviceTerms(output, f, uk, s.stock)
     elseif tree.kind == "reward" then
         return render(uk and "Заплачу {price:money} тому, хто допоможе мені з {quest}."
             or "{price} for anyone who helps me with {quest}")
@@ -462,7 +687,9 @@ function T.render(tree, direction)
             local lead = uk and (f.inquiry and "Чи є " or "Шукаю ") or (f.inquiry and "Any " or "Looking for ")
             output = lead .. profession .. separator .. output
         elseif f.offer then
-            local lead = f.offer == "enchanting" and (uk and "Пропоную зачарування: " or "Offering enchants: ")
+            local lead = f.finalOffer == "plural" and (uk and "Останні безкоштовні зачарування: " or "Last free enchants: ")
+                or f.finalOffer == "singular" and (uk and "Останнє безкоштовне зачарування: " or "Last free enchant: ")
+                or f.offer == "enchanting" and (uk and "Пропоную зачарування: " or "Offering enchants: ")
                 or (uk and "Продам: " or "WTS ")
             output = lead .. output
             if f.header then output = f.header .. ", " .. output end
@@ -473,7 +700,7 @@ function T.render(tree, direction)
             if not materials then return nil end
             output = output .. (uk and ", з " or ", with ") .. materials
         end
-        if f.free then output = output .. (uk and " безкоштовно" or " for free") end
+        if f.free and not f.finalOffer then output = output .. (uk and " безкоштовно" or " for free") end
         local value = serviceTerms(output, f, uk)
         if value and f.limited then return value .. (uk and " Запас обмежений." or ". Limited stock") end
         return value
