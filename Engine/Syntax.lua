@@ -87,7 +87,8 @@ function State:role(name, countKey, words, allowClass)
     local english = self.document.direction == "en-uk"
     if not count then self:count(countKey, words, english) end
     if english and not self.slots[countKey] then self:any("a", "an") end
-    if self:noun(name, "roles") or allowClass and self:noun(name, "classes") then return true end
+    local classAllowed = allowClass and (allowClass ~= "counted" or self.slots[countKey])
+    if self:noun(name, "roles") or classAllowed and self:noun(name, "classes") then return true end
     local token = self.i <= self.limit and self.tokens[self.i]
     if english and not self.slots[countKey] then
         local term, amount = compactCountedTerm(token, "roles", true)
@@ -352,6 +353,16 @@ local function recruitNotes(p, uk)
     return notes
 end
 
+function S.recruitRoleRequestEnd(tokens, first, last)
+    if first >= last or tokens[first].protected then return end
+    local key = tokens[first].key
+    if key == "need" then return first + 1 end
+    if first + 1 < last and not tokens[first + 1].protected then
+        local nextKey = tokens[first + 1].key
+        if key == "we" and nextKey == "need" or key == "looking" and nextKey == "for" then return first + 2 end
+    end
+end
+
 local function recruit(p, direction)
     local uk = direction == "uk-en"
     local countWords = uk
@@ -391,19 +402,30 @@ local function recruit(p, direction)
     if compact then p.slots.total, p.slots.count = p.slots.count, nil end
     local lastSpot = bareVacancy or lastSpotMarker(p, uk)
     local role, place, refinements, destinationRun = nil, leadingPlace, nil, nil
+    local destinationRoles
     local roleJoins = {}
     for _ = 1, 4 do
         local separator = p:any(",", ".", ":")
-        if not role and (place and separator or p.slots.excluded) then p:any("need", "потрібно", "потрібні") end
+        local roleRequest
+        if not role then
+            if not uk and place then
+                local after = S.recruitRoleRequestEnd(p.tokens, p.i, p.limit)
+                if after then p.i, roleRequest = after, true end
+            elseif p.slots.excluded or place and separator then
+                p:any("need", "потрібно", "потрібні")
+            end
+        end
+        local classes = roleRequest and "counted"
         if separator and role and not lastSpot and lastSpotMarker(p, uk) then
             lastSpot = true
-        elseif not role and (p.slots.role or p:role("role", "count", countWords)) then
-            role = true
+        elseif not role and (p.slots.role or p:role("role", "count", countWords, classes)) then
+            role, destinationRoles = true, roleRequest
             for n = 2, 4 do
                 local start = p.i
                 local join = p:coordination()
                 local suffix = tostring(n)
-                if p:role("role" .. suffix, "count" .. suffix, countWords) and (join or p.slots["count" .. suffix]) then
+                if p:role("role" .. suffix, "count" .. suffix, countWords, classes)
+                    and (join or p.slots["count" .. suffix] or roleRequest) then
                     roleJoins[#roleJoins + 1] = join or "and"
                 else
                     p.i = start
@@ -413,6 +435,8 @@ local function recruit(p, direction)
             end
         elseif not role and recruitClasses(p, uk) then
             role = true
+        elseif roleRequest then
+            return
         elseif role and not place and separator and #roleJoins == 0 and not p.classJoins
             and recruitClasses(p, uk, true) then
             refinements = true
@@ -496,6 +520,7 @@ local function recruit(p, direction)
     notes.lastSpot, notes.roleJoins, notes.classJoins = lastSpot, roleJoins, p.classJoins
     notes.additional, notes.quests, notes.refinements = additional, quests, refinements
     notes.roster, notes.destinationRun = roster and roster.features, destinationRun
+    notes.destinationRoles = destinationRoles and (not p.slots.count or p.slots.role.term.category == "classes")
     return p:finish("recruit", notes)
 end
 

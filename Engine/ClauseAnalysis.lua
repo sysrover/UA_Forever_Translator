@@ -5488,7 +5488,9 @@ simple = function(document, first, limit, previous, depth, indirect, objectGap, 
                         local search = {kind="clause", subject=guild, verb=entry, verbIndex=opening,
                             tense=progressive and "present" or entry.form.tense, aspect=progressive and "continuous" or nil}
                         local finish = complements(document, search, start, limit, depth)
-                        if finish == limit + 1 and P.relativeAnimate(search.object) then return search, finish end
+                        if finish == limit + 1 and search.object and P.relativeAnimate(search.object) then
+                            return search, finish
+                        end
                     end
                 end
                 local description, ending = P.noun(document, opening, limit, "nominative")

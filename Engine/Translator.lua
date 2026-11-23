@@ -7,9 +7,17 @@ local cache, queue, head, tail, bytes, count = {}, {}, 1, 0, 0, 0
 function E.clearCache()
     cache, queue, head, tail, bytes, count = {}, {}, 1, 0, 0, 0
 end
-local function cachedKey(text, direction, context)
+local function cachedKey(text, direction, context, neural)
     if not context or not C.public(context.event, context.line, context.author, context.sender, context.language, context.target) then return nil end
     if type(context.line) ~= "number" or context.line <= 0 or context.line % 1 ~= 0 then return nil end
+    if neural then
+        -- The translation uses the original text. Incoming still checks and displays each chat line separately.
+        for _, name in ipairs(contextFields) do
+            local value = context[name]
+            if value ~= nil and type(value) ~= "string" and type(value) ~= "number" then return nil end
+        end
+        return "neural|" .. ns.Data.manifest.version .. "|" .. tostring(ns.Database.revision or 0) .. "|" .. text
+    end
     local parts = {direction, ns.Data.manifest.version, tostring(ns.Database.revision or 0), text}
     for _, name in ipairs(contextFields) do
         local value = context[name]
@@ -169,6 +177,8 @@ local function grammarClause(document, first, last)
             ((firstTree.kind == "clause" or firstTree.kind == "need") and "clause")
         return output, {intent=firstTree.kind, imperative=firstTree.imperative == true,
             question=firstTree.question == true or parsed.hypothetical ~= nil,
+            directQuestion=#parsed.trees == 1 and firstTree.question == true and not aside and not emote,
+            modal=firstTree.modal or firstTree.ability, copular=firstTree.copula,
             sentenceUnit=sentenceUnit, propertyPause=propertyPause, unknownSpans=unknown,
             earlierPhase=firstTree.sentenceAdverb and firstTree.sentenceAdverb.earlierPhase
                 or firstTree.predicateAdverb and firstTree.predicateAdverb.earlierPhase,
@@ -363,9 +373,8 @@ local function exactResult(exact)
     return {text=exact.text, mode="exact", intent=exact.id, matchedTerms={}, unknownSpans={}, sourceRefs=exact.sourceRefs}
 end
 
-local function compute(text, direction, tokens, normalized, checkpoint)
-    normalized = normalized or N.key(text)
-    local facts = A.measure(text, tokens, direction)
+local function compute(text, direction, tokens, checkpoint, facts)
+    local normalized = N.key(text)
     local failure
     local function accept(value, first, last)
         if value then
@@ -376,7 +385,7 @@ local function compute(text, direction, tokens, normalized, checkpoint)
         end
     end
     local exact = ns.Data.exact[direction][normalized]
-    if exact and accept(exact.text) then return exactResult(exact) end
+    if exact and accept(exact.text) then return exactResult(exact), true end
     local document = ns.Engine.Morphology.analyze(text, tokens, direction)
     document.checkpoint = checkpoint
     local output, tree, syntaxFragments = ns.Engine.Syntax.translate(document)
@@ -459,10 +468,12 @@ local function compute(text, direction, tokens, normalized, checkpoint)
         local unresolved = tree and tree.features.unresolved
         if unresolved then unknown[#unknown + 1] = byteSpan(tokens, unresolved) end
         local complete = #unknown == 0
+        local preferred = complete and (clauses ~= nil or general and not (rule.modal or rule.copular))
         return {text = output, mode = complete and "template" or "partial", intent = clauses and "composition" or rule.intent,
             matchedTerms = matched, unknownSpans = unknown, sourceRefs = refs,
             coverage = {complete=complete, pipeline=clauses and "composition" or general and "grammar"
-                or tree and "structural" or "legacy", dependency=dependency}}
+                or tree and "structural" or "legacy", dependency=dependency}},
+            preferred, complete and general and rule.directQuestion
     end
     local usedDependency
     if grammarEnabled then
@@ -565,7 +576,7 @@ local function translateMixed(text, direction, tokens, ranges, checkpoint)
             part[#part + 1] = token
         end
         if checkpoint then checkpoint() end
-        local result = compute(source, direction, part, nil, checkpoint)
+        local result = compute(source, direction, part, checkpoint, A.measure(source, part, direction))
         local value = result.text
         if (clipped or continues) and value ~= source then value = (value:gsub("%.$", "")) end
         chunks[#chunks + 1] = text:sub(cursor, offset)
@@ -600,7 +611,16 @@ local function translateMixed(text, direction, tokens, ranges, checkpoint)
         coverage={complete=false, pipeline="composition"}}
 end
 
-local function translateNeural(text, tokens, checkpoint)
+local function digitsMatch(text, output)
+    local digits = output:gmatch("%d+")
+    for original in text:gmatch("%d+") do
+        if digits() ~= original then return false end
+    end
+    return digits() == nil
+end
+
+local noFacts = {}
+local function translateNeural(text, tokens, checkpoint, facts, directQuestion)
     local english
     for _, token in ipairs(tokens) do
         if not token.protected then
@@ -610,17 +630,17 @@ local function translateNeural(text, tokens, checkpoint)
     end
     if not english then return end
     if not neuralModel then neuralModel = neuralRuntime.prepare(ns.Data.translationStudent, checkpoint) end
-    local facts = A.measure(text, tokens, "en-uk")
-    local output, mode, calls = neuralRuntime.routeChat(ns, text, function(value)
-        return neuralRuntime.translate(neuralModel, value, checkpoint, false, ns.Engine.Markup.split)
-    end, checkpoint, tokens, facts)
-    if mode ~= "complete" or not output or #output > ns.Limits.messageBytes or output == text
-        or A.reject(facts, 1, #tokens, output) then return end
-    local digits = output:gmatch("%d+")
-    for original in text:gmatch("%d+") do
-        if digits() ~= original then return end
+    local output, mode, calls = neuralRuntime.routeChat(ns, text, function(value, context)
+        return neuralRuntime.translate(neuralModel, value, checkpoint, false, ns.Engine.Markup.split, context)
+    end, checkpoint, tokens, facts or noFacts, grammarClause)
+    if mode ~= "complete" or not output or output == text then return end
+    local last = tokens[#tokens]
+    if (directQuestion or not last.protected and last.key == "?") and not output:find("?", 1, true) then
+        local tail = output:match("%s*$")
+        output = output:sub(1, #output - #tail):gsub("…$", ""):gsub("[.!]+$", "") .. "?" .. tail
     end
-    if digits() then return end
+    if #output > ns.Limits.messageBytes or A.reject(facts, 1, #tokens, output) then return end
+    if not digitsMatch(text, output) then return end
     for _, segment in ipairs(ns.Engine.Markup.split(output)) do
         if not segment.protected and output:sub(segment.first, segment.last):find("[\208\209][\128-\191]") then
             return {text=output, mode=calls > 0 and "neural" or "template",
@@ -634,20 +654,24 @@ local function translateText(text, direction, checkpoint, neural)
     local tokens = ns.Engine.Tokenizer.scan(text, contractions)
     if not tokens or #tokens == 0 then return unchanged(text, "token-limit-or-empty") end
     local foreign = ns.Engine.SourceLanguage.foreignRanges(tokens, text)
+    local facts = A.measure(text, tokens, direction)
     if foreign then
         local normalized = N.key(text)
         local exact = ns.Data.exact[direction][normalized]
-        local facts = A.measure(text, tokens, direction)
         if exact and not A.reject(facts, 1, #tokens, exact.text) then return exactResult(exact) end
         local result = translateMixed(text, direction, tokens, A.preserveScopes(facts, foreign), checkpoint)
         local reason = result.mode ~= "unchanged" and A.reject(facts, 1, #tokens, result.text)
         return reason and unchanged(text, reason) or result
     end
     if neural then
-        local translated = translateNeural(text, tokens, checkpoint)
-        if translated then return translated end
+        if neuralRuntime.chatOpener(tokens, 1) then
+            return translateNeural(text, tokens, checkpoint, facts) or compute(text, direction, tokens, checkpoint, facts)
+        end
+        local grammatical, preferred, directQuestion = compute(text, direction, tokens, checkpoint, facts)
+        if preferred and digitsMatch(text, grammatical.text) then return grammatical end
+        return translateNeural(text, tokens, checkpoint, facts, directQuestion) or grammatical
     end
-    return compute(text, direction, tokens, nil, checkpoint)
+    return compute(text, direction, tokens, checkpoint, facts)
 end
 
 function E.translate(text, direction, context, checkpoint)
@@ -657,8 +681,7 @@ function E.translate(text, direction, context, checkpoint)
     local settings = ns.Database.settings
     local neural = direction == "en-uk" and context and checkpoint and settings and settings.neuralIncoming
         and neuralRuntime and ns.Data.translationStudent
-    local key = cachedKey(text, direction, context)
-    if key and neural then key = "neural|" .. key end
+    local key = cachedKey(text, direction, context, neural)
     local entry = key and cache[key]
     if entry then return entry.result end
     local result = translateText(text, direction, checkpoint, neural)

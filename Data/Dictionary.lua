@@ -329,6 +329,9 @@ ns.Data = {
             ["arathi"] = {
                 ["basin"] = {
                     ["_id"] = "place.arathi_basin"
+                },
+                ["highlands"] = {
+                    ["_id"] = "place.arathi_highlands"
                 }
             },
             ["arcanite"] = {
@@ -398,6 +401,7 @@ ns.Data = {
                 }
             },
             ["arthas"] = {
+                ["_id"] = "character.arthas",
                 ["menethil"] = {
                     ["_id"] = "character.arthas_menethil"
                 }
@@ -705,6 +709,14 @@ ns.Data = {
             },
             ["boots"] = {
                 ["_id"] = "equipment.boots"
+            },
+            ["booty"] = {
+                ["bay"] = {
+                    ["_id"] = "place.booty_bay"
+                }
+            },
+            ["bootybay"] = {
+                ["_id"] = "place.booty_bay"
             },
             ["bop"] = {
                 ["_id"] = "slang.trade.bop",
@@ -1015,6 +1027,11 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "місто",
                     ["weak"] = false
+                },
+                ["of"] = {
+                    ["dalaran"] = {
+                        ["_id"] = "place.city_of_dalaran"
+                    }
                 }
             },
             ["classic"] = {
@@ -1157,6 +1174,862 @@ ns.Data = {
                     ["_id"] = "slang.trade.mats"
                 }
             },
+            ["craftsman's"] = {
+                ["writ"] = {
+                    [":"] = {
+                        ["advanced"] = {
+                            ["target"] = {
+                                ["dummy"] = {
+                                    ["_id"] = "quest.writ_94281"
+                                }
+                            }
+                        },
+                        ["arcanite"] = {
+                            ["skeleton"] = {
+                                ["key"] = {
+                                    ["_id"] = "quest.writ_94332"
+                                }
+                            }
+                        },
+                        ["azure"] = {
+                            ["silk"] = {
+                                ["hood"] = {
+                                    ["_id"] = "quest.writ_94249"
+                                }
+                            }
+                        },
+                        ["barbaric"] = {
+                            ["gloves"] = {
+                                ["_id"] = "quest.writ_94245"
+                            }
+                        },
+                        ["big"] = {
+                            ["bronze"] = {
+                                ["bomb"] = {
+                                    ["_id"] = "quest.writ_94236"
+                                },
+                                ["knife"] = {
+                                    ["_id"] = "quest.writ_94227"
+                                }
+                            },
+                            ["voodoo"] = {
+                                ["mask"] = {
+                                    ["_id"] = "quest.writ_94300"
+                                },
+                                ["robe"] = {
+                                    ["_id"] = "quest.writ_94301"
+                                }
+                            }
+                        },
+                        ["black"] = {
+                            ["mageweave"] = {
+                                ["vest"] = {
+                                    ["_id"] = "quest.writ_94310"
+                                }
+                            }
+                        },
+                        ["blue"] = {
+                            ["glittering"] = {
+                                ["axe"] = {
+                                    ["_id"] = "quest.writ_94272"
+                                }
+                            },
+                            ["overalls"] = {
+                                ["_id"] = "quest.writ_94248"
+                            }
+                        },
+                        ["catseye"] = {
+                            ["draught"] = {
+                                ["_id"] = "quest.writ_94260"
+                            },
+                            ["ultra"] = {
+                                ["goggles"] = {
+                                    ["_id"] = "quest.writ_94284"
+                                }
+                            }
+                        },
+                        ["cenarion"] = {
+                            ["herb"] = {
+                                ["bag"] = {
+                                    ["_id"] = "quest.writ_94357"
+                                }
+                            }
+                        },
+                        ["chimeric"] = {
+                            ["vest"] = {
+                                ["_id"] = "quest.writ_94348"
+                            }
+                        },
+                        ["cindercloth"] = {
+                            ["robe"] = {
+                                ["_id"] = "quest.writ_94314"
+                            }
+                        },
+                        ["colorful"] = {
+                            ["kilt"] = {
+                                ["_id"] = "quest.writ_94253"
+                            }
+                        },
+                        ["comfortable"] = {
+                            ["leather"] = {
+                                ["hat"] = {
+                                    ["_id"] = "quest.writ_94292"
+                                }
+                            }
+                        },
+                        ["crafted"] = {
+                            ["solid"] = {
+                                ["shot"] = {
+                                    ["_id"] = "quest.writ_94237"
+                                }
+                            }
+                        },
+                        ["craftsman's"] = {
+                            ["monocle"] = {
+                                ["_id"] = "quest.writ_94282"
+                            }
+                        },
+                        ["crimson"] = {
+                            ["silk"] = {
+                                ["robe"] = {
+                                    ["_id"] = "quest.writ_94306"
+                                }
+                            }
+                        },
+                        ["dark"] = {
+                            ["iron"] = {
+                                ["bomb"] = {
+                                    ["_id"] = "quest.writ_94291"
+                                }
+                            },
+                            ["leather"] = {
+                                ["shoulders"] = {
+                                    ["_id"] = "quest.writ_94244"
+                                },
+                                ["tunic"] = {
+                                    ["_id"] = "quest.writ_94241"
+                                }
+                            }
+                        },
+                        ["darkrune"] = {
+                            ["gauntlets"] = {
+                                ["_id"] = "quest.writ_94330"
+                            }
+                        },
+                        ["distilled"] = {
+                            ["firewater"] = {
+                                ["_id"] = "quest.writ_94324"
+                            }
+                        },
+                        ["draught"] = {
+                            ["of"] = {
+                                ["detect"] = {
+                                    ["demon"] = {
+                                        ["_id"] = "quest.writ_94319"
+                                    }
+                                },
+                                ["water"] = {
+                                    ["breathing"] = {
+                                        ["_id"] = "quest.writ_94219"
+                                    }
+                                }
+                            }
+                        },
+                        ["dreamless"] = {
+                            ["sleep"] = {
+                                ["potion"] = {
+                                    ["_id"] = "quest.writ_94317"
+                                }
+                            }
+                        },
+                        ["dusky"] = {
+                            ["bracers"] = {
+                                ["_id"] = "quest.writ_94294"
+                            }
+                        },
+                        ["earthen"] = {
+                            ["silk"] = {
+                                ["belt"] = {
+                                    ["_id"] = "quest.writ_94315"
+                                }
+                            }
+                        },
+                        ["ebon"] = {
+                            ["shiv"] = {
+                                ["_id"] = "quest.writ_94333"
+                            }
+                        },
+                        ["elixir"] = {
+                            ["of"] = {
+                                ["agility"] = {
+                                    ["_id"] = "quest.writ_94266"
+                                },
+                                ["defense"] = {
+                                    ["_id"] = "quest.writ_94218"
+                                },
+                                ["lesser"] = {
+                                    ["agility"] = {
+                                        ["_id"] = "quest.writ_94216"
+                                    }
+                                },
+                                ["ogre's"] = {
+                                    ["strength"] = {
+                                        ["_id"] = "quest.writ_94004"
+                                    }
+                                },
+                                ["wisdom"] = {
+                                    ["_id"] = "quest.writ_94212"
+                                }
+                            }
+                        },
+                        ["enchanted"] = {
+                            ["mageweave"] = {
+                                ["pouch"] = {
+                                    ["_id"] = "quest.writ_94308"
+                                }
+                            }
+                        },
+                        ["explosive"] = {
+                            ["sheep"] = {
+                                ["_id"] = "quest.writ_94230"
+                            }
+                        },
+                        ["felcloth"] = {
+                            ["boots"] = {
+                                ["_id"] = "quest.writ_94356"
+                            }
+                        },
+                        ["field"] = {
+                            ["repair"] = {
+                                ["bot"] = {
+                                    ["74a"] = {
+                                        ["_id"] = "quest.writ_94339"
+                                    }
+                                }
+                            }
+                        },
+                        ["fine"] = {
+                            ["leather"] = {
+                                ["pants"] = {
+                                    ["_id"] = "quest.writ_94239"
+                                }
+                            }
+                        },
+                        ["fire"] = {
+                            ["goggles"] = {
+                                ["_id"] = "quest.writ_94287"
+                            },
+                            ["protection"] = {
+                                ["potion"] = {
+                                    ["_id"] = "quest.writ_94263"
+                                }
+                            }
+                        },
+                        ["flash"] = {
+                            ["bomb"] = {
+                                ["_id"] = "quest.writ_94286"
+                            }
+                        },
+                        ["flask"] = {
+                            ["of"] = {
+                                ["chromatic"] = {
+                                    ["resistance"] = {
+                                        ["_id"] = "quest.writ_94321"
+                                    }
+                                }
+                            }
+                        },
+                        ["free"] = {
+                            ["action"] = {
+                                ["potion"] = {
+                                    ["_id"] = "quest.writ_94215"
+                                }
+                            }
+                        },
+                        ["frost"] = {
+                            ["protection"] = {
+                                ["potion"] = {
+                                    ["_id"] = "quest.writ_94256"
+                                }
+                            }
+                        },
+                        ["frostsaber"] = {
+                            ["boots"] = {
+                                ["_id"] = "quest.writ_94351"
+                            }
+                        },
+                        ["ghostweave"] = {
+                            ["vest"] = {
+                                ["_id"] = "quest.writ_94359"
+                            }
+                        },
+                        ["gift"] = {
+                            ["of"] = {
+                                ["arthas"] = {
+                                    ["_id"] = "quest.writ_94320"
+                                }
+                            }
+                        },
+                        ["gnomish"] = {
+                            ["alarm"] = {
+                                ["-"] = {
+                                    ["o"] = {
+                                        ["-"] = {
+                                            ["bot"] = {
+                                                ["_id"] = "quest.writ_94337"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["universal"] = {
+                                ["remote"] = {
+                                    ["_id"] = "quest.writ_94235"
+                                }
+                            }
+                        },
+                        ["goblin"] = {
+                            ["jumper"] = {
+                                ["cables"] = {
+                                    ["xl"] = {
+                                        ["_id"] = "quest.writ_94338"
+                                    }
+                                }
+                            },
+                            ["land"] = {
+                                ["mine"] = {
+                                    ["_id"] = "quest.writ_94283"
+                                }
+                            },
+                            ["rocket"] = {
+                                ["fuel"] = {
+                                    ["_id"] = "quest.writ_94265"
+                                }
+                            }
+                        },
+                        ["golden"] = {
+                            ["rod"] = {
+                                ["_id"] = "quest.writ_94221"
+                            },
+                            ["scale"] = {
+                                ["coif"] = {
+                                    ["_id"] = "quest.writ_94274"
+                                },
+                                ["gauntlets"] = {
+                                    ["_id"] = "quest.writ_94278"
+                                }
+                            }
+                        },
+                        ["gordok"] = {
+                            ["ogre"] = {
+                                ["suit"] = {
+                                    ["_id"] = "quest.writ_94344"
+                                }
+                            }
+                        },
+                        ["great"] = {
+                            ["rage"] = {
+                                ["potion"] = {
+                                    ["_id"] = "quest.writ_94261"
+                                }
+                            }
+                        },
+                        ["greater"] = {
+                            ["adept's"] = {
+                                ["robe"] = {
+                                    ["_id"] = "quest.writ_94254"
+                                }
+                            },
+                            ["fire"] = {
+                                ["protection"] = {
+                                    ["potion"] = {
+                                        ["_id"] = "quest.writ_94318"
+                                    }
+                                }
+                            }
+                        },
+                        ["green"] = {
+                            ["iron"] = {
+                                ["boots"] = {
+                                    ["_id"] = "quest.writ_94228"
+                                },
+                                ["gauntlets"] = {
+                                    ["_id"] = "quest.writ_94226"
+                                }
+                            },
+                            ["lens"] = {
+                                ["_id"] = "quest.writ_94335"
+                            }
+                        },
+                        ["guardian"] = {
+                            ["cloak"] = {
+                                ["_id"] = "quest.writ_94293"
+                            }
+                        },
+                        ["gyromatic"] = {
+                            ["micro"] = {
+                                ["-"] = {
+                                    ["adjuster"] = {
+                                        ["_id"] = "quest.writ_94289"
+                                    }
+                                }
+                            }
+                        },
+                        ["heavy"] = {
+                            ["bronze"] = {
+                                ["mace"] = {
+                                    ["_id"] = "quest.writ_94224"
+                                }
+                            },
+                            ["leather"] = {
+                                ["ball"] = {
+                                    ["_id"] = "quest.writ_94238"
+                                }
+                            },
+                            ["mithril"] = {
+                                ["axe"] = {
+                                    ["_id"] = "quest.writ_94279"
+                                }
+                            },
+                            ["quiver"] = {
+                                ["_id"] = "quest.writ_94243"
+                            },
+                            ["scorpid"] = {
+                                ["helm"] = {
+                                    ["_id"] = "quest.writ_94349"
+                                }
+                            }
+                        },
+                        ["herbalist's"] = {
+                            ["gloves"] = {
+                                ["_id"] = "quest.writ_94240"
+                            }
+                        },
+                        ["huge"] = {
+                            ["thorium"] = {
+                                ["battleaxe"] = {
+                                    ["_id"] = "quest.writ_94331"
+                                }
+                            }
+                        },
+                        ["imperial"] = {
+                            ["plate"] = {
+                                ["chest"] = {
+                                    ["_id"] = "quest.writ_94329"
+                                }
+                            }
+                        },
+                        ["inlaid"] = {
+                            ["mithril"] = {
+                                ["cylinder"] = {
+                                    ["_id"] = "quest.writ_94269"
+                                }
+                            }
+                        },
+                        ["iridescent"] = {
+                            ["hammer"] = {
+                                ["_id"] = "quest.writ_94222"
+                            }
+                        },
+                        ["lesser"] = {
+                            ["invisibility"] = {
+                                ["potion"] = {
+                                    ["_id"] = "quest.writ_94257"
+                                }
+                            },
+                            ["mana"] = {
+                                ["potion"] = {
+                                    ["_id"] = "quest.writ_94213"
+                                }
+                            },
+                            ["stoneshield"] = {
+                                ["potion"] = {
+                                    ["_id"] = "quest.writ_94258"
+                                }
+                            },
+                            ["troll's"] = {
+                                ["blood"] = {
+                                    ["elixir"] = {
+                                        ["_id"] = "quest.writ_94217"
+                                    }
+                                }
+                            },
+                            ["wizard's"] = {
+                                ["robe"] = {
+                                    ["_id"] = "quest.writ_94247"
+                                }
+                            }
+                        },
+                        ["lifelike"] = {
+                            ["mechanical"] = {
+                                ["toad"] = {
+                                    ["_id"] = "quest.writ_94336"
+                                }
+                            }
+                        },
+                        ["limited"] = {
+                            ["invulnerability"] = {
+                                ["potion"] = {
+                                    ["_id"] = "quest.writ_94322"
+                                }
+                            }
+                        },
+                        ["mageweave"] = {
+                            ["bag"] = {
+                                ["_id"] = "quest.writ_94304"
+                            }
+                        },
+                        ["major"] = {
+                            ["rejuvenation"] = {
+                                ["potion"] = {
+                                    ["_id"] = "quest.writ_94323"
+                                }
+                            }
+                        },
+                        ["mana"] = {
+                            ["potion"] = {
+                                ["_id"] = "quest.writ_94262"
+                            }
+                        },
+                        ["masterwork"] = {
+                            ["target"] = {
+                                ["dummy"] = {
+                                    ["_id"] = "quest.writ_94334"
+                                }
+                            }
+                        },
+                        ["mechanical"] = {
+                            ["dragonling"] = {
+                                ["_id"] = "quest.writ_94280"
+                            },
+                            ["repair"] = {
+                                ["kit"] = {
+                                    ["_id"] = "quest.writ_94290"
+                                }
+                            }
+                        },
+                        ["minor"] = {
+                            ["recombobulator"] = {
+                                ["_id"] = "quest.writ_94232"
+                            }
+                        },
+                        ["mithril"] = {
+                            ["frag"] = {
+                                ["bomb"] = {
+                                    ["_id"] = "quest.writ_94288"
+                                }
+                            },
+                            ["spurs"] = {
+                                ["_id"] = "quest.writ_94328"
+                            }
+                        },
+                        ["moonsight"] = {
+                            ["rifle"] = {
+                                ["_id"] = "quest.writ_94231"
+                            }
+                        },
+                        ["moonsteel"] = {
+                            ["broadsword"] = {
+                                ["_id"] = "quest.writ_94273"
+                            }
+                        },
+                        ["nature"] = {
+                            ["protection"] = {
+                                ["potion"] = {
+                                    ["_id"] = "quest.writ_94259"
+                                }
+                            }
+                        },
+                        ["nightscape"] = {
+                            ["shoulders"] = {
+                                ["_id"] = "quest.writ_94299"
+                            }
+                        },
+                        ["orange"] = {
+                            ["martial"] = {
+                                ["shirt"] = {
+                                    ["_id"] = "quest.writ_94312"
+                                }
+                            }
+                        },
+                        ["orcish"] = {
+                            ["war"] = {
+                                ["leggings"] = {
+                                    ["_id"] = "quest.writ_94327"
+                                }
+                            }
+                        },
+                        ["ornate"] = {
+                            ["mithril"] = {
+                                ["shoulders"] = {
+                                    ["_id"] = "quest.writ_94271"
+                                }
+                            },
+                            ["spyglass"] = {
+                                ["_id"] = "quest.writ_94229"
+                            }
+                        },
+                        ["pearl"] = {
+                            ["-"] = {
+                                ["handled"] = {
+                                    ["dagger"] = {
+                                        ["_id"] = "quest.writ_94220"
+                                    }
+                                }
+                            }
+                        },
+                        ["phoenix"] = {
+                            ["pants"] = {
+                                ["_id"] = "quest.writ_94251"
+                            }
+                        },
+                        ["pilferer's"] = {
+                            ["gloves"] = {
+                                ["_id"] = "quest.writ_94242"
+                            }
+                        },
+                        ["potion"] = {
+                            ["of"] = {
+                                ["demonslaying"] = {
+                                    ["_id"] = "quest.writ_94316"
+                                }
+                            }
+                        },
+                        ["practice"] = {
+                            ["lock"] = {
+                                ["_id"] = "quest.writ_94233"
+                            }
+                        },
+                        ["quickdraw"] = {
+                            ["quiver"] = {
+                                ["_id"] = "quest.writ_94297"
+                            }
+                        },
+                        ["radiant"] = {
+                            ["belt"] = {
+                                ["_id"] = "quest.writ_94326"
+                            },
+                            ["circlet"] = {
+                                ["_id"] = "quest.writ_94325"
+                            }
+                        },
+                        ["red"] = {
+                            ["mageweave"] = {
+                                ["pants"] = {
+                                    ["_id"] = "quest.writ_94311"
+                                }
+                            },
+                            ["whelp"] = {
+                                ["gloves"] = {
+                                    ["_id"] = "quest.writ_94246"
+                                }
+                            },
+                            ["woolen"] = {
+                                ["boots"] = {
+                                    ["_id"] = "quest.writ_94252"
+                                }
+                            }
+                        },
+                        ["rough"] = {
+                            ["bronze"] = {
+                                ["leggings"] = {
+                                    ["_id"] = "quest.writ_94225"
+                                }
+                            }
+                        },
+                        ["runecloth"] = {
+                            ["bag"] = {
+                                ["_id"] = "quest.writ_94353"
+                            },
+                            ["boots"] = {
+                                ["_id"] = "quest.writ_94354"
+                            }
+                        },
+                        ["runic"] = {
+                            ["leather"] = {
+                                ["bracers"] = {
+                                    ["_id"] = "quest.writ_94350"
+                                },
+                                ["headband"] = {
+                                    ["_id"] = "quest.writ_94346"
+                                }
+                            }
+                        },
+                        ["shadow"] = {
+                            ["goggles"] = {
+                                ["_id"] = "quest.writ_94234"
+                            },
+                            ["oil"] = {
+                                ["_id"] = "quest.writ_94264"
+                            },
+                            ["protection"] = {
+                                ["potion"] = {
+                                    ["_id"] = "quest.writ_94214"
+                                }
+                            }
+                        },
+                        ["shadoweave"] = {
+                            ["gloves"] = {
+                                ["_id"] = "quest.writ_94305"
+                            },
+                            ["mask"] = {
+                                ["_id"] = "quest.writ_94358"
+                            },
+                            ["robe"] = {
+                                ["_id"] = "quest.writ_94307"
+                            }
+                        },
+                        ["silver"] = {
+                            ["skeleton"] = {
+                                ["key"] = {
+                                    ["_id"] = "quest.writ_94223"
+                                }
+                            }
+                        },
+                        ["small"] = {
+                            ["silk"] = {
+                                ["pack"] = {
+                                    ["_id"] = "quest.writ_94250"
+                                }
+                            }
+                        },
+                        ["sniper"] = {
+                            ["scope"] = {
+                                ["_id"] = "quest.writ_94341"
+                            }
+                        },
+                        ["solid"] = {
+                            ["sharpening"] = {
+                                ["stone"] = {
+                                    ["_id"] = "quest.writ_94275"
+                                }
+                            }
+                        },
+                        ["soul"] = {
+                            ["pouch"] = {
+                                ["_id"] = "quest.writ_94360"
+                            }
+                        },
+                        ["spider"] = {
+                            ["silk"] = {
+                                ["slippers"] = {
+                                    ["_id"] = "quest.writ_94255"
+                                }
+                            }
+                        },
+                        ["star"] = {
+                            ["belt"] = {
+                                ["_id"] = "quest.writ_94309"
+                            }
+                        },
+                        ["steel"] = {
+                            ["plate"] = {
+                                ["helm"] = {
+                                    ["_id"] = "quest.writ_94268"
+                                }
+                            },
+                            ["weapon"] = {
+                                ["chain"] = {
+                                    ["_id"] = "quest.writ_94270"
+                                }
+                            }
+                        },
+                        ["swift"] = {
+                            ["boots"] = {
+                                ["_id"] = "quest.writ_94298"
+                            }
+                        },
+                        ["thick"] = {
+                            ["leather"] = {
+                                ["ammo"] = {
+                                    ["pouch"] = {
+                                        ["_id"] = "quest.writ_94303"
+                                    }
+                                }
+                            }
+                        },
+                        ["tranquil"] = {
+                            ["mechanical"] = {
+                                ["yeti"] = {
+                                    ["_id"] = "quest.writ_94342"
+                                }
+                            }
+                        },
+                        ["truesilver"] = {
+                            ["rod"] = {
+                                ["_id"] = "quest.writ_94277"
+                            },
+                            ["transformer"] = {
+                                ["_id"] = "quest.writ_94340"
+                            }
+                        },
+                        ["turtle"] = {
+                            ["scale"] = {
+                                ["breastplate"] = {
+                                    ["_id"] = "quest.writ_94302"
+                                }
+                            }
+                        },
+                        ["tuxedo"] = {
+                            ["jacket"] = {
+                                ["_id"] = "quest.writ_94355"
+                            }
+                        },
+                        ["unstable"] = {
+                            ["trigger"] = {
+                                ["_id"] = "quest.writ_94285"
+                            }
+                        },
+                        ["volcanic"] = {
+                            ["breastplate"] = {
+                                ["_id"] = "quest.writ_94345"
+                            }
+                        },
+                        ["white"] = {
+                            ["bandit"] = {
+                                ["mask"] = {
+                                    ["_id"] = "quest.writ_94313"
+                                }
+                            }
+                        },
+                        ["wicked"] = {
+                            ["leather"] = {
+                                ["bracers"] = {
+                                    ["_id"] = "quest.writ_94347"
+                                },
+                                ["pants"] = {
+                                    ["_id"] = "quest.writ_94343"
+                                }
+                            },
+                            ["mithril"] = {
+                                ["blade"] = {
+                                    ["_id"] = "quest.writ_94276"
+                                }
+                            }
+                        },
+                        ["wild"] = {
+                            ["leather"] = {
+                                ["helmet"] = {
+                                    ["_id"] = "quest.writ_94295"
+                                },
+                                ["shoulders"] = {
+                                    ["_id"] = "quest.writ_94296"
+                                }
+                            }
+                        },
+                        ["wildvine"] = {
+                            ["potion"] = {
+                                ["_id"] = "quest.writ_94267"
+                            }
+                        },
+                        ["wizardweave"] = {
+                            ["turban"] = {
+                                ["_id"] = "quest.writ_94352"
+                            }
+                        }
+                    }
+                }
+            },
             ["crate"] = {
                 ["faction"] = {
                     ["_id"] = "game.supply_faction"
@@ -1242,6 +2115,9 @@ ns.Data = {
                     ["_id"] = "character.dandelion_ragstallion"
                 }
             },
+            ["darkshire"] = {
+                ["_id"] = "place.darkshire"
+            },
             ["darkshore"] = {
                 ["_id"] = "place.darkshore"
             },
@@ -1259,6 +2135,13 @@ ns.Data = {
             },
             ["dds"] = {
                 ["_id"] = "role.damage"
+            },
+            ["dead"] = {
+                ["mines"] = {
+                    ["_byCategory"] = {
+                        ["places"] = "place.the_deadmines"
+                    }
+                }
             },
             ["deadmines"] = {
                 ["_id"] = "place.the_deadmines"
@@ -1294,12 +2177,32 @@ ns.Data = {
             },
             ["dire"] = {
                 ["maul"] = {
+                    ["-"] = {
+                        ["east"] = {
+                            ["_id"] = "place.dire_maul_east"
+                        },
+                        ["north"] = {
+                            ["_id"] = "place.dire_maul_north"
+                        },
+                        ["west"] = {
+                            ["_id"] = "place.dire_maul_west"
+                        }
+                    },
                     ["_id"] = "place.dire_maul",
                     ["_literal"] = {
                         ["id"] = "literal.place.dire_maul",
                         ["sourceRefs"] = { "ua-forever:place.dire_maul" },
                         ["text"] = "Грізний Молот",
                         ["weak"] = false
+                    },
+                    ["east"] = {
+                        ["_id"] = "place.dire_maul_east"
+                    },
+                    ["north"] = {
+                        ["_id"] = "place.dire_maul_north"
+                    },
+                    ["west"] = {
+                        ["_id"] = "place.dire_maul_west"
                     }
                 }
             },
@@ -1310,7 +2213,16 @@ ns.Data = {
                 ["_id"] = "slang.loot.dkp"
             },
             ["dm"] = {
-                ["_id"] = "place.the_deadmines"
+                ["_id"] = "place.the_deadmines",
+                ["east"] = {
+                    ["_id"] = "place.dire_maul_east"
+                },
+                ["north"] = {
+                    ["_id"] = "place.dire_maul_north"
+                },
+                ["west"] = {
+                    ["_id"] = "place.dire_maul_west"
+                }
             },
             ["dmg"] = {
                 ["_byCategory"] = {
@@ -1464,6 +2376,9 @@ ns.Data = {
                 },
                 ["modr"] = {
                     ["_id"] = "place.dun_modr"
+                },
+                ["morogh"] = {
+                    ["_id"] = "place.dun_morogh"
                 }
             },
             ["dung"] = {
@@ -1500,11 +2415,21 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["dustwallow"] = {
+                ["marsh"] = {
+                    ["_id"] = "place.dustwallow_marsh"
+                }
+            },
             ["dwarf"] = {
                 ["_morph"] = {
                     ["race.dwarf.base.singular"] = {
                         ["nominative"] = true
                     }
+                }
+            },
+            ["dwarven"] = {
+                ["district"] = {
+                    ["_id"] = "place.dwarven_district"
                 }
             },
             ["dwarves"] = {
@@ -1712,6 +2637,16 @@ ns.Data = {
             ["expert"] = {
                 ["fishing"] = {
                     ["_id"] = "game.expert_fishing"
+                }
+            },
+            ["farhold"] = {
+                ["keep"] = {
+                    ["_id"] = "place.farholde_keep"
+                }
+            },
+            ["farholde"] = {
+                ["keep"] = {
+                    ["_id"] = "place.farholde_keep"
                 }
             },
             ["fear"] = {
@@ -2025,6 +2960,11 @@ ns.Data = {
                     ["_id"] = "slang.loot.greed-roll"
                 }
             },
+            ["group"] = {
+                ["finder"] = {
+                    ["_id"] = "game.group_finder"
+                }
+            },
             ["gtg"] = {
                 ["_id"] = "slang.social.gtg"
             },
@@ -2054,6 +2994,9 @@ ns.Data = {
             },
             ["hall"] = {
                 ["of"] = {
+                    ["thane"] = {
+                        ["_id"] = "place.hall_of_thanes"
+                    },
                     ["thanes"] = {
                         ["_id"] = "place.hall_of_thanes"
                     },
@@ -2243,6 +3186,9 @@ ns.Data = {
             ["him"] = {
                 ["_id"] = "recipient.him"
             },
+            ["hinterlands"] = {
+                ["_id"] = "place.hinterlands"
+            },
             ["hogger"] = {
                 ["_id"] = "npc.hogger",
                 ["_literal"] = {
@@ -2363,6 +3309,9 @@ ns.Data = {
                         ["weak"] = false
                     }
                 }
+            },
+            ["hyjal"] = {
+                ["_id"] = "place.hyjal"
             },
             ["i"] = {
                 ["_literal"] = {
@@ -2535,6 +3484,11 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["khaz"] = {
+                ["modan"] = {
+                    ["_id"] = "place.khaz_modan"
+                }
+            },
             ["kill"] = {
                 ["_literal"] = {
                     ["id"] = "literal.kill",
@@ -2550,8 +3504,16 @@ ns.Data = {
                 ["_id"] = "slang.combat.kite"
             },
             ["krol'dok"] = {
+                ["_byCategory"] = {
+                    ["places"] = "place.kroldok_stronghold"
+                },
                 ["stronghold"] = {
                     ["_id"] = "place.kroldok_stronghold"
+                }
+            },
+            ["kroldok"] = {
+                ["_byCategory"] = {
+                    ["places"] = "place.kroldok_stronghold"
                 }
             },
             ["ks"] = {
@@ -2628,6 +3590,9 @@ ns.Data = {
             ["leader"] = {
                 ["_id"] = "game.leader"
             },
+            ["leatherworker"] = {
+                ["_id"] = "profession.leatherworking.practitioner"
+            },
             ["leatherworking"] = {
                 ["_id"] = "profession.leatherworking"
             },
@@ -2692,6 +3657,9 @@ ns.Data = {
                 }
             },
             ["lfg"] = {
+                ["_byCategory"] = {
+                    ["game"] = "game.group_finder"
+                },
                 ["_literal"] = {
                     ["id"] = "literal.slang.lfg",
                     ["sourceRefs"] = { "wow-community:forum" },
@@ -2757,6 +3725,18 @@ ns.Data = {
                 ["of"] = {
                     ["sight"] = {
                         ["_id"] = "slang.combat.los"
+                    }
+                }
+            },
+            ["linen"] = {
+                ["bag"] = {
+                    ["_id"] = "goods.linen_bag"
+                },
+                ["bags"] = {
+                    ["_plural"] = {
+                        ["id"] = "goods.linen_bag",
+                        ["sourceRefs"] = { "ua-forever:item.4238" },
+                        ["text"] = "лляні сумки"
                     }
                 }
             },
@@ -2874,6 +3854,9 @@ ns.Data = {
                         ["_id"] = "slang.loot.loot-council"
                     }
                 }
+            },
+            ["lordaeron"] = {
+                ["_id"] = "place.lordaeron"
             },
             ["los"] = {
                 ["_id"] = "slang.combat.los",
@@ -3874,6 +4857,9 @@ ns.Data = {
                     ["_id"] = "activity.pvp_event"
                 }
             },
+            ["quel'thalas"] = {
+                ["_id"] = "place.quel_thalas"
+            },
             ["quest"] = {
                 ["_id"] = "game.quest",
                 ["item"] = {
@@ -4072,6 +5058,9 @@ ns.Data = {
             ["rfk"] = {
                 ["_id"] = "place.razorfen_kraul"
             },
+            ["riverglades"] = {
+                ["_id"] = "place.riverglades"
+            },
             ["rl"] = {
                 ["_id"] = "slang.groups.rl"
             },
@@ -4127,6 +5116,9 @@ ns.Data = {
                     },
                     ["lordaeron"] = {
                         ["_id"] = "place.ruins_of_lordaeron"
+                    },
+                    ["zul'mamwe"] = {
+                        ["_id"] = "place.ruins_of_zul_mamwe"
                     }
                 }
             },
@@ -4494,6 +5486,9 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:place.stormwind" },
                     ["text"] = "Штормовій",
                     ["weak"] = false
+                },
+                ["keep"] = {
+                    ["_id"] = "place.stormwind_keep"
                 }
             },
             ["str"] = {
@@ -4532,6 +5527,11 @@ ns.Data = {
                         ["text"] = "ударні загони",
                         ["weak"] = false
                     }
+                }
+            },
+            ["stromgarde"] = {
+                ["keep"] = {
+                    ["_id"] = "place.stromgarde_keep"
                 }
             },
             ["summon"] = {
@@ -4594,6 +5594,9 @@ ns.Data = {
                     ["sourceRefs"] = { "ua-forever:goods.sword" },
                     ["text"] = "мечі"
                 }
+            },
+            ["tailor"] = {
+                ["_id"] = "profession.tailoring.practitioner"
             },
             ["tailoring"] = {
                 ["_id"] = "profession.tailoring"
@@ -4744,6 +5747,9 @@ ns.Data = {
                         }
                     }
                 },
+                ["hinterlands"] = {
+                    ["_id"] = "place.hinterlands"
+                },
                 ["promised"] = {
                     ["island"] = {
                         ["_id"] = "place.promised_island"
@@ -4828,6 +5834,12 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "тоді",
                     ["weak"] = true
+                }
+            },
+            ["theramore"] = {
+                ["_id"] = "place.theramore",
+                ["island"] = {
+                    ["_id"] = "place.theramore"
                 }
             },
             ["there"] = {
@@ -5867,11 +6879,13 @@ ns.Data = {
                 ["_id"] = "slang.combat.aoe"
             },
             ["артас"] = {
+                ["_id"] = "character.arthas",
                 ["менетіл"] = {
                     ["_id"] = "character.arthas_menethil"
                 }
             },
             ["артаса"] = {
+                ["_id"] = "character.arthas",
                 ["менетіла"] = {
                     ["_id"] = "character.arthas_menethil"
                 }
@@ -5885,9 +6899,16 @@ ns.Data = {
                 }
             },
             ["артасом"] = {
+                ["_id"] = "character.arthas",
                 ["менетілом"] = {
                     ["_id"] = "character.arthas_menethil"
                 }
+            },
+            ["артасу"] = {
+                ["_id"] = "character.arthas"
+            },
+            ["артасі"] = {
+                ["_id"] = "character.arthas"
             },
             ["артишок"] = {
                 ["морозних"] = {
@@ -6239,6 +7260,26 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["бруднолипка"] = {
+                ["трясовина"] = {
+                    ["_id"] = "place.dustwallow_marsh"
+                }
+            },
+            ["бруднолипкої"] = {
+                ["трясовини"] = {
+                    ["_id"] = "place.dustwallow_marsh"
+                }
+            },
+            ["бруднолипку"] = {
+                ["трясовину"] = {
+                    ["_id"] = "place.dustwallow_marsh"
+                }
+            },
+            ["бруднолипкій"] = {
+                ["трясовині"] = {
+                    ["_id"] = "place.dustwallow_marsh"
+                }
+            },
             ["будь"] = {
                 ["ласка"] = {
                     ["_literal"] = {
@@ -6255,6 +7296,26 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "please",
                     ["weak"] = false
+                }
+            },
+            ["бухта"] = {
+                ["наживи"] = {
+                    ["_id"] = "place.booty_bay"
+                }
+            },
+            ["бухти"] = {
+                ["наживи"] = {
+                    ["_id"] = "place.booty_bay"
+                }
+            },
+            ["бухту"] = {
+                ["наживи"] = {
+                    ["_id"] = "place.booty_bay"
+                }
+            },
+            ["бухті"] = {
+                ["наживи"] = {
+                    ["_id"] = "place.booty_bay"
                 }
             },
             ["біжи"] = {
@@ -6693,6 +7754,26 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["височина"] = {
+                ["араті"] = {
+                    ["_id"] = "place.arathi_highlands"
+                }
+            },
+            ["височини"] = {
+                ["араті"] = {
+                    ["_id"] = "place.arathi_highlands"
+                }
+            },
+            ["височину"] = {
+                ["араті"] = {
+                    ["_id"] = "place.arathi_highlands"
+                }
+            },
+            ["височині"] = {
+                ["араті"] = {
+                    ["_id"] = "place.arathi_highlands"
+                }
+            },
             ["витратник"] = {
                 ["_id"] = "goods.consumable"
             },
@@ -6796,6 +7877,19 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "downstairs",
                     ["weak"] = false
+                }
+            },
+            ["внутрішні"] = {
+                ["землі"] = {
+                    ["_id"] = "place.hinterlands"
+                }
+            },
+            ["внутрішніх"] = {
+                ["земель"] = {
+                    ["_id"] = "place.hinterlands"
+                },
+                ["землях"] = {
+                    ["_id"] = "place.hinterlands"
                 }
             },
             ["вогняна"] = {
@@ -7688,6 +8782,15 @@ ns.Data = {
                     ["_id"] = "place.dire_maul"
                 }
             },
+            ["гіджал"] = {
+                ["_id"] = "place.hyjal"
+            },
+            ["гіджалу"] = {
+                ["_id"] = "place.hyjal"
+            },
+            ["гіджалі"] = {
+                ["_id"] = "place.hyjal"
+            },
             ["гільдій"] = {
                 ["_id"] = "game.guild",
                 ["_plural"] = {
@@ -8078,6 +9181,21 @@ ns.Data = {
                         ["accusative"] = true,
                         ["genitive"] = true
                     }
+                }
+            },
+            ["дворфівський"] = {
+                ["район"] = {
+                    ["_id"] = "place.dwarven_district"
+                }
+            },
+            ["дворфівського"] = {
+                ["району"] = {
+                    ["_id"] = "place.dwarven_district"
+                }
+            },
+            ["дворфівському"] = {
+                ["районі"] = {
+                    ["_id"] = "place.dwarven_district"
                 }
             },
             ["дд"] = {
@@ -8503,6 +9621,15 @@ ns.Data = {
                     },
                     ["модрі"] = {
                         ["_id"] = "place.dun_modr"
+                    },
+                    ["морог"] = {
+                        ["_id"] = "place.dun_morogh"
+                    },
+                    ["морогу"] = {
+                        ["_id"] = "place.dun_morogh"
+                    },
+                    ["морозі"] = {
+                        ["_id"] = "place.dun_morogh"
                     }
                 }
             },
@@ -8756,6 +9883,946 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["замку"] = {
+                ["фарголд"] = {
+                    ["_id"] = "place.farholde_keep"
+                }
+            },
+            ["замовлення"] = {
+                ["майстра"] = {
+                    [":"] = {
+                        ["арканітовий"] = {
+                            ["ключ"] = {
+                                ["-"] = {
+                                    ["відмичка"] = {
+                                        ["_id"] = "quest.writ_94332"
+                                    }
+                                }
+                            }
+                        },
+                        ["багряна"] = {
+                            ["шовкова"] = {
+                                ["мантія"] = {
+                                    ["_id"] = "quest.writ_94306"
+                                }
+                            }
+                        },
+                        ["барвистий"] = {
+                            ["кілт"] = {
+                                ["_id"] = "quest.writ_94253"
+                            }
+                        },
+                        ["блакитний"] = {
+                            ["шовковий"] = {
+                                ["капюшон"] = {
+                                    ["_id"] = "quest.writ_94249"
+                                }
+                            }
+                        },
+                        ["бомба"] = {
+                            ["з"] = {
+                                ["темного"] = {
+                                    ["заліза"] = {
+                                        ["_id"] = "quest.writ_94291"
+                                    }
+                                }
+                            }
+                        },
+                        ["важка"] = {
+                            ["бронзова"] = {
+                                ["булава"] = {
+                                    ["_id"] = "quest.writ_94224"
+                                }
+                            },
+                            ["міфрилова"] = {
+                                ["сокира"] = {
+                                    ["_id"] = "quest.writ_94279"
+                                }
+                            }
+                        },
+                        ["важкий"] = {
+                            ["сагайдак"] = {
+                                ["_id"] = "quest.writ_94243"
+                            },
+                            ["шкіряний"] = {
+                                ["м'яч"] = {
+                                    ["_id"] = "quest.writ_94238"
+                                }
+                            },
+                            ["шолом"] = {
+                                ["скорпіда"] = {
+                                    ["_id"] = "quest.writ_94349"
+                                }
+                            }
+                        },
+                        ["варварські"] = {
+                            ["рукавиці"] = {
+                                ["_id"] = "quest.writ_94245"
+                            }
+                        },
+                        ["велика"] = {
+                            ["бронзова"] = {
+                                ["бомба"] = {
+                                    ["_id"] = "quest.writ_94236"
+                                }
+                            },
+                            ["мантія"] = {
+                                ["вуду"] = {
+                                    ["_id"] = "quest.writ_94301"
+                                }
+                            },
+                            ["маска"] = {
+                                ["вуду"] = {
+                                    ["_id"] = "quest.writ_94300"
+                                }
+                            }
+                        },
+                        ["велике"] = {
+                            ["зілля"] = {
+                                ["захисту"] = {
+                                    ["від"] = {
+                                        ["вогню"] = {
+                                            ["_id"] = "quest.writ_94318"
+                                        }
+                                    }
+                                },
+                                ["люті"] = {
+                                    ["_id"] = "quest.writ_94261"
+                                }
+                            }
+                        },
+                        ["великий"] = {
+                            ["бронзовий"] = {
+                                ["ніж"] = {
+                                    ["_id"] = "quest.writ_94227"
+                                }
+                            }
+                        },
+                        ["величезна"] = {
+                            ["торієва"] = {
+                                ["бойова"] = {
+                                    ["сокира"] = {
+                                        ["_id"] = "quest.writ_94331"
+                                    }
+                                }
+                            }
+                        },
+                        ["вибухова"] = {
+                            ["вівця"] = {
+                                ["_id"] = "quest.writ_94230"
+                            }
+                        },
+                        ["вишукані"] = {
+                            ["шкіряні"] = {
+                                ["штани"] = {
+                                    ["_id"] = "quest.writ_94239"
+                                }
+                            }
+                        },
+                        ["вулканічний"] = {
+                            ["нагрудник"] = {
+                                ["_id"] = "quest.writ_94345"
+                            }
+                        },
+                        ["гномський"] = {
+                            ["робот"] = {
+                                ["-"] = {
+                                    ["сигналізатор"] = {
+                                        ["_id"] = "quest.writ_94337"
+                                    }
+                                }
+                            },
+                            ["універсальний"] = {
+                                ["пульт"] = {
+                                    ["_id"] = "quest.writ_94235"
+                                }
+                            }
+                        },
+                        ["гоблінська"] = {
+                            ["міна"] = {
+                                ["_id"] = "quest.writ_94283"
+                            }
+                        },
+                        ["гоблінське"] = {
+                            ["ракетне"] = {
+                                ["паливо"] = {
+                                    ["_id"] = "quest.writ_94265"
+                                }
+                            }
+                        },
+                        ["гоблінські"] = {
+                            ["кабелі"] = {
+                                ["-"] = {
+                                    ["пускачі"] = {
+                                        ["xl"] = {
+                                            ["_id"] = "quest.writ_94338"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["грубі"] = {
+                            ["бронзові"] = {
+                                ["поножі"] = {
+                                    ["_id"] = "quest.writ_94225"
+                                }
+                            }
+                        },
+                        ["гіроматичний"] = {
+                            ["мікрорегулятор"] = {
+                                ["_id"] = "quest.writ_94289"
+                            }
+                        },
+                        ["дар"] = {
+                            ["артаса"] = {
+                                ["_id"] = "quest.writ_94320"
+                            }
+                        },
+                        ["дикий"] = {
+                            ["шкіряний"] = {
+                                ["шолом"] = {
+                                    ["_id"] = "quest.writ_94295"
+                                }
+                            }
+                        },
+                        ["дикі"] = {
+                            ["шкіряні"] = {
+                                ["наплічники"] = {
+                                    ["_id"] = "quest.writ_94296"
+                                }
+                            }
+                        },
+                        ["дистильована"] = {
+                            ["вогняна"] = {
+                                ["вода"] = {
+                                    ["_id"] = "quest.writ_94324"
+                                }
+                            }
+                        },
+                        ["ебонітова"] = {
+                            ["заточка"] = {
+                                ["_id"] = "quest.writ_94333"
+                            }
+                        },
+                        ["еліксир"] = {
+                            ["захисту"] = {
+                                ["_id"] = "quest.writ_94218"
+                            },
+                            ["малої"] = {
+                                ["спритності"] = {
+                                    ["_id"] = "quest.writ_94216"
+                                }
+                            },
+                            ["мудрості"] = {
+                                ["_id"] = "quest.writ_94212"
+                            },
+                            ["сили"] = {
+                                ["огра"] = {
+                                    ["_id"] = "quest.writ_94004"
+                                }
+                            },
+                            ["спритності"] = {
+                                ["_id"] = "quest.writ_94266"
+                            }
+                        },
+                        ["жезл"] = {
+                            ["істинного"] = {
+                                ["срібла"] = {
+                                    ["_id"] = "quest.writ_94277"
+                                }
+                            }
+                        },
+                        ["жилет"] = {
+                            ["із"] = {
+                                ["примаротканини"] = {
+                                    ["_id"] = "quest.writ_94359"
+                                }
+                            }
+                        },
+                        ["захисні"] = {
+                            ["вогняні"] = {
+                                ["окуляри"] = {
+                                    ["_id"] = "quest.writ_94287"
+                                }
+                            }
+                        },
+                        ["зачарований"] = {
+                            ["мішечок"] = {
+                                ["із"] = {
+                                    ["маготканини"] = {
+                                        ["_id"] = "quest.writ_94308"
+                                    }
+                                }
+                            }
+                        },
+                        ["зелена"] = {
+                            ["лінза"] = {
+                                ["_id"] = "quest.writ_94335"
+                            }
+                        },
+                        ["зелені"] = {
+                            ["залізні"] = {
+                                ["рукавиці"] = {
+                                    ["_id"] = "quest.writ_94226"
+                                },
+                                ["чоботи"] = {
+                                    ["_id"] = "quest.writ_94228"
+                                }
+                            }
+                        },
+                        ["земляний"] = {
+                            ["шовковий"] = {
+                                ["пояс"] = {
+                                    ["_id"] = "quest.writ_94315"
+                                }
+                            }
+                        },
+                        ["золотий"] = {
+                            ["жезл"] = {
+                                ["_id"] = "quest.writ_94221"
+                            },
+                            ["лускатий"] = {
+                                ["каптур"] = {
+                                    ["_id"] = "quest.writ_94274"
+                                }
+                            }
+                        },
+                        ["золоті"] = {
+                            ["лускаті"] = {
+                                ["рукавиці"] = {
+                                    ["_id"] = "quest.writ_94278"
+                                }
+                            }
+                        },
+                        ["зоряний"] = {
+                            ["пояс"] = {
+                                ["_id"] = "quest.writ_94309"
+                            }
+                        },
+                        ["зручний"] = {
+                            ["шкіряний"] = {
+                                ["капелюх"] = {
+                                    ["_id"] = "quest.writ_94292"
+                                }
+                            }
+                        },
+                        ["зілля"] = {
+                            ["безсновидного"] = {
+                                ["сну"] = {
+                                    ["_id"] = "quest.writ_94317"
+                                }
+                            },
+                            ["великого"] = {
+                                ["омолодження"] = {
+                                    ["_id"] = "quest.writ_94323"
+                                }
+                            },
+                            ["винищення"] = {
+                                ["демонів"] = {
+                                    ["_id"] = "quest.writ_94316"
+                                }
+                            },
+                            ["вільної"] = {
+                                ["дії"] = {
+                                    ["_id"] = "quest.writ_94215"
+                                }
+                            },
+                            ["диколози"] = {
+                                ["_id"] = "quest.writ_94267"
+                            },
+                            ["захисту"] = {
+                                ["від"] = {
+                                    ["вогню"] = {
+                                        ["_id"] = "quest.writ_94263"
+                                    },
+                                    ["криги"] = {
+                                        ["_id"] = "quest.writ_94256"
+                                    },
+                                    ["тіні"] = {
+                                        ["_id"] = "quest.writ_94214"
+                                    }
+                                },
+                                ["природи"] = {
+                                    ["_id"] = "quest.writ_94259"
+                                }
+                            },
+                            ["малого"] = {
+                                ["кам'яного"] = {
+                                    ["щита"] = {
+                                        ["_id"] = "quest.writ_94258"
+                                    }
+                                }
+                            },
+                            ["малої"] = {
+                                ["невидимості"] = {
+                                    ["_id"] = "quest.writ_94257"
+                                }
+                            },
+                            ["мани"] = {
+                                ["_id"] = "quest.writ_94262"
+                            },
+                            ["обмеженої"] = {
+                                ["невразливості"] = {
+                                    ["_id"] = "quest.writ_94322"
+                                }
+                            }
+                        },
+                        ["капці"] = {
+                            ["з"] = {
+                                ["павучого"] = {
+                                    ["шовку"] = {
+                                        ["_id"] = "quest.writ_94255"
+                                    }
+                                }
+                            }
+                        },
+                        ["кенарійська"] = {
+                            ["сумка"] = {
+                                ["для"] = {
+                                    ["трав"] = {
+                                        ["_id"] = "quest.writ_94357"
+                                    }
+                                }
+                            }
+                        },
+                        ["кинджал"] = {
+                            ["з"] = {
+                                ["перловою"] = {
+                                    ["ручкою"] = {
+                                        ["_id"] = "quest.writ_94220"
+                                    }
+                                }
+                            }
+                        },
+                        ["костюм"] = {
+                            ["огра"] = {
+                                ["ґордока"] = {
+                                    ["_id"] = "quest.writ_94344"
+                                }
+                            }
+                        },
+                        ["майстерний"] = {
+                            ["манекен"] = {
+                                ["-"] = {
+                                    ["мішень"] = {
+                                        ["_id"] = "quest.writ_94334"
+                                    }
+                                }
+                            }
+                        },
+                        ["мала"] = {
+                            ["мантія"] = {
+                                ["чарівника"] = {
+                                    ["_id"] = "quest.writ_94247"
+                                }
+                            },
+                            ["шовкова"] = {
+                                ["сумка"] = {
+                                    ["_id"] = "quest.writ_94250"
+                                }
+                            }
+                        },
+                        ["мале"] = {
+                            ["зілля"] = {
+                                ["мани"] = {
+                                    ["_id"] = "quest.writ_94213"
+                                }
+                            }
+                        },
+                        ["малий"] = {
+                            ["еліксир"] = {
+                                ["крові"] = {
+                                    ["троля"] = {
+                                        ["_id"] = "quest.writ_94217"
+                                    }
+                                }
+                            }
+                        },
+                        ["мантія"] = {
+                            ["великого"] = {
+                                ["адепта"] = {
+                                    ["_id"] = "quest.writ_94254"
+                                }
+                            },
+                            ["з"] = {
+                                ["попелотканини"] = {
+                                    ["_id"] = "quest.writ_94314"
+                                },
+                                ["тінетканини"] = {
+                                    ["_id"] = "quest.writ_94307"
+                                }
+                            }
+                        },
+                        ["маска"] = {
+                            ["білого"] = {
+                                ["бандита"] = {
+                                    ["_id"] = "quest.writ_94313"
+                                }
+                            },
+                            ["з"] = {
+                                ["тінетканини"] = {
+                                    ["_id"] = "quest.writ_94358"
+                                }
+                            }
+                        },
+                        ["механічний"] = {
+                            ["дракончик"] = {
+                                ["_id"] = "quest.writ_94280"
+                            }
+                        },
+                        ["монокль"] = {
+                            ["ремісника"] = {
+                                ["_id"] = "quest.writ_94282"
+                            }
+                        },
+                        ["міфрилова"] = {
+                            ["осколкова"] = {
+                                ["бомба"] = {
+                                    ["_id"] = "quest.writ_94288"
+                                }
+                            }
+                        },
+                        ["міфрилові"] = {
+                            ["шпори"] = {
+                                ["_id"] = "quest.writ_94328"
+                            }
+                        },
+                        ["набір"] = {
+                            ["для"] = {
+                                ["ремонту"] = {
+                                    ["механізмів"] = {
+                                        ["_id"] = "quest.writ_94290"
+                                    }
+                                }
+                            }
+                        },
+                        ["нагрудник"] = {
+                            ["з"] = {
+                                ["черепашачої"] = {
+                                    ["луски"] = {
+                                        ["_id"] = "quest.writ_94302"
+                                    }
+                                }
+                            }
+                        },
+                        ["настій"] = {
+                            ["виявлення"] = {
+                                ["демонів"] = {
+                                    ["_id"] = "quest.writ_94319"
+                                }
+                            },
+                            ["водного"] = {
+                                ["дихання"] = {
+                                    ["_id"] = "quest.writ_94219"
+                                }
+                            },
+                            ["котячого"] = {
+                                ["ока"] = {
+                                    ["_id"] = "quest.writ_94260"
+                                }
+                            },
+                            ["хроматичного"] = {
+                                ["опору"] = {
+                                    ["_id"] = "quest.writ_94321"
+                                }
+                            }
+                        },
+                        ["нестабільний"] = {
+                            ["детонатор"] = {
+                                ["_id"] = "quest.writ_94285"
+                            }
+                        },
+                        ["нищівний"] = {
+                            ["міфриловий"] = {
+                                ["клинок"] = {
+                                    ["_id"] = "quest.writ_94276"
+                                }
+                            }
+                        },
+                        ["нищівні"] = {
+                            ["шкіряні"] = {
+                                ["наручі"] = {
+                                    ["_id"] = "quest.writ_94347"
+                                },
+                                ["штани"] = {
+                                    ["_id"] = "quest.writ_94343"
+                                }
+                            }
+                        },
+                        ["нічні"] = {
+                            ["наплічники"] = {
+                                ["_id"] = "quest.writ_94299"
+                            }
+                        },
+                        ["оздоблена"] = {
+                            ["підзорна"] = {
+                                ["труба"] = {
+                                    ["_id"] = "quest.writ_94229"
+                                }
+                            }
+                        },
+                        ["оздоблені"] = {
+                            ["міфрилові"] = {
+                                ["наплічники"] = {
+                                    ["_id"] = "quest.writ_94271"
+                                }
+                            }
+                        },
+                        ["орчі"] = {
+                            ["бойові"] = {
+                                ["поножі"] = {
+                                    ["_id"] = "quest.writ_94327"
+                                }
+                            }
+                        },
+                        ["палаш"] = {
+                            ["з"] = {
+                                ["місячної"] = {
+                                    ["сталі"] = {
+                                        ["_id"] = "quest.writ_94273"
+                                    }
+                                }
+                            }
+                        },
+                        ["плащ"] = {
+                            ["вартового"] = {
+                                ["_id"] = "quest.writ_94293"
+                            }
+                        },
+                        ["польовий"] = {
+                            ["ремонтний"] = {
+                                ["бот"] = {
+                                    ["74a"] = {
+                                        ["_id"] = "quest.writ_94339"
+                                    }
+                                }
+                            }
+                        },
+                        ["помаранчева"] = {
+                            ["бойова"] = {
+                                ["сорочка"] = {
+                                    ["_id"] = "quest.writ_94312"
+                                }
+                            }
+                        },
+                        ["посилений"] = {
+                            ["манекен"] = {
+                                ["-"] = {
+                                    ["мішень"] = {
+                                        ["_id"] = "quest.writ_94281"
+                                    }
+                                }
+                            }
+                        },
+                        ["піджак"] = {
+                            ["_id"] = "quest.writ_94355"
+                        },
+                        ["райдужний"] = {
+                            ["молот"] = {
+                                ["_id"] = "quest.writ_94222"
+                            }
+                        },
+                        ["реалістична"] = {
+                            ["механічна"] = {
+                                ["жаба"] = {
+                                    ["_id"] = "quest.writ_94336"
+                                }
+                            }
+                        },
+                        ["рукавиці"] = {
+                            ["з"] = {
+                                ["тінетканини"] = {
+                                    ["_id"] = "quest.writ_94305"
+                                }
+                            },
+                            ["крадія"] = {
+                                ["_id"] = "quest.writ_94242"
+                            },
+                            ["темної"] = {
+                                ["руни"] = {
+                                    ["_id"] = "quest.writ_94330"
+                                }
+                            },
+                            ["травника"] = {
+                                ["_id"] = "quest.writ_94240"
+                            },
+                            ["червоного"] = {
+                                ["дракончика"] = {
+                                    ["_id"] = "quest.writ_94246"
+                                }
+                            }
+                        },
+                        ["рунічна"] = {
+                            ["шкіряна"] = {
+                                ["пов'язка"] = {
+                                    ["_id"] = "quest.writ_94346"
+                                }
+                            }
+                        },
+                        ["рунічні"] = {
+                            ["шкіряні"] = {
+                                ["наручі"] = {
+                                    ["_id"] = "quest.writ_94350"
+                                }
+                            }
+                        },
+                        ["рушниця"] = {
+                            ["місячного"] = {
+                                ["прицілу"] = {
+                                    ["_id"] = "quest.writ_94231"
+                                }
+                            }
+                        },
+                        ["сагайдак"] = {
+                            ["швидкого"] = {
+                                ["пострілу"] = {
+                                    ["_id"] = "quest.writ_94297"
+                                }
+                            }
+                        },
+                        ["саморобна"] = {
+                            ["тверда"] = {
+                                ["куля"] = {
+                                    ["_id"] = "quest.writ_94237"
+                                }
+                            }
+                        },
+                        ["світлова"] = {
+                            ["бомба"] = {
+                                ["_id"] = "quest.writ_94286"
+                            }
+                        },
+                        ["синя"] = {
+                            ["блискуча"] = {
+                                ["сокира"] = {
+                                    ["_id"] = "quest.writ_94272"
+                                }
+                            }
+                        },
+                        ["синій"] = {
+                            ["комбінезон"] = {
+                                ["_id"] = "quest.writ_94248"
+                            }
+                        },
+                        ["слабкий"] = {
+                            ["рекомбобулятор"] = {
+                                ["_id"] = "quest.writ_94232"
+                            }
+                        },
+                        ["снайперський"] = {
+                            ["приціл"] = {
+                                ["_id"] = "quest.writ_94341"
+                            }
+                        },
+                        ["спокійний"] = {
+                            ["механічний"] = {
+                                ["єті"] = {
+                                    ["_id"] = "quest.writ_94342"
+                                }
+                            }
+                        },
+                        ["срібний"] = {
+                            ["ключ"] = {
+                                ["-"] = {
+                                    ["відмичка"] = {
+                                        ["_id"] = "quest.writ_94223"
+                                    }
+                                }
+                            }
+                        },
+                        ["сталевий"] = {
+                            ["ланцюг"] = {
+                                ["для"] = {
+                                    ["зброї"] = {
+                                        ["_id"] = "quest.writ_94270"
+                                    }
+                                }
+                            },
+                            ["латний"] = {
+                                ["шолом"] = {
+                                    ["_id"] = "quest.writ_94268"
+                                }
+                            }
+                        },
+                        ["сумка"] = {
+                            ["душ"] = {
+                                ["_id"] = "quest.writ_94360"
+                            },
+                            ["з"] = {
+                                ["маготканини"] = {
+                                    ["_id"] = "quest.writ_94304"
+                                },
+                                ["рунічної"] = {
+                                    ["тканини"] = {
+                                        ["_id"] = "quest.writ_94353"
+                                    }
+                                }
+                            }
+                        },
+                        ["сутінкові"] = {
+                            ["наручі"] = {
+                                ["_id"] = "quest.writ_94294"
+                            }
+                        },
+                        ["сяючий"] = {
+                            ["вінець"] = {
+                                ["_id"] = "quest.writ_94325"
+                            },
+                            ["пояс"] = {
+                                ["_id"] = "quest.writ_94326"
+                            }
+                        },
+                        ["твердий"] = {
+                            ["точильний"] = {
+                                ["камінь"] = {
+                                    ["_id"] = "quest.writ_94275"
+                                }
+                            }
+                        },
+                        ["темна"] = {
+                            ["шкіряна"] = {
+                                ["туніка"] = {
+                                    ["_id"] = "quest.writ_94241"
+                                }
+                            }
+                        },
+                        ["темні"] = {
+                            ["шкіряні"] = {
+                                ["наплічники"] = {
+                                    ["_id"] = "quest.writ_94244"
+                                }
+                            }
+                        },
+                        ["товстий"] = {
+                            ["шкіряний"] = {
+                                ["підсумок"] = {
+                                    ["для"] = {
+                                        ["боєприпасів"] = {
+                                            ["_id"] = "quest.writ_94303"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["трансформатор"] = {
+                            ["зі"] = {
+                                ["істинного"] = {
+                                    ["срібла"] = {
+                                        ["_id"] = "quest.writ_94340"
+                                    }
+                                }
+                            }
+                        },
+                        ["тренувальний"] = {
+                            ["замок"] = {
+                                ["_id"] = "quest.writ_94233"
+                            }
+                        },
+                        ["тюрбан"] = {
+                            ["із"] = {
+                                ["чаротканини"] = {
+                                    ["_id"] = "quest.writ_94352"
+                                }
+                            }
+                        },
+                        ["тіньова"] = {
+                            ["олія"] = {
+                                ["_id"] = "quest.writ_94264"
+                            }
+                        },
+                        ["тіньові"] = {
+                            ["окуляри"] = {
+                                ["_id"] = "quest.writ_94234"
+                            }
+                        },
+                        ["ультраокуляри"] = {
+                            ["котячого"] = {
+                                ["ока"] = {
+                                    ["_id"] = "quest.writ_94284"
+                                }
+                            }
+                        },
+                        ["химерний"] = {
+                            ["жилет"] = {
+                                ["_id"] = "quest.writ_94348"
+                            }
+                        },
+                        ["червоні"] = {
+                            ["вовняні"] = {
+                                ["чоботи"] = {
+                                    ["_id"] = "quest.writ_94252"
+                                }
+                            },
+                            ["штани"] = {
+                                ["з"] = {
+                                    ["магічної"] = {
+                                        ["тканини"] = {
+                                            ["_id"] = "quest.writ_94311"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        ["чоботи"] = {
+                            ["з"] = {
+                                ["рунічної"] = {
+                                    ["тканини"] = {
+                                        ["_id"] = "quest.writ_94354"
+                                    }
+                                },
+                                ["тканини"] = {
+                                    ["скверни"] = {
+                                        ["_id"] = "quest.writ_94356"
+                                    }
+                                }
+                            },
+                            ["крижаного"] = {
+                                ["шаблезуба"] = {
+                                    ["_id"] = "quest.writ_94351"
+                                }
+                            }
+                        },
+                        ["чорний"] = {
+                            ["жилет"] = {
+                                ["із"] = {
+                                    ["маготканини"] = {
+                                        ["_id"] = "quest.writ_94310"
+                                    }
+                                }
+                            }
+                        },
+                        ["швидкі"] = {
+                            ["чоботи"] = {
+                                ["_id"] = "quest.writ_94298"
+                            }
+                        },
+                        ["штани"] = {
+                            ["фенікса"] = {
+                                ["_id"] = "quest.writ_94251"
+                            }
+                        },
+                        ["імперський"] = {
+                            ["латний"] = {
+                                ["нагрудник"] = {
+                                    ["_id"] = "quest.writ_94329"
+                                }
+                            }
+                        },
+                        ["інкрустований"] = {
+                            ["мітриловий"] = {
+                                ["циліндр"] = {
+                                    ["_id"] = "quest.writ_94269"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            ["замок"] = {
+                ["фарголд"] = {
+                    ["_id"] = "place.farholde_keep"
+                }
+            },
             ["запроси"] = {
                 ["_literal"] = {
                     ["id"] = "literal.invite",
@@ -8881,6 +10948,15 @@ ns.Data = {
                     ["_id"] = "place.drowned_city"
                 }
             },
+            ["західне"] = {
+                ["крило"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_west"
+                        }
+                    }
+                }
+            },
             ["західний"] = {
                 ["край"] = {
                     ["_id"] = "place.westfall",
@@ -8892,14 +10968,44 @@ ns.Data = {
                     }
                 }
             },
+            ["західним"] = {
+                ["крилом"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_west"
+                        }
+                    }
+                }
+            },
             ["західного"] = {
                 ["краю"] = {
                     ["_id"] = "place.westfall"
+                },
+                ["крила"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_west"
+                        }
+                    }
                 }
             },
             ["західному"] = {
                 ["краї"] = {
                     ["_id"] = "place.westfall"
+                },
+                ["крилу"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_west"
+                        }
+                    }
+                },
+                ["крилі"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_west"
+                        }
+                    }
                 }
             },
             ["західні"] = {
@@ -9431,6 +11537,19 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["каз"] = {
+                ["-"] = {
+                    ["модан"] = {
+                        ["_id"] = "place.khaz_modan"
+                    },
+                    ["модану"] = {
+                        ["_id"] = "place.khaz_modan"
+                    },
+                    ["модані"] = {
+                        ["_id"] = "place.khaz_modan"
+                    }
+                }
+            },
             ["кайт"] = {
                 ["_id"] = "slang.combat.kite"
             },
@@ -9501,6 +11620,15 @@ ns.Data = {
                 ["здоров'я"] = {
                     ["_id"] = "goods.healthstone"
                 }
+            },
+            ["квел'талас"] = {
+                ["_id"] = "place.quel_thalas"
+            },
+            ["квел'таласу"] = {
+                ["_id"] = "place.quel_thalas"
+            },
+            ["квел'таласі"] = {
+                ["_id"] = "place.quel_thalas"
             },
             ["кд"] = {
                 ["_id"] = "slang.combat.cd",
@@ -9777,6 +11905,18 @@ ns.Data = {
             ["кравецтвом"] = {
                 ["_id"] = "profession.tailoring"
             },
+            ["кравець"] = {
+                ["_id"] = "profession.tailoring.practitioner"
+            },
+            ["кравцеві"] = {
+                ["_id"] = "profession.tailoring.practitioner"
+            },
+            ["кравцем"] = {
+                ["_id"] = "profession.tailoring.practitioner"
+            },
+            ["кравця"] = {
+                ["_id"] = "profession.tailoring.practitioner"
+            },
             ["крижана"] = {
                 ["корона"] = {
                     ["_id"] = "place.icecrown"
@@ -9936,8 +12076,57 @@ ns.Data = {
                     ["weak"] = true
                 }
             },
+            ["лляна"] = {
+                ["сумка"] = {
+                    ["_id"] = "goods.linen_bag"
+                }
+            },
+            ["лляних"] = {
+                ["сумок"] = {
+                    ["_id"] = "goods.linen_bag",
+                    ["_plural"] = {
+                        ["id"] = "goods.linen_bag",
+                        ["sourceRefs"] = { "ua-forever:item.4238" },
+                        ["text"] = "Linen Bags"
+                    }
+                }
+            },
+            ["лляною"] = {
+                ["сумкою"] = {
+                    ["_id"] = "goods.linen_bag"
+                }
+            },
+            ["лляної"] = {
+                ["сумки"] = {
+                    ["_id"] = "goods.linen_bag"
+                }
+            },
+            ["лляну"] = {
+                ["сумку"] = {
+                    ["_id"] = "goods.linen_bag"
+                }
+            },
+            ["лляні"] = {
+                ["сумки"] = {
+                    ["_id"] = "goods.linen_bag",
+                    ["_plural"] = {
+                        ["id"] = "goods.linen_bag",
+                        ["sourceRefs"] = { "ua-forever:item.4238" },
+                        ["text"] = "Linen Bags"
+                    }
+                }
+            },
             ["лок"] = {
                 ["_id"] = "class.warlock"
+            },
+            ["лордерон"] = {
+                ["_id"] = "place.lordaeron"
+            },
+            ["лордерону"] = {
+                ["_id"] = "place.lordaeron"
+            },
+            ["лордероні"] = {
+                ["_id"] = "place.lordaeron"
             },
             ["лос"] = {
                 ["_id"] = "slang.combat.los"
@@ -10556,6 +12745,9 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "city",
                     ["weak"] = false
+                },
+                ["даларан"] = {
+                    ["_id"] = "place.city_of_dalaran"
                 }
             },
             ["місто"] = {
@@ -10564,6 +12756,9 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "city",
                     ["weak"] = false
+                },
+                ["даларан"] = {
+                    ["_id"] = "place.city_of_dalaran"
                 }
             },
             ["місті"] = {
@@ -10572,6 +12767,9 @@ ns.Data = {
                     ["sourceRefs"] = { "project-authored:chat-0.1" },
                     ["text"] = "city",
                     ["weak"] = false
+                },
+                ["даларан"] = {
+                    ["_id"] = "place.city_of_dalaran"
                 }
             },
             ["місце"] = {
@@ -12695,6 +14893,9 @@ ns.Data = {
                 }
             },
             ["пошук"] = {
+                ["групи"] = {
+                    ["_id"] = "game.group_finder"
+                },
                 ["мінералів"] = {
                     ["_byCategory"] = {
                         ["abilities"] = "ability.find_minerals"
@@ -12731,6 +14932,9 @@ ns.Data = {
                 }
             },
             ["пошуку"] = {
+                ["групи"] = {
+                    ["_id"] = "game.group_finder"
+                },
                 ["мінералів"] = {
                     ["_byCategory"] = {
                         ["abilities"] = "ability.find_minerals"
@@ -13396,6 +15600,49 @@ ns.Data = {
             ["південнобережжі"] = {
                 ["_id"] = "place.southshore"
             },
+            ["північне"] = {
+                ["крило"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_north"
+                        }
+                    }
+                }
+            },
+            ["північним"] = {
+                ["крилом"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_north"
+                        }
+                    }
+                }
+            },
+            ["північного"] = {
+                ["крила"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_north"
+                        }
+                    }
+                }
+            },
+            ["північному"] = {
+                ["крилу"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_north"
+                        }
+                    }
+                },
+                ["крилі"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_north"
+                        }
+                    }
+                }
+            },
             ["підземелля"] = {
                 ["_id"] = "game.dungeon",
                 ["в"] = {
@@ -13765,6 +16012,9 @@ ns.Data = {
                 ["ан'кіражу"] = {
                     ["_id"] = "place.ruins_of_ahn_qiraj"
                 },
+                ["зул'мамве"] = {
+                    ["_id"] = "place.ruins_of_zul_mamwe"
+                },
                 ["лордерона"] = {
                     ["_id"] = "place.ruins_of_lordaeron"
                 }
@@ -13789,6 +16039,9 @@ ns.Data = {
                 ["ан'кіражу"] = {
                     ["_id"] = "place.ruins_of_ahn_qiraj"
                 },
+                ["зул'мамве"] = {
+                    ["_id"] = "place.ruins_of_zul_mamwe"
+                },
                 ["лордерона"] = {
                     ["_id"] = "place.ruins_of_lordaeron"
                 }
@@ -13803,8 +16056,24 @@ ns.Data = {
                         ["weak"] = false
                     }
                 },
+                ["зул'мамве"] = {
+                    ["_id"] = "place.ruins_of_zul_mamwe"
+                },
                 ["лордерона"] = {
                     ["_id"] = "place.ruins_of_lordaeron"
+                }
+            },
+            ["річкових"] = {
+                ["галявин"] = {
+                    ["_id"] = "place.riverglades"
+                },
+                ["галявинах"] = {
+                    ["_id"] = "place.riverglades"
+                }
+            },
+            ["річкові"] = {
+                ["галявини"] = {
+                    ["_id"] = "place.riverglades"
                 }
             },
             ["сила"] = {
@@ -14297,6 +16566,49 @@ ns.Data = {
                     ["weak"] = false
                 }
             },
+            ["східне"] = {
+                ["крило"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_east"
+                        }
+                    }
+                }
+            },
+            ["східним"] = {
+                ["крилом"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_east"
+                        }
+                    }
+                }
+            },
+            ["східного"] = {
+                ["крила"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_east"
+                        }
+                    }
+                }
+            },
+            ["східному"] = {
+                ["крилу"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_east"
+                        }
+                    }
+                },
+                ["крилі"] = {
+                    ["грізного"] = {
+                        ["молота"] = {
+                            ["_id"] = "place.dire_maul_east"
+                        }
+                    }
+                }
+            },
             ["східні"] = {
                 ["зачумлені"] = {
                     ["землі"] = {
@@ -14568,6 +16880,15 @@ ns.Data = {
             ["темнобережжі"] = {
                 ["_id"] = "place.darkshore"
             },
+            ["темнодолу"] = {
+                ["_id"] = "place.darkshire"
+            },
+            ["темнодолі"] = {
+                ["_id"] = "place.darkshire"
+            },
+            ["темноділ"] = {
+                ["_id"] = "place.darkshire"
+            },
             ["тепер"] = {
                 ["_literal"] = {
                     ["id"] = "literal.now",
@@ -14575,6 +16896,15 @@ ns.Data = {
                     ["text"] = "now",
                     ["weak"] = false
                 }
+            },
+            ["терамор"] = {
+                ["_id"] = "place.theramore"
+            },
+            ["терамору"] = {
+                ["_id"] = "place.theramore"
+            },
+            ["тераморі"] = {
+                ["_id"] = "place.theramore"
             },
             ["тераса"] = {
                 ["творця"] = {
@@ -14903,13 +17233,22 @@ ns.Data = {
                 ["_id"] = "game.member"
             },
             ["фортецю"] = {
+                ["стромварт"] = {
+                    ["_id"] = "place.stromgarde_keep"
+                },
                 ["тіньового"] = {
                     ["ікла"] = {
                         ["_id"] = "place.shadowfang_keep"
                     }
+                },
+                ["штормовія"] = {
+                    ["_id"] = "place.stormwind_keep"
                 }
             },
             ["фортеця"] = {
+                ["стромварт"] = {
+                    ["_id"] = "place.stromgarde_keep"
+                },
                 ["тіньового"] = {
                     ["ікла"] = {
                         ["_id"] = "place.shadowfang_keep",
@@ -14920,13 +17259,22 @@ ns.Data = {
                             ["weak"] = false
                         }
                     }
+                },
+                ["штормовія"] = {
+                    ["_id"] = "place.stormwind_keep"
                 }
             },
             ["фортеці"] = {
+                ["стромварт"] = {
+                    ["_id"] = "place.stromgarde_keep"
+                },
                 ["тіньового"] = {
                     ["ікла"] = {
                         ["_id"] = "place.shadowfang_keep"
                     }
+                },
+                ["штормовія"] = {
+                    ["_id"] = "place.stormwind_keep"
                 }
             },
             ["фракцій"] = {
@@ -15531,6 +17879,18 @@ ns.Data = {
             },
             ["шкірництвом"] = {
                 ["_id"] = "profession.leatherworking"
+            },
+            ["шкіряник"] = {
+                ["_id"] = "profession.leatherworking.practitioner"
+            },
+            ["шкіряника"] = {
+                ["_id"] = "profession.leatherworking.practitioner"
+            },
+            ["шкіряникові"] = {
+                ["_id"] = "profession.leatherworking.practitioner"
+            },
+            ["шкіряником"] = {
+                ["_id"] = "profession.leatherworking.practitioner"
             },
             ["шпигунство"] = {
                 ["_id"] = "activity.espionage"
@@ -18537,6 +20897,7 @@ ns.Data = {
                                 ["animacy"] = "inanimate",
                                 ["englishCommon"] = true,
                                 ["gender"] = "masculine",
+                                ["neuralSense"] = "venue",
                                 ["nominalArgumentPrefix"] = true,
                                 ["semanticClass"] = "auctionVenue",
                                 ["spatialContainer"] = true
@@ -18823,6 +21184,20 @@ ns.Data = {
                                 ["sourceRefs"] = { "ua-forever:place.arathi_basin", "wow-community:classic" }
                             }
                         }
+                    },
+                    ["highlands"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.arathi_highlands",
+                                ["lemma"] = "Arathi Highlands",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.arathi_highlands",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Arathi Highlands" }
+                            }
+                        }
                     }
                 },
                 ["arcanite"] = {
@@ -18920,6 +21295,18 @@ ns.Data = {
                     }
                 },
                 ["arthas"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.arthas",
+                            ["lemma"] = "Arthas",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.arthas",
+                            ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Arthas" }
+                        }
+                    },
                     ["menethil"] = {
                         ["_analyses"] = {
                             {
@@ -18988,6 +21375,7 @@ ns.Data = {
                                     ["animacy"] = "inanimate",
                                     ["englishCommon"] = true,
                                     ["gender"] = "masculine",
+                                    ["neuralSense"] = "venue",
                                     ["nominalArgumentPrefix"] = true,
                                     ["semanticClass"] = "auctionVenue",
                                     ["spatialContainer"] = true
@@ -19681,6 +22069,36 @@ ns.Data = {
                         }
                     }
                 },
+                ["booty"] = {
+                    ["bay"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.booty_bay",
+                                ["lemma"] = "Booty Bay",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.booty_bay",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Booty Bay" }
+                            }
+                        }
+                    }
+                },
+                ["bootybay"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.booty_bay",
+                            ["lemma"] = "Booty Bay",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.booty_bay",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Booty Bay" }
+                        }
+                    }
+                },
                 ["bop"] = {
                     ["_analyses"] = {
                         {
@@ -20147,6 +22565,24 @@ ns.Data = {
                         }
                     }
                 },
+                ["city"] = {
+                    ["of"] = {
+                        ["dalaran"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "place.city_of_dalaran",
+                                    ["lemma"] = "City of Dalaran",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.city_of_dalaran",
+                                    ["sourceRefs"] = { "ua-forever:zones.lua:City of Dalaran" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["classic"] = {
                     ["_analyses"] = {
                         {
@@ -20323,6 +22759,2728 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "slang.trade.mats",
                                 ["sourceRefs"] = { "wow-community:craft" }
+                            }
+                        }
+                    }
+                },
+                ["craftsman's"] = {
+                    ["writ"] = {
+                        [":"] = {
+                            ["advanced"] = {
+                                ["target"] = {
+                                    ["dummy"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94281",
+                                                ["lemma"] = "Craftsman's Writ: Advanced Target Dummy",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94281",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Advanced Target Dummy"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["arcanite"] = {
+                                ["skeleton"] = {
+                                    ["key"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94332",
+                                                ["lemma"] = "Craftsman's Writ: Arcanite Skeleton Key",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94332",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Arcanite Skeleton Key"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["azure"] = {
+                                ["silk"] = {
+                                    ["hood"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94249",
+                                                ["lemma"] = "Craftsman's Writ: Azure Silk Hood",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94249",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Azure Silk Hood"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["barbaric"] = {
+                                ["gloves"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94245",
+                                            ["lemma"] = "Craftsman's Writ: Barbaric Gloves",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94245",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Barbaric Gloves" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["big"] = {
+                                ["bronze"] = {
+                                    ["bomb"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94236",
+                                                ["lemma"] = "Craftsman's Writ: Big Bronze Bomb",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94236",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Big Bronze Bomb"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["knife"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94227",
+                                                ["lemma"] = "Craftsman's Writ: Big Bronze Knife",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94227",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Big Bronze Knife"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["voodoo"] = {
+                                    ["mask"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94300",
+                                                ["lemma"] = "Craftsman's Writ: Big Voodoo Mask",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94300",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Big Voodoo Mask"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["robe"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94301",
+                                                ["lemma"] = "Craftsman's Writ: Big Voodoo Robe",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94301",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Big Voodoo Robe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["black"] = {
+                                ["mageweave"] = {
+                                    ["vest"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94310",
+                                                ["lemma"] = "Craftsman's Writ: Black Mageweave Vest",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94310",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Black Mageweave Vest"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["blue"] = {
+                                ["glittering"] = {
+                                    ["axe"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94272",
+                                                ["lemma"] = "Craftsman's Writ: Blue Glittering Axe",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94272",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Blue Glittering Axe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["overalls"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94248",
+                                            ["lemma"] = "Craftsman's Writ: Blue Overalls",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94248",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Blue Overalls" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["catseye"] = {
+                                ["draught"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94260",
+                                            ["lemma"] = "Craftsman's Writ: Catseye Draught",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94260",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Catseye Draught" }
+                                        }
+                                    }
+                                },
+                                ["ultra"] = {
+                                    ["goggles"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94284",
+                                                ["lemma"] = "Craftsman's Writ: Catseye Ultra Goggles",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94284",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Catseye Ultra Goggles"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["cenarion"] = {
+                                ["herb"] = {
+                                    ["bag"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94357",
+                                                ["lemma"] = "Craftsman's Writ: Cenarion Herb Bag",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94357",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Cenarion Herb Bag"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["chimeric"] = {
+                                ["vest"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94348",
+                                            ["lemma"] = "Craftsman's Writ: Chimeric Vest",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94348",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Chimeric Vest" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["cindercloth"] = {
+                                ["robe"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94314",
+                                            ["lemma"] = "Craftsman's Writ: Cindercloth Robe",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94314",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Cindercloth Robe" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["colorful"] = {
+                                ["kilt"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94253",
+                                            ["lemma"] = "Craftsman's Writ: Colorful Kilt",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94253",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Colorful Kilt" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["comfortable"] = {
+                                ["leather"] = {
+                                    ["hat"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94292",
+                                                ["lemma"] = "Craftsman's Writ: Comfortable Leather Hat",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94292",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Comfortable Leather Hat"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["crafted"] = {
+                                ["solid"] = {
+                                    ["shot"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94237",
+                                                ["lemma"] = "Craftsman's Writ: Crafted Solid Shot",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94237",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Crafted Solid Shot"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["craftsman's"] = {
+                                ["monocle"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94282",
+                                            ["lemma"] = "Craftsman's Writ: Craftsman's Monocle",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94282",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Craftsman's Monocle"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["crimson"] = {
+                                ["silk"] = {
+                                    ["robe"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94306",
+                                                ["lemma"] = "Craftsman's Writ: Crimson Silk Robe",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94306",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Crimson Silk Robe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["dark"] = {
+                                ["iron"] = {
+                                    ["bomb"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94291",
+                                                ["lemma"] = "Craftsman's Writ: Dark Iron Bomb",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94291",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Dark Iron Bomb"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["leather"] = {
+                                    ["shoulders"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94244",
+                                                ["lemma"] = "Craftsman's Writ: Dark Leather Shoulders",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94244",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Dark Leather Shoulders"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["tunic"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94241",
+                                                ["lemma"] = "Craftsman's Writ: Dark Leather Tunic",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94241",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Dark Leather Tunic"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["darkrune"] = {
+                                ["gauntlets"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94330",
+                                            ["lemma"] = "Craftsman's Writ: Darkrune Gauntlets",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94330",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Darkrune Gauntlets"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["distilled"] = {
+                                ["firewater"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94324",
+                                            ["lemma"] = "Craftsman's Writ: Distilled Firewater",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94324",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Distilled Firewater"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["draught"] = {
+                                ["of"] = {
+                                    ["detect"] = {
+                                        ["demon"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94319",
+                                                    ["lemma"] = "Craftsman's Writ: Draught of Detect Demon",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94319",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Draught of Detect Demon"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["water"] = {
+                                        ["breathing"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94219",
+                                                    ["lemma"] = "Craftsman's Writ: Draught of Water Breathing",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94219",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Draught of Water Breathing"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["dreamless"] = {
+                                ["sleep"] = {
+                                    ["potion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94317",
+                                                ["lemma"] = "Craftsman's Writ: Dreamless Sleep Potion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94317",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Dreamless Sleep Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["dusky"] = {
+                                ["bracers"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94294",
+                                            ["lemma"] = "Craftsman's Writ: Dusky Bracers",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94294",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Dusky Bracers" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["earthen"] = {
+                                ["silk"] = {
+                                    ["belt"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94315",
+                                                ["lemma"] = "Craftsman's Writ: Earthen Silk Belt",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94315",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Earthen Silk Belt"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["ebon"] = {
+                                ["shiv"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94333",
+                                            ["lemma"] = "Craftsman's Writ: Ebon Shiv",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94333",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Ebon Shiv" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["elixir"] = {
+                                ["of"] = {
+                                    ["agility"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94266",
+                                                ["lemma"] = "Craftsman's Writ: Elixir of Agility",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94266",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Elixir of Agility"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["defense"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94218",
+                                                ["lemma"] = "Craftsman's Writ: Elixir of Defense",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94218",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Elixir of Defense"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["lesser"] = {
+                                        ["agility"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94216",
+                                                    ["lemma"] = "Craftsman's Writ: Elixir of Lesser Agility",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94216",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Elixir of Lesser Agility"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["ogre's"] = {
+                                        ["strength"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94004",
+                                                    ["lemma"] = "Craftsman's Writ: Elixir of Ogre's Strength",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94004",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Elixir of Ogre's Strength"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["wisdom"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94212",
+                                                ["lemma"] = "Craftsman's Writ: Elixir of Wisdom",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94212",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Elixir of Wisdom"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["enchanted"] = {
+                                ["mageweave"] = {
+                                    ["pouch"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94308",
+                                                ["lemma"] = "Craftsman's Writ: Enchanted Mageweave Pouch",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94308",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Enchanted Mageweave Pouch"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["explosive"] = {
+                                ["sheep"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94230",
+                                            ["lemma"] = "Craftsman's Writ: Explosive Sheep",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94230",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Explosive Sheep" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["felcloth"] = {
+                                ["boots"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94356",
+                                            ["lemma"] = "Craftsman's Writ: Felcloth Boots",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94356",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Felcloth Boots" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["field"] = {
+                                ["repair"] = {
+                                    ["bot"] = {
+                                        ["74a"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94339",
+                                                    ["lemma"] = "Craftsman's Writ: Field Repair Bot 74A",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94339",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Field Repair Bot 74A"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["fine"] = {
+                                ["leather"] = {
+                                    ["pants"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94239",
+                                                ["lemma"] = "Craftsman's Writ: Fine Leather Pants",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94239",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Fine Leather Pants"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["fire"] = {
+                                ["goggles"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94287",
+                                            ["lemma"] = "Craftsman's Writ: Fire Goggles",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94287",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Fire Goggles" }
+                                        }
+                                    }
+                                },
+                                ["protection"] = {
+                                    ["potion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94263",
+                                                ["lemma"] = "Craftsman's Writ: Fire Protection Potion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94263",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Fire Protection Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["flash"] = {
+                                ["bomb"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94286",
+                                            ["lemma"] = "Craftsman's Writ: Flash Bomb",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94286",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Flash Bomb" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["flask"] = {
+                                ["of"] = {
+                                    ["chromatic"] = {
+                                        ["resistance"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94321",
+                                                    ["lemma"] = "Craftsman's Writ: Flask of Chromatic Resistance",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94321",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Flask of Chromatic Resistance"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["free"] = {
+                                ["action"] = {
+                                    ["potion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94215",
+                                                ["lemma"] = "Craftsman's Writ: Free Action Potion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94215",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Free Action Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["frost"] = {
+                                ["protection"] = {
+                                    ["potion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94256",
+                                                ["lemma"] = "Craftsman's Writ: Frost Protection Potion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94256",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Frost Protection Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["frostsaber"] = {
+                                ["boots"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94351",
+                                            ["lemma"] = "Craftsman's Writ: Frostsaber Boots",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94351",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Frostsaber Boots" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["ghostweave"] = {
+                                ["vest"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94359",
+                                            ["lemma"] = "Craftsman's Writ: Ghostweave Vest",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94359",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Ghostweave Vest" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["gift"] = {
+                                ["of"] = {
+                                    ["arthas"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94320",
+                                                ["lemma"] = "Craftsman's Writ: Gift of Arthas",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94320",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Gift of Arthas"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["gnomish"] = {
+                                ["alarm"] = {
+                                    ["-"] = {
+                                        ["o"] = {
+                                            ["-"] = {
+                                                ["bot"] = {
+                                                    ["_analyses"] = {
+                                                        {
+                                                            ["features"] = {
+                                                                ["proper"] = true
+                                                            },
+                                                            ["id"] = "quest.writ_94337",
+                                                            ["lemma"] = "Craftsman's Writ: Gnomish Alarm-O-Bot",
+                                                            ["pos"] = "noun",
+                                                            ["sense"] = "quest.writ_94337",
+                                                            ["sourceRefs"] = {
+                                                                "ua-forever:quests.lua:Craftsman's Writ: Gnomish Alarm-O-Bot"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["universal"] = {
+                                    ["remote"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94235",
+                                                ["lemma"] = "Craftsman's Writ: Gnomish Universal Remote",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94235",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Gnomish Universal Remote"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["goblin"] = {
+                                ["jumper"] = {
+                                    ["cables"] = {
+                                        ["xl"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94338",
+                                                    ["lemma"] = "Craftsman's Writ: Goblin Jumper Cables XL",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94338",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Goblin Jumper Cables XL"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["land"] = {
+                                    ["mine"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94283",
+                                                ["lemma"] = "Craftsman's Writ: Goblin Land Mine",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94283",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Goblin Land Mine"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["rocket"] = {
+                                    ["fuel"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94265",
+                                                ["lemma"] = "Craftsman's Writ: Goblin Rocket Fuel",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94265",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Goblin Rocket Fuel"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["golden"] = {
+                                ["rod"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94221",
+                                            ["lemma"] = "Craftsman's Writ: Golden Rod",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94221",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Golden Rod" }
+                                        }
+                                    }
+                                },
+                                ["scale"] = {
+                                    ["coif"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94274",
+                                                ["lemma"] = "Craftsman's Writ: Golden Scale Coif",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94274",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Golden Scale Coif"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["gauntlets"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94278",
+                                                ["lemma"] = "Craftsman's Writ: Golden Scale Gauntlets",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94278",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Golden Scale Gauntlets"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["gordok"] = {
+                                ["ogre"] = {
+                                    ["suit"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94344",
+                                                ["lemma"] = "Craftsman's Writ: Gordok Ogre Suit",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94344",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Gordok Ogre Suit"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["great"] = {
+                                ["rage"] = {
+                                    ["potion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94261",
+                                                ["lemma"] = "Craftsman's Writ: Great Rage Potion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94261",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Great Rage Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["greater"] = {
+                                ["adept's"] = {
+                                    ["robe"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94254",
+                                                ["lemma"] = "Craftsman's Writ: Greater Adept's Robe",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94254",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Greater Adept's Robe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["fire"] = {
+                                    ["protection"] = {
+                                        ["potion"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94318",
+                                                    ["lemma"] = "Craftsman's Writ: Greater Fire Protection Potion",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94318",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Greater Fire Protection Potion"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["green"] = {
+                                ["iron"] = {
+                                    ["boots"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94228",
+                                                ["lemma"] = "Craftsman's Writ: Green Iron Boots",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94228",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Green Iron Boots"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["gauntlets"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94226",
+                                                ["lemma"] = "Craftsman's Writ: Green Iron Gauntlets",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94226",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Green Iron Gauntlets"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["lens"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94335",
+                                            ["lemma"] = "Craftsman's Writ: Green Lens",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94335",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Green Lens" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["guardian"] = {
+                                ["cloak"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94293",
+                                            ["lemma"] = "Craftsman's Writ: Guardian Cloak",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94293",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Guardian Cloak" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["gyromatic"] = {
+                                ["micro"] = {
+                                    ["-"] = {
+                                        ["adjuster"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94289",
+                                                    ["lemma"] = "Craftsman's Writ: Gyromatic Micro-Adjuster",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94289",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Gyromatic Micro-Adjuster"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["heavy"] = {
+                                ["bronze"] = {
+                                    ["mace"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94224",
+                                                ["lemma"] = "Craftsman's Writ: Heavy Bronze Mace",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94224",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Heavy Bronze Mace"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["leather"] = {
+                                    ["ball"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94238",
+                                                ["lemma"] = "Craftsman's Writ: Heavy Leather Ball",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94238",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Heavy Leather Ball"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["mithril"] = {
+                                    ["axe"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94279",
+                                                ["lemma"] = "Craftsman's Writ: Heavy Mithril Axe",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94279",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Heavy Mithril Axe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["quiver"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94243",
+                                            ["lemma"] = "Craftsman's Writ: Heavy Quiver",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94243",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Heavy Quiver" }
+                                        }
+                                    }
+                                },
+                                ["scorpid"] = {
+                                    ["helm"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94349",
+                                                ["lemma"] = "Craftsman's Writ: Heavy Scorpid Helm",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94349",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Heavy Scorpid Helm"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["herbalist's"] = {
+                                ["gloves"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94240",
+                                            ["lemma"] = "Craftsman's Writ: Herbalist's Gloves",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94240",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Herbalist's Gloves"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["huge"] = {
+                                ["thorium"] = {
+                                    ["battleaxe"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94331",
+                                                ["lemma"] = "Craftsman's Writ: Huge Thorium Battleaxe",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94331",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Huge Thorium Battleaxe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["imperial"] = {
+                                ["plate"] = {
+                                    ["chest"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94329",
+                                                ["lemma"] = "Craftsman's Writ: Imperial Plate Chest",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94329",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Imperial Plate Chest"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["inlaid"] = {
+                                ["mithril"] = {
+                                    ["cylinder"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94269",
+                                                ["lemma"] = "Craftsman's Writ: Inlaid Mithril Cylinder",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94269",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Inlaid Mithril Cylinder"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["iridescent"] = {
+                                ["hammer"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94222",
+                                            ["lemma"] = "Craftsman's Writ: Iridescent Hammer",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94222",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Iridescent Hammer"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["lesser"] = {
+                                ["invisibility"] = {
+                                    ["potion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94257",
+                                                ["lemma"] = "Craftsman's Writ: Lesser Invisibility Potion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94257",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Lesser Invisibility Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["mana"] = {
+                                    ["potion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94213",
+                                                ["lemma"] = "Craftsman's Writ: Lesser Mana Potion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94213",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Lesser Mana Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["stoneshield"] = {
+                                    ["potion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94258",
+                                                ["lemma"] = "Craftsman's Writ: Lesser Stoneshield Potion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94258",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Lesser Stoneshield Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["troll's"] = {
+                                    ["blood"] = {
+                                        ["elixir"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94217",
+                                                    ["lemma"] = "Craftsman's Writ: Lesser Troll's Blood Elixir",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94217",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Lesser Troll's Blood Elixir"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["wizard's"] = {
+                                    ["robe"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94247",
+                                                ["lemma"] = "Craftsman's Writ: Lesser Wizard's Robe",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94247",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Lesser Wizard's Robe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["lifelike"] = {
+                                ["mechanical"] = {
+                                    ["toad"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94336",
+                                                ["lemma"] = "Craftsman's Writ: Lifelike Mechanical Toad",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94336",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Lifelike Mechanical Toad"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["limited"] = {
+                                ["invulnerability"] = {
+                                    ["potion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94322",
+                                                ["lemma"] = "Craftsman's Writ: Limited Invulnerability Potion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94322",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Limited Invulnerability Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["mageweave"] = {
+                                ["bag"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94304",
+                                            ["lemma"] = "Craftsman's Writ: Mageweave Bag",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94304",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Mageweave Bag" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["major"] = {
+                                ["rejuvenation"] = {
+                                    ["potion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94323",
+                                                ["lemma"] = "Craftsman's Writ: Major Rejuvenation Potion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94323",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Major Rejuvenation Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["mana"] = {
+                                ["potion"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94262",
+                                            ["lemma"] = "Craftsman's Writ: Mana Potion",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94262",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Mana Potion" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["masterwork"] = {
+                                ["target"] = {
+                                    ["dummy"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94334",
+                                                ["lemma"] = "Craftsman's Writ: Masterwork Target Dummy",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94334",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Masterwork Target Dummy"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["mechanical"] = {
+                                ["dragonling"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94280",
+                                            ["lemma"] = "Craftsman's Writ: Mechanical Dragonling",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94280",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Mechanical Dragonling"
+                                            }
+                                        }
+                                    }
+                                },
+                                ["repair"] = {
+                                    ["kit"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94290",
+                                                ["lemma"] = "Craftsman's Writ: Mechanical Repair Kit",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94290",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Mechanical Repair Kit"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["minor"] = {
+                                ["recombobulator"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94232",
+                                            ["lemma"] = "Craftsman's Writ: Minor Recombobulator",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94232",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Minor Recombobulator"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["mithril"] = {
+                                ["frag"] = {
+                                    ["bomb"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94288",
+                                                ["lemma"] = "Craftsman's Writ: Mithril Frag Bomb",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94288",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Mithril Frag Bomb"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["spurs"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94328",
+                                            ["lemma"] = "Craftsman's Writ: Mithril Spurs",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94328",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Mithril Spurs" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["moonsight"] = {
+                                ["rifle"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94231",
+                                            ["lemma"] = "Craftsman's Writ: Moonsight Rifle",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94231",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Moonsight Rifle" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["moonsteel"] = {
+                                ["broadsword"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94273",
+                                            ["lemma"] = "Craftsman's Writ: Moonsteel Broadsword",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94273",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Moonsteel Broadsword"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["nature"] = {
+                                ["protection"] = {
+                                    ["potion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94259",
+                                                ["lemma"] = "Craftsman's Writ: Nature Protection Potion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94259",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Nature Protection Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["nightscape"] = {
+                                ["shoulders"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94299",
+                                            ["lemma"] = "Craftsman's Writ: Nightscape Shoulders",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94299",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Nightscape Shoulders"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["orange"] = {
+                                ["martial"] = {
+                                    ["shirt"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94312",
+                                                ["lemma"] = "Craftsman's Writ: Orange Martial Shirt",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94312",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Orange Martial Shirt"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["orcish"] = {
+                                ["war"] = {
+                                    ["leggings"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94327",
+                                                ["lemma"] = "Craftsman's Writ: Orcish War Leggings",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94327",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Orcish War Leggings"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["ornate"] = {
+                                ["mithril"] = {
+                                    ["shoulders"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94271",
+                                                ["lemma"] = "Craftsman's Writ: Ornate Mithril Shoulders",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94271",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Ornate Mithril Shoulders"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["spyglass"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94229",
+                                            ["lemma"] = "Craftsman's Writ: Ornate Spyglass",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94229",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Ornate Spyglass" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["pearl"] = {
+                                ["-"] = {
+                                    ["handled"] = {
+                                        ["dagger"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94220",
+                                                    ["lemma"] = "Craftsman's Writ: Pearl-Handled Dagger",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94220",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Pearl-Handled Dagger"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["phoenix"] = {
+                                ["pants"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94251",
+                                            ["lemma"] = "Craftsman's Writ: Phoenix Pants",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94251",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Phoenix Pants" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["pilferer's"] = {
+                                ["gloves"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94242",
+                                            ["lemma"] = "Craftsman's Writ: Pilferer's Gloves",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94242",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Pilferer's Gloves"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["potion"] = {
+                                ["of"] = {
+                                    ["demonslaying"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94316",
+                                                ["lemma"] = "Craftsman's Writ: Potion of Demonslaying",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94316",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Potion of Demonslaying"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["practice"] = {
+                                ["lock"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94233",
+                                            ["lemma"] = "Craftsman's Writ: Practice Lock",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94233",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Practice Lock" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["quickdraw"] = {
+                                ["quiver"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94297",
+                                            ["lemma"] = "Craftsman's Writ: Quickdraw Quiver",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94297",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Quickdraw Quiver" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["radiant"] = {
+                                ["belt"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94326",
+                                            ["lemma"] = "Craftsman's Writ: Radiant Belt",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94326",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Radiant Belt" }
+                                        }
+                                    }
+                                },
+                                ["circlet"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94325",
+                                            ["lemma"] = "Craftsman's Writ: Radiant Circlet",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94325",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Radiant Circlet" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["red"] = {
+                                ["mageweave"] = {
+                                    ["pants"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94311",
+                                                ["lemma"] = "Craftsman's Writ: Red Mageweave Pants",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94311",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Red Mageweave Pants"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["whelp"] = {
+                                    ["gloves"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94246",
+                                                ["lemma"] = "Craftsman's Writ: Red Whelp Gloves",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94246",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Red Whelp Gloves"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["woolen"] = {
+                                    ["boots"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94252",
+                                                ["lemma"] = "Craftsman's Writ: Red Woolen Boots",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94252",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Red Woolen Boots"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["rough"] = {
+                                ["bronze"] = {
+                                    ["leggings"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94225",
+                                                ["lemma"] = "Craftsman's Writ: Rough Bronze Leggings",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94225",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Rough Bronze Leggings"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["runecloth"] = {
+                                ["bag"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94353",
+                                            ["lemma"] = "Craftsman's Writ: Runecloth Bag",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94353",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Runecloth Bag" }
+                                        }
+                                    }
+                                },
+                                ["boots"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94354",
+                                            ["lemma"] = "Craftsman's Writ: Runecloth Boots",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94354",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Runecloth Boots" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["runic"] = {
+                                ["leather"] = {
+                                    ["bracers"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94350",
+                                                ["lemma"] = "Craftsman's Writ: Runic Leather Bracers",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94350",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Runic Leather Bracers"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["headband"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94346",
+                                                ["lemma"] = "Craftsman's Writ: Runic Leather Headband",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94346",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Runic Leather Headband"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["shadow"] = {
+                                ["goggles"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94234",
+                                            ["lemma"] = "Craftsman's Writ: Shadow Goggles",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94234",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Shadow Goggles" }
+                                        }
+                                    }
+                                },
+                                ["oil"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94264",
+                                            ["lemma"] = "Craftsman's Writ: Shadow Oil",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94264",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Shadow Oil" }
+                                        }
+                                    }
+                                },
+                                ["protection"] = {
+                                    ["potion"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94214",
+                                                ["lemma"] = "Craftsman's Writ: Shadow Protection Potion",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94214",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Shadow Protection Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["shadoweave"] = {
+                                ["gloves"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94305",
+                                            ["lemma"] = "Craftsman's Writ: Shadoweave Gloves",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94305",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Shadoweave Gloves"
+                                            }
+                                        }
+                                    }
+                                },
+                                ["mask"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94358",
+                                            ["lemma"] = "Craftsman's Writ: Shadoweave Mask",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94358",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Shadoweave Mask" }
+                                        }
+                                    }
+                                },
+                                ["robe"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94307",
+                                            ["lemma"] = "Craftsman's Writ: Shadoweave Robe",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94307",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Shadoweave Robe" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["silver"] = {
+                                ["skeleton"] = {
+                                    ["key"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94223",
+                                                ["lemma"] = "Craftsman's Writ: Silver Skeleton Key",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94223",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Silver Skeleton Key"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["small"] = {
+                                ["silk"] = {
+                                    ["pack"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94250",
+                                                ["lemma"] = "Craftsman's Writ: Small Silk Pack",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94250",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Small Silk Pack"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["sniper"] = {
+                                ["scope"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94341",
+                                            ["lemma"] = "Craftsman's Writ: Sniper Scope",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94341",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Sniper Scope" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["solid"] = {
+                                ["sharpening"] = {
+                                    ["stone"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94275",
+                                                ["lemma"] = "Craftsman's Writ: Solid Sharpening Stone",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94275",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Solid Sharpening Stone"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["soul"] = {
+                                ["pouch"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94360",
+                                            ["lemma"] = "Craftsman's Writ: Soul Pouch",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94360",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Soul Pouch" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["spider"] = {
+                                ["silk"] = {
+                                    ["slippers"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94255",
+                                                ["lemma"] = "Craftsman's Writ: Spider Silk Slippers",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94255",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Spider Silk Slippers"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["star"] = {
+                                ["belt"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94309",
+                                            ["lemma"] = "Craftsman's Writ: Star Belt",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94309",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Star Belt" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["steel"] = {
+                                ["plate"] = {
+                                    ["helm"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94268",
+                                                ["lemma"] = "Craftsman's Writ: Steel Plate Helm",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94268",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Steel Plate Helm"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["weapon"] = {
+                                    ["chain"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94270",
+                                                ["lemma"] = "Craftsman's Writ: Steel Weapon Chain",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94270",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Steel Weapon Chain"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["swift"] = {
+                                ["boots"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94298",
+                                            ["lemma"] = "Craftsman's Writ: Swift Boots",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94298",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Swift Boots" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["thick"] = {
+                                ["leather"] = {
+                                    ["ammo"] = {
+                                        ["pouch"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94303",
+                                                    ["lemma"] = "Craftsman's Writ: Thick Leather Ammo Pouch",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94303",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Thick Leather Ammo Pouch"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["tranquil"] = {
+                                ["mechanical"] = {
+                                    ["yeti"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94342",
+                                                ["lemma"] = "Craftsman's Writ: Tranquil Mechanical Yeti",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94342",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Tranquil Mechanical Yeti"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["truesilver"] = {
+                                ["rod"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94277",
+                                            ["lemma"] = "Craftsman's Writ: Truesilver Rod",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94277",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Truesilver Rod" }
+                                        }
+                                    }
+                                },
+                                ["transformer"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94340",
+                                            ["lemma"] = "Craftsman's Writ: Truesilver Transformer",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94340",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Truesilver Transformer"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["turtle"] = {
+                                ["scale"] = {
+                                    ["breastplate"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94302",
+                                                ["lemma"] = "Craftsman's Writ: Turtle Scale Breastplate",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94302",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Turtle Scale Breastplate"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["tuxedo"] = {
+                                ["jacket"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94355",
+                                            ["lemma"] = "Craftsman's Writ: Tuxedo Jacket",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94355",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Tuxedo Jacket" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["unstable"] = {
+                                ["trigger"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94285",
+                                            ["lemma"] = "Craftsman's Writ: Unstable Trigger",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94285",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Unstable Trigger" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["volcanic"] = {
+                                ["breastplate"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94345",
+                                            ["lemma"] = "Craftsman's Writ: Volcanic Breastplate",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94345",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Volcanic Breastplate"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["white"] = {
+                                ["bandit"] = {
+                                    ["mask"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94313",
+                                                ["lemma"] = "Craftsman's Writ: White Bandit Mask",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94313",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: White Bandit Mask"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["wicked"] = {
+                                ["leather"] = {
+                                    ["bracers"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94347",
+                                                ["lemma"] = "Craftsman's Writ: Wicked Leather Bracers",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94347",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Wicked Leather Bracers"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["pants"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94343",
+                                                ["lemma"] = "Craftsman's Writ: Wicked Leather Pants",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94343",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Wicked Leather Pants"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["mithril"] = {
+                                    ["blade"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94276",
+                                                ["lemma"] = "Craftsman's Writ: Wicked Mithril Blade",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94276",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Wicked Mithril Blade"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["wild"] = {
+                                ["leather"] = {
+                                    ["helmet"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94295",
+                                                ["lemma"] = "Craftsman's Writ: Wild Leather Helmet",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94295",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Wild Leather Helmet"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["shoulders"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94296",
+                                                ["lemma"] = "Craftsman's Writ: Wild Leather Shoulders",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94296",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Wild Leather Shoulders"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["wildvine"] = {
+                                ["potion"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94267",
+                                            ["lemma"] = "Craftsman's Writ: Wildvine Potion",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94267",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Wildvine Potion" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["wizardweave"] = {
+                                ["turban"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94352",
+                                            ["lemma"] = "Craftsman's Writ: Wizardweave Turban",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94352",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Wizardweave Turban"
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -20588,6 +25746,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["darkshire"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.darkshire",
+                            ["lemma"] = "Darkshire",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.darkshire",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Darkshire" }
+                        }
+                    }
+                },
                 ["darkshore"] = {
                     ["_analyses"] = {
                         {
@@ -20649,11 +25821,29 @@ ns.Data = {
                         }
                     }
                 },
+                ["dead"] = {
+                    ["mines"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["clearableInstance"] = true,
+                                    ["contextAliasSense"] = "roleAvailability"
+                                },
+                                ["id"] = "place.the_deadmines",
+                                ["lemma"] = "The Deadmines",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.the_deadmines",
+                                ["sourceRefs"] = { "ua-forever:place.the_deadmines" }
+                            }
+                        }
+                    }
+                },
                 ["deadmines"] = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
-                                ["clearableInstance"] = true
+                                ["clearableInstance"] = true,
+                                ["contextAliasSense"] = "roleAvailability"
                             },
                             ["id"] = "place.the_deadmines",
                             ["lemma"] = "The Deadmines",
@@ -20677,6 +25867,65 @@ ns.Data = {
                 },
                 ["dire"] = {
                     ["maul"] = {
+                        ["-"] = {
+                            ["east"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter"
+                                        },
+                                        ["id"] = "place.dire_maul_east",
+                                        ["lemma"] = "Dire Maul East",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_east",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - East",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            },
+                            ["north"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter"
+                                        },
+                                        ["id"] = "place.dire_maul_north",
+                                        ["lemma"] = "Dire Maul North",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_north",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - North",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            },
+                            ["west"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter"
+                                        },
+                                        ["id"] = "place.dire_maul_west",
+                                        ["lemma"] = "Dire Maul West",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_west",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - West",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        },
                         ["_analyses"] = {
                             {
                                 ["features"] = {
@@ -20689,6 +25938,63 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.dire_maul",
                                 ["sourceRefs"] = { "chattranslatorua:1.1.0", "ua-forever:place.dire_maul" }
+                            }
+                        },
+                        ["east"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["clearableInstance"] = true,
+                                        ["gender"] = "neuter"
+                                    },
+                                    ["id"] = "place.dire_maul_east",
+                                    ["lemma"] = "Dire Maul East",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dire_maul_east",
+                                    ["sourceRefs"] = {
+                                        "ua-forever:zones.Dire Maul - East",
+                                        "project-authored:chat-instance-wing"
+                                    }
+                                }
+                            }
+                        },
+                        ["north"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["clearableInstance"] = true,
+                                        ["gender"] = "neuter"
+                                    },
+                                    ["id"] = "place.dire_maul_north",
+                                    ["lemma"] = "Dire Maul North",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dire_maul_north",
+                                    ["sourceRefs"] = {
+                                        "ua-forever:zones.Dire Maul - North",
+                                        "project-authored:chat-instance-wing"
+                                    }
+                                }
+                            }
+                        },
+                        ["west"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["clearableInstance"] = true,
+                                        ["gender"] = "neuter"
+                                    },
+                                    ["id"] = "place.dire_maul_west",
+                                    ["lemma"] = "Dire Maul West",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dire_maul_west",
+                                    ["sourceRefs"] = {
+                                        "ua-forever:zones.Dire Maul - West",
+                                        "project-authored:chat-instance-wing"
+                                    }
+                                }
                             }
                         }
                     }
@@ -20725,13 +26031,71 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
-                                ["clearableInstance"] = true
+                                ["clearableInstance"] = true,
+                                ["contextAliasSense"] = "roleAvailability"
                             },
                             ["id"] = "place.the_deadmines",
                             ["lemma"] = "The Deadmines",
                             ["pos"] = "noun",
                             ["sense"] = "place.the_deadmines",
                             ["sourceRefs"] = { "ua-forever:place.the_deadmines" }
+                        }
+                    },
+                    ["east"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["clearableInstance"] = true,
+                                    ["gender"] = "neuter"
+                                },
+                                ["id"] = "place.dire_maul_east",
+                                ["lemma"] = "Dire Maul East",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dire_maul_east",
+                                ["sourceRefs"] = {
+                                    "ua-forever:zones.Dire Maul - East",
+                                    "project-authored:chat-instance-wing"
+                                }
+                            }
+                        }
+                    },
+                    ["north"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["clearableInstance"] = true,
+                                    ["gender"] = "neuter"
+                                },
+                                ["id"] = "place.dire_maul_north",
+                                ["lemma"] = "Dire Maul North",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dire_maul_north",
+                                ["sourceRefs"] = {
+                                    "ua-forever:zones.Dire Maul - North",
+                                    "project-authored:chat-instance-wing"
+                                }
+                            }
+                        }
+                    },
+                    ["west"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["clearableInstance"] = true,
+                                    ["gender"] = "neuter"
+                                },
+                                ["id"] = "place.dire_maul_west",
+                                ["lemma"] = "Dire Maul West",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dire_maul_west",
+                                ["sourceRefs"] = {
+                                    "ua-forever:zones.Dire Maul - West",
+                                    "project-authored:chat-instance-wing"
+                                }
+                            }
                         }
                     }
                 },
@@ -20898,6 +26262,20 @@ ns.Data = {
                                 ["sourceRefs"] = { "ua-forever:place.dun_modr" }
                             }
                         }
+                    },
+                    ["morogh"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.dun_morogh",
+                                ["lemma"] = "Dun Morogh",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dun_morogh",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Dun Morogh" }
+                            }
+                        }
                     }
                 },
                 ["dung"] = {
@@ -21002,6 +26380,22 @@ ns.Data = {
                         }
                     }
                 },
+                ["dustwallow"] = {
+                    ["marsh"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.dustwallow_marsh",
+                                ["lemma"] = "Dustwallow Marsh",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dustwallow_marsh",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Dustwallow Marsh" }
+                            }
+                        }
+                    }
+                },
                 ["dwarf"] = {
                     ["_analyses"] = {
                         {
@@ -21032,6 +26426,22 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "race.dwarf.base.singular",
                             ["sourceRefs"] = { "ua-forever:race.dwarf", "project-authored:chat-0.1" }
+                        }
+                    }
+                },
+                ["dwarven"] = {
+                    ["district"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.dwarven_district",
+                                ["lemma"] = "Dwarven District",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dwarven_district",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Dwarven District" }
+                            }
                         }
                     }
                 },
@@ -21390,6 +26800,38 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "game.expert_fishing",
                                 ["sourceRefs"] = { "project-authored:chat-0.1" }
+                            }
+                        }
+                    }
+                },
+                ["farhold"] = {
+                    ["keep"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.farholde_keep",
+                                ["lemma"] = "Farholde Keep",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.farholde_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Farholde Keep" }
+                            }
+                        }
+                    }
+                },
+                ["farholde"] = {
+                    ["keep"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.farholde_keep",
+                                ["lemma"] = "Farholde Keep",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.farholde_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Farholde Keep" }
                             }
                         }
                     }
@@ -22020,6 +27462,24 @@ ns.Data = {
                         }
                     }
                 },
+                ["group"] = {
+                    ["finder"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["neuralSense"] = "finder"
+                                },
+                                ["id"] = "game.group_finder",
+                                ["lemma"] = "Group Finder",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.group_finder",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Group Finder" }
+                            }
+                        }
+                    }
+                },
                 ["gtg"] = {
                     ["_analyses"] = {
                         {
@@ -22139,6 +27599,25 @@ ns.Data = {
                 },
                 ["hall"] = {
                     ["of"] = {
+                        ["thane"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["animacy"] = "inanimate",
+                                        ["clearableInstance"] = true,
+                                        ["gender"] = "feminine"
+                                    },
+                                    ["id"] = "place.hall_of_thanes",
+                                    ["lemma"] = "The Hall of Thanes",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.hall_of_thanes",
+                                    ["sourceRefs"] = {
+                                        "ua-forever:place.hall_of_thanes",
+                                        "project-authored:apertium-pipeline-1"
+                                    }
+                                }
+                            }
+                        },
                         ["thanes"] = {
                             ["_analyses"] = {
                                 {
@@ -22515,6 +27994,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["hinterlands"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.hinterlands",
+                            ["lemma"] = "The Hinterlands",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.hinterlands",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:The Hinterlands" }
+                        }
+                    }
+                },
                 ["hogger"] = {
                     ["_analyses"] = {
                         {
@@ -22687,6 +28180,20 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "class.hunter",
                             ["sourceRefs"] = { "ua-forever:class.hunter" }
+                        }
+                    }
+                },
+                ["hyjal"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.hyjal",
+                            ["lemma"] = "Hyjal",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.hyjal",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Hyjal" }
                         }
                     }
                 },
@@ -22922,6 +28429,22 @@ ns.Data = {
                         }
                     }
                 },
+                ["khaz"] = {
+                    ["modan"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.khaz_modan",
+                                ["lemma"] = "Khaz Modan",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.khaz_modan",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Khaz Modan" }
+                            }
+                        }
+                    }
+                },
                 ["kite"] = {
                     ["_analyses"] = {
                         {
@@ -22947,12 +28470,31 @@ ns.Data = {
                     }
                 },
                 ["krol'dok"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["clearableInstance"] = true,
+                                ["contextAliasSense"] = "roleAvailability",
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "place.kroldok_stronghold",
+                            ["lemma"] = "Krol'dok Stronghold",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.kroldok_stronghold",
+                            ["sourceRefs"] = {
+                                "ua-forever:place.kroldok_stronghold",
+                                "project-authored:apertium-pipeline-1"
+                            }
+                        }
+                    },
                     ["stronghold"] = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {
                                     ["animacy"] = "inanimate",
                                     ["clearableInstance"] = true,
+                                    ["contextAliasSense"] = "roleAvailability",
                                     ["gender"] = "feminine"
                                 },
                                 ["id"] = "place.kroldok_stronghold",
@@ -22967,12 +28509,33 @@ ns.Data = {
                         }
                     }
                 },
+                ["kroldok"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["clearableInstance"] = true,
+                                ["contextAliasSense"] = "roleAvailability",
+                                ["gender"] = "feminine"
+                            },
+                            ["id"] = "place.kroldok_stronghold",
+                            ["lemma"] = "Krol'dok Stronghold",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.kroldok_stronghold",
+                            ["sourceRefs"] = {
+                                "ua-forever:place.kroldok_stronghold",
+                                "project-authored:apertium-pipeline-1"
+                            }
+                        }
+                    }
+                },
                 ["ks"] = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
                                 ["animacy"] = "inanimate",
                                 ["clearableInstance"] = true,
+                                ["contextAliasSense"] = "roleAvailability",
                                 ["gender"] = "feminine"
                             },
                             ["id"] = "place.kroldok_stronghold",
@@ -23071,6 +28634,23 @@ ns.Data = {
                         }
                     }
                 },
+                ["leatherworker"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["professionPractitioner"] = true
+                            },
+                            ["id"] = "profession.leatherworking.practitioner",
+                            ["lemma"] = "leatherworker",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.leatherworking.practitioner",
+                            ["sourceRefs"] = { "project-authored:general-grammar.profession" }
+                        }
+                    }
+                },
                 ["leatherworking"] = {
                     ["_analyses"] = {
                         {
@@ -23116,6 +28696,22 @@ ns.Data = {
                                 ["sense"] = "guild.leveling",
                                 ["sourceRefs"] = { "project-authored:chat-0.1" }
                             }
+                        }
+                    }
+                },
+                ["lfg"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "inanimate",
+                                ["gender"] = "masculine",
+                                ["neuralSense"] = "finder"
+                            },
+                            ["id"] = "game.group_finder",
+                            ["lemma"] = "Group Finder",
+                            ["pos"] = "noun",
+                            ["sense"] = "game.group_finder",
+                            ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Group Finder" }
                         }
                     }
                 },
@@ -23312,6 +28908,39 @@ ns.Data = {
                                     ["sense"] = "slang.combat.los",
                                     ["sourceRefs"] = { "wow-community:strategy" }
                                 }
+                            }
+                        }
+                    }
+                },
+                ["linen"] = {
+                    ["bag"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "goods.linen_bag",
+                                ["lemma"] = "Linen Bag",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.linen_bag",
+                                ["sourceRefs"] = { "ua-forever:item.4238" }
+                            }
+                        }
+                    },
+                    ["bags"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.linen_bag",
+                                ["lemma"] = "Linen Bag",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.linen_bag",
+                                ["sourceRefs"] = { "ua-forever:item.4238" }
                             }
                         }
                     }
@@ -23556,6 +29185,20 @@ ns.Data = {
                                     ["sourceRefs"] = { "wow-community:loot-council" }
                                 }
                             }
+                        }
+                    }
+                },
+                ["lordaeron"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.lordaeron",
+                            ["lemma"] = "Lordaeron",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.lordaeron",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Lordaeron" }
                         }
                     }
                 },
@@ -25445,6 +31088,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["quel'thalas"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.quel_thalas",
+                            ["lemma"] = "Quel'Thalas",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.quel_thalas",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Quel'Thalas" }
+                        }
+                    }
+                },
                 ["quest"] = {
                     ["_analyses"] = {
                         {
@@ -26020,6 +31677,20 @@ ns.Data = {
                         }
                     }
                 },
+                ["riverglades"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.riverglades",
+                            ["lemma"] = "Riverglades",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.riverglades",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Riverglades" }
+                        }
+                    }
+                },
                 ["rl"] = {
                     ["_analyses"] = {
                         {
@@ -26211,6 +31882,20 @@ ns.Data = {
                                     ["pos"] = "noun",
                                     ["sense"] = "place.ruins_of_lordaeron",
                                     ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" }
+                                }
+                            }
+                        },
+                        ["zul'mamwe"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "place.ruins_of_zul_mamwe",
+                                    ["lemma"] = "Ruins of Zul'Mamwe",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.ruins_of_zul_mamwe",
+                                    ["sourceRefs"] = { "ua-forever:zones.lua:Ruins of Zul'Mamwe" }
                                 }
                             }
                         }
@@ -26869,6 +32554,20 @@ ns.Data = {
                             ["sense"] = "place.stormwind",
                             ["sourceRefs"] = { "ua-forever:place.stormwind" }
                         }
+                    },
+                    ["keep"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.stormwind_keep",
+                                ["lemma"] = "Stormwind Keep",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.stormwind_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Stormwind Keep" }
+                            }
+                        }
                     }
                 },
                 ["str"] = {
@@ -26954,6 +32653,22 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "stat.strength",
                             ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["stromgarde"] = {
+                    ["keep"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.stromgarde_keep",
+                                ["lemma"] = "Stromgarde Keep",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.stromgarde_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Stromgarde Keep" }
+                            }
                         }
                     }
                 },
@@ -27129,6 +32844,23 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "goods.sword",
                             ["sourceRefs"] = { "ua-forever:goods.sword" }
+                        }
+                    }
+                },
+                ["tailor"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["professionPractitioner"] = true
+                            },
+                            ["id"] = "profession.tailoring.practitioner",
+                            ["lemma"] = "tailor",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.tailoring.practitioner",
+                            ["sourceRefs"] = { "project-authored:general-grammar.profession" }
                         }
                     }
                 },
@@ -27401,7 +33133,8 @@ ns.Data = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {
-                                    ["clearableInstance"] = true
+                                    ["clearableInstance"] = true,
+                                    ["contextAliasSense"] = "roleAvailability"
                                 },
                                 ["id"] = "place.the_deadmines",
                                 ["lemma"] = "The Deadmines",
@@ -27466,6 +33199,20 @@ ns.Data = {
                                         }
                                     }
                                 }
+                            }
+                        }
+                    },
+                    ["hinterlands"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.hinterlands",
+                                ["lemma"] = "The Hinterlands",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.hinterlands",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:The Hinterlands" }
                             }
                         }
                     },
@@ -27652,6 +33399,34 @@ ns.Data = {
                         }
                     }
                 },
+                ["theramore"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.theramore",
+                            ["lemma"] = "Theramore",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.theramore",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Theramore" }
+                        }
+                    },
+                    ["island"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.theramore",
+                                ["lemma"] = "Theramore",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.theramore",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Theramore" }
+                            }
+                        }
+                    }
+                },
                 ["thief"] = {
                     ["_analyses"] = {
                         {
@@ -27760,6 +33535,7 @@ ns.Data = {
                                 ["animacy"] = "inanimate",
                                 ["caseSensitiveEnglish"] = true,
                                 ["gender"] = "masculine",
+                                ["neuralSense"] = "identifier",
                                 ["proper"] = true
                             },
                             ["id"] = "game.trp3",
@@ -27986,7 +33762,8 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
-                                ["clearableInstance"] = true
+                                ["clearableInstance"] = true,
+                                ["contextAliasSense"] = "roleAvailability"
                             },
                             ["id"] = "place.the_deadmines",
                             ["lemma"] = "The Deadmines",
@@ -29658,6 +35435,7 @@ ns.Data = {
                                 ["animacy"] = "inanimate",
                                 ["caseSensitiveEnglish"] = true,
                                 ["gender"] = "masculine",
+                                ["neuralSense"] = "identifier",
                                 ["proper"] = true
                             },
                             ["id"] = "game.trp3",
@@ -29672,6 +35450,7 @@ ns.Data = {
                                 ["case"] = "genitive",
                                 ["caseSensitiveEnglish"] = true,
                                 ["gender"] = "masculine",
+                                ["neuralSense"] = "identifier",
                                 ["number"] = "singular",
                                 ["proper"] = true
                             },
@@ -29687,6 +35466,7 @@ ns.Data = {
                                 ["case"] = "dative",
                                 ["caseSensitiveEnglish"] = true,
                                 ["gender"] = "masculine",
+                                ["neuralSense"] = "identifier",
                                 ["number"] = "singular",
                                 ["proper"] = true
                             },
@@ -29702,6 +35482,7 @@ ns.Data = {
                                 ["case"] = "accusative",
                                 ["caseSensitiveEnglish"] = true,
                                 ["gender"] = "masculine",
+                                ["neuralSense"] = "identifier",
                                 ["number"] = "singular",
                                 ["proper"] = true
                             },
@@ -29717,6 +35498,7 @@ ns.Data = {
                                 ["case"] = "instrumental",
                                 ["caseSensitiveEnglish"] = true,
                                 ["gender"] = "masculine",
+                                ["neuralSense"] = "identifier",
                                 ["number"] = "singular",
                                 ["proper"] = true
                             },
@@ -29732,6 +35514,7 @@ ns.Data = {
                                 ["case"] = "locative",
                                 ["caseSensitiveEnglish"] = true,
                                 ["gender"] = "masculine",
+                                ["neuralSense"] = "identifier",
                                 ["number"] = "singular",
                                 ["proper"] = true
                             },
@@ -30263,6 +36046,18 @@ ns.Data = {
                     }
                 },
                 ["артас"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.arthas",
+                            ["lemma"] = "Артас",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.arthas",
+                            ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Arthas" }
+                        }
+                    },
                     ["менетіл"] = {
                         ["_analyses"] = {
                             {
@@ -30281,6 +36076,32 @@ ns.Data = {
                     }
                 },
                 ["артаса"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.arthas",
+                            ["lemma"] = "Артас",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.arthas",
+                            ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Arthas" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.arthas",
+                            ["lemma"] = "Артас",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.arthas",
+                            ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Arthas" }
+                        }
+                    },
                     ["менетіла"] = {
                         ["_analyses"] = {
                             {
@@ -30353,6 +36174,20 @@ ns.Data = {
                     }
                 },
                 ["артасом"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "instrumental",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.arthas",
+                            ["lemma"] = "Артас",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.arthas",
+                            ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Arthas" }
+                        }
+                    },
                     ["менетілом"] = {
                         ["_analyses"] = {
                             {
@@ -30369,6 +36204,38 @@ ns.Data = {
                                 ["sense"] = "character.arthas_menethil",
                                 ["sourceRefs"] = { "ua-forever:Arthas Menethil", "project-authored:chat-0.1" }
                             }
+                        }
+                    }
+                },
+                ["артасу"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "dative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.arthas",
+                            ["lemma"] = "Артас",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.arthas",
+                            ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Arthas" }
+                        }
+                    }
+                },
+                ["артасі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "character.arthas",
+                            ["lemma"] = "Артас",
+                            ["pos"] = "noun",
+                            ["sense"] = "character.arthas",
+                            ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Arthas" }
                         }
                     }
                 },
@@ -30413,6 +36280,7 @@ ns.Data = {
                                 ["animacy"] = "inanimate",
                                 ["englishCommon"] = true,
                                 ["gender"] = "masculine",
+                                ["neuralSense"] = "venue",
                                 ["nominalArgumentPrefix"] = true,
                                 ["semanticClass"] = "auctionVenue",
                                 ["spatialContainer"] = true
@@ -30433,6 +36301,7 @@ ns.Data = {
                                     ["animacy"] = "inanimate",
                                     ["englishCommon"] = true,
                                     ["gender"] = "masculine",
+                                    ["neuralSense"] = "venue",
                                     ["nominalArgumentPrefix"] = true,
                                     ["semanticClass"] = "auctionVenue",
                                     ["spatialContainer"] = true
@@ -30449,6 +36318,7 @@ ns.Data = {
                                     ["case"] = "nominative",
                                     ["englishCommon"] = true,
                                     ["gender"] = "masculine",
+                                    ["neuralSense"] = "venue",
                                     ["nominalArgumentPrefix"] = true,
                                     ["number"] = "singular",
                                     ["semanticClass"] = "auctionVenue",
@@ -30466,6 +36336,7 @@ ns.Data = {
                                     ["case"] = "accusative",
                                     ["englishCommon"] = true,
                                     ["gender"] = "masculine",
+                                    ["neuralSense"] = "venue",
                                     ["nominalArgumentPrefix"] = true,
                                     ["number"] = "singular",
                                     ["semanticClass"] = "auctionVenue",
@@ -30489,6 +36360,7 @@ ns.Data = {
                                     ["case"] = "instrumental",
                                     ["englishCommon"] = true,
                                     ["gender"] = "masculine",
+                                    ["neuralSense"] = "venue",
                                     ["nominalArgumentPrefix"] = true,
                                     ["number"] = "singular",
                                     ["semanticClass"] = "auctionVenue",
@@ -30512,6 +36384,7 @@ ns.Data = {
                                     ["case"] = "genitive",
                                     ["englishCommon"] = true,
                                     ["gender"] = "masculine",
+                                    ["neuralSense"] = "venue",
                                     ["nominalArgumentPrefix"] = true,
                                     ["number"] = "singular",
                                     ["semanticClass"] = "auctionVenue",
@@ -30535,6 +36408,7 @@ ns.Data = {
                                     ["case"] = "dative",
                                     ["englishCommon"] = true,
                                     ["gender"] = "masculine",
+                                    ["neuralSense"] = "venue",
                                     ["nominalArgumentPrefix"] = true,
                                     ["number"] = "singular",
                                     ["semanticClass"] = "auctionVenue",
@@ -30556,6 +36430,7 @@ ns.Data = {
                                     ["case"] = "locative",
                                     ["englishCommon"] = true,
                                     ["gender"] = "masculine",
+                                    ["neuralSense"] = "venue",
                                     ["nominalArgumentPrefix"] = true,
                                     ["number"] = "singular",
                                     ["semanticClass"] = "auctionVenue",
@@ -30578,6 +36453,7 @@ ns.Data = {
                                 ["case"] = "locative",
                                 ["englishCommon"] = true,
                                 ["gender"] = "masculine",
+                                ["neuralSense"] = "venue",
                                 ["nominalArgumentPrefix"] = true,
                                 ["number"] = "singular",
                                 ["semanticClass"] = "auctionVenue",
@@ -31331,6 +37207,146 @@ ns.Data = {
                         }
                     }
                 },
+                ["бруднолипка"] = {
+                    ["трясовина"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.dustwallow_marsh",
+                                ["lemma"] = "Бруднолипка трясовина",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dustwallow_marsh",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Dustwallow Marsh" }
+                            }
+                        }
+                    }
+                },
+                ["бруднолипкої"] = {
+                    ["трясовини"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.dustwallow_marsh",
+                                ["lemma"] = "Бруднолипка трясовина",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dustwallow_marsh",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Dustwallow Marsh" }
+                            }
+                        }
+                    }
+                },
+                ["бруднолипку"] = {
+                    ["трясовину"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.dustwallow_marsh",
+                                ["lemma"] = "Бруднолипка трясовина",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dustwallow_marsh",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Dustwallow Marsh" }
+                            }
+                        }
+                    }
+                },
+                ["бруднолипкій"] = {
+                    ["трясовині"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.dustwallow_marsh",
+                                ["lemma"] = "Бруднолипка трясовина",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dustwallow_marsh",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Dustwallow Marsh" }
+                            }
+                        }
+                    }
+                },
+                ["бухта"] = {
+                    ["наживи"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.booty_bay",
+                                ["lemma"] = "Бухта Наживи",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.booty_bay",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Booty Bay" }
+                            }
+                        }
+                    }
+                },
+                ["бухти"] = {
+                    ["наживи"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.booty_bay",
+                                ["lemma"] = "Бухта Наживи",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.booty_bay",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Booty Bay" }
+                            }
+                        }
+                    }
+                },
+                ["бухту"] = {
+                    ["наживи"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.booty_bay",
+                                ["lemma"] = "Бухта Наживи",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.booty_bay",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Booty Bay" }
+                            }
+                        }
+                    }
+                },
+                ["бухті"] = {
+                    ["наживи"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.booty_bay",
+                                ["lemma"] = "Бухта Наживи",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.booty_bay",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Booty Bay" }
+                            }
+                        }
+                    }
+                },
                 ["біс"] = {
                     ["_analyses"] = {
                         {
@@ -32057,6 +38073,76 @@ ns.Data = {
                         }
                     }
                 },
+                ["височина"] = {
+                    ["араті"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.arathi_highlands",
+                                ["lemma"] = "височина Араті",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.arathi_highlands",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Arathi Highlands" }
+                            }
+                        }
+                    }
+                },
+                ["височини"] = {
+                    ["араті"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.arathi_highlands",
+                                ["lemma"] = "височина Араті",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.arathi_highlands",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Arathi Highlands" }
+                            }
+                        }
+                    }
+                },
+                ["височину"] = {
+                    ["араті"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.arathi_highlands",
+                                ["lemma"] = "височина Араті",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.arathi_highlands",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Arathi Highlands" }
+                            }
+                        }
+                    }
+                },
+                ["височині"] = {
+                    ["араті"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.arathi_highlands",
+                                ["lemma"] = "височина Араті",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.arathi_highlands",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Arathi Highlands" }
+                            }
+                        }
+                    }
+                },
                 ["витратник"] = {
                     ["_analyses"] = {
                         {
@@ -32311,6 +38397,68 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "stat.stamina",
                             ["sourceRefs"] = { "project-authored:apertium-pipeline-1" }
+                        }
+                    }
+                },
+                ["внутрішні"] = {
+                    ["землі"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.hinterlands",
+                                ["lemma"] = "Внутрішні землі",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.hinterlands",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:The Hinterlands" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.hinterlands",
+                                ["lemma"] = "Внутрішні землі",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.hinterlands",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:The Hinterlands" }
+                            }
+                        }
+                    }
+                },
+                ["внутрішніх"] = {
+                    ["земель"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.hinterlands",
+                                ["lemma"] = "Внутрішні землі",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.hinterlands",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:The Hinterlands" }
+                            }
+                        }
+                    },
+                    ["землях"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.hinterlands",
+                                ["lemma"] = "Внутрішні землі",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.hinterlands",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:The Hinterlands" }
+                            }
                         }
                     }
                 },
@@ -34631,6 +40779,64 @@ ns.Data = {
                         }
                     }
                 },
+                ["гіджал"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.hyjal",
+                            ["lemma"] = "Гіджал",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.hyjal",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Hyjal" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.hyjal",
+                            ["lemma"] = "Гіджал",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.hyjal",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Hyjal" }
+                        }
+                    }
+                },
+                ["гіджалу"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.hyjal",
+                            ["lemma"] = "Гіджал",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.hyjal",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Hyjal" }
+                        }
+                    }
+                },
+                ["гіджалі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.hyjal",
+                            ["lemma"] = "Гіджал",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.hyjal",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Hyjal" }
+                        }
+                    }
+                },
                 ["гільдій"] = {
                     ["_analyses"] = {
                         {
@@ -36096,6 +42302,70 @@ ns.Data = {
                         }
                     }
                 },
+                ["дворфівський"] = {
+                    ["район"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.dwarven_district",
+                                ["lemma"] = "Дворфівський район",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dwarven_district",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Dwarven District" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.dwarven_district",
+                                ["lemma"] = "Дворфівський район",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dwarven_district",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Dwarven District" }
+                            }
+                        }
+                    }
+                },
+                ["дворфівського"] = {
+                    ["району"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.dwarven_district",
+                                ["lemma"] = "Дворфівський район",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dwarven_district",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Dwarven District" }
+                            }
+                        }
+                    }
+                },
+                ["дворфівському"] = {
+                    ["районі"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.dwarven_district",
+                                ["lemma"] = "Дворфівський район",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.dwarven_district",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Dwarven District" }
+                            }
+                        }
+                    }
+                },
                 ["дд"] = {
                     ["_analyses"] = {
                         {
@@ -36129,7 +42399,8 @@ ns.Data = {
                     ["_analyses"] = {
                         {
                             ["features"] = {
-                                ["clearableInstance"] = true
+                                ["clearableInstance"] = true,
+                                ["contextAliasSense"] = "roleAvailability"
                             },
                             ["id"] = "place.the_deadmines",
                             ["lemma"] = "Мертві копальні",
@@ -37104,6 +43375,64 @@ ns.Data = {
                                     ["sourceRefs"] = { "ua-forever:place.dun_modr" }
                                 }
                             }
+                        },
+                        ["морог"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "place.dun_morogh",
+                                    ["lemma"] = "Дун-Морог",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dun_morogh",
+                                    ["sourceRefs"] = { "ua-forever:zones.lua:Dun Morogh" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["case"] = "accusative",
+                                        ["number"] = "singular",
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "place.dun_morogh",
+                                    ["lemma"] = "Дун-Морог",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dun_morogh",
+                                    ["sourceRefs"] = { "ua-forever:zones.lua:Dun Morogh" }
+                                }
+                            }
+                        },
+                        ["морогу"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["case"] = "genitive",
+                                        ["number"] = "singular",
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "place.dun_morogh",
+                                    ["lemma"] = "Дун-Морог",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dun_morogh",
+                                    ["sourceRefs"] = { "ua-forever:zones.lua:Dun Morogh" }
+                                }
+                            }
+                        },
+                        ["морозі"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["case"] = "locative",
+                                        ["number"] = "singular",
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "place.dun_morogh",
+                                    ["lemma"] = "Дун-Морог",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.dun_morogh",
+                                    ["sourceRefs"] = { "ua-forever:zones.lua:Dun Morogh" }
+                                }
+                            }
                         }
                     }
                 },
@@ -37691,6 +44020,2882 @@ ns.Data = {
                         }
                     }
                 },
+                ["замку"] = {
+                    ["фарголд"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.farholde_keep",
+                                ["lemma"] = "Замок Фарголд",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.farholde_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Farholde Keep" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.farholde_keep",
+                                ["lemma"] = "Замок Фарголд",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.farholde_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Farholde Keep" }
+                            }
+                        }
+                    }
+                },
+                ["замовлення"] = {
+                    ["майстра"] = {
+                        [":"] = {
+                            ["арканітовий"] = {
+                                ["ключ"] = {
+                                    ["-"] = {
+                                        ["відмичка"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94332",
+                                                    ["lemma"] = "Замовлення майстра: Арканітовий ключ-відмичка",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94332",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Arcanite Skeleton Key"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["багряна"] = {
+                                ["шовкова"] = {
+                                    ["мантія"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94306",
+                                                ["lemma"] = "Замовлення майстра: Багряна шовкова мантія",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94306",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Crimson Silk Robe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["барвистий"] = {
+                                ["кілт"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94253",
+                                            ["lemma"] = "Замовлення майстра: Барвистий кілт",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94253",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Colorful Kilt" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["блакитний"] = {
+                                ["шовковий"] = {
+                                    ["капюшон"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94249",
+                                                ["lemma"] = "Замовлення майстра: Блакитний шовковий капюшон",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94249",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Azure Silk Hood"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["бомба"] = {
+                                ["з"] = {
+                                    ["темного"] = {
+                                        ["заліза"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94291",
+                                                    ["lemma"] = "Замовлення майстра: Бомба з темного заліза",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94291",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Dark Iron Bomb"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["важка"] = {
+                                ["бронзова"] = {
+                                    ["булава"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94224",
+                                                ["lemma"] = "Замовлення майстра: Важка бронзова булава",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94224",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Heavy Bronze Mace"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["міфрилова"] = {
+                                    ["сокира"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94279",
+                                                ["lemma"] = "Замовлення майстра: Важка міфрилова сокира",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94279",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Heavy Mithril Axe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["важкий"] = {
+                                ["сагайдак"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94243",
+                                            ["lemma"] = "Замовлення майстра: Важкий сагайдак",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94243",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Heavy Quiver" }
+                                        }
+                                    }
+                                },
+                                ["шкіряний"] = {
+                                    ["м'яч"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94238",
+                                                ["lemma"] = "Замовлення майстра: Важкий шкіряний м’яч",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94238",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Heavy Leather Ball"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["шолом"] = {
+                                    ["скорпіда"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94349",
+                                                ["lemma"] = "Замовлення майстра: Важкий шолом скорпіда",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94349",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Heavy Scorpid Helm"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["варварські"] = {
+                                ["рукавиці"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94245",
+                                            ["lemma"] = "Замовлення майстра: Варварські рукавиці",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94245",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Barbaric Gloves" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["велика"] = {
+                                ["бронзова"] = {
+                                    ["бомба"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94236",
+                                                ["lemma"] = "Замовлення майстра: Велика бронзова бомба",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94236",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Big Bronze Bomb"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["мантія"] = {
+                                    ["вуду"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94301",
+                                                ["lemma"] = "Замовлення майстра: Велика мантія вуду",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94301",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Big Voodoo Robe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["маска"] = {
+                                    ["вуду"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94300",
+                                                ["lemma"] = "Замовлення майстра: Велика маска вуду",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94300",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Big Voodoo Mask"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["велике"] = {
+                                ["зілля"] = {
+                                    ["захисту"] = {
+                                        ["від"] = {
+                                            ["вогню"] = {
+                                                ["_analyses"] = {
+                                                    {
+                                                        ["features"] = {
+                                                            ["proper"] = true
+                                                        },
+                                                        ["id"] = "quest.writ_94318",
+                                                        ["lemma"] = "Замовлення майстра: Велике зілля захисту від вогню",
+                                                        ["pos"] = "noun",
+                                                        ["sense"] = "quest.writ_94318",
+                                                        ["sourceRefs"] = {
+                                                            "ua-forever:quests.lua:Craftsman's Writ: Greater Fire Protection Potion"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["люті"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94261",
+                                                ["lemma"] = "Замовлення майстра: Велике зілля люті",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94261",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Great Rage Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["великий"] = {
+                                ["бронзовий"] = {
+                                    ["ніж"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94227",
+                                                ["lemma"] = "Замовлення майстра: Великий бронзовий ніж",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94227",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Big Bronze Knife"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["величезна"] = {
+                                ["торієва"] = {
+                                    ["бойова"] = {
+                                        ["сокира"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94331",
+                                                    ["lemma"] = "Замовлення майстра: Величезна торієва бойова сокира",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94331",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Huge Thorium Battleaxe"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["вибухова"] = {
+                                ["вівця"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94230",
+                                            ["lemma"] = "Замовлення майстра: Вибухова вівця",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94230",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Explosive Sheep" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["вишукані"] = {
+                                ["шкіряні"] = {
+                                    ["штани"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94239",
+                                                ["lemma"] = "Замовлення майстра: Вишукані шкіряні штани",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94239",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Fine Leather Pants"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["вулканічний"] = {
+                                ["нагрудник"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94345",
+                                            ["lemma"] = "Замовлення майстра: Вулканічний нагрудник",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94345",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Volcanic Breastplate"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["гномський"] = {
+                                ["робот"] = {
+                                    ["-"] = {
+                                        ["сигналізатор"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94337",
+                                                    ["lemma"] = "Замовлення майстра: Гномський робот-сигналізатор",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94337",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Gnomish Alarm-O-Bot"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["універсальний"] = {
+                                    ["пульт"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94235",
+                                                ["lemma"] = "Замовлення майстра: гномський універсальний пульт",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94235",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Gnomish Universal Remote"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["гоблінська"] = {
+                                ["міна"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94283",
+                                            ["lemma"] = "Замовлення майстра: Гоблінська міна",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94283",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Goblin Land Mine" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["гоблінське"] = {
+                                ["ракетне"] = {
+                                    ["паливо"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94265",
+                                                ["lemma"] = "Замовлення майстра: Гоблінське ракетне паливо",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94265",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Goblin Rocket Fuel"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["гоблінські"] = {
+                                ["кабелі"] = {
+                                    ["-"] = {
+                                        ["пускачі"] = {
+                                            ["xl"] = {
+                                                ["_analyses"] = {
+                                                    {
+                                                        ["features"] = {
+                                                            ["proper"] = true
+                                                        },
+                                                        ["id"] = "quest.writ_94338",
+                                                        ["lemma"] = "Замовлення майстра: Гоблінські кабелі-пускачі XL",
+                                                        ["pos"] = "noun",
+                                                        ["sense"] = "quest.writ_94338",
+                                                        ["sourceRefs"] = {
+                                                            "ua-forever:quests.lua:Craftsman's Writ: Goblin Jumper Cables XL"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["грубі"] = {
+                                ["бронзові"] = {
+                                    ["поножі"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94225",
+                                                ["lemma"] = "Замовлення майстра: Грубі бронзові поножі",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94225",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Rough Bronze Leggings"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["гіроматичний"] = {
+                                ["мікрорегулятор"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94289",
+                                            ["lemma"] = "Замовлення майстра: Гіроматичний мікрорегулятор",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94289",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Gyromatic Micro-Adjuster"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["дар"] = {
+                                ["артаса"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94320",
+                                            ["lemma"] = "Замовлення майстра: Дар Артаса",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94320",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Gift of Arthas" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["дикий"] = {
+                                ["шкіряний"] = {
+                                    ["шолом"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94295",
+                                                ["lemma"] = "Замовлення майстра: Дикий шкіряний шолом",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94295",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Wild Leather Helmet"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["дикі"] = {
+                                ["шкіряні"] = {
+                                    ["наплічники"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94296",
+                                                ["lemma"] = "Замовлення майстра: Дикі шкіряні наплічники",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94296",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Wild Leather Shoulders"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["дистильована"] = {
+                                ["вогняна"] = {
+                                    ["вода"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94324",
+                                                ["lemma"] = "Замовлення майстра: Дистильована вогняна вода",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94324",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Distilled Firewater"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["ебонітова"] = {
+                                ["заточка"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94333",
+                                            ["lemma"] = "Замовлення майстра: Ебонітова заточка",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94333",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Ebon Shiv" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["еліксир"] = {
+                                ["захисту"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94218",
+                                            ["lemma"] = "Замовлення майстра: Еліксир захисту",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94218",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Elixir of Defense"
+                                            }
+                                        }
+                                    }
+                                },
+                                ["малої"] = {
+                                    ["спритності"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94216",
+                                                ["lemma"] = "Замовлення майстра: Еліксир малої спритності",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94216",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Elixir of Lesser Agility"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["мудрості"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94212",
+                                            ["lemma"] = "Замовлення майстра: Еліксир мудрості",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94212",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Elixir of Wisdom" }
+                                        }
+                                    }
+                                },
+                                ["сили"] = {
+                                    ["огра"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94004",
+                                                ["lemma"] = "Замовлення майстра: Еліксир сили огра",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94004",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Elixir of Ogre's Strength"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["спритності"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94266",
+                                            ["lemma"] = "Замовлення майстра: Еліксир спритності",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94266",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Elixir of Agility"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["жезл"] = {
+                                ["істинного"] = {
+                                    ["срібла"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94277",
+                                                ["lemma"] = "Замовлення майстра: Жезл істинного срібла",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94277",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Truesilver Rod"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["жилет"] = {
+                                ["із"] = {
+                                    ["примаротканини"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94359",
+                                                ["lemma"] = "Замовлення майстра: Жилет із примаротканини",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94359",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Ghostweave Vest"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["захисні"] = {
+                                ["вогняні"] = {
+                                    ["окуляри"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94287",
+                                                ["lemma"] = "Замовлення майстра: Захисні Вогняні окуляри",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94287",
+                                                ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Fire Goggles" }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["зачарований"] = {
+                                ["мішечок"] = {
+                                    ["із"] = {
+                                        ["маготканини"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94308",
+                                                    ["lemma"] = "Замовлення майстра: Зачарований мішечок із маготканини",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94308",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Enchanted Mageweave Pouch"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["зелена"] = {
+                                ["лінза"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94335",
+                                            ["lemma"] = "Замовлення майстра: Зелена лінза",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94335",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Green Lens" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["зелені"] = {
+                                ["залізні"] = {
+                                    ["рукавиці"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94226",
+                                                ["lemma"] = "Замовлення майстра: Зелені залізні рукавиці",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94226",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Green Iron Gauntlets"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["чоботи"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94228",
+                                                ["lemma"] = "Замовлення майстра: Зелені залізні чоботи",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94228",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Green Iron Boots"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["земляний"] = {
+                                ["шовковий"] = {
+                                    ["пояс"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94315",
+                                                ["lemma"] = "Замовлення майстра: Земляний шовковий пояс",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94315",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Earthen Silk Belt"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["золотий"] = {
+                                ["жезл"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94221",
+                                            ["lemma"] = "Замовлення майстра: Золотий жезл",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94221",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Golden Rod" }
+                                        }
+                                    }
+                                },
+                                ["лускатий"] = {
+                                    ["каптур"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94274",
+                                                ["lemma"] = "Замовлення майстра: Золотий лускатий Каптур",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94274",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Golden Scale Coif"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["золоті"] = {
+                                ["лускаті"] = {
+                                    ["рукавиці"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94278",
+                                                ["lemma"] = "Замовлення майстра: Золоті лускаті рукавиці",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94278",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Golden Scale Gauntlets"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["зоряний"] = {
+                                ["пояс"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94309",
+                                            ["lemma"] = "Замовлення майстра: Зоряний пояс",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94309",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Star Belt" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["зручний"] = {
+                                ["шкіряний"] = {
+                                    ["капелюх"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94292",
+                                                ["lemma"] = "Замовлення майстра: Зручний шкіряний капелюх",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94292",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Comfortable Leather Hat"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["зілля"] = {
+                                ["безсновидного"] = {
+                                    ["сну"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94317",
+                                                ["lemma"] = "Замовлення майстра: Зілля безсновидного сну",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94317",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Dreamless Sleep Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["великого"] = {
+                                    ["омолодження"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94323",
+                                                ["lemma"] = "Замовлення майстра: Зілля великого омолодження",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94323",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Major Rejuvenation Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["винищення"] = {
+                                    ["демонів"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94316",
+                                                ["lemma"] = "Замовлення майстра: Зілля винищення демонів",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94316",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Potion of Demonslaying"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["вільної"] = {
+                                    ["дії"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94215",
+                                                ["lemma"] = "Замовлення майстра: Зілля вільної дії",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94215",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Free Action Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["диколози"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94267",
+                                            ["lemma"] = "Замовлення майстра: Зілля диколози",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94267",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Wildvine Potion" }
+                                        }
+                                    }
+                                },
+                                ["захисту"] = {
+                                    ["від"] = {
+                                        ["вогню"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94263",
+                                                    ["lemma"] = "Замовлення майстра: Зілля захисту від вогню",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94263",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Fire Protection Potion"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        ["криги"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94256",
+                                                    ["lemma"] = "Замовлення майстра: Зілля захисту від криги",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94256",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Frost Protection Potion"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        ["тіні"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94214",
+                                                    ["lemma"] = "Замовлення майстра: Зілля захисту від тіні",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94214",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Shadow Protection Potion"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["природи"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94259",
+                                                ["lemma"] = "Замовлення майстра: Зілля захисту природи",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94259",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Nature Protection Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["малого"] = {
+                                    ["кам'яного"] = {
+                                        ["щита"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94258",
+                                                    ["lemma"] = "Замовлення майстра: Зілля малого кам'яного щита",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94258",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Lesser Stoneshield Potion"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["малої"] = {
+                                    ["невидимості"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94257",
+                                                ["lemma"] = "Замовлення майстра: зілля малої невидимості",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94257",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Lesser Invisibility Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["мани"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94262",
+                                            ["lemma"] = "Замовлення майстра: Зілля мани",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94262",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Mana Potion" }
+                                        }
+                                    }
+                                },
+                                ["обмеженої"] = {
+                                    ["невразливості"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94322",
+                                                ["lemma"] = "Замовлення майстра: Зілля обмеженої невразливості",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94322",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Limited Invulnerability Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["капці"] = {
+                                ["з"] = {
+                                    ["павучого"] = {
+                                        ["шовку"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94255",
+                                                    ["lemma"] = "Замовлення майстра: Капці з павучого шовку",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94255",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Spider Silk Slippers"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["кенарійська"] = {
+                                ["сумка"] = {
+                                    ["для"] = {
+                                        ["трав"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94357",
+                                                    ["lemma"] = "Замовлення майстра: кенарійська сумка для трав",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94357",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Cenarion Herb Bag"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["кинджал"] = {
+                                ["з"] = {
+                                    ["перловою"] = {
+                                        ["ручкою"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94220",
+                                                    ["lemma"] = "Замовлення майстра: Кинджал з перловою ручкою",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94220",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Pearl-Handled Dagger"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["костюм"] = {
+                                ["огра"] = {
+                                    ["ґордока"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94344",
+                                                ["lemma"] = "Замовлення майстра: Костюм огра Ґордока",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94344",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Gordok Ogre Suit"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["майстерний"] = {
+                                ["манекен"] = {
+                                    ["-"] = {
+                                        ["мішень"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94334",
+                                                    ["lemma"] = "Замовлення майстра: Майстерний манекен-мішень",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94334",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Masterwork Target Dummy"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["мала"] = {
+                                ["мантія"] = {
+                                    ["чарівника"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94247",
+                                                ["lemma"] = "Замовлення майстра: мала мантія чарівника",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94247",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Lesser Wizard's Robe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["шовкова"] = {
+                                    ["сумка"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94250",
+                                                ["lemma"] = "Замовлення майстра: Мала шовкова сумка",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94250",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Small Silk Pack"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["мале"] = {
+                                ["зілля"] = {
+                                    ["мани"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94213",
+                                                ["lemma"] = "Замовлення майстра: Мале зілля мани",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94213",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Lesser Mana Potion"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["малий"] = {
+                                ["еліксир"] = {
+                                    ["крові"] = {
+                                        ["троля"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94217",
+                                                    ["lemma"] = "Замовлення майстра: Малий еліксир крові троля",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94217",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Lesser Troll's Blood Elixir"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["мантія"] = {
+                                ["великого"] = {
+                                    ["адепта"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94254",
+                                                ["lemma"] = "Замовлення майстра: Мантія Великого Адепта",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94254",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Greater Adept's Robe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["з"] = {
+                                    ["попелотканини"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94314",
+                                                ["lemma"] = "Замовлення майстра: Мантія з попелотканини",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94314",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Cindercloth Robe"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["тінетканини"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94307",
+                                                ["lemma"] = "Замовлення майстра: Мантія з тінетканини",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94307",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Shadoweave Robe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["маска"] = {
+                                ["білого"] = {
+                                    ["бандита"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94313",
+                                                ["lemma"] = "Замовлення майстра: Маска білого бандита",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94313",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: White Bandit Mask"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["з"] = {
+                                    ["тінетканини"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94358",
+                                                ["lemma"] = "Замовлення майстра: Маска з тінетканини",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94358",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Shadoweave Mask"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["механічний"] = {
+                                ["дракончик"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94280",
+                                            ["lemma"] = "Замовлення майстра: Механічний дракончик",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94280",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Mechanical Dragonling"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["монокль"] = {
+                                ["ремісника"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94282",
+                                            ["lemma"] = "Замовлення майстра: Монокль ремісника",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94282",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Craftsman's Monocle"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["міфрилова"] = {
+                                ["осколкова"] = {
+                                    ["бомба"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94288",
+                                                ["lemma"] = "Замовлення майстра: Міфрилова осколкова бомба",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94288",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Mithril Frag Bomb"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["міфрилові"] = {
+                                ["шпори"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94328",
+                                            ["lemma"] = "Замовлення майстра: Міфрилові шпори",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94328",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Mithril Spurs" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["набір"] = {
+                                ["для"] = {
+                                    ["ремонту"] = {
+                                        ["механізмів"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94290",
+                                                    ["lemma"] = "Замовлення майстра: Набір для ремонту механізмів",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94290",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Mechanical Repair Kit"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["нагрудник"] = {
+                                ["з"] = {
+                                    ["черепашачої"] = {
+                                        ["луски"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94302",
+                                                    ["lemma"] = "Замовлення майстра: Нагрудник з черепашачої луски",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94302",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Turtle Scale Breastplate"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["настій"] = {
+                                ["виявлення"] = {
+                                    ["демонів"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94319",
+                                                ["lemma"] = "Замовлення майстра: Настій виявлення демонів",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94319",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Draught of Detect Demon"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["водного"] = {
+                                    ["дихання"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94219",
+                                                ["lemma"] = "Замовлення майстра: Настій водного дихання",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94219",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Draught of Water Breathing"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["котячого"] = {
+                                    ["ока"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94260",
+                                                ["lemma"] = "Замовлення майстра: Настій котячого ока",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94260",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Catseye Draught"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["хроматичного"] = {
+                                    ["опору"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94321",
+                                                ["lemma"] = "Замовлення майстра: Настій хроматичного опору",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94321",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Flask of Chromatic Resistance"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["нестабільний"] = {
+                                ["детонатор"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94285",
+                                            ["lemma"] = "Замовлення майстра: Нестабільний детонатор",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94285",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Unstable Trigger" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["нищівний"] = {
+                                ["міфриловий"] = {
+                                    ["клинок"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94276",
+                                                ["lemma"] = "Замовлення майстра: Нищівний міфриловий клинок",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94276",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Wicked Mithril Blade"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["нищівні"] = {
+                                ["шкіряні"] = {
+                                    ["наручі"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94347",
+                                                ["lemma"] = "Замовлення майстра: Нищівні шкіряні наручі",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94347",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Wicked Leather Bracers"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["штани"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94343",
+                                                ["lemma"] = "Замовлення майстра: Нищівні шкіряні штани",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94343",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Wicked Leather Pants"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["нічні"] = {
+                                ["наплічники"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94299",
+                                            ["lemma"] = "Замовлення майстра: Нічні Наплічники",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94299",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Nightscape Shoulders"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["оздоблена"] = {
+                                ["підзорна"] = {
+                                    ["труба"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94229",
+                                                ["lemma"] = "Замовлення майстра: Оздоблена підзорна труба",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94229",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Ornate Spyglass"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["оздоблені"] = {
+                                ["міфрилові"] = {
+                                    ["наплічники"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94271",
+                                                ["lemma"] = "Замовлення майстра: Оздоблені міфрилові наплічники",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94271",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Ornate Mithril Shoulders"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["орчі"] = {
+                                ["бойові"] = {
+                                    ["поножі"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94327",
+                                                ["lemma"] = "Замовлення майстра: Орчі бойові поножі",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94327",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Orcish War Leggings"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["палаш"] = {
+                                ["з"] = {
+                                    ["місячної"] = {
+                                        ["сталі"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94273",
+                                                    ["lemma"] = "Замовлення майстра: Палаш з місячної сталі",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94273",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Moonsteel Broadsword"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["плащ"] = {
+                                ["вартового"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94293",
+                                            ["lemma"] = "Замовлення майстра: Плащ вартового",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94293",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Guardian Cloak" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["польовий"] = {
+                                ["ремонтний"] = {
+                                    ["бот"] = {
+                                        ["74a"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94339",
+                                                    ["lemma"] = "Замовлення майстра: Польовий ремонтний бот 74A",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94339",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Field Repair Bot 74A"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["помаранчева"] = {
+                                ["бойова"] = {
+                                    ["сорочка"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94312",
+                                                ["lemma"] = "Замовлення майстра: Помаранчева бойова сорочка",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94312",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Orange Martial Shirt"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["посилений"] = {
+                                ["манекен"] = {
+                                    ["-"] = {
+                                        ["мішень"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94281",
+                                                    ["lemma"] = "Замовлення майстра: Посилений манекен-мішень",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94281",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Advanced Target Dummy"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["піджак"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["proper"] = true
+                                        },
+                                        ["id"] = "quest.writ_94355",
+                                        ["lemma"] = "Замовлення майстра: піджак",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "quest.writ_94355",
+                                        ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Tuxedo Jacket" }
+                                    }
+                                }
+                            },
+                            ["райдужний"] = {
+                                ["молот"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94222",
+                                            ["lemma"] = "Замовлення майстра: Райдужний молот",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94222",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Iridescent Hammer"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["реалістична"] = {
+                                ["механічна"] = {
+                                    ["жаба"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94336",
+                                                ["lemma"] = "Замовлення майстра: Реалістична механічна жаба",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94336",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Lifelike Mechanical Toad"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["рукавиці"] = {
+                                ["з"] = {
+                                    ["тінетканини"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94305",
+                                                ["lemma"] = "Замовлення майстра: Рукавиці з тінетканини",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94305",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Shadoweave Gloves"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["крадія"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94242",
+                                            ["lemma"] = "Замовлення майстра: Рукавиці крадія",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94242",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Pilferer's Gloves"
+                                            }
+                                        }
+                                    }
+                                },
+                                ["темної"] = {
+                                    ["руни"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94330",
+                                                ["lemma"] = "Замовлення майстра: Рукавиці Темної Руни",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94330",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Darkrune Gauntlets"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["травника"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94240",
+                                            ["lemma"] = "Замовлення майстра: Рукавиці травника",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94240",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Herbalist's Gloves"
+                                            }
+                                        }
+                                    }
+                                },
+                                ["червоного"] = {
+                                    ["дракончика"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94246",
+                                                ["lemma"] = "Замовлення майстра: Рукавиці червоного дракончика",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94246",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Red Whelp Gloves"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["рунічна"] = {
+                                ["шкіряна"] = {
+                                    ["пов'язка"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94346",
+                                                ["lemma"] = "Замовлення майстра: Рунічна шкіряна пов'язка",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94346",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Runic Leather Headband"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["рунічні"] = {
+                                ["шкіряні"] = {
+                                    ["наручі"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94350",
+                                                ["lemma"] = "Замовлення майстра: Рунічні шкіряні наручі",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94350",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Runic Leather Bracers"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["рушниця"] = {
+                                ["місячного"] = {
+                                    ["прицілу"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94231",
+                                                ["lemma"] = "Замовлення майстра: Рушниця місячного прицілу",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94231",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Moonsight Rifle"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["сагайдак"] = {
+                                ["швидкого"] = {
+                                    ["пострілу"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94297",
+                                                ["lemma"] = "Замовлення майстра: Сагайдак швидкого пострілу",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94297",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Quickdraw Quiver"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["саморобна"] = {
+                                ["тверда"] = {
+                                    ["куля"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94237",
+                                                ["lemma"] = "Замовлення майстра: Саморобна тверда куля",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94237",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Crafted Solid Shot"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["світлова"] = {
+                                ["бомба"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94286",
+                                            ["lemma"] = "Замовлення майстра: Світлова бомба",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94286",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Flash Bomb" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["синя"] = {
+                                ["блискуча"] = {
+                                    ["сокира"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94272",
+                                                ["lemma"] = "Замовлення майстра: Синя блискуча сокира",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94272",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Blue Glittering Axe"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["синій"] = {
+                                ["комбінезон"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94248",
+                                            ["lemma"] = "Замовлення майстра: Синій комбінезон",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94248",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Blue Overalls" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["слабкий"] = {
+                                ["рекомбобулятор"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94232",
+                                            ["lemma"] = "Замовлення майстра: Слабкий рекомбобулятор",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94232",
+                                            ["sourceRefs"] = {
+                                                "ua-forever:quests.lua:Craftsman's Writ: Minor Recombobulator"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["снайперський"] = {
+                                ["приціл"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94341",
+                                            ["lemma"] = "Замовлення майстра: Снайперський приціл",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94341",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Sniper Scope" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["спокійний"] = {
+                                ["механічний"] = {
+                                    ["єті"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94342",
+                                                ["lemma"] = "Замовлення майстра: Спокійний механічний єті",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94342",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Tranquil Mechanical Yeti"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["срібний"] = {
+                                ["ключ"] = {
+                                    ["-"] = {
+                                        ["відмичка"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94223",
+                                                    ["lemma"] = "Замовлення майстра: Срібний ключ-відмичка",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94223",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Silver Skeleton Key"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["сталевий"] = {
+                                ["ланцюг"] = {
+                                    ["для"] = {
+                                        ["зброї"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94270",
+                                                    ["lemma"] = "Замовлення майстра: сталевий ланцюг для зброї",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94270",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Steel Weapon Chain"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["латний"] = {
+                                    ["шолом"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94268",
+                                                ["lemma"] = "Замовлення майстра: Сталевий латний шолом",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94268",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Steel Plate Helm"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["сумка"] = {
+                                ["душ"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94360",
+                                            ["lemma"] = "Замовлення майстра: Сумка душ",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94360",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Soul Pouch" }
+                                        }
+                                    }
+                                },
+                                ["з"] = {
+                                    ["маготканини"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94304",
+                                                ["lemma"] = "Замовлення майстра: Сумка з маготканини",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94304",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Mageweave Bag"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["рунічної"] = {
+                                        ["тканини"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94353",
+                                                    ["lemma"] = "Замовлення майстра: Сумка з рунічної тканини",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94353",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Runecloth Bag"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["сутінкові"] = {
+                                ["наручі"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94294",
+                                            ["lemma"] = "Замовлення майстра: Сутінкові наручі",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94294",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Dusky Bracers" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["сяючий"] = {
+                                ["вінець"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94325",
+                                            ["lemma"] = "Замовлення майстра: Сяючий вінець",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94325",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Radiant Circlet" }
+                                        }
+                                    }
+                                },
+                                ["пояс"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94326",
+                                            ["lemma"] = "Замовлення майстра: Сяючий пояс",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94326",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Radiant Belt" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["твердий"] = {
+                                ["точильний"] = {
+                                    ["камінь"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94275",
+                                                ["lemma"] = "Замовлення майстра: твердий точильний камінь",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94275",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Solid Sharpening Stone"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["темна"] = {
+                                ["шкіряна"] = {
+                                    ["туніка"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94241",
+                                                ["lemma"] = "Замовлення майстра: Темна шкіряна туніка",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94241",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Dark Leather Tunic"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["темні"] = {
+                                ["шкіряні"] = {
+                                    ["наплічники"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94244",
+                                                ["lemma"] = "Замовлення майстра: Темні шкіряні наплічники",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94244",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Dark Leather Shoulders"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["товстий"] = {
+                                ["шкіряний"] = {
+                                    ["підсумок"] = {
+                                        ["для"] = {
+                                            ["боєприпасів"] = {
+                                                ["_analyses"] = {
+                                                    {
+                                                        ["features"] = {
+                                                            ["proper"] = true
+                                                        },
+                                                        ["id"] = "quest.writ_94303",
+                                                        ["lemma"] = "Замовлення майстра: Товстий шкіряний підсумок для боєприпасів",
+                                                        ["pos"] = "noun",
+                                                        ["sense"] = "quest.writ_94303",
+                                                        ["sourceRefs"] = {
+                                                            "ua-forever:quests.lua:Craftsman's Writ: Thick Leather Ammo Pouch"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["трансформатор"] = {
+                                ["зі"] = {
+                                    ["істинного"] = {
+                                        ["срібла"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94340",
+                                                    ["lemma"] = "Замовлення майстра: Трансформатор зі істинного срібла",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94340",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Truesilver Transformer"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["тренувальний"] = {
+                                ["замок"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94233",
+                                            ["lemma"] = "Замовлення майстра: Тренувальний замок",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94233",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Practice Lock" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["тюрбан"] = {
+                                ["із"] = {
+                                    ["чаротканини"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94352",
+                                                ["lemma"] = "Замовлення майстра: Тюрбан із чаротканини",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94352",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Wizardweave Turban"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["тіньова"] = {
+                                ["олія"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94264",
+                                            ["lemma"] = "Замовлення майстра: Тіньова олія",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94264",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Shadow Oil" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["тіньові"] = {
+                                ["окуляри"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94234",
+                                            ["lemma"] = "Замовлення майстра: Тіньові окуляри",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94234",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Shadow Goggles" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["ультраокуляри"] = {
+                                ["котячого"] = {
+                                    ["ока"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94284",
+                                                ["lemma"] = "Замовлення майстра: ультраокуляри котячого ока",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94284",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Catseye Ultra Goggles"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["химерний"] = {
+                                ["жилет"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94348",
+                                            ["lemma"] = "Замовлення майстра: Химерний жилет",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94348",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Chimeric Vest" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["червоні"] = {
+                                ["вовняні"] = {
+                                    ["чоботи"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94252",
+                                                ["lemma"] = "Замовлення майстра: Червоні вовняні чоботи",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94252",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Red Woolen Boots"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["штани"] = {
+                                    ["з"] = {
+                                        ["магічної"] = {
+                                            ["тканини"] = {
+                                                ["_analyses"] = {
+                                                    {
+                                                        ["features"] = {
+                                                            ["proper"] = true
+                                                        },
+                                                        ["id"] = "quest.writ_94311",
+                                                        ["lemma"] = "Замовлення майстра: Червоні штани з магічної тканини",
+                                                        ["pos"] = "noun",
+                                                        ["sense"] = "quest.writ_94311",
+                                                        ["sourceRefs"] = {
+                                                            "ua-forever:quests.lua:Craftsman's Writ: Red Mageweave Pants"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["чоботи"] = {
+                                ["з"] = {
+                                    ["рунічної"] = {
+                                        ["тканини"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94354",
+                                                    ["lemma"] = "Замовлення майстра: Чоботи з рунічної тканини",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94354",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Runecloth Boots"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    ["тканини"] = {
+                                        ["скверни"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94356",
+                                                    ["lemma"] = "Замовлення майстра: Чоботи з тканини Скверни",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94356",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Felcloth Boots"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                ["крижаного"] = {
+                                    ["шаблезуба"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94351",
+                                                ["lemma"] = "Замовлення майстра: Чоботи крижаного шаблезуба",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94351",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Frostsaber Boots"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["чорний"] = {
+                                ["жилет"] = {
+                                    ["із"] = {
+                                        ["маготканини"] = {
+                                            ["_analyses"] = {
+                                                {
+                                                    ["features"] = {
+                                                        ["proper"] = true
+                                                    },
+                                                    ["id"] = "quest.writ_94310",
+                                                    ["lemma"] = "Замовлення майстра: Чорний жилет із маготканини",
+                                                    ["pos"] = "noun",
+                                                    ["sense"] = "quest.writ_94310",
+                                                    ["sourceRefs"] = {
+                                                        "ua-forever:quests.lua:Craftsman's Writ: Black Mageweave Vest"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["швидкі"] = {
+                                ["чоботи"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94298",
+                                            ["lemma"] = "Замовлення майстра: Швидкі чоботи",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94298",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Swift Boots" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["штани"] = {
+                                ["фенікса"] = {
+                                    ["_analyses"] = {
+                                        {
+                                            ["features"] = {
+                                                ["proper"] = true
+                                            },
+                                            ["id"] = "quest.writ_94251",
+                                            ["lemma"] = "Замовлення майстра: Штани Фенікса",
+                                            ["pos"] = "noun",
+                                            ["sense"] = "quest.writ_94251",
+                                            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Phoenix Pants" }
+                                        }
+                                    }
+                                }
+                            },
+                            ["імперський"] = {
+                                ["латний"] = {
+                                    ["нагрудник"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94329",
+                                                ["lemma"] = "Замовлення майстра: Імперський латний нагрудник",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94329",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Imperial Plate Chest"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            ["інкрустований"] = {
+                                ["мітриловий"] = {
+                                    ["циліндр"] = {
+                                        ["_analyses"] = {
+                                            {
+                                                ["features"] = {
+                                                    ["proper"] = true
+                                                },
+                                                ["id"] = "quest.writ_94269",
+                                                ["lemma"] = "Замовлення майстра: Інкрустований мітриловий циліндр",
+                                                ["pos"] = "noun",
+                                                ["sense"] = "quest.writ_94269",
+                                                ["sourceRefs"] = {
+                                                    "ua-forever:quests.lua:Craftsman's Writ: Inlaid Mithril Cylinder"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["замок"] = {
+                    ["фарголд"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.farholde_keep",
+                                ["lemma"] = "Замок Фарголд",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.farholde_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Farholde Keep" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.farholde_keep",
+                                ["lemma"] = "Замок Фарголд",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.farholde_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Farholde Keep" }
+                            }
+                        }
+                    }
+                },
                 ["запроси"] = {
                     ["в"] = {
                         ["групу"] = {
@@ -37992,6 +47197,48 @@ ns.Data = {
                         }
                     }
                 },
+                ["західне"] = {
+                    ["крило"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter"
+                                        },
+                                        ["id"] = "place.dire_maul_west",
+                                        ["lemma"] = "західне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_west",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - West",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "accusative",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_west",
+                                        ["lemma"] = "західне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_west",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - West",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["західний"] = {
                     ["край"] = {
                         ["_analyses"] = {
@@ -38002,6 +47249,33 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.westfall",
                                 ["sourceRefs"] = { "ua-forever:place.westfall" }
+                            }
+                        }
+                    }
+                },
+                ["західним"] = {
+                    ["крилом"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "instrumental",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_west",
+                                        ["lemma"] = "західне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_west",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - West",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -38021,6 +47295,31 @@ ns.Data = {
                                 ["sourceRefs"] = { "ua-forever:place.westfall" }
                             }
                         }
+                    },
+                    ["крила"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "genitive",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_west",
+                                        ["lemma"] = "західне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_west",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - West",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 },
                 ["західному"] = {
@@ -38036,6 +47335,56 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.westfall",
                                 ["sourceRefs"] = { "ua-forever:place.westfall" }
+                            }
+                        }
+                    },
+                    ["крилу"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "dative",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_west",
+                                        ["lemma"] = "західне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_west",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - West",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["крилі"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "locative",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_west",
+                                        ["lemma"] = "західне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_west",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - West",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -39207,6 +48556,68 @@ ns.Data = {
                         }
                     }
                 },
+                ["каз"] = {
+                    ["-"] = {
+                        ["модан"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "place.khaz_modan",
+                                    ["lemma"] = "Каз-Модан",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.khaz_modan",
+                                    ["sourceRefs"] = { "ua-forever:zones.lua:Khaz Modan" }
+                                },
+                                {
+                                    ["features"] = {
+                                        ["case"] = "accusative",
+                                        ["number"] = "singular",
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "place.khaz_modan",
+                                    ["lemma"] = "Каз-Модан",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.khaz_modan",
+                                    ["sourceRefs"] = { "ua-forever:zones.lua:Khaz Modan" }
+                                }
+                            }
+                        },
+                        ["модану"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["case"] = "genitive",
+                                        ["number"] = "singular",
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "place.khaz_modan",
+                                    ["lemma"] = "Каз-Модан",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.khaz_modan",
+                                    ["sourceRefs"] = { "ua-forever:zones.lua:Khaz Modan" }
+                                }
+                            }
+                        },
+                        ["модані"] = {
+                            ["_analyses"] = {
+                                {
+                                    ["features"] = {
+                                        ["case"] = "locative",
+                                        ["number"] = "singular",
+                                        ["proper"] = true
+                                    },
+                                    ["id"] = "place.khaz_modan",
+                                    ["lemma"] = "Каз-Модан",
+                                    ["pos"] = "noun",
+                                    ["sense"] = "place.khaz_modan",
+                                    ["sourceRefs"] = { "ua-forever:zones.lua:Khaz Modan" }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["кайт"] = {
                     ["_analyses"] = {
                         {
@@ -39457,6 +48868,64 @@ ns.Data = {
                                 ["sense"] = "goods.healthstone",
                                 ["sourceRefs"] = { "ua-forever:ui.Healthstone", "project-authored:apertium-pipeline-1" }
                             }
+                        }
+                    }
+                },
+                ["квел'талас"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.quel_thalas",
+                            ["lemma"] = "Квел'Талас",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.quel_thalas",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Quel'Thalas" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.quel_thalas",
+                            ["lemma"] = "Квел'Талас",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.quel_thalas",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Quel'Thalas" }
+                        }
+                    }
+                },
+                ["квел'таласу"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.quel_thalas",
+                            ["lemma"] = "Квел'Талас",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.quel_thalas",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Quel'Thalas" }
+                        }
+                    }
+                },
+                ["квел'таласі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.quel_thalas",
+                            ["lemma"] = "Квел'Талас",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.quel_thalas",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Quel'Thalas" }
                         }
                     }
                 },
@@ -40242,6 +49711,91 @@ ns.Data = {
                         }
                     }
                 },
+                ["кравець"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["professionPractitioner"] = true
+                            },
+                            ["id"] = "profession.tailoring.practitioner",
+                            ["lemma"] = "кравець",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.tailoring.practitioner",
+                            ["sourceRefs"] = { "project-authored:general-grammar.profession" }
+                        }
+                    }
+                },
+                ["кравцеві"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["professionPractitioner"] = true
+                            },
+                            ["id"] = "profession.tailoring.practitioner",
+                            ["lemma"] = "кравець",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.tailoring.practitioner",
+                            ["sourceRefs"] = { "project-authored:general-grammar.profession" }
+                        }
+                    }
+                },
+                ["кравцем"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["professionPractitioner"] = true
+                            },
+                            ["id"] = "profession.tailoring.practitioner",
+                            ["lemma"] = "кравець",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.tailoring.practitioner",
+                            ["sourceRefs"] = { "project-authored:general-grammar.profession" }
+                        }
+                    }
+                },
+                ["кравця"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["professionPractitioner"] = true
+                            },
+                            ["id"] = "profession.tailoring.practitioner",
+                            ["lemma"] = "кравець",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.tailoring.practitioner",
+                            ["sourceRefs"] = { "project-authored:general-grammar.profession" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["professionPractitioner"] = true
+                            },
+                            ["id"] = "profession.tailoring.practitioner",
+                            ["lemma"] = "кравець",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.tailoring.practitioner",
+                            ["sourceRefs"] = { "project-authored:general-grammar.profession" }
+                        }
+                    }
+                },
                 ["крижана"] = {
                     ["корона"] = {
                         ["_analyses"] = {
@@ -40541,6 +50095,118 @@ ns.Data = {
                         }
                     }
                 },
+                ["лляна"] = {
+                    ["сумка"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "feminine"
+                                },
+                                ["id"] = "goods.linen_bag",
+                                ["lemma"] = "лляна сумка",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.linen_bag",
+                                ["sourceRefs"] = { "ua-forever:item.4238" }
+                            }
+                        }
+                    }
+                },
+                ["лляних"] = {
+                    ["сумок"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.linen_bag",
+                                ["lemma"] = "лляна сумка",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.linen_bag",
+                                ["sourceRefs"] = { "ua-forever:item.4238" }
+                            }
+                        }
+                    }
+                },
+                ["лляною"] = {
+                    ["сумкою"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "instrumental",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.linen_bag",
+                                ["lemma"] = "лляна сумка",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.linen_bag",
+                                ["sourceRefs"] = { "ua-forever:item.4238" }
+                            }
+                        }
+                    }
+                },
+                ["лляної"] = {
+                    ["сумки"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.linen_bag",
+                                ["lemma"] = "лляна сумка",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.linen_bag",
+                                ["sourceRefs"] = { "ua-forever:item.4238" }
+                            }
+                        }
+                    }
+                },
+                ["лляну"] = {
+                    ["сумку"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "goods.linen_bag",
+                                ["lemma"] = "лляна сумка",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.linen_bag",
+                                ["sourceRefs"] = { "ua-forever:item.4238" }
+                            }
+                        }
+                    }
+                },
+                ["лляні"] = {
+                    ["сумки"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "nominative",
+                                    ["gender"] = "feminine",
+                                    ["number"] = "plural"
+                                },
+                                ["id"] = "goods.linen_bag",
+                                ["lemma"] = "лляна сумка",
+                                ["pos"] = "noun",
+                                ["sense"] = "goods.linen_bag",
+                                ["sourceRefs"] = { "ua-forever:item.4238" }
+                            }
+                        }
+                    }
+                },
                 ["лок"] = {
                     ["_analyses"] = {
                         {
@@ -40554,6 +50220,64 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "class.warlock",
                             ["sourceRefs"] = { "ua-forever:class.warlock" }
+                        }
+                    }
+                },
+                ["лордерон"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.lordaeron",
+                            ["lemma"] = "Лордерон",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.lordaeron",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Lordaeron" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.lordaeron",
+                            ["lemma"] = "Лордерон",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.lordaeron",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Lordaeron" }
+                        }
+                    }
+                },
+                ["лордерону"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.lordaeron",
+                            ["lemma"] = "Лордерон",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.lordaeron",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Lordaeron" }
+                        }
+                    }
+                },
+                ["лордероні"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.lordaeron",
+                            ["lemma"] = "Лордерон",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.lordaeron",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Lordaeron" }
                         }
                     }
                 },
@@ -41263,6 +50987,7 @@ ns.Data = {
                                 ["features"] = {
                                     ["case"] = "instrumental",
                                     ["clearableInstance"] = true,
+                                    ["contextAliasSense"] = "roleAvailability",
                                     ["number"] = "singular"
                                 },
                                 ["id"] = "place.the_deadmines",
@@ -41281,6 +51006,7 @@ ns.Data = {
                                 ["features"] = {
                                     ["case"] = "genitive",
                                     ["clearableInstance"] = true,
+                                    ["contextAliasSense"] = "roleAvailability",
                                     ["number"] = "singular"
                                 },
                                 ["id"] = "place.the_deadmines",
@@ -41297,6 +51023,7 @@ ns.Data = {
                                 ["features"] = {
                                     ["case"] = "locative",
                                     ["clearableInstance"] = true,
+                                    ["contextAliasSense"] = "roleAvailability",
                                     ["number"] = "singular"
                                 },
                                 ["id"] = "place.the_deadmines",
@@ -41313,7 +51040,8 @@ ns.Data = {
                         ["_analyses"] = {
                             {
                                 ["features"] = {
-                                    ["clearableInstance"] = true
+                                    ["clearableInstance"] = true,
+                                    ["contextAliasSense"] = "roleAvailability"
                                 },
                                 ["id"] = "place.the_deadmines",
                                 ["lemma"] = "Мертві копальні",
@@ -41325,6 +51053,7 @@ ns.Data = {
                                 ["features"] = {
                                     ["case"] = "accusative",
                                     ["clearableInstance"] = true,
+                                    ["contextAliasSense"] = "roleAvailability",
                                     ["number"] = "singular"
                                 },
                                 ["id"] = "place.the_deadmines",
@@ -41737,6 +51466,70 @@ ns.Data = {
                                     ["sense"] = "game.mercenary_network",
                                     ["sourceRefs"] = { "project-authored:chat-0.1" }
                                 }
+                            }
+                        }
+                    }
+                },
+                ["міста"] = {
+                    ["даларан"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.city_of_dalaran",
+                                ["lemma"] = "Місто Даларан",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.city_of_dalaran",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:City of Dalaran" }
+                            }
+                        }
+                    }
+                },
+                ["місто"] = {
+                    ["даларан"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.city_of_dalaran",
+                                ["lemma"] = "Місто Даларан",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.city_of_dalaran",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:City of Dalaran" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.city_of_dalaran",
+                                ["lemma"] = "Місто Даларан",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.city_of_dalaran",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:City of Dalaran" }
+                            }
+                        }
+                    }
+                },
+                ["місті"] = {
+                    ["даларан"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.city_of_dalaran",
+                                ["lemma"] = "Місто Даларан",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.city_of_dalaran",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:City of Dalaran" }
                             }
                         }
                     }
@@ -47551,6 +57344,36 @@ ns.Data = {
                     }
                 },
                 ["пошук"] = {
+                    ["групи"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["gender"] = "masculine",
+                                    ["neuralSense"] = "finder"
+                                },
+                                ["id"] = "game.group_finder",
+                                ["lemma"] = "Пошук групи",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.group_finder",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Group Finder" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "accusative",
+                                    ["gender"] = "masculine",
+                                    ["neuralSense"] = "finder",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "game.group_finder",
+                                ["lemma"] = "Пошук групи",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.group_finder",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Group Finder" }
+                            }
+                        }
+                    },
                     ["мінералів"] = {
                         ["_analyses"] = {
                             {
@@ -47717,6 +57540,38 @@ ns.Data = {
                     }
                 },
                 ["пошуку"] = {
+                    ["групи"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "genitive",
+                                    ["gender"] = "masculine",
+                                    ["neuralSense"] = "finder",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "game.group_finder",
+                                ["lemma"] = "Пошук групи",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.group_finder",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Group Finder" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["animacy"] = "inanimate",
+                                    ["case"] = "locative",
+                                    ["gender"] = "masculine",
+                                    ["neuralSense"] = "finder",
+                                    ["number"] = "singular"
+                                },
+                                ["id"] = "game.group_finder",
+                                ["lemma"] = "Пошук групи",
+                                ["pos"] = "noun",
+                                ["sense"] = "game.group_finder",
+                                ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Group Finder" }
+                            }
+                        }
+                    },
                     ["мінералів"] = {
                         ["_analyses"] = {
                             {
@@ -49520,6 +59375,154 @@ ns.Data = {
                         }
                     }
                 },
+                ["північне"] = {
+                    ["крило"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter"
+                                        },
+                                        ["id"] = "place.dire_maul_north",
+                                        ["lemma"] = "північне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_north",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - North",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "accusative",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_north",
+                                        ["lemma"] = "північне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_north",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - North",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["північним"] = {
+                    ["крилом"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "instrumental",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_north",
+                                        ["lemma"] = "північне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_north",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - North",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["північного"] = {
+                    ["крила"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "genitive",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_north",
+                                        ["lemma"] = "північне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_north",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - North",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["північному"] = {
+                    ["крилу"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "dative",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_north",
+                                        ["lemma"] = "північне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_north",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - North",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["крилі"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "locative",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_north",
+                                        ["lemma"] = "північне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_north",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - North",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["підземелля"] = {
                     ["_analyses"] = {
                         {
@@ -50731,6 +60734,22 @@ ns.Data = {
                             }
                         }
                     },
+                    ["зул'мамве"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.ruins_of_zul_mamwe",
+                                ["lemma"] = "руїни Зул'Мамве",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ruins_of_zul_mamwe",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Ruins of Zul'Mamwe" }
+                            }
+                        }
+                    },
                     ["лордерона"] = {
                         ["_analyses"] = {
                             {
@@ -50839,6 +60858,22 @@ ns.Data = {
                             }
                         }
                     },
+                    ["зул'мамве"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.ruins_of_zul_mamwe",
+                                ["lemma"] = "руїни Зул'Мамве",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ruins_of_zul_mamwe",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Ruins of Zul'Mamwe" }
+                            }
+                        }
+                    },
                     ["лордерона"] = {
                         ["_analyses"] = {
                             {
@@ -50900,6 +60935,32 @@ ns.Data = {
                             }
                         }
                     },
+                    ["зул'мамве"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.ruins_of_zul_mamwe",
+                                ["lemma"] = "руїни Зул'Мамве",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ruins_of_zul_mamwe",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Ruins of Zul'Mamwe" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.ruins_of_zul_mamwe",
+                                ["lemma"] = "руїни Зул'Мамве",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.ruins_of_zul_mamwe",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Ruins of Zul'Mamwe" }
+                            }
+                        }
+                    },
                     ["лордерона"] = {
                         ["_analyses"] = {
                             {
@@ -50939,6 +61000,68 @@ ns.Data = {
                                 ["pos"] = "noun",
                                 ["sense"] = "place.ruins_of_lordaeron",
                                 ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" }
+                            }
+                        }
+                    }
+                },
+                ["річкових"] = {
+                    ["галявин"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.riverglades",
+                                ["lemma"] = "Річкові галявини",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.riverglades",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Riverglades" }
+                            }
+                        }
+                    },
+                    ["галявинах"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.riverglades",
+                                ["lemma"] = "Річкові галявини",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.riverglades",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Riverglades" }
+                            }
+                        }
+                    }
+                },
+                ["річкові"] = {
+                    ["галявини"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.riverglades",
+                                ["lemma"] = "Річкові галявини",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.riverglades",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Riverglades" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.riverglades",
+                                ["lemma"] = "Річкові галявини",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.riverglades",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Riverglades" }
                             }
                         }
                     }
@@ -52187,6 +62310,154 @@ ns.Data = {
                         }
                     }
                 },
+                ["східне"] = {
+                    ["крило"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter"
+                                        },
+                                        ["id"] = "place.dire_maul_east",
+                                        ["lemma"] = "східне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_east",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - East",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    },
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "accusative",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_east",
+                                        ["lemma"] = "східне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_east",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - East",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["східним"] = {
+                    ["крилом"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "instrumental",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_east",
+                                        ["lemma"] = "східне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_east",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - East",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["східного"] = {
+                    ["крила"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "genitive",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_east",
+                                        ["lemma"] = "східне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_east",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - East",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                ["східному"] = {
+                    ["крилу"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "dative",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_east",
+                                        ["lemma"] = "східне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_east",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - East",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ["крилі"] = {
+                        ["грізного"] = {
+                            ["молота"] = {
+                                ["_analyses"] = {
+                                    {
+                                        ["features"] = {
+                                            ["animacy"] = "inanimate",
+                                            ["case"] = "locative",
+                                            ["clearableInstance"] = true,
+                                            ["gender"] = "neuter",
+                                            ["number"] = "singular"
+                                        },
+                                        ["id"] = "place.dire_maul_east",
+                                        ["lemma"] = "східне крило Грізного Молота",
+                                        ["pos"] = "noun",
+                                        ["sense"] = "place.dire_maul_east",
+                                        ["sourceRefs"] = {
+                                            "ua-forever:zones.Dire Maul - East",
+                                            "project-authored:chat-instance-wing"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
                 ["східні"] = {
                     ["зачумлені"] = {
                         ["землі"] = {
@@ -52811,6 +63082,7 @@ ns.Data = {
                                 ["features"] = {
                                     ["animacy"] = "inanimate",
                                     ["clearableInstance"] = true,
+                                    ["contextAliasSense"] = "roleAvailability",
                                     ["gender"] = "feminine"
                                 },
                                 ["id"] = "place.kroldok_stronghold",
@@ -52833,6 +63105,7 @@ ns.Data = {
                                     ["animacy"] = "inanimate",
                                     ["case"] = "genitive",
                                     ["clearableInstance"] = true,
+                                    ["contextAliasSense"] = "roleAvailability",
                                     ["gender"] = "feminine",
                                     ["number"] = "singular"
                                 },
@@ -52850,6 +63123,7 @@ ns.Data = {
                                     ["animacy"] = "inanimate",
                                     ["case"] = "locative",
                                     ["clearableInstance"] = true,
+                                    ["contextAliasSense"] = "roleAvailability",
                                     ["gender"] = "feminine",
                                     ["number"] = "singular"
                                 },
@@ -52970,6 +63244,122 @@ ns.Data = {
                             ["pos"] = "noun",
                             ["sense"] = "place.darkshore",
                             ["sourceRefs"] = { "ua-forever:place.darkshore" }
+                        }
+                    }
+                },
+                ["темнодолу"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.darkshire",
+                            ["lemma"] = "Темноділ",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.darkshire",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Darkshire" }
+                        }
+                    }
+                },
+                ["темнодолі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.darkshire",
+                            ["lemma"] = "Темноділ",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.darkshire",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Darkshire" }
+                        }
+                    }
+                },
+                ["темноділ"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.darkshire",
+                            ["lemma"] = "Темноділ",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.darkshire",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Darkshire" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.darkshire",
+                            ["lemma"] = "Темноділ",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.darkshire",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Darkshire" }
+                        }
+                    }
+                },
+                ["терамор"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.theramore",
+                            ["lemma"] = "Терамор",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.theramore",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Theramore" }
+                        },
+                        {
+                            ["features"] = {
+                                ["case"] = "accusative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.theramore",
+                            ["lemma"] = "Терамор",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.theramore",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Theramore" }
+                        }
+                    }
+                },
+                ["терамору"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "genitive",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.theramore",
+                            ["lemma"] = "Терамор",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.theramore",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Theramore" }
+                        }
+                    }
+                },
+                ["тераморі"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["case"] = "locative",
+                                ["number"] = "singular",
+                                ["proper"] = true
+                            },
+                            ["id"] = "place.theramore",
+                            ["lemma"] = "Терамор",
+                            ["pos"] = "noun",
+                            ["sense"] = "place.theramore",
+                            ["sourceRefs"] = { "ua-forever:zones.lua:Theramore" }
                         }
                     }
                 },
@@ -53592,6 +63982,22 @@ ns.Data = {
                     }
                 },
                 ["фортецю"] = {
+                    ["стромварт"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.stromgarde_keep",
+                                ["lemma"] = "фортеця Стромварт",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.stromgarde_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Stromgarde Keep" }
+                            }
+                        }
+                    },
                     ["тіньового"] = {
                         ["ікла"] = {
                             ["_analyses"] = {
@@ -53609,9 +64015,39 @@ ns.Data = {
                                 }
                             }
                         }
+                    },
+                    ["штормовія"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "accusative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.stormwind_keep",
+                                ["lemma"] = "фортеця Штормовія",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.stormwind_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Stormwind Keep" }
+                            }
+                        }
                     }
                 },
                 ["фортеця"] = {
+                    ["стромварт"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.stromgarde_keep",
+                                ["lemma"] = "фортеця Стромварт",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.stromgarde_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Stromgarde Keep" }
+                            }
+                        }
+                    },
                     ["тіньового"] = {
                         ["ікла"] = {
                             ["_analyses"] = {
@@ -53627,9 +64063,51 @@ ns.Data = {
                                 }
                             }
                         }
+                    },
+                    ["штормовія"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.stormwind_keep",
+                                ["lemma"] = "фортеця Штормовія",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.stormwind_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Stormwind Keep" }
+                            }
+                        }
                     }
                 },
                 ["фортеці"] = {
+                    ["стромварт"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.stromgarde_keep",
+                                ["lemma"] = "фортеця Стромварт",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.stromgarde_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Stromgarde Keep" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.stromgarde_keep",
+                                ["lemma"] = "фортеця Стромварт",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.stromgarde_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Stromgarde Keep" }
+                            }
+                        }
+                    },
                     ["тіньового"] = {
                         ["ікла"] = {
                             ["_analyses"] = {
@@ -53657,6 +64135,34 @@ ns.Data = {
                                     ["sense"] = "place.shadowfang_keep",
                                     ["sourceRefs"] = { "ua-forever:place.shadowfang_keep" }
                                 }
+                            }
+                        }
+                    },
+                    ["штормовія"] = {
+                        ["_analyses"] = {
+                            {
+                                ["features"] = {
+                                    ["case"] = "genitive",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.stormwind_keep",
+                                ["lemma"] = "фортеця Штормовія",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.stormwind_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Stormwind Keep" }
+                            },
+                            {
+                                ["features"] = {
+                                    ["case"] = "locative",
+                                    ["number"] = "singular",
+                                    ["proper"] = true
+                                },
+                                ["id"] = "place.stormwind_keep",
+                                ["lemma"] = "фортеця Штормовія",
+                                ["pos"] = "noun",
+                                ["sense"] = "place.stormwind_keep",
+                                ["sourceRefs"] = { "ua-forever:zones.lua:Stormwind Keep" }
                             }
                         }
                     }
@@ -55754,6 +66260,91 @@ ns.Data = {
                         }
                     }
                 },
+                ["шкіряник"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["professionPractitioner"] = true
+                            },
+                            ["id"] = "profession.leatherworking.practitioner",
+                            ["lemma"] = "шкіряник",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.leatherworking.practitioner",
+                            ["sourceRefs"] = { "project-authored:general-grammar.profession" }
+                        }
+                    }
+                },
+                ["шкіряника"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "accusative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["professionPractitioner"] = true
+                            },
+                            ["id"] = "profession.leatherworking.practitioner",
+                            ["lemma"] = "шкіряник",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.leatherworking.practitioner",
+                            ["sourceRefs"] = { "project-authored:general-grammar.profession" }
+                        },
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "genitive",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["professionPractitioner"] = true
+                            },
+                            ["id"] = "profession.leatherworking.practitioner",
+                            ["lemma"] = "шкіряник",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.leatherworking.practitioner",
+                            ["sourceRefs"] = { "project-authored:general-grammar.profession" }
+                        }
+                    }
+                },
+                ["шкіряникові"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "dative",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["professionPractitioner"] = true
+                            },
+                            ["id"] = "profession.leatherworking.practitioner",
+                            ["lemma"] = "шкіряник",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.leatherworking.practitioner",
+                            ["sourceRefs"] = { "project-authored:general-grammar.profession" }
+                        }
+                    }
+                },
+                ["шкіряником"] = {
+                    ["_analyses"] = {
+                        {
+                            ["features"] = {
+                                ["animacy"] = "animate",
+                                ["case"] = "instrumental",
+                                ["gender"] = "masculine",
+                                ["number"] = "singular",
+                                ["professionPractitioner"] = true
+                            },
+                            ["id"] = "profession.leatherworking.practitioner",
+                            ["lemma"] = "шкіряник",
+                            ["pos"] = "noun",
+                            ["sense"] = "profession.leatherworking.practitioner",
+                            ["sourceRefs"] = { "project-authored:general-grammar.profession" }
+                        }
+                    }
+                },
                 ["шпигунство"] = {
                     ["_analyses"] = {
                         {
@@ -56974,6 +67565,19 @@ ns.Data = {
                     ["nominativePlural"] = "шукачі пригод"
                 }
             },
+            ["character.arthas"] = {
+                ["en"] = {
+                    ["canonical"] = "Arthas"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Артаса",
+                    ["canonical"] = "Артас",
+                    ["dativeSingular"] = "Артасу",
+                    ["genitiveSingular"] = "Артаса",
+                    ["instrumental"] = "Артасом",
+                    ["locative"] = "Артасі"
+                }
+            },
             ["character.arthas_menethil"] = {
                 ["en"] = {
                     ["canonical"] = "Arthas Menethil"
@@ -57366,7 +67970,9 @@ ns.Data = {
                     ["accusative"] = "аукціонний дім",
                     ["canonical"] = "Аукціонний дім",
                     ["dative"] = "аукціонному дому",
+                    ["dativeSingular"] = "аукціонному дому",
                     ["genitive"] = "аукціонного дому",
+                    ["genitiveSingular"] = "аукціонного дому",
                     ["instrumental"] = "аукціонним домом",
                     ["locative"] = "аукціонному домі",
                     ["locativeSingular"] = "аукціоні",
@@ -57544,6 +68150,17 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Золото"
+                }
+            },
+            ["game.group_finder"] = {
+                ["en"] = {
+                    ["canonical"] = "Group Finder"
+                },
+                ["uk"] = {
+                    ["accusative"] = "пошук групи",
+                    ["canonical"] = "Пошук групи",
+                    ["genitiveSingular"] = "пошуку групи",
+                    ["locative"] = "пошуку групи"
                 }
             },
             ["game.guild"] = {
@@ -58044,6 +68661,20 @@ ns.Data = {
                     ["nominativePlural"] = "злитки"
                 }
             },
+            ["goods.linen_bag"] = {
+                ["en"] = {
+                    ["canonical"] = "Linen Bag",
+                    ["plural"] = "Linen Bags"
+                },
+                ["uk"] = {
+                    ["accusative"] = "лляну сумку",
+                    ["canonical"] = "лляна сумка",
+                    ["genitivePlural"] = "лляних сумок",
+                    ["genitiveSingular"] = "лляної сумки",
+                    ["instrumental"] = "лляною сумкою",
+                    ["nominativePlural"] = "лляні сумки"
+                }
+            },
             ["goods.mageweave_cloth"] = {
                 ["en"] = {
                     ["canonical"] = "Mageweave Cloth"
@@ -58301,6 +68932,17 @@ ns.Data = {
                     ["locative"] = "низині Араті"
                 }
             },
+            ["place.arathi_highlands"] = {
+                ["en"] = {
+                    ["canonical"] = "Arathi Highlands"
+                },
+                ["uk"] = {
+                    ["accusative"] = "височину Араті",
+                    ["canonical"] = "височина Араті",
+                    ["genitiveSingular"] = "височини Араті",
+                    ["locative"] = "височині Араті"
+                }
+            },
             ["place.ashenvale"] = {
                 ["en"] = {
                     ["canonical"] = "Ashenvale"
@@ -58384,6 +69026,17 @@ ns.Data = {
                     ["locative"] = "лігві Чорного Крила"
                 }
             },
+            ["place.booty_bay"] = {
+                ["en"] = {
+                    ["canonical"] = "Booty Bay"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Бухту Наживи",
+                    ["canonical"] = "Бухта Наживи",
+                    ["genitiveSingular"] = "Бухти Наживи",
+                    ["locative"] = "Бухті Наживи"
+                }
+            },
             ["place.burning_steppes"] = {
                 ["en"] = {
                     ["canonical"] = "Burning Steppes"
@@ -58393,6 +69046,17 @@ ns.Data = {
                     ["canonical"] = "Палаючий степ",
                     ["genitiveSingular"] = "Палаючого степу",
                     ["locative"] = "Палаючому степу"
+                }
+            },
+            ["place.city_of_dalaran"] = {
+                ["en"] = {
+                    ["canonical"] = "City of Dalaran"
+                },
+                ["uk"] = {
+                    ["accusative"] = "місто Даларан",
+                    ["canonical"] = "Місто Даларан",
+                    ["genitiveSingular"] = "міста Даларан",
+                    ["locative"] = "місті Даларан"
                 }
             },
             ["place.dalaran"] = {
@@ -58407,6 +69071,17 @@ ns.Data = {
                     ["instrumental"] = "Далараном",
                     ["locative"] = "Даларані",
                     ["nominative"] = "Даларан"
+                }
+            },
+            ["place.darkshire"] = {
+                ["en"] = {
+                    ["canonical"] = "Darkshire"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Темноділ",
+                    ["canonical"] = "Темноділ",
+                    ["genitiveSingular"] = "Темнодолу",
+                    ["locative"] = "Темнодолі"
                 }
             },
             ["place.darkshore"] = {
@@ -58444,6 +69119,45 @@ ns.Data = {
                     ["locative"] = "Грізному Молоті"
                 }
             },
+            ["place.dire_maul_east"] = {
+                ["en"] = {
+                    ["canonical"] = "Dire Maul East"
+                },
+                ["uk"] = {
+                    ["accusative"] = "східне крило Грізного Молота",
+                    ["canonical"] = "східне крило Грізного Молота",
+                    ["dativeSingular"] = "східному крилу Грізного Молота",
+                    ["genitiveSingular"] = "східного крила Грізного Молота",
+                    ["instrumental"] = "східним крилом Грізного Молота",
+                    ["locative"] = "східному крилі Грізного Молота"
+                }
+            },
+            ["place.dire_maul_north"] = {
+                ["en"] = {
+                    ["canonical"] = "Dire Maul North"
+                },
+                ["uk"] = {
+                    ["accusative"] = "північне крило Грізного Молота",
+                    ["canonical"] = "північне крило Грізного Молота",
+                    ["dativeSingular"] = "північному крилу Грізного Молота",
+                    ["genitiveSingular"] = "північного крила Грізного Молота",
+                    ["instrumental"] = "північним крилом Грізного Молота",
+                    ["locative"] = "північному крилі Грізного Молота"
+                }
+            },
+            ["place.dire_maul_west"] = {
+                ["en"] = {
+                    ["canonical"] = "Dire Maul West"
+                },
+                ["uk"] = {
+                    ["accusative"] = "західне крило Грізного Молота",
+                    ["canonical"] = "західне крило Грізного Молота",
+                    ["dativeSingular"] = "західному крилу Грізного Молота",
+                    ["genitiveSingular"] = "західного крила Грізного Молота",
+                    ["instrumental"] = "західним крилом Грізного Молота",
+                    ["locative"] = "західному крилі Грізного Молота"
+                }
+            },
             ["place.drowned_city"] = {
                 ["en"] = {
                     ["canonical"] = "The Drowned City"
@@ -58474,6 +69188,17 @@ ns.Data = {
                     ["locative"] = "Дун-Модрі"
                 }
             },
+            ["place.dun_morogh"] = {
+                ["en"] = {
+                    ["canonical"] = "Dun Morogh"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Дун-Морог",
+                    ["canonical"] = "Дун-Морог",
+                    ["genitiveSingular"] = "Дун-Морогу",
+                    ["locative"] = "Дун-Морозі"
+                }
+            },
             ["place.durotar"] = {
                 ["en"] = {
                     ["canonical"] = "Durotar"
@@ -58494,6 +69219,28 @@ ns.Data = {
                     ["locative"] = "Смерколіссі"
                 }
             },
+            ["place.dustwallow_marsh"] = {
+                ["en"] = {
+                    ["canonical"] = "Dustwallow Marsh"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Бруднолипку трясовину",
+                    ["canonical"] = "Бруднолипка трясовина",
+                    ["genitiveSingular"] = "Бруднолипкої трясовини",
+                    ["locative"] = "Бруднолипкій трясовині"
+                }
+            },
+            ["place.dwarven_district"] = {
+                ["en"] = {
+                    ["canonical"] = "Dwarven District"
+                },
+                ["uk"] = {
+                    ["accusative"] = "дворфівський район",
+                    ["canonical"] = "Дворфівський район",
+                    ["genitiveSingular"] = "дворфівського району",
+                    ["locative"] = "дворфівському районі"
+                }
+            },
             ["place.eastern_plaguelands"] = {
                 ["en"] = {
                     ["canonical"] = "Eastern Plaguelands"
@@ -58508,6 +69255,17 @@ ns.Data = {
                 },
                 ["uk"] = {
                     ["canonical"] = "Ельвиннський ліс"
+                }
+            },
+            ["place.farholde_keep"] = {
+                ["en"] = {
+                    ["canonical"] = "Farholde Keep"
+                },
+                ["uk"] = {
+                    ["accusative"] = "замок Фарголд",
+                    ["canonical"] = "Замок Фарголд",
+                    ["genitiveSingular"] = "замку Фарголд",
+                    ["locative"] = "замку Фарголд"
                 }
             },
             ["place.frozen_throne"] = {
@@ -58567,6 +69325,28 @@ ns.Data = {
                     ["locative"] = "Залах Блискавок"
                 }
             },
+            ["place.hinterlands"] = {
+                ["en"] = {
+                    ["canonical"] = "The Hinterlands"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Внутрішні землі",
+                    ["canonical"] = "Внутрішні землі",
+                    ["genitiveSingular"] = "Внутрішніх земель",
+                    ["locative"] = "Внутрішніх землях"
+                }
+            },
+            ["place.hyjal"] = {
+                ["en"] = {
+                    ["canonical"] = "Hyjal"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Гіджал",
+                    ["canonical"] = "Гіджал",
+                    ["genitiveSingular"] = "Гіджалу",
+                    ["locative"] = "Гіджалі"
+                }
+            },
             ["place.icecrown"] = {
                 ["en"] = {
                     ["canonical"] = "Icecrown"
@@ -58591,6 +69371,17 @@ ns.Data = {
                     ["locative"] = "Залізогарті"
                 }
             },
+            ["place.khaz_modan"] = {
+                ["en"] = {
+                    ["canonical"] = "Khaz Modan"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Каз-Модан",
+                    ["canonical"] = "Каз-Модан",
+                    ["genitiveSingular"] = "Каз-Модану",
+                    ["locative"] = "Каз-Модані"
+                }
+            },
             ["place.kroldok_stronghold"] = {
                 ["en"] = {
                     ["canonical"] = "Krol'dok Stronghold"
@@ -58610,6 +69401,17 @@ ns.Data = {
                     ["canonical"] = "Лох-Модан",
                     ["genitiveSingular"] = "Лох-Модану",
                     ["locative"] = "Лох-Модані"
+                }
+            },
+            ["place.lordaeron"] = {
+                ["en"] = {
+                    ["canonical"] = "Lordaeron"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Лордерон",
+                    ["canonical"] = "Лордерон",
+                    ["genitiveSingular"] = "Лордерону",
+                    ["locative"] = "Лордероні"
                 }
             },
             ["place.lower_blackrock_spire"] = {
@@ -58692,6 +69494,17 @@ ns.Data = {
                     ["nominative"] = "Обіцяний острів"
                 }
             },
+            ["place.quel_thalas"] = {
+                ["en"] = {
+                    ["canonical"] = "Quel'Thalas"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Квел'Талас",
+                    ["canonical"] = "Квел'Талас",
+                    ["genitiveSingular"] = "Квел'Таласу",
+                    ["locative"] = "Квел'Таласі"
+                }
+            },
             ["place.ragefire_chasm"] = {
                 ["en"] = {
                     ["canonical"] = "Ragefire Chasm"
@@ -58744,6 +69557,17 @@ ns.Data = {
                     ["locativePlural"] = "Багрянокряжових горах"
                 }
             },
+            ["place.riverglades"] = {
+                ["en"] = {
+                    ["canonical"] = "Riverglades"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Річкові галявини",
+                    ["canonical"] = "Річкові галявини",
+                    ["genitiveSingular"] = "Річкових галявин",
+                    ["locative"] = "Річкових галявинах"
+                }
+            },
             ["place.ruins_of_ahn_qiraj"] = {
                 ["en"] = {
                     ["canonical"] = "Ruins of Ahn'Qiraj"
@@ -58770,6 +69594,17 @@ ns.Data = {
                     ["instrumental"] = "руїнами Лордерона",
                     ["locative"] = "руїнах Лордерона",
                     ["nominative"] = "руїни Лордерона"
+                }
+            },
+            ["place.ruins_of_zul_mamwe"] = {
+                ["en"] = {
+                    ["canonical"] = "Ruins of Zul'Mamwe"
+                },
+                ["uk"] = {
+                    ["accusative"] = "руїни Зул'Мамве",
+                    ["canonical"] = "руїни Зул'Мамве",
+                    ["genitiveSingular"] = "руїн Зул'Мамве",
+                    ["locative"] = "руїнах Зул'Мамве"
                 }
             },
             ["place.scarlet_monastery"] = {
@@ -58853,6 +69688,17 @@ ns.Data = {
                     ["vocative"] = "Штормовію"
                 }
             },
+            ["place.stormwind_keep"] = {
+                ["en"] = {
+                    ["canonical"] = "Stormwind Keep"
+                },
+                ["uk"] = {
+                    ["accusative"] = "фортецю Штормовія",
+                    ["canonical"] = "фортеця Штормовія",
+                    ["genitiveSingular"] = "фортеці Штормовія",
+                    ["locative"] = "фортеці Штормовія"
+                }
+            },
             ["place.stranglethorn_vale"] = {
                 ["en"] = {
                     ["canonical"] = "Stranglethorn Vale"
@@ -58875,6 +69721,17 @@ ns.Data = {
                     ["genitiveSingular"] = "Стратгольма",
                     ["instrumental"] = "Стратгольмом",
                     ["locative"] = "Стратгольмі"
+                }
+            },
+            ["place.stromgarde_keep"] = {
+                ["en"] = {
+                    ["canonical"] = "Stromgarde Keep"
+                },
+                ["uk"] = {
+                    ["accusative"] = "фортецю Стромварт",
+                    ["canonical"] = "фортеця Стромварт",
+                    ["genitiveSingular"] = "фортеці Стромварт",
+                    ["locative"] = "фортеці Стромварт"
                 }
             },
             ["place.tanaris"] = {
@@ -58953,6 +69810,17 @@ ns.Data = {
                     ["genitiveSingular"] = "Храму Атал'Гаккара",
                     ["instrumental"] = "Храмом Атал'Гаккара",
                     ["locative"] = "Храмі Атал'Гаккара"
+                }
+            },
+            ["place.theramore"] = {
+                ["en"] = {
+                    ["canonical"] = "Theramore"
+                },
+                ["uk"] = {
+                    ["accusative"] = "Терамор",
+                    ["canonical"] = "Терамор",
+                    ["genitiveSingular"] = "Терамору",
+                    ["locative"] = "Тераморі"
                 }
             },
             ["place.thunder_bluff"] = {
@@ -59198,6 +70066,18 @@ ns.Data = {
                     ["instrumental"] = "шкірництвом"
                 }
             },
+            ["profession.leatherworking.practitioner"] = {
+                ["en"] = {
+                    ["canonical"] = "leatherworker"
+                },
+                ["uk"] = {
+                    ["accusative"] = "шкіряника",
+                    ["canonical"] = "шкіряник",
+                    ["dativeSingular"] = "шкіряникові",
+                    ["genitiveSingular"] = "шкіряника",
+                    ["instrumental"] = "шкіряником"
+                }
+            },
             ["profession.mining"] = {
                 ["en"] = {
                     ["canonical"] = "Mining"
@@ -59226,6 +70106,1218 @@ ns.Data = {
                     ["canonical"] = "Кравецтво",
                     ["genitiveSingular"] = "кравецтва",
                     ["instrumental"] = "кравецтвом"
+                }
+            },
+            ["profession.tailoring.practitioner"] = {
+                ["en"] = {
+                    ["canonical"] = "tailor"
+                },
+                ["uk"] = {
+                    ["accusative"] = "кравця",
+                    ["canonical"] = "кравець",
+                    ["dativeSingular"] = "кравцеві",
+                    ["genitiveSingular"] = "кравця",
+                    ["instrumental"] = "кравцем"
+                }
+            },
+            ["quest.writ_94004"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Elixir of Ogre's Strength"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Еліксир сили огра"
+                }
+            },
+            ["quest.writ_94212"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Elixir of Wisdom"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Еліксир мудрості"
+                }
+            },
+            ["quest.writ_94213"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Lesser Mana Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Мале зілля мани"
+                }
+            },
+            ["quest.writ_94214"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Shadow Protection Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зілля захисту від тіні"
+                }
+            },
+            ["quest.writ_94215"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Free Action Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зілля вільної дії"
+                }
+            },
+            ["quest.writ_94216"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Elixir of Lesser Agility"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Еліксир малої спритності"
+                }
+            },
+            ["quest.writ_94217"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Lesser Troll's Blood Elixir"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Малий еліксир крові троля"
+                }
+            },
+            ["quest.writ_94218"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Elixir of Defense"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Еліксир захисту"
+                }
+            },
+            ["quest.writ_94219"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Draught of Water Breathing"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Настій водного дихання"
+                }
+            },
+            ["quest.writ_94220"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Pearl-Handled Dagger"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Кинджал з перловою ручкою"
+                }
+            },
+            ["quest.writ_94221"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Golden Rod"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Золотий жезл"
+                }
+            },
+            ["quest.writ_94222"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Iridescent Hammer"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Райдужний молот"
+                }
+            },
+            ["quest.writ_94223"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Silver Skeleton Key"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Срібний ключ-відмичка"
+                }
+            },
+            ["quest.writ_94224"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Heavy Bronze Mace"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Важка бронзова булава"
+                }
+            },
+            ["quest.writ_94225"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Rough Bronze Leggings"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Грубі бронзові поножі"
+                }
+            },
+            ["quest.writ_94226"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Green Iron Gauntlets"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зелені залізні рукавиці"
+                }
+            },
+            ["quest.writ_94227"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Big Bronze Knife"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Великий бронзовий ніж"
+                }
+            },
+            ["quest.writ_94228"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Green Iron Boots"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зелені залізні чоботи"
+                }
+            },
+            ["quest.writ_94229"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Ornate Spyglass"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Оздоблена підзорна труба"
+                }
+            },
+            ["quest.writ_94230"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Explosive Sheep"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Вибухова вівця"
+                }
+            },
+            ["quest.writ_94231"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Moonsight Rifle"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Рушниця місячного прицілу"
+                }
+            },
+            ["quest.writ_94232"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Minor Recombobulator"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Слабкий рекомбобулятор"
+                }
+            },
+            ["quest.writ_94233"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Practice Lock"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Тренувальний замок"
+                }
+            },
+            ["quest.writ_94234"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Shadow Goggles"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Тіньові окуляри"
+                }
+            },
+            ["quest.writ_94235"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Gnomish Universal Remote"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: гномський універсальний пульт"
+                }
+            },
+            ["quest.writ_94236"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Big Bronze Bomb"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Велика бронзова бомба"
+                }
+            },
+            ["quest.writ_94237"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Crafted Solid Shot"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Саморобна тверда куля"
+                }
+            },
+            ["quest.writ_94238"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Heavy Leather Ball"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Важкий шкіряний м’яч"
+                }
+            },
+            ["quest.writ_94239"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Fine Leather Pants"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Вишукані шкіряні штани"
+                }
+            },
+            ["quest.writ_94240"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Herbalist's Gloves"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Рукавиці травника"
+                }
+            },
+            ["quest.writ_94241"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Dark Leather Tunic"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Темна шкіряна туніка"
+                }
+            },
+            ["quest.writ_94242"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Pilferer's Gloves"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Рукавиці крадія"
+                }
+            },
+            ["quest.writ_94243"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Heavy Quiver"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Важкий сагайдак"
+                }
+            },
+            ["quest.writ_94244"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Dark Leather Shoulders"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Темні шкіряні наплічники"
+                }
+            },
+            ["quest.writ_94245"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Barbaric Gloves"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Варварські рукавиці"
+                }
+            },
+            ["quest.writ_94246"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Red Whelp Gloves"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Рукавиці червоного дракончика"
+                }
+            },
+            ["quest.writ_94247"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Lesser Wizard's Robe"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: мала мантія чарівника"
+                }
+            },
+            ["quest.writ_94248"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Blue Overalls"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Синій комбінезон"
+                }
+            },
+            ["quest.writ_94249"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Azure Silk Hood"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Блакитний шовковий капюшон"
+                }
+            },
+            ["quest.writ_94250"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Small Silk Pack"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Мала шовкова сумка"
+                }
+            },
+            ["quest.writ_94251"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Phoenix Pants"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Штани Фенікса"
+                }
+            },
+            ["quest.writ_94252"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Red Woolen Boots"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Червоні вовняні чоботи"
+                }
+            },
+            ["quest.writ_94253"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Colorful Kilt"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Барвистий кілт"
+                }
+            },
+            ["quest.writ_94254"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Greater Adept's Robe"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Мантія Великого Адепта"
+                }
+            },
+            ["quest.writ_94255"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Spider Silk Slippers"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Капці з павучого шовку"
+                }
+            },
+            ["quest.writ_94256"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Frost Protection Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зілля захисту від криги"
+                }
+            },
+            ["quest.writ_94257"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Lesser Invisibility Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: зілля малої невидимості"
+                }
+            },
+            ["quest.writ_94258"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Lesser Stoneshield Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зілля малого кам'яного щита"
+                }
+            },
+            ["quest.writ_94259"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Nature Protection Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зілля захисту природи"
+                }
+            },
+            ["quest.writ_94260"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Catseye Draught"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Настій котячого ока"
+                }
+            },
+            ["quest.writ_94261"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Great Rage Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Велике зілля люті"
+                }
+            },
+            ["quest.writ_94262"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Mana Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зілля мани"
+                }
+            },
+            ["quest.writ_94263"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Fire Protection Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зілля захисту від вогню"
+                }
+            },
+            ["quest.writ_94264"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Shadow Oil"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Тіньова олія"
+                }
+            },
+            ["quest.writ_94265"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Goblin Rocket Fuel"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Гоблінське ракетне паливо"
+                }
+            },
+            ["quest.writ_94266"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Elixir of Agility"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Еліксир спритності"
+                }
+            },
+            ["quest.writ_94267"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Wildvine Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зілля диколози"
+                }
+            },
+            ["quest.writ_94268"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Steel Plate Helm"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Сталевий латний шолом"
+                }
+            },
+            ["quest.writ_94269"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Inlaid Mithril Cylinder"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Інкрустований мітриловий циліндр"
+                }
+            },
+            ["quest.writ_94270"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Steel Weapon Chain"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: сталевий ланцюг для зброї"
+                }
+            },
+            ["quest.writ_94271"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Ornate Mithril Shoulders"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Оздоблені міфрилові наплічники"
+                }
+            },
+            ["quest.writ_94272"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Blue Glittering Axe"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Синя блискуча сокира"
+                }
+            },
+            ["quest.writ_94273"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Moonsteel Broadsword"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Палаш з місячної сталі"
+                }
+            },
+            ["quest.writ_94274"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Golden Scale Coif"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Золотий лускатий Каптур"
+                }
+            },
+            ["quest.writ_94275"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Solid Sharpening Stone"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: твердий точильний камінь"
+                }
+            },
+            ["quest.writ_94276"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Wicked Mithril Blade"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Нищівний міфриловий клинок"
+                }
+            },
+            ["quest.writ_94277"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Truesilver Rod"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Жезл істинного срібла"
+                }
+            },
+            ["quest.writ_94278"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Golden Scale Gauntlets"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Золоті лускаті рукавиці"
+                }
+            },
+            ["quest.writ_94279"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Heavy Mithril Axe"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Важка міфрилова сокира"
+                }
+            },
+            ["quest.writ_94280"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Mechanical Dragonling"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Механічний дракончик"
+                }
+            },
+            ["quest.writ_94281"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Advanced Target Dummy"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Посилений манекен-мішень"
+                }
+            },
+            ["quest.writ_94282"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Craftsman's Monocle"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Монокль ремісника"
+                }
+            },
+            ["quest.writ_94283"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Goblin Land Mine"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Гоблінська міна"
+                }
+            },
+            ["quest.writ_94284"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Catseye Ultra Goggles"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: ультраокуляри котячого ока"
+                }
+            },
+            ["quest.writ_94285"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Unstable Trigger"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Нестабільний детонатор"
+                }
+            },
+            ["quest.writ_94286"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Flash Bomb"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Світлова бомба"
+                }
+            },
+            ["quest.writ_94287"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Fire Goggles"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Захисні Вогняні окуляри"
+                }
+            },
+            ["quest.writ_94288"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Mithril Frag Bomb"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Міфрилова осколкова бомба"
+                }
+            },
+            ["quest.writ_94289"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Gyromatic Micro-Adjuster"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Гіроматичний мікрорегулятор"
+                }
+            },
+            ["quest.writ_94290"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Mechanical Repair Kit"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Набір для ремонту механізмів"
+                }
+            },
+            ["quest.writ_94291"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Dark Iron Bomb"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Бомба з темного заліза"
+                }
+            },
+            ["quest.writ_94292"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Comfortable Leather Hat"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зручний шкіряний капелюх"
+                }
+            },
+            ["quest.writ_94293"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Guardian Cloak"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Плащ вартового"
+                }
+            },
+            ["quest.writ_94294"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Dusky Bracers"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Сутінкові наручі"
+                }
+            },
+            ["quest.writ_94295"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Wild Leather Helmet"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Дикий шкіряний шолом"
+                }
+            },
+            ["quest.writ_94296"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Wild Leather Shoulders"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Дикі шкіряні наплічники"
+                }
+            },
+            ["quest.writ_94297"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Quickdraw Quiver"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Сагайдак швидкого пострілу"
+                }
+            },
+            ["quest.writ_94298"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Swift Boots"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Швидкі чоботи"
+                }
+            },
+            ["quest.writ_94299"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Nightscape Shoulders"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Нічні Наплічники"
+                }
+            },
+            ["quest.writ_94300"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Big Voodoo Mask"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Велика маска вуду"
+                }
+            },
+            ["quest.writ_94301"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Big Voodoo Robe"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Велика мантія вуду"
+                }
+            },
+            ["quest.writ_94302"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Turtle Scale Breastplate"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Нагрудник з черепашачої луски"
+                }
+            },
+            ["quest.writ_94303"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Thick Leather Ammo Pouch"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Товстий шкіряний підсумок для боєприпасів"
+                }
+            },
+            ["quest.writ_94304"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Mageweave Bag"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Сумка з маготканини"
+                }
+            },
+            ["quest.writ_94305"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Shadoweave Gloves"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Рукавиці з тінетканини"
+                }
+            },
+            ["quest.writ_94306"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Crimson Silk Robe"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Багряна шовкова мантія"
+                }
+            },
+            ["quest.writ_94307"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Shadoweave Robe"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Мантія з тінетканини"
+                }
+            },
+            ["quest.writ_94308"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Enchanted Mageweave Pouch"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зачарований мішечок із маготканини"
+                }
+            },
+            ["quest.writ_94309"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Star Belt"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зоряний пояс"
+                }
+            },
+            ["quest.writ_94310"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Black Mageweave Vest"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Чорний жилет із маготканини"
+                }
+            },
+            ["quest.writ_94311"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Red Mageweave Pants"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Червоні штани з магічної тканини"
+                }
+            },
+            ["quest.writ_94312"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Orange Martial Shirt"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Помаранчева бойова сорочка"
+                }
+            },
+            ["quest.writ_94313"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: White Bandit Mask"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Маска білого бандита"
+                }
+            },
+            ["quest.writ_94314"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Cindercloth Robe"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Мантія з попелотканини"
+                }
+            },
+            ["quest.writ_94315"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Earthen Silk Belt"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Земляний шовковий пояс"
+                }
+            },
+            ["quest.writ_94316"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Potion of Demonslaying"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зілля винищення демонів"
+                }
+            },
+            ["quest.writ_94317"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Dreamless Sleep Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зілля безсновидного сну"
+                }
+            },
+            ["quest.writ_94318"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Greater Fire Protection Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Велике зілля захисту від вогню"
+                }
+            },
+            ["quest.writ_94319"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Draught of Detect Demon"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Настій виявлення демонів"
+                }
+            },
+            ["quest.writ_94320"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Gift of Arthas"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Дар Артаса"
+                }
+            },
+            ["quest.writ_94321"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Flask of Chromatic Resistance"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Настій хроматичного опору"
+                }
+            },
+            ["quest.writ_94322"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Limited Invulnerability Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зілля обмеженої невразливості"
+                }
+            },
+            ["quest.writ_94323"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Major Rejuvenation Potion"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зілля великого омолодження"
+                }
+            },
+            ["quest.writ_94324"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Distilled Firewater"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Дистильована вогняна вода"
+                }
+            },
+            ["quest.writ_94325"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Radiant Circlet"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Сяючий вінець"
+                }
+            },
+            ["quest.writ_94326"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Radiant Belt"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Сяючий пояс"
+                }
+            },
+            ["quest.writ_94327"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Orcish War Leggings"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Орчі бойові поножі"
+                }
+            },
+            ["quest.writ_94328"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Mithril Spurs"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Міфрилові шпори"
+                }
+            },
+            ["quest.writ_94329"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Imperial Plate Chest"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Імперський латний нагрудник"
+                }
+            },
+            ["quest.writ_94330"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Darkrune Gauntlets"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Рукавиці Темної Руни"
+                }
+            },
+            ["quest.writ_94331"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Huge Thorium Battleaxe"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Величезна торієва бойова сокира"
+                }
+            },
+            ["quest.writ_94332"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Arcanite Skeleton Key"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Арканітовий ключ-відмичка"
+                }
+            },
+            ["quest.writ_94333"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Ebon Shiv"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Ебонітова заточка"
+                }
+            },
+            ["quest.writ_94334"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Masterwork Target Dummy"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Майстерний манекен-мішень"
+                }
+            },
+            ["quest.writ_94335"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Green Lens"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Зелена лінза"
+                }
+            },
+            ["quest.writ_94336"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Lifelike Mechanical Toad"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Реалістична механічна жаба"
+                }
+            },
+            ["quest.writ_94337"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Gnomish Alarm-O-Bot"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Гномський робот-сигналізатор"
+                }
+            },
+            ["quest.writ_94338"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Goblin Jumper Cables XL"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Гоблінські кабелі-пускачі XL"
+                }
+            },
+            ["quest.writ_94339"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Field Repair Bot 74A"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Польовий ремонтний бот 74A"
+                }
+            },
+            ["quest.writ_94340"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Truesilver Transformer"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Трансформатор зі істинного срібла"
+                }
+            },
+            ["quest.writ_94341"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Sniper Scope"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Снайперський приціл"
+                }
+            },
+            ["quest.writ_94342"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Tranquil Mechanical Yeti"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Спокійний механічний єті"
+                }
+            },
+            ["quest.writ_94343"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Wicked Leather Pants"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Нищівні шкіряні штани"
+                }
+            },
+            ["quest.writ_94344"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Gordok Ogre Suit"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Костюм огра Ґордока"
+                }
+            },
+            ["quest.writ_94345"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Volcanic Breastplate"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Вулканічний нагрудник"
+                }
+            },
+            ["quest.writ_94346"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Runic Leather Headband"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Рунічна шкіряна пов'язка"
+                }
+            },
+            ["quest.writ_94347"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Wicked Leather Bracers"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Нищівні шкіряні наручі"
+                }
+            },
+            ["quest.writ_94348"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Chimeric Vest"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Химерний жилет"
+                }
+            },
+            ["quest.writ_94349"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Heavy Scorpid Helm"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Важкий шолом скорпіда"
+                }
+            },
+            ["quest.writ_94350"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Runic Leather Bracers"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Рунічні шкіряні наручі"
+                }
+            },
+            ["quest.writ_94351"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Frostsaber Boots"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Чоботи крижаного шаблезуба"
+                }
+            },
+            ["quest.writ_94352"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Wizardweave Turban"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Тюрбан із чаротканини"
+                }
+            },
+            ["quest.writ_94353"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Runecloth Bag"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Сумка з рунічної тканини"
+                }
+            },
+            ["quest.writ_94354"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Runecloth Boots"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Чоботи з рунічної тканини"
+                }
+            },
+            ["quest.writ_94355"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Tuxedo Jacket"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: піджак"
+                }
+            },
+            ["quest.writ_94356"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Felcloth Boots"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Чоботи з тканини Скверни"
+                }
+            },
+            ["quest.writ_94357"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Cenarion Herb Bag"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: кенарійська сумка для трав"
+                }
+            },
+            ["quest.writ_94358"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Shadoweave Mask"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Маска з тінетканини"
+                }
+            },
+            ["quest.writ_94359"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Ghostweave Vest"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Жилет із примаротканини"
+                }
+            },
+            ["quest.writ_94360"] = {
+                ["en"] = {
+                    ["canonical"] = "Craftsman's Writ: Soul Pouch"
+                },
+                ["uk"] = {
+                    ["canonical"] = "Замовлення майстра: Сумка душ"
                 }
             },
             ["race.dwarf.base.plural"] = {
@@ -60600,7 +72692,7 @@ ns.Data = {
         ["schema"] = 1
     },
     ["manifest"] = {
-        ["concepts"] = 327,
+        ["concepts"] = 503,
         ["derivedNouns"] = 28,
         ["linguisticSchema"] = 1,
         ["phraseFamilies"] = 87,
@@ -60619,7 +72711,7 @@ ns.Data = {
             ["version"] = "1.0.3"
         },
         ["templateFamilies"] = 87,
-        ["version"] = "3a7abb0a2593f1c4ec5140701ca745a4f381581c02f920dd9d13c7c02724186a"
+        ["version"] = "ace6d3f533aa5f42b338d60ef5e3c05e557056ea8e7ee9e220e703146965bccc"
     },
     ["rules"] = {
         ["en-uk"] = {
@@ -69822,6 +81914,33 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "шукач пригод"
         },
+        ["character.arthas"] = {
+            ["category"] = "characters",
+            ["en"] = "Arthas",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Артаса",
+                ["dativeSingular"] = "Артасу",
+                ["genitiveSingular"] = "Артаса",
+                ["instrumental"] = "Артасом",
+                ["locative"] = "Артасі"
+            },
+            ["id"] = "character.arthas",
+            ["provenance"] = {
+                ["context"] = "characters",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Arthas",
+                ["line"] = 3983,
+                ["sha256"] = "7207ba0edbb1f55a6d0d131c0d28ecb69aa8d8b1cb63bb98bcce459935075818",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Arthas" },
+            ["status"] = "approved",
+            ["uk"] = "Артас"
+        },
         ["character.arthas_menethil"] = {
             ["category"] = "characters",
             ["en"] = "Arthas Menethil",
@@ -70804,6 +82923,7 @@ ns.Data = {
                 ["animacy"] = "inanimate",
                 ["englishCommon"] = true,
                 ["gender"] = "masculine",
+                ["neuralSense"] = "venue",
                 ["nominalArgumentPrefix"] = true,
                 ["semanticClass"] = "auctionVenue",
                 ["spatialContainer"] = true
@@ -70811,7 +82931,9 @@ ns.Data = {
             ["forms"] = {
                 ["accusative"] = "аукціонний дім",
                 ["dative"] = "аукціонному дому",
+                ["dativeSingular"] = "аукціонному дому",
                 ["genitive"] = "аукціонного дому",
+                ["genitiveSingular"] = "аукціонного дому",
                 ["instrumental"] = "аукціонним домом",
                 ["locative"] = "аукціонному домі",
                 ["locativeSingular"] = "аукціоні",
@@ -71299,6 +83421,35 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:game.gold" },
             ["status"] = "approved",
             ["uk"] = "Золото"
+        },
+        ["game.group_finder"] = {
+            ["category"] = "game",
+            ["contextAliases"] = {
+                ["en"] = { "LFG" }
+            },
+            ["en"] = "Group Finder",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "masculine",
+                ["neuralSense"] = "finder"
+            },
+            ["forms"] = {
+                ["accusative"] = "пошук групи",
+                ["genitiveSingular"] = "пошуку групи",
+                ["locative"] = "пошуку групи"
+            },
+            ["id"] = "game.group_finder",
+            ["provenance"] = {
+                ["context"] = "Name of the group search interface",
+                ["file"] = "entries/forever/cliend_db/ui_names_uk.lua",
+                ["key"] = "Group Finder",
+                ["line"] = 8902,
+                ["sha256"] = "7207ba0edbb1f55a6d0d131c0d28ecb69aa8d8b1cb63bb98bcce459935075818",
+                ["source"] = "ua-forever"
+            },
+            ["sourceRefs"] = { "ua-forever:ui_names_uk.lua:Group Finder" },
+            ["status"] = "approved",
+            ["uk"] = "Пошук групи"
         },
         ["game.guild"] = {
             ["aliases"] = {
@@ -72122,6 +84273,7 @@ ns.Data = {
                 ["animacy"] = "inanimate",
                 ["caseSensitiveEnglish"] = true,
                 ["gender"] = "masculine",
+                ["neuralSense"] = "identifier",
                 ["proper"] = true
             },
             ["forms"] = {
@@ -72540,6 +84692,32 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:item.3860", "project-authored:chat-0.1" },
             ["status"] = "approved",
             ["uk"] = "Злиток"
+        },
+        ["goods.linen_bag"] = {
+            ["category"] = "goods",
+            ["en"] = "Linen Bag",
+            ["englishPlural"] = "Linen Bags",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["gender"] = "feminine"
+            },
+            ["forms"] = {
+                ["accusative"] = "лляну сумку",
+                ["genitivePlural"] = "лляних сумок",
+                ["genitiveSingular"] = "лляної сумки",
+                ["instrumental"] = "лляною сумкою",
+                ["nominativePlural"] = "лляні сумки"
+            },
+            ["id"] = "goods.linen_bag",
+            ["provenance"] = {
+                ["context"] = "item 4238",
+                ["key"] = "Linen Bag",
+                ["source"] = "project-authored",
+                ["sourceFile"] = "entries/forever/cliend_db/item_names.lua"
+            },
+            ["sourceRefs"] = { "ua-forever:item.4238" },
+            ["status"] = "approved",
+            ["uk"] = "лляна сумка"
         },
         ["goods.mageweave_cloth"] = {
             ["category"] = "goods",
@@ -73128,6 +85306,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "низина Араті"
         },
+        ["place.arathi_highlands"] = {
+            ["category"] = "places",
+            ["en"] = "Arathi Highlands",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "височину Араті",
+                ["genitiveSingular"] = "височини Араті",
+                ["locative"] = "височині Араті"
+            },
+            ["id"] = "place.arathi_highlands",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Arathi Highlands",
+                ["line"] = 117,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Arathi Highlands" },
+            ["status"] = "approved",
+            ["uk"] = "височина Араті"
+        },
         ["place.ashenvale"] = {
             ["aliases"] = {
                 ["en"] = {},
@@ -73364,6 +85567,34 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "лігво Чорного Крила"
         },
+        ["place.booty_bay"] = {
+            ["aliases"] = {
+                ["en"] = { "bootybay" }
+            },
+            ["category"] = "places",
+            ["en"] = "Booty Bay",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Бухту Наживи",
+                ["genitiveSingular"] = "Бухти Наживи",
+                ["locative"] = "Бухті Наживи"
+            },
+            ["id"] = "place.booty_bay",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Booty Bay",
+                ["line"] = 360,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Booty Bay" },
+            ["status"] = "approved",
+            ["uk"] = "Бухта Наживи"
+        },
         ["place.burning_steppes"] = {
             ["category"] = "places",
             ["en"] = "Burning Steppes",
@@ -73388,6 +85619,31 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.burning_steppes" },
             ["status"] = "approved",
             ["uk"] = "Палаючий степ"
+        },
+        ["place.city_of_dalaran"] = {
+            ["category"] = "places",
+            ["en"] = "City of Dalaran",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "місто Даларан",
+                ["genitiveSingular"] = "міста Даларан",
+                ["locative"] = "місті Даларан"
+            },
+            ["id"] = "place.city_of_dalaran",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "City of Dalaran",
+                ["line"] = 520,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:City of Dalaran" },
+            ["status"] = "approved",
+            ["uk"] = "Місто Даларан"
         },
         ["place.dalaran"] = {
             ["category"] = "places",
@@ -73416,6 +85672,31 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.dalaran" },
             ["status"] = "approved",
             ["uk"] = "Даларан"
+        },
+        ["place.darkshire"] = {
+            ["category"] = "places",
+            ["en"] = "Darkshire",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Темноділ",
+                ["genitiveSingular"] = "Темнодолу",
+                ["locative"] = "Темнодолі"
+            },
+            ["id"] = "place.darkshire",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Darkshire",
+                ["line"] = 661,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Darkshire" },
+            ["status"] = "approved",
+            ["uk"] = "Темноділ"
         },
         ["place.darkshore"] = {
             ["aliases"] = {
@@ -73522,6 +85803,114 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Грізний Молот"
         },
+        ["place.dire_maul_east"] = {
+            ["aliases"] = {
+                ["en"] = { "dm east", "dire maul - east" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Dire Maul East",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["clearableInstance"] = true,
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["accusative"] = "східне крило Грізного Молота",
+                ["dativeSingular"] = "східному крилу Грізного Молота",
+                ["genitiveSingular"] = "східного крила Грізного Молота",
+                ["instrumental"] = "східним крилом Грізного Молота",
+                ["locative"] = "східному крилі Грізного Молота"
+            },
+            ["id"] = "place.dire_maul_east",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "instance wing and natural Ukrainian inflection",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Dire Maul East",
+                ["source"] = "project-authored",
+                ["sourceKey"] = "Dire Maul - East",
+                ["sourceLine"] = 756,
+                ["sourceSha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.Dire Maul - East", "project-authored:chat-instance-wing" },
+            ["status"] = "approved",
+            ["uk"] = "східне крило Грізного Молота"
+        },
+        ["place.dire_maul_north"] = {
+            ["aliases"] = {
+                ["en"] = { "dm north", "dire maul - north" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Dire Maul North",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["clearableInstance"] = true,
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["accusative"] = "північне крило Грізного Молота",
+                ["dativeSingular"] = "північному крилу Грізного Молота",
+                ["genitiveSingular"] = "північного крила Грізного Молота",
+                ["instrumental"] = "північним крилом Грізного Молота",
+                ["locative"] = "північному крилі Грізного Молота"
+            },
+            ["id"] = "place.dire_maul_north",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "instance wing and natural Ukrainian inflection",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Dire Maul North",
+                ["source"] = "project-authored",
+                ["sourceKey"] = "Dire Maul - North",
+                ["sourceLine"] = 758,
+                ["sourceSha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.Dire Maul - North", "project-authored:chat-instance-wing" },
+            ["status"] = "approved",
+            ["uk"] = "північне крило Грізного Молота"
+        },
+        ["place.dire_maul_west"] = {
+            ["aliases"] = {
+                ["en"] = { "dm west", "dire maul - west" },
+                ["uk"] = {}
+            },
+            ["category"] = "places",
+            ["contexts"] = { "places" },
+            ["directions"] = { "en-uk", "uk-en" },
+            ["en"] = "Dire Maul West",
+            ["features"] = {
+                ["animacy"] = "inanimate",
+                ["clearableInstance"] = true,
+                ["gender"] = "neuter"
+            },
+            ["forms"] = {
+                ["accusative"] = "західне крило Грізного Молота",
+                ["dativeSingular"] = "західному крилу Грізного Молота",
+                ["genitiveSingular"] = "західного крила Грізного Молота",
+                ["instrumental"] = "західним крилом Грізного Молота",
+                ["locative"] = "західному крилі Грізного Молота"
+            },
+            ["id"] = "place.dire_maul_west",
+            ["priority"] = 100,
+            ["provenance"] = {
+                ["context"] = "instance wing and natural Ukrainian inflection",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Dire Maul West",
+                ["source"] = "project-authored",
+                ["sourceKey"] = "Dire Maul - West",
+                ["sourceLine"] = 760,
+                ["sourceSha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.Dire Maul - West", "project-authored:chat-instance-wing" },
+            ["status"] = "approved",
+            ["uk"] = "західне крило Грізного Молота"
+        },
         ["place.drowned_city"] = {
             ["aliases"] = {
                 ["en"] = { "Drowned City" },
@@ -73601,6 +85990,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Дун-Модр"
         },
+        ["place.dun_morogh"] = {
+            ["category"] = "places",
+            ["en"] = "Dun Morogh",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Дун-Морог",
+                ["genitiveSingular"] = "Дун-Морогу",
+                ["locative"] = "Дун-Морозі"
+            },
+            ["id"] = "place.dun_morogh",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Dun Morogh",
+                ["line"] = 835,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Dun Morogh" },
+            ["status"] = "approved",
+            ["uk"] = "Дун-Морог"
+        },
         ["place.durotar"] = {
             ["aliases"] = {
                 ["en"] = {},
@@ -73659,6 +86073,56 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Смерколісся"
         },
+        ["place.dustwallow_marsh"] = {
+            ["category"] = "places",
+            ["en"] = "Dustwallow Marsh",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Бруднолипку трясовину",
+                ["genitiveSingular"] = "Бруднолипкої трясовини",
+                ["locative"] = "Бруднолипкій трясовині"
+            },
+            ["id"] = "place.dustwallow_marsh",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Dustwallow Marsh",
+                ["line"] = 856,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Dustwallow Marsh" },
+            ["status"] = "approved",
+            ["uk"] = "Бруднолипка трясовина"
+        },
+        ["place.dwarven_district"] = {
+            ["category"] = "places",
+            ["en"] = "Dwarven District",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "дворфівський район",
+                ["genitiveSingular"] = "дворфівського району",
+                ["locative"] = "дворфівському районі"
+            },
+            ["id"] = "place.dwarven_district",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Dwarven District",
+                ["line"] = 860,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Dwarven District" },
+            ["status"] = "approved",
+            ["uk"] = "Дворфівський район"
+        },
         ["place.eastern_plaguelands"] = {
             ["aliases"] = {
                 ["en"] = { "epl" },
@@ -73710,6 +86174,34 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.elwynn_forest" },
             ["status"] = "approved",
             ["uk"] = "Ельвиннський ліс"
+        },
+        ["place.farholde_keep"] = {
+            ["aliases"] = {
+                ["en"] = { "Farhold Keep" }
+            },
+            ["category"] = "places",
+            ["en"] = "Farholde Keep",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "замок Фарголд",
+                ["genitiveSingular"] = "замку Фарголд",
+                ["locative"] = "замку Фарголд"
+            },
+            ["id"] = "place.farholde_keep",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Farholde Keep",
+                ["line"] = 971,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Farholde Keep" },
+            ["status"] = "approved",
+            ["uk"] = "Замок Фарголд"
         },
         ["place.frozen_throne"] = {
             ["category"] = "places",
@@ -73799,7 +86291,7 @@ ns.Data = {
         },
         ["place.hall_of_thanes"] = {
             ["aliases"] = {
-                ["en"] = { "Hall of Thanes", "Halls of Thanes", "Hall of Thranes" },
+                ["en"] = { "Hall of Thanes", "Hall of Thane", "Halls of Thanes", "Hall of Thranes" },
                 ["uk"] = {}
             },
             ["category"] = "places",
@@ -73866,6 +86358,59 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Зали Блискавок"
         },
+        ["place.hinterlands"] = {
+            ["aliases"] = {
+                ["en"] = { "Hinterlands" }
+            },
+            ["category"] = "places",
+            ["en"] = "The Hinterlands",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Внутрішні землі",
+                ["genitiveSingular"] = "Внутрішніх земель",
+                ["locative"] = "Внутрішніх землях"
+            },
+            ["id"] = "place.hinterlands",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "The Hinterlands",
+                ["line"] = 2942,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:The Hinterlands" },
+            ["status"] = "approved",
+            ["uk"] = "Внутрішні землі"
+        },
+        ["place.hyjal"] = {
+            ["category"] = "places",
+            ["en"] = "Hyjal",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Гіджал",
+                ["genitiveSingular"] = "Гіджалу",
+                ["locative"] = "Гіджалі"
+            },
+            ["id"] = "place.hyjal",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Hyjal",
+                ["line"] = 1422,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Hyjal" },
+            ["status"] = "approved",
+            ["uk"] = "Гіджал"
+        },
         ["place.icecrown"] = {
             ["category"] = "places",
             ["en"] = "Icecrown",
@@ -73925,6 +86470,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Залізогарт"
         },
+        ["place.khaz_modan"] = {
+            ["category"] = "places",
+            ["en"] = "Khaz Modan",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Каз-Модан",
+                ["genitiveSingular"] = "Каз-Модану",
+                ["locative"] = "Каз-Модані"
+            },
+            ["id"] = "place.khaz_modan",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Khaz Modan",
+                ["line"] = 1547,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Khaz Modan" },
+            ["status"] = "approved",
+            ["uk"] = "Каз-Модан"
+        },
         ["place.kroldok_stronghold"] = {
             ["aliases"] = {
                 ["en"] = {},
@@ -73932,13 +86502,14 @@ ns.Data = {
             },
             ["category"] = "places",
             ["contextAliases"] = {
-                ["en"] = { "KS" },
+                ["en"] = { "KS", "Kroldok", "Krol'dok" },
                 ["uk"] = {}
             },
             ["en"] = "Krol'dok Stronghold",
             ["features"] = {
                 ["animacy"] = "inanimate",
                 ["clearableInstance"] = true,
+                ["contextAliasSense"] = "roleAvailability",
                 ["gender"] = "feminine"
             },
             ["forms"] = {
@@ -73992,6 +86563,31 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.loch_modan" },
             ["status"] = "approved",
             ["uk"] = "Лох-Модан"
+        },
+        ["place.lordaeron"] = {
+            ["category"] = "places",
+            ["en"] = "Lordaeron",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Лордерон",
+                ["genitiveSingular"] = "Лордерону",
+                ["locative"] = "Лордероні"
+            },
+            ["id"] = "place.lordaeron",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Lordaeron",
+                ["line"] = 1647,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Lordaeron" },
+            ["status"] = "approved",
+            ["uk"] = "Лордерон"
         },
         ["place.lower_blackrock_spire"] = {
             ["aliases"] = {
@@ -74253,6 +86849,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Обіцяний острів"
         },
+        ["place.quel_thalas"] = {
+            ["category"] = "places",
+            ["en"] = "Quel'Thalas",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Квел'Талас",
+                ["genitiveSingular"] = "Квел'Таласу",
+                ["locative"] = "Квел'Таласі"
+            },
+            ["id"] = "place.quel_thalas",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Quel'Thalas",
+                ["line"] = 2078,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Quel'Thalas" },
+            ["status"] = "approved",
+            ["uk"] = "Квел'Талас"
+        },
         ["place.ragefire_chasm"] = {
             ["aliases"] = {
                 ["en"] = { "rfc" },
@@ -74410,6 +87031,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Багрянокряжові гори"
         },
+        ["place.riverglades"] = {
+            ["category"] = "places",
+            ["en"] = "Riverglades",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Річкові галявини",
+                ["genitiveSingular"] = "Річкових галявин",
+                ["locative"] = "Річкових галявинах"
+            },
+            ["id"] = "place.riverglades",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Riverglades",
+                ["line"] = 2177,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Riverglades" },
+            ["status"] = "approved",
+            ["uk"] = "Річкові галявини"
+        },
         ["place.ruins_of_ahn_qiraj"] = {
             ["aliases"] = {
                 ["en"] = { "aq20" },
@@ -74485,6 +87131,31 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:place.ruins_of_lordaeron" },
             ["status"] = "approved",
             ["uk"] = "руїни Лордерона"
+        },
+        ["place.ruins_of_zul_mamwe"] = {
+            ["category"] = "places",
+            ["en"] = "Ruins of Zul'Mamwe",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "руїни Зул'Мамве",
+                ["genitiveSingular"] = "руїн Зул'Мамве",
+                ["locative"] = "руїнах Зул'Мамве"
+            },
+            ["id"] = "place.ruins_of_zul_mamwe",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Ruins of Zul'Mamwe",
+                ["line"] = 2243,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Ruins of Zul'Mamwe" },
+            ["status"] = "approved",
+            ["uk"] = "руїни Зул'Мамве"
         },
         ["place.scarlet_monastery"] = {
             ["aliases"] = {
@@ -74707,6 +87378,31 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Штормовій"
         },
+        ["place.stormwind_keep"] = {
+            ["category"] = "places",
+            ["en"] = "Stormwind Keep",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "фортецю Штормовія",
+                ["genitiveSingular"] = "фортеці Штормовія",
+                ["locative"] = "фортеці Штормовія"
+            },
+            ["id"] = "place.stormwind_keep",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Stormwind Keep",
+                ["line"] = 2685,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Stormwind Keep" },
+            ["status"] = "approved",
+            ["uk"] = "фортеця Штормовія"
+        },
         ["place.stranglethorn_vale"] = {
             ["aliases"] = {
                 ["en"] = { "Stranglethorn" },
@@ -74781,6 +87477,31 @@ ns.Data = {
             ["sourceRefs"] = { "chattranslatorua:1.1.0", "ua-forever:place.stratholme" },
             ["status"] = "approved",
             ["uk"] = "Стратгольм"
+        },
+        ["place.stromgarde_keep"] = {
+            ["category"] = "places",
+            ["en"] = "Stromgarde Keep",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "фортецю Стромварт",
+                ["genitiveSingular"] = "фортеці Стромварт",
+                ["locative"] = "фортеці Стромварт"
+            },
+            ["id"] = "place.stromgarde_keep",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Stromgarde Keep",
+                ["line"] = 2702,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Stromgarde Keep" },
+            ["status"] = "approved",
+            ["uk"] = "фортеця Стромварт"
         },
         ["place.tanaris"] = {
             ["aliases"] = {
@@ -74911,11 +87632,16 @@ ns.Data = {
                 ["uk"] = { "дм", "мертві копальні" }
             },
             ["category"] = "places",
+            ["contextAliases"] = {
+                ["en"] = { "dead mines" },
+                ["uk"] = {}
+            },
             ["contexts"] = { "places" },
             ["directions"] = { "en-uk", "uk-en" },
             ["en"] = "The Deadmines",
             ["features"] = {
-                ["clearableInstance"] = true
+                ["clearableInstance"] = true,
+                ["contextAliasSense"] = "roleAvailability"
             },
             ["forms"] = {
                 ["accusative"] = "Мертві копальні",
@@ -75013,6 +87739,34 @@ ns.Data = {
             ["sourceRefs"] = { "chattranslatorua:1.1.0", "ua-forever:place.the_temple_of_atal_hakkar" },
             ["status"] = "approved",
             ["uk"] = "Храм Атал'Гаккара"
+        },
+        ["place.theramore"] = {
+            ["aliases"] = {
+                ["en"] = { "Theramore Island" }
+            },
+            ["category"] = "places",
+            ["en"] = "Theramore",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "Терамор",
+                ["genitiveSingular"] = "Терамору",
+                ["locative"] = "Тераморі"
+            },
+            ["id"] = "place.theramore",
+            ["provenance"] = {
+                ["context"] = "places",
+                ["file"] = "entries/forever/cliend_db/zones.lua",
+                ["key"] = "Theramore",
+                ["line"] = 3114,
+                ["sha256"] = "a31b558c79b89bc8688df7dd88d74e1100cde2b81c5763f39e43c6ee997bec5e",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:zones.lua:Theramore" },
+            ["status"] = "approved",
+            ["uk"] = "Терамор"
         },
         ["place.thunder_bluff"] = {
             ["aliases"] = {
@@ -75738,6 +88492,35 @@ ns.Data = {
             ["status"] = "approved",
             ["uk"] = "Шкірництво"
         },
+        ["profession.leatherworking.practitioner"] = {
+            ["category"] = "professions",
+            ["en"] = "leatherworker",
+            ["englishLookupOnly"] = true,
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["number"] = "singular",
+                ["professionPractitioner"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "шкіряника",
+                ["dativeSingular"] = "шкіряникові",
+                ["genitiveSingular"] = "шкіряника",
+                ["instrumental"] = "шкіряником"
+            },
+            ["id"] = "profession.leatherworking.practitioner",
+            ["pos"] = "noun",
+            ["provenance"] = {
+                ["context"] = "profession practitioner",
+                ["file"] = "data/curated/general_grammar.json",
+                ["key"] = "leatherworker",
+                ["source"] = "project-authored",
+                ["sourceKey"] = "leatherworker.profession"
+            },
+            ["sourceRefs"] = { "project-authored:general-grammar.profession" },
+            ["status"] = "approved",
+            ["uk"] = "шкіряник"
+        },
         ["profession.mining"] = {
             ["aliases"] = {
                 ["en"] = {},
@@ -75828,6 +88611,3035 @@ ns.Data = {
             ["sourceRefs"] = { "ua-forever:profession.tailoring" },
             ["status"] = "approved",
             ["uk"] = "Кравецтво"
+        },
+        ["profession.tailoring.practitioner"] = {
+            ["category"] = "professions",
+            ["en"] = "tailor",
+            ["englishLookupOnly"] = true,
+            ["features"] = {
+                ["animacy"] = "animate",
+                ["gender"] = "masculine",
+                ["number"] = "singular",
+                ["professionPractitioner"] = true
+            },
+            ["forms"] = {
+                ["accusative"] = "кравця",
+                ["dativeSingular"] = "кравцеві",
+                ["genitiveSingular"] = "кравця",
+                ["instrumental"] = "кравцем"
+            },
+            ["id"] = "profession.tailoring.practitioner",
+            ["pos"] = "noun",
+            ["provenance"] = {
+                ["context"] = "profession practitioner",
+                ["file"] = "data/curated/general_grammar.json",
+                ["key"] = "tailor",
+                ["source"] = "project-authored",
+                ["sourceKey"] = "tailor.profession"
+            },
+            ["sourceRefs"] = { "project-authored:general-grammar.profession" },
+            ["status"] = "approved",
+            ["uk"] = "кравець"
+        },
+        ["quest.writ_94004"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Elixir of Ogre's Strength",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94004",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Elixir of Ogre's Strength",
+                ["line"] = 6395,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Elixir of Ogre's Strength" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Еліксир сили огра"
+        },
+        ["quest.writ_94212"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Elixir of Wisdom",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94212",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Elixir of Wisdom",
+                ["line"] = 6404,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Elixir of Wisdom" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Еліксир мудрості"
+        },
+        ["quest.writ_94213"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Lesser Mana Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94213",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Lesser Mana Potion",
+                ["line"] = 6405,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Lesser Mana Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Мале зілля мани"
+        },
+        ["quest.writ_94214"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Shadow Protection Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94214",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Shadow Protection Potion",
+                ["line"] = 6406,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Shadow Protection Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зілля захисту від тіні"
+        },
+        ["quest.writ_94215"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Free Action Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94215",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Free Action Potion",
+                ["line"] = 6407,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Free Action Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зілля вільної дії"
+        },
+        ["quest.writ_94216"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Elixir of Lesser Agility",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94216",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Elixir of Lesser Agility",
+                ["line"] = 6408,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Elixir of Lesser Agility" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Еліксир малої спритності"
+        },
+        ["quest.writ_94217"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Lesser Troll's Blood Elixir",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94217",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Lesser Troll's Blood Elixir",
+                ["line"] = 6409,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Lesser Troll's Blood Elixir" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Малий еліксир крові троля"
+        },
+        ["quest.writ_94218"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Elixir of Defense",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94218",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Elixir of Defense",
+                ["line"] = 6410,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Elixir of Defense" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Еліксир захисту"
+        },
+        ["quest.writ_94219"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Draught of Water Breathing",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94219",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Draught of Water Breathing",
+                ["line"] = 6411,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Draught of Water Breathing" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Настій водного дихання"
+        },
+        ["quest.writ_94220"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Pearl-Handled Dagger",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94220",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Pearl-Handled Dagger",
+                ["line"] = 6412,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Pearl-Handled Dagger" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Кинджал з перловою ручкою"
+        },
+        ["quest.writ_94221"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Golden Rod",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94221",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Golden Rod",
+                ["line"] = 6413,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Golden Rod" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Золотий жезл"
+        },
+        ["quest.writ_94222"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Iridescent Hammer",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94222",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Iridescent Hammer",
+                ["line"] = 6414,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Iridescent Hammer" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Райдужний молот"
+        },
+        ["quest.writ_94223"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Silver Skeleton Key",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94223",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Silver Skeleton Key",
+                ["line"] = 6415,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Silver Skeleton Key" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Срібний ключ-відмичка"
+        },
+        ["quest.writ_94224"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Heavy Bronze Mace",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94224",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Heavy Bronze Mace",
+                ["line"] = 6416,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Heavy Bronze Mace" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Важка бронзова булава"
+        },
+        ["quest.writ_94225"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Rough Bronze Leggings",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94225",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Rough Bronze Leggings",
+                ["line"] = 6417,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Rough Bronze Leggings" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Грубі бронзові поножі"
+        },
+        ["quest.writ_94226"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Green Iron Gauntlets",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94226",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Green Iron Gauntlets",
+                ["line"] = 6418,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Green Iron Gauntlets" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зелені залізні рукавиці"
+        },
+        ["quest.writ_94227"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Big Bronze Knife",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94227",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Big Bronze Knife",
+                ["line"] = 6419,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Big Bronze Knife" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Великий бронзовий ніж"
+        },
+        ["quest.writ_94228"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Green Iron Boots",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94228",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Green Iron Boots",
+                ["line"] = 6420,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Green Iron Boots" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зелені залізні чоботи"
+        },
+        ["quest.writ_94229"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Ornate Spyglass",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94229",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Ornate Spyglass",
+                ["line"] = 6421,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Ornate Spyglass" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Оздоблена підзорна труба"
+        },
+        ["quest.writ_94230"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Explosive Sheep",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94230",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Explosive Sheep",
+                ["line"] = 6422,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Explosive Sheep" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Вибухова вівця"
+        },
+        ["quest.writ_94231"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Moonsight Rifle",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94231",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Moonsight Rifle",
+                ["line"] = 6423,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Moonsight Rifle" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Рушниця місячного прицілу"
+        },
+        ["quest.writ_94232"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Minor Recombobulator",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94232",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Minor Recombobulator",
+                ["line"] = 6424,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Minor Recombobulator" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Слабкий рекомбобулятор"
+        },
+        ["quest.writ_94233"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Practice Lock",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94233",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Practice Lock",
+                ["line"] = 6425,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Practice Lock" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Тренувальний замок"
+        },
+        ["quest.writ_94234"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Shadow Goggles",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94234",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Shadow Goggles",
+                ["line"] = 6426,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Shadow Goggles" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Тіньові окуляри"
+        },
+        ["quest.writ_94235"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Gnomish Universal Remote",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94235",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Gnomish Universal Remote",
+                ["line"] = 6427,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Gnomish Universal Remote" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: гномський універсальний пульт"
+        },
+        ["quest.writ_94236"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Big Bronze Bomb",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94236",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Big Bronze Bomb",
+                ["line"] = 6428,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Big Bronze Bomb" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Велика бронзова бомба"
+        },
+        ["quest.writ_94237"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Crafted Solid Shot",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94237",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Crafted Solid Shot",
+                ["line"] = 6429,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Crafted Solid Shot" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Саморобна тверда куля"
+        },
+        ["quest.writ_94238"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Heavy Leather Ball",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94238",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Heavy Leather Ball",
+                ["line"] = 6430,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Heavy Leather Ball" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Важкий шкіряний м’яч"
+        },
+        ["quest.writ_94239"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Fine Leather Pants",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94239",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Fine Leather Pants",
+                ["line"] = 6431,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Fine Leather Pants" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Вишукані шкіряні штани"
+        },
+        ["quest.writ_94240"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Herbalist's Gloves",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94240",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Herbalist's Gloves",
+                ["line"] = 6432,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Herbalist's Gloves" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Рукавиці травника"
+        },
+        ["quest.writ_94241"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Dark Leather Tunic",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94241",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Dark Leather Tunic",
+                ["line"] = 6433,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Dark Leather Tunic" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Темна шкіряна туніка"
+        },
+        ["quest.writ_94242"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Pilferer's Gloves",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94242",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Pilferer's Gloves",
+                ["line"] = 6434,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Pilferer's Gloves" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Рукавиці крадія"
+        },
+        ["quest.writ_94243"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Heavy Quiver",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94243",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Heavy Quiver",
+                ["line"] = 6435,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Heavy Quiver" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Важкий сагайдак"
+        },
+        ["quest.writ_94244"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Dark Leather Shoulders",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94244",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Dark Leather Shoulders",
+                ["line"] = 6436,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Dark Leather Shoulders" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Темні шкіряні наплічники"
+        },
+        ["quest.writ_94245"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Barbaric Gloves",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94245",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Barbaric Gloves",
+                ["line"] = 6437,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Barbaric Gloves" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Варварські рукавиці"
+        },
+        ["quest.writ_94246"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Red Whelp Gloves",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94246",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Red Whelp Gloves",
+                ["line"] = 6438,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Red Whelp Gloves" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Рукавиці червоного дракончика"
+        },
+        ["quest.writ_94247"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Lesser Wizard's Robe",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94247",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Lesser Wizard's Robe",
+                ["line"] = 6439,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Lesser Wizard's Robe" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: мала мантія чарівника"
+        },
+        ["quest.writ_94248"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Blue Overalls",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94248",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Blue Overalls",
+                ["line"] = 6440,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Blue Overalls" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Синій комбінезон"
+        },
+        ["quest.writ_94249"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Azure Silk Hood",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94249",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Azure Silk Hood",
+                ["line"] = 6441,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Azure Silk Hood" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Блакитний шовковий капюшон"
+        },
+        ["quest.writ_94250"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Small Silk Pack",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94250",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Small Silk Pack",
+                ["line"] = 6442,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Small Silk Pack" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Мала шовкова сумка"
+        },
+        ["quest.writ_94251"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Phoenix Pants",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94251",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Phoenix Pants",
+                ["line"] = 6443,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Phoenix Pants" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Штани Фенікса"
+        },
+        ["quest.writ_94252"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Red Woolen Boots",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94252",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Red Woolen Boots",
+                ["line"] = 6444,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Red Woolen Boots" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Червоні вовняні чоботи"
+        },
+        ["quest.writ_94253"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Colorful Kilt",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94253",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Colorful Kilt",
+                ["line"] = 6445,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Colorful Kilt" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Барвистий кілт"
+        },
+        ["quest.writ_94254"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Greater Adept's Robe",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94254",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Greater Adept's Robe",
+                ["line"] = 6446,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Greater Adept's Robe" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Мантія Великого Адепта"
+        },
+        ["quest.writ_94255"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Spider Silk Slippers",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94255",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Spider Silk Slippers",
+                ["line"] = 6447,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Spider Silk Slippers" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Капці з павучого шовку"
+        },
+        ["quest.writ_94256"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Frost Protection Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94256",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Frost Protection Potion",
+                ["line"] = 6448,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Frost Protection Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зілля захисту від криги"
+        },
+        ["quest.writ_94257"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Lesser Invisibility Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94257",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Lesser Invisibility Potion",
+                ["line"] = 6449,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Lesser Invisibility Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: зілля малої невидимості"
+        },
+        ["quest.writ_94258"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Lesser Stoneshield Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94258",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Lesser Stoneshield Potion",
+                ["line"] = 6450,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Lesser Stoneshield Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зілля малого кам'яного щита"
+        },
+        ["quest.writ_94259"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Nature Protection Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94259",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Nature Protection Potion",
+                ["line"] = 6451,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Nature Protection Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зілля захисту природи"
+        },
+        ["quest.writ_94260"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Catseye Draught",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94260",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Catseye Draught",
+                ["line"] = 6452,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Catseye Draught" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Настій котячого ока"
+        },
+        ["quest.writ_94261"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Great Rage Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94261",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Great Rage Potion",
+                ["line"] = 6453,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Great Rage Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Велике зілля люті"
+        },
+        ["quest.writ_94262"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Mana Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94262",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Mana Potion",
+                ["line"] = 6454,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Mana Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зілля мани"
+        },
+        ["quest.writ_94263"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Fire Protection Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94263",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Fire Protection Potion",
+                ["line"] = 6455,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Fire Protection Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зілля захисту від вогню"
+        },
+        ["quest.writ_94264"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Shadow Oil",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94264",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Shadow Oil",
+                ["line"] = 6456,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Shadow Oil" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Тіньова олія"
+        },
+        ["quest.writ_94265"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Goblin Rocket Fuel",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94265",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Goblin Rocket Fuel",
+                ["line"] = 6457,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Goblin Rocket Fuel" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Гоблінське ракетне паливо"
+        },
+        ["quest.writ_94266"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Elixir of Agility",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94266",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Elixir of Agility",
+                ["line"] = 6458,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Elixir of Agility" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Еліксир спритності"
+        },
+        ["quest.writ_94267"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Wildvine Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94267",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Wildvine Potion",
+                ["line"] = 6459,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Wildvine Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зілля диколози"
+        },
+        ["quest.writ_94268"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Steel Plate Helm",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94268",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Steel Plate Helm",
+                ["line"] = 6460,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Steel Plate Helm" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Сталевий латний шолом"
+        },
+        ["quest.writ_94269"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Inlaid Mithril Cylinder",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94269",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Inlaid Mithril Cylinder",
+                ["line"] = 6461,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Inlaid Mithril Cylinder" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Інкрустований мітриловий циліндр"
+        },
+        ["quest.writ_94270"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Steel Weapon Chain",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94270",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Steel Weapon Chain",
+                ["line"] = 6462,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Steel Weapon Chain" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: сталевий ланцюг для зброї"
+        },
+        ["quest.writ_94271"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Ornate Mithril Shoulders",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94271",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Ornate Mithril Shoulders",
+                ["line"] = 6463,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Ornate Mithril Shoulders" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Оздоблені міфрилові наплічники"
+        },
+        ["quest.writ_94272"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Blue Glittering Axe",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94272",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Blue Glittering Axe",
+                ["line"] = 6464,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Blue Glittering Axe" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Синя блискуча сокира"
+        },
+        ["quest.writ_94273"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Moonsteel Broadsword",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94273",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Moonsteel Broadsword",
+                ["line"] = 6465,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Moonsteel Broadsword" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Палаш з місячної сталі"
+        },
+        ["quest.writ_94274"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Golden Scale Coif",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94274",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Golden Scale Coif",
+                ["line"] = 6466,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Golden Scale Coif" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Золотий лускатий Каптур"
+        },
+        ["quest.writ_94275"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Solid Sharpening Stone",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94275",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Solid Sharpening Stone",
+                ["line"] = 6467,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Solid Sharpening Stone" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: твердий точильний камінь"
+        },
+        ["quest.writ_94276"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Wicked Mithril Blade",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94276",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Wicked Mithril Blade",
+                ["line"] = 6468,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Wicked Mithril Blade" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Нищівний міфриловий клинок"
+        },
+        ["quest.writ_94277"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Truesilver Rod",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94277",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Truesilver Rod",
+                ["line"] = 6469,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Truesilver Rod" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Жезл істинного срібла"
+        },
+        ["quest.writ_94278"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Golden Scale Gauntlets",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94278",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Golden Scale Gauntlets",
+                ["line"] = 6470,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Golden Scale Gauntlets" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Золоті лускаті рукавиці"
+        },
+        ["quest.writ_94279"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Heavy Mithril Axe",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94279",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Heavy Mithril Axe",
+                ["line"] = 6471,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Heavy Mithril Axe" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Важка міфрилова сокира"
+        },
+        ["quest.writ_94280"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Mechanical Dragonling",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94280",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Mechanical Dragonling",
+                ["line"] = 6472,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Mechanical Dragonling" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Механічний дракончик"
+        },
+        ["quest.writ_94281"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Advanced Target Dummy",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94281",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Advanced Target Dummy",
+                ["line"] = 6473,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Advanced Target Dummy" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Посилений манекен-мішень"
+        },
+        ["quest.writ_94282"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Craftsman's Monocle",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94282",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Craftsman's Monocle",
+                ["line"] = 6474,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Craftsman's Monocle" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Монокль ремісника"
+        },
+        ["quest.writ_94283"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Goblin Land Mine",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94283",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Goblin Land Mine",
+                ["line"] = 6475,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Goblin Land Mine" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Гоблінська міна"
+        },
+        ["quest.writ_94284"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Catseye Ultra Goggles",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94284",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Catseye Ultra Goggles",
+                ["line"] = 6476,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Catseye Ultra Goggles" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: ультраокуляри котячого ока"
+        },
+        ["quest.writ_94285"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Unstable Trigger",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94285",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Unstable Trigger",
+                ["line"] = 6477,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Unstable Trigger" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Нестабільний детонатор"
+        },
+        ["quest.writ_94286"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Flash Bomb",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94286",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Flash Bomb",
+                ["line"] = 6478,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Flash Bomb" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Світлова бомба"
+        },
+        ["quest.writ_94287"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Fire Goggles",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94287",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Fire Goggles",
+                ["line"] = 6479,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Fire Goggles" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Захисні Вогняні окуляри"
+        },
+        ["quest.writ_94288"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Mithril Frag Bomb",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94288",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Mithril Frag Bomb",
+                ["line"] = 6480,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Mithril Frag Bomb" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Міфрилова осколкова бомба"
+        },
+        ["quest.writ_94289"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Gyromatic Micro-Adjuster",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94289",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Gyromatic Micro-Adjuster",
+                ["line"] = 6481,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Gyromatic Micro-Adjuster" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Гіроматичний мікрорегулятор"
+        },
+        ["quest.writ_94290"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Mechanical Repair Kit",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94290",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Mechanical Repair Kit",
+                ["line"] = 6482,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Mechanical Repair Kit" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Набір для ремонту механізмів"
+        },
+        ["quest.writ_94291"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Dark Iron Bomb",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94291",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Dark Iron Bomb",
+                ["line"] = 6483,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Dark Iron Bomb" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Бомба з темного заліза"
+        },
+        ["quest.writ_94292"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Comfortable Leather Hat",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94292",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Comfortable Leather Hat",
+                ["line"] = 6484,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Comfortable Leather Hat" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зручний шкіряний капелюх"
+        },
+        ["quest.writ_94293"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Guardian Cloak",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94293",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Guardian Cloak",
+                ["line"] = 6485,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Guardian Cloak" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Плащ вартового"
+        },
+        ["quest.writ_94294"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Dusky Bracers",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94294",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Dusky Bracers",
+                ["line"] = 6486,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Dusky Bracers" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Сутінкові наручі"
+        },
+        ["quest.writ_94295"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Wild Leather Helmet",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94295",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Wild Leather Helmet",
+                ["line"] = 6487,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Wild Leather Helmet" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Дикий шкіряний шолом"
+        },
+        ["quest.writ_94296"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Wild Leather Shoulders",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94296",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Wild Leather Shoulders",
+                ["line"] = 6488,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Wild Leather Shoulders" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Дикі шкіряні наплічники"
+        },
+        ["quest.writ_94297"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Quickdraw Quiver",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94297",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Quickdraw Quiver",
+                ["line"] = 6489,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Quickdraw Quiver" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Сагайдак швидкого пострілу"
+        },
+        ["quest.writ_94298"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Swift Boots",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94298",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Swift Boots",
+                ["line"] = 6490,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Swift Boots" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Швидкі чоботи"
+        },
+        ["quest.writ_94299"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Nightscape Shoulders",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94299",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Nightscape Shoulders",
+                ["line"] = 6491,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Nightscape Shoulders" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Нічні Наплічники"
+        },
+        ["quest.writ_94300"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Big Voodoo Mask",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94300",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Big Voodoo Mask",
+                ["line"] = 6493,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Big Voodoo Mask" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Велика маска вуду"
+        },
+        ["quest.writ_94301"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Big Voodoo Robe",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94301",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Big Voodoo Robe",
+                ["line"] = 6494,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Big Voodoo Robe" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Велика мантія вуду"
+        },
+        ["quest.writ_94302"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Turtle Scale Breastplate",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94302",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Turtle Scale Breastplate",
+                ["line"] = 6495,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Turtle Scale Breastplate" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Нагрудник з черепашачої луски"
+        },
+        ["quest.writ_94303"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Thick Leather Ammo Pouch",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94303",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Thick Leather Ammo Pouch",
+                ["line"] = 6496,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Thick Leather Ammo Pouch" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Товстий шкіряний підсумок для боєприпасів"
+        },
+        ["quest.writ_94304"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Mageweave Bag",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94304",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Mageweave Bag",
+                ["line"] = 6497,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Mageweave Bag" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Сумка з маготканини"
+        },
+        ["quest.writ_94305"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Shadoweave Gloves",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94305",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Shadoweave Gloves",
+                ["line"] = 6498,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Shadoweave Gloves" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Рукавиці з тінетканини"
+        },
+        ["quest.writ_94306"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Crimson Silk Robe",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94306",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Crimson Silk Robe",
+                ["line"] = 6499,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Crimson Silk Robe" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Багряна шовкова мантія"
+        },
+        ["quest.writ_94307"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Shadoweave Robe",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94307",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Shadoweave Robe",
+                ["line"] = 6500,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Shadoweave Robe" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Мантія з тінетканини"
+        },
+        ["quest.writ_94308"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Enchanted Mageweave Pouch",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94308",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Enchanted Mageweave Pouch",
+                ["line"] = 6501,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Enchanted Mageweave Pouch" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зачарований мішечок із маготканини"
+        },
+        ["quest.writ_94309"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Star Belt",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94309",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Star Belt",
+                ["line"] = 6502,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Star Belt" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зоряний пояс"
+        },
+        ["quest.writ_94310"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Black Mageweave Vest",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94310",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Black Mageweave Vest",
+                ["line"] = 6503,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Black Mageweave Vest" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Чорний жилет із маготканини"
+        },
+        ["quest.writ_94311"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Red Mageweave Pants",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94311",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Red Mageweave Pants",
+                ["line"] = 6504,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Red Mageweave Pants" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Червоні штани з магічної тканини"
+        },
+        ["quest.writ_94312"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Orange Martial Shirt",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94312",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Orange Martial Shirt",
+                ["line"] = 6505,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Orange Martial Shirt" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Помаранчева бойова сорочка"
+        },
+        ["quest.writ_94313"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: White Bandit Mask",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94313",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: White Bandit Mask",
+                ["line"] = 6506,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: White Bandit Mask" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Маска білого бандита"
+        },
+        ["quest.writ_94314"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Cindercloth Robe",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94314",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Cindercloth Robe",
+                ["line"] = 6507,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Cindercloth Robe" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Мантія з попелотканини"
+        },
+        ["quest.writ_94315"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Earthen Silk Belt",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94315",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Earthen Silk Belt",
+                ["line"] = 6508,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Earthen Silk Belt" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Земляний шовковий пояс"
+        },
+        ["quest.writ_94316"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Potion of Demonslaying",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94316",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Potion of Demonslaying",
+                ["line"] = 6509,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Potion of Demonslaying" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зілля винищення демонів"
+        },
+        ["quest.writ_94317"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Dreamless Sleep Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94317",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Dreamless Sleep Potion",
+                ["line"] = 6510,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Dreamless Sleep Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зілля безсновидного сну"
+        },
+        ["quest.writ_94318"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Greater Fire Protection Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94318",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Greater Fire Protection Potion",
+                ["line"] = 6511,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Greater Fire Protection Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Велике зілля захисту від вогню"
+        },
+        ["quest.writ_94319"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Draught of Detect Demon",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94319",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Draught of Detect Demon",
+                ["line"] = 6512,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Draught of Detect Demon" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Настій виявлення демонів"
+        },
+        ["quest.writ_94320"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Gift of Arthas",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94320",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Gift of Arthas",
+                ["line"] = 6513,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Gift of Arthas" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Дар Артаса"
+        },
+        ["quest.writ_94321"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Flask of Chromatic Resistance",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94321",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Flask of Chromatic Resistance",
+                ["line"] = 6514,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Flask of Chromatic Resistance" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Настій хроматичного опору"
+        },
+        ["quest.writ_94322"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Limited Invulnerability Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94322",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Limited Invulnerability Potion",
+                ["line"] = 6515,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Limited Invulnerability Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зілля обмеженої невразливості"
+        },
+        ["quest.writ_94323"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Major Rejuvenation Potion",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94323",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Major Rejuvenation Potion",
+                ["line"] = 6516,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Major Rejuvenation Potion" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зілля великого омолодження"
+        },
+        ["quest.writ_94324"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Distilled Firewater",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94324",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Distilled Firewater",
+                ["line"] = 6517,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Distilled Firewater" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Дистильована вогняна вода"
+        },
+        ["quest.writ_94325"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Radiant Circlet",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94325",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Radiant Circlet",
+                ["line"] = 6518,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Radiant Circlet" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Сяючий вінець"
+        },
+        ["quest.writ_94326"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Radiant Belt",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94326",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Radiant Belt",
+                ["line"] = 6519,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Radiant Belt" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Сяючий пояс"
+        },
+        ["quest.writ_94327"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Orcish War Leggings",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94327",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Orcish War Leggings",
+                ["line"] = 6520,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Orcish War Leggings" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Орчі бойові поножі"
+        },
+        ["quest.writ_94328"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Mithril Spurs",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94328",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Mithril Spurs",
+                ["line"] = 6521,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Mithril Spurs" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Міфрилові шпори"
+        },
+        ["quest.writ_94329"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Imperial Plate Chest",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94329",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Imperial Plate Chest",
+                ["line"] = 6522,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Imperial Plate Chest" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Імперський латний нагрудник"
+        },
+        ["quest.writ_94330"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Darkrune Gauntlets",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94330",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Darkrune Gauntlets",
+                ["line"] = 6523,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Darkrune Gauntlets" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Рукавиці Темної Руни"
+        },
+        ["quest.writ_94331"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Huge Thorium Battleaxe",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94331",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Huge Thorium Battleaxe",
+                ["line"] = 6524,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Huge Thorium Battleaxe" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Величезна торієва бойова сокира"
+        },
+        ["quest.writ_94332"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Arcanite Skeleton Key",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94332",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Arcanite Skeleton Key",
+                ["line"] = 6525,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Arcanite Skeleton Key" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Арканітовий ключ-відмичка"
+        },
+        ["quest.writ_94333"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Ebon Shiv",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94333",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Ebon Shiv",
+                ["line"] = 6526,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Ebon Shiv" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Ебонітова заточка"
+        },
+        ["quest.writ_94334"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Masterwork Target Dummy",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94334",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Masterwork Target Dummy",
+                ["line"] = 6527,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Masterwork Target Dummy" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Майстерний манекен-мішень"
+        },
+        ["quest.writ_94335"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Green Lens",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94335",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Green Lens",
+                ["line"] = 6528,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Green Lens" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Зелена лінза"
+        },
+        ["quest.writ_94336"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Lifelike Mechanical Toad",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94336",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Lifelike Mechanical Toad",
+                ["line"] = 6529,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Lifelike Mechanical Toad" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Реалістична механічна жаба"
+        },
+        ["quest.writ_94337"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Gnomish Alarm-O-Bot",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94337",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Gnomish Alarm-O-Bot",
+                ["line"] = 6530,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Gnomish Alarm-O-Bot" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Гномський робот-сигналізатор"
+        },
+        ["quest.writ_94338"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Goblin Jumper Cables XL",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94338",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Goblin Jumper Cables XL",
+                ["line"] = 6531,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Goblin Jumper Cables XL" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Гоблінські кабелі-пускачі XL"
+        },
+        ["quest.writ_94339"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Field Repair Bot 74A",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94339",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Field Repair Bot 74A",
+                ["line"] = 6532,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Field Repair Bot 74A" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Польовий ремонтний бот 74A"
+        },
+        ["quest.writ_94340"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Truesilver Transformer",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94340",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Truesilver Transformer",
+                ["line"] = 6533,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Truesilver Transformer" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Трансформатор зі істинного срібла"
+        },
+        ["quest.writ_94341"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Sniper Scope",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94341",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Sniper Scope",
+                ["line"] = 6534,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Sniper Scope" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Снайперський приціл"
+        },
+        ["quest.writ_94342"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Tranquil Mechanical Yeti",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94342",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Tranquil Mechanical Yeti",
+                ["line"] = 6535,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Tranquil Mechanical Yeti" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Спокійний механічний єті"
+        },
+        ["quest.writ_94343"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Wicked Leather Pants",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94343",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Wicked Leather Pants",
+                ["line"] = 6536,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Wicked Leather Pants" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Нищівні шкіряні штани"
+        },
+        ["quest.writ_94344"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Gordok Ogre Suit",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94344",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Gordok Ogre Suit",
+                ["line"] = 6537,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Gordok Ogre Suit" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Костюм огра Ґордока"
+        },
+        ["quest.writ_94345"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Volcanic Breastplate",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94345",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Volcanic Breastplate",
+                ["line"] = 6538,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Volcanic Breastplate" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Вулканічний нагрудник"
+        },
+        ["quest.writ_94346"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Runic Leather Headband",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94346",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Runic Leather Headband",
+                ["line"] = 6539,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Runic Leather Headband" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Рунічна шкіряна пов'язка"
+        },
+        ["quest.writ_94347"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Wicked Leather Bracers",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94347",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Wicked Leather Bracers",
+                ["line"] = 6540,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Wicked Leather Bracers" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Нищівні шкіряні наручі"
+        },
+        ["quest.writ_94348"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Chimeric Vest",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94348",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Chimeric Vest",
+                ["line"] = 6541,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Chimeric Vest" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Химерний жилет"
+        },
+        ["quest.writ_94349"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Heavy Scorpid Helm",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94349",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Heavy Scorpid Helm",
+                ["line"] = 6542,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Heavy Scorpid Helm" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Важкий шолом скорпіда"
+        },
+        ["quest.writ_94350"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Runic Leather Bracers",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94350",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Runic Leather Bracers",
+                ["line"] = 6543,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Runic Leather Bracers" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Рунічні шкіряні наручі"
+        },
+        ["quest.writ_94351"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Frostsaber Boots",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94351",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Frostsaber Boots",
+                ["line"] = 6544,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Frostsaber Boots" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Чоботи крижаного шаблезуба"
+        },
+        ["quest.writ_94352"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Wizardweave Turban",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94352",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Wizardweave Turban",
+                ["line"] = 6545,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Wizardweave Turban" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Тюрбан із чаротканини"
+        },
+        ["quest.writ_94353"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Runecloth Bag",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94353",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Runecloth Bag",
+                ["line"] = 6546,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Runecloth Bag" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Сумка з рунічної тканини"
+        },
+        ["quest.writ_94354"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Runecloth Boots",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94354",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Runecloth Boots",
+                ["line"] = 6547,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Runecloth Boots" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Чоботи з рунічної тканини"
+        },
+        ["quest.writ_94355"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Tuxedo Jacket",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94355",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Tuxedo Jacket",
+                ["line"] = 6548,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Tuxedo Jacket" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: піджак"
+        },
+        ["quest.writ_94356"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Felcloth Boots",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94356",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Felcloth Boots",
+                ["line"] = 6549,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Felcloth Boots" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Чоботи з тканини Скверни"
+        },
+        ["quest.writ_94357"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Cenarion Herb Bag",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94357",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Cenarion Herb Bag",
+                ["line"] = 6550,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Cenarion Herb Bag" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: кенарійська сумка для трав"
+        },
+        ["quest.writ_94358"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Shadoweave Mask",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94358",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Shadoweave Mask",
+                ["line"] = 6551,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Shadoweave Mask" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Маска з тінетканини"
+        },
+        ["quest.writ_94359"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Ghostweave Vest",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94359",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Ghostweave Vest",
+                ["line"] = 6552,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Ghostweave Vest" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Жилет із примаротканини"
+        },
+        ["quest.writ_94360"] = {
+            ["category"] = "quests",
+            ["en"] = "Craftsman's Writ: Soul Pouch",
+            ["features"] = {
+                ["proper"] = true
+            },
+            ["id"] = "quest.writ_94360",
+            ["provenance"] = {
+                ["context"] = "exact quest title",
+                ["file"] = "entries/forever/cliend_db/quests.lua",
+                ["key"] = "Craftsman's Writ: Soul Pouch",
+                ["line"] = 6553,
+                ["sha256"] = "53f0813239261aca1a4aefbd7fcdb82d724a5e74a03036363694905f19fbdcf2",
+                ["source"] = "ua-forever",
+                ["version"] = "1.1.1"
+            },
+            ["sourceRefs"] = { "ua-forever:quests.lua:Craftsman's Writ: Soul Pouch" },
+            ["status"] = "approved",
+            ["uk"] = "Замовлення майстра: Сумка душ"
         },
         ["race.dwarf.base.plural"] = {
             ["category"] = "creatures",

@@ -125,6 +125,15 @@ function T.render(tree, direction)
     if tree.kind == "recruit" then
         local output
         local total = s.total and s.total.raw
+        local contextualPlace, quickDestination
+        if uk and f.destinationRoles and s.place then
+            local features = s.place.term.features
+            if f.pace and features and features.clearableInstance then
+                local format = s.place.plural and "{place:genitivePlural}" or "{place:genitiveSingular}"
+                quickDestination = render(" на швидке проходження " .. format)
+            end
+            contextualPlace = quickDestination or render(" у {place:object}")
+        end
         local function totalPlayers(amount)
             local form = G.numberForm(amount) == "genitiveSingular" and "гравця" or "гравців"
             return "Шукаємо ще " .. amount .. " " .. form
@@ -136,6 +145,9 @@ function T.render(tree, direction)
         local function appendPlace(value, afterSentence)
             if not s.place then return value end
             if not uk then return value .. (f.destinationRun and " to run " or " for ") .. render("{place}") end
+            if contextualPlace then
+                return value:gsub("%.$", "") .. contextualPlace .. (afterSentence and "." or "")
+            end
             if f.destinationRun then
                 local format = s.place.plural and "{place:genitivePlural}" or "{place:genitiveSingular}"
                 return value:gsub("%.$", "") .. " для проходження " .. (render(format) or render("{place}"))
@@ -161,7 +173,7 @@ function T.render(tree, direction)
             if f.run == "full" then value = value .. (uk and ". Повне проходження" or ", full run")
             elseif f.run == "fresh" then value = value .. (uk and ". Проходження з початку" or ", fresh run")
             elseif f.run == "quest" then value = value .. (uk and ". Проходження із завданнями" or ", quest run") end
-            if f.pace then value = value .. (uk and ". Швидке проходження" or ", fast run") end
+            if f.pace and not quickDestination then value = value .. (uk and ". Швидке проходження" or ", fast run") end
             if f.clear then value = value .. (uk and ". Повна зачистка" or ", full clear") end
             if f.ready then value = value .. (uk and ". Готові вирушати" or ". Ready to go") end
             if f.urgent then value = value .. (uk and ". Терміново" or ", quick") end
@@ -220,10 +232,11 @@ function T.render(tree, direction)
                 roles[#roles + 1] = value
             end
             local prefix
-            if uk then prefix = total and totalPlayers(total) .. ": " or "Шукаємо "
+            if contextualPlace and total then prefix = appendPlace(totalPlayers(total)) .. ": "
+            elseif uk then prefix = total and totalPlayers(total) .. ": " or "Шукаємо "
             else prefix = total and "LF" .. total .. "M " or "Looking for " end
             output = appendLevel(prefix .. table.concat(roles))
-            output = appendPlace(output)
+            if not (contextualPlace and total) then output = appendPlace(output) end
             if f.lastSpot then output = output .. (uk and ". Залишилося одне місце" or ", last spot") end
             return appendConditions(output)
         end
@@ -235,7 +248,11 @@ function T.render(tree, direction)
                 return nil
             end
             if s.role then
-                if total and s.count then
+                if contextualPlace and total then
+                    local role = render(s.count and "{count} {role:counted}" or "{role:genitiveSingular}")
+                    if not role then return end
+                    output = appendPlace(totalPlayers(total)) .. ": " .. role .. "."
+                elseif total and s.count then
                     local role = render("{count} {role:counted}")
                     if not role then return end
                     output = totalPlayers(total) .. ": " .. role .. "."
@@ -250,7 +267,7 @@ function T.render(tree, direction)
             end
             if not output then return end
             if s.level then output = appendLevel((output:gsub("%.$", ""))) .. "." end
-            output = appendPlace(output, true)
+            if not (contextualPlace and total and s.role) then output = appendPlace(output, true) end
             if f.lastSpot then output = output .. " Залишилося одне місце." end
         else
             output = total and "LF" .. total .. "M" or s.count and render("LF{count}M") or "LFM"
